@@ -1,0 +1,5 @@
+pandas
+yfinance
+b3
+selenium
+webdriver_manager
