@@ -35,7 +35,7 @@ try:
 
     time.sleep(2)
 
-    driver.execute_script("window.scrollTo(0, 300);")
+    driver.execute_script("window.scrollTo(0, 320);")
 
     download_button = wait.until(EC.element_to_be_clickable(
         (By.XPATH, "/html/body/div/div/div/div/div[2]/div[1]/div/div[1]/div[2]/div/div/div[1]/div[2]/p[2]/a[1]")))
