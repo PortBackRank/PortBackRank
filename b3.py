@@ -19,7 +19,8 @@ from arquivos import (abre_dataframe, abre_json, caminho_arquivo,
                       salva_dataframe, salva_json)
 
 PAUSA = 1
-TIMEOUT = 5
+TIMEOUT = 1
+MAX_TENTATIVAS = 5
 
 URL_LISTA_ACOES = 'https://sistemaswebb3-listados.b3.com.br/listedCompaniesProxy/CompanyCall/GetInitialCompanies/'
 URL_DETALHE_ACAO = 'https://sistemaswebb3-listados.b3.com.br/listedCompaniesProxy/CompanyCall/GetDetail/'
@@ -130,7 +131,7 @@ class HistoricoAtivos:
         lista_itens = abre_json(cls._arq_ativos_recentes, SUB_DIR_B3)
         if lista_itens is None or len(lista_itens) == 0 or forca_atualizacao:
             cls.baixa_simbolos()
-            log.debug('Arquivo: %s', lista_itens)
+            # log.debug('Arquivo: %s', lista_itens)
             log.debug('Atualização forçada: %s', forca_atualizacao)
         lista_itens = abre_json(cls._arq_ativos_recentes, SUB_DIR_B3)
         return lista_itens
@@ -221,7 +222,7 @@ class InfoAtivo:
             log.debug('Atualização forçada: %s', forca_atualizacao)
         lista_itens = abre_json(cls._arquivo_lista, SUB_DIR_B3)
         return lista_itens
-
+    
     @classmethod
     def _processa_info_ativo(cls, resposta):
         '''Processa informações de ativo'''
@@ -234,11 +235,13 @@ class InfoAtivo:
         for campo in LISTA_CAMPOS_CODIGOS:
             if campo in resposta:
                 lista_codigos.append(resposta[campo])
-        log.debug('Validando códigos:, %s', lista_codigos)
+        # log.debug('Validando códigos:, %s', lista_codigos)
+
         lista_codigos = _valida_lista_codigos(lista_codigos)
         if len(lista_codigos) == 0:
             log.debug('Nenhum código válido!')
             return {CODIGO: []}
+        
         resposta[CODIGO] = lista_codigos
         classificacao = None
         for campo in LISTA_CAMPOS_CLASSIFICACAO:
@@ -248,43 +251,72 @@ class InfoAtivo:
                 resposta[SUBSETOR] = classificacao[1]
                 resposta[SEGMENTO] = classificacao[2]
                 break
+
         if classificacao is None:
             log.debug('Classificação não encontrada!')
             return {CODIGO: []}
+        
         return resposta
 
     @classmethod
     def _baixa_detalhe_ativo(cls, parametros):
         '''Baixa detalhes de ativo'''
-        log.debug('Baixando detalhes de ativo: %s, %s', cls._url_detalhe,
-                  parametros)
+        # log.debug('Baixando detalhes de ativo: %s, %s', cls._url_detalhe, parametros)
+
         param_texto = _parametros_texto(parametros)
         url = cls._url_detalhe + b64encode(param_texto.encode()).decode()
-        time.sleep(PAUSA)
-        # FIXME: Colocar try e aumentar timeout a cada tentativa
-        resposta = requests.get(url, timeout=TIMEOUT)
-        log.debug('Status code: %d', resposta.status_code)
-        if resposta.status_code != 200:
-            return []
-        resposta = cls._processa_info_ativo(resposta.json())
-        if PAR_TYPE_FUND in parametros:
-            resposta['market'] = 'Fundos'
-            resposta['marketIndicator'] = parametros[PAR_TYPE_FUND]
-        lista_ativos = []
-        for codigo in resposta[CODIGO]:
-            ativo = {
-                CNPJ: resposta['cnpj'],
-                NOME_EMPRESA: resposta['companyName'],
-                CODIGO: codigo,
-                SETOR:resposta[SETOR],
-                SUBSETOR: resposta[SUBSETOR],
-                SEGMENTO: resposta[SEGMENTO],
-                NOME_BOLSA: resposta['tradingName'],
-                MERCADO: resposta['market'],
-                CATEGORIA: resposta['marketIndicator'],
-            }
-            lista_ativos.append(ativo)
-        return lista_ativos
+
+        tentativas = 0
+        timeout_atual = TIMEOUT
+
+        while tentativas < MAX_TENTATIVAS:
+            try:
+                time.sleep(PAUSA)
+                resposta = requests.get(url, timeout=timeout_atual)
+
+                if resposta.status_code == 200:
+                    resposta = cls._processa_info_ativo(resposta.json())
+
+                    if resposta[CODIGO] == []:
+                        log.debug('Código inválido ou não encontrado.')
+                        return []
+
+                    if PAR_TYPE_FUND in parametros:
+                        resposta['market'] = 'Fundos'
+                        resposta['marketIndicator'] = parametros[PAR_TYPE_FUND]
+
+                    lista_ativos = []
+                    
+                    for codigo in resposta[CODIGO]:
+                        if resposta[SETOR].strip() in ['Não Classificados', 'Não Classificado']:
+                            continue
+                        
+                        ativo = {
+                            CNPJ: resposta['cnpj'],
+                            NOME_EMPRESA: resposta['companyName'],
+                            CODIGO: codigo,
+                            SETOR: resposta[SETOR],
+                            SUBSETOR: resposta[SUBSETOR],
+                            SEGMENTO: resposta[SEGMENTO],
+                            NOME_BOLSA: resposta['tradingName'],
+                            MERCADO: resposta['market'],
+                            CATEGORIA: resposta['marketIndicator'],
+                        }
+
+                        lista_ativos.append(ativo)
+                    return lista_ativos
+                
+                else:
+                    log.debug(f"Erro ao baixar ativo, código HTTP: {resposta.status_code}. Tentando novamente...")
+
+            except (requests.ConnectionError, requests.Timeout) as e:
+                log.debug(f"Erro de conexão ou timeout: {e}. Tentativa {tentativas + 1} de {MAX_TENTATIVAS}.")
+            
+            tentativas += 1
+            timeout_atual *= 2  # Dobra o timeout a cada tentativa
+        
+        log.debug("Falha ao baixar os detalhes do ativo após várias tentativas.")
+        return []
 
     @classmethod
     def _baixa_info_ativos(cls):
@@ -377,6 +409,10 @@ class InfoFundo(InfoAtivo):
         log.debug('Salvando informações em arquivo: %s', cls._arquivo_detalhes)
         salva_json(cls._arquivo_detalhes, lista_fundos, SUB_DIR_B3)
 
+def atualiza_simbolos():
+    '''Atualiza lista de símbolos'''
+    HistoricoAtivos.lista_simbolos_recentes(True)
+
 def info_ativos(forca_atualizacao=False):
     '''Baixa ativos da B3'''
     data_ativos = abre_dataframe(ARQ_ATIVOS_B3, SUB_DIR_B3)
@@ -391,11 +427,22 @@ def info_ativos(forca_atualizacao=False):
 def principal():
     '''Main function'''
     log.setLevel(logging.DEBUG)
-    ativos_recentes = HistoricoAtivos.lista_simbolos_recentes(True)
-    print(ativos_recentes)
-    # data_ativos = info_ativos()
-
+    # ativos_recentes = HistoricoAtivos.lista_simbolos_recentes(True)
+    data = info_ativos()
+    print(data)
+    # data_ativos = info_ativos(True)
     # print(data_ativos.head())
+
+    # df_lista = pd.DataFrame(InfoAcao.lista_ativos(True))
+    # aux = InfoAtivo.remover_invalidos(df_lista)
+    # print(df_lista.head())
+    # print(df_lista.columns)
+    # print(df_lista['segment'].unique())
+    # df_lista = df_lista[~df_lista['segment'].isin(['Não Classificados', 'Não Classificado'])]
+    # print(df_lista['segment'].unique())
+    # print(df_lista.describe())
+ 
+
 
 if __name__ == '__main__':
     principal()
