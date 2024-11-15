@@ -68,7 +68,7 @@ PAR_CODE_CVM = 'codeCVM'
 PAGE_SIZE_PADRAO = 60
 
 
-def _mes_anterior(data):
+def mes_anterior(data):
     '''Mês anterior de uma data'''
     if data.month > 1:
         data = data.replace(month=data.month - 1)
@@ -107,13 +107,43 @@ class HistoricoAtivos:
     @classmethod
     def baixa_simbolos(cls):
         '''Baixa símbolos de negociações recentes (mês anterior)'''
-        mes_ant = _mes_anterior(datetime.now())
+        mes_ant = mes_anterior(datetime.now())
         dir_temp = tempfile.mkdtemp()
         arquivo = cls._baixa_cotacao(mes_ant.year, mes_ant.month)
         with zipfile.ZipFile(arquivo) as zip_ref:
             zip_ref.extractall(dir_temp)
         arquivo = dir_temp + '/COTAHIST_M' + \
             str(mes_ant.month).zfill(2) + str(mes_ant.year) + '.TXT'
+        set_simbolos = set()
+        with open(arquivo, 'r', encoding='utf-8') as arq:
+            next(arq)
+            for linha in arq:
+                if linha[24:27] == '010':
+                    simbolo = linha[12:24].strip() + '.SA'
+                    set_simbolos.add(simbolo)
+        salva_json(cls._arq_ativos_recentes, list(set_simbolos), SUB_DIR_B3)
+        return list(set_simbolos)
+    
+    @classmethod
+    def remover_simbolos(cls, lista_simbolos):
+        '''Remove símbolos que não estão na lista de símbolos fornecida'''
+        lista_atual = cls.lista_simbolos_recentes()
+        # print(f"Lista atual de símbolos: {lista_atual}")
+        
+        lista_atual = [simbolo for simbolo in lista_atual if simbolo in lista_simbolos]
+        print(f"Lista após manter apenas os símbolos em lista_simbolos: {lista_atual}")
+        
+        salva_json(cls._arq_ativos_recentes, lista_atual, SUB_DIR_B3)
+        return lista_atual
+    
+    @classmethod
+    def baixa_simbolos_periodo(cls, ano, mes):
+        '''Baixa símbolos de negociações de um mês'''
+        dir_temp = tempfile.mkdtemp()
+        arquivo = cls._baixa_cotacao(ano, mes)
+        with zipfile.ZipFile(arquivo) as zip_ref:
+            zip_ref.extractall(dir_temp)
+        arquivo = dir_temp + '/COTAHIST_M' + str(mes).zfill(2) + str(ano) + '.TXT'
         set_simbolos = set()
         with open(arquivo, 'r', encoding='utf-8') as arq:
             next(arq)
@@ -131,8 +161,6 @@ class HistoricoAtivos:
         lista_itens = abre_json(cls._arq_ativos_recentes, SUB_DIR_B3)
         if lista_itens is None or len(lista_itens) == 0 or forca_atualizacao:
             cls.baixa_simbolos()
-            # log.debug('Arquivo: %s', lista_itens)
-            log.debug('Atualização forçada: %s', forca_atualizacao)
         lista_itens = abre_json(cls._arq_ativos_recentes, SUB_DIR_B3)
         return lista_itens
 
@@ -271,7 +299,7 @@ class InfoAtivo:
 
         while tentativas < MAX_TENTATIVAS:
             try:
-                time.sleep(PAUSA)
+                # time.sleep(PAUSA)
                 resposta = requests.get(url, timeout=timeout_atual)
 
                 if resposta.status_code == 200:
@@ -329,13 +357,15 @@ class InfoAtivo:
         log.debug('Abrindo aquivo de informações de ativos: %s',
                   cls._arquivo_detalhes)
         lista_ativos = abre_json(cls._arquivo_detalhes, SUB_DIR_B3)
+
         if lista_ativos is None or forca_atualizacao:
             log.debug('Arquivo vazio: %s', lista_ativos)
             log.debug('Atualização forçada: %s', forca_atualizacao)
+
             cls._baixa_info_ativos()
         lista_ativos = abre_json(cls._arquivo_detalhes, SUB_DIR_B3)
         return lista_ativos
-
+    
     @classmethod
     def ativos_recentes(cls):
         '''Ativos recentes'''
@@ -424,25 +454,4 @@ def info_ativos(forca_atualizacao=False):
     data_ativos = abre_dataframe(ARQ_ATIVOS_B3, SUB_DIR_B3)
     return data_ativos
 
-def principal():
-    '''Main function'''
-    log.setLevel(logging.DEBUG)
-    # ativos_recentes = HistoricoAtivos.lista_simbolos_recentes(True)
-    data = info_ativos()
-    print(data)
-    # data_ativos = info_ativos(True)
-    # print(data_ativos.head())
 
-    # df_lista = pd.DataFrame(InfoAcao.lista_ativos(True))
-    # aux = InfoAtivo.remover_invalidos(df_lista)
-    # print(df_lista.head())
-    # print(df_lista.columns)
-    # print(df_lista['segment'].unique())
-    # df_lista = df_lista[~df_lista['segment'].isin(['Não Classificados', 'Não Classificado'])]
-    # print(df_lista['segment'].unique())
-    # print(df_lista.describe())
- 
-
-
-if __name__ == '__main__':
-    principal()
