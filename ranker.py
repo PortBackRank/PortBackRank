@@ -1,10 +1,12 @@
 from abc import ABC, abstractmethod
 from typing import Callable, Dict, Any
-
+from data import Data
+import pandas as pd
 
 class Ranker(ABC):
-    def __init__(self):
-        self._data = None
+    def __init__(self, data=None):
+        self._data = data if data is not None else Data()
+
         self._algoritmo = None
         self._parametros = {}
 
@@ -51,24 +53,60 @@ class Ranker(ABC):
         pass
 
 
-class RankerSimples(Ranker):
+class RankerMediasMoveis(Ranker):
     def exibir_resultados(self, resultados: Dict[str, float]):
-        print("Resultados do Ranqueamento:")
-        for ativo, pontuacao in sorted(resultados.items(), key=lambda item: item[1], reverse=True):
-            print(f"{ativo}: {pontuacao:.2f}")
+        print("Resultados do Ranqueamento (Médias Móveis):")
+        results = []
+        for ativo, media in sorted(resultados.items(), key=lambda item: item[1], reverse=True):
+            results.append(f"{ativo}: {media:.2f}")
 
+        df_resultados = pd.DataFrame(list(resultados.items()), columns=['Ativo', 'MediaMovel'])
+        df_resultados.to_csv('resultados.csv', index=False)
 
-def algoritmo_exemplo(data: Dict[str, list], params: Dict[str, Any]) -> Dict[str, float]:
-    return {ativo: sum(valores) / len(valores) for ativo, valores in data.items()}
+        df_carregado = pd.read_csv('resultados.csv')
+        print(df_carregado)
+            
+def medias_moveis(data, params: Dict[str, Any]) -> Dict[str, float]:
+    periodo = params.get("periodo", 5)
+    resultados = {}
 
+    for ativo in data.extrair_simbolos():
+        historico = data.buscar_historico_filtro([ativo], filtro_coluna="Close")
+        # print(historico)
+        close_values = historico["Close"]
 
-ranker = RankerSimples()
+        media_movel = close_values.iloc[-periodo:].mean()
+        resultados[ativo] = media_movel
 
-ranker.adicionar_algoritmo(algoritmo_exemplo, {"peso": 1.0})
+    return resultados
+# 
+ranker = RankerMediasMoveis()
 
-dados = {"ativo_a": [1, 2, 3], "ativo_b": [8, 6, 4], "ativo_c": [5, 6]}
-ranker.carregar_dados(dados)
+ranker.adicionar_algoritmo(medias_moveis, {"periodo": 3})
 
 resultados = ranker.executar_algoritmo()
 
 ranker.exibir_resultados(resultados)
+
+
+# class RankerSimples(Ranker):
+#     def exibir_resultados(self, resultados: Dict[str, float]):
+#         print("Resultados do Ranqueamento:")
+#         for ativo, pontuacao in sorted(resultados.items(), key=lambda item: item[1], reverse=True):
+#             print(f"{ativo}: {pontuacao:.2f}")
+
+
+# def algoritmo_exemplo(data: Dict[str, list], params: Dict[str, Any]) -> Dict[str, float]:
+#     return {ativo: sum(valores) / len(valores) for ativo, valores in data.items()}
+
+
+# ranker = RankerSimples()
+
+# ranker.adicionar_algoritmo(algoritmo_exemplo, {"peso": 1.0})
+
+# dados = {"ativo_a": [1, 2, 3], "ativo_b": [8, 6, 4], "ativo_c": [5, 6]}
+# ranker.carregar_dados(dados)
+
+# resultados = ranker.executar_algoritmo()
+
+# ranker.exibir_resultados(resultados)

@@ -1,3 +1,4 @@
+import time
 import yfinance as yf
 import pandas as pd
 from arquivos import abre_dataframe, abre_json, salva_dataframe, salva_json
@@ -72,24 +73,31 @@ class HistoricoAtivos:
     def baixar_info(cls, simbolos: List[str]) -> List[str]:
         """Baixa informações sobre os ativos na lista"""
         campos_desejados = ['sector', 'industry', 'financialCurrency']  # obrigatórios # pensar em volume regularMarketVolume currency quoteType
-
+        
+        print(f"Baixando informações para {len(simbolos)}")
+        
         ativo_info = yf.Tickers(simbolos)
         ativos_com_info = []
         for ativo in ativo_info.tickers.keys():
-            ativo_info_dict = ativo_info.tickers[ativo].info
+            time.sleep(0.3) 
+            try:
+                ativo_info_dict = ativo_info.tickers[ativo].info
 
-            info_filtrada = {campo: ativo_info_dict.get(campo) for campo in campos_desejados}
+                info_filtrada = {campo: ativo_info_dict.get(campo) for campo in campos_desejados}
 
-            if all(info_filtrada.get(campo) not in [None, ''] and pd.notna(info_filtrada.get(campo)) for campo in campos_desejados):
-                print(f"Salvando informações para {ativo}... {info_filtrada}") 
-                ativos_com_info.append(ativo)
-                nome_arquivo_json = f"{ativo}_info.json"
-                salva_json(nome_arquivo_json, info_filtrada, cls.subdir)
+                if all(info_filtrada.get(campo) not in [None, ''] and pd.notna(info_filtrada.get(campo)) for campo in campos_desejados):
+                    print(f"Salvando informações para {ativo}... {info_filtrada}") 
+                    ativos_com_info.append(ativo)
+                    nome_arquivo_json = f"{ativo}_info.json"
+                    salva_json(nome_arquivo_json, info_filtrada, cls.subdir)
 
-                nome_arquivo_csv = f"{ativo}_info.csv"
-                salva_dataframe(nome_arquivo_csv, pd.DataFrame([info_filtrada]), cls.subdir)
-            else:
-                print(f"Ignorando {ativo}, informações incompletas: {info_filtrada}")
+                    nome_arquivo_csv = f"{ativo}_info.csv"
+                    salva_dataframe(nome_arquivo_csv, pd.DataFrame([info_filtrada]), cls.subdir)
+                else:
+                    print(f"Ignorando {ativo}, informações incompletas: {info_filtrada}")
+            except Exception as e:
+                print(f"Erro ao processar {ativo}: {e}")
+                continue
         return ativos_com_info
 
     @classmethod

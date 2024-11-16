@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 import pandas as pd
 from b3 import atualiza_simbolos, HistoricoAtivos as ha
 
@@ -54,28 +54,61 @@ class Data(HistoricoAtivos):
       
         dados_ativos_concat = pd.concat(dados_ativos_list, axis=0, ignore_index=True) if dados_ativos_list else pd.DataFrame()
         return dados_ativos_concat
-
+    
+    @classmethod
+    def buscar_historico_filtro(
+        cls, 
+        ativos: List[str], 
+        filtro_coluna: Optional[str] = "CLOSE"
+    ) -> pd.DataFrame:
+        dados_ativos_list = cls.get_dados_ativos(ativos=ativos)
+        dados_ativos_concat = pd.concat(dados_ativos_list, axis=0, ignore_index=True) if dados_ativos_list else pd.DataFrame()
+        
+        if not dados_ativos_concat.empty and filtro_coluna in dados_ativos_concat.columns:
+            dados_ativos_concat = dados_ativos_concat[dados_ativos_concat[filtro_coluna].notna()]
+        
+        return dados_ativos_concat[['Date', filtro_coluna]]
+    
 def teste():
-    print('atualizando simbolos...')
+    # print('atualizando simbolos...')
+    # Data.atualizar_simbolos()
+    
+    # print(f'Extraindo simbolos...')
+    # simbolos = Data.extrair_simbolos()
+    # print(simbolos[:20])
+    
+    # # print(f'Baixando info ativos...')
+    # print(Data.baixar_info_ativos(simbolos=simbolos[:20]))
+    
+    # print(f'Extraindo simbolos apos remover os sem info...')
+    # simbolosatt = Data.extrair_simbolos()
+    
+    # print(simbolosatt[:20])
+    # print(f'Buscando info ativos...')
+    # print(Data.get_info_ativos(simbolos=simbolosatt[:10]))
+    
+    # print(Data.baixar_historico(ativos=simbolosatt[:10]))
+    # print(Data.buscar_historico(ativos=simbolosatt[:10]))
+    
+    print('baixando apenas de um ativo')
+    print(Data.baixar_historico(ativos=['EQPA3.SA']))
+
+    print(Data.buscar_historico(ativos=['EQPA3.SA']))
+    
+def iniciando():
     Data.atualizar_simbolos()
-    
-    print(f'Extraindo simbolos...')
+
     simbolos = Data.extrair_simbolos()
-    print(simbolos[:20])
-    
-    # print(f'Baixando info ativos...')
-    print(Data.baixar_info_ativos(simbolos=simbolos[:20]))
-    
-    print(f'Extraindo simbolos apos remover os sem info...')
+
+    Data.baixar_info_ativos(simbolos=simbolos) # demora mt da primeira vez
+
     simbolosatt = Data.extrair_simbolos()
-    
-    print(simbolosatt[:20])
-    print(f'Buscando info ativos...')
-    print(Data.get_info_ativos(simbolos=simbolosatt[:10]))
-    
-    print(Data.baixar_historico(ativos=simbolosatt[:10]))
-    print(Data.buscar_historico(ativos=simbolosatt[:10]))
-    
+    print(len(simbolosatt))
+
+
+    Data.baixar_historico(ativos=simbolosatt)
+    print(Data.buscar_historico(ativos=simbolosatt))
+
     print('baixando apenas de um ativo')
     print(Data.baixar_historico(ativos=['EQPA3.SA']))
 
@@ -83,8 +116,9 @@ def teste():
 
 
 def main():
-    # teste()
-    pass
+    teste()
+    # iniciando()
+    
 
 
 if __name__ == "__main__":
