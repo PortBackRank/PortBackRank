@@ -1,124 +1,68 @@
-from typing import List, Optional
+# -*- coding: utf-8 -*-
+
+'''
+Classe de dados
+'''
+
+from typing import List
 import pandas as pd
-from b3 import atualiza_simbolos, HistoricoAtivos as ha
-
-from historico import HistoricoAtivos
-
+from historico import Yahoo
+from b3 import update_symbols, get_symbol_list
 
 SUB_DIR_B3 = 'b3'
 
-SUB_DIR_HIST = "historico" 
+SUB_DIR_HIST = "historico"
 
-class Data(HistoricoAtivos):
-    def __init__(self, subdir: str = SUB_DIR_HIST):
-        self.subdir = subdir
 
-    @classmethod
-    def extrair_simbolos(cls, forca_atualizacao: bool = False) -> List[str]: #OK
-        simbolos = ha.lista_simbolos_recentes(forca_atualizacao=forca_atualizacao)
-        return simbolos
+class Data(Yahoo):
 
     @classmethod
-    def atualizar_simbolos(cls) -> None: #OK
-        atualiza_simbolos()
-
-    # @classmethod
-    # def get_dados_simbolos(cls, simbolos: List[str]) -> pd.DataFrame: #OK
-    #     ativo_info = info_ativos()
-    #     df = pd.DataFrame(ativo_info)
-
-    #     dados_ativos = df.loc[df['CODIGO'].isin(simbolos)]
-
-    #     return dados_ativos
-    
-    @classmethod
-    def baixar_info_ativos(cls, simbolos: List[str]) -> pd.DataFrame:
-        ativos_com_info = cls.baixar_info(simbolos=simbolos)
-        ha.remover_simbolos(ativos_com_info)
-         
-    @classmethod
-    def get_info_ativos(cls, simbolos: List[str]) -> List[pd.DataFrame]:
-        return cls.get_info(ativos=simbolos)
-    
-    @classmethod
-    def baixar_historico(cls, ativos: List[str]) -> pd.DataFrame:
-        cls.baixar_historicos(ativos=ativos)
+    def update_symbols(cls, update: bool = False) -> None:
+        """Updates the list of symbols and removes those without desired information."""
+        update_symbols(update=update)
 
     @classmethod
-    def atualizar_histórico(cls, ativo: str) -> None: 
-        pass
-    
-    @classmethod
-    def buscar_historico(cls, ativos: List[str]) -> pd.DataFrame:
-        dados_ativos_list = cls.get_dados_ativos(ativos=ativos)
-      
-        dados_ativos_concat = pd.concat(dados_ativos_list, axis=0, ignore_index=True) if dados_ativos_list else pd.DataFrame()
-        return dados_ativos_concat
-    
-    @classmethod
-    def buscar_historico_filtro(
-        cls, 
-        ativos: List[str], 
-        filtro_coluna: Optional[str] = "CLOSE"
-    ) -> pd.DataFrame:
-        dados_ativos_list = cls.get_dados_ativos(ativos=ativos)
-        dados_ativos_concat = pd.concat(dados_ativos_list, axis=0, ignore_index=True) if dados_ativos_list else pd.DataFrame()
-        
-        if not dados_ativos_concat.empty and filtro_coluna in dados_ativos_concat.columns:
-            dados_ativos_concat = dados_ativos_concat[dados_ativos_concat[filtro_coluna].notna()]
-        
-        return dados_ativos_concat[['Date', filtro_coluna]]
-    
-def teste():
-    # print('atualizando simbolos...')
-    # Data.atualizar_simbolos()
-    
-    # print(f'Extraindo simbolos...')
-    # simbolos = Data.extrair_simbolos()
-    # print(simbolos[:20])
-    
-    # # print(f'Baixando info ativos...')
-    # print(Data.baixar_info_ativos(simbolos=simbolos[:20]))
-    
-    # print(f'Extraindo simbolos apos remover os sem info...')
-    # simbolosatt = Data.extrair_simbolos()
-    
-    # print(simbolosatt[:20])
-    # print(f'Buscando info ativos...')
-    # print(Data.get_info_ativos(simbolos=simbolosatt[:10]))
-    
-    # print(Data.baixar_historico(ativos=simbolosatt[:10]))
-    # print(Data.buscar_historico(ativos=simbolosatt[:10]))
-    
-    print('baixando apenas de um ativo')
-    print(Data.baixar_historico(ativos=['EQPA3.SA']))
+    def list_symbols(cls) -> List[str]:
+        """Returns a list of symbols."""
+        return get_symbol_list()
 
-    print(Data.buscar_historico(ativos=['EQPA3.SA']))
-    
+    @classmethod
+    def get_asset_info(cls, symbols: List[str]) -> List[pd.DataFrame]:
+        """Returns information for the assets in the given list of symbols."""
+        return cls.get_info(assets=symbols)
+
+    @classmethod
+    def download_history(cls, assets: List[str]) -> None:
+        """Downloads historical data for the given list of assets."""
+        cls.download_histories(assets=assets)
+
+    @classmethod
+    def fetch_history(cls, assets: List[str]) -> pd.DataFrame:
+        """Fetches and concatenates historical data for the given list of assets."""
+        asset_data_list = cls.get_asset_data(assets=assets)
+
+        asset_data_concat = (
+            pd.concat(asset_data_list, axis=0,
+                      ignore_index=True) if asset_data_list else pd.DataFrame()
+        )
+        return asset_data_concat
+
+
 def iniciando():
-    Data.atualizar_simbolos()
+    # print(Data.list_symbols())
 
-    simbolos = Data.extrair_simbolos()
-
-    Data.baixar_info_ativos(simbolos=simbolos) # demora mt da primeira vez
-
-    simbolosatt = Data.extrair_simbolos()
-    print(len(simbolosatt))
-
-
-    Data.baixar_historico(ativos=simbolosatt)
-    print(Data.buscar_historico(ativos=simbolosatt))
+    # ativos = Data.list_symbols()
+    # Data.download_history(assets=Data.list_symbols())
+    # print(Data.fetch_history(assets=ativos[:30]))
 
     print('baixando apenas de um ativo')
-    print(Data.baixar_historico(ativos=['EQPA3.SA']))
+    print(Data.download_history(assets=['EQPA3.SA']))
 
-    print(Data.buscar_historico(ativos=['EQPA3.SA']))
+    print(Data.fetch_history(assets=['EQPA3.SA']))
 
 
 def main():
-    teste()
-    # iniciando()
-    
+    iniciando()
 
 
 if __name__ == "__main__":
