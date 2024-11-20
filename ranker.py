@@ -1,95 +1,36 @@
 from abc import ABC, abstractmethod
-from typing import Callable, Dict, Any
+from typing import List
 from data import Data
-import pandas as pd
 
 
 class Ranker(ABC):
-    def __init__(self, data=None):
-        self._data = data if data is not None else Data()
+    def __init__(self, lucro_percentual=0.1, compra_percentual=0.2, venda_percentual=0.2):
+        """
+        Construtor da classe Ranker que define parâmetros padrões para a estratégia de investimento.
 
-        self._parametros = {}
+        :param lucro_percentual: Percentual de lucro esperado para a estratégia.
+        :param compra_percentual: Percentual do valor para comprar.
+        :param venda_percentual: Percentual do valor para vender.
+        """
+        self.lucro_percentual = lucro_percentual
+        self.compra_percentual = compra_percentual
+        self.venda_percentual = venda_percentual
 
-    def adicionar_algoritmo(self, algoritmo: Callable[[Dict[str, list], Dict[str, Any]], Dict[str, float]], parametros: Dict[str, Any]):
-        """
-        Adiciona um algoritmo de ranqueamento e seus parâmetros padrão.
-        :param algoritmo: Função que executa o ranqueamento.
-        :param parametros: Parâmetros padrão do algoritmo.
-        """
-        if not callable(algoritmo):
-            raise TypeError("O algoritmo deve ser uma função ou callable.")
-        self._algoritmo = algoritmo
-        self._parametros = parametros
-
-    def carregar_dados(self, dados: Dict[str, list]):
-        """
-        Carrega os dados para o ranqueamento.
-        :param dados: Dicionário contendo listas de valores históricos por ativo.
-        """
-        if not isinstance(dados, dict) or not all(isinstance(v, list) for v in dados.values()):
-            raise ValueError(
-                "Os dados devem ser um dicionário com listas como valores.")
-        self._data = dados
-
-    def executar_algoritmo(self) -> Dict[str, float]:
-        """
-        Executa o algoritmo de ranqueamento com os dados e parâmetros atuais.
-        :return: Resultados do ranqueamento.
-        """
-        if not self._algoritmo:
-            raise ValueError("Nenhum algoritmo foi adicionado ao Ranker.")
-        if not self._data:
-            raise ValueError("Nenhum dado foi carregado.")
-
-        print("Executando algoritmo de ranqueamento...")
-        return self._algoritmo(self._data, self._parametros)
+        # Instancia da classe Data
+        self.data = Data()
 
     @abstractmethod
-    def exibir_resultados(self, resultados: Dict[str, float]):
+    def rank_ativos(self, dados: List[dict]) -> List[dict]:
         """
-        Método abstrato para exibir os resultados do ranqueamento.
-        Deve ser implementado por subclasses.
-        :param resultados: Dicionário com os resultados do ranqueamento.
+        Método abstrato que deve ser implementado nas subclasses para classificar os ativos.
         """
         pass
 
+    def rank(self, dados: List[dict]) -> List[dict]:
+        """
+        Método para realizar o ranking dos ativos com base nos dados fornecidos e na estratégia.
 
-class RankerMediasMoveis(Ranker):
-    def exibir_resultados(self, resultados: Dict[str, float]):
-        print("Resultados do Ranqueamento (Médias Móveis):")
-        results = []
-        for ativo, media in sorted(resultados.items(), key=lambda item: item[1], reverse=True):
-            results.append(f"{ativo}: {media:.2f}")
-
-        df_resultados = pd.DataFrame(list(resultados.items()), columns=[
-                                     'Ativo', 'MediaMovel'])
-        df_resultados.to_csv('resultados.csv', index=False)
-
-        df_carregado = pd.read_csv('resultados.csv')
-        print(df_carregado)
-
-
-def medias_moveis(data, params: Dict[str, Any]) -> Dict[str, float]:
-    periodo = params.get("periodo", 5)
-    resultados = {}
-
-    for ativo in data.extrair_simbolos():
-        historico = data.buscar_historico_filtro(
-            [ativo], filtro_coluna="Close")
-        # print(historico)
-        close_values = historico["Close"]
-
-        media_movel = close_values.iloc[-periodo:].mean()
-        resultados[ativo] = media_movel
-
-    return resultados
-
-
-#
-ranker = RankerMediasMoveis()
-
-ranker.adicionar_algoritmo(medias_moveis, {"periodo": 3})
-
-resultados = ranker.executar_algoritmo()
-
-ranker.exibir_resultados(resultados)
+        :param dados: Lista de dicionários representando ativos.
+        :return: Lista de ativos ordenados conforme a estratégia definida na subclasse.
+        """
+        return self.rank_ativos(dados)
