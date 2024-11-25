@@ -1,36 +1,52 @@
-from abc import ABC, abstractmethod
+from abc import ABC
+
+from datetime import datetime
+
 from typing import List
+import random
 from data import Data
 
 
 class Ranker(ABC):
-    def __init__(self, lucro_percentual=0.1, compra_percentual=0.2, venda_percentual=0.2):
+    def __init__(self, parametros: dict = None, date: str = None):
         """
         Construtor da classe Ranker que define parâmetros padrões para a estratégia de investimento.
 
-        :param lucro_percentual: Percentual de lucro esperado para a estratégia.
-        :param compra_percentual: Percentual do valor para comprar.
-        :param venda_percentual: Percentual do valor para vender.
+        :param parametros: Dicionário de parâmetros opcionais para a estratégia.
+        :param date: Data como string (formato 'YYYY-MM-DD'). Caso não seja fornecida, será usada a data atual.
         """
-        self.lucro_percentual = lucro_percentual
-        self.compra_percentual = compra_percentual
-        self.venda_percentual = venda_percentual
 
-        # Instancia da classe Data
         self.data = Data()
 
-    @abstractmethod
-    def rank_ativos(self, dados: List[dict]) -> List[dict]:
+        self.date = date or datetime.now().strftime('%Y-%m-%d')
+
+        self.parametros = parametros or {}
+
+    def rank(self) -> List[str]:
         """
-        Método abstrato que deve ser implementado nas subclasses para classificar os ativos.
+        Método abstrato que deve ser implementado pelas classes filhas.
+
+        :param dados: Lista de dicionários com os dados das ações.
+        :return: Lista de ações ranqueadas.
         """
         pass
 
-    def rank(self, dados: List[dict]) -> List[dict]:
-        """
-        Método para realizar o ranking dos ativos com base nos dados fornecidos e na estratégia.
 
-        :param dados: Lista de dicionários representando ativos.
-        :return: Lista de ativos ordenados conforme a estratégia definida na subclasse.
+class RandomRanker(Ranker):
+    def rank(self) -> List[str]:
         """
-        return self.rank_ativos(dados)
+        Gera um ranking aleatório de símbolos com base nos dados obtidos da instância `Data`.
+
+        :return: Lista de símbolos em ordem aleatória.
+        """
+
+        simbolos = self.data.list_symbols()
+
+        random.shuffle(simbolos)
+
+        return simbolos[:10]
+
+
+ranker = RandomRanker()
+ranking = ranker.rank()
+print(f"Ranking gerado em {ranker.date}: {ranking}")
