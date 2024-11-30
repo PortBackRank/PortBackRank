@@ -1,17 +1,250 @@
 # -*- coding: utf-8 -*-
 
 '''
-Classe de dados
+Data class
 '''
 
+from datetime import datetime
 from typing import Dict, List, Optional
+import tempfile
+import time
+import zipfile
 import pandas as pd
-from historico import Yahoo
-from b3 import update_symbols, get_symbol_list
+import requests
+import yfinance as yf
+from tqdm import tqdm
+from arquivos import abre_dataframe, salva_dataframe, salva_json, abre_json
+
+SUB_DIR_HIST = "historical"
+
+PAUSE = 1
+TIMEOUT = 1
+MAX_ATTEMPTS = 5
+
+URL_QUOTE = 'https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_M'
 
 SUB_DIR_B3 = 'b3'
 
-SUB_DIR_HIST = "historico"
+RECENT_ASSETS_FILE = 'recent_assets.json'
+
+VALID_ASSETS = 'valid_assets.json'
+
+
+def previous_month(date):
+    '''Returns the previous month of a given date'''
+    if date.month > 1:
+        date = date.replace(month=date.month - 1)
+    else:
+        date = date.replace(year=date.year - 1, month=12)
+    return date
+
+
+class AssetHistory:
+    '''Asset history management'''
+    _recent_assets_file = RECENT_ASSETS_FILE
+    _url = URL_QUOTE
+    _valid_assets_file = VALID_ASSETS
+
+    subdir = SUB_DIR_HIST
+
+    @classmethod
+    def _download_quote(cls, year, month):
+        '''Download ZIP file containing historical quotes'''
+        url = cls._url + str(month).zfill(2) + str(year) + '.ZIP'
+        downloaded_file = tempfile.mktemp()
+        wait_time = 1
+        attempts = 0
+
+        while attempts < 10:
+            try:
+                response = requests.get(
+                    url, stream=True, timeout=TIMEOUT, verify=False)
+                with open(downloaded_file, 'wb') as file:
+                    for chunk in response.iter_content(chunk_size=8192):
+                        file.write(chunk)
+                break
+            except Exception as error:  # pylint: disable=broad-except
+                print('Error:', error.__class__.__name__)
+                print(error)
+                wait_time *= 2
+                time.sleep(wait_time)
+
+        return downloaded_file
+
+    @classmethod
+    def download_symbols(cls):
+        '''Download symbols for recent trades (previous month)'''
+        prev_month = previous_month(datetime.now())
+        temp_dir = tempfile.mkdtemp()
+        file = cls._download_quote(prev_month.year, prev_month.month)
+
+        with zipfile.ZipFile(file) as zip_ref:
+            zip_ref.extractall(temp_dir)
+        file = temp_dir + '/COTAHIST_M' + \
+            str(prev_month.month).zfill(2) + str(prev_month.year) + '.TXT'
+        symbols_set = set()
+
+        with open(file, 'r', encoding='utf-8') as f:
+            next(f)
+            for line in f:
+                if line[24:27] == '010':
+                    symbol = line[12:24].strip() + '.SA'
+                    symbols_set.add(symbol)
+
+        salva_json(cls._recent_assets_file, list(symbols_set), SUB_DIR_B3)
+
+        return list(symbols_set)
+
+    @classmethod
+    def list_recent_symbols(cls, force_update=False):
+        '''Returns a list of assets'''
+        item_list = abre_json(cls._recent_assets_file, SUB_DIR_B3)
+
+        if item_list is None or len(item_list) == 0 or force_update:
+            symbols = cls.download_symbols()
+            cls.download_info(symbols)
+
+        item_list = abre_json(cls._recent_assets_file, SUB_DIR_B3)
+
+        return item_list
+
+    @classmethod
+    def remove_symbols(cls, symbol_list):
+        '''Remove symbols not included in the provided list'''
+        current_list = cls.list_recent_symbols()
+        current_list = [
+            symbol for symbol in current_list if symbol in symbol_list]
+
+        salva_json(cls._recent_assets_file, current_list, SUB_DIR_B3)
+        return current_list
+
+    @classmethod
+    def download_info(cls, symbols: List[str]) -> List[str]:
+        '''Download information for the given list of assets'''
+        desired_fields = [
+            'sector', 'industry', 'financialCurrency']
+
+        print(f"Downloading information for {len(symbols)}")
+
+        asset_info = yf.Tickers(symbols)
+        assets_with_info = []
+
+        with tqdm(total=len(asset_info.tickers.keys()), desc="Downloading information", unit="asset") as pbar:
+
+            for asset in asset_info.tickers.keys():
+                time.sleep(0.2)
+                try:
+                    asset_info_dict = asset_info.tickers[asset].info
+
+                    filtered_info = {field: asset_info_dict.get(
+                        field) for field in desired_fields}
+
+                    if all(filtered_info.get(field) not in [None, ''] and pd.notna(filtered_info.get(field)) for field in desired_fields):
+                        assets_with_info.append(asset)
+                        json_file_name = f"{asset}_info.json"
+
+                        salva_json(json_file_name, filtered_info, cls.subdir)
+
+                        csv_file_name = f"{asset}_info.csv"
+                        salva_dataframe(csv_file_name, pd.DataFrame(
+                            [filtered_info]), cls.subdir)
+                    else:
+                        print(f"Skipping {asset}, incomplete information")
+
+                    pbar.update(1)
+                except Exception as e:
+                    print(f"Error processing {asset}: {e}")
+                    continue
+
+        cls.remove_symbols(assets_with_info)
+        return assets_with_info
+
+
+def update_symbols(update=False):
+    '''Update the list of symbols'''
+    AssetHistory.list_recent_symbols(force_update=update)
+
+
+def get_symbol_list():
+    '''Return the list of symbols'''
+    return AssetHistory.list_recent_symbols()
+
+
+class Yahoo:
+    subdir = SUB_DIR_HIST
+
+    @classmethod
+    def download_histories(cls, assets: List[str]):
+        '''Download historical data for all assets in the list'''
+        tickers = yf.Tickers(assets)
+
+        with tqdm(total=len(tickers.tickers.keys()), desc="Downloading data", unit="asset") as pbar:
+
+            for asset in tickers.tickers.keys():
+                asset_data = tickers.tickers[asset].history(period="max")
+
+                if not asset_data.empty:
+                    asset_data_reset = asset_data.reset_index()
+                    asset_data_reset['Date'] = asset_data_reset['Date'].astype(
+                        str)
+                    data_dict = asset_data_reset.to_dict(orient='records')
+
+                    json_file_name = f"{asset}.json"
+                    salva_json(json_file_name, data_dict, cls.subdir)
+
+                    csv_file_name = f"{asset}.csv"
+                    salva_dataframe(
+                        csv_file_name, asset_data_reset, cls.subdir)
+                pbar.update(1)
+
+    @classmethod
+    def get_asset_data(cls, assets: List[str]) -> List[pd.DataFrame]:
+        '''Load historical data for one or more assets'''
+        assets_data = []
+        for asset in assets:
+            asset_data = cls.get_asset_data_by_name(asset)
+            if asset_data is not None and not asset_data.empty:
+                assets_data.append(asset_data)
+        return assets_data
+
+    @classmethod
+    def get_info(cls, assets: List[str]) -> List[pd.DataFrame]:
+        '''Load information about one or more assets'''
+        info_data = []
+        history = cls()
+        for asset in assets:
+            file_name = f"{asset}_info.csv"
+            asset_data = history.load_dataframe(file_name)
+            if not asset_data.empty:
+                info_data.append(asset_data)
+        return info_data
+
+    @classmethod
+    def download_historical_data(cls, assets: List[str], start_date: str, end_date: str):
+        '''Download historical data for a specified date range'''
+        tickers = yf.Tickers(assets)
+
+        for asset in tickers.tickers.keys():
+            asset_data = tickers.tickers[asset].history(
+                start=start_date, end=end_date)
+
+            if not asset_data.empty:
+                asset_data_reset = asset_data.reset_index()
+                asset_data_reset['Date'] = asset_data_reset['Date'].astype(str)
+
+                csv_file_name = f"{asset}.csv"
+                salva_dataframe(csv_file_name, asset_data_reset, cls.subdir)
+
+    @classmethod
+    def load_dataframe(cls, file_name: str) -> pd.DataFrame:
+        '''Load data from a CSV file'''
+        return abre_dataframe(file_name, cls.subdir)
+
+    @classmethod
+    def get_asset_data_by_name(cls, asset: str) -> pd.DataFrame:
+        '''Get historical data for a specific asset'''
+        file_name = f"{asset}.csv"
+        return cls.load_dataframe(file_name)
 
 
 class Data(Yahoo):
@@ -56,96 +289,84 @@ class Data(Yahoo):
     def get_history_interval(
         cls,
         assets: List[str],
-        data_inicio: str,
-        data_fim: str,
-        filtro_coluna: Optional[str] = "Close",
+        start_date: str,
+        end_date: str,
+        column_filter: Optional[str] = "Close",
     ) -> Dict[str, List[Dict[str, float]]]:
         """
-        Retorna os dados históricos filtrados por intervalo de tempo.
+        Returns historical data filtered by a time interval.
 
-        :param assets: Lista de ativos.
-        :param data_inicio: Data inicial do intervalo (YYYY-MM-DD).
-        :param data_fim: Data final do intervalo (YYYY-MM-DD).
-        :param filtro_coluna: Coluna a ser filtrada (por padrão "CLOSE").
-        :return: Um dicionário onde a chave é a data e o valor é uma lista de dicionários com os dados.
+        :param assets: List of assets.
+        :param start_date: Start date of the interval (YYYY-MM-DD).
+        :param end_date: End date of the interval (YYYY-MM-DD).
+        :param column_filter: Column to filter (default is "Close").
+        :return: A dictionary where the key is the date, and the value is a list of dictionaries with the data.
         """
-        dados_historicos = cls.fetch_history(assets=assets)
+        historical_data = cls.fetch_history(assets=assets)
 
-        if not dados_historicos:
-            print("dados historicos vazios")
+        if not historical_data:
+            print("Empty historical data")
             return {}
 
-        dados_filtrados_por_dia = {}
+        filtered_data_by_date = {}
 
-        for ativo in dados_historicos:
-            symbol = ativo["symbol"]
-            dados = ativo["data"]
+        for asset in historical_data:
+            symbol = asset["symbol"]
+            data = asset["data"]
 
-            print(dados)
+            print(data)
             print(symbol)
 
-            dados["Date"] = pd.to_datetime(
-                dados["Date"], utc=True).dt.tz_localize(None)
+            data["Date"] = pd.to_datetime(
+                data["Date"], utc=True).dt.tz_localize(None)
 
-            data_inicio = pd.to_datetime(data_inicio)
-            data_fim = pd.to_datetime(data_fim)
+            start_date = pd.to_datetime(start_date)
+            end_date = pd.to_datetime(end_date)
 
-            dados_filtrados = dados[
-                (dados["Date"] >= data_inicio) & (dados["Date"] <= data_fim)
+            filtered_data = data[
+                (data["Date"] >= start_date) & (data["Date"] <= end_date)
             ]
 
-            if not dados_filtrados.empty:
-                # Se o filtro de coluna for válido, filtra pelos dados da coluna especificada
-                # if filtro_coluna and filtro_coluna in dados_filtrados.columns:
-                #     dados_filtrados = dados_filtrados[[
-                #         "Date", "SYMBOL", filtro_coluna]]
+            if not filtered_data.empty:
+                # If the column filter is valid, filter by the specified column's data
+                if column_filter and column_filter in filtered_data.columns:
+                    filtered_data = filtered_data[[
+                        "Date", "SYMBOL", column_filter]]
 
-                for data, grupo in dados_filtrados.groupby("Date"):
-                    data_str = data.strftime("%Y-%m-%d")
+                for date, group in filtered_data.groupby("Date"):
+                    date_str = date.strftime("%Y-%m-%d")
 
-                    if data_str not in dados_filtrados_por_dia:
-                        dados_filtrados_por_dia[data_str] = []
+                    if date_str not in filtered_data_by_date:
+                        filtered_data_by_date[date_str] = []
 
-                    dados_filtrados_por_dia[data_str].append(
+                    filtered_data_by_date[date_str].append(
                         {"symbol": symbol,
-                            filtro_coluna: grupo[filtro_coluna].iloc[0]}
+                         column_filter: group[column_filter].iloc[0]}
                     )
 
-        return dados_filtrados_por_dia
-
-    # @classmethod
-    # def get_history(
-    #     cls,
-    #     assets: List[str],
-    #     filtro_coluna: Optional[str] = "CLOSE"
-    # ) -> pd.DataFrame:
-    #     dados_ativos_list = cls.get_asset_data(assets=assets)
-    #     dados_ativos_concat = pd.concat(
-    #         dados_ativos_list, axis=0, ignore_index=True) if dados_ativos_list else pd.DataFrame()
-
-    #     if not dados_ativos_concat.empty and filtro_coluna in dados_ativos_concat.columns:
-    #         dados_ativos_concat = dados_ativos_concat[dados_ativos_concat[filtro_coluna].notna(
-    #         )]
-
-    #     return dados_ativos_concat[['Date', filtro_coluna]]
+        return filtered_data_by_date
 
 
-def iniciando():
-    # print(Data.list_symbols())
+def Teste():
+    print('--------------Atualizando ativos (deve descomentar a linha abaixo)----------------')
+    # Data.update_symbols(update=True)
 
-    # ativos = Data.list_symbols()
-    # Data.download_history(assets=Data.list_symbols())
-    # print(Data.fetch_history(assets=ativos[:30]))
+    print('--------------Listando ativos----------------')
+    ativos = Data.list_symbols()
+    print(ativos)
 
-    print('baixando apenas de um ativo')
+    print('--------------Baixando histórico de ativos----------------')
+    Data.download_history(assets=Data.list_symbols())
+
+    print('--------------Buscando histórico de 10 ativos----------------')
+    print(Data.fetch_history(assets=ativos[:10]))
+
+    print('--------------Baixando historico de um ativo----------------')
     print(Data.download_history(assets=['EQPA3.SA']))
 
-    # print(Data.fetch_history(assets=['EQPA3.SA']))
-
-
-def main():
-    iniciando()
+    print('--------------Buscando historico de um ativo----------------')
+    print(Data.fetch_history(assets=['EQPA3.SA']))
 
 
 if __name__ == "__main__":
-    main()
+    Teste()

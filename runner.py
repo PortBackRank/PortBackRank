@@ -69,8 +69,8 @@ class Runner:
 
         dados_historicos = self.data.get_history_interval(
             assets=self.data.list_symbols(),
-            data_inicio=self.data_inicio,
-            data_fim=self.data_fim,
+            start_date=self.data_inicio,
+            end_date=self.data_fim,
         )
 
         print(f"Datas disponíveis: {dados_historicos.keys()}")
@@ -105,7 +105,8 @@ class Runner:
         pass
 
 
-ranker = RandomRanker(parametros={"fator": "aleatorio"}, date="2024-11-04")
+ranker = RandomRanker(
+    date="2024-11-04", seed=42)
 
 runner = Runner(
     ranker=ranker,

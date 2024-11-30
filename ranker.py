@@ -1,52 +1,68 @@
 from abc import ABC
-
 from datetime import datetime
-
 from typing import List
 import random
 from data import Data
 
 
 class Ranker(ABC):
-    def __init__(self, parametros: dict = None, date: str = None):
+    def __init__(self, parameters: dict = None, date: str = None):
         """
-        Construtor da classe Ranker que define parâmetros padrões para a estratégia de investimento.
+        Constructor for the Ranker class, which defines default parameters for the investment strategy.
 
-        :param parametros: Dicionário de parâmetros opcionais para a estratégia.
-        :param date: Data como string (formato 'YYYY-MM-DD'). Caso não seja fornecida, será usada a data atual.
+        :param parameters: Optional dictionary of parameters for the strategy.
+        :param date: Date as a string (format 'YYYY-MM-DD'). If not provided, the current date will be used.
         """
-
         self.data = Data()
-
         self.date = date or datetime.now().strftime('%Y-%m-%d')
-
-        self.parametros = parametros or {}
+        self.parameters = parameters or {}
 
     def rank(self) -> List[str]:
         """
-        Método abstrato que deve ser implementado pelas classes filhas.
+        Abstract method that must be implemented by subclasses.
 
-        :param dados: Lista de dicionários com os dados das ações.
-        :return: Lista de ações ranqueadas.
+        :return: List of ranked stock symbols.
         """
         pass
 
 
 class RandomRanker(Ranker):
+    def __init__(self, parameters: dict = None, date: str = None, seed: int = None):
+        """
+        Constructor for the RandomRanker class, allowing for an optional seed for reproducibility.
+
+        :param parameters: Optional dictionary of parameters for the strategy.
+        :param date: Date as a string (format 'YYYY-MM-DD'). If not provided, the current date will be used.
+        :param seed: Optional seed for randomization.
+        """
+        super().__init__(parameters, date)
+        self.seed = seed
+
     def rank(self) -> List[str]:
         """
-        Gera um ranking aleatório de símbolos com base nos dados obtidos da instância `Data`.
+        Generates a random ranking of symbols based on the data retrieved from the `Data` instance.
 
-        :return: Lista de símbolos em ordem aleatória.
+        :return: List of symbols in random order.
         """
+        symbols = self.data.list_symbols()
 
-        simbolos = self.data.list_symbols()
+        if self.seed is not None:
+            random.seed(self.seed)
 
-        random.shuffle(simbolos)
+        random.shuffle(symbols)
 
-        return simbolos[:10]
+        return symbols
 
 
-ranker = RandomRanker()
-ranking = ranker.rank()
-print(f"Ranking gerado em {ranker.date}: {ranking}")
+def test_random_ranker():
+    """
+    Função simples para testar o funcionamento do RandomRanker.
+    """
+    ranker = RandomRanker(seed=42)
+    ranked_symbols = ranker.rank()
+
+    print("Símbolos ranqueados aleatoriamente:", ranked_symbols)
+
+
+if __name__ == "__main__":
+    test_random_ranker()

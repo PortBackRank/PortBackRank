@@ -12,7 +12,7 @@ from os.path import isdir, isfile, getmtime
 from os import mkdir, sep
 from pathlib import Path
 
-DIR_CACHE = '.cache'
+DIR_CACHE = '.cache/b3_port_back'
 
 def dir_cache():
     '''Diretório de dados'''
@@ -23,11 +23,9 @@ def dir_cache():
 
 def arquivo_atualizado(arquivo):
     '''Verifica se arquivo está atualizado'''
-    # Verifica se arquivo existe
     if isfile(arquivo):
-        # Data do arquivo
         data_arquivo = datetime.fromtimestamp(getmtime(arquivo))
-        # Data atual
+
         data_atual = datetime.now()
         data_arquivo = data_arquivo + timedelta(days=1)
         if data_arquivo.date() >= data_atual.date():
@@ -35,12 +33,13 @@ def arquivo_atualizado(arquivo):
     return False
 
 def caminho_arquivo(nome_arquivo, subdir=None):
-    '''Arquivo de símbolos''' 
+    '''Arquivo de símbolos'''
+    diretorio = dir_cache()
     if subdir:
-        diretorio = dir_cache() + sep + subdir
-        if not isdir(diretorio):
-            mkdir(diretorio)
-        nome_arquivo = diretorio + sep + nome_arquivo
+        diretorio += sep + subdir
+    if not isdir(diretorio):
+        mkdir(diretorio)
+    nome_arquivo = diretorio + sep + nome_arquivo
     return nome_arquivo
 
 def abre_json(arquivo, subdir=None):
