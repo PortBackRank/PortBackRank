@@ -27,7 +27,7 @@ class Ranker(ABC):
 
 
 class RandomRanker(Ranker):
-    def __init__(self, parameters: dict = None, date: str = None, seed: int = None):
+    def __init__(self, parameters: dict = None, date: str = None, seed: int = 42):
         """
         Constructor for the RandomRanker class, allowing for an optional seed for reproducibility.
 

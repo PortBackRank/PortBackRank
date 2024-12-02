@@ -5,25 +5,6 @@ from data import Data
 from ranker import Ranker
 
 
-def gerar_intervalo_de_tempo(data_inicio: str, data_fim: str) -> List[str]:
-    """
-        Gera uma lista de datas entre `data_inicio` e `data_fim`.
-
-        :return: Lista de strings representando as datas no intervalo.
-    """
-
-    start_date = datetime.strptime(data_inicio, "%Y-%m-%d")
-    end_date = datetime.strptime(data_fim, "%Y-%m-%d")
-    delta = timedelta(days=1)
-
-    dates = []
-    while start_date <= end_date:
-        dates.append(start_date.strftime("%Y-%m-%d"))
-        start_date += delta
-
-    return dates
-
-
 class Runner:
     def __init__(
         self,
@@ -105,8 +86,7 @@ class Runner:
         pass
 
 
-ranker = RandomRanker(
-    date="2024-11-04", seed=42)
+ranker = RandomRanker(date="2024-11-04")
 
 runner = Runner(
     ranker=ranker,
