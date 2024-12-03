@@ -292,7 +292,7 @@ class Data(Yahoo):
         start_date: str,
         end_date: str,
         column_filter: Optional[str] = "Close",
-    ) -> Dict[str, List[Dict[str, float]]]:
+    ) -> List[Dict[str, pd.DataFrame]]:
         """
         Returns historical data filtered by a time interval.
 
@@ -300,51 +300,41 @@ class Data(Yahoo):
         :param start_date: Start date of the interval (YYYY-MM-DD).
         :param end_date: End date of the interval (YYYY-MM-DD).
         :param column_filter: Column to filter (default is "Close").
-        :return: A dictionary where the key is the date, and the value is a list of dictionaries with the data.
+        :return: A list of dictionaries with the symbol and the data in a DataFrame.
         """
         historical_data = cls.fetch_history(assets=assets)
 
         if not historical_data:
             print("Empty historical data")
-            return {}
+            return []
 
-        filtered_data_by_date = {}
+        result = []
 
         for asset in historical_data:
             symbol = asset["symbol"]
             data = asset["data"]
 
-            print(data)
-            print(symbol)
-
             data["Date"] = pd.to_datetime(
                 data["Date"], utc=True).dt.tz_localize(None)
 
-            start_date = pd.to_datetime(start_date)
-            end_date = pd.to_datetime(end_date)
+            start_date_dt = pd.to_datetime(
+                start_date, utc=True).tz_localize(None)
+            end_date_dt = pd.to_datetime(end_date, utc=True).tz_localize(None)
 
             filtered_data = data[
-                (data["Date"] >= start_date) & (data["Date"] <= end_date)
+                (data["Date"] >= start_date_dt) & (data["Date"] <= end_date_dt)
             ]
 
             if not filtered_data.empty:
-                # If the column filter is valid, filter by the specified column's data
                 if column_filter and column_filter in filtered_data.columns:
-                    filtered_data = filtered_data[[
-                        "Date", "SYMBOL", column_filter]]
+                    filtered_data = filtered_data[["Date", column_filter]]
 
-                for date, group in filtered_data.groupby("Date"):
-                    date_str = date.strftime("%Y-%m-%d")
+                result.append({
+                    "symbol": symbol,
+                    "data": filtered_data.reset_index(drop=True)
+                })
 
-                    if date_str not in filtered_data_by_date:
-                        filtered_data_by_date[date_str] = []
-
-                    filtered_data_by_date[date_str].append(
-                        {"symbol": symbol,
-                         column_filter: group[column_filter].iloc[0]}
-                    )
-
-        return filtered_data_by_date
+        return result
 
 
 def Teste():
