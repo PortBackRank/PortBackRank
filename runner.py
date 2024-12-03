@@ -1,5 +1,7 @@
 from typing import List, Dict
 import itertools
+
+import pandas as pd
 from ranker import Ranker
 from ranker import RandomRanker
 from data import Data
@@ -57,8 +59,10 @@ class Runner:
         ranker = RandomRanker(parameters=ranker_conf)
 
         data_inicio, data_fim = interval
+
+        ativos = self.data.list_symbols()
         dados_historicos = self.data.get_history_interval(
-            assets=self.data.list_symbols(),
+            assets=ativos[:2],
             start_date=data_inicio,
             end_date=data_fim,
         )
@@ -66,9 +70,14 @@ class Runner:
         self.caixa = capital
         portfolio = []
 
-        # for date, dados_do_dia in dados_historicos.items():
-        #    self._processar_compras(ranker, dados_do_dia)
-        #    self._processar_vendas(dados_do_dia)
+        for ativo in dados_historicos:
+            symbol = ativo["symbol"]
+            data = ativo["data"]
+
+            for date, dados_do_dia in data.groupby("Date"):
+                # self._processar_compras()
+                # self._processar_vendas()
+                pass
 
         with open(log, 'a') as log_file:
             log_file.write(f"Simulação finalizada. Caixa: {
@@ -83,9 +92,9 @@ class Runner:
         :param date: Data atual para verificar se algum ativo atendeu ao critério de venda.
         """
         for ativo in self.__portfolio:
-            # Verificar lucro ou perda
             lucro_percentual = (
                 ativo['preco_atual'] - ativo['preco_compra']) / ativo['preco_compra'] * 100
+
             if lucro_percentual >= self.profit or lucro_percentual <= -self.loss:
                 self.__portfolio.remove(ativo)
                 self.caixa += ativo['quantidade'] * ativo['preco_atual']
@@ -135,11 +144,43 @@ class Runner:
         return results
 
 
-ranker = RandomRanker(date="2024-11-04")
+def test_runner():
+    import tempfile
+    import os
 
-runner = Runner(
-    profit=0.1,
-    loss=0.05,
-    diversification=0.2,
-    ranker_ranges={"SEED": [0, 1, 42]},
-)
+    fd, log_file_path = tempfile.mkstemp()
+
+    try:
+        os.close(fd)
+
+        interval = ["2024-01-01", "2024-11-20"]
+        capital = 10000
+        ranker_ranges = {"SEED": [0, 1, 42]}
+
+        runner = Runner(
+            profit=0.1,
+            loss=0.05,
+            diversification=0.2,
+            ranker_ranges=ranker_ranges,
+        )
+
+        try:
+            results = runner._run(
+                interval, capital, ranker_ranges, log_file_path)
+            assert len(results) > 0, "Nenhum resultado gerado"
+            assert all("caixa" in res and "portfolio" in res for res in results), \
+                "Resultados não possuem os campos esperados"
+
+            print("Teste bem-sucedido.")
+        except Exception as e:
+            print(f"Erro durante o teste: {e}")
+        finally:
+            with open(log_file_path, 'r') as log_file:
+                print(log_file.read())
+
+    finally:
+        os.remove(log_file_path)
+
+
+if __name__ == "__main__":
+    test_runner()
