@@ -1,3 +1,7 @@
+'''
+    class Runner
+'''
+
 from typing import List, Dict
 import itertools
 
@@ -74,10 +78,10 @@ class Runner:
             symbol = ativo["symbol"]
             data = ativo["data"]
 
-            for date, dados_do_dia in data.groupby("Date"):
-                # self._processar_compras()
-                # self._processar_vendas()
-                pass
+            # for date, dados_do_dia in data.groupby("Date"):
+            #     # self._processar_compras()
+            #     # self._processar_vendas()
+            #     pass
 
         with open(log, 'a') as log_file:
             log_file.write(f"Simulação finalizada. Caixa: {
@@ -91,15 +95,6 @@ class Runner:
 
         :param date: Data atual para verificar se algum ativo atendeu ao critério de venda.
         """
-        for ativo in self.__portfolio:
-            lucro_percentual = (
-                ativo['preco_atual'] - ativo['preco_compra']) / ativo['preco_compra'] * 100
-
-            if lucro_percentual >= self.profit or lucro_percentual <= -self.loss:
-                self.__portfolio.remove(ativo)
-                self.caixa += ativo['quantidade'] * ativo['preco_atual']
-                print(f"Vendeu {ativo['quantidade']} de {ativo['simbolo']} em {
-                      date} com lucro de {lucro_percentual}%")
 
     def _buy(self, date: str, ranker: Ranker):
         """
@@ -108,21 +103,6 @@ class Runner:
         :param date: Data atual para comprar ativos.
         :param ranker: Instância do ranker a ser utilizado para definir os ativos.
         """
-        diversificacao_total = sum(
-            ativo['quantidade'] * ativo['preco_compra'] for ativo in self.__portfolio)
-        dinheiro_disponivel = self.caixa * self.diversification
-
-        for ativo in ranker.rank():
-            if diversificacao_total + dinheiro_disponivel <= self.caixa * self.diversification:
-                quantidade_a_comprar = dinheiro_disponivel // ativo['preco_atual']
-                self.__portfolio.append({
-                    'simbolo': ativo['simbolo'],
-                    'quantidade': quantidade_a_comprar,
-                    'preco_compra': ativo['preco_atual'],
-                })
-                self.caixa -= quantidade_a_comprar * ativo['preco_atual']
-                print(f"Comprado {quantidade_a_comprar} de {
-                      ativo['simbolo']} em {date}")
 
     def _run(self, interval: List[str], capital: float, ranker_ranges: Dict[str, List[float]], log: str) -> List[Dict]:
         """

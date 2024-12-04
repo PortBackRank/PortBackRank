@@ -13,7 +13,7 @@ import pandas as pd
 import requests
 import yfinance as yf
 from tqdm import tqdm
-from arquivos import abre_dataframe, salva_dataframe, salva_json, abre_json
+from files import open_dataframe, open_json, save_dataframe, save_json
 
 SUB_DIR_HIST = "historical"
 
@@ -91,20 +91,20 @@ class AssetHistory:
                     symbol = line[12:24].strip() + '.SA'
                     symbols_set.add(symbol)
 
-        salva_json(cls._recent_assets_file, list(symbols_set), SUB_DIR_B3)
+        save_json(cls._recent_assets_file, list(symbols_set), SUB_DIR_B3)
 
         return list(symbols_set)
 
     @classmethod
     def list_recent_symbols(cls, force_update=False):
         '''Returns a list of assets'''
-        item_list = abre_json(cls._recent_assets_file, SUB_DIR_B3)
+        item_list = open_json(cls._recent_assets_file, SUB_DIR_B3)
 
         if item_list is None or len(item_list) == 0 or force_update:
             symbols = cls.download_symbols()
             cls.download_info(symbols)
 
-        item_list = abre_json(cls._recent_assets_file, SUB_DIR_B3)
+        item_list = open_json(cls._recent_assets_file, SUB_DIR_B3)
 
         return item_list
 
@@ -115,7 +115,7 @@ class AssetHistory:
         current_list = [
             symbol for symbol in current_list if symbol in symbol_list]
 
-        salva_json(cls._recent_assets_file, current_list, SUB_DIR_B3)
+        save_json(cls._recent_assets_file, current_list, SUB_DIR_B3)
         return current_list
 
     @classmethod
@@ -129,7 +129,8 @@ class AssetHistory:
         asset_info = yf.Tickers(symbols)
         assets_with_info = []
 
-        with tqdm(total=len(asset_info.tickers.keys()), desc="Downloading information", unit="asset") as pbar:
+        with tqdm(total=len(asset_info.tickers.keys()),
+                  desc="Downloading information", unit="asset") as pbar:
 
             for asset in asset_info.tickers.keys():
                 time.sleep(0.2)
@@ -139,20 +140,22 @@ class AssetHistory:
                     filtered_info = {field: asset_info_dict.get(
                         field) for field in desired_fields}
 
-                    if all(filtered_info.get(field) not in [None, ''] and pd.notna(filtered_info.get(field)) for field in desired_fields):
+                    if all(filtered_info.get(field) not in [None, '']
+                           and pd.notna(filtered_info.get(field)) for field in desired_fields):
+
                         assets_with_info.append(asset)
                         json_file_name = f"{asset}_info.json"
 
-                        salva_json(json_file_name, filtered_info, cls.subdir)
+                        save_json(json_file_name, filtered_info, cls.subdir)
 
                         csv_file_name = f"{asset}_info.csv"
-                        salva_dataframe(csv_file_name, pd.DataFrame(
+                        save_dataframe(csv_file_name, pd.DataFrame(
                             [filtered_info]), cls.subdir)
                     else:
                         print(f"Skipping {asset}, incomplete information")
 
                     pbar.update(1)
-                except Exception as e:
+                except (requests.exceptions.RequestException, KeyError, ValueError) as e:
                     print(f"Error processing {asset}: {e}")
                     continue
 
@@ -171,6 +174,7 @@ def get_symbol_list():
 
 
 class Yahoo:
+    '''Yahoo Finance data management'''
     subdir = SUB_DIR_HIST
 
     @classmethod
@@ -190,10 +194,10 @@ class Yahoo:
                     data_dict = asset_data_reset.to_dict(orient='records')
 
                     json_file_name = f"{asset}.json"
-                    salva_json(json_file_name, data_dict, cls.subdir)
+                    save_json(json_file_name, data_dict, cls.subdir)
 
                     csv_file_name = f"{asset}.csv"
-                    salva_dataframe(
+                    save_dataframe(
                         csv_file_name, asset_data_reset, cls.subdir)
                 pbar.update(1)
 
@@ -233,12 +237,12 @@ class Yahoo:
                 asset_data_reset['Date'] = asset_data_reset['Date'].astype(str)
 
                 csv_file_name = f"{asset}.csv"
-                salva_dataframe(csv_file_name, asset_data_reset, cls.subdir)
+                save_dataframe(csv_file_name, asset_data_reset, cls.subdir)
 
     @classmethod
     def load_dataframe(cls, file_name: str) -> pd.DataFrame:
         '''Load data from a CSV file'''
-        return abre_dataframe(file_name, cls.subdir)
+        return open_dataframe(file_name, cls.subdir)
 
     @classmethod
     def get_asset_data_by_name(cls, asset: str) -> pd.DataFrame:
@@ -248,6 +252,7 @@ class Yahoo:
 
 
 class Data(Yahoo):
+    '''Data management'''
 
     @classmethod
     def update_symbols(cls, update: bool = False) -> None:
@@ -273,7 +278,8 @@ class Data(Yahoo):
     def fetch_history(cls, assets: List[str]) -> List[dict]:
         """
         Fetches and concatenates historical data for the given list of assets.
-        Now returns a list of dictionaries with symbol as the key and its corresponding dataframe as the value.
+        Now returns a list of dictionaries with symbol
+        as the key and its corresponding dataframe as the value.
         """
         asset_data_list = cls.get_asset_data(assets=assets)
 
@@ -337,7 +343,8 @@ class Data(Yahoo):
         return result
 
 
-def Teste():
+def teste():
+    '''Test function'''
     print('--------------Atualizando ativos (deve descomentar a linha abaixo)----------------')
     # Data.update_symbols(update=True)
 
@@ -345,8 +352,8 @@ def Teste():
     ativos = Data.list_symbols()
     print(ativos)
 
-    print('--------------Baixando histórico de ativos----------------')
-    Data.download_history(assets=Data.list_symbols())
+    print('--------Baixando histórico de ativos (deve descomentar a linha abaixo)---------')
+    # Data.download_history(assets=Data.list_symbols())
 
     print('--------------Buscando histórico de 10 ativos----------------')
     print(Data.fetch_history(assets=ativos[:10]))
@@ -359,4 +366,4 @@ def Teste():
 
 
 if __name__ == "__main__":
-    Teste()
+    teste()

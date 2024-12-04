@@ -1,3 +1,8 @@
+
+"""
+Ranker module for the investment strategy.
+"""
+
 from abc import ABC
 from datetime import datetime
 from typing import List
@@ -6,12 +11,16 @@ from data import Data
 
 
 class Ranker(ABC):
+    """class abstract Ranker"""
+
     def __init__(self, parameters: dict = None, date: str = None):
         """
-        Constructor for the Ranker class, which defines default parameters for the investment strategy.
+        Constructor for the Ranker class, 
+        which defines default parameters for the investment strategy.
 
         :param parameters: Optional dictionary of parameters for the strategy.
-        :param date: Date as a string (format 'YYYY-MM-DD'). If not provided, the current date will be used.
+        :param date: Date as a string (format 'YYYY-MM-DD').
+            If not provided, the current date will be used.
         """
         self.data = Data()
         self.date = date or datetime.now().strftime('%Y-%m-%d')
@@ -23,16 +32,18 @@ class Ranker(ABC):
 
         :return: List of ranked stock symbols.
         """
-        pass
 
 
 class RandomRanker(Ranker):
+    """RandomRanker class"""
+
     def __init__(self, parameters: dict = None, date: str = None, seed: int = 42):
         """
         Constructor for the RandomRanker class, allowing for an optional seed for reproducibility.
 
         :param parameters: Optional dictionary of parameters for the strategy.
-        :param date: Date as a string (format 'YYYY-MM-DD'). If not provided, the current date will be used.
+        :param date: Date as a string (format 'YYYY-MM-DD').
+            If not provided, the current date will be used.
         :param seed: Optional seed for randomization.
         """
         super().__init__(parameters, date)
