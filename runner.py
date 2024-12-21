@@ -87,7 +87,7 @@ class Runner:
         :param date: Data atual para verificar se algum ativo atendeu ao critério de venda.
         :param dados_historicos: DataFrame contendo os dados históricos de preços.
         """
-        print(f"Portfólio antes da VENDA: {self.__portfolio}")
+        # print(f"Portfólio antes da VENDA: {self.__portfolio}")
         novos_portfolio = []
         total_portfolio_value = sum(
             item['preco_medio'] * item['quantidade'] for item in self.__portfolio)
@@ -133,7 +133,7 @@ class Runner:
         total_portfolio_value = sum(
             item['preco_medio'] * item['quantidade'] for item in self.__portfolio)
 
-        print(f"Portfólio após venda: {self.__portfolio}")
+        # print(f"Portfólio após venda: {self.__portfolio}")
         print(f"Caixa restante após venda: {self.caixa}")
         print(f"Total do portfólio após venda: {total_portfolio_value}")
 
@@ -260,8 +260,9 @@ class Runner:
             setor_percentual[setor] = setor_percentual.get(setor, 0) + (
                 quantidade_comprar * preco_atual / total_portfolio_value)
 
-            print(f"Portfólio atualizado: {self.__portfolio}")
-            print(f"Caixa restante: {caixa_disponivel}")
+            # print(f"Portfólio atualizado: {self.__portfolio}")
+            self.caixa = caixa_disponivel
+            print(f"Caixa restante: {self.caixa}")
 
     def _run(self, interval: List[str], capital: float, ranker_ranges: Dict[str, List[float]], log: str) -> List[Dict]:
         """
