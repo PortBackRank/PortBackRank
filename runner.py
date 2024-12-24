@@ -75,8 +75,8 @@ class Runner:
         self.__portfolio = []
 
         for date in pd.date_range(data_inicio, data_fim).strftime('%Y-%m-%d'):
-            self._buy(date, ranker, dados_historicos)
             self._sell(date, dados_historicos)
+            self._buy(date, ranker, dados_historicos)
 
         return {'caixa': self.caixa, 'portfolio': self.__portfolio}
 
@@ -150,17 +150,14 @@ class Runner:
             return
 
         symbols_portfolio = [item['simbolo'] for item in self.__portfolio]
-        print("symbols_portfolio", symbols_portfolio)
+
         portfolio_info = self.data.get_asset_info(symbols_portfolio)
-        print("portfolio_info", portfolio_info)
 
         total_portfolio_value = sum(
             item['preco_medio'] * item['quantidade'] for item in self.__portfolio)
 
-        print("total_portfolio_value", total_portfolio_value)
-
         if total_portfolio_value == 0:
-            print("Primeira compra.")
+            # print("Primeira compra.")
             setor_percentual = {}
             caixa_disponivel = self.caixa
         else:
@@ -186,8 +183,8 @@ class Runner:
             if caixa_disponivel <= 0:
                 break
 
-            print("setor_percentual", setor_percentual)
-            print("caixa", caixa_disponivel)
+            # print("setor_percentual", setor_percentual)
+            # print("caixa", caixa_disponivel)
 
             ativo_info = self.data.get_asset_info([simbolo])
             if not ativo_info:
@@ -196,7 +193,6 @@ class Runner:
             setor = ativo_info[0]['sector']
             if isinstance(setor, pd.Series):
                 setor = setor.iloc[0]
-            print("setor:", setor)
 
             # Se for a primeira compra ou o setor ainda não foi adicionado, não limitamos a compra
             if total_portfolio_value == 0 or setor not in setor_percentual:
@@ -208,8 +204,8 @@ class Runner:
                 max_investimento_setor = total_portfolio_value * \
                     self.diversification - setor_atual
 
-            print(f"max_investimento_setor para {
-                  setor}: {max_investimento_setor}")
+            # print(f"max_investimento_setor para {
+            #      setor}: {max_investimento_setor}")
 
             historico = None
             for item in dados_historicos:
@@ -217,8 +213,7 @@ class Runner:
                     historico = item.get('data')
                     break
 
-            if historico is None or not isinstance(historico, pd.DataFrame):
-                print(f"Histórico de {simbolo} não encontrado ou inválido.")
+            if historico is None or historico.empty or not isinstance(historico, pd.DataFrame):
                 continue
 
             if historico is None:
@@ -233,7 +228,7 @@ class Runner:
                 continue
 
             preco_atual = preco_atual.iloc[0]
-            print(f"Preço atual para {simbolo} em {date}: {preco_atual}")
+            # print(f"Preço atual para {simbolo} em {date}: {preco_atual}")
 
             quantidade_max = int(caixa_disponivel // preco_atual)
             if quantidade_max <= 0:
