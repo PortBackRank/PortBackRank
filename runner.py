@@ -13,7 +13,7 @@ from data import MemData
 
 
 class Runner:
-    def __init__(self, profit, loss, diversification, ranker_ranges):
+    def __init__(self, profit, loss, diversification, ranker_ranges, data: MemData):
         """
         Inicializa a classe Runner com os parâmetros fornecidos.
 
@@ -31,7 +31,7 @@ class Runner:
         # representando as ações compradas (símbolo, quantidade, preço médio, etc.)
         self.__portfolio: List[Dict[str, float]] = []
 
-        self.data = MemData()
+        self.data = data
 
         self.caixa = 0
 
@@ -71,9 +71,6 @@ class Runner:
         for date in pd.date_range(start_date, end_date).strftime('%Y-%m-%d'):
             self._sell(date)
             self._buy(date, ranker)
-
-        print(f"Caixa final: {self.caixa}")
-        print(f"Portfolio final: {self.__portfolio}")
 
         return {'caixa': self.caixa, 'portfolio': self.__portfolio}
 
@@ -182,7 +179,10 @@ class Runner:
                 continue
 
             preco_atual = preco_atual.iloc[0]
+
             quantidade_max = int(caixa_disponivel // preco_atual)
+
+            # TODO: limitar a quantidade também pelo volume disponível do ativo
             quantidade_comprar = min(quantidade_max, int(
                 max_investimento_setor // preco_atual))
 
@@ -216,10 +216,6 @@ class Runner:
         ranker_confs = self._gen_ranker_confs(ranker_ranges)
         results = []
 
-        start_date, end_date = interval
-
-        self.data.load(start_date, end_date)
-
         start_time = datetime.now()
         for ranker_conf in ranker_confs:
             result = self._single_run(interval, ranker_conf, capital, log)
@@ -240,15 +236,17 @@ def test_runner():
     try:
         os.close(fd)
 
-        interval = ["2024-09-20", "2024-10-10"]
+        interval = ["2024-01-10", "2024-11-10"]
         capital = 10000
         ranker_ranges = {"SEED": [0, 1, 42]}
+        start_date, end_date = interval
 
         runner = Runner(
             profit=0.1,
             loss=0.05,
             diversification=0.2,
             ranker_ranges=ranker_ranges,
+            data=MemData(start_date, end_date)
         )
 
         try:
@@ -258,7 +256,7 @@ def test_runner():
             assert all("caixa" in res and "portfolio" in res for res in results), \
                 "Resultados não possuem os campos esperados"
 
-            print("Teste bem-sucedido.")
+            print("Execução do Runner bem sucedida")
         except Exception as e:
             print(f"Erro durante o teste: {e}")
         finally:

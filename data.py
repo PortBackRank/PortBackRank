@@ -175,8 +175,14 @@ class Data(Yahoo):
             ]
 
             if not filtered_data.empty:
-                if column_filter and column_filter in filtered_data.columns:
-                    filtered_data = filtered_data[["Date", column_filter]]
+                columns_to_return = ["Date", "Volume"]
+
+                if column_filter is None or column_filter == "Close":
+                    columns_to_return.append("Close")
+                elif column_filter in filtered_data.columns:
+                    columns_to_return.append(column_filter)
+
+                filtered_data = filtered_data[columns_to_return]
 
                 result.append({
                     "symbol": symbol,
@@ -189,10 +195,11 @@ class Data(Yahoo):
 class MemData:
     '''In-memory data management for assets.'''
 
-    def __init__(self):
+    def __init__(self, start_date: str, end_date: str):
         self.history_data: Dict[str, pd.DataFrame] = {}
         self.info_data: Dict[str, pd.DataFrame] = {}
         self.data = Data()
+        self.load(start_date, end_date)
 
     def load(self, start_date: str, end_date: str):
         """
@@ -287,12 +294,10 @@ def teste():
 
 
 def teste_mem_data():
-    mem_data = MemData()
 
     start_date = '2023-01-01'
     end_date = '2023-12-31'
-
-    mem_data.load(start_date, end_date)
+    mem_data = MemData(start_date, end_date)
 
     print("Histórico de EQPA3.SA:")
     print(mem_data.get_history('EQPA3.SA'))
@@ -301,7 +306,7 @@ def teste_mem_data():
     print(mem_data.get_info('PETR4.SA'))
 
     print("Todos os dados históricos:")
-    print(mem_data.get_all_history())
+    # print(mem_data.get_all_history())
 
 
 if __name__ == "__main__":
