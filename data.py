@@ -4,6 +4,7 @@
 Data class
 '''
 
+from datetime import datetime
 from typing import Dict, List, Optional
 
 import pandas as pd
@@ -207,5 +208,92 @@ def teste():
     print(Data.fetch_history(assets=['EQPA3.SA']))
 
 
+class MemData:
+    '''In-memory data management for assets.'''
+
+    def __init__(self):
+        self.history_data: Dict[str, pd.DataFrame] = {}
+        self.info_data: Dict[str, pd.DataFrame] = {}
+
+    def load(self, assets: List[str], data: Data, start_date: str, end_date: Optional[str]):
+        """
+        Loads historical data and asset information into memory.
+
+        :param assets: List of assets to load. If empty, loads all assets.
+        :param data: Instance of the Data class to fetch the data.
+        :param start_date: Start date for the history (format 'YYYY-MM-DD').
+        :param end_date: End date for the history (format 'YYYY-MM-DD').
+        """
+        if not assets:
+            assets = data.list_symbols()
+
+        if end_date is None:
+            end_date = datetime.today().strftime('%Y-%m-%d')
+
+        historical_data = data.get_history_interval(
+            assets=assets, start_date=start_date, end_date=end_date)
+
+        for asset_data in historical_data:
+            asset = asset_data["symbol"]
+            self.history_data[asset] = asset_data["data"]
+
+        info_data = data.get_asset_info(assets)
+        for asset, data in zip(assets, info_data):
+            self.info_data[asset] = data
+
+    def get_history(self, asset: str) -> pd.DataFrame:
+        """
+        Returns the historical data for an asset.
+
+        :param asset: The asset symbol.
+        :return: DataFrame with the historical data or None if the asset is not in memory.
+        """
+        return self.history_data.get(asset)
+
+    def get_info(self, asset: str) -> pd.DataFrame:
+        """
+        Returns the information for an asset.
+
+        :param asset: The asset symbol.
+        :return: DataFrame with the asset's information or None if the asset is not in memory.
+        """
+        return self.info_data.get(asset)
+
+    def get_all_history(self) -> Dict[str, pd.DataFrame]:
+        """
+        Returns all stored historical data.
+
+        :return: Dictionary with asset symbols as keys and dataframes as values.
+        """
+        return self.history_data
+
+    def get_all_info(self) -> Dict[str, pd.DataFrame]:
+        """
+        Returns all stored asset information.
+
+        :return: Dictionary with asset symbols as keys and dataframes as values.
+        """
+        return self.info_data
+
+
+def teste_mem_data():
+    mem_data = MemData()
+
+    start_date = '2023-01-01'
+    end_date = '2023-12-31'
+
+    mem_data.load(assets=None, data=Data,
+                  start_date=start_date, end_date=end_date)
+
+    print("Histórico de EQPA3.SA:")
+    print(mem_data.get_history('EQPA3.SA'))
+
+    print("Informações de PETR4.SA:")
+    print(mem_data.get_info('PETR4.SA'))
+
+    print("Todos os dados históricos:")
+    print(mem_data.get_all_history())
+
+
 if __name__ == "__main__":
-    teste()
+    teste_mem_data()
