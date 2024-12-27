@@ -9,7 +9,7 @@ from datetime import datetime
 import pandas as pd
 from ranker import Ranker
 from ranker import RandomRanker
-from data import Data
+from data import MemData
 
 
 class Runner:
@@ -31,7 +31,7 @@ class Runner:
         # representando as ações compradas (símbolo, quantidade, preço médio, etc.)
         self.__portfolio: List[Dict[str, float]] = []
 
-        self.data = Data()
+        self.data = MemData()
 
         self.caixa = 0
 
@@ -63,48 +63,37 @@ class Runner:
 
         ranker = RandomRanker(parameters=ranker_conf)
 
-        data_inicio, data_fim = interval
+        start_date, end_date = interval
 
-        ativos = self.data.list_symbols()
-        dados_historicos = self.data.get_history_interval(
-            assets=ativos,
-            start_date=data_inicio,
-            end_date=data_fim,
-        )
         self.caixa = capital
         self.__portfolio = []
 
-        for date in pd.date_range(data_inicio, data_fim).strftime('%Y-%m-%d'):
-            self._sell(date, dados_historicos)
-            self._buy(date, ranker, dados_historicos)
+        for date in pd.date_range(start_date, end_date).strftime('%Y-%m-%d'):
+            self._sell(date)
+            self._buy(date, ranker)
+
+        print(f"Caixa final: {self.caixa}")
+        print(f"Portfolio final: {self.__portfolio}")
 
         return {'caixa': self.caixa, 'portfolio': self.__portfolio}
 
-    def _sell(self, date: str, dados_historicos: pd.DataFrame):
+    def _sell(self, date: str):
         """
         Vende ativos que atingiram o percentual de lucro ou perda.
 
         :param date: Data atual para verificar se algum ativo atendeu ao critério de venda.
-        :param dados_historicos: DataFrame contendo os dados históricos de preços.
         """
-        # print(f"Portfólio antes da VENDA: {self.__portfolio}")
+        dados_historicos = self.data.get_all_history()
         novos_portfolio = []
-        total_portfolio_value = sum(
-            item['preco_medio'] * item['quantidade'] for item in self.__portfolio)
 
         for item in self.__portfolio:
             simbolo = item['simbolo']
             preco_medio = item['preco_medio']
             quantidade = item['quantidade']
 
-            historico = None
-            for h in dados_historicos:
-                if h.get('symbol') == simbolo:
-                    historico = h.get('data')
-                    break
-
-            if historico is None or not isinstance(historico, pd.DataFrame):
-                print(f"Histórico de {simbolo} não encontrado ou inválido.")
+            historico = dados_historicos.get(simbolo)
+            if historico is None or historico.empty:
+                novos_portfolio.append(item)
                 continue
 
             preco_atual = historico.loc[
@@ -117,106 +106,71 @@ class Runner:
                 continue
 
             preco_atual = preco_atual.iloc[0]
-
             percentual_variacao = (preco_atual - preco_medio) / preco_medio
 
             if percentual_variacao >= self.profit or percentual_variacao <= -self.loss:
                 valor_venda = preco_atual * quantidade
                 self.caixa += valor_venda
-                print(f"Vendendo {quantidade} de {simbolo} a {
-                      preco_atual} para {valor_venda}.")
             else:
                 novos_portfolio.append(item)
 
         self.__portfolio = novos_portfolio
 
-        total_portfolio_value = sum(
-            item['preco_medio'] * item['quantidade'] for item in self.__portfolio)
-
-        # print(f"Portfólio após venda: {self.__portfolio}")
-        print(f"Caixa restante após venda: {self.caixa}")
-        print(f"Total do portfólio após venda: {total_portfolio_value}")
-
-    def _buy(self, date: str, ranker: Ranker, dados_historicos: pd.DataFrame):
+    def _buy(self, date: str, ranker: Ranker):
         """
         Compra ativos com base no ranking e na diversificação do portfólio.
 
         :param date: Data atual para comprar ativos.
         :param ranker: Instância do ranker a ser utilizado para definir os ativos.
-        :param dados_historicos: DataFrame contendo os dados históricos de preços.
         """
         ranked_symbols = ranker.rank()
         if not ranked_symbols:
             return
 
-        symbols_portfolio = [item['simbolo'] for item in self.__portfolio]
-
-        portfolio_info = self.data.get_asset_info(symbols_portfolio)
+        dados_historicos = self.data.get_all_history()
 
         total_portfolio_value = sum(
-            item['preco_medio'] * item['quantidade'] for item in self.__portfolio)
+            item['preco_medio'] * item['quantidade'] for item in self.__portfolio
+        )
 
-        if total_portfolio_value == 0:
-            # print("Primeira compra.")
-            setor_percentual = {}
-            caixa_disponivel = self.caixa
-        else:
-            setor_percentual = {}
+        setor_percentual = {}
 
+        if total_portfolio_value > 0:
             for item in self.__portfolio:
-                simbolo = item['simbolo']
+                setor = item.get('sector')
+                preco_medio = item.get('preco_medio', 0)
+                quantidade = item.get('quantidade', 0)
 
-                setor = None
-                for info in portfolio_info:
-                    if info.get('simbolo') == simbolo:
-                        setor = info.get('sector')
-                        break
+                if not setor:
+                    print(f"Setor não encontrado para o símbolo {
+                          item['simbolo']}.")
+                    continue
 
-                if setor:
-                    setor_percentual[setor] = setor_percentual.get(setor, 0) + (
-                        item['preco_medio'] * item['quantidade'] /
-                        total_portfolio_value
-                    )
-            caixa_disponivel = self.caixa
+                valor_item = preco_medio * quantidade
 
-        for simbolo in ranked_symbols[:40]:
-            if caixa_disponivel <= 0:
+                setor_percentual[setor] = setor_percentual.get(
+                    setor, 0) + (valor_item / total_portfolio_value)
+
+        caixa_disponivel = self.caixa
+
+        for simbolo in ranked_symbols:
+            if caixa_disponivel <= 2:  # Valor mínimo para comprar uma ação, mudar depois
                 break
 
-            # print("setor_percentual", setor_percentual)
-            # print("caixa", caixa_disponivel)
-
-            ativo_info = self.data.get_asset_info([simbolo])
-            if not ativo_info:
+            ativo_info = self.data.get_info(simbolo)
+            if ativo_info.empty:
                 continue
 
-            setor = ativo_info[0]['sector']
-            if isinstance(setor, pd.Series):
-                setor = setor.iloc[0]
+            setor = ativo_info.iloc[0]['sector']
 
-            # Se for a primeira compra ou o setor ainda não foi adicionado, não limitamos a compra
-            if total_portfolio_value == 0 or setor not in setor_percentual:
-                # Aplica a diversificação de 20% do caixa disponível para a compra do ativo
-                max_investimento_setor = caixa_disponivel * self.diversification
-            else:
-                setor_atual = setor_percentual.get(
-                    setor, 0) * total_portfolio_value
-                max_investimento_setor = total_portfolio_value * \
-                    self.diversification - setor_atual
+            max_investimento_setor = (
+                caixa_disponivel * self.diversification if setor not in setor_percentual
+                else total_portfolio_value * self.diversification -
+                setor_percentual.get(setor, 0) * total_portfolio_value
+            )
 
-            # print(f"max_investimento_setor para {
-            #      setor}: {max_investimento_setor}")
-
-            historico = None
-            for item in dados_historicos:
-                if item.get('symbol') == simbolo:
-                    historico = item.get('data')
-                    break
-
-            if historico is None or historico.empty or not isinstance(historico, pd.DataFrame):
-                continue
-
-            if historico is None:
+            historico = dados_historicos.get(simbolo)
+            if historico is None or historico.empty:
                 continue
 
             preco_atual = historico.loc[
@@ -228,20 +182,12 @@ class Runner:
                 continue
 
             preco_atual = preco_atual.iloc[0]
-            # print(f"Preço atual para {simbolo} em {date}: {preco_atual}")
-
             quantidade_max = int(caixa_disponivel // preco_atual)
-            if quantidade_max <= 0:
-                continue
-
             quantidade_comprar = min(quantidade_max, int(
                 max_investimento_setor // preco_atual))
 
             if quantidade_comprar <= 0:
                 continue
-
-            print(f"Comprando {quantidade_comprar} de {
-                  simbolo} a {preco_atual}.")
 
             self.__portfolio.append({
                 'simbolo': simbolo,
@@ -250,14 +196,12 @@ class Runner:
                 'sector': setor
             })
             caixa_disponivel -= quantidade_comprar * preco_atual
-
             total_portfolio_value += quantidade_comprar * preco_atual
             setor_percentual[setor] = setor_percentual.get(setor, 0) + (
-                quantidade_comprar * preco_atual / total_portfolio_value)
+                quantidade_comprar * preco_atual / total_portfolio_value
+            )
 
-            # print(f"Portfólio atualizado: {self.__portfolio}")
-            self.caixa = caixa_disponivel
-            print(f"Caixa restante: {self.caixa}")
+        self.caixa = caixa_disponivel
 
     def _run(self, interval: List[str], capital: float, ranker_ranges: Dict[str, List[float]], log: str) -> List[Dict]:
         """
@@ -272,9 +216,17 @@ class Runner:
         ranker_confs = self._gen_ranker_confs(ranker_ranges)
         results = []
 
+        start_date, end_date = interval
+
+        self.data.load(start_date, end_date)
+
+        start_time = datetime.now()
         for ranker_conf in ranker_confs:
             result = self._single_run(interval, ranker_conf, capital, log)
             results.append(result)
+        end_time = datetime.now()
+        print(f"Total time for running all configurations: {
+              end_time - start_time}")
 
         return results
 
