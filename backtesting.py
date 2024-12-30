@@ -7,6 +7,7 @@ from itertools import product
 from joblib import Parallel, delayed
 import pandas as pd
 from data import MemData
+from ranker import RandomRanker
 from runner import Runner
 
 
@@ -27,8 +28,7 @@ class Backtesting:
     def run(
         self,
         parameter_grid: Dict[str, List[float]],
-        start_date: str,
-        end_date: str,
+        interval: List[str],
         ranker_config: Dict[str, List[float]],
         n_jobs: int = -1
     ) -> pd.DataFrame:
@@ -37,8 +37,7 @@ class Backtesting:
 
         :param parameter_grid: Dicionário com os parâmetros a variar e seus valores.
                                Exemplo: {'profit': [0.05, 0.1], 'loss': [0.05, 0.1]}.
-        :param start_date: Data inicial do período de backtesting.
-        :param end_date: Data final do período de backtesting.
+        :param interval: Lista com duas strings representando a data de início e fim do backtesting.
         :param ranker_config: Configurações do ranker a serem testadas.
         :param n_jobs: Número de processos paralelos (-1 usa todos os núcleos disponíveis).
         :return: DataFrame com os resultados das simulações.
@@ -47,7 +46,7 @@ class Backtesting:
         parameter_values = list(parameter_grid.values())
         combinations = list(product(*parameter_values))
 
-        data = MemData(start_date, end_date)
+        data = MemData(interval=interval)
 
         def run_simulation(params):
             params_dict = dict(zip(parameter_names, params))
@@ -56,14 +55,15 @@ class Backtesting:
                 profit=params_dict['profit'],
                 loss=params_dict['loss'],
                 diversification=params_dict['diversification'],
+                ranker=RandomRanker,
                 ranker_ranges=ranker_config,
                 data=data
             )
 
             try:
-                result = runner._run(
-                    [start_date, end_date], self.capital, ranker_config, log="")
-                return self._evaluate_results(result, start_date, end_date, params_dict)
+                result = runner._run(interval=interval, capital=self.capital)
+
+                return self._evaluate_results(result, interval, params_dict)
             except Exception as e:
                 print(f"Erro ao rodar configuração {params_dict}")
                 return None
@@ -76,14 +76,13 @@ class Backtesting:
         return pd.DataFrame(results)
 
     def _evaluate_results(
-        self, result: List[Dict], start_date: str, end_date: str, params: Dict
+        self, result: List[Dict], interval: List[str], params: Dict
     ) -> Dict:
         """
         Calcula métricas de performance da simulação.
 
         :param result: Resultado da simulação (lista de dicionários).
-        :param start_date: Data inicial do período de simulação.
-        :param end_date: Data final do período de simulação.
+        :param interval: Lista com duas strings representando a data de início e fim do backtesting.
         :param params: Parâmetros usados na simulação.
         :return: Dicionário com as métricas calculadas.
         """
@@ -98,7 +97,7 @@ class Backtesting:
         retorno_total = round(retorno_total, 4) * 100
 
         return {
-            'intervalo': f"{start_date} - {end_date}",
+            'intervalo': f"{interval[0]} - {interval[1]}",
             'profit': params['profit'],
             'loss': params['loss'],
             'diversification': params['diversification'],
@@ -113,17 +112,16 @@ if __name__ == "__main__":
     backtester = Backtesting(Runner, capital=10000)
 
     parameter_grid = {
-        'profit': [0.06, 0.1, 0.2],
+        'profit': [0.06, 0.1],
         'loss': [0.04, 0.5],
-        'diversification': [0.1, 0.2]
+        'diversification': [0.2]
     }
 
-    start_date = "2024-01-01"
-    end_date = "2024-10-01"
+    interval = ["2024-01-10", "2024-11-10"]
 
     ranker_ranges = {"SEED": [0, 1, 42]}
 
-    results = backtester.run(parameter_grid, start_date,
-                             end_date, ranker_ranges, n_jobs=-1)
+    results = backtester.run(parameter_grid, interval,
+                             ranker_ranges, n_jobs=-1)
 
     print(results)

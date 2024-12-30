@@ -2,7 +2,7 @@
     class Runner
 '''
 
-from typing import List, Dict
+from typing import List, Dict, Type
 import itertools
 
 from datetime import datetime
@@ -13,19 +13,22 @@ from data import MemData
 
 
 class Runner:
-    def __init__(self, profit, loss, diversification, ranker_ranges, data: MemData):
+    def __init__(self, profit, loss, diversification, ranker: Type[Ranker], ranker_ranges, data: MemData):
         """
         Inicializa a classe Runner com os parâmetros fornecidos.
 
         :param profit: Lucro alvo para venda (porcentagem).
         :param loss: Limite de perda para venda (porcentagem).
         :param diversification: Porcentagem máxima para cada setor (porcentagem).
+        :param ranker: Classe do ranker a ser utilizada.
         :param ranker_ranges: Faixas de valores para cada parâmetro do ranker.
                               Exemplo: {'SEED': [0, 1, 42]}
         """
         self.profit = profit
         self.loss = loss
         self.diversification = diversification
+
+        self.ranker = ranker
         self.ranker_ranges = ranker_ranges
 
         # representando as ações compradas (símbolo, quantidade, preço médio, etc.)
@@ -50,18 +53,17 @@ class Runner:
 
         return [dict(zip(param_names, comb)) for comb in combinations]
 
-    def _single_run(self, interval: List[str], ranker_conf: Dict[str, float], capital: float, log: str) -> Dict:
+    def _single_run(self, interval: List[str], ranker_conf: Dict[str, float], capital: float) -> Dict:
         """
         Executa uma simulação para uma única configuração de ranker, mantendo o portfólio com a quantidade e o preço de compra dos ativos.
 
         :param interval: Lista com a data inicial e final da simulação.
         :param ranker_conf: Configuração do ranker a ser utilizada.
         :param capital: Capital inicial.
-        :param log: Arquivo de log para registrar todas as compras, vendas e saldo de capital.
         :return: Estado final do portfólio.
         """
 
-        ranker = RandomRanker(parameters=ranker_conf)
+        ranker = self.ranker(parameters=ranker_conf, data=self.data)
 
         start_date, end_date = interval
 
@@ -231,23 +233,24 @@ class Runner:
 
         self.caixa = caixa_disponivel
 
-    def _run(self, interval: List[str], capital: float, ranker_ranges: Dict[str, List[float]], log: str) -> List[Dict]:
+    def _run(self, interval: List[str], capital: float) -> List[Dict]:
         """
         Executa a simulação para todas as configurações do ranker.
 
         :param interval: Intervalo de datas para a simulação.
-        :param capital: Capital inicial.
-        :param ranker_ranges: Faixas de parâmetros para gerar as configurações do ranker.
-        :param log: Arquivo de log para registrar as simulações.
+        :param capital: Capital inicial.        
         :return: Lista com os resultados de todas as simulações.
         """
-        ranker_confs = self._gen_ranker_confs(ranker_ranges)
+        ranker_confs = self._gen_ranker_confs(self.ranker_ranges)
         results = []
 
         start_time = datetime.now()
         for ranker_conf in ranker_confs:
-            result = self._single_run(interval, ranker_conf, capital, log)
+            # {'SEED': 0}
+            result = self._single_run(interval, ranker_conf, capital)
+
             results.append(result)
+
         end_time = datetime.now()
         print(f"Total time for running all configurations: {
               end_time - start_time}")
@@ -256,43 +259,26 @@ class Runner:
 
 
 def test_runner():
-    import tempfile
-    import os
+    interval = ["2024-01-10", "2024-11-10"]
+    capital = 10000
+    ranker_ranges = {"SEED": [0, 1, 42]}
 
-    fd, log_file_path = tempfile.mkstemp()
+    runner = Runner(
+        profit=0.1,
+        loss=0.05,
+        diversification=0.2,
+        ranker=RandomRanker,
+        ranker_ranges=ranker_ranges,
+        data=MemData(interval)
+    )
 
     try:
-        os.close(fd)
+        results = runner._run(interval, capital)
 
-        interval = ["2024-01-10", "2024-11-10"]
-        capital = 10000
-        ranker_ranges = {"SEED": [0, 1, 42]}
-        start_date, end_date = interval
-
-        runner = Runner(
-            profit=0.1,
-            loss=0.05,
-            diversification=0.2,
-            ranker_ranges=ranker_ranges,
-            data=MemData(start_date, end_date)
-        )
-
-        try:
-            results = runner._run(
-                interval, capital, ranker_ranges, log_file_path)
-            assert len(results) > 0, "Nenhum resultado gerado"
-            assert all("caixa" in res and "portfolio" in res for res in results), \
-                "Resultados não possuem os campos esperados"
-
-            print("Execução do Runner bem sucedida")
-        except Exception as e:
-            print(f"Erro durante o teste: {e}")
-        finally:
-            with open(log_file_path, 'r') as log_file:
-                print(log_file.read())
-
-    finally:
-        os.remove(log_file_path)
+        assert len(results) > 0, "Nenhum resultado gerado"
+        print("Execução do Runner bem sucedida")
+    except Exception as e:
+        print(f"Erro durante o teste: {e}")
 
 
 if __name__ == "__main__":

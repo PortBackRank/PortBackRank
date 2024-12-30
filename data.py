@@ -195,10 +195,13 @@ class Data(Yahoo):
 class MemData:
     '''In-memory data management for assets.'''
 
-    def __init__(self, start_date: str, end_date: str):
+    def __init__(self, interval: List[str]):
         self.history_data: Dict[str, pd.DataFrame] = {}
         self.info_data: Dict[str, pd.DataFrame] = {}
         self.data = Data()
+        self.assets = self.data.list_symbols()
+
+        start_date, end_date = interval
         self.load(start_date, end_date)
 
     def load(self, start_date: str, end_date: str):
@@ -207,25 +210,31 @@ class MemData:
 
         :param assets: List of assets to load. If empty, loads all assets.
         :param data: Instance of the Data class to fetch the data.
-        :param start_date: Start date for the history (format 'YYYY-MM-DD').
-        :param end_date: End date for the history (format 'YYYY-MM-DD').
+        :param interval: List of two strings representing the start and end dates
         """
-        assets = self.data.list_symbols()
 
         if end_date is None:
             end_date = datetime.today().strftime('%Y-%m-%d')
 
         historical_data = self.data.get_history_interval(
-            assets=assets, start_date=start_date, end_date=end_date)
+            assets=self.assets, start_date=start_date, end_date=end_date)
 
         for asset_data in historical_data:
             asset = asset_data["symbol"]
             self.history_data[asset] = asset_data["data"]
 
-        info_data = self.data.get_asset_info(assets)
-        for asset, data in zip(assets, info_data):
+        info_data = self.data.get_asset_info(self.assets)
+        for asset, data in zip(self.assets, info_data):
             self.info_data[asset] = data
         print("Data loaded successfully.")
+
+    def get_assets(self) -> List[str]:
+        """
+        Returns the list of assets in memory.
+
+        :return: List of asset symbols.
+        """
+        return list(self.assets)
 
     def get_history(self, asset: str) -> pd.DataFrame:
         """
@@ -294,10 +303,8 @@ def teste():
 
 
 def teste_mem_data():
-
-    start_date = '2023-01-01'
-    end_date = '2023-12-31'
-    mem_data = MemData(start_date, end_date)
+    interval = ["2024-01-10", "2024-11-10"]
+    mem_data = MemData(interval)
 
     print("Histórico de EQPA3.SA:")
     print(mem_data.get_history('EQPA3.SA'))

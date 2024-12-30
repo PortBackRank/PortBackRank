@@ -4,26 +4,27 @@ Ranker module for the investment strategy.
 """
 
 from abc import ABC
-from datetime import datetime
 from typing import List
 import random
-from data import Data
+from data import MemData
 
 
 class Ranker(ABC):
     """class abstract Ranker"""
 
-    def __init__(self, parameters: dict = None, date: str = None):
+    def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
         """
         Constructor for the Ranker class, 
         which defines default parameters for the investment strategy.
 
         :param parameters: Optional dictionary of parameters for the strategy.
-        :param date: Date as a string (format 'YYYY-MM-DD').
+        :param interval: List of two strings representing the start and end dates of the data to be used.
+        :param data: Data instance to be used for the strategy.
             If not provided, the current date will be used.
         """
-        self.data = Data()
-        self.date = date or datetime.now().strftime('%Y-%m-%d')
+        self.interval = interval
+
+        self.data = data
         self.parameters = parameters or {}
 
     def rank(self) -> List[str]:
@@ -37,17 +38,17 @@ class Ranker(ABC):
 class RandomRanker(Ranker):
     """RandomRanker class"""
 
-    def __init__(self, parameters: dict = None, date: str = None, seed: int = 42):
+    def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
         """
         Constructor for the RandomRanker class, allowing for an optional seed for reproducibility.
 
         :param parameters: Optional dictionary of parameters for the strategy.
-        :param date: Date as a string (format 'YYYY-MM-DD').
-            If not provided, the current date will be used.
+        :param date: List of two strings representing the start and end dates of the data to be used.
+        :param data: Data instance to be used for the strategy.
         :param seed: Optional seed for randomization.
         """
-        super().__init__(parameters, date)
-        self.seed = seed
+        super().__init__(parameters, interval, data)
+        self.seed = self.parameters.get("SEED", 42)
 
     def rank(self) -> List[str]:
         """
@@ -55,7 +56,7 @@ class RandomRanker(Ranker):
 
         :return: List of symbols in random order.
         """
-        symbols = self.data.list_symbols()
+        symbols = self.data.get_assets()
 
         if self.seed is not None:
             random.seed(self.seed)
@@ -69,7 +70,12 @@ def test_random_ranker():
     """
     Função simples para testar o funcionamento do RandomRanker.
     """
-    ranker = RandomRanker(seed=42)
+    interval = ["2024-01-10", "2024-11-10"]
+    data = MemData(interval=interval)
+
+    parameters = {"SEED": 42}
+
+    ranker = RandomRanker(data=data, parameters=parameters)
     ranked_symbols = ranker.rank()
 
     print("Símbolos ranqueados aleatoriamente:", ranked_symbols)
