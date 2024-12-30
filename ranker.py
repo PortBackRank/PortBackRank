@@ -3,7 +3,7 @@
 Ranker module for the investment strategy.
 """
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import List
 import random
 from data import MemData
@@ -27,7 +27,8 @@ class Ranker(ABC):
         self.data = data
         self.parameters = parameters or {}
 
-    def rank(self) -> List[str]:
+    @abstractmethod
+    def rank(self, date: str = None) -> List[str]:
         """
         Abstract method that must be implemented by subclasses.
 
@@ -50,7 +51,7 @@ class RandomRanker(Ranker):
         super().__init__(parameters, interval, data)
         self.seed = self.parameters.get("SEED", 42)
 
-    def rank(self) -> List[str]:
+    def rank(self, date: str = None) -> List[str]:
         """
         Generates a random ranking of symbols based on the data retrieved from the `Data` instance.
 

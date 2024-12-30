@@ -7,8 +7,7 @@ import itertools
 
 from datetime import datetime
 import pandas as pd
-from ranker import Ranker
-from ranker import RandomRanker
+from ranker import Ranker, RandomRanker
 from data import MemData
 
 
@@ -38,24 +37,19 @@ class Runner:
 
         self.caixa = 0
 
-    def _gen_ranker_confs(self, ranker_ranges: Dict[str, List[float]]) -> List[Dict[str, float]]:
-        """
-        Gera todas as combinações possíveis de parâmetros para o ranker.
-
-        :param ranker_ranges: Dicionário com os parâmetros e seus respectivos valores possíveis.
-        :return: Lista de dicionários com todas as combinações possíveis de parâmetros.
-        """
-
-        param_names = list(ranker_ranges.keys())
-        param_values = list(ranker_ranges.values())
-
-        combinations = list(itertools.product(*param_values))
-
-        return [dict(zip(param_names, comb)) for comb in combinations]
+    def _gen_ranker_confs(self, ranker_ranges):
+        ranker_confs = []
+        for key, value in ranker_ranges.items():
+            if isinstance(value, int):
+                value = [value]
+            for item in value:
+                ranker_confs.append({key: item})
+        return ranker_confs
 
     def _single_run(self, interval: List[str], ranker_conf: Dict[str, float], capital: float) -> Dict:
         """
-        Executa uma simulação para uma única configuração de ranker, mantendo o portfólio com a quantidade e o preço de compra dos ativos.
+        Executa uma simulação para uma única configuração de ranker, 
+        mantendo o portfólio com a quantidade e o preço de compra dos ativos.
 
         :param interval: Lista com a data inicial e final da simulação.
         :param ranker_conf: Configuração do ranker a ser utilizada.
@@ -145,6 +139,7 @@ class Runner:
         :param ranker: Instância do ranker a ser utilizado para definir os ativos.
         """
         ranked_symbols = ranker.rank()
+        # ranked_symbols = ranker.rank(date)
         if not ranked_symbols:
             return
 
@@ -259,15 +254,18 @@ class Runner:
 
 
 def test_runner():
-    interval = ["2024-01-10", "2024-11-10"]
+    interval = ["2024-06-10", "2024-11-10"]
     capital = 10000
     ranker_ranges = {"SEED": [0, 1, 42]}
+
+    # ranker_ranges = {"WINDOW_SIZE": [10, 20, 30]}
 
     runner = Runner(
         profit=0.1,
         loss=0.05,
         diversification=0.2,
         ranker=RandomRanker,
+        # ranker=MovingAverageRanker,
         ranker_ranges=ranker_ranges,
         data=MemData(interval)
     )
