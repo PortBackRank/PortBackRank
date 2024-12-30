@@ -90,7 +90,7 @@ class Backtesting:
         caixa_final = result[-1]['caixa'] if result else 0
 
         portfolio_value = sum(
-            item['quantidade'] * item['preco_medio'] for item in result[-1]['portfolio']
+            item['quantidade'] * item['preco_compra'] for item in result[-1]['portfolio']
         ) if result else 0
 
         retorno_total = (caixa_final + portfolio_value) / self.capital - 1
@@ -113,8 +113,8 @@ if __name__ == "__main__":
     backtester = Backtesting(Runner, capital=10000)
 
     parameter_grid = {
-        'profit': [0.05, 0.1, 0.2],
-        'loss': [0.04, 0.1],
+        'profit': [0.06, 0.1, 0.2],
+        'loss': [0.04, 0.5],
         'diversification': [0.1, 0.2]
     }
 

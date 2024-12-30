@@ -76,38 +76,59 @@ class Runner:
 
     def _sell(self, date: str):
         """
-        Vende ativos que atingiram o percentual de lucro ou perda.
+        Vende ativos que atingiram o percentual de lucro ou perda,
+        respeitando a ordem FIFO e verificando o volume diário.
 
         :param date: Data atual para verificar se algum ativo atendeu ao critério de venda.
         """
         dados_historicos = self.data.get_all_history()
-        novos_portfolio = []
 
+        historicos_ativos = {}
+
+        # TODO: Pensar em uma forma de otimizar isso
+        for simbolo in [item['simbolo'] for item in self.__portfolio]:
+            historico = dados_historicos.get(simbolo)
+            if historico is not None and not historico.empty:
+                historico_data = historico.loc[
+                    historico['Date'].dt.date == datetime.strptime(
+                        date, '%Y-%m-%d').date()
+                ]
+                if not historico_data.empty:
+                    historicos_ativos[simbolo] = {
+                        'preco_atual': historico_data['Close'].iloc[0],
+                        'volume_diario': historico_data['Volume'].iloc[0]
+                    }
+
+        novos_portfolio = []
         for item in self.__portfolio:
             simbolo = item['simbolo']
-            preco_medio = item['preco_medio']
+            preco_compra = item['preco_compra']
             quantidade = item['quantidade']
+            data_compra = item['data_compra']
 
-            historico = dados_historicos.get(simbolo)
-            if historico is None or historico.empty:
+            if simbolo not in historicos_ativos:
                 novos_portfolio.append(item)
                 continue
 
-            preco_atual = historico.loc[
-                historico['Date'].dt.date == datetime.strptime(
-                    date, '%Y-%m-%d').date(), 'Close'
-            ]
+            preco_atual = historicos_ativos[simbolo]['preco_atual']
+            volume_diario = historicos_ativos[simbolo]['volume_diario']
 
-            if preco_atual.empty:
-                novos_portfolio.append(item)
-                continue
-
-            preco_atual = preco_atual.iloc[0]
-            percentual_variacao = (preco_atual - preco_medio) / preco_medio
+            percentual_variacao = (preco_atual - preco_compra) / preco_compra
 
             if percentual_variacao >= self.profit or percentual_variacao <= -self.loss:
-                valor_venda = preco_atual * quantidade
+                quantidade_vender = min(quantidade, volume_diario)
+                valor_venda = preco_atual * quantidade_vender
                 self.caixa += valor_venda
+
+                if quantidade > quantidade_vender:
+                    novos_portfolio.append({
+                        'simbolo': simbolo,
+                        'quantidade': quantidade - quantidade_vender,
+                        'preco_compra': preco_compra,
+                        'data_compra': data_compra,
+                        'sector': item['sector']
+                    })
+
             else:
                 novos_portfolio.append(item)
 
@@ -115,7 +136,8 @@ class Runner:
 
     def _buy(self, date: str, ranker: Ranker):
         """
-        Compra ativos com base no ranking e na diversificação do portfólio.
+        Compra ativos com base no ranking, respeitando diversificação por setor
+        e verificando o volume diário disponível.
 
         :param date: Data atual para comprar ativos.
         :param ranker: Instância do ranker a ser utilizado para definir os ativos.
@@ -127,7 +149,7 @@ class Runner:
         dados_historicos = self.data.get_all_history()
 
         total_portfolio_value = sum(
-            item['preco_medio'] * item['quantidade'] for item in self.__portfolio
+            item['preco_compra'] * item['quantidade'] for item in self.__portfolio
         )
 
         setor_percentual = {}
@@ -135,7 +157,7 @@ class Runner:
         if total_portfolio_value > 0:
             for item in self.__portfolio:
                 setor = item.get('sector')
-                preco_medio = item.get('preco_medio', 0)
+                preco_compra = item.get('preco_compra', 0)
                 quantidade = item.get('quantidade', 0)
 
                 if not setor:
@@ -143,7 +165,7 @@ class Runner:
                           item['simbolo']}.")
                     continue
 
-                valor_item = preco_medio * quantidade
+                valor_item = preco_compra * quantidade
 
                 setor_percentual[setor] = setor_percentual.get(
                     setor, 0) + (valor_item / total_portfolio_value)
@@ -170,21 +192,25 @@ class Runner:
             if historico is None or historico.empty:
                 continue
 
-            preco_atual = historico.loc[
+            historico_data = historico.loc[
                 historico['Date'].dt.date == datetime.strptime(
-                    date, '%Y-%m-%d').date(), 'Close'
+                    date, '%Y-%m-%d').date()
             ]
 
-            if preco_atual.empty:
+            if historico_data.empty:
                 continue
 
-            preco_atual = preco_atual.iloc[0]
+            preco_atual = historico_data['Close'].iloc[0]
+
+            volume_diario = historico_data['Volume'].iloc[0]
+
+            if pd.isna(preco_atual) or pd.isna(volume_diario):
+                continue
 
             quantidade_max = int(caixa_disponivel // preco_atual)
-
-            # TODO: limitar a quantidade também pelo volume disponível do ativo
-            quantidade_comprar = min(quantidade_max, int(
-                max_investimento_setor // preco_atual))
+            quantidade_setor = int(max_investimento_setor // preco_atual)
+            quantidade_comprar = min(
+                quantidade_max, quantidade_setor, volume_diario)
 
             if quantidade_comprar <= 0:
                 continue
@@ -192,9 +218,11 @@ class Runner:
             self.__portfolio.append({
                 'simbolo': simbolo,
                 'quantidade': quantidade_comprar,
-                'preco_medio': preco_atual,
+                'preco_compra': preco_atual,
+                'data_compra': date,
                 'sector': setor
             })
+
             caixa_disponivel -= quantidade_comprar * preco_atual
             total_portfolio_value += quantidade_comprar * preco_atual
             setor_percentual[setor] = setor_percentual.get(setor, 0) + (
