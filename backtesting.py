@@ -21,6 +21,7 @@ class Backtesting:
         :param runner_cls: Classe do Runner para criar instâncias.
         :param ranker_cls: Classe do Ranker para criar instâncias.
         :param capital: Capital inicial para todas as simulações.
+        :param data: Instância de MemData com os dados históricos e infos.
         """
         self.runner_cls = runner_cls
         self.ranker_cls = ranker_cls

@@ -236,15 +236,6 @@ class MemData:
         """
         return list(self.assets)
 
-    def get_history(self, asset: str) -> pd.DataFrame:
-        """
-        Returns the historical data for an asset.
-
-        :param asset: The asset symbol.
-        :return: DataFrame with the historical data or None if the asset is not in memory.
-        """
-        return self.history_data.get(asset)
-
     def get_info(self, asset: str) -> pd.DataFrame:
         """
         Returns the information for an asset.
@@ -253,15 +244,6 @@ class MemData:
         :return: DataFrame with the asset's information or None if the asset is not in memory.
         """
         return self.info_data.get(asset)
-
-    def get_infos(self, assets: List[str]) -> Dict[str, pd.DataFrame]:
-        """
-        Returns the information for a list of assets.
-
-        :param assets: List of asset symbols.
-        :return: Dictionary with asset symbols as keys and dataframes as values.
-        """
-        return {asset: self.get_info(asset) for asset in assets}
 
     def get_all_history(self) -> Dict[str, pd.DataFrame]:
         """
@@ -306,14 +288,14 @@ def teste_mem_data():
     interval = ["2024-01-10", "2024-11-10"]
     mem_data = MemData(interval)
 
-    print("Histórico de EQPA3.SA:")
-    print(mem_data.get_history('EQPA3.SA'))
-
     print("Informações de PETR4.SA:")
     print(mem_data.get_info('PETR4.SA'))
 
     print("Todos os dados históricos:")
     # print(mem_data.get_all_history())
+
+    print("Todas as informações:")
+    print(mem_data.get_all_info())
 
 
 if __name__ == "__main__":
