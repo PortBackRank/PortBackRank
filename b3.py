@@ -24,8 +24,6 @@ SUB_DIR_B3 = 'b3'
 
 RECENT_ASSETS_FILE = 'recent_assets.json'
 
-VALID_ASSETS = 'valid_assets.json'
-
 
 def previous_month(date):
     '''Returns the previous month of a given date'''
@@ -40,7 +38,6 @@ class AssetHistory:
     '''Asset history management'''
     _recent_assets_file = RECENT_ASSETS_FILE
     _url = URL_QUOTE
-    _valid_assets_file = VALID_ASSETS
 
     subdir = SUB_DIR_HIST
 
@@ -119,7 +116,7 @@ class AssetHistory:
     def download_info(cls, symbols: List[str]) -> List[str]:
         '''Download information for the given list of assets'''
         desired_fields = [
-            'sector', 'industry', 'financialCurrency']
+            'sector', 'industry']
 
         print(f"Downloading information for {len(symbols)}")
 
@@ -130,7 +127,7 @@ class AssetHistory:
                   desc="Downloading information", unit="asset") as pbar:
 
             for asset in asset_info.tickers.keys():
-                time.sleep(0.2)
+                time.sleep(0.18)
                 try:
                     asset_info_dict = asset_info.tickers[asset].info
 

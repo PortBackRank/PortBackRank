@@ -159,6 +159,15 @@ class Data(Yahoo):
 
         result = []
 
+        start_date_dt = pd.to_datetime(start_date, utc=True).tz_localize(None)
+        end_date_dt = pd.to_datetime(end_date, utc=True).tz_localize(None)
+
+        columns_to_return = ["Date", "Volume"]
+        if column_filter in {"Close", None}:
+            columns_to_return.append("Close")
+        elif column_filter != "None":
+            columns_to_return.append(column_filter)
+
         for asset in historical_data:
             symbol = asset["symbol"]
             data = asset["data"]
@@ -166,28 +175,19 @@ class Data(Yahoo):
             data["Date"] = pd.to_datetime(
                 data["Date"], utc=True).dt.tz_localize(None)
 
-            start_date_dt = pd.to_datetime(
-                start_date, utc=True).tz_localize(None)
-            end_date_dt = pd.to_datetime(end_date, utc=True).tz_localize(None)
-
             filtered_data = data[
                 (data["Date"] >= start_date_dt) & (data["Date"] <= end_date_dt)
             ]
 
-            if not filtered_data.empty:
-                columns_to_return = ["Date", "Volume"]
+            if filtered_data.empty:
+                continue
 
-                if column_filter is None or column_filter == "Close":
-                    columns_to_return.append("Close")
-                elif column_filter in filtered_data.columns:
-                    columns_to_return.append(column_filter)
+            filtered_data = filtered_data[columns_to_return]
 
-                filtered_data = filtered_data[columns_to_return]
-
-                result.append({
-                    "symbol": symbol,
-                    "data": filtered_data.reset_index(drop=True)
-                })
+            result.append({
+                "symbol": symbol,
+                "data": filtered_data.reset_index(drop=True)
+            })
 
         return result
 

@@ -10,7 +10,7 @@ from os import mkdir, sep
 from pathlib import Path
 import pandas as pd
 
-DIR_CACHE = '.cache/b3_port_back'
+DIR_CACHE = '.cache/port_back'
 
 
 def dir_cache():

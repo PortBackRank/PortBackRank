@@ -14,7 +14,7 @@ from runner import Runner
 class Backtesting:
     """ Classe para realizar backtesting de uma estratégia de investimento. """
 
-    def __init__(self, runner_cls, ranker_cls, capital: float):
+    def __init__(self, runner_cls, ranker_cls, capital: float, data: MemData):
         """
         Inicializa o backtesting com as informações básicas.
 
@@ -25,6 +25,7 @@ class Backtesting:
         self.runner_cls = runner_cls
         self.ranker_cls = ranker_cls
         self.capital = capital
+        self.data = data
 
     def run(
         self,
@@ -51,8 +52,6 @@ class Backtesting:
 
         combinations = list(product(runner_params, ranker_params))
 
-        data = MemData(interval=interval)
-
         def run_simulation(params):
             runner_values, ranker_values = params
             runner_config = dict(zip(parameter_names, runner_values))
@@ -64,11 +63,11 @@ class Backtesting:
                 diversification=runner_config['diversification'],
                 ranker=self.ranker_cls,
                 ranker_ranges=ranker_config,
-                data=data
+                data=self.data
             )
 
             try:
-                result = runner._run(interval=interval, capital=self.capital)
+                result = runner.run(interval=interval, capital=self.capital)
 
                 return self._evaluate_results(result, interval, runner_config, ranker_config)
             except Exception as e:
@@ -76,11 +75,12 @@ class Backtesting:
                       runner_config} com ranker {ranker_config}: {e}")
                 return None
 
-        results = Parallel(n_jobs=n_jobs)(
-            delayed(run_simulation)(comb) for comb in combinations
-        )
+        results = [
+            res for res in Parallel(n_jobs=n_jobs)(
+                delayed(run_simulation)(comb) for comb in combinations
+            ) if res is not None
+        ]
 
-        results = [res for res in results if res is not None]
         return pd.DataFrame(results)
 
     def _evaluate_results(
@@ -115,16 +115,16 @@ class Backtesting:
 
 
 if __name__ == "__main__":
+    interval = ["2024-01-10", "2024-11-10"]
+    data = MemData(interval)
 
-    backtester = Backtesting(Runner, RandomRanker, capital=10000)
+    backtester = Backtesting(Runner, RandomRanker, capital=10000, data=data)
 
     parameter_grid = {
         'profit': [0.06, 0.1],
         'loss': [0.04, 0.05],
         'diversification': [0.2]
     }
-
-    interval = ["2024-01-10", "2024-11-10"]
 
     ranker_ranges = {"SEED": [0, 1, 42]}
 

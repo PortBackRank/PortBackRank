@@ -228,7 +228,7 @@ class Runner:
 
         self.caixa = caixa_disponivel
 
-    def _run(self, interval: List[str], capital: float) -> List[Dict]:
+    def run(self, interval: List[str], capital: float) -> List[Dict]:
         """
         Executa a simulação para todas as configurações do ranker.
 
@@ -271,7 +271,7 @@ def test_runner():
     )
 
     try:
-        results = runner._run(interval, capital)
+        results = runner.run(interval, capital)
 
         assert len(results) > 0, "Nenhum resultado gerado"
         print("Execução do Runner bem sucedida")
