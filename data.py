@@ -67,22 +67,6 @@ class Yahoo:
         return info_data
 
     @classmethod
-    def download_historical_data(cls, assets: List[str], start_date: str, end_date: str):
-        '''Download historical data for a specified date range'''
-        tickers = yf.Tickers(assets)
-
-        for asset in tickers.tickers.keys():
-            asset_data = tickers.tickers[asset].history(
-                start=start_date, end=end_date)
-
-            if not asset_data.empty:
-                asset_data_reset = asset_data.reset_index()
-                asset_data_reset['Date'] = asset_data_reset['Date'].astype(str)
-
-                csv_file_name = f"{asset}.csv"
-                save_dataframe(csv_file_name, asset_data_reset, cls.subdir)
-
-    @classmethod
     def load_dataframe(cls, file_name: str) -> pd.DataFrame:
         '''Load data from a CSV file'''
         return open_dataframe(file_name, cls.subdir)

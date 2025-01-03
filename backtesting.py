@@ -14,24 +14,32 @@ from runner import Runner
 class Backtesting:
     """ Classe para realizar backtesting de uma estratégia de investimento. """
 
-    def __init__(self, runner_cls, ranker_cls, capital: float, data: MemData):
+    def __init__(self, ranker_cls, capital: float, interval: List[str]):
         """
         Inicializa o backtesting com as informações básicas.
 
-        :param runner_cls: Classe do Runner para criar instâncias.
         :param ranker_cls: Classe do Ranker para criar instâncias.
         :param capital: Capital inicial para todas as simulações.
-        :param data: Instância de MemData com os dados históricos e infos.
+        :param interval: Lista com a data inicial e final da simulação.
         """
-        self.runner_cls = runner_cls
         self.ranker_cls = ranker_cls
         self.capital = capital
-        self.data = data
+        self.interval = interval
+        self.runner_cls = Runner
+        self.data = MemData(interval)
+
+    def _gen_ranker_confs(self, ranker_config):
+        ranker_confs = []
+        for key, value in ranker_config.items():
+            if isinstance(value, int):
+                value = [value]
+            for item in value:
+                ranker_confs.append({key: item})
+        return ranker_confs
 
     def run(
         self,
         parameter_grid: Dict[str, List[float]],
-        interval: List[str],
         ranker_grid: Dict[str, List[float]],
         n_jobs: int = -1
     ) -> pd.DataFrame:
@@ -40,9 +48,8 @@ class Backtesting:
 
         :param parameter_grid: Dicionário com os parâmetros a variar e seus valores.
                                Exemplo: {'profit': [0.05, 0.1], 'loss': [0.05, 0.1]}.
-        :param ranker_grid: Dicionário com os parâmetros do ranker a variar.
+        :param ranker_grid: Dicionário com os parâmetros do rankera variar.
                             Exemplo: {'SEED': [0, 1, 42]}.
-        :param interval: Lista com duas strings representando a data de início e fim do backtesting.
         :param n_jobs: Número de processos paralelos (-1 usa todos os núcleos disponíveis).
         :return: DataFrame com os resultados das simulações.
         """
@@ -63,14 +70,22 @@ class Backtesting:
                 loss=runner_config['loss'],
                 diversification=runner_config['diversification'],
                 ranker=self.ranker_cls,
-                ranker_ranges=ranker_config,
                 data=self.data
             )
 
             try:
-                result = runner.run(interval=interval, capital=self.capital)
 
-                return self._evaluate_results(result, interval, runner_config, ranker_config)
+                ranker_confs = self._gen_ranker_confs(ranker_config)
+                results_runner = []
+
+                for ranker_conf in ranker_confs:
+                    # {'SEED': 0}
+                    result = runner.single_run(
+                        self.interval, ranker_conf, self.capital)
+
+                    results_runner.append(result)
+
+                return self._evaluate_results(results_runner, runner_config, ranker_config)
             except Exception as e:
                 print(f"Erro ao rodar configuração {
                       runner_config} com ranker {ranker_config}: {e}")
@@ -85,13 +100,12 @@ class Backtesting:
         return pd.DataFrame(results)
 
     def _evaluate_results(
-        self, result: List[Dict], interval: List[str], runner_params: Dict, ranker_params: Dict
+        self, result: List[Dict], runner_params: Dict, ranker_params: Dict
     ) -> Dict:
         """
         Calcula métricas de performance da simulação.
 
         :param result: Resultado da simulação (lista de dicionários).
-        :param interval: Lista com duas strings representando a data de início e fim do backtesting.
         :param runner_params: Parâmetros usados na simulação para o Runner.
         :param ranker_params: Parâmetros usados na simulação para o Ranker.
         :return: Dicionário com as métricas calculadas.
@@ -103,23 +117,22 @@ class Backtesting:
         ) if result else 0
 
         retorno_total = (caixa_final + portfolio_value) / self.capital - 1
-        retorno_total = round(retorno_total, 4) * 100
+        retorno_total = round(retorno_total * 100, 2)
 
         return {
-            'intervalo': f"{interval[0]} - {interval[1]}",
+            'intervalo': f"{self.interval[0]} - {self.interval[1]}",
             **runner_params,
             **ranker_params,
             'caixa_final': caixa_final,
             'portfolio_value': portfolio_value,
-            'retorno_total': f"{retorno_total}%"
+            'retorno_total': f"{retorno_total:.2f}%"
         }
 
 
 if __name__ == "__main__":
     interval = ["2024-01-10", "2024-11-10"]
-    data = MemData(interval)
 
-    backtester = Backtesting(Runner, RandomRanker, capital=10000, data=data)
+    backtester = Backtesting(RandomRanker, capital=10000, interval=interval)
 
     parameter_grid = {
         'profit': [0.06, 0.1],
@@ -129,7 +142,7 @@ if __name__ == "__main__":
 
     ranker_ranges = {"SEED": [0, 1, 42]}
 
-    results = backtester.run(parameter_grid, interval,
-                             ranker_grid=ranker_ranges, n_jobs=-1)
+    results = backtester.run(
+        parameter_grid, ranker_grid=ranker_ranges, n_jobs=-1)
 
     print(results)

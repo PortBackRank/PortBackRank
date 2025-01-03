@@ -3,7 +3,6 @@
 '''
 
 from typing import List, Dict, Type
-import itertools
 
 from datetime import datetime
 import pandas as pd
@@ -12,7 +11,7 @@ from data import MemData
 
 
 class Runner:
-    def __init__(self, profit, loss, diversification, ranker: Type[Ranker], ranker_ranges, data: MemData):
+    def __init__(self, profit, loss, diversification, ranker: Type[Ranker], data: MemData):
         """
         Inicializa a classe Runner com os parâmetros fornecidos.
 
@@ -20,15 +19,12 @@ class Runner:
         :param loss: Limite de perda para venda (porcentagem).
         :param diversification: Porcentagem máxima para cada setor (porcentagem).
         :param ranker: Classe do ranker a ser utilizada.
-        :param ranker_ranges: Faixas de valores para cada parâmetro do ranker.
-                              Exemplo: {'SEED': [0, 1, 42]}
         """
         self.profit = profit
         self.loss = loss
         self.diversification = diversification
 
         self.ranker = ranker
-        self.ranker_ranges = ranker_ranges
 
         # representando as ações compradas (símbolo, quantidade, preço médio, etc.)
         self.__portfolio: List[Dict[str, float]] = []
@@ -37,16 +33,7 @@ class Runner:
 
         self.caixa = 0
 
-    def _gen_ranker_confs(self, ranker_ranges):
-        ranker_confs = []
-        for key, value in ranker_ranges.items():
-            if isinstance(value, int):
-                value = [value]
-            for item in value:
-                ranker_confs.append({key: item})
-        return ranker_confs
-
-    def _single_run(self, interval: List[str], ranker_conf: Dict[str, float], capital: float) -> Dict:
+    def single_run(self, interval: List[str], ranker_conf: Dict[str, float], capital: float) -> Dict:
         """
         Executa uma simulação para uma única configuração de ranker, 
         mantendo o portfólio com a quantidade e o preço de compra dos ativos.
@@ -138,8 +125,7 @@ class Runner:
         :param date: Data atual para comprar ativos.
         :param ranker: Instância do ranker a ser utilizado para definir os ativos.
         """
-        ranked_symbols = ranker.rank()
-        # ranked_symbols = ranker.rank(date)
+        ranked_symbols = ranker.rank(date)
         if not ranked_symbols:
             return
 
@@ -228,52 +214,24 @@ class Runner:
 
         self.caixa = caixa_disponivel
 
-    def run(self, interval: List[str], capital: float) -> List[Dict]:
-        """
-        Executa a simulação para todas as configurações do ranker.
-
-        :param interval: Intervalo de datas para a simulação.
-        :param capital: Capital inicial.        
-        :return: Lista com os resultados de todas as simulações.
-        """
-        ranker_confs = self._gen_ranker_confs(self.ranker_ranges)
-        results = []
-
-        start_time = datetime.now()
-        for ranker_conf in ranker_confs:
-            # {'SEED': 0}
-            result = self._single_run(interval, ranker_conf, capital)
-
-            results.append(result)
-
-        end_time = datetime.now()
-        print(f"Total time for running all configurations: {
-              end_time - start_time}")
-
-        return results
-
 
 def test_runner():
     interval = ["2024-06-10", "2024-11-10"]
     capital = 10000
-    ranker_ranges = {"SEED": [0, 1, 42]}
 
-    # ranker_ranges = {"WINDOW_SIZE": [10, 20, 30]}
+    ranker_config = {"SEED": 42}
 
     runner = Runner(
         profit=0.1,
         loss=0.05,
         diversification=0.2,
         ranker=RandomRanker,
-        # ranker=MovingAverageRanker,
-        ranker_ranges=ranker_ranges,
         data=MemData(interval)
     )
 
     try:
-        results = runner.run(interval, capital)
+        result = runner.single_run(interval, ranker_config, capital)
 
-        assert len(results) > 0, "Nenhum resultado gerado"
         print("Execução do Runner bem sucedida")
     except Exception as e:
         print(f"Erro durante o teste: {e}")
