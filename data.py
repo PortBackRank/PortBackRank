@@ -4,6 +4,7 @@
 Data class
 '''
 
+import concurrent.futures
 from datetime import datetime
 from typing import Dict, List, Optional
 
@@ -21,13 +22,12 @@ class Yahoo:
     subdir = SUB_DIR_HIST
 
     @classmethod
-    def download_histories(cls, assets: List[str]):
+    def download_histories(cls, assets: List[str], end_date: Optional[str] = None) -> None:
         '''Download historical data for all assets in the list'''
         tickers = yf.Tickers(assets)
 
         with tqdm(total=len(tickers.tickers.keys()), desc="Downloading data", unit="asset") as pbar:
-
-            for asset in tickers.tickers.keys():
+            def download_asset_data(asset):
                 asset_data = tickers.tickers[asset].history(period="max")
 
                 if not asset_data.empty:
@@ -40,9 +40,12 @@ class Yahoo:
                     save_json(json_file_name, data_dict, cls.subdir)
 
                     csv_file_name = f"{asset}.csv"
-                    save_dataframe(
-                        csv_file_name, asset_data_reset, cls.subdir)
+                    save_dataframe(csv_file_name, asset_data_reset, cls.subdir)
+
                 pbar.update(1)
+
+            with concurrent.futures.ThreadPoolExecutor() as executor:
+                executor.map(download_asset_data, tickers.tickers.keys())
 
     @classmethod
     def get_asset_data(cls, assets: List[str]) -> List[pd.DataFrame]:
@@ -81,6 +84,9 @@ class Yahoo:
 class Data(Yahoo):
     '''Data management'''
 
+    def __init__(self, end_date: Optional[str] = None):
+        self.end_date = end_date
+
     @classmethod
     def update_symbols(cls, update: bool = False) -> None:
         """Updates the list of symbols and removes those without desired information."""
@@ -97,9 +103,9 @@ class Data(Yahoo):
         return cls.get_info(assets=symbols)
 
     @classmethod
-    def download_history(cls, assets: List[str]) -> None:
+    def download_history(cls, assets: List[str], end_date: Optional[str] = None) -> None:
         """Downloads historical data for the given list of assets."""
-        cls.download_histories(assets=assets)
+        cls.download_histories(assets=assets, end_date=end_date)
 
     @classmethod
     def fetch_history(cls, assets: List[str]) -> List[dict]:
@@ -146,7 +152,7 @@ class Data(Yahoo):
         start_date_dt = pd.to_datetime(start_date, utc=True).tz_localize(None)
         end_date_dt = pd.to_datetime(end_date, utc=True).tz_localize(None)
 
-        columns_to_return = ["Date", "Volume"]
+        columns_to_return = ["Volume"]
         if column_filter in {"Close", None}:
             columns_to_return.append("Close")
         elif column_filter != "None":
@@ -166,11 +172,13 @@ class Data(Yahoo):
             if filtered_data.empty:
                 continue
 
+            filtered_data.set_index("Date", inplace=True)
+
             filtered_data = filtered_data[columns_to_return]
 
             result.append({
                 "symbol": symbol,
-                "data": filtered_data.reset_index(drop=True)
+                "data": filtered_data
             })
 
         return result
@@ -252,17 +260,14 @@ def teste():
     # Data.update_symbols(update=True)
 
     print('--------------Listando ativos----------------')
-    ativos = Data.list_symbols()
-    print(ativos)
+    assets = Data.list_symbols()
+    print(assets)
 
     print('--------Baixando histórico de ativos (deve descomentar a linha abaixo)---------')
-    # Data.download_history(assets=Data.list_symbols())
+    # Data.download_history(assets)
 
     print('--------------Buscando histórico de 10 ativos----------------')
-    print(Data.fetch_history(assets=ativos[:10]))
-
-    print('--------------Baixando historico de um ativo----------------')
-    print(Data.download_history(assets=['EQPA3.SA']))
+    print(Data.fetch_history(assets=assets[:10]))
 
     print('--------------Buscando historico de um ativo----------------')
     print(Data.fetch_history(assets=['EQPA3.SA']))
@@ -283,4 +288,4 @@ def teste_mem_data():
 
 
 if __name__ == "__main__":
-    teste_mem_data()
+    teste()

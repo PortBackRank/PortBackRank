@@ -7,7 +7,7 @@ from itertools import product
 from joblib import Parallel, delayed
 import pandas as pd
 from data import MemData
-from ranker import RandomRanker
+from ranker import MARanker, RandomRanker
 from runner import Runner
 
 
@@ -27,15 +27,6 @@ class Backtesting:
         self.interval = interval
         self.runner_cls = Runner
         self.data = MemData(interval)
-
-    def _gen_ranker_confs(self, ranker_config):
-        ranker_confs = []
-        for key, value in ranker_config.items():
-            if isinstance(value, int):
-                value = [value]
-            for item in value:
-                ranker_confs.append({key: item})
-        return ranker_confs
 
     def run(
         self,
@@ -75,15 +66,11 @@ class Backtesting:
 
             try:
 
-                ranker_confs = self._gen_ranker_confs(ranker_config)
                 results_runner = []
 
-                for ranker_conf in ranker_confs:
-                    # {'SEED': 0}
-                    result = runner.single_run(
-                        self.interval, ranker_conf, self.capital)
-
-                    results_runner.append(result)
+                result = runner.single_run(
+                    self.interval, ranker_config, self.capital)
+                results_runner.append(result)
 
                 return self._evaluate_results(results_runner, runner_config, ranker_config)
             except Exception as e:
@@ -110,7 +97,7 @@ class Backtesting:
         :param ranker_params: Parâmetros usados na simulação para o Ranker.
         :return: Dicionário com as métricas calculadas.
         """
-        caixa_final = result[-1]['caixa'] if result else 0
+        caixa_final = result[-1]['balance'] if result else 0
 
         portfolio_value = sum(
             item['quantidade'] * item['preco_compra'] for item in result[-1]['portfolio']
@@ -129,7 +116,7 @@ class Backtesting:
         }
 
 
-if __name__ == "__main__":
+def test_bt_with_random():
     interval = ["2024-01-10", "2024-11-10"]
 
     backtester = Backtesting(RandomRanker, capital=10000, interval=interval)
@@ -146,3 +133,26 @@ if __name__ == "__main__":
         parameter_grid, ranker_grid=ranker_ranges, n_jobs=-1)
 
     print(results)
+
+
+def test_bt_with_ma():
+    interval = ["2024-01-10", "2024-04-10"]
+
+    parameters = {"short": [10, 20], "long": [50, 100]}
+
+    backtester = Backtesting(MARanker, capital=10000, interval=interval)
+
+    parameter_grid = {
+        'profit': [0.06, 0.1],
+        'loss': [0.04],
+        'diversification': [0.2]
+    }
+
+    results = backtester.run(
+        parameter_grid, ranker_grid=parameters, n_jobs=-1)
+
+    print(results)
+
+
+if __name__ == "__main__":
+    test_bt_with_ma()

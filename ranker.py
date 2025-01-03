@@ -82,5 +82,63 @@ def test_random_ranker():
     print("Símbolos ranqueados aleatoriamente:", ranked_symbols)
 
 
+class MARanker(Ranker):
+    """Mean Reversion Ranker class"""
+
+    def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
+        super().__init__(parameters, interval, data)
+        self._short = self.parameters['short']
+        self._long = self.parameters['long']
+
+    def rank(self, date: str = None) -> List[str]:
+        dict_data = self.data.get_all_history()
+        ranked_symbols = []
+        for symbol, df_data in dict_data.items():
+            # Calculate means
+            short = 'w' + str(self._short)
+            long = 'w' + str(self._long)
+            df_data[short] = df_data['Close'].rolling(self._short).mean()
+            df_data[long] = df_data['Close'].rolling(self._long).mean()
+            # Default strength is negative infinity
+            strength = float('-inf')
+
+            if date in df_data.index:
+                idx = df_data.index.get_loc(date)
+
+                if isinstance(idx, slice):
+                    idx = idx.start  # ou idx.stop
+
+                # Verifique se o índice é válido (>= 1)
+                if idx >= 1:
+                    latest = df_data.iloc[idx]
+                    prev = df_data.iloc[idx-1]
+                    # Check for mean reversion
+                    if prev[short] <= prev[long] and latest[short] > latest[long]:
+                        # Calculate strength
+                        strength = (latest[short] / latest[long] - 1) * 100
+            else:
+                continue
+
+            ranked_symbols.append((symbol, strength))
+
+        ranked_symbols.sort(key=lambda x: x[1], reverse=True)
+        return [x[0] for x in ranked_symbols]
+
+
+def test_ma_ranker():
+    """
+    Função simples para testar o funcionamento do MARanker.
+    """
+    interval = ["2024-01-10", "2024-11-10"]
+    data = MemData(interval=interval)
+
+    parameters = {"short": 20, "long": 50}
+
+    ranker = MARanker(data=data, parameters=parameters)
+    ranked_symbols = ranker.rank(date="2024-05-29")
+
+    print("Símbolos ranqueados por Mean Reversion:", ranked_symbols)
+
+
 if __name__ == "__main__":
-    test_random_ranker()
+    test_ma_ranker()

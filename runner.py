@@ -6,7 +6,7 @@ from typing import List, Dict, Type
 
 from datetime import datetime
 import pandas as pd
-from ranker import Ranker, RandomRanker
+from ranker import MARanker, Ranker, RandomRanker
 from data import MemData
 
 
@@ -31,7 +31,7 @@ class Runner:
 
         self.data = data
 
-        self.caixa = 0
+        self.balance = 0
 
     def single_run(self, interval: List[str], ranker_conf: Dict[str, float], capital: float) -> Dict:
         """
@@ -48,14 +48,14 @@ class Runner:
 
         start_date, end_date = interval
 
-        self.caixa = capital
+        self.balance = capital
         self.__portfolio = []
 
         for date in pd.date_range(start_date, end_date).strftime('%Y-%m-%d'):
             self._sell(date)
             self._buy(date, ranker)
 
-        return {'caixa': self.caixa, 'portfolio': self.__portfolio}
+        return {'balance': self.balance, 'portfolio': self.__portfolio}
 
     def _sell(self, date: str):
         """
@@ -73,7 +73,7 @@ class Runner:
             historico = dados_historicos.get(simbolo)
             if historico is not None and not historico.empty:
                 historico_data = historico.loc[
-                    historico['Date'].dt.date == datetime.strptime(
+                    historico.index.date == datetime.strptime(
                         date, '%Y-%m-%d').date()
                 ]
                 if not historico_data.empty:
@@ -101,7 +101,7 @@ class Runner:
             if percentual_variacao >= self.profit or percentual_variacao <= -self.loss:
                 quantidade_vender = min(quantidade, volume_diario)
                 valor_venda = preco_atual * quantidade_vender
-                self.caixa += valor_venda
+                self.balance += valor_venda
 
                 if quantidade > quantidade_vender:
                     novos_portfolio.append({
@@ -125,7 +125,9 @@ class Runner:
         :param date: Data atual para comprar ativos.
         :param ranker: Instância do ranker a ser utilizado para definir os ativos.
         """
+        # start_time = datetime.now()
         ranked_symbols = ranker.rank(date)
+        # print(f"Tempo por RANK: {datetime.now() - start_time}")
         if not ranked_symbols:
             return
 
@@ -153,10 +155,10 @@ class Runner:
                 setor_percentual[setor] = setor_percentual.get(
                     setor, 0) + (valor_item / total_portfolio_value)
 
-        caixa_disponivel = self.caixa
+        balance_disponivel = self.balance
 
         for simbolo in ranked_symbols:
-            if caixa_disponivel <= 2:  # Valor mínimo para comprar uma ação, mudar depois
+            if balance_disponivel <= 2:  # Valor mínimo para comprar uma ação, mudar depois
                 break
 
             ativo_info = self.data.get_info(simbolo)
@@ -166,7 +168,7 @@ class Runner:
             setor = ativo_info.iloc[0]['sector']
 
             max_investimento_setor = (
-                caixa_disponivel * self.diversification if setor not in setor_percentual
+                balance_disponivel * self.diversification if setor not in setor_percentual
                 else total_portfolio_value * self.diversification -
                 setor_percentual.get(setor, 0) * total_portfolio_value
             )
@@ -176,7 +178,7 @@ class Runner:
                 continue
 
             historico_data = historico.loc[
-                historico['Date'].dt.date == datetime.strptime(
+                historico.index.date == datetime.strptime(
                     date, '%Y-%m-%d').date()
             ]
 
@@ -190,7 +192,7 @@ class Runner:
             if pd.isna(preco_atual) or pd.isna(volume_diario):
                 continue
 
-            quantidade_max = int(caixa_disponivel // preco_atual)
+            quantidade_max = int(balance_disponivel // preco_atual)
             quantidade_setor = int(max_investimento_setor // preco_atual)
             quantidade_comprar = min(
                 quantidade_max, quantidade_setor, volume_diario)
@@ -206,13 +208,13 @@ class Runner:
                 'sector': setor
             })
 
-            caixa_disponivel -= quantidade_comprar * preco_atual
+            balance_disponivel -= quantidade_comprar * preco_atual
             total_portfolio_value += quantidade_comprar * preco_atual
             setor_percentual[setor] = setor_percentual.get(setor, 0) + (
                 quantidade_comprar * preco_atual / total_portfolio_value
             )
 
-        self.caixa = caixa_disponivel
+        self.balance = balance_disponivel
 
 
 def test_runner():
@@ -237,5 +239,26 @@ def test_runner():
         print(f"Erro durante o teste: {e}")
 
 
+def test_runner_ma():
+    interval = ["2024-06-10", "2024-08-10"]
+
+    ranker_config = {"short": 20, "long": 50}
+
+    runner = Runner(
+        profit=0.1,
+        loss=0.05,
+        diversification=0.2,
+        ranker=MARanker,
+        data=MemData(interval)
+    )
+
+    try:
+        result = runner.single_run(interval, ranker_config, capital=10000)
+
+        print("Execução do Runner bem sucedida")
+    except Exception as e:
+        print(f"Erro durante o teste: {e}")
+
+
 if __name__ == "__main__":
-    test_runner()
+    test_runner_ma()

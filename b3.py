@@ -16,7 +16,6 @@ from files import open_json, save_dataframe, save_json
 
 SUB_DIR_HIST = "historical"
 TIMEOUT = 1
-MAX_ATTEMPTS = 5
 
 URL_QUOTE = 'https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_M'
 
@@ -95,7 +94,7 @@ class AssetHistory:
         item_list = open_json(cls._recent_assets_file, SUB_DIR_B3)
 
         if item_list is None or len(item_list) == 0 or force_update:
-            symbols = cls.download_symbols()
+            symbols = cls.download_symbols()  # 2.2s
             cls.download_info(symbols)
 
         item_list = open_json(cls._recent_assets_file, SUB_DIR_B3)
@@ -114,39 +113,25 @@ class AssetHistory:
 
     @classmethod
     def download_info(cls, symbols: List[str]) -> List[str]:
-        '''Download information for the given list of assets'''
-        desired_fields = [
-            'sector', 'industry']
-
-        print(f"Downloading information for {len(symbols)}")
-
+        """Download information for the given list of assets."""
+        desired_fields = {'sector', 'industry'}
         asset_info = yf.Tickers(symbols)
         assets_with_info = []
 
-        with tqdm(total=len(asset_info.tickers.keys()),
-                  desc="Downloading information", unit="asset") as pbar:
-
-            for asset in asset_info.tickers.keys():
-                time.sleep(0.18)
+        with tqdm(total=len(asset_info.tickers), desc="Downloading information", unit="asset") as pbar:
+            for asset, ticker_data in asset_info.tickers.items():
+                time.sleep(0.1)
                 try:
-                    asset_info_dict = asset_info.tickers[asset].info
-
+                    asset_info_dict = ticker_data.info
                     filtered_info = {field: asset_info_dict.get(
                         field) for field in desired_fields}
 
-                    if all(filtered_info.get(field) not in [None, '']
-                           and pd.notna(filtered_info.get(field)) for field in desired_fields):
-
+                    if all(filtered_info[field] for field in desired_fields):
                         assets_with_info.append(asset)
-                        json_file_name = f"{asset}_info.json"
-
-                        save_json(json_file_name, filtered_info, cls.subdir)
 
                         csv_file_name = f"{asset}_info.csv"
                         save_dataframe(csv_file_name, pd.DataFrame(
                             [filtered_info]), cls.subdir)
-                    else:
-                        print(f"Skipping {asset}, incomplete information")
 
                     pbar.update(1)
                 except (requests.exceptions.RequestException, KeyError, ValueError) as e:
