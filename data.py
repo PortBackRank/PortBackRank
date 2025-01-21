@@ -228,15 +228,6 @@ class MemData:
         """
         return list(self.assets)
 
-    def get_info(self, asset: str) -> pd.DataFrame:
-        """
-        Returns the information for an asset.
-
-        :param asset: The asset symbol.
-        :return: DataFrame with the asset's information or None if the asset is not in memory.
-        """
-        return self.info_data.get(asset)
-
     def get_all_history(self) -> Dict[str, pd.DataFrame]:
         """
         Returns all stored historical data.
@@ -277,11 +268,10 @@ def teste_mem_data():
     interval = ["2024-01-10", "2024-11-10"]
     mem_data = MemData(interval)
 
-    print("Informações de PETR4.SA:")
-    print(mem_data.get_info('PETR4.SA'))
-
     print("Todos os dados históricos:")
-    # print(mem_data.get_all_history())
+    todas_info = mem_data.get_all_history()
+
+    print(todas_info.get('EQPA3.SA'))
 
     print("Todas as informações:")
     print(mem_data.get_all_info())

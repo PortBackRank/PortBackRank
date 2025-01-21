@@ -117,13 +117,13 @@ class Backtesting:
 
 
 def test_bt_with_random():
-    interval = ["2024-01-10", "2024-11-10"]
+    interval = ["2024-01-01", "2024-12-31"]
 
     backtester = Backtesting(RandomRanker, capital=10000, interval=interval)
 
     parameter_grid = {
         'profit': [0.06, 0.1],
-        'loss': [0.04, 0.05],
+        'loss': [0.04],
         'diversification': [0.2]
     }
 
@@ -136,7 +136,7 @@ def test_bt_with_random():
 
 
 def test_bt_with_ma():
-    interval = ["2024-01-10", "2024-04-10"]
+    interval = ["2024-01-01", "2024-12-31"]
 
     parameters = {"short": [10, 20], "long": [50, 100]}
 
@@ -155,4 +155,4 @@ def test_bt_with_ma():
 
 
 if __name__ == "__main__":
-    test_bt_with_ma()
+    test_bt_with_random()

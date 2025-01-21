@@ -68,7 +68,6 @@ class Runner:
 
         historicos_ativos = {}
 
-        # TODO: Pensar em uma forma de otimizar isso
         for simbolo in [item['simbolo'] for item in self.__portfolio]:
             historico = dados_historicos.get(simbolo)
             if historico is not None and not historico.empty:
@@ -125,13 +124,13 @@ class Runner:
         :param date: Data atual para comprar ativos.
         :param ranker: Instância do ranker a ser utilizado para definir os ativos.
         """
-        # start_time = datetime.now()
         ranked_symbols = ranker.rank(date)
-        # print(f"Tempo por RANK: {datetime.now() - start_time}")
+
         if not ranked_symbols:
             return
 
         dados_historicos = self.data.get_all_history()
+        todas_infos = self.data.get_all_info()
 
         total_portfolio_value = sum(
             item['preco_compra'] * item['quantidade'] for item in self.__portfolio
@@ -161,8 +160,8 @@ class Runner:
             if balance_disponivel <= 2:  # Valor mínimo para comprar uma ação, mudar depois
                 break
 
-            ativo_info = self.data.get_info(simbolo)
-            if ativo_info.empty:
+            ativo_info = todas_infos.get(simbolo)
+            if ativo_info is None or ativo_info.empty:
                 continue
 
             setor = ativo_info.iloc[0]['sector']
