@@ -2,3 +2,4 @@ pandas==2.2.2
 requests==2.32.3
 yfinance==0.2.50
 tqdm==4.67.1
+joblib==1.4.2
