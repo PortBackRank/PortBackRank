@@ -33,6 +33,8 @@ class Runner:
 
         self.balance = 0
 
+        self.timeline = []
+
     def single_run(self, interval: List[str], ranker_conf: Dict[str, float], capital: float) -> Dict:
         """
         Executa uma simulação para uma única configuração de ranker, 
@@ -50,12 +52,25 @@ class Runner:
 
         self.balance = capital
         self.__portfolio = []
+        shared_data = {}
 
         for date in pd.date_range(start_date, end_date).strftime('%Y-%m-%d'):
             self._sell(date)
             self._buy(date, ranker)
+            self._record_state(date)
 
-        return {'balance': self.balance, 'portfolio': self.__portfolio}
+        shared_data = {
+            'timeline': self.timeline,
+            'profit': self.profit,
+            'loss': self.loss,
+            'diversification': self.diversification
+        }
+
+        return {
+            'balance': self.balance,
+            'portfolio': self.__portfolio,
+            'shared_data': shared_data
+        }
 
     def _sell(self, date: str):
         """
@@ -214,6 +229,27 @@ class Runner:
             )
 
         self.balance = balance_disponivel
+
+    def _record_state(self, date):
+        """
+        Grava o estado completo do portfólio e saldo em uma data específica,
+
+        :param date: Data atual da simulação.
+        """
+        self.timeline.append({
+            'date': date,
+            'balance': float(self.balance),
+            'portfolio': [
+                {
+                    'simbolo': item['simbolo'],
+                    'quantidade': int(item['quantidade']),
+                    'preco_compra': float(item['preco_compra']),
+                    'data_compra': item['data_compra'],
+                    'sector': item['sector']
+                }
+                for item in self.__portfolio
+            ]
+        })
 
 
 def test_runner():
