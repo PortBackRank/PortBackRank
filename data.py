@@ -200,24 +200,34 @@ class MemData:
         """
         Loads historical data and asset information into memory.
 
-        :param assets: List of assets to load. If empty, loads all assets.
-        :param data: Instance of the Data class to fetch the data.
-        :param interval: List of two strings representing the start and end dates
+        :param start_date: Start date for the data.
+        :param end_date: End date for the data.
         """
-
         if end_date is None:
             end_date = datetime.today().strftime('%Y-%m-%d')
+
+        print(f"Carregando dados de {start_date} até {end_date}...")
 
         historical_data = self.data.get_history_interval(
             assets=self.assets, start_date=start_date, end_date=end_date)
 
+        dias = 0
         for asset_data in historical_data:
-            asset = asset_data["symbol"]
-            self.history_data[asset] = asset_data["data"]
+            dias_atual = len(asset_data["data"])
+            dias = max(dias, dias_atual)
 
-        info_data = self.data.get_asset_info(self.assets)
-        for asset, data in zip(self.assets, info_data):
-            self.info_data[asset] = data
+        threshold = dias * 0.95
+
+        self.assets = [asset_data["symbol"] for asset_data in historical_data
+                       if len(asset_data["data"]) >= threshold]
+
+        filtered_info_data = self.data.get_asset_info(self.assets)
+        self.info_data = {asset: data for asset,
+                          data in zip(self.assets, filtered_info_data)}
+
+        self.history_data = {asset_data["symbol"]: asset_data["data"] for asset_data in historical_data
+                             if asset_data["symbol"] in self.assets}
+
         print("Data loaded successfully.")
 
     def get_assets(self) -> List[str]:
@@ -269,13 +279,13 @@ def teste_mem_data():
     mem_data = MemData(interval)
 
     print("Todos os dados históricos:")
-    todas_info = mem_data.get_all_history()
+    # todas_info = mem_data.get_all_history()
 
-    print(todas_info.get('EQPA3.SA'))
+    # print(todas_info.get('EQPA3.SA'))
 
     print("Todas as informações:")
-    print(mem_data.get_all_info())
+    # print(mem_data.get_all_info())
 
 
 if __name__ == "__main__":
-    teste()
+    teste_mem_data()

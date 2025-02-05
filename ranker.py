@@ -87,8 +87,9 @@ class MARanker(Ranker):
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
         super().__init__(parameters, interval, data)
-        self._short = self.parameters['short']
-        self._long = self.parameters['long']
+        windows = self.parameters.get("window")
+        self._short = windows[0]
+        self._long = windows[1]
 
     def rank(self, date: str = None) -> List[str]:
         dict_data = self.data.get_all_history()
@@ -132,7 +133,7 @@ def test_ma_ranker():
     interval = ["2024-01-10", "2024-11-10"]
     data = MemData(interval=interval)
 
-    parameters = {"short": 20, "long": 50}
+    parameters = {"window": [9, 21]}
 
     ranker = MARanker(data=data, parameters=parameters)
     ranked_symbols = ranker.rank(date="2024-05-29")

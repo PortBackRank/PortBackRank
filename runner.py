@@ -54,6 +54,9 @@ class Runner:
         self.__portfolio = []
         shared_data = {}
 
+        self.sell_log = []
+        self.buy_log = []
+
         for date in pd.date_range(start_date, end_date).strftime('%Y-%m-%d'):
             self._sell(date)
             self._buy(date, ranker)
@@ -69,7 +72,9 @@ class Runner:
         return {
             'balance': self.balance,
             'portfolio': self.__portfolio,
-            'shared_data': shared_data
+            'shared_data': shared_data,
+            'sell_log': self.sell_log,
+            'buy_log': self.buy_log
         }
 
     def _sell(self, date: str):
@@ -116,6 +121,16 @@ class Runner:
                 quantidade_vender = min(quantidade, volume_diario)
                 valor_venda = preco_atual * quantidade_vender
                 self.balance += valor_venda
+
+                self.sell_log.append({
+                    'data_venda': date,
+                    'simbolo': simbolo,
+                    'quantidade_vendida': quantidade_vender,
+                    'preco_compra': preco_compra,
+                    'preco_venda': preco_atual,
+                    'lucro_prejuizo': (preco_atual - preco_compra) * quantidade_vender,
+                    'data_compra': data_compra
+                })
 
                 if quantidade > quantidade_vender:
                     novos_portfolio.append({
@@ -214,6 +229,14 @@ class Runner:
             if quantidade_comprar <= 0:
                 continue
 
+            self.buy_log.append({
+                'data_compra': date,
+                'simbolo': simbolo,
+                'quantidade': quantidade_comprar,
+                'preco_compra': preco_atual,
+                'sector': setor
+            })
+
             self.__portfolio.append({
                 'simbolo': simbolo,
                 'quantidade': quantidade_comprar,
@@ -275,9 +298,9 @@ def test_runner():
 
 
 def test_runner_ma():
-    interval = ["2024-06-10", "2024-08-10"]
+    interval = ["2024-04-10", "2024-08-10"]
 
-    ranker_config = {"short": 20, "long": 50}
+    ranker_config = {"window": [9, 21]}
 
     runner = Runner(
         profit=0.1,
