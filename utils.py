@@ -67,7 +67,7 @@ def generate_performance_plot(directory: str = "results", output_prefix: str = "
 
                     interval = range(len(allocation_over_time))
 
-                    plt.plot(interval[1:], allocation_over_time[1:], label=f"Profit={profit}, Loss={loss}, "
+                    plt.plot(interval[2:], allocation_over_time[2:], label=f"Profit={profit}, Loss={loss}, "
                              f"Div={div}, Short={short}, Long={long}")
 
             except FileNotFoundError:
@@ -77,7 +77,7 @@ def generate_performance_plot(directory: str = "results", output_prefix: str = "
     plt.title("Alocação em Ativos por Configuração")
     plt.xlabel("Período")
     plt.ylabel("Valor (R$)")
-    plt.legend(loc='lower right', fontsize=8)
+    plt.legend(loc='upper left', fontsize=8)
     plt.grid(True)
     plt.tight_layout()
 

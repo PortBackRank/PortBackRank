@@ -166,7 +166,7 @@ def test_bt_with_random():
 
 
 def test_bt_with_ma():
-    interval = ["2024-01-01", "2024-01-10"]
+    interval = ["2024-01-01", "2024-12-31"]
 
     parameters = {"window": [[9, 21], [20, 50], [50, 200]]}
 

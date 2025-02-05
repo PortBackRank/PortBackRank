@@ -1,0 +1,5042 @@
+[
+    {
+        "data_venda": "2024-01-04",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 62,
+        "preco_compra": 8.231691360473633,
+        "preco_venda": 7.799959182739258,
+        "lucro_prejuizo": -26.76739501953125,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-08",
+        "simbolo": "B1IL34.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 11.420000076293944,
+        "preco_venda": 10.75,
+        "lucro_prejuizo": -1.340000152587887,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-08",
+        "simbolo": "I1QY34.SA",
+        "quantidade_vendida": 9,
+        "preco_compra": 11.699999809265137,
+        "preco_venda": 11.039999961853027,
+        "lucro_prejuizo": -5.939998626708984,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-10",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 2.0,
+        "preco_venda": 1.8899999856948853,
+        "lucro_prejuizo": -0.11000001430511475,
+        "data_compra": "2024-01-08"
+    },
+    {
+        "data_venda": "2024-01-11",
+        "simbolo": "K1EL34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 138.41323852539062,
+        "preco_venda": 131.19921875,
+        "lucro_prejuizo": -7.214019775390625,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-11",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.950000047683716,
+        "preco_venda": 1.8200000524520876,
+        "lucro_prejuizo": -0.12999999523162842,
+        "data_compra": "2024-01-04"
+    },
+    {
+        "data_venda": "2024-01-12",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 750,
+        "preco_compra": 1.909999966621399,
+        "preco_venda": 1.7899999618530271,
+        "lucro_prejuizo": -90.00000357627886,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-16",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 8.154939651489258,
+        "preco_venda": 7.675235748291016,
+        "lucro_prejuizo": -2.878223419189453,
+        "data_compra": "2024-01-08"
+    },
+    {
+        "data_venda": "2024-01-16",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.8200000524520876,
+        "preco_venda": 1.6699999570846558,
+        "lucro_prejuizo": -0.15000009536743186,
+        "data_compra": "2024-01-11"
+    },
+    {
+        "data_venda": "2024-01-16",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.7899999618530271,
+        "preco_venda": 1.6699999570846558,
+        "lucro_prejuizo": -0.12000000476837136,
+        "data_compra": "2024-01-12"
+    },
+    {
+        "data_venda": "2024-01-17",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 8.030214309692383,
+        "preco_venda": 7.531325340270996,
+        "lucro_prejuizo": -1.9955558776855469,
+        "data_compra": "2024-01-12"
+    },
+    {
+        "data_venda": "2024-01-18",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 7,
+        "preco_compra": 7.799959182739258,
+        "preco_venda": 7.281880855560303,
+        "lucro_prejuizo": -3.6265482902526855,
+        "data_compra": "2024-01-04"
+    },
+    {
+        "data_venda": "2024-01-18",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 7.895898818969727,
+        "preco_venda": 7.281880855560303,
+        "lucro_prejuizo": -0.6140179634094238,
+        "data_compra": "2024-01-11"
+    },
+    {
+        "data_venda": "2024-01-18",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 7.675235748291016,
+        "preco_venda": 7.281880855560303,
+        "lucro_prejuizo": -2.3601293563842773,
+        "data_compra": "2024-01-16"
+    },
+    {
+        "data_venda": "2024-01-18",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 1.6699999570846558,
+        "preco_venda": 1.559999942779541,
+        "lucro_prejuizo": -0.2200000286102295,
+        "data_compra": "2024-01-16"
+    },
+    {
+        "data_venda": "2024-01-22",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 169,
+        "preco_compra": 11.809842109680176,
+        "preco_venda": 11.121508598327637,
+        "lucro_prejuizo": -116.3283634185791,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-22",
+        "simbolo": "F1TN34.SA",
+        "quantidade_vendida": 7,
+        "preco_compra": 142.24000549316406,
+        "preco_venda": 156.5,
+        "lucro_prejuizo": 99.81996154785156,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-22",
+        "simbolo": "A1MT34.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 75.12380981445312,
+        "preco_venda": 83.96366119384766,
+        "lucro_prejuizo": 26.519554138183594,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-23",
+        "simbolo": "SCAR3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 23.794294357299805,
+        "preco_venda": 22.58733558654785,
+        "lucro_prejuizo": -1.2069587707519531,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-24",
+        "simbolo": "P1GR34.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 394.6799926757813,
+        "preco_venda": 439.510009765625,
+        "lucro_prejuizo": 179.32006835937477,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-26",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 58,
+        "preco_compra": 11.121508598327637,
+        "preco_venda": 10.53150749206543,
+        "lucro_prejuizo": -34.22006416320801,
+        "data_compra": "2024-01-22"
+    },
+    {
+        "data_venda": "2024-01-29",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 11.072341918945312,
+        "preco_venda": 10.197174072265623,
+        "lucro_prejuizo": -1.7503356933593786,
+        "data_compra": "2024-01-23"
+    },
+    {
+        "data_venda": "2024-01-30",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 1.559999942779541,
+        "preco_venda": 1.4700000286102295,
+        "lucro_prejuizo": -0.3599996566772461,
+        "data_compra": "2024-01-18"
+    },
+    {
+        "data_venda": "2024-01-30",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 41,
+        "preco_compra": 1.5700000524520874,
+        "preco_venda": 1.4700000286102295,
+        "lucro_prejuizo": -4.100000977516174,
+        "data_compra": "2024-01-24"
+    },
+    {
+        "data_venda": "2024-01-31",
+        "simbolo": "ATOM3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 2.220000028610229,
+        "preco_venda": 2.0899999141693115,
+        "lucro_prejuizo": -0.26000022888183505,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-02-02",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.5199999809265137,
+        "preco_venda": 1.4299999475479126,
+        "lucro_prejuizo": -0.09000003337860107,
+        "data_compra": "2024-01-22"
+    },
+    {
+        "data_venda": "2024-02-02",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 1.5199999809265137,
+        "preco_venda": 1.4299999475479126,
+        "lucro_prejuizo": -0.18000006675720215,
+        "data_compra": "2024-01-31"
+    },
+    {
+        "data_venda": "2024-02-07",
+        "simbolo": "F1TN34.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 153.1199951171875,
+        "preco_venda": 173.63999938964844,
+        "lucro_prejuizo": 61.56001281738281,
+        "data_compra": "2024-01-12"
+    },
+    {
+        "data_venda": "2024-02-07",
+        "simbolo": "F1TN34.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 156.5,
+        "preco_venda": 173.63999938964844,
+        "lucro_prejuizo": 85.69999694824219,
+        "data_compra": "2024-01-22"
+    },
+    {
+        "data_venda": "2024-02-07",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 58,
+        "preco_compra": 10.53150749206543,
+        "preco_venda": 11.691842079162598,
+        "lucro_prejuizo": 67.29940605163574,
+        "data_compra": "2024-01-26"
+    },
+    {
+        "data_venda": "2024-02-07",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 10.197174072265623,
+        "preco_venda": 11.691842079162598,
+        "lucro_prejuizo": 2.989336013793949,
+        "data_compra": "2024-01-29"
+    },
+    {
+        "data_venda": "2024-02-07",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 10.452840805053713,
+        "preco_venda": 11.691842079162598,
+        "lucro_prejuizo": 7.43400764465331,
+        "data_compra": "2024-01-30"
+    },
+    {
+        "data_venda": "2024-02-07",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 1.4299999475479126,
+        "preco_venda": 1.590000033378601,
+        "lucro_prejuizo": 0.48000025749206543,
+        "data_compra": "2024-02-02"
+    },
+    {
+        "data_venda": "2024-02-14",
+        "simbolo": "TASA3.SA",
+        "quantidade_vendida": 17,
+        "preco_compra": 14.4616117477417,
+        "preco_venda": 13.729254722595217,
+        "lucro_prejuizo": -12.450069427490204,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-02-15",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 53,
+        "preco_compra": 11.691842079162598,
+        "preco_venda": 11.062508583068848,
+        "lucro_prejuizo": -33.35467529296875,
+        "data_compra": "2024-02-07"
+    },
+    {
+        "data_venda": "2024-02-15",
+        "simbolo": "A1MT34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 84.63983154296875,
+        "preco_venda": 109.37947082519533,
+        "lucro_prejuizo": 24.739639282226577,
+        "data_compra": "2024-02-07"
+    },
+    {
+        "data_venda": "2024-02-16",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 41.17888259887695,
+        "preco_venda": 45.30219268798828,
+        "lucro_prejuizo": 8.246620178222656,
+        "data_compra": "2024-01-12"
+    },
+    {
+        "data_venda": "2024-02-19",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 41.17888259887695,
+        "preco_venda": 45.30219268798828,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-01-12"
+    },
+    {
+        "data_venda": "2024-02-19",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 20,
+        "preco_compra": 11.347675323486328,
+        "preco_venda": 10.659341812133787,
+        "lucro_prejuizo": -13.766670227050817,
+        "data_compra": "2024-02-14"
+    },
+    {
+        "data_venda": "2024-02-20",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 41.17888259887695,
+        "preco_venda": 45.30219268798828,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-01-12"
+    },
+    {
+        "data_venda": "2024-02-20",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 17,
+        "preco_compra": 10.718340873718262,
+        "preco_venda": 11.849175453186035,
+        "lucro_prejuizo": 19.22418785095215,
+        "data_compra": "2024-01-24"
+    },
+    {
+        "data_venda": "2024-02-20",
+        "simbolo": "F1TN34.SA",
+        "quantidade_vendida": 8,
+        "preco_compra": 173.63999938964844,
+        "preco_venda": 164.89999389648438,
+        "lucro_prejuizo": -69.9200439453125,
+        "data_compra": "2024-02-07"
+    },
+    {
+        "data_venda": "2024-02-20",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 20,
+        "preco_compra": 10.659341812133787,
+        "preco_venda": 11.849175453186035,
+        "lucro_prejuizo": 23.796672821044957,
+        "data_compra": "2024-02-19"
+    },
+    {
+        "data_venda": "2024-02-21",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 41.17888259887695,
+        "preco_venda": 45.30219268798828,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-01-12"
+    },
+    {
+        "data_venda": "2024-02-21",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 57,
+        "preco_compra": 11.062508583068848,
+        "preco_venda": 12.331008911132812,
+        "lucro_prejuizo": 72.304518699646,
+        "data_compra": "2024-02-15"
+    },
+    {
+        "data_venda": "2024-02-21",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 8,
+        "preco_compra": 10.94450855255127,
+        "preco_venda": 12.331008911132812,
+        "lucro_prejuizo": 11.092002868652344,
+        "data_compra": "2024-02-16"
+    },
+    {
+        "data_venda": "2024-02-21",
+        "simbolo": "F1TN34.SA",
+        "quantidade_vendida": 8,
+        "preco_compra": 164.89999389648438,
+        "preco_venda": 154.5,
+        "lucro_prejuizo": -83.199951171875,
+        "data_compra": "2024-02-20"
+    },
+    {
+        "data_venda": "2024-02-22",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 41.17888259887695,
+        "preco_venda": 45.30219268798828,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-01-12"
+    },
+    {
+        "data_venda": "2024-02-23",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 41.17888259887695,
+        "preco_venda": 45.30219268798828,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-01-12"
+    },
+    {
+        "data_venda": "2024-02-23",
+        "simbolo": "GEPA4.SA",
+        "quantidade_vendida": 53,
+        "preco_compra": 21.45231437683105,
+        "preco_venda": 20.3232479095459,
+        "lucro_prejuizo": -59.8405227661131,
+        "data_compra": "2024-01-24"
+    },
+    {
+        "data_venda": "2024-02-23",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 13,
+        "preco_compra": 1.590000033378601,
+        "preco_venda": 1.5,
+        "lucro_prejuizo": -1.170000433921814,
+        "data_compra": "2024-02-07"
+    },
+    {
+        "data_venda": "2024-02-23",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 92,
+        "preco_compra": 1.590000033378601,
+        "preco_venda": 1.5,
+        "lucro_prejuizo": -8.280003070831299,
+        "data_compra": "2024-02-20"
+    },
+    {
+        "data_venda": "2024-02-26",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 41.24808883666992,
+        "preco_venda": 45.99609375,
+        "lucro_prejuizo": 14.244014739990234,
+        "data_compra": "2024-01-11"
+    },
+    {
+        "data_venda": "2024-02-26",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 41.17888259887695,
+        "preco_venda": 45.99609375,
+        "lucro_prejuizo": 4.817211151123047,
+        "data_compra": "2024-01-12"
+    },
+    {
+        "data_venda": "2024-02-26",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 1.5299999713897705,
+        "preco_venda": 1.4500000476837158,
+        "lucro_prejuizo": -0.15999984741210938,
+        "data_compra": "2024-02-16"
+    },
+    {
+        "data_venda": "2024-02-26",
+        "simbolo": "F1TN34.SA",
+        "quantidade_vendida": 7,
+        "preco_compra": 154.5,
+        "preco_venda": 171.02000427246094,
+        "lucro_prejuizo": 115.64002990722656,
+        "data_compra": "2024-02-21"
+    },
+    {
+        "data_venda": "2024-02-26",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 34,
+        "preco_compra": 1.5399999618530271,
+        "preco_venda": 1.4500000476837158,
+        "lucro_prejuizo": -3.0599970817565842,
+        "data_compra": "2024-02-21"
+    },
+    {
+        "data_venda": "2024-03-01",
+        "simbolo": "A1MT34.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 92.40576934814452,
+        "preco_venda": 103.99588775634766,
+        "lucro_prejuizo": 23.18023681640628,
+        "data_compra": "2024-02-20"
+    },
+    {
+        "data_venda": "2024-03-01",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 54,
+        "preco_compra": 12.331008911132812,
+        "preco_venda": 11.485342025756836,
+        "lucro_prejuizo": -45.666011810302734,
+        "data_compra": "2024-02-21"
+    },
+    {
+        "data_venda": "2024-03-01",
+        "simbolo": "A1MT34.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 93.07463073730467,
+        "preco_venda": 103.99588775634766,
+        "lucro_prejuizo": 21.842514038085966,
+        "data_compra": "2024-02-21"
+    },
+    {
+        "data_venda": "2024-03-01",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 7,
+        "preco_compra": 12.104843139648438,
+        "preco_venda": 11.485342025756836,
+        "lucro_prejuizo": -4.336507797241211,
+        "data_compra": "2024-02-23"
+    },
+    {
+        "data_venda": "2024-03-04",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 1.4700000286102295,
+        "preco_venda": 1.3899999856948853,
+        "lucro_prejuizo": -0.24000012874603271,
+        "data_compra": "2024-01-30"
+    },
+    {
+        "data_venda": "2024-03-04",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 9,
+        "preco_compra": 11.849175453186035,
+        "preco_venda": 11.180508613586426,
+        "lucro_prejuizo": -6.018001556396484,
+        "data_compra": "2024-02-20"
+    },
+    {
+        "data_venda": "2024-03-04",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 10,
+        "preco_compra": 1.5,
+        "preco_venda": 1.3899999856948853,
+        "lucro_prejuizo": -1.1000001430511475,
+        "data_compra": "2024-02-23"
+    },
+    {
+        "data_venda": "2024-03-04",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.4700000286102295,
+        "preco_venda": 1.3899999856948853,
+        "lucro_prejuizo": -0.08000004291534424,
+        "data_compra": "2024-03-01"
+    },
+    {
+        "data_venda": "2024-03-05",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 7.281880855560303,
+        "preco_venda": 8.05899715423584,
+        "lucro_prejuizo": 3.1084651947021484,
+        "data_compra": "2024-01-18"
+    },
+    {
+        "data_venda": "2024-03-05",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 7,
+        "preco_compra": 7.2722859382629395,
+        "preco_venda": 8.05899715423584,
+        "lucro_prejuizo": 5.506978511810303,
+        "data_compra": "2024-01-24"
+    },
+    {
+        "data_venda": "2024-03-05",
+        "simbolo": "NIKE34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 51.59000015258789,
+        "preco_venda": 48.83000183105469,
+        "lucro_prejuizo": -2.759998321533203,
+        "data_compra": "2024-02-07"
+    },
+    {
+        "data_venda": "2024-03-05",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 7.291473865509033,
+        "preco_venda": 8.05899715423584,
+        "lucro_prejuizo": 0.7675232887268066,
+        "data_compra": "2024-02-14"
+    },
+    {
+        "data_venda": "2024-03-05",
+        "simbolo": "NIKE34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 51.81999969482422,
+        "preco_venda": 48.83000183105469,
+        "lucro_prejuizo": -2.9899978637695312,
+        "data_compra": "2024-02-21"
+    },
+    {
+        "data_venda": "2024-03-05",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 9,
+        "preco_compra": 1.4500000476837158,
+        "preco_venda": 1.3300000429153442,
+        "lucro_prejuizo": -1.0800000429153442,
+        "data_compra": "2024-02-26"
+    },
+    {
+        "data_venda": "2024-03-07",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 7.531325340270996,
+        "preco_venda": 8.375600814819336,
+        "lucro_prejuizo": 3.3771018981933594,
+        "data_compra": "2024-01-17"
+    },
+    {
+        "data_venda": "2024-03-07",
+        "simbolo": "F1TN34.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 162.1999969482422,
+        "preco_venda": 180.0,
+        "lucro_prejuizo": 35.600006103515625,
+        "data_compra": "2024-01-24"
+    },
+    {
+        "data_venda": "2024-03-07",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 7.483355522155762,
+        "preco_venda": 8.375600814819336,
+        "lucro_prejuizo": 4.461226463317871,
+        "data_compra": "2024-02-23"
+    },
+    {
+        "data_venda": "2024-03-08",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 43.007957458496094,
+        "preco_venda": 47.97869110107422,
+        "lucro_prejuizo": 4.970733642578125,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-03-08",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 43.3045654296875,
+        "preco_venda": 47.97869110107422,
+        "lucro_prejuizo": 14.022377014160156,
+        "data_compra": "2024-01-22"
+    },
+    {
+        "data_venda": "2024-03-08",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 7.7903642654418945,
+        "preco_venda": 8.63464069366455,
+        "lucro_prejuizo": 4.221382141113281,
+        "data_compra": "2024-03-01"
+    },
+    {
+        "data_venda": "2024-03-11",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 43.3045654296875,
+        "preco_venda": 47.97869110107422,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-01-22"
+    },
+    {
+        "data_venda": "2024-03-11",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 1.3600000143051147,
+        "preco_venda": 1.2799999713897705,
+        "lucro_prejuizo": -0.32000017166137695,
+        "data_compra": "2024-03-07"
+    },
+    {
+        "data_venda": "2024-03-11",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 1.3600000143051147,
+        "preco_venda": 1.2799999713897705,
+        "lucro_prejuizo": -0.24000012874603271,
+        "data_compra": "2024-03-08"
+    },
+    {
+        "data_venda": "2024-03-12",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 43.3045654296875,
+        "preco_venda": 47.97869110107422,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-01-22"
+    },
+    {
+        "data_venda": "2024-03-12",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 7.91508674621582,
+        "preco_venda": 8.759364128112793,
+        "lucro_prejuizo": 0.8442773818969727,
+        "data_compra": "2024-03-04"
+    },
+    {
+        "data_venda": "2024-03-13",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 43.3045654296875,
+        "preco_venda": 47.97869110107422,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-01-22"
+    },
+    {
+        "data_venda": "2024-03-14",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 43.3045654296875,
+        "preco_venda": 47.97869110107422,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-01-22"
+    },
+    {
+        "data_venda": "2024-03-14",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 10,
+        "preco_compra": 11.180508613586426,
+        "preco_venda": 12.35067653656006,
+        "lucro_prejuizo": 11.701679229736346,
+        "data_compra": "2024-03-04"
+    },
+    {
+        "data_venda": "2024-03-14",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 18,
+        "preco_compra": 11.180508613586426,
+        "preco_venda": 12.35067653656006,
+        "lucro_prejuizo": 21.063022613525423,
+        "data_compra": "2024-03-05"
+    },
+    {
+        "data_venda": "2024-03-14",
+        "simbolo": "F1TN34.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 180.0,
+        "preco_venda": 170.5,
+        "lucro_prejuizo": -19.0,
+        "data_compra": "2024-03-07"
+    },
+    {
+        "data_venda": "2024-03-15",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 19,
+        "preco_compra": 43.3045654296875,
+        "preco_venda": 48.62302780151367,
+        "lucro_prejuizo": 101.05078506469727,
+        "data_compra": "2024-01-22"
+    },
+    {
+        "data_venda": "2024-03-15",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 1.3300000429153442,
+        "preco_venda": 1.25,
+        "lucro_prejuizo": -0.32000017166137695,
+        "data_compra": "2024-03-05"
+    },
+    {
+        "data_venda": "2024-03-20",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 70,
+        "preco_compra": 11.485342025756836,
+        "preco_venda": 13.2061767578125,
+        "lucro_prejuizo": 120.45843124389648,
+        "data_compra": "2024-03-01"
+    },
+    {
+        "data_venda": "2024-03-20",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 11.623008728027344,
+        "preco_venda": 13.2061767578125,
+        "lucro_prejuizo": 4.749504089355469,
+        "data_compra": "2024-03-08"
+    },
+    {
+        "data_venda": "2024-03-22",
+        "simbolo": "NIKE34.SA",
+        "quantidade_vendida": 16,
+        "preco_compra": 50.11000061035156,
+        "preco_venda": 46.900001525878906,
+        "lucro_prejuizo": -51.3599853515625,
+        "data_compra": "2024-01-22"
+    },
+    {
+        "data_venda": "2024-03-22",
+        "simbolo": "NIKE34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 50.5,
+        "preco_venda": 46.900001525878906,
+        "lucro_prejuizo": -3.5999984741210938,
+        "data_compra": "2024-03-01"
+    },
+    {
+        "data_venda": "2024-03-22",
+        "simbolo": "MRFG3.SA",
+        "quantidade_vendida": 31,
+        "preco_compra": 8.797261238098145,
+        "preco_venda": 8.248503684997559,
+        "lucro_prejuizo": -17.011484146118164,
+        "data_compra": "2024-03-14"
+    },
+    {
+        "data_venda": "2024-03-22",
+        "simbolo": "SEER3.SA",
+        "quantidade_vendida": 144,
+        "preco_compra": 6.699999809265137,
+        "preco_venda": 6.309999942779541,
+        "lucro_prejuizo": -56.15998077392578,
+        "data_compra": "2024-03-20"
+    },
+    {
+        "data_venda": "2024-03-26",
+        "simbolo": "TECN3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 4.550000190734863,
+        "preco_venda": 4.289999961853027,
+        "lucro_prejuizo": -0.5200004577636719,
+        "data_compra": "2024-03-22"
+    },
+    {
+        "data_venda": "2024-03-28",
+        "simbolo": "CEDO4.SA",
+        "quantidade_vendida": 37,
+        "preco_compra": 29.57999992370605,
+        "preco_venda": 28.0,
+        "lucro_prejuizo": -58.459997177123896,
+        "data_compra": "2024-03-22"
+    },
+    {
+        "data_venda": "2024-04-02",
+        "simbolo": "RIGG34.SA",
+        "quantidade_vendida": 13,
+        "preco_compra": 29.700000762939453,
+        "preco_venda": 33.29999923706055,
+        "lucro_prejuizo": 46.79998016357422,
+        "data_compra": "2024-03-22"
+    },
+    {
+        "data_venda": "2024-04-02",
+        "simbolo": "C1CL34.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 85.04000091552734,
+        "preco_venda": 78.29000091552734,
+        "lucro_prejuizo": -13.5,
+        "data_compra": "2024-03-22"
+    },
+    {
+        "data_venda": "2024-04-03",
+        "simbolo": "GEPA4.SA",
+        "quantidade_vendida": 54,
+        "preco_compra": 20.3232479095459,
+        "preco_venda": 22.73461532592773,
+        "lucro_prejuizo": 130.21384048461894,
+        "data_compra": "2024-02-23"
+    },
+    {
+        "data_venda": "2024-04-03",
+        "simbolo": "MGEL4.SA",
+        "quantidade_vendida": 19,
+        "preco_compra": 15.899999618530272,
+        "preco_venda": 18.350000381469727,
+        "lucro_prejuizo": 46.550014495849645,
+        "data_compra": "2024-03-22"
+    },
+    {
+        "data_venda": "2024-04-05",
+        "simbolo": "EMAE3.SA",
+        "quantidade_vendida": 16,
+        "preco_compra": 58.72977066040039,
+        "preco_venda": 68.50664520263672,
+        "lucro_prejuizo": 156.42999267578125,
+        "data_compra": "2024-04-03"
+    },
+    {
+        "data_venda": "2024-04-08",
+        "simbolo": "S1BS34.SA",
+        "quantidade_vendida": 22,
+        "preco_compra": 12.210000038146973,
+        "preco_venda": 13.979999542236328,
+        "lucro_prejuizo": 38.93998908996582,
+        "data_compra": "2024-04-02"
+    },
+    {
+        "data_venda": "2024-04-10",
+        "simbolo": "MNDL3.SA",
+        "quantidade_vendida": 54,
+        "preco_compra": 11.725000381469728,
+        "preco_venda": 11.042499542236328,
+        "lucro_prejuizo": -36.855045318603615,
+        "data_compra": "2024-04-03"
+    },
+    {
+        "data_venda": "2024-04-12",
+        "simbolo": "UBSG34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 152.631591796875,
+        "preco_venda": 142.22750854492188,
+        "lucro_prejuizo": -10.404083251953125,
+        "data_compra": "2024-03-15"
+    },
+    {
+        "data_venda": "2024-04-12",
+        "simbolo": "CGAS3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 114.93085479736328,
+        "preco_venda": 107.58386993408205,
+        "lucro_prejuizo": -14.693969726562472,
+        "data_compra": "2024-04-02"
+    },
+    {
+        "data_venda": "2024-04-12",
+        "simbolo": "HBSA3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 4.329999923706055,
+        "preco_venda": 4.090000152587891,
+        "lucro_prejuizo": -0.23999977111816406,
+        "data_compra": "2024-04-02"
+    },
+    {
+        "data_venda": "2024-04-12",
+        "simbolo": "ELMD3.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 19.238052368164062,
+        "preco_venda": 18.211891174316406,
+        "lucro_prejuizo": -3.0784835815429688,
+        "data_compra": "2024-04-08"
+    },
+    {
+        "data_venda": "2024-04-12",
+        "simbolo": "JHSF3.SA",
+        "quantidade_vendida": 36,
+        "preco_compra": 4.469349384307861,
+        "preco_venda": 3.927043437957764,
+        "lucro_prejuizo": -19.5230140686035,
+        "data_compra": "2024-04-08"
+    },
+    {
+        "data_venda": "2024-04-15",
+        "simbolo": "HBOR3.SA",
+        "quantidade_vendida": 86,
+        "preco_compra": 2.784336805343628,
+        "preco_venda": 2.5716443061828613,
+        "lucro_prejuizo": -18.291554927825928,
+        "data_compra": "2024-03-14"
+    },
+    {
+        "data_venda": "2024-04-15",
+        "simbolo": "AALR3.SA",
+        "quantidade_vendida": 12,
+        "preco_compra": 9.960000038146973,
+        "preco_venda": 8.770000457763672,
+        "lucro_prejuizo": -14.27999496459961,
+        "data_compra": "2024-04-10"
+    },
+    {
+        "data_venda": "2024-04-15",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.6799999475479126,
+        "preco_venda": 1.5499999523162842,
+        "lucro_prejuizo": -0.12999999523162842,
+        "data_compra": "2024-04-12"
+    },
+    {
+        "data_venda": "2024-04-16",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.701798439025879,
+        "preco_venda": 8.211031913757324,
+        "lucro_prejuizo": -0.4907665252685547,
+        "data_compra": "2024-03-11"
+    },
+    {
+        "data_venda": "2024-04-16",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.759364128112793,
+        "preco_venda": 8.211031913757324,
+        "lucro_prejuizo": -0.5483322143554688,
+        "data_compra": "2024-03-12"
+    },
+    {
+        "data_venda": "2024-04-16",
+        "simbolo": "HAPV3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 3.7899999618530273,
+        "preco_venda": 3.5999999046325684,
+        "lucro_prejuizo": -0.38000011444091797,
+        "data_compra": "2024-03-26"
+    },
+    {
+        "data_venda": "2024-04-17",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 8.63464069366455,
+        "preco_venda": 8.143092155456543,
+        "lucro_prejuizo": -2.949291229248047,
+        "data_compra": "2024-03-08"
+    },
+    {
+        "data_venda": "2024-04-17",
+        "simbolo": "RSID3.SA",
+        "quantidade_vendida": 22,
+        "preco_compra": 4.0,
+        "preco_venda": 4.429999828338623,
+        "lucro_prejuizo": 9.459996223449707,
+        "data_compra": "2024-04-08"
+    },
+    {
+        "data_venda": "2024-04-17",
+        "simbolo": "BDLL4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 9.770000457763672,
+        "preco_venda": 9.119999885559082,
+        "lucro_prejuizo": -1.3000011444091797,
+        "data_compra": "2024-04-16"
+    },
+    {
+        "data_venda": "2024-04-17",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 1.600000023841858,
+        "preco_venda": 1.4500000476837158,
+        "lucro_prejuizo": -0.44999992847442627,
+        "data_compra": "2024-04-16"
+    },
+    {
+        "data_venda": "2024-04-18",
+        "simbolo": "I1VZ34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 80.58440399169922,
+        "preco_venda": 74.65794372558594,
+        "lucro_prejuizo": -5.926460266113281,
+        "data_compra": "2024-04-05"
+    },
+    {
+        "data_venda": "2024-04-18",
+        "simbolo": "BBDC3.SA",
+        "quantidade_vendida": 33,
+        "preco_compra": 11.773941040039062,
+        "preco_venda": 11.17651081085205,
+        "lucro_prejuizo": -19.715197563171387,
+        "data_compra": "2024-04-10"
+    },
+    {
+        "data_venda": "2024-04-19",
+        "simbolo": "F1TN34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 174.58999633789062,
+        "preco_venda": 163.8800048828125,
+        "lucro_prejuizo": -10.709991455078125,
+        "data_compra": "2024-03-01"
+    },
+    {
+        "data_venda": "2024-04-19",
+        "simbolo": "INEP3.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 3.680000066757202,
+        "preco_venda": 3.430000066757202,
+        "lucro_prejuizo": -1.0,
+        "data_compra": "2024-04-18"
+    },
+    {
+        "data_venda": "2024-04-23",
+        "simbolo": "SNSY3.SA",
+        "quantidade_vendida": 16,
+        "preco_compra": 10.5,
+        "preco_venda": 11.699999809265137,
+        "lucro_prejuizo": 19.199996948242188,
+        "data_compra": "2024-04-17"
+    },
+    {
+        "data_venda": "2024-04-23",
+        "simbolo": "CEBR6.SA",
+        "quantidade_vendida": 9,
+        "preco_compra": 19.250123977661133,
+        "preco_venda": 21.368558883666992,
+        "lucro_prejuizo": 19.065914154052734,
+        "data_compra": "2024-04-19"
+    },
+    {
+        "data_venda": "2024-04-24",
+        "simbolo": "AGXY3.SA",
+        "quantidade_vendida": 180,
+        "preco_compra": 1.8200000524520876,
+        "preco_venda": 1.7100000381469729,
+        "lucro_prejuizo": -19.800002574920654,
+        "data_compra": "2024-04-15"
+    },
+    {
+        "data_venda": "2024-04-24",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 1.409999966621399,
+        "preco_venda": 1.25,
+        "lucro_prejuizo": -0.6399998664855957,
+        "data_compra": "2024-04-19"
+    },
+    {
+        "data_venda": "2024-04-24",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.4299999475479126,
+        "preco_venda": 1.25,
+        "lucro_prejuizo": -0.1799999475479126,
+        "data_compra": "2024-04-23"
+    },
+    {
+        "data_venda": "2024-04-25",
+        "simbolo": "KLBN3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 3.931442499160767,
+        "preco_venda": 3.722834587097168,
+        "lucro_prejuizo": -0.20860791206359908,
+        "data_compra": "2024-04-03"
+    },
+    {
+        "data_venda": "2024-05-02",
+        "simbolo": "BALM3.SA",
+        "quantidade_vendida": 49,
+        "preco_compra": 11.337556838989258,
+        "preco_venda": 10.619511604309082,
+        "lucro_prejuizo": -35.18421649932861,
+        "data_compra": "2024-04-12"
+    },
+    {
+        "data_venda": "2024-05-02",
+        "simbolo": "GEPA3.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 22.505373001098636,
+        "preco_venda": 25.21913146972656,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-04-18"
+    },
+    {
+        "data_venda": "2024-05-03",
+        "simbolo": "F1TN34.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 171.02000427246094,
+        "preco_venda": 149.42999267578125,
+        "lucro_prejuizo": -86.36004638671875,
+        "data_compra": "2024-02-26"
+    },
+    {
+        "data_venda": "2024-05-03",
+        "simbolo": "HAGA4.SA",
+        "quantidade_vendida": 657,
+        "preco_compra": 1.1799999475479126,
+        "preco_venda": 1.399999976158142,
+        "lucro_prejuizo": 144.54001879692078,
+        "data_compra": "2024-03-15"
+    },
+    {
+        "data_venda": "2024-05-03",
+        "simbolo": "G2DI33.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 1.909999966621399,
+        "preco_venda": 2.150000095367432,
+        "lucro_prejuizo": 0.9600005149841326,
+        "data_compra": "2024-04-02"
+    },
+    {
+        "data_venda": "2024-05-03",
+        "simbolo": "E1CO34.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 29.50023651123047,
+        "preco_venda": 27.66533851623535,
+        "lucro_prejuizo": -5.504693984985352,
+        "data_compra": "2024-04-10"
+    },
+    {
+        "data_venda": "2024-05-03",
+        "simbolo": "B2HI34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.8200000524520876,
+        "preco_venda": 1.6100000143051147,
+        "lucro_prejuizo": -0.21000003814697288,
+        "data_compra": "2024-04-18"
+    },
+    {
+        "data_venda": "2024-05-03",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 1.25,
+        "preco_venda": 1.4600000381469729,
+        "lucro_prejuizo": 1.0500001907348644,
+        "data_compra": "2024-04-24"
+    },
+    {
+        "data_venda": "2024-05-03",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 1.2699999809265137,
+        "preco_venda": 1.4600000381469729,
+        "lucro_prejuizo": 0.5700001716613776,
+        "data_compra": "2024-04-25"
+    },
+    {
+        "data_venda": "2024-05-06",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 1.4600000381469729,
+        "preco_venda": 1.3799999952316284,
+        "lucro_prejuizo": -0.4000002145767223,
+        "data_compra": "2024-05-03"
+    },
+    {
+        "data_venda": "2024-05-08",
+        "simbolo": "ETER3.SA",
+        "quantidade_vendida": 11,
+        "preco_compra": 7.283867359161377,
+        "preco_venda": 6.8015570640563965,
+        "lucro_prejuizo": -5.305413246154785,
+        "data_compra": "2024-04-02"
+    },
+    {
+        "data_venda": "2024-05-09",
+        "simbolo": "FNOR11.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 0.7300000190734863,
+        "preco_venda": 0.8500000238418579,
+        "lucro_prejuizo": 0.48000001907348633,
+        "data_compra": "2024-04-05"
+    },
+    {
+        "data_venda": "2024-05-09",
+        "simbolo": "FNOR11.SA",
+        "quantidade_vendida": 194,
+        "preco_compra": 0.7300000190734863,
+        "preco_venda": 0.8500000238418579,
+        "lucro_prejuizo": 23.280000925064087,
+        "data_compra": "2024-04-23"
+    },
+    {
+        "data_venda": "2024-05-10",
+        "simbolo": "PETZ3.SA",
+        "quantidade_vendida": 243,
+        "preco_compra": 4.869999885559082,
+        "preco_venda": 4.519999980926514,
+        "lucro_prejuizo": -85.04997682571411,
+        "data_compra": "2024-05-03"
+    },
+    {
+        "data_venda": "2024-05-13",
+        "simbolo": "WIZC3.SA",
+        "quantidade_vendida": 148,
+        "preco_compra": 6.994095325469971,
+        "preco_venda": 6.5,
+        "lucro_prejuizo": -73.12610816955566,
+        "data_compra": "2024-03-28"
+    },
+    {
+        "data_venda": "2024-05-14",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 11.170674324035645,
+        "preco_venda": 10.570840835571287,
+        "lucro_prejuizo": -0.5998334884643572,
+        "data_compra": "2024-04-23"
+    },
+    {
+        "data_venda": "2024-05-15",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 11.013340950012209,
+        "preco_venda": 10.452840805053713,
+        "lucro_prejuizo": -1.1210002899169922,
+        "data_compra": "2024-04-24"
+    },
+    {
+        "data_venda": "2024-05-16",
+        "simbolo": "G1DS34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 4.260000228881836,
+        "preco_venda": 4.739999771118164,
+        "lucro_prejuizo": 0.4799995422363281,
+        "data_compra": "2024-05-06"
+    },
+    {
+        "data_venda": "2024-05-20",
+        "simbolo": "G2DI33.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 2.0799999237060547,
+        "preco_venda": 2.380000114440918,
+        "lucro_prejuizo": 0.3000001907348633,
+        "data_compra": "2024-05-06"
+    },
+    {
+        "data_venda": "2024-05-20",
+        "simbolo": "R2DF34.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 6.71999979019165,
+        "preco_venda": 6.090000152587891,
+        "lucro_prejuizo": -1.8899989128112793,
+        "data_compra": "2024-05-15"
+    },
+    {
+        "data_venda": "2024-05-21",
+        "simbolo": "PETR3.SA",
+        "quantidade_vendida": 8,
+        "preco_compra": 35.78300094604492,
+        "preco_venda": 33.96934509277344,
+        "lucro_prejuizo": -14.509246826171875,
+        "data_compra": "2024-04-24"
+    },
+    {
+        "data_venda": "2024-05-21",
+        "simbolo": "ZAMP3.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 3.470000028610229,
+        "preco_venda": 3.2799999713897705,
+        "lucro_prejuizo": -0.5700001716613756,
+        "data_compra": "2024-05-14"
+    },
+    {
+        "data_venda": "2024-05-22",
+        "simbolo": "SEQL3.SA",
+        "quantidade_vendida": 102,
+        "preco_compra": 7.800000190734863,
+        "preco_venda": 7.0,
+        "lucro_prejuizo": -81.60001945495605,
+        "data_compra": "2024-05-13"
+    },
+    {
+        "data_venda": "2024-05-23",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 1.2999999523162842,
+        "preco_venda": 1.2200000286102295,
+        "lucro_prejuizo": -0.23999977111816406,
+        "data_compra": "2024-05-08"
+    },
+    {
+        "data_venda": "2024-05-23",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 10.94450855255127,
+        "preco_venda": 10.216841697692873,
+        "lucro_prejuizo": -0.7276668548583967,
+        "data_compra": "2024-05-10"
+    },
+    {
+        "data_venda": "2024-05-23",
+        "simbolo": "HAPV3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 4.489999771118164,
+        "preco_venda": 4.260000228881836,
+        "lucro_prejuizo": -0.22999954223632812,
+        "data_compra": "2024-05-16"
+    },
+    {
+        "data_venda": "2024-05-23",
+        "simbolo": "RPAD6.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.010000228881836,
+        "preco_venda": 8.5,
+        "lucro_prejuizo": -0.5100002288818359,
+        "data_compra": "2024-05-21"
+    },
+    {
+        "data_venda": "2024-05-23",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 1.2999999523162842,
+        "preco_venda": 1.2200000286102295,
+        "lucro_prejuizo": -0.23999977111816406,
+        "data_compra": "2024-05-22"
+    },
+    {
+        "data_venda": "2024-05-24",
+        "simbolo": "S1RP34.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 34.029998779296875,
+        "preco_venda": 31.88999938964844,
+        "lucro_prejuizo": -8.559997558593736,
+        "data_compra": "2024-05-03"
+    },
+    {
+        "data_venda": "2024-05-24",
+        "simbolo": "T1AL34.SA",
+        "quantidade_vendida": 11,
+        "preco_compra": 6.53000020980835,
+        "preco_venda": 5.920000076293945,
+        "lucro_prejuizo": -6.710001468658447,
+        "data_compra": "2024-05-08"
+    },
+    {
+        "data_venda": "2024-05-27",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 1.2799999713897705,
+        "preco_venda": 1.190000057220459,
+        "lucro_prejuizo": -0.3599996566772461,
+        "data_compra": "2024-05-09"
+    },
+    {
+        "data_venda": "2024-05-27",
+        "simbolo": "ESPA3.SA",
+        "quantidade_vendida": 17,
+        "preco_compra": 1.2300000190734863,
+        "preco_venda": 1.159999966621399,
+        "lucro_prejuizo": -1.1900008916854858,
+        "data_compra": "2024-05-20"
+    },
+    {
+        "data_venda": "2024-05-27",
+        "simbolo": "RPMG3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 2.299999952316284,
+        "preco_venda": 2.759999990463257,
+        "lucro_prejuizo": 0.46000003814697266,
+        "data_compra": "2024-05-21"
+    },
+    {
+        "data_venda": "2024-05-27",
+        "simbolo": "BHIA3.SA",
+        "quantidade_vendida": 93,
+        "preco_compra": 7.639999866485596,
+        "preco_venda": 7.019999980926514,
+        "lucro_prejuizo": -57.65998935699463,
+        "data_compra": "2024-05-22"
+    },
+    {
+        "data_venda": "2024-05-27",
+        "simbolo": "EALT3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 11.989999771118164,
+        "preco_venda": 10.859999656677246,
+        "lucro_prejuizo": -2.260000228881836,
+        "data_compra": "2024-05-23"
+    },
+    {
+        "data_venda": "2024-05-28",
+        "simbolo": "PINE4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 4.310634136199951,
+        "preco_venda": 4.048247814178467,
+        "lucro_prejuizo": -0.2623863220214844,
+        "data_compra": "2024-05-21"
+    },
+    {
+        "data_venda": "2024-05-28",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 1.2200000286102295,
+        "preco_venda": 1.149999976158142,
+        "lucro_prejuizo": -0.1400001049041748,
+        "data_compra": "2024-05-23"
+    },
+    {
+        "data_venda": "2024-05-29",
+        "simbolo": "CMIN3.SA",
+        "quantidade_vendida": 26,
+        "preco_compra": 5.318170547485352,
+        "preco_venda": 5.049274444580078,
+        "lucro_prejuizo": -6.991298675537109,
+        "data_compra": "2024-05-27"
+    },
+    {
+        "data_venda": "2024-05-31",
+        "simbolo": "CSED3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 4.131314277648926,
+        "preco_venda": 3.843751907348633,
+        "lucro_prejuizo": -0.28756237030029297,
+        "data_compra": "2024-05-23"
+    },
+    {
+        "data_venda": "2024-06-04",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 16,
+        "preco_compra": 45.99609375,
+        "preco_venda": 52.146217346191406,
+        "lucro_prejuizo": 98.4019775390625,
+        "data_compra": "2024-02-26"
+    },
+    {
+        "data_venda": "2024-06-04",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 46.93782806396485,
+        "preco_venda": 52.146217346191406,
+        "lucro_prejuizo": 5.208389282226555,
+        "data_compra": "2024-03-01"
+    },
+    {
+        "data_venda": "2024-06-04",
+        "simbolo": "BKNG34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 102.5815887451172,
+        "preco_venda": 113.58350372314452,
+        "lucro_prejuizo": 11.001914978027315,
+        "data_compra": "2024-04-05"
+    },
+    {
+        "data_venda": "2024-06-04",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 1.190000057220459,
+        "preco_venda": 1.1100000143051147,
+        "lucro_prejuizo": -0.48000025749206543,
+        "data_compra": "2024-05-27"
+    },
+    {
+        "data_venda": "2024-06-05",
+        "simbolo": "O1TI34.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 47.97869110107422,
+        "preco_venda": 52.94158172607422,
+        "lucro_prejuizo": 14.888671875,
+        "data_compra": "2024-03-08"
+    },
+    {
+        "data_venda": "2024-06-05",
+        "simbolo": "NOKI34.SA",
+        "quantidade_vendida": 12,
+        "preco_compra": 18.710596084594727,
+        "preco_venda": 20.609344482421875,
+        "lucro_prejuizo": 22.78498077392578,
+        "data_compra": "2024-04-23"
+    },
+    {
+        "data_venda": "2024-06-10",
+        "simbolo": "IGTI3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 2.976590633392334,
+        "preco_venda": 2.809999942779541,
+        "lucro_prejuizo": -0.16659069061279297,
+        "data_compra": "2024-03-14"
+    },
+    {
+        "data_venda": "2024-06-11",
+        "simbolo": "HFOF11.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 71.10543060302734,
+        "preco_venda": 67.52752685546875,
+        "lucro_prejuizo": -21.467422485351562,
+        "data_compra": "2024-01-04"
+    },
+    {
+        "data_venda": "2024-06-11",
+        "simbolo": "AMAR3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.6799999475479126,
+        "preco_venda": 1.53473699092865,
+        "lucro_prejuizo": -0.1452629566192627,
+        "data_compra": "2024-06-04"
+    },
+    {
+        "data_venda": "2024-06-12",
+        "simbolo": "EALT4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 11.640000343322754,
+        "preco_venda": 10.710000038146973,
+        "lucro_prejuizo": -0.9300003051757812,
+        "data_compra": "2024-05-24"
+    },
+    {
+        "data_venda": "2024-06-12",
+        "simbolo": "ENGI4.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 7.896227836608887,
+        "preco_venda": 7.466766834259033,
+        "lucro_prejuizo": -1.2883830070495605,
+        "data_compra": "2024-06-04"
+    },
+    {
+        "data_venda": "2024-06-13",
+        "simbolo": "HFOF11.SA",
+        "quantidade_vendida": 18,
+        "preco_compra": 70.51131439208984,
+        "preco_venda": 66.73969268798828,
+        "lucro_prejuizo": -67.88919067382812,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-06-13",
+        "simbolo": "HFOF11.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 70.6103515625,
+        "preco_venda": 66.73969268798828,
+        "lucro_prejuizo": -3.8706588745117188,
+        "data_compra": "2024-01-08"
+    },
+    {
+        "data_venda": "2024-06-13",
+        "simbolo": "HFOF11.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 70.59437561035156,
+        "preco_venda": 66.73969268798828,
+        "lucro_prejuizo": -3.8546829223632812,
+        "data_compra": "2024-03-07"
+    },
+    {
+        "data_venda": "2024-06-13",
+        "simbolo": "LAND3.SA",
+        "quantidade_vendida": 7,
+        "preco_compra": 14.770000457763672,
+        "preco_venda": 16.290000915527344,
+        "lucro_prejuizo": 10.640003204345703,
+        "data_compra": "2024-05-27"
+    },
+    {
+        "data_venda": "2024-06-13",
+        "simbolo": "MLAS3.SA",
+        "quantidade_vendida": 194,
+        "preco_compra": 2.0899999141693115,
+        "preco_venda": 1.9800000190734863,
+        "lucro_prejuizo": -21.339979648590088,
+        "data_compra": "2024-06-11"
+    },
+    {
+        "data_venda": "2024-06-14",
+        "simbolo": "MERC4.SA",
+        "quantidade_vendida": 21,
+        "preco_compra": 7.800000190734863,
+        "preco_venda": 9.829999923706056,
+        "lucro_prejuizo": 42.629994392395055,
+        "data_compra": "2024-05-13"
+    },
+    {
+        "data_venda": "2024-06-14",
+        "simbolo": "C1CL34.SA",
+        "quantidade_vendida": 11,
+        "preco_compra": 89.22000122070312,
+        "preco_venda": 82.16999816894531,
+        "lucro_prejuizo": -77.55003356933594,
+        "data_compra": "2024-06-04"
+    },
+    {
+        "data_venda": "2024-06-17",
+        "simbolo": "HFOF11.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 70.15123748779297,
+        "preco_venda": 65.98001861572266,
+        "lucro_prejuizo": -4.1712188720703125,
+        "data_compra": "2024-01-18"
+    },
+    {
+        "data_venda": "2024-06-17",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 1.190000057220459,
+        "preco_venda": 1.1299999952316284,
+        "lucro_prejuizo": -0.1800001859664917,
+        "data_compra": "2024-06-10"
+    },
+    {
+        "data_venda": "2024-06-17",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 20,
+        "preco_compra": 1.2100000381469729,
+        "preco_venda": 1.1299999952316284,
+        "lucro_prejuizo": -1.6000008583068892,
+        "data_compra": "2024-06-13"
+    },
+    {
+        "data_venda": "2024-06-18",
+        "simbolo": "ATTB34.SA",
+        "quantidade_vendida": 7,
+        "preco_compra": 28.99914932250977,
+        "preco_venda": 32.00849151611328,
+        "lucro_prejuizo": 21.065395355224585,
+        "data_compra": "2024-05-10"
+    },
+    {
+        "data_venda": "2024-06-18",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 1.149999976158142,
+        "preco_venda": 1.2899999618530271,
+        "lucro_prejuizo": 0.6999999284744252,
+        "data_compra": "2024-05-28"
+    },
+    {
+        "data_venda": "2024-06-18",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 1.149999976158142,
+        "preco_venda": 1.2899999618530271,
+        "lucro_prejuizo": 0.4199999570846551,
+        "data_compra": "2024-05-31"
+    },
+    {
+        "data_venda": "2024-06-18",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 1.1299999952316284,
+        "preco_venda": 1.2899999618530271,
+        "lucro_prejuizo": 0.4799998998641961,
+        "data_compra": "2024-06-17"
+    },
+    {
+        "data_venda": "2024-06-19",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.361340522766112,
+        "preco_venda": 8.87950611114502,
+        "lucro_prejuizo": -0.481834411621092,
+        "data_compra": "2024-06-14"
+    },
+    {
+        "data_venda": "2024-06-19",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 1.2899999618530271,
+        "preco_venda": 1.4500000476837158,
+        "lucro_prejuizo": 0.6400003433227548,
+        "data_compra": "2024-06-18"
+    },
+    {
+        "data_venda": "2024-06-20",
+        "simbolo": "KEPL3.SA",
+        "quantidade_vendida": 18,
+        "preco_compra": 9.603364944458008,
+        "preco_venda": 8.6432466506958,
+        "lucro_prejuizo": -17.282129287719727,
+        "data_compra": "2024-03-14"
+    },
+    {
+        "data_venda": "2024-06-21",
+        "simbolo": "MNDL3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 12.350000381469728,
+        "preco_venda": 11.350000381469728,
+        "lucro_prejuizo": -2.0,
+        "data_compra": "2024-06-12"
+    },
+    {
+        "data_venda": "2024-06-24",
+        "simbolo": "GEPA4.SA",
+        "quantidade_vendida": 26,
+        "preco_compra": 21.049076080322266,
+        "preco_venda": 23.420276641845703,
+        "lucro_prejuizo": 61.651214599609375,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-06-24",
+        "simbolo": "GEPA4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 21.049076080322266,
+        "preco_venda": 23.420276641845703,
+        "lucro_prejuizo": 4.742401123046875,
+        "data_compra": "2024-01-22"
+    },
+    {
+        "data_venda": "2024-06-24",
+        "simbolo": "HAGA3.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 2.8499999046325684,
+        "preco_venda": 2.6700000762939453,
+        "lucro_prejuizo": -0.8999991416931152,
+        "data_compra": "2024-06-19"
+    },
+    {
+        "data_venda": "2024-06-24",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.3600000143051147,
+        "preco_venda": 1.5800000429153442,
+        "lucro_prejuizo": 0.2200000286102295,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-06-24",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 1.340000033378601,
+        "preco_venda": 1.5800000429153442,
+        "lucro_prejuizo": 1.2000000476837158,
+        "data_compra": "2024-06-21"
+    },
+    {
+        "data_venda": "2024-06-25",
+        "simbolo": "AMGN34.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 55.39041519165039,
+        "preco_venda": 61.510231018066406,
+        "lucro_prejuizo": 24.479263305664062,
+        "data_compra": "2024-05-03"
+    },
+    {
+        "data_venda": "2024-06-25",
+        "simbolo": "ATMP3.SA",
+        "quantidade_vendida": 28,
+        "preco_compra": 2.289999961853028,
+        "preco_venda": 2.140000104904175,
+        "lucro_prejuizo": -4.1999959945678835,
+        "data_compra": "2024-05-29"
+    },
+    {
+        "data_venda": "2024-06-25",
+        "simbolo": "N1CL34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 88.38999938964844,
+        "preco_venda": 100.0199966430664,
+        "lucro_prejuizo": 11.629997253417969,
+        "data_compra": "2024-06-17"
+    },
+    {
+        "data_venda": "2024-06-26",
+        "simbolo": "AMGN34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 55.39041519165039,
+        "preco_venda": 61.21327209472656,
+        "lucro_prejuizo": 5.822856903076172,
+        "data_compra": "2024-05-03"
+    },
+    {
+        "data_venda": "2024-06-26",
+        "simbolo": "RBDS11.SA",
+        "quantidade_vendida": 35,
+        "preco_compra": 2.799999952316284,
+        "preco_venda": 2.200000047683716,
+        "lucro_prejuizo": -20.999996662139893,
+        "data_compra": "2024-06-25"
+    },
+    {
+        "data_venda": "2024-06-27",
+        "simbolo": "BEEF3.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 6.0,
+        "preco_venda": 6.71999979019165,
+        "lucro_prejuizo": 2.8799991607666016,
+        "data_compra": "2024-06-05"
+    },
+    {
+        "data_venda": "2024-06-27",
+        "simbolo": "RBDS11.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 2.799999952316284,
+        "preco_venda": 2.299999952316284,
+        "lucro_prejuizo": -1.0,
+        "data_compra": "2024-06-25"
+    },
+    {
+        "data_venda": "2024-06-28",
+        "simbolo": "RBDS11.SA",
+        "quantidade_vendida": 108,
+        "preco_compra": 2.799999952316284,
+        "preco_venda": 2.3299999237060547,
+        "lucro_prejuizo": -50.760003089904785,
+        "data_compra": "2024-06-25"
+    },
+    {
+        "data_venda": "2024-07-01",
+        "simbolo": "PFIZ34.SA",
+        "quantidade_vendida": 25,
+        "preco_compra": 35.329689025878906,
+        "preco_venda": 39.09857940673828,
+        "lucro_prejuizo": 94.22225952148438,
+        "data_compra": "2024-05-10"
+    },
+    {
+        "data_venda": "2024-07-01",
+        "simbolo": "PPLA11.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 3.75,
+        "preco_venda": 3.200000047683716,
+        "lucro_prejuizo": -0.5499999523162842,
+        "data_compra": "2024-05-13"
+    },
+    {
+        "data_venda": "2024-07-01",
+        "simbolo": "U2TH34.SA",
+        "quantidade_vendida": 8,
+        "preco_compra": 77.52999877929688,
+        "preco_venda": 90.11000061035156,
+        "lucro_prejuizo": 100.6400146484375,
+        "data_compra": "2024-06-14"
+    },
+    {
+        "data_venda": "2024-07-02",
+        "simbolo": "TECN3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 4.670000076293945,
+        "preco_venda": 5.139999866485596,
+        "lucro_prejuizo": 0.4699997901916504,
+        "data_compra": "2024-06-27"
+    },
+    {
+        "data_venda": "2024-07-02",
+        "simbolo": "AMBP3.SA",
+        "quantidade_vendida": 116,
+        "preco_compra": 14.649999618530272,
+        "preco_venda": 16.649999618530273,
+        "lucro_prejuizo": 232.0000000000002,
+        "data_compra": "2024-07-01"
+    },
+    {
+        "data_venda": "2024-07-03",
+        "simbolo": "BMYB34.SA",
+        "quantidade_vendida": 7,
+        "preco_compra": 223.9922332763672,
+        "preco_venda": 196.3495941162109,
+        "lucro_prejuizo": -193.49847412109395,
+        "data_compra": "2024-07-02"
+    },
+    {
+        "data_venda": "2024-07-04",
+        "simbolo": "DIRR3.SA",
+        "quantidade_vendida": 11,
+        "preco_compra": 24.123106002807617,
+        "preco_venda": 26.82415008544922,
+        "lucro_prejuizo": 29.711484909057617,
+        "data_compra": "2024-05-21"
+    },
+    {
+        "data_venda": "2024-07-04",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 26,
+        "preco_compra": 8.958172798156738,
+        "preco_venda": 9.951340675354004,
+        "lucro_prejuizo": 25.822364807128906,
+        "data_compra": "2024-06-18"
+    },
+    {
+        "data_venda": "2024-07-04",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 8.771340370178223,
+        "preco_venda": 9.951340675354004,
+        "lucro_prejuizo": 2.3600006103515625,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-07-04",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 8.850006103515625,
+        "preco_venda": 9.951340675354004,
+        "lucro_prejuizo": 2.202669143676758,
+        "data_compra": "2024-06-24"
+    },
+    {
+        "data_venda": "2024-07-04",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 8.869673728942871,
+        "preco_venda": 9.951340675354004,
+        "lucro_prejuizo": 4.326667785644531,
+        "data_compra": "2024-06-28"
+    },
+    {
+        "data_venda": "2024-07-05",
+        "simbolo": "TRIS3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 4.659999847412109,
+        "preco_venda": 5.150000095367432,
+        "lucro_prejuizo": 0.9800004959106445,
+        "data_compra": "2024-06-12"
+    },
+    {
+        "data_venda": "2024-07-05",
+        "simbolo": "S1RP34.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 43.91999816894531,
+        "preco_venda": 41.52000045776367,
+        "lucro_prejuizo": -4.799995422363281,
+        "data_compra": "2024-06-24"
+    },
+    {
+        "data_venda": "2024-07-08",
+        "simbolo": "ITLC34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 27.930419921875,
+        "preco_venda": 31.007247924804688,
+        "lucro_prejuizo": 3.0768280029296875,
+        "data_compra": "2024-06-27"
+    },
+    {
+        "data_venda": "2024-07-09",
+        "simbolo": "ORLY34.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 18.780000686645508,
+        "preco_venda": 17.770000457763672,
+        "lucro_prejuizo": -2.020000457763672,
+        "data_compra": "2024-06-24"
+    },
+    {
+        "data_venda": "2024-07-09",
+        "simbolo": "SLBG34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 129.7806396484375,
+        "preco_venda": 121.83973693847656,
+        "lucro_prejuizo": -7.9409027099609375,
+        "data_compra": "2024-07-02"
+    },
+    {
+        "data_venda": "2024-07-09",
+        "simbolo": "B1PP34.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 50.47716522216797,
+        "preco_venda": 45.82221221923828,
+        "lucro_prejuizo": -18.61981201171875,
+        "data_compra": "2024-07-02"
+    },
+    {
+        "data_venda": "2024-07-10",
+        "simbolo": "INTU34.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 83.37999725341797,
+        "preco_venda": 77.55999755859375,
+        "lucro_prejuizo": -11.639999389648438,
+        "data_compra": "2024-06-28"
+    },
+    {
+        "data_venda": "2024-07-11",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.267081260681152,
+        "preco_venda": 9.305364608764648,
+        "lucro_prejuizo": 1.038283348083496,
+        "data_compra": "2024-06-24"
+    },
+    {
+        "data_venda": "2024-07-11",
+        "simbolo": "CLSA3.SA",
+        "quantidade_vendida": 17,
+        "preco_compra": 8.9399995803833,
+        "preco_venda": 8.15999984741211,
+        "lucro_prejuizo": -13.259995460510254,
+        "data_compra": "2024-07-10"
+    },
+    {
+        "data_venda": "2024-07-12",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 33,
+        "preco_compra": 1.5,
+        "preco_venda": 1.7000000476837158,
+        "lucro_prejuizo": 6.600001573562622,
+        "data_compra": "2024-06-28"
+    },
+    {
+        "data_venda": "2024-07-12",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.5099999904632568,
+        "preco_venda": 1.7000000476837158,
+        "lucro_prejuizo": 0.19000005722045898,
+        "data_compra": "2024-07-03"
+    },
+    {
+        "data_venda": "2024-07-12",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 1.5399999618530271,
+        "preco_venda": 1.7000000476837158,
+        "lucro_prejuizo": 0.3200001716613774,
+        "data_compra": "2024-07-08"
+    },
+    {
+        "data_venda": "2024-07-15",
+        "simbolo": "AZEV3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.5499999523162842,
+        "preco_venda": 1.8600000143051147,
+        "lucro_prejuizo": 0.31000006198883057,
+        "data_compra": "2024-07-01"
+    },
+    {
+        "data_venda": "2024-07-15",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 1.5800000429153442,
+        "preco_venda": 1.8799999952316284,
+        "lucro_prejuizo": 0.5999999046325684,
+        "data_compra": "2024-07-05"
+    },
+    {
+        "data_venda": "2024-07-15",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.7000000476837158,
+        "preco_venda": 1.8799999952316284,
+        "lucro_prejuizo": 0.1799999475479126,
+        "data_compra": "2024-07-12"
+    },
+    {
+        "data_venda": "2024-07-16",
+        "simbolo": "MWET4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.229999542236328,
+        "preco_venda": 11.0,
+        "lucro_prejuizo": 2.770000457763672,
+        "data_compra": "2024-05-24"
+    },
+    {
+        "data_venda": "2024-07-16",
+        "simbolo": "H1DB34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 68.4800033569336,
+        "preco_venda": 62.2599983215332,
+        "lucro_prejuizo": -6.220005035400391,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-07-17",
+        "simbolo": "AGRO3.SA",
+        "quantidade_vendida": 39,
+        "preco_compra": 23.33151054382324,
+        "preco_venda": 26.43425750732422,
+        "lucro_prejuizo": 121.00713157653823,
+        "data_compra": "2024-04-05"
+    },
+    {
+        "data_venda": "2024-07-17",
+        "simbolo": "H1DB34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 68.4800033569336,
+        "preco_venda": 62.2599983215332,
+        "lucro_prejuizo": -0.0,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-07-17",
+        "simbolo": "MEAL3.SA",
+        "quantidade_vendida": 45,
+        "preco_compra": 1.6200000047683716,
+        "preco_venda": 1.5199999809265137,
+        "lucro_prejuizo": -4.500001072883606,
+        "data_compra": "2024-07-16"
+    },
+    {
+        "data_venda": "2024-07-18",
+        "simbolo": "H1DB34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 68.4800033569336,
+        "preco_venda": 62.2599983215332,
+        "lucro_prejuizo": -0.0,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-07-18",
+        "simbolo": "CMIN3.SA",
+        "quantidade_vendida": 49,
+        "preco_compra": 5.517353057861328,
+        "preco_venda": 5.18870210647583,
+        "lucro_prejuizo": -16.103896617889404,
+        "data_compra": "2024-07-03"
+    },
+    {
+        "data_venda": "2024-07-19",
+        "simbolo": "G1LL34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 21.696569442749023,
+        "preco_venda": 24.54384994506836,
+        "lucro_prejuizo": 2.847280502319336,
+        "data_compra": "2024-06-13"
+    },
+    {
+        "data_venda": "2024-07-19",
+        "simbolo": "H1DB34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 68.4800033569336,
+        "preco_venda": 62.2599983215332,
+        "lucro_prejuizo": -0.0,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-07-19",
+        "simbolo": "AGXY3.SA",
+        "quantidade_vendida": 733,
+        "preco_compra": 1.5,
+        "preco_venda": 1.409999966621399,
+        "lucro_prejuizo": -65.97002446651459,
+        "data_compra": "2024-07-17"
+    },
+    {
+        "data_venda": "2024-07-22",
+        "simbolo": "G1LL34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 21.696569442749023,
+        "preco_venda": 24.54384994506836,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-06-13"
+    },
+    {
+        "data_venda": "2024-07-22",
+        "simbolo": "H1DB34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 68.4800033569336,
+        "preco_venda": 62.2599983215332,
+        "lucro_prejuizo": -0.0,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-07-23",
+        "simbolo": "G1LL34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 21.696569442749023,
+        "preco_venda": 24.54384994506836,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-06-13"
+    },
+    {
+        "data_venda": "2024-07-23",
+        "simbolo": "EKTR4.SA",
+        "quantidade_vendida": 20,
+        "preco_compra": 35.058631896972656,
+        "preco_venda": 39.02490615844727,
+        "lucro_prejuizo": 79.32548522949233,
+        "data_compra": "2024-06-13"
+    },
+    {
+        "data_venda": "2024-07-23",
+        "simbolo": "H1DB34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 68.4800033569336,
+        "preco_venda": 62.2599983215332,
+        "lucro_prejuizo": -0.0,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-07-24",
+        "simbolo": "G1LL34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 21.696569442749023,
+        "preco_venda": 24.54384994506836,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-06-13"
+    },
+    {
+        "data_venda": "2024-07-24",
+        "simbolo": "H1DB34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 68.4800033569336,
+        "preco_venda": 62.2599983215332,
+        "lucro_prejuizo": -0.0,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-07-24",
+        "simbolo": "S2HO34.SA",
+        "quantidade_vendida": 46,
+        "preco_compra": 2.990000009536743,
+        "preco_venda": 2.799999952316284,
+        "lucro_prejuizo": -8.740002632141113,
+        "data_compra": "2024-06-26"
+    },
+    {
+        "data_venda": "2024-07-24",
+        "simbolo": "TASA4.SA",
+        "quantidade_vendida": 27,
+        "preco_compra": 12.489999771118164,
+        "preco_venda": 11.68000030517578,
+        "lucro_prejuizo": -21.869985580444386,
+        "data_compra": "2024-07-09"
+    },
+    {
+        "data_venda": "2024-07-24",
+        "simbolo": "JHSF3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 4.035506725311279,
+        "preco_venda": 3.815562009811402,
+        "lucro_prejuizo": -0.43988943099975497,
+        "data_compra": "2024-07-15"
+    },
+    {
+        "data_venda": "2024-07-24",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.6299999952316284,
+        "preco_venda": 1.5299999713897705,
+        "lucro_prejuizo": -0.10000002384185791,
+        "data_compra": "2024-07-18"
+    },
+    {
+        "data_venda": "2024-07-25",
+        "simbolo": "G1LL34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 21.696569442749023,
+        "preco_venda": 24.54384994506836,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-06-13"
+    },
+    {
+        "data_venda": "2024-07-25",
+        "simbolo": "H1DB34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 68.4800033569336,
+        "preco_venda": 62.2599983215332,
+        "lucro_prejuizo": -0.0,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-07-26",
+        "simbolo": "BNBR3.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 113.49275207519533,
+        "preco_venda": 96.44448852539062,
+        "lucro_prejuizo": -68.1930541992188,
+        "data_compra": "2024-05-27"
+    },
+    {
+        "data_venda": "2024-07-26",
+        "simbolo": "G1LL34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 21.696569442749023,
+        "preco_venda": 24.54384994506836,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-06-13"
+    },
+    {
+        "data_venda": "2024-07-26",
+        "simbolo": "H1DB34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 68.4800033569336,
+        "preco_venda": 62.2599983215332,
+        "lucro_prejuizo": -0.0,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-07-26",
+        "simbolo": "USIM5.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.0600004196167,
+        "preco_venda": 6.329999923706055,
+        "lucro_prejuizo": -1.7300004959106445,
+        "data_compra": "2024-07-12"
+    },
+    {
+        "data_venda": "2024-07-29",
+        "simbolo": "G1LL34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 21.696569442749023,
+        "preco_venda": 24.54384994506836,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-06-13"
+    },
+    {
+        "data_venda": "2024-07-29",
+        "simbolo": "CAMB3.SA",
+        "quantidade_vendida": 42,
+        "preco_compra": 9.995125770568848,
+        "preco_venda": 11.085504531860352,
+        "lucro_prejuizo": 45.795907974243164,
+        "data_compra": "2024-06-14"
+    },
+    {
+        "data_venda": "2024-07-29",
+        "simbolo": "H1DB34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 68.4800033569336,
+        "preco_venda": 62.2599983215332,
+        "lucro_prejuizo": -0.0,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-07-29",
+        "simbolo": "MBLY3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 2.569999933242798,
+        "preco_venda": 2.970000028610229,
+        "lucro_prejuizo": 0.4000000953674312,
+        "data_compra": "2024-07-10"
+    },
+    {
+        "data_venda": "2024-07-29",
+        "simbolo": "CTSA4.SA",
+        "quantidade_vendida": 220,
+        "preco_compra": 1.75,
+        "preco_venda": 1.6100000143051147,
+        "lucro_prejuizo": -30.799996852874756,
+        "data_compra": "2024-07-26"
+    },
+    {
+        "data_venda": "2024-07-30",
+        "simbolo": "G1LL34.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 21.696569442749023,
+        "preco_venda": 26.437971115112305,
+        "lucro_prejuizo": 9.482803344726562,
+        "data_compra": "2024-06-13"
+    },
+    {
+        "data_venda": "2024-07-30",
+        "simbolo": "J1NP34.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 190.2514190673828,
+        "preco_venda": 211.0333709716797,
+        "lucro_prejuizo": 83.1278076171875,
+        "data_compra": "2024-06-13"
+    },
+    {
+        "data_venda": "2024-07-30",
+        "simbolo": "H1DB34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 68.4800033569336,
+        "preco_venda": 62.2599983215332,
+        "lucro_prejuizo": -0.0,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-07-30",
+        "simbolo": "ROMI3.SA",
+        "quantidade_vendida": 8,
+        "preco_compra": 10.46474552154541,
+        "preco_venda": 9.882309913635254,
+        "lucro_prejuizo": -4.65948486328125,
+        "data_compra": "2024-07-03"
+    },
+    {
+        "data_venda": "2024-07-30",
+        "simbolo": "RAPT3.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 9.434694290161133,
+        "preco_venda": 8.736927032470703,
+        "lucro_prejuizo": -2.093301773071289,
+        "data_compra": "2024-07-08"
+    },
+    {
+        "data_venda": "2024-07-30",
+        "simbolo": "CSED3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 3.8725078105926514,
+        "preco_venda": 3.6616287231445312,
+        "lucro_prejuizo": -0.42175817489624023,
+        "data_compra": "2024-07-26"
+    },
+    {
+        "data_venda": "2024-07-31",
+        "simbolo": "G1LL34.SA",
+        "quantidade_vendida": 13,
+        "preco_compra": 21.696569442749023,
+        "preco_venda": 26.35822105407715,
+        "lucro_prejuizo": 60.601470947265625,
+        "data_compra": "2024-06-13"
+    },
+    {
+        "data_venda": "2024-07-31",
+        "simbolo": "H1DB34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 68.4800033569336,
+        "preco_venda": 62.2599983215332,
+        "lucro_prejuizo": -0.0,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-07-31",
+        "simbolo": "PYPL34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 16.510000228881836,
+        "preco_venda": 18.530000686645508,
+        "lucro_prejuizo": 2.020000457763672,
+        "data_compra": "2024-06-21"
+    },
+    {
+        "data_venda": "2024-07-31",
+        "simbolo": "ORLY34.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 18.780000686645508,
+        "preco_venda": 20.690000534057617,
+        "lucro_prejuizo": 5.729999542236328,
+        "data_compra": "2024-06-24"
+    },
+    {
+        "data_venda": "2024-07-31",
+        "simbolo": "GUAR3.SA",
+        "quantidade_vendida": 9,
+        "preco_compra": 7.21999979019165,
+        "preco_venda": 6.849999904632568,
+        "lucro_prejuizo": -3.3299989700317383,
+        "data_compra": "2024-07-23"
+    },
+    {
+        "data_venda": "2024-08-01",
+        "simbolo": "H1DB34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 68.4800033569336,
+        "preco_venda": 62.2599983215332,
+        "lucro_prejuizo": -0.0,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-08-01",
+        "simbolo": "ORLY34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 18.780000686645508,
+        "preco_venda": 20.690000534057617,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-06-24"
+    },
+    {
+        "data_venda": "2024-08-01",
+        "simbolo": "FHER3.SA",
+        "quantidade_vendida": 245,
+        "preco_compra": 4.119999885559082,
+        "preco_venda": 4.550000190734863,
+        "lucro_prejuizo": 105.3500747680664,
+        "data_compra": "2024-07-30"
+    },
+    {
+        "data_venda": "2024-08-02",
+        "simbolo": "H1DB34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 68.4800033569336,
+        "preco_venda": 62.2599983215332,
+        "lucro_prejuizo": -0.0,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-08-02",
+        "simbolo": "ORLY34.SA",
+        "quantidade_vendida": 9,
+        "preco_compra": 18.780000686645508,
+        "preco_venda": 20.8799991607666,
+        "lucro_prejuizo": 18.899986267089844,
+        "data_compra": "2024-06-24"
+    },
+    {
+        "data_venda": "2024-08-02",
+        "simbolo": "AGRO3.SA",
+        "quantidade_vendida": 25,
+        "preco_compra": 25.365636825561523,
+        "preco_venda": 24.04392433166504,
+        "lucro_prejuizo": -33.04281234741211,
+        "data_compra": "2024-07-04"
+    },
+    {
+        "data_venda": "2024-08-05",
+        "simbolo": "H1DB34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 68.4800033569336,
+        "preco_venda": 62.2599983215332,
+        "lucro_prejuizo": -0.0,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-08-05",
+        "simbolo": "HBRE3.SA",
+        "quantidade_vendida": 16,
+        "preco_compra": 5.579999923706055,
+        "preco_venda": 5.289999961853027,
+        "lucro_prejuizo": -4.6399993896484375,
+        "data_compra": "2024-07-05"
+    },
+    {
+        "data_venda": "2024-08-05",
+        "simbolo": "STOC31.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 74.06999969482422,
+        "preco_venda": 69.97000122070312,
+        "lucro_prejuizo": -16.399993896484375,
+        "data_compra": "2024-07-24"
+    },
+    {
+        "data_venda": "2024-08-05",
+        "simbolo": "LVTC3.SA",
+        "quantidade_vendida": 52,
+        "preco_compra": 3.5799999237060547,
+        "preco_venda": 3.400000095367432,
+        "lucro_prejuizo": -9.359991073608375,
+        "data_compra": "2024-08-01"
+    },
+    {
+        "data_venda": "2024-08-06",
+        "simbolo": "H1DB34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 68.4800033569336,
+        "preco_venda": 59.52999877929688,
+        "lucro_prejuizo": -8.950004577636712,
+        "data_compra": "2024-06-20"
+    },
+    {
+        "data_venda": "2024-08-06",
+        "simbolo": "LREN3.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 11.42649745941162,
+        "preco_venda": 12.65171718597412,
+        "lucro_prejuizo": 4.90087890625,
+        "data_compra": "2024-07-24"
+    },
+    {
+        "data_venda": "2024-08-07",
+        "simbolo": "NORD3.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 9.449999809265137,
+        "preco_venda": 8.899999618530273,
+        "lucro_prejuizo": -2.7500009536743164,
+        "data_compra": "2024-08-05"
+    },
+    {
+        "data_venda": "2024-08-08",
+        "simbolo": "F1SL34.SA",
+        "quantidade_vendida": 25,
+        "preco_compra": 4.380000114440918,
+        "preco_venda": 3.190000057220459,
+        "lucro_prejuizo": -29.750001430511475,
+        "data_compra": "2024-07-24"
+    },
+    {
+        "data_venda": "2024-08-08",
+        "simbolo": "NVHO11.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 10.788589477539062,
+        "preco_venda": 12.381921768188477,
+        "lucro_prejuizo": 3.186664581298828,
+        "data_compra": "2024-08-01"
+    },
+    {
+        "data_venda": "2024-08-08",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 1.350000023841858,
+        "preco_venda": 1.4900000095367432,
+        "lucro_prejuizo": 0.2799999713897705,
+        "data_compra": "2024-08-01"
+    },
+    {
+        "data_venda": "2024-08-12",
+        "simbolo": "I2TC34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 60.83000183105469,
+        "preco_venda": 68.69000244140625,
+        "lucro_prejuizo": 7.8600006103515625,
+        "data_compra": "2024-06-14"
+    },
+    {
+        "data_venda": "2024-08-12",
+        "simbolo": "ANIM3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 3.028787136077881,
+        "preco_venda": 3.4677417278289795,
+        "lucro_prejuizo": 0.43895459175109863,
+        "data_compra": "2024-07-23"
+    },
+    {
+        "data_venda": "2024-08-12",
+        "simbolo": "M2PW34.SA",
+        "quantidade_vendida": 13,
+        "preco_compra": 13.085031509399414,
+        "preco_venda": 11.728715896606444,
+        "lucro_prejuizo": -17.632102966308615,
+        "data_compra": "2024-08-01"
+    },
+    {
+        "data_venda": "2024-08-12",
+        "simbolo": "DEXP4.SA",
+        "quantidade_vendida": 29,
+        "preco_compra": 9.624042510986328,
+        "preco_venda": 9.099960327148438,
+        "lucro_prejuizo": -15.198383331298828,
+        "data_compra": "2024-08-05"
+    },
+    {
+        "data_venda": "2024-08-13",
+        "simbolo": "KRSA3.SA",
+        "quantidade_vendida": 149,
+        "preco_compra": 7.099999904632568,
+        "preco_venda": 6.599999904632568,
+        "lucro_prejuizo": -74.5,
+        "data_compra": "2024-07-19"
+    },
+    {
+        "data_venda": "2024-08-13",
+        "simbolo": "BPAN4.SA",
+        "quantidade_vendida": 21,
+        "preco_compra": 8.75,
+        "preco_venda": 9.760000228881836,
+        "lucro_prejuizo": 21.210004806518555,
+        "data_compra": "2024-08-02"
+    },
+    {
+        "data_venda": "2024-08-14",
+        "simbolo": "RDOR3.SA",
+        "quantidade_vendida": 26,
+        "preco_compra": 27.448711395263672,
+        "preco_venda": 30.341686248779297,
+        "lucro_prejuizo": 75.21734619140625,
+        "data_compra": "2024-07-23"
+    },
+    {
+        "data_venda": "2024-08-14",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.4800000190734863,
+        "preco_venda": 1.399999976158142,
+        "lucro_prejuizo": -0.08000004291534424,
+        "data_compra": "2024-08-07"
+    },
+    {
+        "data_venda": "2024-08-14",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 1.4900000095367432,
+        "preco_venda": 1.399999976158142,
+        "lucro_prejuizo": -0.3600001335144043,
+        "data_compra": "2024-08-08"
+    },
+    {
+        "data_venda": "2024-08-14",
+        "simbolo": "CGAS3.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 111.3125228881836,
+        "preco_venda": 105.30975341796876,
+        "lucro_prejuizo": -18.00830841064449,
+        "data_compra": "2024-08-12"
+    },
+    {
+        "data_venda": "2024-08-15",
+        "simbolo": "AERI3.SA",
+        "quantidade_vendida": 48,
+        "preco_compra": 8.8100004196167,
+        "preco_venda": 10.1899995803833,
+        "lucro_prejuizo": 66.23995971679688,
+        "data_compra": "2024-08-14"
+    },
+    {
+        "data_venda": "2024-08-16",
+        "simbolo": "INEP3.SA",
+        "quantidade_vendida": 256,
+        "preco_compra": 1.8899999856948853,
+        "preco_venda": 2.130000114440918,
+        "lucro_prejuizo": 61.440032958984375,
+        "data_compra": "2024-07-31"
+    },
+    {
+        "data_venda": "2024-08-16",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 9.607173919677734,
+        "preco_venda": 9.115507125854492,
+        "lucro_prejuizo": -1.9666671752929688,
+        "data_compra": "2024-08-08"
+    },
+    {
+        "data_venda": "2024-08-19",
+        "simbolo": "AHEB5.SA",
+        "quantidade_vendida": 27,
+        "preco_compra": 19.209999084472656,
+        "preco_venda": 35.0,
+        "lucro_prejuizo": 426.3300247192383,
+        "data_compra": "2024-05-02"
+    },
+    {
+        "data_venda": "2024-08-19",
+        "simbolo": "BALM3.SA",
+        "quantidade_vendida": 12,
+        "preco_compra": 11.800506591796877,
+        "preco_venda": 11.148597717285156,
+        "lucro_prejuizo": -7.822906494140646,
+        "data_compra": "2024-07-11"
+    },
+    {
+        "data_venda": "2024-08-19",
+        "simbolo": "HYPE3.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 28.37542533874512,
+        "preco_venda": 31.52065658569336,
+        "lucro_prejuizo": 9.435693740844716,
+        "data_compra": "2024-08-05"
+    },
+    {
+        "data_venda": "2024-08-19",
+        "simbolo": "INEP3.SA",
+        "quantidade_vendida": 201,
+        "preco_compra": 2.130000114440918,
+        "preco_venda": 1.9800000190734863,
+        "lucro_prejuizo": -30.15001916885376,
+        "data_compra": "2024-08-16"
+    },
+    {
+        "data_venda": "2024-08-20",
+        "simbolo": "PLAS3.SA",
+        "quantidade_vendida": 7,
+        "preco_compra": 5.550000190734863,
+        "preco_venda": 7.599999904632568,
+        "lucro_prejuizo": 14.349997997283936,
+        "data_compra": "2024-08-19"
+    },
+    {
+        "data_venda": "2024-08-21",
+        "simbolo": "ROST34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 381.2099914550781,
+        "preco_venda": 421.3800048828125,
+        "lucro_prejuizo": 40.170013427734375,
+        "data_compra": "2024-06-05"
+    },
+    {
+        "data_venda": "2024-08-21",
+        "simbolo": "NGRD3.SA",
+        "quantidade_vendida": 9,
+        "preco_compra": 28.0,
+        "preco_venda": 32.25,
+        "lucro_prejuizo": 38.25,
+        "data_compra": "2024-07-18"
+    },
+    {
+        "data_venda": "2024-08-21",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 9.57767391204834,
+        "preco_venda": 8.997506141662598,
+        "lucro_prejuizo": -3.481006622314453,
+        "data_compra": "2024-08-13"
+    },
+    {
+        "data_venda": "2024-08-22",
+        "simbolo": "CSCO34.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 50.20001602172852,
+        "preco_venda": 55.96354293823242,
+        "lucro_prejuizo": 34.581161499023395,
+        "data_compra": "2024-06-24"
+    },
+    {
+        "data_venda": "2024-08-22",
+        "simbolo": "A1AP34.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 20.70656967163086,
+        "preco_venda": 17.75986671447754,
+        "lucro_prejuizo": -14.733514785766602,
+        "data_compra": "2024-08-06"
+    },
+    {
+        "data_venda": "2024-08-22",
+        "simbolo": "P2AT34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 7.730000019073486,
+        "preco_venda": 8.520000457763672,
+        "lucro_prejuizo": 0.7900004386901855,
+        "data_compra": "2024-08-07"
+    },
+    {
+        "data_venda": "2024-08-22",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 9.430173873901367,
+        "preco_venda": 8.958172798156738,
+        "lucro_prejuizo": -2.8320064544677734,
+        "data_compra": "2024-08-12"
+    },
+    {
+        "data_venda": "2024-08-22",
+        "simbolo": "ENGI11.SA",
+        "quantidade_vendida": 15,
+        "preco_compra": 50.150001525878906,
+        "preco_venda": 47.5,
+        "lucro_prejuizo": -39.750022888183594,
+        "data_compra": "2024-08-19"
+    },
+    {
+        "data_venda": "2024-08-23",
+        "simbolo": "P2AT34.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 7.730000019073486,
+        "preco_venda": 8.539999961853027,
+        "lucro_prejuizo": 3.239999771118164,
+        "data_compra": "2024-08-07"
+    },
+    {
+        "data_venda": "2024-08-23",
+        "simbolo": "DOTZ3.SA",
+        "quantidade_vendida": 87,
+        "preco_compra": 8.800000190734863,
+        "preco_venda": 8.010000228881836,
+        "lucro_prejuizo": -68.72999668121338,
+        "data_compra": "2024-08-21"
+    },
+    {
+        "data_venda": "2024-08-23",
+        "simbolo": "P1DD34.SA",
+        "quantidade_vendida": 7,
+        "preco_compra": 81.73999786376953,
+        "preco_venda": 76.31999969482422,
+        "lucro_prejuizo": -37.93998718261719,
+        "data_compra": "2024-08-22"
+    },
+    {
+        "data_venda": "2024-08-26",
+        "simbolo": "W1IX34.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 28.709999084472656,
+        "preco_venda": 32.15999984741211,
+        "lucro_prejuizo": 20.70000457763672,
+        "data_compra": "2024-05-24"
+    },
+    {
+        "data_venda": "2024-08-26",
+        "simbolo": "ENGI3.SA",
+        "quantidade_vendida": 41,
+        "preco_compra": 15.0,
+        "preco_venda": 14.1899995803833,
+        "lucro_prejuizo": -33.21001720428467,
+        "data_compra": "2024-08-22"
+    },
+    {
+        "data_venda": "2024-08-27",
+        "simbolo": "RCSL3.SA",
+        "quantidade_vendida": 270,
+        "preco_compra": 3.5999999046325684,
+        "preco_venda": 4.0,
+        "lucro_prejuizo": 108.00002574920654,
+        "data_compra": "2024-08-23"
+    },
+    {
+        "data_venda": "2024-08-28",
+        "simbolo": "GPIV33.SA",
+        "quantidade_vendida": 40,
+        "preco_compra": 3.849999904632568,
+        "preco_venda": 4.320000171661377,
+        "lucro_prejuizo": 18.80001068115236,
+        "data_compra": "2024-08-16"
+    },
+    {
+        "data_venda": "2024-08-29",
+        "simbolo": "AHEB5.SA",
+        "quantidade_vendida": 17,
+        "preco_compra": 35.0,
+        "preco_venda": 40.0,
+        "lucro_prejuizo": 85.0,
+        "data_compra": "2024-08-19"
+    },
+    {
+        "data_venda": "2024-08-29",
+        "simbolo": "FESA3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 14.089853286743164,
+        "preco_venda": 13.221895217895508,
+        "lucro_prejuizo": -0.8679580688476562,
+        "data_compra": "2024-08-28"
+    },
+    {
+        "data_venda": "2024-08-30",
+        "simbolo": "MGLU3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 13.18000030517578,
+        "preco_venda": 12.15999984741211,
+        "lucro_prejuizo": -1.02000045776367,
+        "data_compra": "2024-08-22"
+    },
+    {
+        "data_venda": "2024-08-30",
+        "simbolo": "SMFT3.SA",
+        "quantidade_vendida": 12,
+        "preco_compra": 22.74614524841309,
+        "preco_venda": 21.52585792541504,
+        "lucro_prejuizo": -14.643447875976605,
+        "data_compra": "2024-08-23"
+    },
+    {
+        "data_venda": "2024-08-30",
+        "simbolo": "BHIA3.SA",
+        "quantidade_vendida": 23,
+        "preco_compra": 6.739999771118164,
+        "preco_venda": 7.440000057220459,
+        "lucro_prejuizo": 16.100006580352783,
+        "data_compra": "2024-08-28"
+    },
+    {
+        "data_venda": "2024-09-02",
+        "simbolo": "PCAR3.SA",
+        "quantidade_vendida": 16,
+        "preco_compra": 3.2699999809265137,
+        "preco_venda": 3.0899999141693115,
+        "lucro_prejuizo": -2.8800010681152344,
+        "data_compra": "2024-08-20"
+    },
+    {
+        "data_venda": "2024-09-02",
+        "simbolo": "TOTS3.SA",
+        "quantidade_vendida": 34,
+        "preco_compra": 31.11429786682129,
+        "preco_venda": 29.02149772644043,
+        "lucro_prejuizo": -71.15520477294922,
+        "data_compra": "2024-08-27"
+    },
+    {
+        "data_venda": "2024-09-03",
+        "simbolo": "VIVR3.SA",
+        "quantidade_vendida": 54,
+        "preco_compra": 2.4100000858306885,
+        "preco_venda": 2.140000104904175,
+        "lucro_prejuizo": -14.579998970031738,
+        "data_compra": "2024-08-05"
+    },
+    {
+        "data_venda": "2024-09-04",
+        "simbolo": "SHOP11.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 67.98999786376953,
+        "preco_venda": 54.56930541992188,
+        "lucro_prejuizo": -0.0,
+        "data_compra": "2024-05-29"
+    },
+    {
+        "data_venda": "2024-09-04",
+        "simbolo": "MDNE3.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 13.041458129882812,
+        "preco_venda": 14.545873641967772,
+        "lucro_prejuizo": 6.017662048339837,
+        "data_compra": "2024-07-12"
+    },
+    {
+        "data_venda": "2024-09-04",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 1.440000057220459,
+        "preco_venda": 1.3300000429153442,
+        "lucro_prejuizo": -0.5500000715255737,
+        "data_compra": "2024-08-06"
+    },
+    {
+        "data_venda": "2024-09-04",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.4500000476837158,
+        "preco_venda": 1.3300000429153442,
+        "lucro_prejuizo": -0.12000000476837158,
+        "data_compra": "2024-08-19"
+    },
+    {
+        "data_venda": "2024-09-05",
+        "simbolo": "SHOP11.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 67.98999786376953,
+        "preco_venda": 54.56930541992188,
+        "lucro_prejuizo": -0.0,
+        "data_compra": "2024-05-29"
+    },
+    {
+        "data_venda": "2024-09-05",
+        "simbolo": "LIGT3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 6.239999771118164,
+        "preco_venda": 8.100000381469727,
+        "lucro_prejuizo": 1.8600006103515625,
+        "data_compra": "2024-08-26"
+    },
+    {
+        "data_venda": "2024-09-05",
+        "simbolo": "E2EF34.SA",
+        "quantidade_vendida": 7,
+        "preco_compra": 4.079999923706055,
+        "preco_venda": 3.839999914169312,
+        "lucro_prejuizo": -1.680000066757199,
+        "data_compra": "2024-09-02"
+    },
+    {
+        "data_venda": "2024-09-06",
+        "simbolo": "GEPA3.SA",
+        "quantidade_vendida": 19,
+        "preco_compra": 22.505373001098636,
+        "preco_venda": 26.04835319519043,
+        "lucro_prejuizo": 67.31662368774407,
+        "data_compra": "2024-04-18"
+    },
+    {
+        "data_venda": "2024-09-06",
+        "simbolo": "SHOP11.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 67.98999786376953,
+        "preco_venda": 54.56930541992188,
+        "lucro_prejuizo": -13.42069244384765,
+        "data_compra": "2024-05-29"
+    },
+    {
+        "data_venda": "2024-09-06",
+        "simbolo": "PATI4.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 37.31806564331055,
+        "preco_venda": 44.97999954223633,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-09-02"
+    },
+    {
+        "data_venda": "2024-09-09",
+        "simbolo": "B1NT34.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 30.479999542236328,
+        "preco_venda": 34.7400016784668,
+        "lucro_prejuizo": 25.560012817382812,
+        "data_compra": "2024-08-19"
+    },
+    {
+        "data_venda": "2024-09-09",
+        "simbolo": "S2EA34.SA",
+        "quantidade_vendida": 22,
+        "preco_compra": 18.100000381469727,
+        "preco_venda": 17.170000076293945,
+        "lucro_prejuizo": -20.460006713867188,
+        "data_compra": "2024-08-26"
+    },
+    {
+        "data_venda": "2024-09-09",
+        "simbolo": "T2TD34.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 5.889999866485596,
+        "preco_venda": 5.550000190734863,
+        "lucro_prejuizo": -2.0399980545043945,
+        "data_compra": "2024-08-29"
+    },
+    {
+        "data_venda": "2024-09-09",
+        "simbolo": "PATI4.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 37.31806564331055,
+        "preco_venda": 44.97999954223633,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-09-02"
+    },
+    {
+        "data_venda": "2024-09-09",
+        "simbolo": "OPCT3.SA",
+        "quantidade_vendida": 9,
+        "preco_compra": 7.199999809265137,
+        "preco_venda": 6.760000228881836,
+        "lucro_prejuizo": -3.959996223449707,
+        "data_compra": "2024-09-04"
+    },
+    {
+        "data_venda": "2024-09-09",
+        "simbolo": "A1NE34.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 125.10749816894533,
+        "preco_venda": 115.0,
+        "lucro_prejuizo": -40.42999267578131,
+        "data_compra": "2024-09-06"
+    },
+    {
+        "data_venda": "2024-09-10",
+        "simbolo": "BPAC3.SA",
+        "quantidade_vendida": 9,
+        "preco_compra": 16.84622573852539,
+        "preco_venda": 15.78403091430664,
+        "lucro_prejuizo": -9.55975341796875,
+        "data_compra": "2024-08-13"
+    },
+    {
+        "data_venda": "2024-09-11",
+        "simbolo": "ESTR4.SA",
+        "quantidade_vendida": 25,
+        "preco_compra": 2.039999961853028,
+        "preco_venda": 2.5,
+        "lucro_prejuizo": 11.500000953674306,
+        "data_compra": "2024-08-02"
+    },
+    {
+        "data_venda": "2024-09-11",
+        "simbolo": "NVDC34.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 12.448607444763184,
+        "preco_venda": 13.739341735839844,
+        "lucro_prejuizo": 2.5814685821533203,
+        "data_compra": "2024-09-05"
+    },
+    {
+        "data_venda": "2024-09-12",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.399999976158142,
+        "preco_venda": 1.3200000524520874,
+        "lucro_prejuizo": -0.07999992370605469,
+        "data_compra": "2024-08-14"
+    },
+    {
+        "data_venda": "2024-09-12",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 1.399999976158142,
+        "preco_venda": 1.3200000524520874,
+        "lucro_prejuizo": -0.23999977111816406,
+        "data_compra": "2024-08-29"
+    },
+    {
+        "data_venda": "2024-09-12",
+        "simbolo": "CMIN3.SA",
+        "quantidade_vendida": 78,
+        "preco_compra": 5.656780242919922,
+        "preco_venda": 6.284204959869385,
+        "lucro_prejuizo": 48.939127922058105,
+        "data_compra": "2024-08-30"
+    },
+    {
+        "data_venda": "2024-09-12",
+        "simbolo": "GEPA3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 26.093420028686523,
+        "preco_venda": 24.33583068847656,
+        "lucro_prejuizo": -3.515178680419929,
+        "data_compra": "2024-09-10"
+    },
+    {
+        "data_venda": "2024-09-13",
+        "simbolo": "HAPV3.SA",
+        "quantidade_vendida": 198,
+        "preco_compra": 4.159999847412109,
+        "preco_venda": 4.599999904632568,
+        "lucro_prejuizo": 87.12001132965088,
+        "data_compra": "2024-07-29"
+    },
+    {
+        "data_venda": "2024-09-13",
+        "simbolo": "GMAT3.SA",
+        "quantidade_vendida": 23,
+        "preco_compra": 7.9045491218566895,
+        "preco_venda": 7.38087272644043,
+        "lucro_prejuizo": -12.044557094573975,
+        "data_compra": "2024-08-15"
+    },
+    {
+        "data_venda": "2024-09-16",
+        "simbolo": "B2HI34.SA",
+        "quantidade_vendida": 267,
+        "preco_compra": 1.659999966621399,
+        "preco_venda": 1.5399999618530271,
+        "lucro_prejuizo": -32.04000127315527,
+        "data_compra": "2024-09-09"
+    },
+    {
+        "data_venda": "2024-09-16",
+        "simbolo": "CLSA3.SA",
+        "quantidade_vendida": 10,
+        "preco_compra": 8.75,
+        "preco_venda": 8.149999618530273,
+        "lucro_prejuizo": -6.000003814697266,
+        "data_compra": "2024-09-11"
+    },
+    {
+        "data_venda": "2024-09-18",
+        "simbolo": "PATI4.SA",
+        "quantidade_vendida": 27,
+        "preco_compra": 37.31806564331055,
+        "preco_venda": 29.0,
+        "lucro_prejuizo": -224.58777236938477,
+        "data_compra": "2024-09-02"
+    },
+    {
+        "data_venda": "2024-09-19",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 1.3300000429153442,
+        "preco_venda": 1.2599999904632568,
+        "lucro_prejuizo": -0.1400001049041748,
+        "data_compra": "2024-09-04"
+    },
+    {
+        "data_venda": "2024-09-19",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 1.340000033378601,
+        "preco_venda": 1.2599999904632568,
+        "lucro_prejuizo": -0.24000012874603271,
+        "data_compra": "2024-09-11"
+    },
+    {
+        "data_venda": "2024-09-19",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.3300000429153442,
+        "preco_venda": 1.2599999904632568,
+        "lucro_prejuizo": -0.0700000524520874,
+        "data_compra": "2024-09-16"
+    },
+    {
+        "data_venda": "2024-09-19",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.3300000429153442,
+        "preco_venda": 1.2599999904632568,
+        "lucro_prejuizo": -0.0700000524520874,
+        "data_compra": "2024-09-18"
+    },
+    {
+        "data_venda": "2024-09-20",
+        "simbolo": "Q1RV34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 307.5,
+        "preco_venda": 278.6000061035156,
+        "lucro_prejuizo": -28.899993896484375,
+        "data_compra": "2024-08-15"
+    },
+    {
+        "data_venda": "2024-09-20",
+        "simbolo": "DASA3.SA",
+        "quantidade_vendida": 37,
+        "preco_compra": 3.109999895095825,
+        "preco_venda": 2.75,
+        "lucro_prejuizo": -13.319996118545532,
+        "data_compra": "2024-09-03"
+    },
+    {
+        "data_venda": "2024-09-20",
+        "simbolo": "MATD3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 4.829999923706055,
+        "preco_venda": 4.539999961853027,
+        "lucro_prejuizo": -0.5799999237060547,
+        "data_compra": "2024-09-13"
+    },
+    {
+        "data_venda": "2024-09-20",
+        "simbolo": "PTNT3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.454721450805664,
+        "preco_venda": 10.934759140014648,
+        "lucro_prejuizo": 1.4800376892089844,
+        "data_compra": "2024-09-19"
+    },
+    {
+        "data_venda": "2024-09-23",
+        "simbolo": "SCAR3.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 21.20798110961914,
+        "preco_venda": 19.87789535522461,
+        "lucro_prejuizo": -3.9902572631835938,
+        "data_compra": "2024-08-08"
+    },
+    {
+        "data_venda": "2024-09-23",
+        "simbolo": "FIQE3.SA",
+        "quantidade_vendida": 25,
+        "preco_compra": 3.900000095367432,
+        "preco_venda": 3.670000076293945,
+        "lucro_prejuizo": -5.75000047683718,
+        "data_compra": "2024-08-12"
+    },
+    {
+        "data_venda": "2024-09-23",
+        "simbolo": "RNEW3.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 1.0,
+        "preco_venda": 0.949999988079071,
+        "lucro_prejuizo": -0.2500000596046448,
+        "data_compra": "2024-08-26"
+    },
+    {
+        "data_venda": "2024-09-23",
+        "simbolo": "G2DI33.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 2.5199999809265137,
+        "preco_venda": 2.359999895095825,
+        "lucro_prejuizo": -0.48000025749206543,
+        "data_compra": "2024-09-06"
+    },
+    {
+        "data_venda": "2024-09-23",
+        "simbolo": "N1VO34.SA",
+        "quantidade_vendida": 7,
+        "preco_compra": 91.8000030517578,
+        "preco_venda": 86.26000213623047,
+        "lucro_prejuizo": -38.78000640869131,
+        "data_compra": "2024-09-09"
+    },
+    {
+        "data_venda": "2024-09-23",
+        "simbolo": "CBEE3.SA",
+        "quantidade_vendida": 20,
+        "preco_compra": 19.989999771118164,
+        "preco_venda": 17.0,
+        "lucro_prejuizo": -59.79999542236328,
+        "data_compra": "2024-09-20"
+    },
+    {
+        "data_venda": "2024-09-24",
+        "simbolo": "PORD11.SA",
+        "quantidade_vendida": 8,
+        "preco_compra": 9.020000457763672,
+        "preco_venda": 8.510000228881836,
+        "lucro_prejuizo": -4.0800018310546875,
+        "data_compra": "2024-08-02"
+    },
+    {
+        "data_venda": "2024-09-24",
+        "simbolo": "ATOM3.SA",
+        "quantidade_vendida": 10,
+        "preco_compra": 2.109999895095825,
+        "preco_venda": 2.3299999237060547,
+        "lucro_prejuizo": 2.200000286102295,
+        "data_compra": "2024-08-23"
+    },
+    {
+        "data_venda": "2024-09-24",
+        "simbolo": "CRIP34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 261.29998779296875,
+        "preco_venda": 289.9800109863281,
+        "lucro_prejuizo": 28.680023193359375,
+        "data_compra": "2024-09-16"
+    },
+    {
+        "data_venda": "2024-09-25",
+        "simbolo": "C1GP34.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 4.329999923706055,
+        "preco_venda": 4.090000152587891,
+        "lucro_prejuizo": -0.7199993133544922,
+        "data_compra": "2024-09-06"
+    },
+    {
+        "data_venda": "2024-09-25",
+        "simbolo": "ATOM3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 2.259999990463257,
+        "preco_venda": 2.6700000762939453,
+        "lucro_prejuizo": 0.4100000858306885,
+        "data_compra": "2024-09-23"
+    },
+    {
+        "data_venda": "2024-09-26",
+        "simbolo": "DEOP34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 38.31595993041992,
+        "preco_venda": 42.61000061035156,
+        "lucro_prejuizo": 4.294040679931641,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-09-26",
+        "simbolo": "C1GP34.SA",
+        "quantidade_vendida": 7,
+        "preco_compra": 4.329999923706055,
+        "preco_venda": 4.050000190734863,
+        "lucro_prejuizo": -1.9599981307983398,
+        "data_compra": "2024-09-06"
+    },
+    {
+        "data_venda": "2024-09-26",
+        "simbolo": "U1AL34.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 142.17999267578125,
+        "preco_venda": 160.9499969482422,
+        "lucro_prejuizo": 93.85002136230469,
+        "data_compra": "2024-09-13"
+    },
+    {
+        "data_venda": "2024-09-26",
+        "simbolo": "RCSL4.SA",
+        "quantidade_vendida": 283,
+        "preco_compra": 1.0,
+        "preco_venda": 0.949999988079071,
+        "lucro_prejuizo": -14.150003373622894,
+        "data_compra": "2024-09-18"
+    },
+    {
+        "data_venda": "2024-09-26",
+        "simbolo": "B2YN34.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 1.830000042915344,
+        "preco_venda": 2.0299999713897705,
+        "lucro_prejuizo": 0.5999997854232795,
+        "data_compra": "2024-09-25"
+    },
+    {
+        "data_venda": "2024-09-30",
+        "simbolo": "JSLG3.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 8.983059883117676,
+        "preco_venda": 8.330606460571289,
+        "lucro_prejuizo": -3.9147205352783203,
+        "data_compra": "2024-09-09"
+    },
+    {
+        "data_venda": "2024-10-01",
+        "simbolo": "BPFF11.SA",
+        "quantidade_vendida": 11,
+        "preco_compra": 66.05165100097656,
+        "preco_venda": 62.61190032958984,
+        "lucro_prejuizo": -37.837257385253984,
+        "data_compra": "2024-01-12"
+    },
+    {
+        "data_venda": "2024-10-01",
+        "simbolo": "ESPA3.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 1.0800000429153442,
+        "preco_venda": 1.0199999809265137,
+        "lucro_prejuizo": -0.1800001859664917,
+        "data_compra": "2024-08-28"
+    },
+    {
+        "data_venda": "2024-10-01",
+        "simbolo": "FISC11.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 73.42201232910156,
+        "preco_venda": 82.23265838623047,
+        "lucro_prejuizo": 8.810646057128906,
+        "data_compra": "2024-09-18"
+    },
+    {
+        "data_venda": "2024-10-01",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 1.340000033378601,
+        "preco_venda": 1.2699999809265137,
+        "lucro_prejuizo": -0.350000262260437,
+        "data_compra": "2024-09-30"
+    },
+    {
+        "data_venda": "2024-10-03",
+        "simbolo": "G1WW34.SA",
+        "quantidade_vendida": 8,
+        "preco_compra": 127.2720184326172,
+        "preco_venda": 141.0365447998047,
+        "lucro_prejuizo": 110.11621093749989,
+        "data_compra": "2024-07-03"
+    },
+    {
+        "data_venda": "2024-10-03",
+        "simbolo": "C1CL34.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 100.8000030517578,
+        "preco_venda": 94.5999984741211,
+        "lucro_prejuizo": -24.800018310546818,
+        "data_compra": "2024-09-18"
+    },
+    {
+        "data_venda": "2024-10-03",
+        "simbolo": "TRAD3.SA",
+        "quantidade_vendida": 50,
+        "preco_compra": 5.050000190734863,
+        "preco_venda": 4.760000228881836,
+        "lucro_prejuizo": -14.499998092651367,
+        "data_compra": "2024-09-26"
+    },
+    {
+        "data_venda": "2024-10-04",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.8008394241333,
+        "preco_venda": 8.210840225219727,
+        "lucro_prejuizo": -0.5899991989135742,
+        "data_compra": "2024-09-16"
+    },
+    {
+        "data_venda": "2024-10-04",
+        "simbolo": "V1IP34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 43.619998931884766,
+        "preco_venda": 48.0,
+        "lucro_prejuizo": 4.380001068115234,
+        "data_compra": "2024-09-30"
+    },
+    {
+        "data_venda": "2024-10-07",
+        "simbolo": "HFOF11.SA",
+        "quantidade_vendida": 7,
+        "preco_compra": 66.35348510742188,
+        "preco_venda": 62.79605102539063,
+        "lucro_prejuizo": -24.9020385742187,
+        "data_compra": "2024-08-13"
+    },
+    {
+        "data_venda": "2024-10-07",
+        "simbolo": "MSFT34.SA",
+        "quantidade_vendida": 11,
+        "preco_compra": 99.56395721435548,
+        "preco_venda": 93.61268615722656,
+        "lucro_prejuizo": -65.46398162841813,
+        "data_compra": "2024-09-23"
+    },
+    {
+        "data_venda": "2024-10-07",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.55500602722168,
+        "preco_venda": 7.778172492980957,
+        "lucro_prejuizo": -0.7768335342407227,
+        "data_compra": "2024-09-23"
+    },
+    {
+        "data_venda": "2024-10-07",
+        "simbolo": "S2GM34.SA",
+        "quantidade_vendida": 17,
+        "preco_compra": 22.5,
+        "preco_venda": 24.75,
+        "lucro_prejuizo": 38.25,
+        "data_compra": "2024-09-24"
+    },
+    {
+        "data_venda": "2024-10-07",
+        "simbolo": "HAGA3.SA",
+        "quantidade_vendida": 297,
+        "preco_compra": 2.630000114440918,
+        "preco_venda": 2.440000057220459,
+        "lucro_prejuizo": -56.43001699447632,
+        "data_compra": "2024-10-01"
+    },
+    {
+        "data_venda": "2024-10-08",
+        "simbolo": "BIOM3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 10.029999732971191,
+        "preco_venda": 9.510000228881836,
+        "lucro_prejuizo": -0.5199995040893555,
+        "data_compra": "2024-09-25"
+    },
+    {
+        "data_venda": "2024-10-08",
+        "simbolo": "JFEN3.SA",
+        "quantidade_vendida": 138,
+        "preco_compra": 5.599999904632568,
+        "preco_venda": 5.199999809265137,
+        "lucro_prejuizo": -55.200013160705566,
+        "data_compra": "2024-10-03"
+    },
+    {
+        "data_venda": "2024-10-08",
+        "simbolo": "E1DU34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 29.399999618530277,
+        "preco_venda": 27.809999465942383,
+        "lucro_prejuizo": -1.5900001525878942,
+        "data_compra": "2024-10-04"
+    },
+    {
+        "data_venda": "2024-10-08",
+        "simbolo": "NETE34.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 54.59999847412109,
+        "preco_venda": 51.84999847412109,
+        "lucro_prejuizo": -13.75,
+        "data_compra": "2024-10-07"
+    },
+    {
+        "data_venda": "2024-10-09",
+        "simbolo": "T2TD34.SA",
+        "quantidade_vendida": 111,
+        "preco_compra": 5.889999866485596,
+        "preco_venda": 6.480000019073486,
+        "lucro_prejuizo": 65.49001693725586,
+        "data_compra": "2024-08-29"
+    },
+    {
+        "data_venda": "2024-10-09",
+        "simbolo": "DBAG34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 88.83000183105469,
+        "preco_venda": 98.0,
+        "lucro_prejuizo": 9.169998168945312,
+        "data_compra": "2024-09-10"
+    },
+    {
+        "data_venda": "2024-10-09",
+        "simbolo": "C2ZR34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 22.459999084472656,
+        "preco_venda": 24.940000534057617,
+        "lucro_prejuizo": 2.480001449584961,
+        "data_compra": "2024-09-18"
+    },
+    {
+        "data_venda": "2024-10-10",
+        "simbolo": "RBED11.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 122.62981414794922,
+        "preco_venda": 116.10694885253906,
+        "lucro_prejuizo": -39.13719177246094,
+        "data_compra": "2024-08-01"
+    },
+    {
+        "data_venda": "2024-10-10",
+        "simbolo": "NVDC34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 14.189319610595703,
+        "preco_venda": 15.649250030517578,
+        "lucro_prejuizo": 1.459930419921875,
+        "data_compra": "2024-10-04"
+    },
+    {
+        "data_venda": "2024-10-11",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 7.778172492980957,
+        "preco_venda": 7.227505207061768,
+        "lucro_prejuizo": -0.5506672859191895,
+        "data_compra": "2024-10-07"
+    },
+    {
+        "data_venda": "2024-10-11",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 7.788005828857422,
+        "preco_venda": 7.227505207061768,
+        "lucro_prejuizo": -0.5605006217956543,
+        "data_compra": "2024-10-08"
+    },
+    {
+        "data_venda": "2024-10-14",
+        "simbolo": "OIBR3.SA",
+        "quantidade_vendida": 111,
+        "preco_compra": 4.900000095367432,
+        "preco_venda": 4.599999904632568,
+        "lucro_prejuizo": -33.300021171569824,
+        "data_compra": "2024-09-12"
+    },
+    {
+        "data_venda": "2024-10-14",
+        "simbolo": "T1AL34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 6.309999942779541,
+        "preco_venda": 5.989999771118164,
+        "lucro_prejuizo": -0.32000017166137695,
+        "data_compra": "2024-10-04"
+    },
+    {
+        "data_venda": "2024-10-14",
+        "simbolo": "S1BS34.SA",
+        "quantidade_vendida": 54,
+        "preco_compra": 12.149999618530272,
+        "preco_venda": 11.300000190734863,
+        "lucro_prejuizo": -45.89996910095205,
+        "data_compra": "2024-10-07"
+    },
+    {
+        "data_venda": "2024-10-15",
+        "simbolo": "BEES4.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 9.402507781982422,
+        "preco_venda": 8.93199634552002,
+        "lucro_prejuizo": -1.8820457458496094,
+        "data_compra": "2024-07-02"
+    },
+    {
+        "data_venda": "2024-10-15",
+        "simbolo": "AALR3.SA",
+        "quantidade_vendida": 24,
+        "preco_compra": 15.199999809265137,
+        "preco_venda": 13.90999984741211,
+        "lucro_prejuizo": -30.959999084472656,
+        "data_compra": "2024-08-26"
+    },
+    {
+        "data_venda": "2024-10-15",
+        "simbolo": "P1DD34.SA",
+        "quantidade_vendida": 10,
+        "preco_compra": 79.44999694824219,
+        "preco_venda": 73.72000122070312,
+        "lucro_prejuizo": -57.299957275390625,
+        "data_compra": "2024-10-09"
+    },
+    {
+        "data_venda": "2024-10-16",
+        "simbolo": "BPFF11.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 65.18559265136719,
+        "preco_venda": 61.78767776489258,
+        "lucro_prejuizo": -3.3979148864746094,
+        "data_compra": "2024-02-15"
+    },
+    {
+        "data_venda": "2024-10-17",
+        "simbolo": "I1QY34.SA",
+        "quantidade_vendida": 75,
+        "preco_compra": 7.0,
+        "preco_venda": 6.550000190734863,
+        "lucro_prejuizo": -33.749985694885254,
+        "data_compra": "2024-10-14"
+    },
+    {
+        "data_venda": "2024-10-17",
+        "simbolo": "CPLE5.SA",
+        "quantidade_vendida": 88,
+        "preco_compra": 12.50722312927246,
+        "preco_venda": 11.379120826721191,
+        "lucro_prejuizo": -99.27300262451156,
+        "data_compra": "2024-10-15"
+    },
+    {
+        "data_venda": "2024-10-18",
+        "simbolo": "RAIZ4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 3.089476585388184,
+        "preco_venda": 2.9100000858306885,
+        "lucro_prejuizo": -0.3589529991149911,
+        "data_compra": "2024-07-11"
+    },
+    {
+        "data_venda": "2024-10-18",
+        "simbolo": "HAGA4.SA",
+        "quantidade_vendida": 19,
+        "preco_compra": 1.1799999475479126,
+        "preco_venda": 1.2999999523162842,
+        "lucro_prejuizo": 2.28000009059906,
+        "data_compra": "2024-08-27"
+    },
+    {
+        "data_venda": "2024-10-18",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 7.227505207061768,
+        "preco_venda": 6.863671779632568,
+        "lucro_prejuizo": -0.7276668548583984,
+        "data_compra": "2024-10-11"
+    },
+    {
+        "data_venda": "2024-10-18",
+        "simbolo": "HAGA4.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 1.1799999475479126,
+        "preco_venda": 1.2999999523162842,
+        "lucro_prejuizo": 0.36000001430511475,
+        "data_compra": "2024-10-16"
+    },
+    {
+        "data_venda": "2024-10-21",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 1.309999942779541,
+        "preco_venda": 1.2400000095367432,
+        "lucro_prejuizo": -0.34999966621398926,
+        "data_compra": "2024-10-14"
+    },
+    {
+        "data_venda": "2024-10-21",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 7.1685051918029785,
+        "preco_venda": 6.804671764373779,
+        "lucro_prejuizo": -1.0915002822875977,
+        "data_compra": "2024-10-17"
+    },
+    {
+        "data_venda": "2024-10-23",
+        "simbolo": "BPFF11.SA",
+        "quantidade_vendida": 13,
+        "preco_compra": 63.29165267944336,
+        "preco_venda": 59.673789978027344,
+        "lucro_prejuizo": -47.0322151184082,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-10-23",
+        "simbolo": "O1DF34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 57.73753356933594,
+        "preco_venda": 53.9603157043457,
+        "lucro_prejuizo": -3.7772178649902344,
+        "data_compra": "2024-10-16"
+    },
+    {
+        "data_venda": "2024-10-23",
+        "simbolo": "U1AI34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 49.20000076293945,
+        "preco_venda": 46.150001525878906,
+        "lucro_prejuizo": -3.049999237060547,
+        "data_compra": "2024-10-18"
+    },
+    {
+        "data_venda": "2024-10-24",
+        "simbolo": "T1CH34.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 13.869999885559082,
+        "preco_venda": 13.100000381469728,
+        "lucro_prejuizo": -2.309998512268061,
+        "data_compra": "2024-10-09"
+    },
+    {
+        "data_venda": "2024-10-24",
+        "simbolo": "ATMP3.SA",
+        "quantidade_vendida": 495,
+        "preco_compra": 1.440000057220459,
+        "preco_venda": 1.350000023841858,
+        "lucro_prejuizo": -44.55001652240753,
+        "data_compra": "2024-10-10"
+    },
+    {
+        "data_venda": "2024-10-25",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 1.2799999713897705,
+        "preco_venda": 1.2100000381469729,
+        "lucro_prejuizo": -0.34999966621398815,
+        "data_compra": "2024-10-15"
+    },
+    {
+        "data_venda": "2024-10-25",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.2799999713897705,
+        "preco_venda": 1.2100000381469729,
+        "lucro_prejuizo": -0.06999993324279763,
+        "data_compra": "2024-10-17"
+    },
+    {
+        "data_venda": "2024-10-25",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.2899999618530271,
+        "preco_venda": 1.2100000381469729,
+        "lucro_prejuizo": -0.07999992370605424,
+        "data_compra": "2024-10-24"
+    },
+    {
+        "data_venda": "2024-10-28",
+        "simbolo": "C1MG34.SA",
+        "quantidade_vendida": 23,
+        "preco_compra": 15.600000381469728,
+        "preco_venda": 17.299999237060547,
+        "lucro_prejuizo": 39.099973678588825,
+        "data_compra": "2024-09-13"
+    },
+    {
+        "data_venda": "2024-10-28",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 1.2699999809265137,
+        "preco_venda": 1.2000000476837158,
+        "lucro_prejuizo": -0.2799997329711914,
+        "data_compra": "2024-10-09"
+    },
+    {
+        "data_venda": "2024-10-28",
+        "simbolo": "AZUL4.SA",
+        "quantidade_vendida": 116,
+        "preco_compra": 5.480000019073486,
+        "preco_venda": 6.110000133514404,
+        "lucro_prejuizo": 73.08001327514648,
+        "data_compra": "2024-10-23"
+    },
+    {
+        "data_venda": "2024-10-29",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 1.2599999904632568,
+        "preco_venda": 1.190000057220459,
+        "lucro_prejuizo": -0.34999966621398926,
+        "data_compra": "2024-10-04"
+    },
+    {
+        "data_venda": "2024-10-29",
+        "simbolo": "GPRO34.SA",
+        "quantidade_vendida": 19,
+        "preco_compra": 7.25,
+        "preco_venda": 8.65999984741211,
+        "lucro_prejuizo": 26.789997100830078,
+        "data_compra": "2024-10-07"
+    },
+    {
+        "data_venda": "2024-10-29",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 1.2599999904632568,
+        "preco_venda": 1.190000057220459,
+        "lucro_prejuizo": -0.34999966621398926,
+        "data_compra": "2024-10-07"
+    },
+    {
+        "data_venda": "2024-10-29",
+        "simbolo": "T1RI34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 81.83999633789062,
+        "preco_venda": 90.08999633789062,
+        "lucro_prejuizo": 8.25,
+        "data_compra": "2024-10-14"
+    },
+    {
+        "data_venda": "2024-10-30",
+        "simbolo": "T1RI34.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 81.83999633789062,
+        "preco_venda": 90.08999633789062,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-10-14"
+    },
+    {
+        "data_venda": "2024-10-31",
+        "simbolo": "ITLC34.SA",
+        "quantidade_vendida": 50,
+        "preco_compra": 20.57999992370605,
+        "preco_venda": 23.299999237060547,
+        "lucro_prejuizo": 135.99996566772478,
+        "data_compra": "2024-10-07"
+    },
+    {
+        "data_venda": "2024-10-31",
+        "simbolo": "LAND3.SA",
+        "quantidade_vendida": 33,
+        "preco_compra": 13.199999809265137,
+        "preco_venda": 12.399999618530272,
+        "lucro_prejuizo": -26.400006294250545,
+        "data_compra": "2024-10-08"
+    },
+    {
+        "data_venda": "2024-10-31",
+        "simbolo": "T1RI34.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 81.83999633789062,
+        "preco_venda": 92.0,
+        "lucro_prejuizo": 20.32000732421875,
+        "data_compra": "2024-10-14"
+    },
+    {
+        "data_venda": "2024-10-31",
+        "simbolo": "TECN3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 5.889999866485596,
+        "preco_venda": 5.449999809265137,
+        "lucro_prejuizo": -0.440000057220459,
+        "data_compra": "2024-10-25"
+    },
+    {
+        "data_venda": "2024-10-31",
+        "simbolo": "PCAR3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 3.1700000762939453,
+        "preco_venda": 3.0,
+        "lucro_prejuizo": -0.1700000762939453,
+        "data_compra": "2024-10-25"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "SBUB34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 514.1370239257812,
+        "preco_venda": 572.429931640625,
+        "lucro_prejuizo": 58.29290771484375,
+        "data_compra": "2024-08-13"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "W1MG34.SA",
+        "quantidade_vendida": 21,
+        "preco_compra": 42.71129608154297,
+        "preco_venda": 47.11390686035156,
+        "lucro_prejuizo": 92.45482635498047,
+        "data_compra": "2024-09-26"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "N1WG34.SA",
+        "quantidade_vendida": 10,
+        "preco_compra": 51.25,
+        "preco_venda": 57.18000030517578,
+        "lucro_prejuizo": 59.30000305175781,
+        "data_compra": "2024-10-07"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.2000000476837158,
+        "preco_venda": 1.1399999856948853,
+        "lucro_prejuizo": -0.060000061988830566,
+        "data_compra": "2024-10-28"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "POSI3.SA",
+        "quantidade_vendida": 55,
+        "preco_compra": 6.409999847412109,
+        "preco_venda": 6.059999942779541,
+        "lucro_prejuizo": -19.24999475479126,
+        "data_compra": "2024-10-31"
+    },
+    {
+        "data_venda": "2024-11-04",
+        "simbolo": "TELB4.SA",
+        "quantidade_vendida": 42,
+        "preco_compra": 9.369999885559082,
+        "preco_venda": 8.800000190734863,
+        "lucro_prejuizo": -23.939987182617188,
+        "data_compra": "2024-10-17"
+    },
+    {
+        "data_venda": "2024-11-04",
+        "simbolo": "F2VR34.SA",
+        "quantidade_vendida": 100,
+        "preco_compra": 8.819999694824219,
+        "preco_venda": 8.289999961853027,
+        "lucro_prejuizo": -52.99997329711914,
+        "data_compra": "2024-11-01"
+    },
+    {
+        "data_venda": "2024-11-05",
+        "simbolo": "D1OW34.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 72.47483825683594,
+        "preco_venda": 68.42218780517578,
+        "lucro_prejuizo": -8.105300903320312,
+        "data_compra": "2024-08-02"
+    },
+    {
+        "data_venda": "2024-11-05",
+        "simbolo": "MWET4.SA",
+        "quantidade_vendida": 87,
+        "preco_compra": 9.989999771118164,
+        "preco_venda": 11.59000015258789,
+        "lucro_prejuizo": 139.2000331878662,
+        "data_compra": "2024-10-28"
+    },
+    {
+        "data_venda": "2024-11-06",
+        "simbolo": "D1EX34.SA",
+        "quantidade_vendida": 29,
+        "preco_compra": 8.300000190734863,
+        "preco_venda": 7.789999961853027,
+        "lucro_prejuizo": -14.790006637573242,
+        "data_compra": "2024-10-28"
+    },
+    {
+        "data_venda": "2024-11-06",
+        "simbolo": "PFRM3.SA",
+        "quantidade_vendida": 198,
+        "preco_compra": 6.379677772521973,
+        "preco_venda": 7.0773115158081055,
+        "lucro_prejuizo": 138.1314811706543,
+        "data_compra": "2024-11-01"
+    },
+    {
+        "data_venda": "2024-11-06",
+        "simbolo": "A1LL34.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 73.63999938964844,
+        "preco_venda": 88.95999908447266,
+        "lucro_prejuizo": 61.279998779296875,
+        "data_compra": "2024-11-01"
+    },
+    {
+        "data_venda": "2024-11-07",
+        "simbolo": "HUSC11.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 107.85384368896484,
+        "preco_venda": 98.15055847167967,
+        "lucro_prejuizo": -9.70328521728517,
+        "data_compra": "2024-10-17"
+    },
+    {
+        "data_venda": "2024-11-07",
+        "simbolo": "BRFS3.SA",
+        "quantidade_vendida": 13,
+        "preco_compra": 25.979999542236328,
+        "preco_venda": 24.63999938964844,
+        "lucro_prejuizo": -17.420001983642532,
+        "data_compra": "2024-11-06"
+    },
+    {
+        "data_venda": "2024-11-08",
+        "simbolo": "CBAV3.SA",
+        "quantidade_vendida": 171,
+        "preco_compra": 5.679999828338623,
+        "preco_venda": 5.380000114440918,
+        "lucro_prejuizo": -51.29995107650757,
+        "data_compra": "2024-10-03"
+    },
+    {
+        "data_venda": "2024-11-08",
+        "simbolo": "P2IN34.SA",
+        "quantidade_vendida": 19,
+        "preco_compra": 30.09000015258789,
+        "preco_venda": 27.71999931335449,
+        "lucro_prejuizo": -45.03001594543464,
+        "data_compra": "2024-10-08"
+    },
+    {
+        "data_venda": "2024-11-08",
+        "simbolo": "MRFG3.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 13.63318157196045,
+        "preco_venda": 12.947236061096191,
+        "lucro_prejuizo": -3.429727554321289,
+        "data_compra": "2024-11-04"
+    },
+    {
+        "data_venda": "2024-11-08",
+        "simbolo": "PGMN3.SA",
+        "quantidade_vendida": 489,
+        "preco_compra": 3.359999895095825,
+        "preco_venda": 3.1700000762939453,
+        "lucro_prejuizo": -92.90991139411926,
+        "data_compra": "2024-11-06"
+    },
+    {
+        "data_venda": "2024-11-11",
+        "simbolo": "T1CH34.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 15.359999656677246,
+        "preco_venda": 14.43000030517578,
+        "lucro_prejuizo": -3.7199974060058665,
+        "data_compra": "2024-11-08"
+    },
+    {
+        "data_venda": "2024-11-12",
+        "simbolo": "F1MC34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 174.7899932861328,
+        "preco_venda": 160.75,
+        "lucro_prejuizo": -14.039993286132812,
+        "data_compra": "2024-10-14"
+    },
+    {
+        "data_venda": "2024-11-12",
+        "simbolo": "GOLL4.SA",
+        "quantidade_vendida": 17,
+        "preco_compra": 1.149999976158142,
+        "preco_venda": 1.0700000524520874,
+        "lucro_prejuizo": -1.3599987030029297,
+        "data_compra": "2024-10-29"
+    },
+    {
+        "data_venda": "2024-11-12",
+        "simbolo": "DMVF3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 7.099999904632568,
+        "preco_venda": 6.710000038146973,
+        "lucro_prejuizo": -0.3899998664855957,
+        "data_compra": "2024-11-05"
+    },
+    {
+        "data_venda": "2024-11-12",
+        "simbolo": "CEDO3.SA",
+        "quantidade_vendida": 10,
+        "preco_compra": 25.5,
+        "preco_venda": 22.0,
+        "lucro_prejuizo": -35.0,
+        "data_compra": "2024-11-08"
+    },
+    {
+        "data_venda": "2024-11-12",
+        "simbolo": "PATI3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 29.0,
+        "preco_venda": 27.0,
+        "lucro_prejuizo": -4.0,
+        "data_compra": "2024-11-11"
+    },
+    {
+        "data_venda": "2024-11-13",
+        "simbolo": "CPSH11.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 10.072863578796388,
+        "preco_venda": 9.53073024749756,
+        "lucro_prejuizo": -1.0842666625976562,
+        "data_compra": "2024-05-03"
+    },
+    {
+        "data_venda": "2024-11-13",
+        "simbolo": "WHRL4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 4.235180377960205,
+        "preco_venda": 3.997601270675659,
+        "lucro_prejuizo": -0.4751582145690918,
+        "data_compra": "2024-09-05"
+    },
+    {
+        "data_venda": "2024-11-13",
+        "simbolo": "F1MC34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 174.7899932861328,
+        "preco_venda": 161.9199981689453,
+        "lucro_prejuizo": -12.8699951171875,
+        "data_compra": "2024-10-14"
+    },
+    {
+        "data_venda": "2024-11-14",
+        "simbolo": "NEWU11.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 77.55387115478516,
+        "preco_venda": 72.8758773803711,
+        "lucro_prejuizo": -14.033981323242188,
+        "data_compra": "2024-10-24"
+    },
+    {
+        "data_venda": "2024-11-14",
+        "simbolo": "SEER3.SA",
+        "quantidade_vendida": 16,
+        "preco_compra": 7.159999847412109,
+        "preco_venda": 6.599999904632568,
+        "lucro_prejuizo": -8.959999084472656,
+        "data_compra": "2024-11-07"
+    },
+    {
+        "data_venda": "2024-11-18",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 1.2100000381469729,
+        "preco_venda": 1.1200000047683716,
+        "lucro_prejuizo": -0.5400002002716078,
+        "data_compra": "2024-11-04"
+    },
+    {
+        "data_venda": "2024-11-18",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 1.190000057220459,
+        "preco_venda": 1.1200000047683716,
+        "lucro_prejuizo": -0.1400001049041748,
+        "data_compra": "2024-11-06"
+    },
+    {
+        "data_venda": "2024-11-18",
+        "simbolo": "TSNF34.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 332.0939636230469,
+        "preco_venda": 370.8316040039063,
+        "lucro_prejuizo": 116.2129211425783,
+        "data_compra": "2024-11-08"
+    },
+    {
+        "data_venda": "2024-11-18",
+        "simbolo": "PATI4.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 35.0,
+        "preco_venda": 33.0099983215332,
+        "lucro_prejuizo": -9.950008392333984,
+        "data_compra": "2024-11-13"
+    },
+    {
+        "data_venda": "2024-11-19",
+        "simbolo": "KLBN3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 3.7456486225128174,
+        "preco_venda": 4.123598575592041,
+        "lucro_prejuizo": 0.37794995307922363,
+        "data_compra": "2024-07-09"
+    },
+    {
+        "data_venda": "2024-11-19",
+        "simbolo": "WGBA34.SA",
+        "quantidade_vendida": 9,
+        "preco_compra": 26.189376831054688,
+        "preco_venda": 23.989999771118164,
+        "lucro_prejuizo": -19.79439353942871,
+        "data_compra": "2024-10-23"
+    },
+    {
+        "data_venda": "2024-11-19",
+        "simbolo": "CVCB3.SA",
+        "quantidade_vendida": 383,
+        "preco_compra": 2.119999885559082,
+        "preco_venda": 2.369999885559082,
+        "lucro_prejuizo": 95.75,
+        "data_compra": "2024-11-04"
+    },
+    {
+        "data_venda": "2024-11-19",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 1.159999966621399,
+        "preco_venda": 1.059999942779541,
+        "lucro_prejuizo": -0.20000004768371582,
+        "data_compra": "2024-11-07"
+    },
+    {
+        "data_venda": "2024-11-19",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 1.149999976158142,
+        "preco_venda": 1.059999942779541,
+        "lucro_prejuizo": -0.18000006675720215,
+        "data_compra": "2024-11-14"
+    },
+    {
+        "data_venda": "2024-11-21",
+        "simbolo": "CEEB3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 39.52294158935547,
+        "preco_venda": 37.45217514038086,
+        "lucro_prejuizo": -4.141532897949219,
+        "data_compra": "2024-10-17"
+    },
+    {
+        "data_venda": "2024-11-21",
+        "simbolo": "COGN3.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 1.409999966621399,
+        "preco_venda": 1.3200000524520874,
+        "lucro_prejuizo": -0.3599996566772461,
+        "data_compra": "2024-10-31"
+    },
+    {
+        "data_venda": "2024-11-25",
+        "simbolo": "HFOF11.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 61.26263046264648,
+        "preco_venda": 57.967041015625,
+        "lucro_prejuizo": -3.2955894470214773,
+        "data_compra": "2024-11-08"
+    },
+    {
+        "data_venda": "2024-11-26",
+        "simbolo": "W1MC34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 601.2000122070312,
+        "preco_venda": 663.0,
+        "lucro_prejuizo": 61.79998779296875,
+        "data_compra": "2024-10-17"
+    },
+    {
+        "data_venda": "2024-11-27",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 1.090000033378601,
+        "preco_venda": 1.0299999713897705,
+        "lucro_prejuizo": -0.12000012397766113,
+        "data_compra": "2024-11-26"
+    },
+    {
+        "data_venda": "2024-11-28",
+        "simbolo": "LAVV3.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 8.76804256439209,
+        "preco_venda": 8.039999961853027,
+        "lucro_prejuizo": -4.368255615234375,
+        "data_compra": "2024-11-08"
+    },
+    {
+        "data_venda": "2024-11-28",
+        "simbolo": "SNEC34.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 109.4499969482422,
+        "preco_venda": 121.33000183105467,
+        "lucro_prejuizo": 71.28002929687483,
+        "data_compra": "2024-11-18"
+    },
+    {
+        "data_venda": "2024-11-28",
+        "simbolo": "KEPL3.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 10.449999809265137,
+        "preco_venda": 9.800000190734863,
+        "lucro_prejuizo": -1.9499988555908203,
+        "data_compra": "2024-11-19"
+    },
+    {
+        "data_venda": "2024-11-28",
+        "simbolo": "CSED3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 3.640000104904175,
+        "preco_venda": 3.150000095367432,
+        "lucro_prejuizo": -0.4900000095367427,
+        "data_compra": "2024-11-19"
+    },
+    {
+        "data_venda": "2024-11-28",
+        "simbolo": "MTRE3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 3.829999923706055,
+        "preco_venda": 3.440000057220459,
+        "lucro_prejuizo": -0.38999986648559615,
+        "data_compra": "2024-11-21"
+    },
+    {
+        "data_venda": "2024-11-28",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 1.0299999713897705,
+        "preco_venda": 0.9200000166893004,
+        "lucro_prejuizo": -0.21999990940094016,
+        "data_compra": "2024-11-21"
+    },
+    {
+        "data_venda": "2024-11-28",
+        "simbolo": "FNOR11.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 1.0099999904632568,
+        "preco_venda": 1.149999976158142,
+        "lucro_prejuizo": 0.2799999713897705,
+        "data_compra": "2024-11-25"
+    },
+    {
+        "data_venda": "2024-11-28",
+        "simbolo": "ZAMP3.SA",
+        "quantidade_vendida": 211,
+        "preco_compra": 3.130000114440918,
+        "preco_venda": 2.940000057220459,
+        "lucro_prejuizo": -40.090012073516846,
+        "data_compra": "2024-11-26"
+    },
+    {
+        "data_venda": "2024-11-28",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 1.0299999713897705,
+        "preco_venda": 0.9200000166893004,
+        "lucro_prejuizo": -0.21999990940094016,
+        "data_compra": "2024-11-27"
+    },
+    {
+        "data_venda": "2024-11-29",
+        "simbolo": "E2EF34.SA",
+        "quantidade_vendida": 58,
+        "preco_compra": 3.890000104904175,
+        "preco_venda": 4.369999885559082,
+        "lucro_prejuizo": 27.83998727798462,
+        "data_compra": "2024-11-04"
+    },
+    {
+        "data_venda": "2024-11-29",
+        "simbolo": "KRSA3.SA",
+        "quantidade_vendida": 216,
+        "preco_compra": 6.409999847412109,
+        "preco_venda": 6.010000228881836,
+        "lucro_prejuizo": -86.39991760253906,
+        "data_compra": "2024-11-08"
+    },
+    {
+        "data_venda": "2024-11-29",
+        "simbolo": "MWET3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.529999732971191,
+        "preco_venda": 15.0,
+        "lucro_prejuizo": 5.470000267028809,
+        "data_compra": "2024-11-08"
+    },
+    {
+        "data_venda": "2024-12-02",
+        "simbolo": "KLBN3.SA",
+        "quantidade_vendida": 79,
+        "preco_compra": 4.083948612213135,
+        "preco_venda": 4.559748649597168,
+        "lucro_prejuizo": 37.58820295333862,
+        "data_compra": "2024-11-14"
+    },
+    {
+        "data_venda": "2024-12-02",
+        "simbolo": "FPAB11.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 230.0715484619141,
+        "preco_venda": 213.68258666992188,
+        "lucro_prejuizo": -16.388961791992216,
+        "data_compra": "2024-11-28"
+    },
+    {
+        "data_venda": "2024-12-02",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 0.9200000166893004,
+        "preco_venda": 0.8600000143051147,
+        "lucro_prejuizo": -0.3000000119209284,
+        "data_compra": "2024-11-28"
+    },
+    {
+        "data_venda": "2024-12-03",
+        "simbolo": "JHSF3.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 4.390400409698486,
+        "preco_venda": 4.046206951141357,
+        "lucro_prejuizo": -1.7209672927856445,
+        "data_compra": "2024-10-24"
+    },
+    {
+        "data_venda": "2024-12-04",
+        "simbolo": "JBSS3.SA",
+        "quantidade_vendida": 7,
+        "preco_compra": 35.378963470458984,
+        "preco_venda": 39.06999969482422,
+        "lucro_prejuizo": 25.83725357055664,
+        "data_compra": "2024-10-29"
+    },
+    {
+        "data_venda": "2024-12-05",
+        "simbolo": "MYPK3.SA",
+        "quantidade_vendida": 49,
+        "preco_compra": 11.56999969482422,
+        "preco_venda": 12.729999542236328,
+        "lucro_prejuizo": 56.839992523193274,
+        "data_compra": "2024-11-18"
+    },
+    {
+        "data_venda": "2024-12-05",
+        "simbolo": "FHER3.SA",
+        "quantidade_vendida": 32,
+        "preco_compra": 8.5,
+        "preco_venda": 7.699999809265137,
+        "lucro_prejuizo": -25.600006103515625,
+        "data_compra": "2024-12-04"
+    },
+    {
+        "data_venda": "2024-12-06",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 6.450671195983887,
+        "preco_venda": 5.841004371643066,
+        "lucro_prejuizo": -1.2193336486816406,
+        "data_compra": "2024-11-18"
+    },
+    {
+        "data_venda": "2024-12-06",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 6.293338298797607,
+        "preco_venda": 5.841004371643066,
+        "lucro_prejuizo": -0.452333927154541,
+        "data_compra": "2024-11-29"
+    },
+    {
+        "data_venda": "2024-12-06",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 0.8600000143051147,
+        "preco_venda": 0.8100000023841858,
+        "lucro_prejuizo": -0.20000004768371582,
+        "data_compra": "2024-12-02"
+    },
+    {
+        "data_venda": "2024-12-09",
+        "simbolo": "BEES3.SA",
+        "quantidade_vendida": 19,
+        "preco_compra": 8.589642524719238,
+        "preco_venda": 8.157099723815918,
+        "lucro_prejuizo": -8.218313217163086,
+        "data_compra": "2024-05-09"
+    },
+    {
+        "data_venda": "2024-12-09",
+        "simbolo": "ETER3.SA",
+        "quantidade_vendida": 96,
+        "preco_compra": 6.0,
+        "preco_venda": 5.690000057220459,
+        "lucro_prejuizo": -29.759994506835938,
+        "data_compra": "2024-12-02"
+    },
+    {
+        "data_venda": "2024-12-09",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 0.8399999737739563,
+        "preco_venda": 0.7400000095367432,
+        "lucro_prejuizo": -0.19999992847442627,
+        "data_compra": "2024-12-04"
+    },
+    {
+        "data_venda": "2024-12-09",
+        "simbolo": "SAPR3.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 6.150964260101318,
+        "preco_venda": 5.644872188568115,
+        "lucro_prejuizo": -3.0365524291992188,
+        "data_compra": "2024-12-05"
+    },
+    {
+        "data_venda": "2024-12-09",
+        "simbolo": "AGXY3.SA",
+        "quantidade_vendida": 28,
+        "preco_compra": 0.75,
+        "preco_venda": 0.6899999976158142,
+        "lucro_prejuizo": -1.6800000667572021,
+        "data_compra": "2024-12-06"
+    },
+    {
+        "data_venda": "2024-12-10",
+        "simbolo": "FCFL11.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 111.75040435791016,
+        "preco_venda": 105.76863098144533,
+        "lucro_prejuizo": -17.94532012939449,
+        "data_compra": "2024-08-02"
+    },
+    {
+        "data_venda": "2024-12-10",
+        "simbolo": "BRSR5.SA",
+        "quantidade_vendida": 30,
+        "preco_compra": 16.242420196533203,
+        "preco_venda": 14.796789169311523,
+        "lucro_prejuizo": -43.36893081665039,
+        "data_compra": "2024-11-28"
+    },
+    {
+        "data_venda": "2024-12-11",
+        "simbolo": "USSX34.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 225.28543090820312,
+        "preco_venda": 207.05999755859372,
+        "lucro_prejuizo": -36.45086669921881,
+        "data_compra": "2024-10-24"
+    },
+    {
+        "data_venda": "2024-12-11",
+        "simbolo": "UNIP5.SA",
+        "quantidade_vendida": 20,
+        "preco_compra": 54.8357048034668,
+        "preco_venda": 51.34000015258789,
+        "lucro_prejuizo": -69.91409301757812,
+        "data_compra": "2024-11-19"
+    },
+    {
+        "data_venda": "2024-12-11",
+        "simbolo": "NINJ3.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 4.900000095367432,
+        "preco_venda": 4.599999904632568,
+        "lucro_prejuizo": -1.2000007629394531,
+        "data_compra": "2024-12-03"
+    },
+    {
+        "data_venda": "2024-12-11",
+        "simbolo": "HSHY34.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 237.92999267578125,
+        "preco_venda": 216.8500061035156,
+        "lucro_prejuizo": -42.15997314453131,
+        "data_compra": "2024-12-09"
+    },
+    {
+        "data_venda": "2024-12-11",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 7,
+        "preco_compra": 0.7400000095367432,
+        "preco_venda": 0.8199999928474426,
+        "lucro_prejuizo": 0.5599998831748962,
+        "data_compra": "2024-12-09"
+    },
+    {
+        "data_venda": "2024-12-11",
+        "simbolo": "WGBA34.SA",
+        "quantidade_vendida": 24,
+        "preco_compra": 31.559999465942383,
+        "preco_venda": 29.26000022888184,
+        "lucro_prejuizo": -55.19998168945304,
+        "data_compra": "2024-12-10"
+    },
+    {
+        "data_venda": "2024-12-12",
+        "simbolo": "TSNC11.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.0,
+        "preco_venda": 81.12999725341797,
+        "lucro_prejuizo": 80.12999725341797,
+        "data_compra": "2024-11-07"
+    },
+    {
+        "data_venda": "2024-12-12",
+        "simbolo": "BEEF3.SA",
+        "quantidade_vendida": 175,
+        "preco_compra": 6.239999771118164,
+        "preco_venda": 5.639999866485596,
+        "lucro_prejuizo": -104.99998331069946,
+        "data_compra": "2024-12-11"
+    },
+    {
+        "data_venda": "2024-12-13",
+        "simbolo": "USIM5.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 6.269999980926514,
+        "preco_venda": 5.860000133514404,
+        "lucro_prejuizo": -1.6399993896484375,
+        "data_compra": "2024-10-21"
+    },
+    {
+        "data_venda": "2024-12-13",
+        "simbolo": "TSNC11.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 1.0,
+        "preco_venda": 81.12999725341797,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-11-07"
+    },
+    {
+        "data_venda": "2024-12-13",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 0.8100000023841858,
+        "preco_venda": 1.0,
+        "lucro_prejuizo": 0.949999988079071,
+        "data_compra": "2024-12-10"
+    },
+    {
+        "data_venda": "2024-12-13",
+        "simbolo": "AZEV4.SA",
+        "quantidade_vendida": 6,
+        "preco_compra": 0.8199999928474426,
+        "preco_venda": 1.0,
+        "lucro_prejuizo": 1.0800000429153442,
+        "data_compra": "2024-12-11"
+    },
+    {
+        "data_venda": "2024-12-16",
+        "simbolo": "USIM3.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 6.079999923706055,
+        "preco_venda": 5.75,
+        "lucro_prejuizo": -0.3299999237060547,
+        "data_compra": "2024-10-23"
+    },
+    {
+        "data_venda": "2024-12-16",
+        "simbolo": "E2EF34.SA",
+        "quantidade_vendida": 16,
+        "preco_compra": 3.890000104904175,
+        "preco_venda": 4.300000190734863,
+        "lucro_prejuizo": 6.560001373291016,
+        "data_compra": "2024-11-04"
+    },
+    {
+        "data_venda": "2024-12-16",
+        "simbolo": "TSNC11.SA",
+        "quantidade_vendida": 0,
+        "preco_compra": 1.0,
+        "preco_venda": 81.12999725341797,
+        "lucro_prejuizo": 0.0,
+        "data_compra": "2024-11-07"
+    },
+    {
+        "data_venda": "2024-12-16",
+        "simbolo": "GPIV33.SA",
+        "quantidade_vendida": 20,
+        "preco_compra": 4.110000133514404,
+        "preco_venda": 3.809999942779541,
+        "lucro_prejuizo": -6.000003814697266,
+        "data_compra": "2024-12-12"
+    },
+    {
+        "data_venda": "2024-12-16",
+        "simbolo": "AVGO34.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 19.393823623657227,
+        "preco_venda": 21.759410858154297,
+        "lucro_prejuizo": 2.3655872344970703,
+        "data_compra": "2024-12-13"
+    },
+    {
+        "data_venda": "2024-12-17",
+        "simbolo": "E2EF34.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 3.890000104904175,
+        "preco_venda": 4.340000152587891,
+        "lucro_prejuizo": 1.3500001430511475,
+        "data_compra": "2024-11-04"
+    },
+    {
+        "data_venda": "2024-12-17",
+        "simbolo": "TSNC11.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 1.0,
+        "preco_venda": 81.12999725341797,
+        "lucro_prejuizo": 160.25999450683594,
+        "data_compra": "2024-11-07"
+    },
+    {
+        "data_venda": "2024-12-17",
+        "simbolo": "SAPR4.SA",
+        "quantidade_vendida": 34,
+        "preco_compra": 5.709468841552734,
+        "preco_venda": 5.418169021606445,
+        "lucro_prejuizo": -9.904193878173828,
+        "data_compra": "2024-12-09"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "DOHL4.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 4.159999847412109,
+        "preco_venda": 3.900000095367432,
+        "lucro_prejuizo": -0.2599997520446773,
+        "data_compra": "2024-08-07"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "E2EF34.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 3.890000104904175,
+        "preco_venda": 4.340000152587891,
+        "lucro_prejuizo": 1.3500001430511475,
+        "data_compra": "2024-11-04"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "TSNC11.SA",
+        "quantidade_vendida": 1,
+        "preco_compra": 1.0,
+        "preco_venda": 80.0,
+        "lucro_prejuizo": 79.0,
+        "data_compra": "2024-11-07"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "ALLD3.SA",
+        "quantidade_vendida": 21,
+        "preco_compra": 7.292603015899658,
+        "preco_venda": 6.570000171661377,
+        "lucro_prejuizo": -15.174659729003906,
+        "data_compra": "2024-11-12"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "AMAR3.SA",
+        "quantidade_vendida": 16,
+        "preco_compra": 1.0399999618530271,
+        "preco_venda": 0.949999988079071,
+        "lucro_prejuizo": -1.4399995803832972,
+        "data_compra": "2024-12-17"
+    },
+    {
+        "data_venda": "2024-12-19",
+        "simbolo": "L1HX34.SA",
+        "quantidade_vendida": 3,
+        "preco_compra": 355.0899963378906,
+        "preco_venda": 329.0,
+        "lucro_prejuizo": -78.26998901367188,
+        "data_compra": "2024-10-31"
+    },
+    {
+        "data_venda": "2024-12-19",
+        "simbolo": "FRIO3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 149.0,
+        "preco_venda": 168.0,
+        "lucro_prejuizo": 38.0,
+        "data_compra": "2024-11-07"
+    },
+    {
+        "data_venda": "2024-12-19",
+        "simbolo": "B1NT34.SA",
+        "quantidade_vendida": 13,
+        "preco_compra": 45.02000045776367,
+        "preco_venda": 42.68000030517578,
+        "lucro_prejuizo": -30.420001983642578,
+        "data_compra": "2024-11-28"
+    },
+    {
+        "data_venda": "2024-12-19",
+        "simbolo": "W2YF34.SA",
+        "quantidade_vendida": 17,
+        "preco_compra": 9.279999732971191,
+        "preco_venda": 7.670000076293945,
+        "lucro_prejuizo": -27.369994163513184,
+        "data_compra": "2024-12-12"
+    },
+    {
+        "data_venda": "2024-12-20",
+        "simbolo": "AERI3.SA",
+        "quantidade_vendida": 29,
+        "preco_compra": 8.600000381469727,
+        "preco_venda": 8.100000381469727,
+        "lucro_prejuizo": -14.5,
+        "data_compra": "2024-12-18"
+    },
+    {
+        "data_venda": "2024-12-23",
+        "simbolo": "GOAU3.SA",
+        "quantidade_vendida": 5,
+        "preco_compra": 11.18000030517578,
+        "preco_venda": 10.619999885559082,
+        "lucro_prejuizo": -2.800002098083487,
+        "data_compra": "2024-11-25"
+    },
+    {
+        "data_venda": "2024-12-23",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 8,
+        "preco_compra": 5.968837738037109,
+        "preco_venda": 5.595170974731445,
+        "lucro_prejuizo": -2.9893341064453125,
+        "data_compra": "2024-12-19"
+    },
+    {
+        "data_venda": "2024-12-26",
+        "simbolo": "BMOB3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 14.02306842803955,
+        "preco_venda": 13.25,
+        "lucro_prejuizo": -1.5461368560791016,
+        "data_compra": "2024-11-01"
+    },
+    {
+        "data_venda": "2024-12-26",
+        "simbolo": "ESTR4.SA",
+        "quantidade_vendida": 20,
+        "preco_compra": 4.980000019073486,
+        "preco_venda": 3.9800000190734863,
+        "lucro_prejuizo": -20.0,
+        "data_compra": "2024-12-23"
+    },
+    {
+        "data_venda": "2024-12-27",
+        "simbolo": "T2PX34.SA",
+        "quantidade_vendida": 4,
+        "preco_compra": 71.96117401123047,
+        "preco_venda": 84.77999877929688,
+        "lucro_prejuizo": 51.275299072265625,
+        "data_compra": "2024-10-17"
+    },
+    {
+        "data_venda": "2024-12-27",
+        "simbolo": "CRFB3.SA",
+        "quantidade_vendida": 2,
+        "preco_compra": 5.811504364013672,
+        "preco_venda": 5.369999885559082,
+        "lucro_prejuizo": -0.8830089569091797,
+        "data_compra": "2024-12-20"
+    },
+    {
+        "data_venda": "2024-12-30",
+        "simbolo": "GOAU4.SA",
+        "quantidade_vendida": 7,
+        "preco_compra": 10.84000015258789,
+        "preco_venda": 10.25,
+        "lucro_prejuizo": -4.130001068115234,
+        "data_compra": "2024-11-21"
+    },
+    {
+        "data_venda": "2024-12-30",
+        "simbolo": "EPAR3.SA",
+        "quantidade_vendida": 43,
+        "preco_compra": 4.789999961853027,
+        "preco_venda": 5.28000020980835,
+        "lucro_prejuizo": 21.070010662078857,
+        "data_compra": "2024-12-19"
+    }
+]
