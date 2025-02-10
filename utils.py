@@ -22,7 +22,7 @@ def get_safe_int(value):
 
 def generate_filename(prefix, result, start_date, end_date):
     """ Gera o nome do arquivo de forma centralizada """
-    return f'results/{prefix}_profit{get_safe_int(result["profit"])}_loss{get_safe_int(result["loss"])}_div{get_safe_int(result["diversification"])}_short{get_safe_int(result["window"][0])}_long{get_safe_int(result["window"][0])}_{start_date}_to_{end_date}.json'
+    return f'results/{prefix}_profit{get_safe_int(result["profit"])}_loss{get_safe_int(result["loss"])}_div{get_safe_int(result["diversification"])}_short{get_safe_int(result["window"][0])}_long{get_safe_int(result["window"][1])}_{start_date}_to_{end_date}.json'
 
 
 def save_json(filename, data):
@@ -85,3 +85,6 @@ def generate_performance_plot(directory: str = "results", output_prefix: str = "
     plt.show()
 
     plt.close()
+
+
+# generate_performance_plot()
