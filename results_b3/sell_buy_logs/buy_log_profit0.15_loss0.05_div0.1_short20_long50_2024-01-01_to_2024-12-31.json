@@ -1,0 +1,6386 @@
+[
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 84,
+        "preco_compra": 11.809842109680176,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "O1TI34.SA",
+        "quantidade": 1,
+        "preco_compra": 43.007957458496094,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "P1GR34.SA",
+        "quantidade": 2,
+        "preco_compra": 394.6799926757813,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "HFOF11.SA",
+        "quantidade": 11,
+        "preco_compra": 70.51131439208984,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "F1TN34.SA",
+        "quantidade": 5,
+        "preco_compra": 142.24000549316406,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "BPFF11.SA",
+        "quantidade": 10,
+        "preco_compra": 63.29165267944336,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 28,
+        "preco_compra": 21.049076080322266,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 138,
+        "preco_compra": 1.909999966621399,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "TASA3.SA",
+        "quantidade": 1,
+        "preco_compra": 14.4616117477417,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "DEOP34.SA",
+        "quantidade": 13,
+        "preco_compra": 38.31595993041992,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 41,
+        "preco_compra": 11.420000076293944,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "FCXO34.SA",
+        "quantidade": 6,
+        "preco_compra": 68.33743286132812,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 10,
+        "preco_compra": 11.699999809265137,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "BALM4.SA",
+        "quantidade": 39,
+        "preco_compra": 9.36107063293457,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 156,
+        "preco_compra": 2.130000114440918,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "GOAU4.SA",
+        "quantidade": 22,
+        "preco_compra": 10.334197998046877,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "N1BI34.SA",
+        "quantidade": 10,
+        "preco_compra": 32.130001068115234,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "ATOM3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.220000028610229,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "KLBN3.SA",
+        "quantidade": 4,
+        "preco_compra": 3.46190881729126,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "Y2PF34.SA",
+        "quantidade": 4,
+        "preco_compra": 82.79000091552734,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "SLCE3.SA",
+        "quantidade": 2,
+        "preco_compra": 17.552207946777344,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "HBSA3.SA",
+        "quantidade": 1,
+        "preco_compra": 3.670000076293945,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "COGN3.SA",
+        "quantidade": 4,
+        "preco_compra": 3.359999895095825,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "GPRK34.SA",
+        "quantidade": 2,
+        "preco_compra": 40.3607063293457,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "D1EX34.SA",
+        "quantidade": 1,
+        "preco_compra": 12.15999984741211,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "LUPA3.SA",
+        "quantidade": 2,
+        "preco_compra": 2.140000104904175,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "F2NV34.SA",
+        "quantidade": 1,
+        "preco_compra": 3.021626234054565,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "T2DH34.SA",
+        "quantidade": 2,
+        "preco_compra": 3.5899999141693115,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-01-03",
+        "simbolo": "O1TI34.SA",
+        "quantidade": 11,
+        "preco_compra": 42.71134948730469,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-03",
+        "simbolo": "BPFF11.SA",
+        "quantidade": 2,
+        "preco_compra": 63.60529708862305,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-01-03",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 7,
+        "preco_compra": 8.097373008728027,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-01-03",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 11,
+        "preco_compra": 20.94423484802246,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-01-03",
+        "simbolo": "A1MT34.SA",
+        "quantidade": 1,
+        "preco_compra": 74.05984497070312,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-01-03",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 20,
+        "preco_compra": 2.0199999809265137,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-03",
+        "simbolo": "DEOP34.SA",
+        "quantidade": 7,
+        "preco_compra": 37.97653579711914,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-01-03",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 21,
+        "preco_compra": 11.8100004196167,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-01-03",
+        "simbolo": "FCXO34.SA",
+        "quantidade": 2,
+        "preco_compra": 67.36615753173828,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-01-03",
+        "simbolo": "RBRF11.SA",
+        "quantidade": 4,
+        "preco_compra": 7.323679447174072,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-01-03",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 32,
+        "preco_compra": 2.119999885559082,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-01-03",
+        "simbolo": "BBDC3.SA",
+        "quantidade": 1,
+        "preco_compra": 13.82302474975586,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-01-03",
+        "simbolo": "GOAU4.SA",
+        "quantidade": 4,
+        "preco_compra": 10.2670316696167,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-01-03",
+        "simbolo": "N1BI34.SA",
+        "quantidade": 3,
+        "preco_compra": 32.66999816894531,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-01-03",
+        "simbolo": "ATOM3.SA",
+        "quantidade": 5,
+        "preco_compra": 2.2100000381469727,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-01-03",
+        "simbolo": "POSI3.SA",
+        "quantidade": 5,
+        "preco_compra": 6.299966812133789,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-01-03",
+        "simbolo": "FNOR11.SA",
+        "quantidade": 3,
+        "preco_compra": 0.7099999785423279,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-01-05",
+        "simbolo": "O1TI34.SA",
+        "quantidade": 2,
+        "preco_compra": 42.11813354492188,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-05",
+        "simbolo": "HFOF11.SA",
+        "quantidade": 2,
+        "preco_compra": 70.66433715820312,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-01-05",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 1,
+        "preco_compra": 2.0199999809265137,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-08",
+        "simbolo": "BPFF11.SA",
+        "quantidade": 1,
+        "preco_compra": 66.31150817871094,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-01-08",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 7,
+        "preco_compra": 8.154939651489258,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-01-08",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 5,
+        "preco_compra": 20.57325553894043,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-01-08",
+        "simbolo": "A1MT34.SA",
+        "quantidade": 1,
+        "preco_compra": 73.59249114990234,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-01-08",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 9,
+        "preco_compra": 2.0,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-08",
+        "simbolo": "DEOP34.SA",
+        "quantidade": 3,
+        "preco_compra": 37.66621017456055,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-01-08",
+        "simbolo": "M1UF34.SA",
+        "quantidade": 2,
+        "preco_compra": 42.71013641357422,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-01-08",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 3,
+        "preco_compra": 10.75,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-01-08",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.069999933242798,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-01-09",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 3,
+        "preco_compra": 8.07818603515625,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-01-09",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 2,
+        "preco_compra": 21.323280334472656,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-01-09",
+        "simbolo": "A1MT34.SA",
+        "quantidade": 1,
+        "preco_compra": 73.43339538574219,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-01-09",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 17,
+        "preco_compra": 1.919999957084656,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-09",
+        "simbolo": "DEOP34.SA",
+        "quantidade": 1,
+        "preco_compra": 37.161922454833984,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-01-09",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 3,
+        "preco_compra": 2.109999895095825,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-01-10",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 2,
+        "preco_compra": 7.982244491577148,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-01-10",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 38,
+        "preco_compra": 1.8899999856948853,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-10",
+        "simbolo": "RBRF11.SA",
+        "quantidade": 1,
+        "preco_compra": 7.382378578186035,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-01-11",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 7,
+        "preco_compra": 1.8200000524520876,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-11",
+        "simbolo": "M1UF34.SA",
+        "quantidade": 1,
+        "preco_compra": 42.20261764526367,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-01-11",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 20,
+        "preco_compra": 10.510000228881836,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-01-11",
+        "simbolo": "RBRF11.SA",
+        "quantidade": 1,
+        "preco_compra": 7.327828884124756,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-01-12",
+        "simbolo": "O1TI34.SA",
+        "quantidade": 3,
+        "preco_compra": 41.17888259887695,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-12",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 111,
+        "preco_compra": 1.7899999618530271,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-12",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 8,
+        "preco_compra": 10.470000267028809,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-01-15",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 14,
+        "preco_compra": 1.7599999904632568,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-15",
+        "simbolo": "M1UF34.SA",
+        "quantidade": 2,
+        "preco_compra": 40.0261116027832,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-01-15",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 1,
+        "preco_compra": 10.470000267028809,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-01-15",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 2,
+        "preco_compra": 2.0799999237060547,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-01-16",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 75,
+        "preco_compra": 1.6699999570846558,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-16",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 87,
+        "preco_compra": 9.84000015258789,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-01-16",
+        "simbolo": "FCXO34.SA",
+        "quantidade": 2,
+        "preco_compra": 63.50461959838867,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-01-16",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 4,
+        "preco_compra": 10.149999618530272,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-01-16",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.059999942779541,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-01-17",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 5,
+        "preco_compra": 7.531325340270996,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-01-18",
+        "simbolo": "BPFF11.SA",
+        "quantidade": 1,
+        "preco_compra": 66.75957489013672,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-01-18",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 4,
+        "preco_compra": 7.281880855560303,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-01-18",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 46,
+        "preco_compra": 1.559999942779541,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-19",
+        "simbolo": "O1TI34.SA",
+        "quantidade": 1,
+        "preco_compra": 42.21700668334961,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-19",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 24,
+        "preco_compra": 1.6100000143051147,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-19",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 78,
+        "preco_compra": 9.270000457763672,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-01-19",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.059999942779541,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-01-22",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 8,
+        "preco_compra": 11.121508598327637,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-01-22",
+        "simbolo": "NIKE34.SA",
+        "quantidade": 15,
+        "preco_compra": 50.11000061035156,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-01-22",
+        "simbolo": "CYRE3.SA",
+        "quantidade": 4,
+        "preco_compra": 21.61709213256836,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-01-22",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 12,
+        "preco_compra": 1.5199999809265137,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-22",
+        "simbolo": "TECN3.SA",
+        "quantidade": 5,
+        "preco_compra": 3.559999942779541,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-01-22",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 4,
+        "preco_compra": 2.069999933242798,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-01-24",
+        "simbolo": "F1TN34.SA",
+        "quantidade": 1,
+        "preco_compra": 162.1999969482422,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-01-24",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 47,
+        "preco_compra": 1.5700000524520874,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-24",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 2,
+        "preco_compra": 9.850000381469728,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-01-26",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 8,
+        "preco_compra": 10.53150749206543,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-01-29",
+        "simbolo": "F1TN34.SA",
+        "quantidade": 4,
+        "preco_compra": 164.32000732421875,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-01-29",
+        "simbolo": "A1MT34.SA",
+        "quantidade": 1,
+        "preco_compra": 82.25335693359375,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-01-29",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 11,
+        "preco_compra": 9.18000030517578,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-01-30",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 2,
+        "preco_compra": 10.452840805053713,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-01-30",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 82,
+        "preco_compra": 1.4700000286102295,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-31",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 1,
+        "preco_compra": 10.236507415771484,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-01-31",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 1,
+        "preco_compra": 1.5199999809265137,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-02-02",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 2,
+        "preco_compra": 10.728174209594728,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-02",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 2,
+        "preco_compra": 7.358632564544678,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-02-05",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 49,
+        "preco_compra": 1.4299999475479126,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-02-05",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 2,
+        "preco_compra": 9.130000114440918,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-02-05",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 2,
+        "preco_compra": 2.049999952316284,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-02-08",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 6,
+        "preco_compra": 9.850000381469728,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-02-08",
+        "simbolo": "B1AX34.SA",
+        "quantidade": 1,
+        "preco_compra": 93.53376007080078,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-02-08",
+        "simbolo": "BLAK34.SA",
+        "quantidade": 1,
+        "preco_compra": 58.95990753173828,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-02-08",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 193,
+        "preco_compra": 2.069999933242798,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-02-08",
+        "simbolo": "BBDC3.SA",
+        "quantidade": 26,
+        "preco_compra": 11.475616455078123,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-02-08",
+        "simbolo": "KLBN3.SA",
+        "quantidade": 1,
+        "preco_compra": 3.414158821105957,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-02-14",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 14,
+        "preco_compra": 1.5700000524520874,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-02-14",
+        "simbolo": "TECN3.SA",
+        "quantidade": 1,
+        "preco_compra": 3.369999885559082,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-14",
+        "simbolo": "M1UF34.SA",
+        "quantidade": 2,
+        "preco_compra": 46.06761169433594,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-02-14",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 1,
+        "preco_compra": 10.0,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-02-14",
+        "simbolo": "RBRF11.SA",
+        "quantidade": 1,
+        "preco_compra": 7.268701076507568,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-02-15",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 1,
+        "preco_compra": 7.291473865509033,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-02-15",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.5199999809265137,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-02-15",
+        "simbolo": "MSFT34.SA",
+        "quantidade": 1,
+        "preco_compra": 83.65818786621094,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-02-15",
+        "simbolo": "TECN3.SA",
+        "quantidade": 1,
+        "preco_compra": 3.3499999046325684,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-15",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 1,
+        "preco_compra": 10.100000381469728,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-02-16",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 1,
+        "preco_compra": 10.94450855255127,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-16",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 1,
+        "preco_compra": 7.444979190826416,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-02-16",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 2,
+        "preco_compra": 1.5299999713897705,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-02-20",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 1,
+        "preco_compra": 20.565189361572266,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-02-20",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.590000033378601,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-02-20",
+        "simbolo": "TECN3.SA",
+        "quantidade": 2,
+        "preco_compra": 3.380000114440918,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-20",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 1,
+        "preco_compra": 10.0,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-02-20",
+        "simbolo": "RBRF11.SA",
+        "quantidade": 1,
+        "preco_compra": 7.360246658325195,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-02-21",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 2,
+        "preco_compra": 12.331008911132812,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-21",
+        "simbolo": "F1TN34.SA",
+        "quantidade": 4,
+        "preco_compra": 154.5,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-02-21",
+        "simbolo": "A1MT34.SA",
+        "quantidade": 1,
+        "preco_compra": 93.07463073730467,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-02-21",
+        "simbolo": "TECN3.SA",
+        "quantidade": 1,
+        "preco_compra": 3.369999885559082,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-21",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.049999952316284,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-02-22",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 5,
+        "preco_compra": 12.616175651550291,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-22",
+        "simbolo": "TECN3.SA",
+        "quantidade": 2,
+        "preco_compra": 3.3499999046325684,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-22",
+        "simbolo": "AIGB34.SA",
+        "quantidade": 1,
+        "preco_compra": 342.37750244140625,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-02-22",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 3,
+        "preco_compra": 1.9900000095367432,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-02-23",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.5,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-02-26",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 2,
+        "preco_compra": 12.144176483154297,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-26",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 1,
+        "preco_compra": 20.161949157714844,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-02-26",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 13,
+        "preco_compra": 1.4500000476837158,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-02-27",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.4900000095367432,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-02-27",
+        "simbolo": "TECN3.SA",
+        "quantidade": 2,
+        "preco_compra": 3.289999961853028,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-28",
+        "simbolo": "TECN3.SA",
+        "quantidade": 3,
+        "preco_compra": 3.2699999809265137,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-29",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 4,
+        "preco_compra": 11.888508796691896,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-29",
+        "simbolo": "TECN3.SA",
+        "quantidade": 3,
+        "preco_compra": 3.240000009536743,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-29",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.0,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-03-01",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 4,
+        "preco_compra": 11.485342025756836,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-03-01",
+        "simbolo": "TECN3.SA",
+        "quantidade": 2,
+        "preco_compra": 3.2100000381469727,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-03-04",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 4,
+        "preco_compra": 11.180508613586426,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-03-04",
+        "simbolo": "O1TI34.SA",
+        "quantidade": 2,
+        "preco_compra": 46.59087753295898,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-04",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 18,
+        "preco_compra": 1.3899999856948853,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-04",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 1,
+        "preco_compra": 10.25,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-03-04",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 2,
+        "preco_compra": 2.0299999713897705,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-03-05",
+        "simbolo": "O1TI34.SA",
+        "quantidade": 1,
+        "preco_compra": 46.54130935668945,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-05",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 30,
+        "preco_compra": 1.3300000429153442,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-05",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 5,
+        "preco_compra": 10.210000038146973,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-03-05",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 27,
+        "preco_compra": 2.009999990463257,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-03-06",
+        "simbolo": "M1UF34.SA",
+        "quantidade": 2,
+        "preco_compra": 52.21646118164063,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-03-06",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 71,
+        "preco_compra": 10.779999732971191,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-03-06",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 8,
+        "preco_compra": 9.210000038146973,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-03-06",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 17,
+        "preco_compra": 2.0199999809265137,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-03-07",
+        "simbolo": "F1TN34.SA",
+        "quantidade": 3,
+        "preco_compra": 180.0,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-03-07",
+        "simbolo": "MSFT34.SA",
+        "quantidade": 1,
+        "preco_compra": 83.2498550415039,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-03-07",
+        "simbolo": "FCXO34.SA",
+        "quantidade": 2,
+        "preco_compra": 65.64098358154297,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-03-07",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.049999952316284,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-03-08",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 3,
+        "preco_compra": 11.623008728027344,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-03-08",
+        "simbolo": "O1TI34.SA",
+        "quantidade": 3,
+        "preco_compra": 47.97869110107422,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-08",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 7,
+        "preco_compra": 8.63464069366455,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-03-08",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 1,
+        "preco_compra": 21.17004776000977,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-03-08",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 4,
+        "preco_compra": 1.3600000143051147,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-08",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 1,
+        "preco_compra": 11.109999656677246,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-03-08",
+        "simbolo": "RBRF11.SA",
+        "quantidade": 1,
+        "preco_compra": 7.753891944885254,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-03-08",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.059999942779541,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-03-11",
+        "simbolo": "M1UF34.SA",
+        "quantidade": 2,
+        "preco_compra": 50.606048583984375,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-03-11",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 67,
+        "preco_compra": 12.56999969482422,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-03-11",
+        "simbolo": "FCXO34.SA",
+        "quantidade": 2,
+        "preco_compra": 66.77374267578125,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-03-11",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 6,
+        "preco_compra": 10.130000114440918,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-03-11",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.049999952316284,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-03-12",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 3,
+        "preco_compra": 11.800008773803713,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-03-12",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 5,
+        "preco_compra": 8.759364128112793,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-03-12",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 5,
+        "preco_compra": 1.2799999713897705,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-13",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 2,
+        "preco_compra": 11.957342147827148,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-03-13",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 5,
+        "preco_compra": 1.3300000429153442,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-14",
+        "simbolo": "F1MC34.SA",
+        "quantidade": 3,
+        "preco_compra": 160.13999938964844,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-03-14",
+        "simbolo": "AURA33.SA",
+        "quantidade": 16,
+        "preco_compra": 10.468045234680176,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-03-14",
+        "simbolo": "LWSA3.SA",
+        "quantidade": 89,
+        "preco_compra": 5.701059341430664,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-03-14",
+        "simbolo": "A1ZN34.SA",
+        "quantidade": 2,
+        "preco_compra": 55.36775970458984,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-03-14",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 1,
+        "preco_compra": 11.5,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-03-14",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 2,
+        "preco_compra": 2.109999895095825,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-03-15",
+        "simbolo": "TRIS3.SA",
+        "quantidade": 2,
+        "preco_compra": 5.076765060424805,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-03-15",
+        "simbolo": "HAGA4.SA",
+        "quantidade": 153,
+        "preco_compra": 1.1799999475479126,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-20",
+        "simbolo": "SEER3.SA",
+        "quantidade": 8,
+        "preco_compra": 6.699999809265137,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-03-20",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 2,
+        "preco_compra": 1.2400000095367432,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-21",
+        "simbolo": "A1PA34.SA",
+        "quantidade": 1,
+        "preco_compra": 164.72329711914062,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-03-21",
+        "simbolo": "PYPL34.SA",
+        "quantidade": 3,
+        "preco_compra": 16.520000457763672,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-03-21",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 5,
+        "preco_compra": 1.2799999713897705,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-22",
+        "simbolo": "RIGG34.SA",
+        "quantidade": 5,
+        "preco_compra": 29.700000762939453,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-03-22",
+        "simbolo": "MGEL4.SA",
+        "quantidade": 9,
+        "preco_compra": 15.899999618530272,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-03-22",
+        "simbolo": "C1CL34.SA",
+        "quantidade": 7,
+        "preco_compra": 85.04000091552734,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-03-22",
+        "simbolo": "PNVL3.SA",
+        "quantidade": 1,
+        "preco_compra": 11.880468368530272,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-03-22",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 4,
+        "preco_compra": 1.3700000047683716,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-25",
+        "simbolo": "PTBL3.SA",
+        "quantidade": 1,
+        "preco_compra": 6.71999979019165,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-25",
+        "simbolo": "CBAV3.SA",
+        "quantidade": 1,
+        "preco_compra": 4.170000076293945,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-03-26",
+        "simbolo": "HAPV3.SA",
+        "quantidade": 4,
+        "preco_compra": 3.7899999618530273,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-03-27",
+        "simbolo": "CEDO3.SA",
+        "quantidade": 2,
+        "preco_compra": 39.0,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-03-27",
+        "simbolo": "QUAL3.SA",
+        "quantidade": 9,
+        "preco_compra": 2.0799999237060547,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-03-28",
+        "simbolo": "WIZC3.SA",
+        "quantidade": 4,
+        "preco_compra": 6.994095325469971,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-03-28",
+        "simbolo": "MTSA4.SA",
+        "quantidade": 3,
+        "preco_compra": 51.0,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-28",
+        "simbolo": "GGPS3.SA",
+        "quantidade": 1,
+        "preco_compra": 20.62486457824707,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-28",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 34,
+        "preco_compra": 2.0799999237060547,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-03-28",
+        "simbolo": "RAPT3.SA",
+        "quantidade": 1,
+        "preco_compra": 10.346490859985352,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-28",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 2,
+        "preco_compra": 13.402843475341797,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-03-28",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 5,
+        "preco_compra": 1.1399999856948853,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-28",
+        "simbolo": "TECN3.SA",
+        "quantidade": 1,
+        "preco_compra": 4.400000095367432,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-03-28",
+        "simbolo": "FNOR11.SA",
+        "quantidade": 4,
+        "preco_compra": 0.7099999785423279,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-04-01",
+        "simbolo": "GOGL34.SA",
+        "quantidade": 1,
+        "preco_compra": 65.33790588378906,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-04-01",
+        "simbolo": "GOGL35.SA",
+        "quantidade": 10,
+        "preco_compra": 65.81512451171875,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-04-01",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 4,
+        "preco_compra": 13.2061767578125,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-04-01",
+        "simbolo": "TECN3.SA",
+        "quantidade": 2,
+        "preco_compra": 4.670000076293945,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-04-01",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.069999933242798,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-04-02",
+        "simbolo": "B1WA34.SA",
+        "quantidade": 3,
+        "preco_compra": 174.88706970214844,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-04-02",
+        "simbolo": "ETER3.SA",
+        "quantidade": 16,
+        "preco_compra": 7.283867359161377,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-02",
+        "simbolo": "HBSA3.SA",
+        "quantidade": 1,
+        "preco_compra": 4.329999923706055,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-02",
+        "simbolo": "S1BS34.SA",
+        "quantidade": 4,
+        "preco_compra": 12.210000038146973,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-04-02",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 2,
+        "preco_compra": 2.059999942779541,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-04-03",
+        "simbolo": "MBLY3.SA",
+        "quantidade": 91,
+        "preco_compra": 2.259999990463257,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-04-03",
+        "simbolo": "VERZ34.SA",
+        "quantidade": 6,
+        "preco_compra": 34.74078369140625,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-04-03",
+        "simbolo": "ADPR34.SA",
+        "quantidade": 1,
+        "preco_compra": 51.12895584106445,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-04-03",
+        "simbolo": "ARMT34.SA",
+        "quantidade": 7,
+        "preco_compra": 68.86862182617188,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-04-03",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 14,
+        "preco_compra": 1.0800000429153442,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-04",
+        "simbolo": "LPSB3.SA",
+        "quantidade": 9,
+        "preco_compra": 2.189725160598755,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-04-04",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 4,
+        "preco_compra": 1.3300000429153442,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-05",
+        "simbolo": "TAEE3.SA",
+        "quantidade": 1,
+        "preco_compra": 11.069212913513184,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-04-05",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 2,
+        "preco_compra": 1.2300000190734863,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-08",
+        "simbolo": "RSID3.SA",
+        "quantidade": 2,
+        "preco_compra": 4.0,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-04-09",
+        "simbolo": "HCTR11.SA",
+        "quantidade": 1,
+        "preco_compra": 29.84090805053711,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-04-09",
+        "simbolo": "BBDC4.SA",
+        "quantidade": 2,
+        "preco_compra": 13.535723686218262,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-04-10",
+        "simbolo": "AALR3.SA",
+        "quantidade": 2,
+        "preco_compra": 9.960000038146973,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-04-10",
+        "simbolo": "UCAS3.SA",
+        "quantidade": 2,
+        "preco_compra": 2.4312546253204346,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-04-11",
+        "simbolo": "GGBR3.SA",
+        "quantidade": 9,
+        "preco_compra": 17.008333206176758,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-04-11",
+        "simbolo": "TPIS3.SA",
+        "quantidade": 1,
+        "preco_compra": 3.7641875743865967,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-11",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 1,
+        "preco_compra": 1.7799999713897705,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-12",
+        "simbolo": "BALM3.SA",
+        "quantidade": 3,
+        "preco_compra": 11.337556838989258,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-04-12",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 2,
+        "preco_compra": 1.6799999475479126,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-15",
+        "simbolo": "AGXY3.SA",
+        "quantidade": 132,
+        "preco_compra": 1.8200000524520876,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-04-16",
+        "simbolo": "BDLL4.SA",
+        "quantidade": 34,
+        "preco_compra": 9.770000457763672,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-16",
+        "simbolo": "T1WL34.SA",
+        "quantidade": 18,
+        "preco_compra": 12.420000076293944,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-04-16",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.600000023841858,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-17",
+        "simbolo": "SNSY3.SA",
+        "quantidade": 42,
+        "preco_compra": 10.5,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-04-17",
+        "simbolo": "AZEV3.SA",
+        "quantidade": 14,
+        "preco_compra": 1.4900000095367432,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-18",
+        "simbolo": "INEP3.SA",
+        "quantidade": 2,
+        "preco_compra": 3.680000066757202,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-18",
+        "simbolo": "B2HI34.SA",
+        "quantidade": 1,
+        "preco_compra": 1.8200000524520876,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-04-19",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 5,
+        "preco_compra": 1.409999966621399,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-22",
+        "simbolo": "BRAP3.SA",
+        "quantidade": 1,
+        "preco_compra": 18.37509155273437,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-04-22",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 3,
+        "preco_compra": 11.042840957641602,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-04-22",
+        "simbolo": "BPFF11.SA",
+        "quantidade": 1,
+        "preco_compra": 65.6293716430664,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-04-22",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 5,
+        "preco_compra": 8.269267082214355,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-04-22",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 27,
+        "preco_compra": 1.4199999570846558,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-24",
+        "simbolo": "PETR3.SA",
+        "quantidade": 1,
+        "preco_compra": 35.78300094604492,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-04-24",
+        "simbolo": "O1TI34.SA",
+        "quantidade": 7,
+        "preco_compra": 47.87955474853516,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-24",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 21,
+        "preco_compra": 1.25,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-24",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 3,
+        "preco_compra": 13.140000343322754,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-04-24",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 2,
+        "preco_compra": 2.0,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-04-25",
+        "simbolo": "MAPT4.SA",
+        "quantidade": 1,
+        "preco_compra": 7.599999904632568,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-04-25",
+        "simbolo": "PETR4.SA",
+        "quantidade": 1,
+        "preco_compra": 34.48160552978516,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-04-25",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 16,
+        "preco_compra": 1.2699999809265137,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-25",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 1,
+        "preco_compra": 8.094563484191895,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-04-25",
+        "simbolo": "TECN3.SA",
+        "quantidade": 1,
+        "preco_compra": 4.909999847412109,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-04-25",
+        "simbolo": "DEOP34.SA",
+        "quantidade": 1,
+        "preco_compra": 38.95447540283203,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-04-25",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 1,
+        "preco_compra": 12.979999542236328,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-04-30",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 4,
+        "preco_compra": 1.2100000381469729,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-02",
+        "simbolo": "AHEB5.SA",
+        "quantidade": 19,
+        "preco_compra": 19.209999084472656,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-05-02",
+        "simbolo": "AAPL34.SA",
+        "quantidade": 7,
+        "preco_compra": 44.606571197509766,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-05-02",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 2,
+        "preco_compra": 10.964174270629885,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-05-02",
+        "simbolo": "TECN3.SA",
+        "quantidade": 1,
+        "preco_compra": 4.449999809265137,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-05-02",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 9,
+        "preco_compra": 14.989999771118164,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-02",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.049999952316284,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-05-03",
+        "simbolo": "AMGN34.SA",
+        "quantidade": 3,
+        "preco_compra": 55.39041519165039,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-05-03",
+        "simbolo": "PETZ3.SA",
+        "quantidade": 7,
+        "preco_compra": 4.869999885559082,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-05-03",
+        "simbolo": "S1RP34.SA",
+        "quantidade": 1,
+        "preco_compra": 34.029998779296875,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-05-03",
+        "simbolo": "F1TN34.SA",
+        "quantidade": 1,
+        "preco_compra": 149.42999267578125,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-05-03",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 13,
+        "preco_compra": 1.4600000381469729,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-06",
+        "simbolo": "G1DS34.SA",
+        "quantidade": 20,
+        "preco_compra": 4.260000228881836,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-05-06",
+        "simbolo": "P2IN34.SA",
+        "quantidade": 2,
+        "preco_compra": 34.43000030517578,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-06",
+        "simbolo": "G2DI33.SA",
+        "quantidade": 130,
+        "preco_compra": 2.0799999237060547,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-05-07",
+        "simbolo": "DOTZ3.SA",
+        "quantidade": 14,
+        "preco_compra": 8.880000114440918,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-07",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 2,
+        "preco_compra": 1.350000023841858,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-08",
+        "simbolo": "T1AL34.SA",
+        "quantidade": 5,
+        "preco_compra": 6.53000020980835,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-05-08",
+        "simbolo": "LVTC3.SA",
+        "quantidade": 17,
+        "preco_compra": 3.839999914169312,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-08",
+        "simbolo": "CPSH11.SA",
+        "quantidade": 1,
+        "preco_compra": 9.970173835754396,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-05-09",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 2,
+        "preco_compra": 1.2799999713897705,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-10",
+        "simbolo": "ATTB34.SA",
+        "quantidade": 4,
+        "preco_compra": 28.99914932250977,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-10",
+        "simbolo": "B1NT34.SA",
+        "quantidade": 1,
+        "preco_compra": 29.059999465942383,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-05-13",
+        "simbolo": "SEQL3.SA",
+        "quantidade": 9,
+        "preco_compra": 7.800000190734863,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-13",
+        "simbolo": "E2EF34.SA",
+        "quantidade": 1,
+        "preco_compra": 3.930000066757202,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-05-13",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 1,
+        "preco_compra": 1.3200000524520874,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-15",
+        "simbolo": "ALPA4.SA",
+        "quantidade": 8,
+        "preco_compra": 10.149999618530272,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-05-16",
+        "simbolo": "HAPV3.SA",
+        "quantidade": 7,
+        "preco_compra": 4.489999771118164,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-05-16",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 1,
+        "preco_compra": 1.2999999523162842,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-20",
+        "simbolo": "O1TI34.SA",
+        "quantidade": 4,
+        "preco_compra": 49.16358947753906,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-20",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 30,
+        "preco_compra": 1.340000033378601,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-20",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 42,
+        "preco_compra": 16.489999771118164,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-20",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 3,
+        "preco_compra": 2.180000066757202,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-05-21",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 18,
+        "preco_compra": 2.299999952316284,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-05-22",
+        "simbolo": "ROXO34.SA",
+        "quantidade": 61,
+        "preco_compra": 10.0,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-05-22",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 66,
+        "preco_compra": 1.2999999523162842,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-23",
+        "simbolo": "EALT3.SA",
+        "quantidade": 10,
+        "preco_compra": 11.989999771118164,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-23",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 1,
+        "preco_compra": 1.2200000286102295,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-23",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 45,
+        "preco_compra": 14.050000190734863,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-23",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 1,
+        "preco_compra": 12.15999984741211,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-24",
+        "simbolo": "W1IX34.SA",
+        "quantidade": 2,
+        "preco_compra": 28.709999084472656,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-05-24",
+        "simbolo": "NFLX34.SA",
+        "quantidade": 1,
+        "preco_compra": 66.58000183105469,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-24",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 7,
+        "preco_compra": 1.2400000095367432,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-24",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 264,
+        "preco_compra": 2.5,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-05-27",
+        "simbolo": "CMIN3.SA",
+        "quantidade": 4,
+        "preco_compra": 5.318170547485352,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-05-27",
+        "simbolo": "BNBR3.SA",
+        "quantidade": 1,
+        "preco_compra": 113.49275207519533,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-05-27",
+        "simbolo": "LAND3.SA",
+        "quantidade": 2,
+        "preco_compra": 14.770000457763672,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-05-27",
+        "simbolo": "S1KM34.SA",
+        "quantidade": 2,
+        "preco_compra": 26.59873962402344,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-27",
+        "simbolo": "Z1OM34.SA",
+        "quantidade": 2,
+        "preco_compra": 12.93000030517578,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-05-28",
+        "simbolo": "VAMO3.SA",
+        "quantidade": 20,
+        "preco_compra": 7.867761611938477,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-28",
+        "simbolo": "ITSA4.SA",
+        "quantidade": 1,
+        "preco_compra": 9.236903190612791,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-28",
+        "simbolo": "DXCO3.SA",
+        "quantidade": 89,
+        "preco_compra": 7.284994125366211,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-05-28",
+        "simbolo": "TECN3.SA",
+        "quantidade": 1,
+        "preco_compra": 4.119999885559082,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-05-29",
+        "simbolo": "ATMP3.SA",
+        "quantidade": 30,
+        "preco_compra": 2.289999961853028,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-29",
+        "simbolo": "MRVE3.SA",
+        "quantidade": 4,
+        "preco_compra": 7.039999961853027,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-06-03",
+        "simbolo": "NIKE34.SA",
+        "quantidade": 1,
+        "preco_compra": 49.5,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-06-03",
+        "simbolo": "R1VT34.SA",
+        "quantidade": 2,
+        "preco_compra": 20.342288970947266,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-06-03",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 5,
+        "preco_compra": 9.803840637207031,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-06-03",
+        "simbolo": "RBRF11.SA",
+        "quantidade": 2,
+        "preco_compra": 7.387297630310059,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-06-03",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 20,
+        "preco_compra": 2.700000047683716,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-06-03",
+        "simbolo": "GOAU4.SA",
+        "quantidade": 4,
+        "preco_compra": 10.235986709594728,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-06-03",
+        "simbolo": "FNOR11.SA",
+        "quantidade": 3,
+        "preco_compra": 0.7799999713897705,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-06-03",
+        "simbolo": "KLBN3.SA",
+        "quantidade": 122,
+        "preco_compra": 3.6115562915802,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-06-03",
+        "simbolo": "LUPA3.SA",
+        "quantidade": 1,
+        "preco_compra": 1.590000033378601,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-06-04",
+        "simbolo": "ENGI4.SA",
+        "quantidade": 5,
+        "preco_compra": 7.896227836608887,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-06-04",
+        "simbolo": "AMAR3.SA",
+        "quantidade": 29,
+        "preco_compra": 1.6799999475479126,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-06-04",
+        "simbolo": "O1TI34.SA",
+        "quantidade": 2,
+        "preco_compra": 52.146217346191406,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-04",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 6,
+        "preco_compra": 1.1100000143051147,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-05",
+        "simbolo": "L1YV34.SA",
+        "quantidade": 5,
+        "preco_compra": 99.3000030517578,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-06-05",
+        "simbolo": "A1MD34.SA",
+        "quantidade": 2,
+        "preco_compra": 110.3000030517578,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-06-05",
+        "simbolo": "F1NI34.SA",
+        "quantidade": 3,
+        "preco_compra": 24.84872436523437,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-06-05",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 8,
+        "preco_compra": 16.18000030517578,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-06-05",
+        "simbolo": "FCXO34.SA",
+        "quantidade": 2,
+        "preco_compra": 88.4499282836914,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-06-05",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 2,
+        "preco_compra": 2.109999895095825,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-06-07",
+        "simbolo": "ONCO3.SA",
+        "quantidade": 10,
+        "preco_compra": 7.03000020980835,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-06-07",
+        "simbolo": "NMRH34.SA",
+        "quantidade": 1,
+        "preco_compra": 32.0117301940918,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-06-07",
+        "simbolo": "GMAT3.SA",
+        "quantidade": 2,
+        "preco_compra": 7.6127471923828125,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-06-10",
+        "simbolo": "LUPA3.SA",
+        "quantidade": 30,
+        "preco_compra": 1.5700000524520874,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-06-11",
+        "simbolo": "MLAS3.SA",
+        "quantidade": 114,
+        "preco_compra": 2.0899999141693115,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-06-11",
+        "simbolo": "CMCS34.SA",
+        "quantidade": 1,
+        "preco_compra": 40.6001091003418,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-06-11",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 1,
+        "preco_compra": 9.469507217407228,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-06-11",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 7,
+        "preco_compra": 1.2000000476837158,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-12",
+        "simbolo": "MNDL3.SA",
+        "quantidade": 3,
+        "preco_compra": 12.350000381469728,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-06-12",
+        "simbolo": "ABBV34.SA",
+        "quantidade": 1,
+        "preco_compra": 55.58414077758789,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-06-12",
+        "simbolo": "TRIS3.SA",
+        "quantidade": 3,
+        "preco_compra": 4.659999847412109,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-06-12",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 2,
+        "preco_compra": 9.24333953857422,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-06-12",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 5,
+        "preco_compra": 1.2300000190734863,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-13",
+        "simbolo": "HFOF11.SA",
+        "quantidade": 14,
+        "preco_compra": 66.73969268798828,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-06-13",
+        "simbolo": "A1MT34.SA",
+        "quantidade": 1,
+        "preco_compra": 127.3423843383789,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-06-13",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 6,
+        "preco_compra": 16.729999542236328,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-06-13",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 1,
+        "preco_compra": 10.899999618530272,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-06-13",
+        "simbolo": "RBRF11.SA",
+        "quantidade": 10,
+        "preco_compra": 6.753465175628662,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-06-13",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.25,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-06-14",
+        "simbolo": "CAMB3.SA",
+        "quantidade": 7,
+        "preco_compra": 9.995125770568848,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-06-14",
+        "simbolo": "I1FO34.SA",
+        "quantidade": 2,
+        "preco_compra": 47.2599983215332,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-06-14",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 5,
+        "preco_compra": 7.777326107025146,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-06-14",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 6,
+        "preco_compra": 1.2000000476837158,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-17",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 1,
+        "preco_compra": 8.997506141662598,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-06-17",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 3,
+        "preco_compra": 7.728350162506103,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-06-17",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 40,
+        "preco_compra": 1.1299999952316284,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-17",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 3,
+        "preco_compra": 16.969999313354492,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-06-17",
+        "simbolo": "ATOM3.SA",
+        "quantidade": 1,
+        "preco_compra": 1.9800000190734863,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-06-18",
+        "simbolo": "F1TN34.SA",
+        "quantidade": 1,
+        "preco_compra": 162.17999267578125,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-06-18",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 2,
+        "preco_compra": 22.876672744750977,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-06-18",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 1,
+        "preco_compra": 17.719999313354492,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-06-19",
+        "simbolo": "SMTO3.SA",
+        "quantidade": 1,
+        "preco_compra": 30.306730270385746,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-06-19",
+        "simbolo": "HAGA3.SA",
+        "quantidade": 9,
+        "preco_compra": 2.8499999046325684,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-19",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 1,
+        "preco_compra": 1.4500000476837158,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-20",
+        "simbolo": "R2BL34.SA",
+        "quantidade": 3,
+        "preco_compra": 19.6200008392334,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-06-20",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.3600000143051147,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-21",
+        "simbolo": "PYPL34.SA",
+        "quantidade": 3,
+        "preco_compra": 16.510000228881836,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-06-21",
+        "simbolo": "CLSA3.SA",
+        "quantidade": 22,
+        "preco_compra": 7.300000190734863,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-06-21",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 4,
+        "preco_compra": 1.340000033378601,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-24",
+        "simbolo": "ORLY34.SA",
+        "quantidade": 2,
+        "preco_compra": 18.780000686645508,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-06-24",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 1,
+        "preco_compra": 8.267081260681152,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-06-24",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 11,
+        "preco_compra": 1.5800000429153442,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-25",
+        "simbolo": "RBDS11.SA",
+        "quantidade": 17,
+        "preco_compra": 2.799999952316284,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-06-25",
+        "simbolo": "A1ME34.SA",
+        "quantidade": 1,
+        "preco_compra": 38.19917678833008,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-25",
+        "simbolo": "O1TI34.SA",
+        "quantidade": 1,
+        "preco_compra": 51.599403381347656,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-25",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 2,
+        "preco_compra": 24.00918197631836,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-06-25",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 9,
+        "preco_compra": 1.690000057220459,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-25",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 3,
+        "preco_compra": 2.450000047683716,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-06-26",
+        "simbolo": "S2HO34.SA",
+        "quantidade": 27,
+        "preco_compra": 2.990000009536743,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-06-26",
+        "simbolo": "PSSA3.SA",
+        "quantidade": 18,
+        "preco_compra": 29.57023429870605,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-06-26",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 12,
+        "preco_compra": 18.239999771118164,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-06-26",
+        "simbolo": "FCXO34.SA",
+        "quantidade": 3,
+        "preco_compra": 90.19243621826172,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-06-26",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 1,
+        "preco_compra": 10.529999732971191,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-06-26",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 69,
+        "preco_compra": 2.440000057220459,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-06-27",
+        "simbolo": "VITT3.SA",
+        "quantidade": 3,
+        "preco_compra": 5.916581153869629,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-06-27",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 1,
+        "preco_compra": 1.5299999713897705,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-28",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 19,
+        "preco_compra": 1.5,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-28",
+        "simbolo": "INTU34.SA",
+        "quantidade": 1,
+        "preco_compra": 83.37999725341797,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-06-28",
+        "simbolo": "C1OO34.SA",
+        "quantidade": 5,
+        "preco_compra": 48.95000076293945,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-06-28",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 1,
+        "preco_compra": 8.869673728942871,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-01",
+        "simbolo": "AZEV3.SA",
+        "quantidade": 2,
+        "preco_compra": 1.5499999523162842,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-02",
+        "simbolo": "SLBG34.SA",
+        "quantidade": 1,
+        "preco_compra": 129.7806396484375,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-07-02",
+        "simbolo": "B1PP34.SA",
+        "quantidade": 10,
+        "preco_compra": 50.47716522216797,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-07-02",
+        "simbolo": "BEES4.SA",
+        "quantidade": 3,
+        "preco_compra": 9.402507781982422,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-07-02",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.440000057220459,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-09",
+        "simbolo": "TASA4.SA",
+        "quantidade": 7,
+        "preco_compra": 12.489999771118164,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-09",
+        "simbolo": "EQTL3.SA",
+        "quantidade": 2,
+        "preco_compra": 33.459999084472656,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-07-09",
+        "simbolo": "KLBN3.SA",
+        "quantidade": 20,
+        "preco_compra": 3.7456486225128174,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-07-09",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 3,
+        "preco_compra": 10.16767406463623,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-09",
+        "simbolo": "F1TN34.SA",
+        "quantidade": 1,
+        "preco_compra": 163.52000427246094,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-07-09",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 7,
+        "preco_compra": 1.5399999618530271,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-09",
+        "simbolo": "MSFT34.SA",
+        "quantidade": 1,
+        "preco_compra": 103.36412048339844,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-07-09",
+        "simbolo": "TECN3.SA",
+        "quantidade": 1,
+        "preco_compra": 5.46999979019165,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-09",
+        "simbolo": "M1UF34.SA",
+        "quantidade": 4,
+        "preco_compra": 59.21522903442383,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-07-09",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 1,
+        "preco_compra": 18.459999084472656,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-07-09",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 1,
+        "preco_compra": 10.40999984741211,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-07-09",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.609999895095825,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-07-10",
+        "simbolo": "CLSA3.SA",
+        "quantidade": 16,
+        "preco_compra": 8.9399995803833,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-07-11",
+        "simbolo": "BALM3.SA",
+        "quantidade": 15,
+        "preco_compra": 11.800506591796877,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-07-11",
+        "simbolo": "RAIZ4.SA",
+        "quantidade": 88,
+        "preco_compra": 3.089476585388184,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-07-11",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 2,
+        "preco_compra": 1.559999942779541,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-12",
+        "simbolo": "MDNE3.SA",
+        "quantidade": 5,
+        "preco_compra": 13.041458129882812,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-07-12",
+        "simbolo": "RECV3.SA",
+        "quantidade": 10,
+        "preco_compra": 19.507986068725582,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-07-12",
+        "simbolo": "BMGB4.SA",
+        "quantidade": 1,
+        "preco_compra": 3.5799999237060547,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-07-15",
+        "simbolo": "AMER3.SA",
+        "quantidade": 1,
+        "preco_compra": 62.0,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-15",
+        "simbolo": "MNPR3.SA",
+        "quantidade": 6,
+        "preco_compra": 13.210000038146973,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-07-15",
+        "simbolo": "S2QU34.SA",
+        "quantidade": 15,
+        "preco_compra": 16.3700008392334,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-07-15",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.8799999952316284,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-16",
+        "simbolo": "MEAL3.SA",
+        "quantidade": 26,
+        "preco_compra": 1.6200000047683716,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-16",
+        "simbolo": "SIMH3.SA",
+        "quantidade": 4,
+        "preco_compra": 6.78000020980835,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-17",
+        "simbolo": "AGXY3.SA",
+        "quantidade": 49,
+        "preco_compra": 1.5,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-07-17",
+        "simbolo": "MTRE3.SA",
+        "quantidade": 4,
+        "preco_compra": 4.269999980926514,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-07-17",
+        "simbolo": "CCRO3.SA",
+        "quantidade": 7,
+        "preco_compra": 12.779780387878418,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-17",
+        "simbolo": "SANB3.SA",
+        "quantidade": 4,
+        "preco_compra": 13.433969497680664,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-07-18",
+        "simbolo": "NGRD3.SA",
+        "quantidade": 12,
+        "preco_compra": 28.0,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-07-18",
+        "simbolo": "VIVA3.SA",
+        "quantidade": 2,
+        "preco_compra": 22.850000381469727,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-18",
+        "simbolo": "M1KT34.SA",
+        "quantidade": 1,
+        "preco_compra": 24.79429054260254,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-07-18",
+        "simbolo": "GOAU3.SA",
+        "quantidade": 11,
+        "preco_compra": 10.933958053588867,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-07-19",
+        "simbolo": "KRSA3.SA",
+        "quantidade": 20,
+        "preco_compra": 7.099999904632568,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-07-19",
+        "simbolo": "QUAL3.SA",
+        "quantidade": 3,
+        "preco_compra": 1.6200000047683716,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-07-22",
+        "simbolo": "LWSA3.SA",
+        "quantidade": 15,
+        "preco_compra": 4.442894458770752,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-07-22",
+        "simbolo": "PETZ3.SA",
+        "quantidade": 2,
+        "preco_compra": 3.890000104904175,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-23",
+        "simbolo": "GUAR3.SA",
+        "quantidade": 2,
+        "preco_compra": 7.21999979019165,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-23",
+        "simbolo": "UCAS3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.183542013168335,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-24",
+        "simbolo": "F1SL34.SA",
+        "quantidade": 9,
+        "preco_compra": 4.380000114440918,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-07-24",
+        "simbolo": "LREN3.SA",
+        "quantidade": 2,
+        "preco_compra": 11.42649745941162,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-24",
+        "simbolo": "CTSA3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.369999885559082,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-24",
+        "simbolo": "JSLG3.SA",
+        "quantidade": 9,
+        "preco_compra": 9.191088676452637,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-24",
+        "simbolo": "GOLL4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.1100000143051147,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-24",
+        "simbolo": "OIBR3.SA",
+        "quantidade": 74,
+        "preco_compra": 4.360000133514404,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-07-25",
+        "simbolo": "TCSA3.SA",
+        "quantidade": 9,
+        "preco_compra": 2.25,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-07-25",
+        "simbolo": "PINE3.SA",
+        "quantidade": 7,
+        "preco_compra": 5.641940593719482,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-07-25",
+        "simbolo": "VLID3.SA",
+        "quantidade": 1,
+        "preco_compra": 16.153915405273438,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-25",
+        "simbolo": "DEOP34.SA",
+        "quantidade": 2,
+        "preco_compra": 40.36671829223633,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-07-25",
+        "simbolo": "RBRF11.SA",
+        "quantidade": 1,
+        "preco_compra": 7.203411102294922,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-07-26",
+        "simbolo": "CTSA4.SA",
+        "quantidade": 18,
+        "preco_compra": 1.75,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-26",
+        "simbolo": "P1YC34.SA",
+        "quantidade": 5,
+        "preco_compra": 30.569595336914062,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-07-26",
+        "simbolo": "CSED3.SA",
+        "quantidade": 2,
+        "preco_compra": 3.8725078105926514,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-07-26",
+        "simbolo": "MAPT4.SA",
+        "quantidade": 4,
+        "preco_compra": 6.449999809265137,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-07-26",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 2,
+        "preco_compra": 1.4199999570846558,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-29",
+        "simbolo": "VVEO3.SA",
+        "quantidade": 44,
+        "preco_compra": 2.190000057220459,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-07-30",
+        "simbolo": "FHER3.SA",
+        "quantidade": 91,
+        "preco_compra": 4.119999885559082,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-07-30",
+        "simbolo": "LJQQ3.SA",
+        "quantidade": 1,
+        "preco_compra": 3.6600842475891113,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-31",
+        "simbolo": "INEP3.SA",
+        "quantidade": 7,
+        "preco_compra": 1.8899999856948853,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-02",
+        "simbolo": "BPAN4.SA",
+        "quantidade": 38,
+        "preco_compra": 8.75,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-08-02",
+        "simbolo": "D1OW34.SA",
+        "quantidade": 1,
+        "preco_compra": 72.47483825683594,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-08-02",
+        "simbolo": "ESTR4.SA",
+        "quantidade": 7,
+        "preco_compra": 2.039999961853028,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-02",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 15,
+        "preco_compra": 1.4299999475479126,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-05",
+        "simbolo": "VIVR3.SA",
+        "quantidade": 2,
+        "preco_compra": 2.4100000858306885,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-08-06",
+        "simbolo": "A1AP34.SA",
+        "quantidade": 1,
+        "preco_compra": 20.70656967163086,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-06",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 2,
+        "preco_compra": 1.440000057220459,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-07",
+        "simbolo": "P2AT34.SA",
+        "quantidade": 50,
+        "preco_compra": 7.730000019073486,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-08-07",
+        "simbolo": "OFSA3.SA",
+        "quantidade": 6,
+        "preco_compra": 19.55269432067871,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-08-07",
+        "simbolo": "U2ST34.SA",
+        "quantidade": 1,
+        "preco_compra": 3.930000066757202,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-08-08",
+        "simbolo": "SCAR3.SA",
+        "quantidade": 1,
+        "preco_compra": 21.20798110961914,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-08-08",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 1,
+        "preco_compra": 8.32585334777832,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-08-09",
+        "simbolo": "LVTC3.SA",
+        "quantidade": 24,
+        "preco_compra": 4.050000190734863,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-08-09",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 1,
+        "preco_compra": 1.5399999618530271,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-12",
+        "simbolo": "FIQE3.SA",
+        "quantidade": 30,
+        "preco_compra": 3.900000095367432,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-08-12",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 16,
+        "preco_compra": 9.430173873901367,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-12",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 14,
+        "preco_compra": 1.4900000095367432,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-13",
+        "simbolo": "BPAC3.SA",
+        "quantidade": 3,
+        "preco_compra": 16.84622573852539,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-08-13",
+        "simbolo": "HFOF11.SA",
+        "quantidade": 1,
+        "preco_compra": 66.35348510742188,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-08-13",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 1,
+        "preco_compra": 9.57767391204834,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-13",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 4,
+        "preco_compra": 1.4700000286102295,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-14",
+        "simbolo": "AERI3.SA",
+        "quantidade": 2,
+        "preco_compra": 8.8100004196167,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-14",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 2,
+        "preco_compra": 1.399999976158142,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-15",
+        "simbolo": "GMAT3.SA",
+        "quantidade": 2,
+        "preco_compra": 7.9045491218566895,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-15",
+        "simbolo": "TPIS3.SA",
+        "quantidade": 2,
+        "preco_compra": 4.071467876434326,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-15",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 1,
+        "preco_compra": 1.3700000047683716,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-16",
+        "simbolo": "GPIV33.SA",
+        "quantidade": 85,
+        "preco_compra": 3.849999904632568,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-08-16",
+        "simbolo": "INEP3.SA",
+        "quantidade": 31,
+        "preco_compra": 2.130000114440918,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-19",
+        "simbolo": "AHEB5.SA",
+        "quantidade": 8,
+        "preco_compra": 35.0,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-19",
+        "simbolo": "B1NT34.SA",
+        "quantidade": 10,
+        "preco_compra": 30.479999542236328,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-08-19",
+        "simbolo": "ENGI11.SA",
+        "quantidade": 1,
+        "preco_compra": 50.150001525878906,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-08-19",
+        "simbolo": "PLAS3.SA",
+        "quantidade": 7,
+        "preco_compra": 5.550000190734863,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-19",
+        "simbolo": "A1MT34.SA",
+        "quantidade": 1,
+        "preco_compra": 117.44329071044922,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-08-19",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 71,
+        "preco_compra": 1.4500000476837158,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-20",
+        "simbolo": "PCAR3.SA",
+        "quantidade": 34,
+        "preco_compra": 3.2699999809265137,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-20",
+        "simbolo": "S2HO34.SA",
+        "quantidade": 1,
+        "preco_compra": 3.4100000858306885,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-08-20",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 2,
+        "preco_compra": 1.399999976158142,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-21",
+        "simbolo": "DOTZ3.SA",
+        "quantidade": 3,
+        "preco_compra": 8.800000190734863,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-08-21",
+        "simbolo": "PATI3.SA",
+        "quantidade": 4,
+        "preco_compra": 30.16897964477539,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-08-21",
+        "simbolo": "ROMI3.SA",
+        "quantidade": 11,
+        "preco_compra": 10.665255546569824,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-21",
+        "simbolo": "ODPV3.SA",
+        "quantidade": 6,
+        "preco_compra": 11.326671600341797,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-08-21",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 2,
+        "preco_compra": 23.56523895263672,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-08-21",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 1,
+        "preco_compra": 1.409999966621399,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-21",
+        "simbolo": "RBRF11.SA",
+        "quantidade": 4,
+        "preco_compra": 7.275462627410889,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-08-22",
+        "simbolo": "P1DD34.SA",
+        "quantidade": 2,
+        "preco_compra": 81.73999786376953,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-22",
+        "simbolo": "ENGI3.SA",
+        "quantidade": 5,
+        "preco_compra": 15.0,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-08-22",
+        "simbolo": "W1IX34.SA",
+        "quantidade": 2,
+        "preco_compra": 31.299999237060547,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-08-23",
+        "simbolo": "RCSL3.SA",
+        "quantidade": 3,
+        "preco_compra": 3.5999999046325684,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-23",
+        "simbolo": "SMFT3.SA",
+        "quantidade": 7,
+        "preco_compra": 22.74614524841309,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-23",
+        "simbolo": "ATOM3.SA",
+        "quantidade": 60,
+        "preco_compra": 2.109999895095825,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-08-26",
+        "simbolo": "AALR3.SA",
+        "quantidade": 1,
+        "preco_compra": 15.199999809265137,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-08-26",
+        "simbolo": "LIGT3.SA",
+        "quantidade": 14,
+        "preco_compra": 6.239999771118164,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-08-26",
+        "simbolo": "ETER3.SA",
+        "quantidade": 2,
+        "preco_compra": 5.980713367462158,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-26",
+        "simbolo": "RNEW3.SA",
+        "quantidade": 2,
+        "preco_compra": 1.0,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-08-26",
+        "simbolo": "WEST3.SA",
+        "quantidade": 19,
+        "preco_compra": 0.9300000071525574,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-26",
+        "simbolo": "CXSE3.SA",
+        "quantidade": 5,
+        "preco_compra": 15.359999656677246,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-08-26",
+        "simbolo": "ATOM3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.150000095367432,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-08-28",
+        "simbolo": "FESA3.SA",
+        "quantidade": 9,
+        "preco_compra": 14.089853286743164,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-08-28",
+        "simbolo": "U1BE34.SA",
+        "quantidade": 2,
+        "preco_compra": 99.73999786376952,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-08-28",
+        "simbolo": "EVEN3.SA",
+        "quantidade": 2,
+        "preco_compra": 6.252222061157227,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-08-28",
+        "simbolo": "DEOP34.SA",
+        "quantidade": 1,
+        "preco_compra": 40.36671829223633,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-08-28",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 1,
+        "preco_compra": 5.96999979019165,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-08-28",
+        "simbolo": "ATOM3.SA",
+        "quantidade": 2,
+        "preco_compra": 2.0999999046325684,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-08-29",
+        "simbolo": "T2TD34.SA",
+        "quantidade": 104,
+        "preco_compra": 5.889999866485596,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-08-29",
+        "simbolo": "R1KU34.SA",
+        "quantidade": 11,
+        "preco_compra": 19.420000076293945,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-08-29",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 22,
+        "preco_compra": 24.46218490600586,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-08-29",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 1,
+        "preco_compra": 16.020000457763672,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-08-29",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 1,
+        "preco_compra": 6.320000171661377,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-08-29",
+        "simbolo": "BALM4.SA",
+        "quantidade": 16,
+        "preco_compra": 10.006339073181152,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-08-29",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.890000104904175,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-08-29",
+        "simbolo": "GOAU4.SA",
+        "quantidade": 3,
+        "preco_compra": 10.396123886108398,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-08-29",
+        "simbolo": "POSI3.SA",
+        "quantidade": 1,
+        "preco_compra": 6.46999979019165,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-08-30",
+        "simbolo": "CMIN3.SA",
+        "quantidade": 24,
+        "preco_compra": 5.656780242919922,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-08-30",
+        "simbolo": "CEAB3.SA",
+        "quantidade": 10,
+        "preco_compra": 9.734533309936523,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-30",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.5,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-02",
+        "simbolo": "E2EF34.SA",
+        "quantidade": 25,
+        "preco_compra": 4.079999923706055,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-09-02",
+        "simbolo": "PDTC3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.069999933242798,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-09-03",
+        "simbolo": "DASA3.SA",
+        "quantidade": 4,
+        "preco_compra": 3.109999895095825,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-09-03",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 1,
+        "preco_compra": 1.4299999475479126,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-04",
+        "simbolo": "GMCO34.SA",
+        "quantidade": 1,
+        "preco_compra": 68.80999755859375,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-04",
+        "simbolo": "OPCT3.SA",
+        "quantidade": 14,
+        "preco_compra": 7.199999809265137,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-04",
+        "simbolo": "VISA34.SA",
+        "quantidade": 6,
+        "preco_compra": 79.16999816894531,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-09-04",
+        "simbolo": "H1SB34.SA",
+        "quantidade": 1,
+        "preco_compra": 60.62992477416992,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-09-04",
+        "simbolo": "CTKA4.SA",
+        "quantidade": 3,
+        "preco_compra": 20.979999542236328,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-04",
+        "simbolo": "L1YV34.SA",
+        "quantidade": 1,
+        "preco_compra": 106.80999755859376,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-09-04",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 20,
+        "preco_compra": 2.990000009536743,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-09-04",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 1,
+        "preco_compra": 1.3300000429153442,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-05",
+        "simbolo": "ADBE34.SA",
+        "quantidade": 3,
+        "preco_compra": 63.16999816894531,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-09-05",
+        "simbolo": "NVDC34.SA",
+        "quantidade": 2,
+        "preco_compra": 12.448607444763184,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-09-06",
+        "simbolo": "C1GP34.SA",
+        "quantidade": 10,
+        "preco_compra": 4.329999923706055,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-09-06",
+        "simbolo": "BCSA34.SA",
+        "quantidade": 2,
+        "preco_compra": 25.99229621887207,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-09-06",
+        "simbolo": "S2QU34.SA",
+        "quantidade": 1,
+        "preco_compra": 13.760000228881836,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-09-06",
+        "simbolo": "G2DI33.SA",
+        "quantidade": 4,
+        "preco_compra": 2.5199999809265137,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-09-09",
+        "simbolo": "B2HI34.SA",
+        "quantidade": 56,
+        "preco_compra": 1.659999966621399,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-09-09",
+        "simbolo": "JSLG3.SA",
+        "quantidade": 6,
+        "preco_compra": 8.983059883117676,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-10",
+        "simbolo": "GEPA3.SA",
+        "quantidade": 6,
+        "preco_compra": 26.093420028686523,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-09-10",
+        "simbolo": "BKNG34.SA",
+        "quantidade": 1,
+        "preco_compra": 123.82221221923828,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-10",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 9,
+        "preco_compra": 8.889339447021484,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-10",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 78,
+        "preco_compra": 1.340000033378601,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-10",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 1,
+        "preco_compra": 5.730000019073486,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-09-10",
+        "simbolo": "FNOR11.SA",
+        "quantidade": 2,
+        "preco_compra": 1.0,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-09-11",
+        "simbolo": "CLSA3.SA",
+        "quantidade": 2,
+        "preco_compra": 8.75,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-09-12",
+        "simbolo": "OIBR3.SA",
+        "quantidade": 31,
+        "preco_compra": 4.900000095367432,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-09-13",
+        "simbolo": "C1MG34.SA",
+        "quantidade": 3,
+        "preco_compra": 15.600000381469728,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-13",
+        "simbolo": "MATD3.SA",
+        "quantidade": 26,
+        "preco_compra": 4.829999923706055,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-09-13",
+        "simbolo": "RCFA11.SA",
+        "quantidade": 2,
+        "preco_compra": 1.0499999523162842,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-09-16",
+        "simbolo": "F1TN34.SA",
+        "quantidade": 1,
+        "preco_compra": 210.0,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-09-16",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 5,
+        "preco_compra": 25.821195602416992,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-09-16",
+        "simbolo": "DEOP34.SA",
+        "quantidade": 2,
+        "preco_compra": 40.63999938964844,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-09-16",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 2,
+        "preco_compra": 16.170000076293945,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-09-16",
+        "simbolo": "FCXO34.SA",
+        "quantidade": 2,
+        "preco_compra": 78.31261444091797,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-09-16",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 2,
+        "preco_compra": 5.449999809265137,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-09-16",
+        "simbolo": "RBRF11.SA",
+        "quantidade": 1,
+        "preco_compra": 7.001617908477783,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-09-16",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 2,
+        "preco_compra": 2.990000009536743,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-09-17",
+        "simbolo": "CAPH34.SA",
+        "quantidade": 1,
+        "preco_compra": 217.3000030517578,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-17",
+        "simbolo": "A1SN34.SA",
+        "quantidade": 2,
+        "preco_compra": 52.400001525878906,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-09-17",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 5,
+        "preco_compra": 1.309999942779541,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-19",
+        "simbolo": "PTNT3.SA",
+        "quantidade": 8,
+        "preco_compra": 9.454721450805664,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-19",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 1,
+        "preco_compra": 17.170000076293945,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-09-19",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 1,
+        "preco_compra": 8.49126148223877,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-09-20",
+        "simbolo": "CBEE3.SA",
+        "quantidade": 2,
+        "preco_compra": 19.989999771118164,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-09-20",
+        "simbolo": "M1NS34.SA",
+        "quantidade": 1,
+        "preco_compra": 35.34000015258789,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-09-20",
+        "simbolo": "BRAP3.SA",
+        "quantidade": 6,
+        "preco_compra": 16.714738845825195,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-09-20",
+        "simbolo": "TSLA34.SA",
+        "quantidade": 1,
+        "preco_compra": 41.38999938964844,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-20",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 1,
+        "preco_compra": 8.456673622131348,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-20",
+        "simbolo": "O1TI34.SA",
+        "quantidade": 2,
+        "preco_compra": 52.49951171875,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-20",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 17,
+        "preco_compra": 1.190000057220459,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-20",
+        "simbolo": "FNOR11.SA",
+        "quantidade": 2,
+        "preco_compra": 1.0,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-09-23",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 2,
+        "preco_compra": 26.727203369140625,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-09-23",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 32,
+        "preco_compra": 18.030000686645508,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-09-23",
+        "simbolo": "FCXO34.SA",
+        "quantidade": 2,
+        "preco_compra": 83.11235046386719,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-09-23",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 6,
+        "preco_compra": 6.0,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-09-23",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 1,
+        "preco_compra": 3.039999961853028,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-09-24",
+        "simbolo": "S2GM34.SA",
+        "quantidade": 8,
+        "preco_compra": 22.5,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-09-24",
+        "simbolo": "HCTR11.SA",
+        "quantidade": 1,
+        "preco_compra": 28.6005802154541,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-09-24",
+        "simbolo": "LBRD34.SA",
+        "quantidade": 2,
+        "preco_compra": 35.06999969482422,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-09-24",
+        "simbolo": "LPSB3.SA",
+        "quantidade": 7,
+        "preco_compra": 1.7699999809265137,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-09-24",
+        "simbolo": "ALUP11.SA",
+        "quantidade": 2,
+        "preco_compra": 30.493749618530277,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-09-24",
+        "simbolo": "M1UF34.SA",
+        "quantidade": 1,
+        "preco_compra": 56.079959869384766,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-09-24",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 2,
+        "preco_compra": 6.699999809265137,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-09-24",
+        "simbolo": "AXPB34.SA",
+        "quantidade": 1,
+        "preco_compra": 144.47792053222656,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-09-24",
+        "simbolo": "RBRF11.SA",
+        "quantidade": 3,
+        "preco_compra": 6.770477771759033,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-09-24",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 5,
+        "preco_compra": 2.9100000858306885,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-09-24",
+        "simbolo": "FNOR11.SA",
+        "quantidade": 2,
+        "preco_compra": 0.9300000071525574,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-09-25",
+        "simbolo": "BIOM3.SA",
+        "quantidade": 19,
+        "preco_compra": 10.029999732971191,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-09-25",
+        "simbolo": "B2YN34.SA",
+        "quantidade": 1,
+        "preco_compra": 1.830000042915344,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-09-26",
+        "simbolo": "W1MG34.SA",
+        "quantidade": 17,
+        "preco_compra": 42.71129608154297,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-09-26",
+        "simbolo": "TRAD3.SA",
+        "quantidade": 6,
+        "preco_compra": 5.050000190734863,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-09-26",
+        "simbolo": "A1EG34.SA",
+        "quantidade": 6,
+        "preco_compra": 34.959999084472656,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-09-26",
+        "simbolo": "F2NV34.SA",
+        "quantidade": 8,
+        "preco_compra": 3.901327610015869,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-09-27",
+        "simbolo": "W2YF34.SA",
+        "quantidade": 1,
+        "preco_compra": 8.729999542236328,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-30",
+        "simbolo": "CSNA3.SA",
+        "quantidade": 13,
+        "preco_compra": 12.27082061767578,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-09-30",
+        "simbolo": "W1BO34.SA",
+        "quantidade": 4,
+        "preco_compra": 13.670000076293944,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-09-30",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 1,
+        "preco_compra": 9.095840454101562,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-30",
+        "simbolo": "O1TI34.SA",
+        "quantidade": 1,
+        "preco_compra": 57.196044921875,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-30",
+        "simbolo": "BPFF11.SA",
+        "quantidade": 1,
+        "preco_compra": 63.95004653930664,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-09-30",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 2,
+        "preco_compra": 7.888272762298584,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-09-30",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 1,
+        "preco_compra": 26.32855987548828,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-09-30",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 127,
+        "preco_compra": 1.340000033378601,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-30",
+        "simbolo": "M1UF34.SA",
+        "quantidade": 2,
+        "preco_compra": 55.79999923706055,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-09-30",
+        "simbolo": "ATOM3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.5299999713897705,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-10-01",
+        "simbolo": "HAGA3.SA",
+        "quantidade": 207,
+        "preco_compra": 2.630000114440918,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-01",
+        "simbolo": "FIVN11.SA",
+        "quantidade": 10,
+        "preco_compra": 3.2100000381469727,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-10-01",
+        "simbolo": "T1SS34.SA",
+        "quantidade": 1,
+        "preco_compra": 86.16941833496094,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-10-01",
+        "simbolo": "REDE3.SA",
+        "quantidade": 2,
+        "preco_compra": 6.800374507904053,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-10-01",
+        "simbolo": "ALLD3.SA",
+        "quantidade": 7,
+        "preco_compra": 6.549679756164551,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-10-01",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 1,
+        "preco_compra": 7.977238178253174,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-10-01",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.2699999809265137,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-02",
+        "simbolo": "K2CG34.SA",
+        "quantidade": 14,
+        "preco_compra": 3.940000057220459,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-10-02",
+        "simbolo": "W1BD34.SA",
+        "quantidade": 1,
+        "preco_compra": 43.459999084472656,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-10-02",
+        "simbolo": "MELK3.SA",
+        "quantidade": 21,
+        "preco_compra": 3.3954970836639404,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-10-03",
+        "simbolo": "JFEN3.SA",
+        "quantidade": 4,
+        "preco_compra": 5.599999904632568,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-10-03",
+        "simbolo": "MSBR34.SA",
+        "quantidade": 2,
+        "preco_compra": 113.95999908447266,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-10-03",
+        "simbolo": "HFOF11.SA",
+        "quantidade": 12,
+        "preco_compra": 63.19460678100586,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-10-04",
+        "simbolo": "T1AL34.SA",
+        "quantidade": 8,
+        "preco_compra": 6.309999942779541,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-10-04",
+        "simbolo": "NVDC34.SA",
+        "quantidade": 4,
+        "preco_compra": 14.189319610595703,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-10-04",
+        "simbolo": "EMAE4.SA",
+        "quantidade": 1,
+        "preco_compra": 39.900001525878906,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-10-04",
+        "simbolo": "CVSH34.SA",
+        "quantidade": 4,
+        "preco_compra": 34.77758026123047,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-10-04",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 2,
+        "preco_compra": 8.210840225219727,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-04",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 2,
+        "preco_compra": 1.2599999904632568,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-07",
+        "simbolo": "S1BS34.SA",
+        "quantidade": 1,
+        "preco_compra": 12.149999618530272,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-10-07",
+        "simbolo": "N1WG34.SA",
+        "quantidade": 1,
+        "preco_compra": 51.25,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-10-07",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 24,
+        "preco_compra": 7.778172492980957,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-07",
+        "simbolo": "HFOF11.SA",
+        "quantidade": 4,
+        "preco_compra": 62.79605102539063,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-10-07",
+        "simbolo": "BPFF11.SA",
+        "quantidade": 1,
+        "preco_compra": 62.9318962097168,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-10-07",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 2,
+        "preco_compra": 8.026663780212402,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-10-07",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 203,
+        "preco_compra": 1.2599999904632568,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-08",
+        "simbolo": "P2IN34.SA",
+        "quantidade": 4,
+        "preco_compra": 30.09000015258789,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-10-08",
+        "simbolo": "TEND3.SA",
+        "quantidade": 8,
+        "preco_compra": 13.671381950378418,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-10-08",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 3,
+        "preco_compra": 7.788005828857422,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-08",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 1,
+        "preco_compra": 8.04643440246582,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-10-08",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 221,
+        "preco_compra": 1.2599999904632568,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-09",
+        "simbolo": "XRXB34.SA",
+        "quantidade": 1,
+        "preco_compra": 55.52361679077149,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-10-10",
+        "simbolo": "ATMP3.SA",
+        "quantidade": 19,
+        "preco_compra": 1.440000057220459,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-11",
+        "simbolo": "SCHW34.SA",
+        "quantidade": 1,
+        "preco_compra": 47.437767028808594,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-10-11",
+        "simbolo": "CSXC34.SA",
+        "quantidade": 1,
+        "preco_compra": 97.0954132080078,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-11",
+        "simbolo": "PFIZ34.SA",
+        "quantidade": 6,
+        "preco_compra": 40.214637756347656,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-10-11",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 12,
+        "preco_compra": 7.227505207061768,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-11",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.2400000095367432,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-14",
+        "simbolo": "T1RI34.SA",
+        "quantidade": 1,
+        "preco_compra": 81.83999633789062,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-14",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 26,
+        "preco_compra": 7.0,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-10-14",
+        "simbolo": "F1MC34.SA",
+        "quantidade": 1,
+        "preco_compra": 174.7899932861328,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-10-14",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 9,
+        "preco_compra": 7.29633903503418,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-14",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 12,
+        "preco_compra": 28.28302764892578,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-10-14",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 11,
+        "preco_compra": 1.309999942779541,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-14",
+        "simbolo": "RBRF11.SA",
+        "quantidade": 2,
+        "preco_compra": 6.494724273681641,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-10-15",
+        "simbolo": "CPLE5.SA",
+        "quantidade": 8,
+        "preco_compra": 12.50722312927246,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-10-16",
+        "simbolo": "O1DF34.SA",
+        "quantidade": 1,
+        "preco_compra": 57.73753356933594,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-16",
+        "simbolo": "A1KA34.SA",
+        "quantidade": 3,
+        "preco_compra": 49.54999923706055,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-10-16",
+        "simbolo": "HAGA4.SA",
+        "quantidade": 25,
+        "preco_compra": 1.1799999475479126,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-16",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 5,
+        "preco_compra": 7.286505222320557,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-16",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 1,
+        "preco_compra": 8.184823989868164,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-10-16",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 7,
+        "preco_compra": 28.26372337341309,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-10-16",
+        "simbolo": "DEOP34.SA",
+        "quantidade": 1,
+        "preco_compra": 42.4900016784668,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-10-16",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 1,
+        "preco_compra": 23.200000762939453,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-10-16",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 2,
+        "preco_compra": 6.96999979019165,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-10-16",
+        "simbolo": "BALM4.SA",
+        "quantidade": 2,
+        "preco_compra": 9.538753509521484,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-10-17",
+        "simbolo": "TELB4.SA",
+        "quantidade": 24,
+        "preco_compra": 9.369999885559082,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-10-17",
+        "simbolo": "JPMC34.SA",
+        "quantidade": 2,
+        "preco_compra": 126.73500061035156,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-10-17",
+        "simbolo": "CEEB3.SA",
+        "quantidade": 1,
+        "preco_compra": 39.52294158935547,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-10-17",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 1,
+        "preco_compra": 8.125514030456543,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-10-17",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.2799999713897705,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-17",
+        "simbolo": "RBRF11.SA",
+        "quantidade": 1,
+        "preco_compra": 6.494724273681641,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-10-18",
+        "simbolo": "U1AI34.SA",
+        "quantidade": 2,
+        "preco_compra": 49.20000076293945,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-18",
+        "simbolo": "N1IC34.SA",
+        "quantidade": 1,
+        "preco_compra": 40.880001068115234,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-10-18",
+        "simbolo": "W1IX34.SA",
+        "quantidade": 1,
+        "preco_compra": 32.70000076293945,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-10-18",
+        "simbolo": "PHMO34.SA",
+        "quantidade": 2,
+        "preco_compra": 339.3127746582031,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-10-18",
+        "simbolo": "SLCE3.SA",
+        "quantidade": 15,
+        "preco_compra": 17.049999237060547,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-10-18",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 3,
+        "preco_compra": 6.863671779632568,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-18",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 9,
+        "preco_compra": 27.89691162109375,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-10-18",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 7,
+        "preco_compra": 2.990000009536743,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-10-21",
+        "simbolo": "USIM5.SA",
+        "quantidade": 2,
+        "preco_compra": 6.269999980926514,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-10-22",
+        "simbolo": "S2NW34.SA",
+        "quantidade": 36,
+        "preco_compra": 17.329999923706055,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-10-22",
+        "simbolo": "AZOI34.SA",
+        "quantidade": 2,
+        "preco_compra": 82.87999725341797,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-22",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 3,
+        "preco_compra": 6.942338466644287,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-22",
+        "simbolo": "GEPA4.SA",
+        "quantidade": 2,
+        "preco_compra": 28.717409133911133,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-10-22",
+        "simbolo": "RBRF11.SA",
+        "quantidade": 3,
+        "preco_compra": 6.5918049812316895,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-10-22",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 18,
+        "preco_compra": 2.900000095367432,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-10-23",
+        "simbolo": "AZUL4.SA",
+        "quantidade": 15,
+        "preco_compra": 5.480000019073486,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-23",
+        "simbolo": "WGBA34.SA",
+        "quantidade": 6,
+        "preco_compra": 26.189376831054688,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-10-23",
+        "simbolo": "TEND3.SA",
+        "quantidade": 57,
+        "preco_compra": 14.145191192626951,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-10-23",
+        "simbolo": "USIM3.SA",
+        "quantidade": 20,
+        "preco_compra": 6.079999923706055,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-10-23",
+        "simbolo": "A1PH34.SA",
+        "quantidade": 2,
+        "preco_compra": 193.50868225097656,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-10-23",
+        "simbolo": "BPFF11.SA",
+        "quantidade": 1,
+        "preco_compra": 59.673789978027344,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-10-23",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 1,
+        "preco_compra": 7.917928218841553,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-10-23",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.2599999904632568,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-23",
+        "simbolo": "TECN3.SA",
+        "quantidade": 1,
+        "preco_compra": 5.599999904632568,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-23",
+        "simbolo": "BALM4.SA",
+        "quantidade": 3,
+        "preco_compra": 9.725787162780762,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-10-23",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 4,
+        "preco_compra": 2.950000047683716,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-10-23",
+        "simbolo": "KNRE11.SA",
+        "quantidade": 10,
+        "preco_compra": 0.25,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-10-24",
+        "simbolo": "JHSF3.SA",
+        "quantidade": 14,
+        "preco_compra": 4.390400409698486,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-10-24",
+        "simbolo": "COPH34.SA",
+        "quantidade": 3,
+        "preco_compra": 49.24536895751953,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-10-24",
+        "simbolo": "YDUQ3.SA",
+        "quantidade": 1,
+        "preco_compra": 11.029999732971191,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-10-24",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 4,
+        "preco_compra": 1.2899999618530271,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-25",
+        "simbolo": "TECN3.SA",
+        "quantidade": 21,
+        "preco_compra": 5.889999866485596,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-25",
+        "simbolo": "PCAR3.SA",
+        "quantidade": 1,
+        "preco_compra": 3.1700000762939453,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-25",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 1,
+        "preco_compra": 1.2100000381469729,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-28",
+        "simbolo": "MWET4.SA",
+        "quantidade": 2,
+        "preco_compra": 9.989999771118164,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-29",
+        "simbolo": "A1PA34.SA",
+        "quantidade": 2,
+        "preco_compra": 136.77999877929688,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-10-29",
+        "simbolo": "M1DB34.SA",
+        "quantidade": 3,
+        "preco_compra": 79.05999755859375,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-10-29",
+        "simbolo": "RENT3.SA",
+        "quantidade": 1,
+        "preco_compra": 41.60292816162109,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-29",
+        "simbolo": "GOLL4.SA",
+        "quantidade": 5,
+        "preco_compra": 1.149999976158142,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-31",
+        "simbolo": "POSI3.SA",
+        "quantidade": 22,
+        "preco_compra": 6.409999847412109,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-10-31",
+        "simbolo": "COGN3.SA",
+        "quantidade": 33,
+        "preco_compra": 1.409999966621399,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-11-01",
+        "simbolo": "R1EL34.SA",
+        "quantidade": 3,
+        "preco_compra": 68.87999725341797,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-01",
+        "simbolo": "PFRM3.SA",
+        "quantidade": 5,
+        "preco_compra": 6.379677772521973,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-11-04",
+        "simbolo": "CVCB3.SA",
+        "quantidade": 158,
+        "preco_compra": 2.119999885559082,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-11-04",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 1,
+        "preco_compra": 1.2100000381469729,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-05",
+        "simbolo": "ELMD3.SA",
+        "quantidade": 3,
+        "preco_compra": 26.450000762939453,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-11-05",
+        "simbolo": "DMVF3.SA",
+        "quantidade": 2,
+        "preco_compra": 7.099999904632568,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-11-06",
+        "simbolo": "PGMN3.SA",
+        "quantidade": 61,
+        "preco_compra": 3.359999895095825,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-11-06",
+        "simbolo": "BRFS3.SA",
+        "quantidade": 4,
+        "preco_compra": 25.979999542236328,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-11-06",
+        "simbolo": "VLID3.SA",
+        "quantidade": 10,
+        "preco_compra": 25.65938186645508,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-06",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.190000057220459,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-07",
+        "simbolo": "SEER3.SA",
+        "quantidade": 6,
+        "preco_compra": 7.159999847412109,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-11-07",
+        "simbolo": "C1BR34.SA",
+        "quantidade": 1,
+        "preco_compra": 755.0,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-11-07",
+        "simbolo": "LWSA3.SA",
+        "quantidade": 7,
+        "preco_compra": 4.315111637115479,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-11-07",
+        "simbolo": "XPBR31.SA",
+        "quantidade": 3,
+        "preco_compra": 95.58779907226562,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-11-07",
+        "simbolo": "RIGG34.SA",
+        "quantidade": 14,
+        "preco_compra": 26.21999931335449,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-11-07",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 2,
+        "preco_compra": 8.708732604980469,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-11-07",
+        "simbolo": "LUPA3.SA",
+        "quantidade": 3,
+        "preco_compra": 1.399999976158142,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-11-08",
+        "simbolo": "KRSA3.SA",
+        "quantidade": 27,
+        "preco_compra": 6.409999847412109,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-11-08",
+        "simbolo": "B1KR34.SA",
+        "quantidade": 2,
+        "preco_compra": 239.9900054931641,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-11-08",
+        "simbolo": "F1TN34.SA",
+        "quantidade": 1,
+        "preco_compra": 266.3999938964844,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-11-08",
+        "simbolo": "BPFF11.SA",
+        "quantidade": 1,
+        "preco_compra": 59.24568939208984,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-11-08",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 3,
+        "preco_compra": 8.76804256439209,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-11-08",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 12,
+        "preco_compra": 1.149999976158142,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-11",
+        "simbolo": "PATI3.SA",
+        "quantidade": 6,
+        "preco_compra": 29.0,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-11-11",
+        "simbolo": "V2ME34.SA",
+        "quantidade": 24,
+        "preco_compra": 8.229999542236328,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-11-11",
+        "simbolo": "B1BW34.SA",
+        "quantidade": 1,
+        "preco_compra": 45.11116027832031,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-11-11",
+        "simbolo": "VVCO11.SA",
+        "quantidade": 1,
+        "preco_compra": 13.100000381469728,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-11-12",
+        "simbolo": "ALLD3.SA",
+        "quantidade": 1,
+        "preco_compra": 7.292603015899658,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-11-12",
+        "simbolo": "BMEB4.SA",
+        "quantidade": 6,
+        "preco_compra": 39.9900016784668,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-11-12",
+        "simbolo": "OXYP34.SA",
+        "quantidade": 1,
+        "preco_compra": 48.15117263793945,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-11-12",
+        "simbolo": "GMAT3.SA",
+        "quantidade": 2,
+        "preco_compra": 7.409999847412109,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-11-12",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 3,
+        "preco_compra": 8.81746768951416,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-11-12",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 4,
+        "preco_compra": 1.159999966621399,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-13",
+        "simbolo": "PATI4.SA",
+        "quantidade": 9,
+        "preco_compra": 35.0,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-11-13",
+        "simbolo": "TTEN3.SA",
+        "quantidade": 1,
+        "preco_compra": 13.8100004196167,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-11-13",
+        "simbolo": "HFOF11.SA",
+        "quantidade": 6,
+        "preco_compra": 59.98755645751953,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-11-13",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 30,
+        "preco_compra": 1.1699999570846558,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-14",
+        "simbolo": "KLBN3.SA",
+        "quantidade": 9,
+        "preco_compra": 4.083948612213135,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-11-14",
+        "simbolo": "CMIG4.SA",
+        "quantidade": 4,
+        "preco_compra": 11.876728057861328,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-11-14",
+        "simbolo": "HFOF11.SA",
+        "quantidade": 3,
+        "preco_compra": 60.1248664855957,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-11-18",
+        "simbolo": "FMOF11.SA",
+        "quantidade": 1,
+        "preco_compra": 49.37207412719727,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-11-18",
+        "simbolo": "O1TI34.SA",
+        "quantidade": 8,
+        "preco_compra": 57.68000030517578,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-18",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 33,
+        "preco_compra": 1.1200000047683716,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-18",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 2,
+        "preco_compra": 5.960000038146973,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-11-18",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 2,
+        "preco_compra": 2.400000095367432,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-11-19",
+        "simbolo": "UNIP5.SA",
+        "quantidade": 5,
+        "preco_compra": 54.8357048034668,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-11-19",
+        "simbolo": "KEPL3.SA",
+        "quantidade": 6,
+        "preco_compra": 10.449999809265137,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-19",
+        "simbolo": "CSED3.SA",
+        "quantidade": 34,
+        "preco_compra": 3.640000104904175,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-11-19",
+        "simbolo": "BMEB4.SA",
+        "quantidade": 2,
+        "preco_compra": 39.52000045776367,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-11-19",
+        "simbolo": "RBDS11.SA",
+        "quantidade": 9,
+        "preco_compra": 2.900000095367432,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-11-21",
+        "simbolo": "GOAU4.SA",
+        "quantidade": 36,
+        "preco_compra": 10.84000015258789,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-11-21",
+        "simbolo": "RBRP11.SA",
+        "quantidade": 7,
+        "preco_compra": 52.44315719604492,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-11-21",
+        "simbolo": "ADBE34.SA",
+        "quantidade": 3,
+        "preco_compra": 58.52999877929688,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-11-21",
+        "simbolo": "HFOF11.SA",
+        "quantidade": 1,
+        "preco_compra": 58.83017349243164,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-11-21",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 8,
+        "preco_compra": 21.8700008392334,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-11-21",
+        "simbolo": "I1QY34.SA",
+        "quantidade": 1,
+        "preco_compra": 5.739999771118164,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-11-22",
+        "simbolo": "H1UM34.SA",
+        "quantidade": 11,
+        "preco_compra": 38.074493408203125,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-11-22",
+        "simbolo": "AMER3.SA",
+        "quantidade": 20,
+        "preco_compra": 8.699999809265137,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-11-22",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.059999942779541,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-25",
+        "simbolo": "GOAU3.SA",
+        "quantidade": 12,
+        "preco_compra": 11.18000030517578,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-11-25",
+        "simbolo": "ROST34.SA",
+        "quantidade": 1,
+        "preco_compra": 446.8900146484375,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-11-25",
+        "simbolo": "FNOR11.SA",
+        "quantidade": 38,
+        "preco_compra": 1.0099999904632568,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-11-25",
+        "simbolo": "ALPK3.SA",
+        "quantidade": 2,
+        "preco_compra": 2.9800000190734863,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-25",
+        "simbolo": "BPAC11.SA",
+        "quantidade": 4,
+        "preco_compra": 32.7580451965332,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-11-25",
+        "simbolo": "KLBN4.SA",
+        "quantidade": 1,
+        "preco_compra": 4.199999809265137,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-11-26",
+        "simbolo": "ZAMP3.SA",
+        "quantidade": 12,
+        "preco_compra": 3.130000114440918,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-11-26",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 2,
+        "preco_compra": 1.090000033378601,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-27",
+        "simbolo": "Z1IO34.SA",
+        "quantidade": 1,
+        "preco_compra": 360.0,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-11-27",
+        "simbolo": "PTNT4.SA",
+        "quantidade": 4,
+        "preco_compra": 6.329999923706055,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-11-27",
+        "simbolo": "RSID3.SA",
+        "quantidade": 1,
+        "preco_compra": 3.2799999713897705,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-11-27",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 2,
+        "preco_compra": 1.0299999713897705,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-28",
+        "simbolo": "F1RA34.SA",
+        "quantidade": 1,
+        "preco_compra": 131.7589874267578,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-11-28",
+        "simbolo": "BRSR5.SA",
+        "quantidade": 12,
+        "preco_compra": 16.242420196533203,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-11-28",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 47,
+        "preco_compra": 6.617838382720947,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-11-29",
+        "simbolo": "EQMA3B.SA",
+        "quantidade": 4,
+        "preco_compra": 24.399999618530277,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-11-29",
+        "simbolo": "PETR3.SA",
+        "quantidade": 10,
+        "preco_compra": 39.749000549316406,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-11-29",
+        "simbolo": "CNIC34.SA",
+        "quantidade": 9,
+        "preco_compra": 27.760955810546875,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-29",
+        "simbolo": "TEKA4.SA",
+        "quantidade": 3,
+        "preco_compra": 27.700000762939453,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-11-29",
+        "simbolo": "RECV3.SA",
+        "quantidade": 3,
+        "preco_compra": 16.540000915527344,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-11-29",
+        "simbolo": "PATC11.SA",
+        "quantidade": 8,
+        "preco_compra": 34.900596618652344,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-11-29",
+        "simbolo": "A1MT34.SA",
+        "quantidade": 1,
+        "preco_compra": 105.13999938964844,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-11-29",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 18,
+        "preco_compra": 0.9200000166893004,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-29",
+        "simbolo": "DEOP34.SA",
+        "quantidade": 8,
+        "preco_compra": 39.90999984741211,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-11-29",
+        "simbolo": "B1IL34.SA",
+        "quantidade": 1,
+        "preco_compra": 23.06999969482422,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-12-02",
+        "simbolo": "ETER3.SA",
+        "quantidade": 9,
+        "preco_compra": 6.0,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-02",
+        "simbolo": "EMAE4.SA",
+        "quantidade": 2,
+        "preco_compra": 39.970001220703125,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-12-02",
+        "simbolo": "CGRA3.SA",
+        "quantidade": 2,
+        "preco_compra": 24.14257431030273,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-12-02",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 1,
+        "preco_compra": 6.322837829589844,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-12-02",
+        "simbolo": "HFOF11.SA",
+        "quantidade": 10,
+        "preco_compra": 56.863582611083984,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-12-02",
+        "simbolo": "F1TN34.SA",
+        "quantidade": 1,
+        "preco_compra": 288.95001220703125,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-12-02",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 4,
+        "preco_compra": 0.8600000143051147,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-03",
+        "simbolo": "NINJ3.SA",
+        "quantidade": 48,
+        "preco_compra": 4.900000095367432,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-12-03",
+        "simbolo": "AHEB5.SA",
+        "quantidade": 3,
+        "preco_compra": 45.0,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-12-03",
+        "simbolo": "RPAD5.SA",
+        "quantidade": 1,
+        "preco_compra": 9.09000015258789,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-03",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 6,
+        "preco_compra": 0.8799999952316284,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-04",
+        "simbolo": "FHER3.SA",
+        "quantidade": 10,
+        "preco_compra": 8.5,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-12-04",
+        "simbolo": "R1KU34.SA",
+        "quantidade": 8,
+        "preco_compra": 25.299999237060547,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-12-04",
+        "simbolo": "EUCA3.SA",
+        "quantidade": 1,
+        "preco_compra": 17.020000457763672,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-04",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 0.8399999737739563,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-05",
+        "simbolo": "P2LN34.SA",
+        "quantidade": 1,
+        "preco_compra": 75.76000213623047,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-12-05",
+        "simbolo": "SAPR3.SA",
+        "quantidade": 3,
+        "preco_compra": 6.150964260101318,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-12-06",
+        "simbolo": "AGXY3.SA",
+        "quantidade": 70,
+        "preco_compra": 0.75,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-12-06",
+        "simbolo": "MELI34.SA",
+        "quantidade": 1,
+        "preco_compra": 98.31999969482422,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-12-06",
+        "simbolo": "CGRA4.SA",
+        "quantidade": 1,
+        "preco_compra": 24.5324821472168,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-12-06",
+        "simbolo": "JNJB34.SA",
+        "quantidade": 3,
+        "preco_compra": 60.63999938964844,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-12-06",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 3,
+        "preco_compra": 5.841004371643066,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-12-06",
+        "simbolo": "HFOF11.SA",
+        "quantidade": 4,
+        "preco_compra": 54.26897048950195,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-12-06",
+        "simbolo": "BPFF11.SA",
+        "quantidade": 3,
+        "preco_compra": 56.03314208984375,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-12-06",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 5,
+        "preco_compra": 8.0,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-12-06",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 2,
+        "preco_compra": 0.8100000023841858,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-09",
+        "simbolo": "COLG34.SA",
+        "quantidade": 6,
+        "preco_compra": 80.9000015258789,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-12-09",
+        "simbolo": "SAPR4.SA",
+        "quantidade": 11,
+        "preco_compra": 5.709468841552734,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-12-09",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 7,
+        "preco_compra": 0.7400000095367432,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-10",
+        "simbolo": "WGBA34.SA",
+        "quantidade": 3,
+        "preco_compra": 31.559999465942383,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-12-10",
+        "simbolo": "E1CO34.SA",
+        "quantidade": 3,
+        "preco_compra": 25.36000061035156,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-12-10",
+        "simbolo": "RCSL3.SA",
+        "quantidade": 1,
+        "preco_compra": 5.039999961853027,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-11",
+        "simbolo": "MSPA3.SA",
+        "quantidade": 6,
+        "preco_compra": 47.0,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-12-11",
+        "simbolo": "BEEF3.SA",
+        "quantidade": 3,
+        "preco_compra": 6.239999771118164,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-12-11",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 12,
+        "preco_compra": 6.637505054473877,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-12-11",
+        "simbolo": "HFOF11.SA",
+        "quantidade": 11,
+        "preco_compra": 53.47672271728516,
+        "sector": "Financial"
+    },
+    {
+        "data_compra": "2024-12-11",
+        "simbolo": "BPFF11.SA",
+        "quantidade": 2,
+        "preco_compra": 54.14360809326172,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-12-11",
+        "simbolo": "A1MT34.SA",
+        "quantidade": 1,
+        "preco_compra": 102.73999786376952,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-12-11",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 13,
+        "preco_compra": 0.8199999928474426,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-11",
+        "simbolo": "RPMG3.SA",
+        "quantidade": 1,
+        "preco_compra": 2.509999990463257,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-12-12",
+        "simbolo": "W2YF34.SA",
+        "quantidade": 16,
+        "preco_compra": 9.279999732971191,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-12-12",
+        "simbolo": "H1BA34.SA",
+        "quantidade": 2,
+        "preco_compra": 103.48332977294922,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-12-12",
+        "simbolo": "GPIV33.SA",
+        "quantidade": 11,
+        "preco_compra": 4.110000133514404,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-12-13",
+        "simbolo": "AVGO34.SA",
+        "quantidade": 7,
+        "preco_compra": 19.393823623657227,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-12-16",
+        "simbolo": "F2NV34.SA",
+        "quantidade": 47,
+        "preco_compra": 4.090000152587891,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-12-16",
+        "simbolo": "MERC4.SA",
+        "quantidade": 17,
+        "preco_compra": 9.100000381469728,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-12-16",
+        "simbolo": "V1OD34.SA",
+        "quantidade": 8,
+        "preco_compra": 26.21999931335449,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-12-16",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 4,
+        "preco_compra": 1.2100000381469729,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-17",
+        "simbolo": "P2IN34.SA",
+        "quantidade": 17,
+        "preco_compra": 31.149999618530277,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-12-17",
+        "simbolo": "ELCI34.SA",
+        "quantidade": 3,
+        "preco_compra": 20.440000534057617,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-12-17",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 4,
+        "preco_compra": 1.0800000429153442,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-18",
+        "simbolo": "AERI3.SA",
+        "quantidade": 39,
+        "preco_compra": 8.600000381469727,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-18",
+        "simbolo": "MUTC34.SA",
+        "quantidade": 1,
+        "preco_compra": 105.0,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-12-18",
+        "simbolo": "N1VO34.SA",
+        "quantidade": 1,
+        "preco_compra": 82.81999969482422,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-12-18",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 1,
+        "preco_compra": 5.516504287719727,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-12-18",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 3,
+        "preco_compra": 7.519999980926514,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-12-18",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 7,
+        "preco_compra": 1.0399999618530271,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-19",
+        "simbolo": "COTY34.SA",
+        "quantidade": 1,
+        "preco_compra": 22.21999931335449,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-12-19",
+        "simbolo": "E1DU34.SA",
+        "quantidade": 2,
+        "preco_compra": 24.399999618530277,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-12-19",
+        "simbolo": "EPAR3.SA",
+        "quantidade": 1,
+        "preco_compra": 4.789999961853027,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-12-19",
+        "simbolo": "B1MR34.SA",
+        "quantidade": 1,
+        "preco_compra": 200.6000061035156,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-12-19",
+        "simbolo": "XRXB34.SA",
+        "quantidade": 1,
+        "preco_compra": 51.38006591796875,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-12-19",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 23,
+        "preco_compra": 5.968837738037109,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-12-20",
+        "simbolo": "BIDU34.SA",
+        "quantidade": 10,
+        "preco_compra": 37.13999938964844,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-12-20",
+        "simbolo": "G1LP34.SA",
+        "quantidade": 1,
+        "preco_compra": 8.039999961853027,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-12-20",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 3,
+        "preco_compra": 5.811504364013672,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-12-20",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 2,
+        "preco_compra": 7.769999980926514,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-12-20",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.0499999523162842,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-23",
+        "simbolo": "ESTR4.SA",
+        "quantidade": 30,
+        "preco_compra": 4.980000019073486,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-12-23",
+        "simbolo": "A1TH34.SA",
+        "quantidade": 3,
+        "preco_compra": 15.694664001464844,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-12-23",
+        "simbolo": "LAND3.SA",
+        "quantidade": 2,
+        "preco_compra": 13.220000267028809,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-12-23",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 1,
+        "preco_compra": 5.595170974731445,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-12-23",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 4,
+        "preco_compra": 7.579999923706055,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-12-23",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 2,
+        "preco_compra": 1.0099999904632568,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-26",
+        "simbolo": "MERC4.SA",
+        "quantidade": 3,
+        "preco_compra": 9.399999618530272,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-12-26",
+        "simbolo": "T1AL34.SA",
+        "quantidade": 2,
+        "preco_compra": 6.130000114440918,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-12-26",
+        "simbolo": "OXYP34.SA",
+        "quantidade": 1,
+        "preco_compra": 49.59000015258789,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-12-26",
+        "simbolo": "MTSA4.SA",
+        "quantidade": 1,
+        "preco_compra": 36.79999923706055,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-26",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 2,
+        "preco_compra": 0.9900000095367432,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-27",
+        "simbolo": "NUTR3.SA",
+        "quantidade": 3,
+        "preco_compra": 4.070000171661377,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-12-27",
+        "simbolo": "AZEV4.SA",
+        "quantidade": 3,
+        "preco_compra": 1.0199999809265137,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-30",
+        "simbolo": "R1DY34.SA",
+        "quantidade": 21,
+        "preco_compra": 16.239999771118164,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-12-30",
+        "simbolo": "BMIN4.SA",
+        "quantidade": 2,
+        "preco_compra": 16.899999618530273,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-12-30",
+        "simbolo": "CLSC4.SA",
+        "quantidade": 1,
+        "preco_compra": 80.5,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-12-30",
+        "simbolo": "CRFB3.SA",
+        "quantidade": 37,
+        "preco_compra": 5.429999828338623,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-12-30",
+        "simbolo": "BPFF11.SA",
+        "quantidade": 1,
+        "preco_compra": 55.400001525878906,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-12-30",
+        "simbolo": "LAVV3.SA",
+        "quantidade": 5,
+        "preco_compra": 7.489999771118164,
+        "sector": "Real Estate"
+    }
+]

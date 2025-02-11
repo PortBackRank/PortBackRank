@@ -13,7 +13,7 @@ import yfinance as yf
 from tqdm import tqdm
 from files import open_dataframe, save_dataframe, save_json
 from b3 import update_symbols, get_symbol_list
-
+from sp500 import list_recent_symbols
 SUB_DIR_HIST = "historical"
 
 
@@ -22,7 +22,7 @@ class Yahoo:
     subdir = SUB_DIR_HIST
 
     @classmethod
-    def download_histories(cls, assets: List[str], end_date: Optional[str] = None) -> None:
+    def download_histories(cls, assets: List[str]) -> None:
         '''Download historical data for all assets in the list'''
         tickers = yf.Tickers(assets)
 
@@ -103,9 +103,9 @@ class Data(Yahoo):
         return cls.get_info(assets=symbols)
 
     @classmethod
-    def download_history(cls, assets: List[str], end_date: Optional[str] = None) -> None:
+    def download_history(cls, assets: List[str]) -> None:
         """Downloads historical data for the given list of assets."""
-        cls.download_histories(assets=assets, end_date=end_date)
+        cls.download_histories(assets=assets)
 
     @classmethod
     def fetch_history(cls, assets: List[str]) -> List[dict]:
@@ -191,7 +191,12 @@ class MemData:
         self.history_data: Dict[str, pd.DataFrame] = {}
         self.info_data: Dict[str, pd.DataFrame] = {}
         self.data = Data()
-        self.assets = self.data.list_symbols()
+
+        # DESCOMENTE PARA USAR B3
+        # self.assets = self.data.list_symbols()
+
+        # DESCOMENTE PARA USAR SP500
+        self.assets = list_recent_symbols()
 
         start_date, end_date = interval
         self.load(start_date, end_date)
@@ -274,14 +279,37 @@ def teste():
     print(Data.fetch_history(assets=['EQPA3.SA']))
 
 
+def teste_sp500():
+    '''Test function'''
+    print('--------------Listando ativos----------------')
+    assets = list_recent_symbols()
+    # print(assets)
+
+    # print('--------Baixando histórico de ativos---------')
+    # Data.download_history(assets)
+    print('--------------Buscando histórico de 10 ativos----------------')
+    # print(Data.fetch_history(assets=assets[:5]))
+
+    print('--------------Buscando informação de ativos----------------')
+    print(Data.get_asset_info(assets[:10]))
+    # print(Data.get_asset_info('MSFT'))
+
+
 def teste_mem_data():
     interval = ["2024-01-10", "2024-11-10"]
     mem_data = MemData(interval)
 
     print("Todos os dados históricos:")
-    # todas_info = mem_data.get_all_history()
+    todas_info = mem_data.get_all_history()
 
-    # print(todas_info.get('EQPA3.SA'))
+    print("Histórico de um ativo que nao existe no sp500:")
+    print(todas_info.get('EQPA3.SA'))
+
+    print("Histórico de um ativo que existe:")
+    print(todas_info.get('AAPL'))
+
+    # print("informações de ativos:")
+    # print(mem_data.get_assets())
 
     print("Todas as informações:")
     # print(mem_data.get_all_info())
