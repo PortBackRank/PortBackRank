@@ -1,0 +1,3579 @@
+[
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "MMM",
+        "quantidade": 22,
+        "preco_compra": 88.89204406738281,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "ABT",
+        "quantidade": 15,
+        "preco_compra": 107.13848114013672,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "ACN",
+        "quantidade": 3,
+        "preco_compra": 341.4313659667969,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "AES",
+        "quantidade": 59,
+        "preco_compra": 18.2860107421875,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "AFL",
+        "quantidade": 10,
+        "preco_compra": 81.52254486083984,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "APD",
+        "quantidade": 2,
+        "preco_compra": 266.3783569335937,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "ABNB",
+        "quantidade": 4,
+        "preco_compra": 134.47999572753906,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "ALB",
+        "quantidade": 6,
+        "preco_compra": 144.6448211669922,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "ARE",
+        "quantidade": 2,
+        "preco_compra": 123.50882720947266,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "LNT",
+        "quantidade": 1,
+        "preco_compra": 49.605499267578125,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "ALL",
+        "quantidade": 4,
+        "preco_compra": 140.8635711669922,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "GOOGL",
+        "quantidade": 1,
+        "preco_compra": 137.67092895507812,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "GOOG",
+        "quantidade": 4,
+        "preco_compra": 139.06033325195312,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-01-02",
+        "simbolo": "AMCR",
+        "quantidade": 2,
+        "preco_compra": 9.275218963623049,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-01-04",
+        "simbolo": "ABT",
+        "quantidade": 2,
+        "preco_compra": 108.2406005859375,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-01-04",
+        "simbolo": "ACN",
+        "quantidade": 1,
+        "preco_compra": 331.7568664550781,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-01-04",
+        "simbolo": "AMD",
+        "quantidade": 1,
+        "preco_compra": 136.00999450683594,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-01-04",
+        "simbolo": "AES",
+        "quantidade": 7,
+        "preco_compra": 17.841625213623047,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-01-11",
+        "simbolo": "AMD",
+        "quantidade": 1,
+        "preco_compra": 148.02000427246094,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-01-11",
+        "simbolo": "AES",
+        "quantidade": 50,
+        "preco_compra": 17.04740333557129,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-01-16",
+        "simbolo": "AMD",
+        "quantidade": 1,
+        "preco_compra": 158.74000549316406,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-01-16",
+        "simbolo": "AES",
+        "quantidade": 7,
+        "preco_compra": 16.9150333404541,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-01-18",
+        "simbolo": "AMD",
+        "quantidade": 1,
+        "preco_compra": 162.6699981689453,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-01-18",
+        "simbolo": "AES",
+        "quantidade": 7,
+        "preco_compra": 16.43282699584961,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-01-18",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 8.989828109741211,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-01-19",
+        "simbolo": "AES",
+        "quantidade": 67,
+        "preco_compra": 15.96953010559082,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-01-19",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 9.008853912353516,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-01-23",
+        "simbolo": "MMM",
+        "quantidade": 5,
+        "preco_compra": 77.6593246459961,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-23",
+        "simbolo": "AOS",
+        "quantidade": 14,
+        "preco_compra": 80.14225769042969,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-23",
+        "simbolo": "AMD",
+        "quantidade": 1,
+        "preco_compra": 168.4199981689453,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-01-23",
+        "simbolo": "AES",
+        "quantidade": 24,
+        "preco_compra": 15.893891334533691,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-01-23",
+        "simbolo": "AMCR",
+        "quantidade": 2,
+        "preco_compra": 9.008853912353516,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-01-24",
+        "simbolo": "MMM",
+        "quantidade": 3,
+        "preco_compra": 75.34812927246094,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-24",
+        "simbolo": "ACN",
+        "quantidade": 1,
+        "preco_compra": 364.3893432617188,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-01-24",
+        "simbolo": "AES",
+        "quantidade": 12,
+        "preco_compra": 15.600783348083496,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-01-24",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 8.856645584106445,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-01-25",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 16.19645118713379,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-01-25",
+        "simbolo": "AFL",
+        "quantidade": 10,
+        "preco_compra": 83.09857177734375,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-01-25",
+        "simbolo": "ABNB",
+        "quantidade": 4,
+        "preco_compra": 142.11000061035156,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-01-26",
+        "simbolo": "AMD",
+        "quantidade": 1,
+        "preco_compra": 177.25,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-01-26",
+        "simbolo": "AES",
+        "quantidade": 9,
+        "preco_compra": 16.215360641479492,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-01-26",
+        "simbolo": "AFL",
+        "quantidade": 2,
+        "preco_compra": 83.50970458984375,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-01-26",
+        "simbolo": "ABNB",
+        "quantidade": 1,
+        "preco_compra": 149.6199951171875,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-01-26",
+        "simbolo": "AMCR",
+        "quantidade": 12,
+        "preco_compra": 9.075445175170898,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-01-31",
+        "simbolo": "MMM",
+        "quantidade": 2,
+        "preco_compra": 76.24512481689453,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-01-31",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 15.9334077835083,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-02-01",
+        "simbolo": "PANW",
+        "quantidade": 2,
+        "preco_compra": 14.411977767944336,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-02-01",
+        "simbolo": "CBRE",
+        "quantidade": 3,
+        "preco_compra": 86.19000244140625,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-02-01",
+        "simbolo": "BWA",
+        "quantidade": 21,
+        "preco_compra": 34.030792236328125,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-01",
+        "simbolo": "CTVA",
+        "quantidade": 2,
+        "preco_compra": 53.44039535522461,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-02-01",
+        "simbolo": "DOW",
+        "quantidade": 10,
+        "preco_compra": 50.74188232421875,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-02-01",
+        "simbolo": "AMCR",
+        "quantidade": 3,
+        "preco_compra": 8.999341011047363,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-05",
+        "simbolo": "EL",
+        "quantidade": 1,
+        "preco_compra": 147.0153350830078,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-02-05",
+        "simbolo": "DAL",
+        "quantidade": 24,
+        "preco_compra": 38.82211685180664,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-02-07",
+        "simbolo": "EMR",
+        "quantidade": 1,
+        "preco_compra": 102.1631317138672,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-02-07",
+        "simbolo": "ROK",
+        "quantidade": 1,
+        "preco_compra": 43.61716842651367,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-02-07",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 15.589521408081056,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-02-08",
+        "simbolo": "PHM",
+        "quantidade": 3,
+        "preco_compra": 207.49703979492188,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-08",
+        "simbolo": "AMCR",
+        "quantidade": 3,
+        "preco_compra": 8.713949203491211,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-13",
+        "simbolo": "SHW",
+        "quantidade": 2,
+        "preco_compra": 136.5198211669922,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-02-13",
+        "simbolo": "FE",
+        "quantidade": 1,
+        "preco_compra": 35.432106018066406,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-02-13",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 8.447585105895996,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-15",
+        "simbolo": "FSLR",
+        "quantidade": 1,
+        "preco_compra": 159.77999877929688,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-02-15",
+        "simbolo": "YUM",
+        "quantidade": 1,
+        "preco_compra": 283.75,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-15",
+        "simbolo": "CBRE",
+        "quantidade": 2,
+        "preco_compra": 94.3000030517578,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-02-15",
+        "simbolo": "AES",
+        "quantidade": 2,
+        "preco_compra": 16.028932571411133,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-02-15",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 8.552227973937988,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-21",
+        "simbolo": "GRMN",
+        "quantidade": 1,
+        "preco_compra": 131.2973175048828,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-02-21",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 15.809226036071776,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-02-22",
+        "simbolo": "EMN",
+        "quantidade": 8,
+        "preco_compra": 83.58255767822266,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-02-22",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 15.28384494781494,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-02-22",
+        "simbolo": "AMCR",
+        "quantidade": 2,
+        "preco_compra": 8.809080123901367,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-26",
+        "simbolo": "DPZ",
+        "quantidade": 2,
+        "preco_compra": 452.9884643554688,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-26",
+        "simbolo": "GIS",
+        "quantidade": 1,
+        "preco_compra": 62.68086624145508,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-02-26",
+        "simbolo": "EIX",
+        "quantidade": 6,
+        "preco_compra": 63.810638427734375,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-02-26",
+        "simbolo": "AES",
+        "quantidade": 4,
+        "preco_compra": 14.853986740112305,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-02-27",
+        "simbolo": "BBY",
+        "quantidade": 2,
+        "preco_compra": 75.7791748046875,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-02-27",
+        "simbolo": "HPQ",
+        "quantidade": 1,
+        "preco_compra": 27.888612747192383,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-02-27",
+        "simbolo": "REGN",
+        "quantidade": 1,
+        "preco_compra": 17.75472068786621,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-02-29",
+        "simbolo": "GEN",
+        "quantidade": 9,
+        "preco_compra": 21.18858337402344,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-02-29",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 8.738326072692871,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-03-01",
+        "simbolo": "MAA",
+        "quantidade": 11,
+        "preco_compra": 95.05999755859376,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-03-01",
+        "simbolo": "NCLH",
+        "quantidade": 1,
+        "preco_compra": 55.5980224609375,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-03-01",
+        "simbolo": "CAG",
+        "quantidade": 1,
+        "preco_compra": 26.46299171447754,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-03-07",
+        "simbolo": "DXCM",
+        "quantidade": 10,
+        "preco_compra": 133.24000549316406,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-03-07",
+        "simbolo": "INTC",
+        "quantidade": 9,
+        "preco_compra": 45.67357635498047,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-03-07",
+        "simbolo": "TRMB",
+        "quantidade": 1,
+        "preco_compra": 35.57728958129883,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-03-08",
+        "simbolo": "BWA",
+        "quantidade": 5,
+        "preco_compra": 31.73599624633789,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-03-11",
+        "simbolo": "OMC",
+        "quantidade": 3,
+        "preco_compra": 81.5999984741211,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-03-11",
+        "simbolo": "OKE",
+        "quantidade": 1,
+        "preco_compra": 112.91053771972656,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-03-11",
+        "simbolo": "CLX",
+        "quantidade": 5,
+        "preco_compra": 150.610595703125,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-03-11",
+        "simbolo": "GILD",
+        "quantidade": 1,
+        "preco_compra": 72.36287689208984,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-03-11",
+        "simbolo": "KIM",
+        "quantidade": 2,
+        "preco_compra": 18.784019470214844,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-03-11",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 15.656387329101562,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-03-12",
+        "simbolo": "CSCO",
+        "quantidade": 5,
+        "preco_compra": 48.53815460205078,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-03-12",
+        "simbolo": "AES",
+        "quantidade": 2,
+        "preco_compra": 15.226530075073242,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-03-13",
+        "simbolo": "AES",
+        "quantidade": 69,
+        "preco_compra": 15.045034408569336,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-03-13",
+        "simbolo": "MPC",
+        "quantidade": 1,
+        "preco_compra": 222.83338928222656,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-03-13",
+        "simbolo": "VLO",
+        "quantidade": 25,
+        "preco_compra": 41.9514045715332,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-03-13",
+        "simbolo": "APA",
+        "quantidade": 1,
+        "preco_compra": 31.40271759033203,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-03-14",
+        "simbolo": "AKAM",
+        "quantidade": 2,
+        "preco_compra": 108.9499969482422,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-03-14",
+        "simbolo": "PEP",
+        "quantidade": 3,
+        "preco_compra": 26.470848083496094,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-03-14",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 14.357261657714844,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-03-18",
+        "simbolo": "PAYX",
+        "quantidade": 4,
+        "preco_compra": 190.4482421875,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-03-18",
+        "simbolo": "VLO",
+        "quantidade": 5,
+        "preco_compra": 41.34243392944336,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-03-18",
+        "simbolo": "PANW",
+        "quantidade": 1,
+        "preco_compra": 11.04278564453125,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-03-20",
+        "simbolo": "FOX",
+        "quantidade": 6,
+        "preco_compra": 27.38418960571289,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-03-20",
+        "simbolo": "GM",
+        "quantidade": 6,
+        "preco_compra": 42.534934997558594,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-03-20",
+        "simbolo": "LW",
+        "quantidade": 4,
+        "preco_compra": 101.02140808105467,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-03-20",
+        "simbolo": "AES",
+        "quantidade": 2,
+        "preco_compra": 14.844433784484863,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-03-20",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 8.825130462646484,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-03-21",
+        "simbolo": "DIS",
+        "quantidade": 173,
+        "preco_compra": 8.720000267028809,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-03-21",
+        "simbolo": "CTAS",
+        "quantidade": 1,
+        "preco_compra": 158.67257690429688,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-03-21",
+        "simbolo": "LRCX",
+        "quantidade": 1,
+        "preco_compra": 95.83665466308594,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-03-21",
+        "simbolo": "AES",
+        "quantidade": 2,
+        "preco_compra": 15.054587364196776,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-03-26",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 15.895197868347168,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-03-27",
+        "simbolo": "AES",
+        "quantidade": 7,
+        "preco_compra": 16.477895736694336,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-03-27",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 9.143413543701172,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-03-28",
+        "simbolo": "MLM",
+        "quantidade": 4,
+        "preco_compra": 77.96794891357422,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-03-28",
+        "simbolo": "GEN",
+        "quantidade": 1,
+        "preco_compra": 22.0858211517334,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-04-03",
+        "simbolo": "EXR",
+        "quantidade": 7,
+        "preco_compra": 140.81332397460938,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-04-03",
+        "simbolo": "HPE",
+        "quantidade": 1,
+        "preco_compra": 17.840665817260742,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-04-04",
+        "simbolo": "BA",
+        "quantidade": 2,
+        "preco_compra": 183.2899932861328,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-04",
+        "simbolo": "BAX",
+        "quantidade": 3,
+        "preco_compra": 41.72499084472656,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-04-05",
+        "simbolo": "BMY",
+        "quantidade": 2,
+        "preco_compra": 49.44596481323242,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-04-05",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 8.883000373840332,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-04-09",
+        "simbolo": "JBL",
+        "quantidade": 1,
+        "preco_compra": 136.24708557128906,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-04-09",
+        "simbolo": "AES",
+        "quantidade": 2,
+        "preco_compra": 17.47134780883789,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-04-09",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 9.046963691711426,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-04-10",
+        "simbolo": "SO",
+        "quantidade": 12,
+        "preco_compra": 27.471275329589844,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-04-11",
+        "simbolo": "PODD",
+        "quantidade": 1,
+        "preco_compra": 179.64999389648438,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-04-11",
+        "simbolo": "MMM",
+        "quantidade": 2,
+        "preco_compra": 91.5542221069336,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-12",
+        "simbolo": "MMM",
+        "quantidade": 9,
+        "preco_compra": 89.71685028076172,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-12",
+        "simbolo": "AES",
+        "quantidade": 3,
+        "preco_compra": 16.095800399780273,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-04-15",
+        "simbolo": "MSFT",
+        "quantidade": 2,
+        "preco_compra": 122.86414337158205,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-04-15",
+        "simbolo": "MMM",
+        "quantidade": 7,
+        "preco_compra": 89.70703125,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-15",
+        "simbolo": "AOS",
+        "quantidade": 1,
+        "preco_compra": 83.70144653320312,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-15",
+        "simbolo": "AES",
+        "quantidade": 7,
+        "preco_compra": 15.436683654785156,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-04-16",
+        "simbolo": "AES",
+        "quantidade": 55,
+        "preco_compra": 15.19787311553955,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-04-16",
+        "simbolo": "AFL",
+        "quantidade": 1,
+        "preco_compra": 79.23175811767578,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-04-16",
+        "simbolo": "APD",
+        "quantidade": 2,
+        "preco_compra": 223.4808654785156,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-04-16",
+        "simbolo": "LNT",
+        "quantidade": 2,
+        "preco_compra": 45.76852416992188,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-04-17",
+        "simbolo": "VTR",
+        "quantidade": 1,
+        "preco_compra": 90.2958755493164,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-04-17",
+        "simbolo": "MAA",
+        "quantidade": 4,
+        "preco_compra": 103.44000244140624,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-04-17",
+        "simbolo": "AES",
+        "quantidade": 4,
+        "preco_compra": 15.41757869720459,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-04-19",
+        "simbolo": "WEC",
+        "quantidade": 1,
+        "preco_compra": 58.91805648803711,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-04-19",
+        "simbolo": "PLTR",
+        "quantidade": 1,
+        "preco_compra": 138.85499572753906,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-04-19",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 15.665940284729004,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-04-19",
+        "simbolo": "MO",
+        "quantidade": 1,
+        "preco_compra": 39.62453842163086,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-04-19",
+        "simbolo": "AMCR",
+        "quantidade": 2,
+        "preco_compra": 8.651521682739258,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-04-22",
+        "simbolo": "UNP",
+        "quantidade": 1,
+        "preco_compra": 53.93999862670898,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-04-22",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 8.709390640258789,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-04-26",
+        "simbolo": "TJX",
+        "quantidade": 22,
+        "preco_compra": 53.28328323364258,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-04-26",
+        "simbolo": "FITB",
+        "quantidade": 2,
+        "preco_compra": 35.911155700683594,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-04-29",
+        "simbolo": "BAC",
+        "quantidade": 30,
+        "preco_compra": 36.8761100769043,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-04-29",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 17.060592651367188,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-04-29",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 8.728681564331055,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-04-30",
+        "simbolo": "BALL",
+        "quantidade": 4,
+        "preco_compra": 68.92967224121094,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-04-30",
+        "simbolo": "MTCH",
+        "quantidade": 5,
+        "preco_compra": 74.77606964111328,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-04-30",
+        "simbolo": "TRMB",
+        "quantidade": 1,
+        "preco_compra": 36.184383392333984,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-04-30",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 8.622586250305176,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-05-01",
+        "simbolo": "V",
+        "quantidade": 1,
+        "preco_compra": 76.35502624511719,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-05-01",
+        "simbolo": "HBAN",
+        "quantidade": 3,
+        "preco_compra": 13.214226722717283,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-05-02",
+        "simbolo": "TER",
+        "quantidade": 6,
+        "preco_compra": 180.00999450683594,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-05-02",
+        "simbolo": "AIG",
+        "quantidade": 1,
+        "preco_compra": 76.82940673828125,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-05-02",
+        "simbolo": "VRTX",
+        "quantidade": 3,
+        "preco_compra": 11.251564979553224,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-05-03",
+        "simbolo": "TECH",
+        "quantidade": 3,
+        "preco_compra": 77.04871368408203,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-05-03",
+        "simbolo": "ROK",
+        "quantidade": 1,
+        "preco_compra": 45.67876434326172,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-03",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 9.654597282409668,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-05-06",
+        "simbolo": "APTV",
+        "quantidade": 2,
+        "preco_compra": 84.4000015258789,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-05-06",
+        "simbolo": "ALB",
+        "quantidade": 2,
+        "preco_compra": 129.19189453125,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-05-06",
+        "simbolo": "KEY",
+        "quantidade": 2,
+        "preco_compra": 14.57703971862793,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-05-07",
+        "simbolo": "WST",
+        "quantidade": 2,
+        "preco_compra": 71.48999786376953,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-05-07",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 18.172758102416992,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-05-08",
+        "simbolo": "A",
+        "quantidade": 7,
+        "preco_compra": 142.04637145996094,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-05-08",
+        "simbolo": "MNST",
+        "quantidade": 1,
+        "preco_compra": 393.698486328125,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-05-08",
+        "simbolo": "TSN",
+        "quantidade": 1,
+        "preco_compra": 40.30050659179688,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-05-08",
+        "simbolo": "HBAN",
+        "quantidade": 1,
+        "preco_compra": 13.60145664215088,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-05-09",
+        "simbolo": "KVUE",
+        "quantidade": 30,
+        "preco_compra": 20.166353225708008,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-05-09",
+        "simbolo": "DIS",
+        "quantidade": 1,
+        "preco_compra": 8.039999961853027,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-10",
+        "simbolo": "MCHP",
+        "quantidade": 8,
+        "preco_compra": 120.84081268310548,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-05-10",
+        "simbolo": "NWSA",
+        "quantidade": 1,
+        "preco_compra": 25.76586151123047,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-10",
+        "simbolo": "T",
+        "quantidade": 1,
+        "preco_compra": 16.492326736450195,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-14",
+        "simbolo": "LVS",
+        "quantidade": 2,
+        "preco_compra": 45.89591979980469,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-05-14",
+        "simbolo": "LRCX",
+        "quantidade": 1,
+        "preco_compra": 89.00614929199219,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-05-14",
+        "simbolo": "HPE",
+        "quantidade": 1,
+        "preco_compra": 17.311037063598633,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-05-14",
+        "simbolo": "DIS",
+        "quantidade": 1,
+        "preco_compra": 8.5600004196167,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-15",
+        "simbolo": "EQIX",
+        "quantidade": 2,
+        "preco_compra": 797.4288940429688,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-05-15",
+        "simbolo": "TTWO",
+        "quantidade": 1,
+        "preco_compra": 41.7378158569336,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-15",
+        "simbolo": "HBAN",
+        "quantidade": 1,
+        "preco_compra": 13.804753303527832,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-05-16",
+        "simbolo": "EW",
+        "quantidade": 2,
+        "preco_compra": 90.11000061035156,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-05-16",
+        "simbolo": "DIS",
+        "quantidade": 3,
+        "preco_compra": 8.229999542236328,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-17",
+        "simbolo": "CMCSA",
+        "quantidade": 1,
+        "preco_compra": 38.33906936645508,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-20",
+        "simbolo": "WAB",
+        "quantidade": 2,
+        "preco_compra": 16.89169692993164,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-21",
+        "simbolo": "SBAC",
+        "quantidade": 1,
+        "preco_compra": 47.04418563842773,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-05-21",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 20.294841766357425,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-05-21",
+        "simbolo": "DIS",
+        "quantidade": 1,
+        "preco_compra": 7.889999866485596,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-22",
+        "simbolo": "EA",
+        "quantidade": 2,
+        "preco_compra": 134.6185302734375,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-05-23",
+        "simbolo": "INTC",
+        "quantidade": 15,
+        "preco_compra": 29.8903865814209,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-05-23",
+        "simbolo": "CF",
+        "quantidade": 9,
+        "preco_compra": 77.32067108154297,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-05-23",
+        "simbolo": "AES",
+        "quantidade": 2,
+        "preco_compra": 19.83184051513672,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-05-23",
+        "simbolo": "HBAN",
+        "quantidade": 1,
+        "preco_compra": 13.146461486816406,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-05-29",
+        "simbolo": "NOC",
+        "quantidade": 95,
+        "preco_compra": 16.489999771118164,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-05-29",
+        "simbolo": "GEHC",
+        "quantidade": 1,
+        "preco_compra": 78.36288452148438,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-05-29",
+        "simbolo": "AES",
+        "quantidade": 3,
+        "preco_compra": 20.32377815246582,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-05-29",
+        "simbolo": "VRTX",
+        "quantidade": 1,
+        "preco_compra": 10.11184024810791,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-05-30",
+        "simbolo": "CVS",
+        "quantidade": 18,
+        "preco_compra": 54.11592864990234,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-05-30",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 20.99898910522461,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-05-30",
+        "simbolo": "DIS",
+        "quantidade": 1,
+        "preco_compra": 8.079999923706055,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-06-04",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 19.76432037353516,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-06-05",
+        "simbolo": "MMM",
+        "quantidade": 14,
+        "preco_compra": 98.00760650634766,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-05",
+        "simbolo": "AOS",
+        "quantidade": 3,
+        "preco_compra": 80.99515533447266,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-05",
+        "simbolo": "ACN",
+        "quantidade": 2,
+        "preco_compra": 288.5746459960937,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-06-05",
+        "simbolo": "AMD",
+        "quantidade": 1,
+        "preco_compra": 166.1699981689453,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-06-05",
+        "simbolo": "AES",
+        "quantidade": 25,
+        "preco_compra": 20.121217727661133,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-06-07",
+        "simbolo": "MA",
+        "quantidade": 17,
+        "preco_compra": 31.833837509155277,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-06-07",
+        "simbolo": "DIS",
+        "quantidade": 74,
+        "preco_compra": 8.270000457763672,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-06-10",
+        "simbolo": "USB",
+        "quantidade": 3,
+        "preco_compra": 68.5999984741211,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-06-10",
+        "simbolo": "ABBV",
+        "quantidade": 1,
+        "preco_compra": 166.00477600097656,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-06-10",
+        "simbolo": "GM",
+        "quantidade": 2,
+        "preco_compra": 47.34479141235352,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-06-10",
+        "simbolo": "CZR",
+        "quantidade": 1,
+        "preco_compra": 36.380001068115234,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-06-12",
+        "simbolo": "SPG",
+        "quantidade": 2,
+        "preco_compra": 101.16837310791016,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-06-12",
+        "simbolo": "OKE",
+        "quantidade": 1,
+        "preco_compra": 139.32826232910156,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-06-12",
+        "simbolo": "AVB",
+        "quantidade": 5,
+        "preco_compra": 194.12110900878903,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-06-13",
+        "simbolo": "AMZN",
+        "quantidade": 1,
+        "preco_compra": 183.8300018310547,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-06-13",
+        "simbolo": "ADSK",
+        "quantidade": 2,
+        "preco_compra": 223.1000061035156,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-06-13",
+        "simbolo": "RTX",
+        "quantidade": 2,
+        "preco_compra": 51.29595947265625,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-13",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 9.80524444580078,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-06-14",
+        "simbolo": "PTC",
+        "quantidade": 1,
+        "preco_compra": 278.2569885253906,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-06-14",
+        "simbolo": "AES",
+        "quantidade": 2,
+        "preco_compra": 18.655048370361328,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-06-14",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 9.727115631103516,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-06-18",
+        "simbolo": "BXP",
+        "quantidade": 7,
+        "preco_compra": 59.518314361572266,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-06-18",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 18.28850555419922,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-06-18",
+        "simbolo": "DIS",
+        "quantidade": 1,
+        "preco_compra": 6.989999771118164,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-06-20",
+        "simbolo": "SYK",
+        "quantidade": 5,
+        "preco_compra": 91.76399993896484,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-06-20",
+        "simbolo": "SMCI",
+        "quantidade": 1,
+        "preco_compra": 44.31695938110352,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-06-20",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 9.648985862731934,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-06-24",
+        "simbolo": "WBD",
+        "quantidade": 1,
+        "preco_compra": 210.96490478515625,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-06-24",
+        "simbolo": "LUV",
+        "quantidade": 1,
+        "preco_compra": 83.29329681396484,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-06-24",
+        "simbolo": "REGN",
+        "quantidade": 6,
+        "preco_compra": 18.92867088317871,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-06-25",
+        "simbolo": "SBAC",
+        "quantidade": 4,
+        "preco_compra": 46.58919143676758,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-06-25",
+        "simbolo": "KDP",
+        "quantidade": 1,
+        "preco_compra": 33.737518310546875,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-06-28",
+        "simbolo": "RL",
+        "quantidade": 3,
+        "preco_compra": 122.31243896484376,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-06-28",
+        "simbolo": "A",
+        "quantidade": 2,
+        "preco_compra": 128.9458770751953,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-06-28",
+        "simbolo": "HST",
+        "quantidade": 1,
+        "preco_compra": 17.481624603271484,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-07-01",
+        "simbolo": "DVN",
+        "quantidade": 1,
+        "preco_compra": 46.90081787109375,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-07-01",
+        "simbolo": "FITB",
+        "quantidade": 1,
+        "preco_compra": 35.64604187011719,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-07-03",
+        "simbolo": "CMCSA",
+        "quantidade": 1,
+        "preco_compra": 37.45223617553711,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-07-05",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 9.277871131896973,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-08",
+        "simbolo": "TDY",
+        "quantidade": 2,
+        "preco_compra": 211.0437774658203,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-07-08",
+        "simbolo": "MPWR",
+        "quantidade": 2,
+        "preco_compra": 50.18000030517578,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-07-08",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 17.217819213867188,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-07-09",
+        "simbolo": "PANW",
+        "quantidade": 6,
+        "preco_compra": 11.424320220947266,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-07-09",
+        "simbolo": "BIIB",
+        "quantidade": 3,
+        "preco_compra": 229.05999755859372,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-07-09",
+        "simbolo": "PSX",
+        "quantidade": 19,
+        "preco_compra": 75.07366943359375,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-07-09",
+        "simbolo": "IVZ",
+        "quantidade": 46,
+        "preco_compra": 14.86996841430664,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-07-12",
+        "simbolo": "ADI",
+        "quantidade": 2,
+        "preco_compra": 236.6235198974609,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-07-12",
+        "simbolo": "AES",
+        "quantidade": 2,
+        "preco_compra": 18.220985412597656,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-07-12",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 9.67828369140625,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-15",
+        "simbolo": "DIS",
+        "quantidade": 47,
+        "preco_compra": 7.420000076293945,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-07-16",
+        "simbolo": "BLDR",
+        "quantidade": 1,
+        "preco_compra": 165.44000244140625,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-16",
+        "simbolo": "TECH",
+        "quantidade": 5,
+        "preco_compra": 79.65084075927734,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-07-16",
+        "simbolo": "MLM",
+        "quantidade": 2,
+        "preco_compra": 73.74976348876953,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-07-16",
+        "simbolo": "HPQ",
+        "quantidade": 14,
+        "preco_compra": 37.37492752075195,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-07-16",
+        "simbolo": "FAST",
+        "quantidade": 2,
+        "preco_compra": 67.8945541381836,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-16",
+        "simbolo": "TTWO",
+        "quantidade": 3,
+        "preco_compra": 42.361934661865234,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-07-16",
+        "simbolo": "HST",
+        "quantidade": 1,
+        "preco_compra": 18.045551300048828,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-07-16",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 9.834543228149414,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-17",
+        "simbolo": "WDC",
+        "quantidade": 6,
+        "preco_compra": 30.10273551940918,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-07-17",
+        "simbolo": "PFE",
+        "quantidade": 12,
+        "preco_compra": 17.908679962158203,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-07-17",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 10.08846378326416,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-19",
+        "simbolo": "A",
+        "quantidade": 2,
+        "preco_compra": 131.3278045654297,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-07-19",
+        "simbolo": "PH",
+        "quantidade": 1,
+        "preco_compra": 120.11177825927734,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-22",
+        "simbolo": "IP",
+        "quantidade": 1,
+        "preco_compra": 45.64899063110352,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-23",
+        "simbolo": "MAA",
+        "quantidade": 6,
+        "preco_compra": 121.25,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-07-23",
+        "simbolo": "AMCR",
+        "quantidade": 3,
+        "preco_compra": 9.834543228149414,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-24",
+        "simbolo": "ABT",
+        "quantidade": 1,
+        "preco_compra": 106.1995620727539,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-07-24",
+        "simbolo": "TAP",
+        "quantidade": 2,
+        "preco_compra": 65.45875549316406,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-07-24",
+        "simbolo": "MMM",
+        "quantidade": 2,
+        "preco_compra": 102.15309143066406,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-24",
+        "simbolo": "ACN",
+        "quantidade": 1,
+        "preco_compra": 327.3475646972656,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-07-24",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 16.696943283081055,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-07-24",
+        "simbolo": "AFL",
+        "quantidade": 1,
+        "preco_compra": 93.26931762695312,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-07-24",
+        "simbolo": "AMCR",
+        "quantidade": 3,
+        "preco_compra": 9.844308853149414,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-25",
+        "simbolo": "UNH",
+        "quantidade": 1,
+        "preco_compra": 204.61399841308597,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-07-25",
+        "simbolo": "WEC",
+        "quantidade": 3,
+        "preco_compra": 58.61855316162109,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-07-25",
+        "simbolo": "KVUE",
+        "quantidade": 1,
+        "preco_compra": 17.918010711669922,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-07-25",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 9.912672996520996,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-07-26",
+        "simbolo": "CNC",
+        "quantidade": 4,
+        "preco_compra": 73.0999984741211,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-07-26",
+        "simbolo": "EXPD",
+        "quantidade": 10,
+        "preco_compra": 123.43476104736328,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-26",
+        "simbolo": "NWS",
+        "quantidade": 17,
+        "preco_compra": 73.29095458984375,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-07-26",
+        "simbolo": "UNP",
+        "quantidade": 1,
+        "preco_compra": 47.369998931884766,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-26",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 16.899507522583008,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-07-30",
+        "simbolo": "SRE",
+        "quantidade": 1,
+        "preco_compra": 798.7999877929688,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-07-30",
+        "simbolo": "MTB",
+        "quantidade": 9,
+        "preco_compra": 176.41610717773438,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-07-30",
+        "simbolo": "MMM",
+        "quantidade": 1,
+        "preco_compra": 125.40343475341795,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-30",
+        "simbolo": "AOS",
+        "quantidade": 1,
+        "preco_compra": 84.32061767578125,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-07-30",
+        "simbolo": "AES",
+        "quantidade": 4,
+        "preco_compra": 16.928443908691406,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-08-01",
+        "simbolo": "XYL",
+        "quantidade": 1,
+        "preco_compra": 133.18685913085938,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-01",
+        "simbolo": "NEE",
+        "quantidade": 11,
+        "preco_compra": 73.14869689941406,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-08-01",
+        "simbolo": "VMC",
+        "quantidade": 1,
+        "preco_compra": 53.93558120727539,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-08-01",
+        "simbolo": "AOS",
+        "quantidade": 1,
+        "preco_compra": 81.75524139404297,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-01",
+        "simbolo": "ABT",
+        "quantidade": 3,
+        "preco_compra": 109.0609893798828,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-08-01",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 17.445343017578125,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-08-01",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 10.254487991333008,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-02",
+        "simbolo": "GDDY",
+        "quantidade": 6,
+        "preco_compra": 151.25,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-08-02",
+        "simbolo": "ABT",
+        "quantidade": 2,
+        "preco_compra": 110.2095184326172,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-08-02",
+        "simbolo": "AMD",
+        "quantidade": 2,
+        "preco_compra": 132.5,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-08-02",
+        "simbolo": "AFL",
+        "quantidade": 8,
+        "preco_compra": 98.32215118408205,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-08-02",
+        "simbolo": "ALB",
+        "quantidade": 1,
+        "preco_compra": 86.2524185180664,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-08-02",
+        "simbolo": "DIS",
+        "quantidade": 1,
+        "preco_compra": 8.270000457763672,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-08-05",
+        "simbolo": "CLX",
+        "quantidade": 2,
+        "preco_compra": 139.3002166748047,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-08-06",
+        "simbolo": "MMM",
+        "quantidade": 9,
+        "preco_compra": 123.56320190429688,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-06",
+        "simbolo": "AOS",
+        "quantidade": 1,
+        "preco_compra": 80.88361358642578,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-06",
+        "simbolo": "AES",
+        "quantidade": 4,
+        "preco_compra": 16.09140396118164,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-08-06",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 10.244722366333008,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-07",
+        "simbolo": "DECK",
+        "quantidade": 1,
+        "preco_compra": 140.54666137695312,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-07",
+        "simbolo": "AES",
+        "quantidade": 4,
+        "preco_compra": 15.964776039123535,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-08-08",
+        "simbolo": "FTNT",
+        "quantidade": 1,
+        "preco_compra": 68.68000030517578,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-08-08",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 16.21803092956543,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-08-08",
+        "simbolo": "DIS",
+        "quantidade": 1,
+        "preco_compra": 7.019999980926514,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-08-13",
+        "simbolo": "V",
+        "quantidade": 1,
+        "preco_compra": 80.12928771972656,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-08-13",
+        "simbolo": "FIS",
+        "quantidade": 1,
+        "preco_compra": 77.58936309814453,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-08-15",
+        "simbolo": "PARA",
+        "quantidade": 1,
+        "preco_compra": 586.4302368164062,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-08-15",
+        "simbolo": "DECK",
+        "quantidade": 3,
+        "preco_compra": 157.9250030517578,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-15",
+        "simbolo": "GPN",
+        "quantidade": 1,
+        "preco_compra": 108.29693603515624,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-15",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 16.82194709777832,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-08-15",
+        "simbolo": "DIS",
+        "quantidade": 1,
+        "preco_compra": 7.239999771118164,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-08-16",
+        "simbolo": "CDNS",
+        "quantidade": 1,
+        "preco_compra": 281.0,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-08-16",
+        "simbolo": "INVH",
+        "quantidade": 1,
+        "preco_compra": 34.69117736816406,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-08-16",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 16.812206268310547,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-08-20",
+        "simbolo": "KEY",
+        "quantidade": 5,
+        "preco_compra": 16.281951904296875,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-08-21",
+        "simbolo": "MCHP",
+        "quantidade": 2,
+        "preco_compra": 108.06775665283205,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-08-21",
+        "simbolo": "BLDR",
+        "quantidade": 1,
+        "preco_compra": 168.25,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-08-21",
+        "simbolo": "OKE",
+        "quantidade": 1,
+        "preco_compra": 139.54246520996094,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-08-21",
+        "simbolo": "LOW",
+        "quantidade": 2,
+        "preco_compra": 265.6300048828125,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-21",
+        "simbolo": "TTWO",
+        "quantidade": 1,
+        "preco_compra": 40.57713317871094,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-08-23",
+        "simbolo": "DXCM",
+        "quantidade": 5,
+        "preco_compra": 74.06999969482422,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-08-26",
+        "simbolo": "HST",
+        "quantidade": 1,
+        "preco_compra": 16.85936737060547,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-08-27",
+        "simbolo": "ALB",
+        "quantidade": 3,
+        "preco_compra": 88.22554779052734,
+        "sector": "Basic Materials"
+    },
+    {
+        "data_compra": "2024-08-27",
+        "simbolo": "DIS",
+        "quantidade": 5,
+        "preco_compra": 8.109999656677246,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-08-28",
+        "simbolo": "BG",
+        "quantidade": 11,
+        "preco_compra": 100.06329345703124,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-08-28",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 16.75376319885254,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-08-28",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 10.97718620300293,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-08-29",
+        "simbolo": "NRG",
+        "quantidade": 2,
+        "preco_compra": 148.77244567871094,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-08-29",
+        "simbolo": "HAL",
+        "quantidade": 1,
+        "preco_compra": 31.0340633392334,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-08-29",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 16.812206268310547,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-08-29",
+        "simbolo": "DIS",
+        "quantidade": 1,
+        "preco_compra": 7.730000019073486,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-08-30",
+        "simbolo": "INTC",
+        "quantidade": 46,
+        "preco_compra": 22.040000915527344,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-09-03",
+        "simbolo": "PODD",
+        "quantidade": 2,
+        "preco_compra": 206.69000244140625,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-09-03",
+        "simbolo": "AMT",
+        "quantidade": 7,
+        "preco_compra": 226.6921844482422,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-09-03",
+        "simbolo": "WDC",
+        "quantidade": 1,
+        "preco_compra": 30.092798233032227,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-09-04",
+        "simbolo": "MPWR",
+        "quantidade": 11,
+        "preco_compra": 48.380001068115234,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-09-04",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 16.50050926208496,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-09-04",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 11.065081596374512,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-05",
+        "simbolo": "KR",
+        "quantidade": 1,
+        "preco_compra": 53.08092498779297,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-09-05",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 16.50050926208496,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-09-05",
+        "simbolo": "DIS",
+        "quantidade": 1,
+        "preco_compra": 7.420000076293945,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-09-06",
+        "simbolo": "MMM",
+        "quantidade": 1,
+        "preco_compra": 127.91968536376952,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-06",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 15.76996612548828,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-09-06",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 10.94283962249756,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-09",
+        "simbolo": "HOLX",
+        "quantidade": 3,
+        "preco_compra": 82.69000244140625,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-09-09",
+        "simbolo": "ACN",
+        "quantidade": 2,
+        "preco_compra": 340.4243469238281,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-09-09",
+        "simbolo": "AES",
+        "quantidade": 59,
+        "preco_compra": 15.779706954956056,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-09-09",
+        "simbolo": "DIS",
+        "quantidade": 1,
+        "preco_compra": 7.300000190734863,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-09-10",
+        "simbolo": "HSY",
+        "quantidade": 1,
+        "preco_compra": 201.2042236328125,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-09-10",
+        "simbolo": "PKG",
+        "quantidade": 2,
+        "preco_compra": 34.7599983215332,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-10",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 16.01348114013672,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-09-10",
+        "simbolo": "WAB",
+        "quantidade": 1,
+        "preco_compra": 8.618207931518555,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-11",
+        "simbolo": "AMZN",
+        "quantidade": 8,
+        "preco_compra": 184.5200042724609,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-11",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 17.39664077758789,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-09-11",
+        "simbolo": "DIS",
+        "quantidade": 1,
+        "preco_compra": 6.940000057220459,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-09-12",
+        "simbolo": "DHR",
+        "quantidade": 2,
+        "preco_compra": 271.9065246582031,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-09-12",
+        "simbolo": "MMM",
+        "quantidade": 2,
+        "preco_compra": 131.33152770996094,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-12",
+        "simbolo": "AOS",
+        "quantidade": 1,
+        "preco_compra": 78.64509582519531,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-12",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 17.6498966217041,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-09-12",
+        "simbolo": "WAB",
+        "quantidade": 1,
+        "preco_compra": 8.579386711120605,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-13",
+        "simbolo": "SWK",
+        "quantidade": 1,
+        "preco_compra": 97.96405792236328,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-16",
+        "simbolo": "TECH",
+        "quantidade": 3,
+        "preco_compra": 74.6817398071289,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-09-17",
+        "simbolo": "AES",
+        "quantidade": 6,
+        "preco_compra": 18.74083709716797,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-09-19",
+        "simbolo": "CEG",
+        "quantidade": 1,
+        "preco_compra": 208.17344665527344,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-09-19",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 18.409656524658203,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-09-19",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 10.972467422485352,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-20",
+        "simbolo": "INTC",
+        "quantidade": 11,
+        "preco_compra": 21.84000015258789,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-09-20",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 10.765067100524902,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-24",
+        "simbolo": "STT",
+        "quantidade": 10,
+        "preco_compra": 123.71267700195312,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-09-24",
+        "simbolo": "IVZ",
+        "quantidade": 2,
+        "preco_compra": 17.346160888671875,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-09-25",
+        "simbolo": "HPE",
+        "quantidade": 10,
+        "preco_compra": 19.726472854614254,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-09-25",
+        "simbolo": "J",
+        "quantidade": 8,
+        "preco_compra": 128.4584503173828,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-09-25",
+        "simbolo": "FOXA",
+        "quantidade": 2,
+        "preco_compra": 41.97999954223633,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-09-25",
+        "simbolo": "F",
+        "quantidade": 3,
+        "preco_compra": 10.28032112121582,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-26",
+        "simbolo": "EL",
+        "quantidade": 5,
+        "preco_compra": 100.3030776977539,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-09-26",
+        "simbolo": "AMCR",
+        "quantidade": 2,
+        "preco_compra": 11.209497451782228,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-09-27",
+        "simbolo": "SO",
+        "quantidade": 1,
+        "preco_compra": 29.37525749206543,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-09-27",
+        "simbolo": "WAB",
+        "quantidade": 1,
+        "preco_compra": 8.792901992797852,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-03",
+        "simbolo": "ORLY",
+        "quantidade": 10,
+        "preco_compra": 54.5425910949707,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-03",
+        "simbolo": "WAB",
+        "quantidade": 1,
+        "preco_compra": 8.414399147033691,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-04",
+        "simbolo": "JPM",
+        "quantidade": 1,
+        "preco_compra": 210.13473510742188,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-10-04",
+        "simbolo": "BAC",
+        "quantidade": 3,
+        "preco_compra": 39.88811492919922,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-10-04",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 18.419397354125977,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-10-04",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 11.06135368347168,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-08",
+        "simbolo": "TRMB",
+        "quantidade": 5,
+        "preco_compra": 41.65581130981445,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-10-08",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 17.67911720275879,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-10-09",
+        "simbolo": "WAB",
+        "quantidade": 4,
+        "preco_compra": 8.647323608398438,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-14",
+        "simbolo": "AES",
+        "quantidade": 2,
+        "preco_compra": 17.007017135620117,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-10-14",
+        "simbolo": "DIS",
+        "quantidade": 1,
+        "preco_compra": 7.539999961853027,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-10-15",
+        "simbolo": "PNW",
+        "quantidade": 4,
+        "preco_compra": 189.18063354492188,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-10-15",
+        "simbolo": "GM",
+        "quantidade": 1,
+        "preco_compra": 47.74245071411133,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-15",
+        "simbolo": "AES",
+        "quantidade": 2,
+        "preco_compra": 16.958314895629883,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-10-15",
+        "simbolo": "DIS",
+        "quantidade": 1,
+        "preco_compra": 7.599999904632568,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-10-16",
+        "simbolo": "PEP",
+        "quantidade": 20,
+        "preco_compra": 28.741046905517575,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-10-16",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 11.160116195678713,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-17",
+        "simbolo": "TDG",
+        "quantidade": 5,
+        "preco_compra": 263.7162475585937,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-17",
+        "simbolo": "CSGP",
+        "quantidade": 5,
+        "preco_compra": 78.33000183105469,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-10-17",
+        "simbolo": "COR",
+        "quantidade": 1,
+        "preco_compra": 235.1075592041016,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-10-17",
+        "simbolo": "F",
+        "quantidade": 14,
+        "preco_compra": 10.921607971191406,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-17",
+        "simbolo": "PANW",
+        "quantidade": 1,
+        "preco_compra": 10.283966064453123,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-10-21",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 16.76350212097168,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-10-22",
+        "simbolo": "EXC",
+        "quantidade": 1,
+        "preco_compra": 40.12565612792969,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-10-22",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 10.85395336151123,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-23",
+        "simbolo": "NWS",
+        "quantidade": 10,
+        "preco_compra": 84.39440155029297,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-10-23",
+        "simbolo": "DOC",
+        "quantidade": 1,
+        "preco_compra": 22.804441452026367,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-10-23",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 10.903334617614746,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-25",
+        "simbolo": "KVUE",
+        "quantidade": 63,
+        "preco_compra": 22.443754196166992,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-10-25",
+        "simbolo": "AOS",
+        "quantidade": 1,
+        "preco_compra": 76.13915252685547,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-10-29",
+        "simbolo": "TER",
+        "quantidade": 4,
+        "preco_compra": 259.5199890136719,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-10-29",
+        "simbolo": "UDR",
+        "quantidade": 3,
+        "preco_compra": 379.8399963378906,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-10-29",
+        "simbolo": "GOOG",
+        "quantidade": 1,
+        "preco_compra": 170.94606018066406,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-10-29",
+        "simbolo": "INCY",
+        "quantidade": 1,
+        "preco_compra": 73.5999984741211,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-10-29",
+        "simbolo": "AES",
+        "quantidade": 3,
+        "preco_compra": 16.09140396118164,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-10-29",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 10.794696807861328,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-10-31",
+        "simbolo": "MO",
+        "quantidade": 1,
+        "preco_compra": 53.42111587524414,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-11-01",
+        "simbolo": "ABBV",
+        "quantidade": 3,
+        "preco_compra": 201.6484222412109,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-11-01",
+        "simbolo": "PANW",
+        "quantidade": 14,
+        "preco_compra": 10.931069374084473,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-11-04",
+        "simbolo": "MHK",
+        "quantidade": 1,
+        "preco_compra": 330.6600036621094,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-11-04",
+        "simbolo": "CDNS",
+        "quantidade": 2,
+        "preco_compra": 289.3399963378906,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-11-04",
+        "simbolo": "AES",
+        "quantidade": 4,
+        "preco_compra": 14.992157936096191,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-11-05",
+        "simbolo": "TECH",
+        "quantidade": 6,
+        "preco_compra": 77.53874969482422,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-11-05",
+        "simbolo": "DELL",
+        "quantidade": 1,
+        "preco_compra": 132.9276123046875,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-11-05",
+        "simbolo": "GEN",
+        "quantidade": 2,
+        "preco_compra": 28.40943717956543,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-11-06",
+        "simbolo": "TRV",
+        "quantidade": 21,
+        "preco_compra": 72.63999938964844,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-11-06",
+        "simbolo": "EMR",
+        "quantidade": 10,
+        "preco_compra": 126.34075927734376,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-06",
+        "simbolo": "C",
+        "quantidade": 5,
+        "preco_compra": 68.5552749633789,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-11-06",
+        "simbolo": "PARA",
+        "quantidade": 1,
+        "preco_compra": 706.1153564453125,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-11-06",
+        "simbolo": "INTC",
+        "quantidade": 19,
+        "preco_compra": 25.049999237060547,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-11-06",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 13.978242874145508,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-11-07",
+        "simbolo": "TRMB",
+        "quantidade": 1,
+        "preco_compra": 45.68000030517578,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-11-07",
+        "simbolo": "AES",
+        "quantidade": 2,
+        "preco_compra": 13.436832427978516,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-11-07",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 10.083609580993652,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-11-08",
+        "simbolo": "HPE",
+        "quantidade": 10,
+        "preco_compra": 21.9028434753418,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-11-11",
+        "simbolo": "FTNT",
+        "quantidade": 5,
+        "preco_compra": 97.18000030517578,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-11-11",
+        "simbolo": "EVRG",
+        "quantidade": 1,
+        "preco_compra": 62.62331008911133,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-11-12",
+        "simbolo": "ROK",
+        "quantidade": 10,
+        "preco_compra": 51.08000183105469,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-12",
+        "simbolo": "PAYC",
+        "quantidade": 1,
+        "preco_compra": 86.4000015258789,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-11-12",
+        "simbolo": "ALGN",
+        "quantidade": 1,
+        "preco_compra": 219.08999633789065,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-11-12",
+        "simbolo": "SBAC",
+        "quantidade": 2,
+        "preco_compra": 43.74614715576172,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-11-12",
+        "simbolo": "PFE",
+        "quantidade": 2,
+        "preco_compra": 21.163684844970703,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-11-13",
+        "simbolo": "TYL",
+        "quantidade": 2,
+        "preco_compra": 62.80892181396485,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-11-13",
+        "simbolo": "BWA",
+        "quantidade": 5,
+        "preco_compra": 34.69843292236328,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-11-13",
+        "simbolo": "IVZ",
+        "quantidade": 1,
+        "preco_compra": 17.44499969482422,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-11-13",
+        "simbolo": "F",
+        "quantidade": 1,
+        "preco_compra": 11.100000381469728,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-11-14",
+        "simbolo": "MTB",
+        "quantidade": 2,
+        "preco_compra": 157.23377990722656,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-11-14",
+        "simbolo": "ESS",
+        "quantidade": 1,
+        "preco_compra": 300.1415100097656,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-11-14",
+        "simbolo": "CNP",
+        "quantidade": 1,
+        "preco_compra": 29.780576705932617,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-11-14",
+        "simbolo": "AES",
+        "quantidade": 2,
+        "preco_compra": 13.781366348266602,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-11-15",
+        "simbolo": "INVH",
+        "quantidade": 2,
+        "preco_compra": 33.48959732055664,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-11-18",
+        "simbolo": "PPL",
+        "quantidade": 17,
+        "preco_compra": 85.34854888916016,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-11-18",
+        "simbolo": "AES",
+        "quantidade": 5,
+        "preco_compra": 13.525426864624023,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-11-19",
+        "simbolo": "LNT",
+        "quantidade": 2,
+        "preco_compra": 61.7181396484375,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-11-19",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 13.535270690917969,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-11-19",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 9.767570495605469,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-11-20",
+        "simbolo": "AES",
+        "quantidade": 2,
+        "preco_compra": 13.07261085510254,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-11-22",
+        "simbolo": "DLTR",
+        "quantidade": 1,
+        "preco_compra": 66.4000015258789,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-11-22",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 12.836359024047852,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-11-25",
+        "simbolo": "AES",
+        "quantidade": 2,
+        "preco_compra": 12.954484939575195,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-11-25",
+        "simbolo": "WAB",
+        "quantidade": 1,
+        "preco_compra": 9.0600004196167,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-11-26",
+        "simbolo": "FE",
+        "quantidade": 1,
+        "preco_compra": 41.83222961425781,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-11-27",
+        "simbolo": "EL",
+        "quantidade": 9,
+        "preco_compra": 73.61000061035156,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-11-27",
+        "simbolo": "D",
+        "quantidade": 2,
+        "preco_compra": 59.03200149536133,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-12-04",
+        "simbolo": "FSLR",
+        "quantidade": 3,
+        "preco_compra": 201.57000732421875,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-12-04",
+        "simbolo": "WAB",
+        "quantidade": 12,
+        "preco_compra": 8.739999771118164,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-04",
+        "simbolo": "LRCX",
+        "quantidade": 1,
+        "preco_compra": 78.02042388916016,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-12-05",
+        "simbolo": "DOC",
+        "quantidade": 1,
+        "preco_compra": 21.489999771118164,
+        "sector": "Real Estate"
+    },
+    {
+        "data_compra": "2024-12-06",
+        "simbolo": "GILD",
+        "quantidade": 2,
+        "preco_compra": 91.3620834350586,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-12-06",
+        "simbolo": "AES",
+        "quantidade": 1,
+        "preco_compra": 12.846202850341797,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-12-09",
+        "simbolo": "JKHY",
+        "quantidade": 4,
+        "preco_compra": 174.8000030517578,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-12-09",
+        "simbolo": "MS",
+        "quantidade": 1,
+        "preco_compra": 26.01000022888184,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-12-09",
+        "simbolo": "PEP",
+        "quantidade": 1,
+        "preco_compra": 25.67552947998047,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-12-10",
+        "simbolo": "AVGO",
+        "quantidade": 2,
+        "preco_compra": 171.35089111328125,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-12-10",
+        "simbolo": "MHK",
+        "quantidade": 4,
+        "preco_compra": 298.2099914550781,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-12-11",
+        "simbolo": "GOOGL",
+        "quantidade": 1,
+        "preco_compra": 195.3999938964844,
+        "sector": "Communication Services"
+    },
+    {
+        "data_compra": "2024-12-11",
+        "simbolo": "JNPR",
+        "quantidade": 1,
+        "preco_compra": 37.38999938964844,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-12-12",
+        "simbolo": "WTW",
+        "quantidade": 1,
+        "preco_compra": 274.82000732421875,
+        "sector": "Financial Services"
+    },
+    {
+        "data_compra": "2024-12-12",
+        "simbolo": "AES",
+        "quantidade": 2,
+        "preco_compra": 13.308863639831545,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-12-13",
+        "simbolo": "AES",
+        "quantidade": 85,
+        "preco_compra": 13.141517639160156,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-12-16",
+        "simbolo": "BDX",
+        "quantidade": 2,
+        "preco_compra": 227.55999755859372,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-12-16",
+        "simbolo": "AOS",
+        "quantidade": 1,
+        "preco_compra": 71.52686309814453,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-16",
+        "simbolo": "AES",
+        "quantidade": 3,
+        "preco_compra": 12.944640159606934,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-12-17",
+        "simbolo": "TRGP",
+        "quantidade": 1,
+        "preco_compra": 131.60000610351562,
+        "sector": "Energy"
+    },
+    {
+        "data_compra": "2024-12-17",
+        "simbolo": "MMM",
+        "quantidade": 4,
+        "preco_compra": 128.0500030517578,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-17",
+        "simbolo": "AOS",
+        "quantidade": 1,
+        "preco_compra": 70.45231628417969,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-18",
+        "simbolo": "ABT",
+        "quantidade": 3,
+        "preco_compra": 111.34569549560548,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-12-18",
+        "simbolo": "ACN",
+        "quantidade": 3,
+        "preco_compra": 347.6099853515625,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-12-18",
+        "simbolo": "AMD",
+        "quantidade": 1,
+        "preco_compra": 121.41000366210938,
+        "sector": "Technology"
+    },
+    {
+        "data_compra": "2024-12-18",
+        "simbolo": "AES",
+        "quantidade": 25,
+        "preco_compra": 12.304791450500488,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-12-18",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 9.4399995803833,
+        "sector": "Consumer Cyclical"
+    },
+    {
+        "data_compra": "2024-12-19",
+        "simbolo": "AOS",
+        "quantidade": 1,
+        "preco_compra": 68.09429168701172,
+        "sector": "Industrials"
+    },
+    {
+        "data_compra": "2024-12-19",
+        "simbolo": "AES",
+        "quantidade": 3,
+        "preco_compra": 12.245728492736816,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-12-23",
+        "simbolo": "PEP",
+        "quantidade": 8,
+        "preco_compra": 26.27560806274414,
+        "sector": "Consumer Defensive"
+    },
+    {
+        "data_compra": "2024-12-30",
+        "simbolo": "ABT",
+        "quantidade": 2,
+        "preco_compra": 112.21115112304688,
+        "sector": "Healthcare"
+    },
+    {
+        "data_compra": "2024-12-30",
+        "simbolo": "AES",
+        "quantidade": 94,
+        "preco_compra": 12.452448844909668,
+        "sector": "Utilities"
+    },
+    {
+        "data_compra": "2024-12-30",
+        "simbolo": "AMCR",
+        "quantidade": 1,
+        "preco_compra": 9.34000015258789,
+        "sector": "Consumer Cyclical"
+    }
+]

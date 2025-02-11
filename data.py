@@ -13,7 +13,8 @@ import yfinance as yf
 from tqdm import tqdm
 from files import open_dataframe, save_dataframe, save_json
 from b3 import update_symbols, get_symbol_list
-from sp500 import list_recent_symbols
+from markets import list_recent_symbols
+
 SUB_DIR_HIST = "historical"
 
 
@@ -195,8 +196,8 @@ class MemData:
         # DESCOMENTE PARA USAR B3
         # self.assets = self.data.list_symbols()
 
-        # DESCOMENTE PARA USAR SP500
-        self.assets = list_recent_symbols()
+        # PERMITE USAR SP500, IBOX, IBXX, etc
+        self.assets = list_recent_symbols("SP500")
 
         start_date, end_date = interval
         self.load(start_date, end_date)
@@ -282,17 +283,17 @@ def teste():
 def teste_sp500():
     '''Test function'''
     print('--------------Listando ativos----------------')
-    assets = list_recent_symbols()
-    # print(assets)
+    assets = list_recent_symbols("SP500")
+    print(assets)
 
     # print('--------Baixando histórico de ativos---------')
-    # Data.download_history(assets)
+    Data.download_history(assets)
     print('--------------Buscando histórico de 10 ativos----------------')
-    # print(Data.fetch_history(assets=assets[:5]))
+    print(Data.fetch_history(assets=assets[:5]))
 
     print('--------------Buscando informação de ativos----------------')
     print(Data.get_asset_info(assets[:10]))
-    # print(Data.get_asset_info('MSFT'))
+    print(Data.get_asset_info("AZUL4.SA"))
 
 
 def teste_mem_data():
@@ -305,10 +306,13 @@ def teste_mem_data():
     print("Histórico de um ativo que nao existe no sp500:")
     print(todas_info.get('EQPA3.SA'))
 
-    print("Histórico de um ativo que existe:")
+    print("Histórico de um ativo que existe no ibov:")
+    print(todas_info.get('PETR4.SA'))
+
+    print("Histórico de um ativo que existe em sp500:")
     print(todas_info.get('AAPL'))
 
-    # print("informações de ativos:")
+    print("informações de ativos:")
     # print(mem_data.get_assets())
 
     print("Todas as informações:")

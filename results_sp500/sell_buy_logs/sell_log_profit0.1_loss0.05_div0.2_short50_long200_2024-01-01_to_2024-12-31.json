@@ -1,0 +1,3485 @@
+[
+    {
+        "data_venda": "2024-01-04",
+        "simbolo": "ALB",
+        "quantidade_vendida": 6,
+        "preco_compra": 144.6448211669922,
+        "preco_venda": 133.85232543945312,
+        "lucro_prejuizo": -64.75497436523438,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-11",
+        "simbolo": "AES",
+        "quantidade_vendida": 59,
+        "preco_compra": 18.2860107421875,
+        "preco_venda": 17.04740333557129,
+        "lucro_prejuizo": -73.07783699035645,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-16",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 136.00999450683594,
+        "preco_venda": 158.74000549316406,
+        "lucro_prejuizo": 22.730010986328125,
+        "data_compra": "2024-01-04"
+    },
+    {
+        "data_venda": "2024-01-16",
+        "simbolo": "AES",
+        "quantidade_vendida": 7,
+        "preco_compra": 17.841625213623047,
+        "preco_venda": 16.9150333404541,
+        "lucro_prejuizo": -6.486143112182617,
+        "data_compra": "2024-01-04"
+    },
+    {
+        "data_venda": "2024-01-18",
+        "simbolo": "ARE",
+        "quantidade_vendida": 2,
+        "preco_compra": 123.50882720947266,
+        "preco_venda": 116.48856353759766,
+        "lucro_prejuizo": -14.04052734375,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-18",
+        "simbolo": "LNT",
+        "quantidade_vendida": 1,
+        "preco_compra": 49.605499267578125,
+        "preco_venda": 46.89957046508789,
+        "lucro_prejuizo": -2.7059288024902344,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-19",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 148.02000427246094,
+        "preco_venda": 174.22999572753906,
+        "lucro_prejuizo": 26.209991455078125,
+        "data_compra": "2024-01-11"
+    },
+    {
+        "data_venda": "2024-01-19",
+        "simbolo": "AES",
+        "quantidade_vendida": 50,
+        "preco_compra": 17.04740333557129,
+        "preco_venda": 15.96953010559082,
+        "lucro_prejuizo": -53.89366149902344,
+        "data_compra": "2024-01-11"
+    },
+    {
+        "data_venda": "2024-01-19",
+        "simbolo": "AES",
+        "quantidade_vendida": 7,
+        "preco_compra": 16.9150333404541,
+        "preco_venda": 15.96953010559082,
+        "lucro_prejuizo": -6.618522644042969,
+        "data_compra": "2024-01-16"
+    },
+    {
+        "data_venda": "2024-01-23",
+        "simbolo": "MMM",
+        "quantidade_vendida": 22,
+        "preco_compra": 88.89204406738281,
+        "preco_venda": 77.6593246459961,
+        "lucro_prejuizo": -247.1198272705078,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-23",
+        "simbolo": "ACN",
+        "quantidade_vendida": 1,
+        "preco_compra": 331.7568664550781,
+        "preco_venda": 365.3376159667969,
+        "lucro_prejuizo": 33.58074951171875,
+        "data_compra": "2024-01-04"
+    },
+    {
+        "data_venda": "2024-01-24",
+        "simbolo": "APD",
+        "quantidade_vendida": 2,
+        "preco_compra": 266.3783569335937,
+        "preco_venda": 250.4913330078125,
+        "lucro_prejuizo": -31.774047851562386,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-24",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 158.74000549316406,
+        "preco_venda": 178.2899932861328,
+        "lucro_prejuizo": 19.54998779296875,
+        "data_compra": "2024-01-16"
+    },
+    {
+        "data_venda": "2024-01-24",
+        "simbolo": "AES",
+        "quantidade_vendida": 7,
+        "preco_compra": 16.43282699584961,
+        "preco_venda": 15.600783348083496,
+        "lucro_prejuizo": -5.824305534362793,
+        "data_compra": "2024-01-18"
+    },
+    {
+        "data_venda": "2024-01-25",
+        "simbolo": "ALL",
+        "quantidade_vendida": 4,
+        "preco_compra": 140.8635711669922,
+        "preco_venda": 155.80111694335938,
+        "lucro_prejuizo": 59.75018310546875,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-25",
+        "simbolo": "GOOG",
+        "quantidade_vendida": 4,
+        "preco_compra": 139.06033325195312,
+        "preco_venda": 153.08993530273438,
+        "lucro_prejuizo": 56.118408203125,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-25",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 162.6699981689453,
+        "preco_venda": 180.3300018310547,
+        "lucro_prejuizo": 17.660003662109375,
+        "data_compra": "2024-01-18"
+    },
+    {
+        "data_venda": "2024-01-26",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 4,
+        "preco_compra": 134.47999572753906,
+        "preco_venda": 149.6199951171875,
+        "lucro_prejuizo": 60.55999755859375,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-26",
+        "simbolo": "GOOGL",
+        "quantidade_vendida": 1,
+        "preco_compra": 137.67092895507812,
+        "preco_venda": 151.64028930664062,
+        "lucro_prejuizo": 13.9693603515625,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-01-31",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 177.25,
+        "preco_venda": 167.69000244140625,
+        "lucro_prejuizo": -9.55999755859375,
+        "data_compra": "2024-01-26"
+    },
+    {
+        "data_venda": "2024-02-01",
+        "simbolo": "AFL",
+        "quantidade_vendida": 10,
+        "preco_compra": 81.52254486083984,
+        "preco_venda": 74.59194946289062,
+        "lucro_prejuizo": -69.30595397949219,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-02-01",
+        "simbolo": "AFL",
+        "quantidade_vendida": 10,
+        "preco_compra": 83.09857177734375,
+        "preco_venda": 74.59194946289062,
+        "lucro_prejuizo": -85.06622314453125,
+        "data_compra": "2024-01-25"
+    },
+    {
+        "data_venda": "2024-02-01",
+        "simbolo": "AFL",
+        "quantidade_vendida": 2,
+        "preco_compra": 83.50970458984375,
+        "preco_venda": 74.59194946289062,
+        "lucro_prejuizo": -17.83551025390625,
+        "data_compra": "2024-01-26"
+    },
+    {
+        "data_venda": "2024-02-05",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 2,
+        "preco_compra": 9.275218963623049,
+        "preco_venda": 8.771027565002441,
+        "lucro_prejuizo": -1.0083827972412145,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-02-05",
+        "simbolo": "AOS",
+        "quantidade_vendida": 14,
+        "preco_compra": 80.14225769042969,
+        "preco_venda": 75.778564453125,
+        "lucro_prejuizo": -61.091705322265625,
+        "data_compra": "2024-01-23"
+    },
+    {
+        "data_venda": "2024-02-05",
+        "simbolo": "APD",
+        "quantidade_vendida": 1,
+        "preco_compra": 252.8291015625,
+        "preco_venda": 212.36631774902344,
+        "lucro_prejuizo": -40.46278381347656,
+        "data_compra": "2024-02-01"
+    },
+    {
+        "data_venda": "2024-02-05",
+        "simbolo": "ALB",
+        "quantidade_vendida": 3,
+        "preco_compra": 114.99504852294922,
+        "preco_venda": 107.06809997558594,
+        "lucro_prejuizo": -23.780845642089844,
+        "data_compra": "2024-02-01"
+    },
+    {
+        "data_venda": "2024-02-13",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.989828109741211,
+        "preco_venda": 8.447585105895996,
+        "lucro_prejuizo": -0.5422430038452148,
+        "data_compra": "2024-01-18"
+    },
+    {
+        "data_venda": "2024-02-13",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.008853912353516,
+        "preco_venda": 8.447585105895996,
+        "lucro_prejuizo": -0.5612688064575195,
+        "data_compra": "2024-01-19"
+    },
+    {
+        "data_venda": "2024-02-13",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 2,
+        "preco_compra": 9.008853912353516,
+        "preco_venda": 8.447585105895996,
+        "lucro_prejuizo": -1.122537612915039,
+        "data_compra": "2024-01-23"
+    },
+    {
+        "data_venda": "2024-02-13",
+        "simbolo": "AES",
+        "quantidade_vendida": 1,
+        "preco_compra": 16.19645118713379,
+        "preco_venda": 15.28384494781494,
+        "lucro_prejuizo": -0.9126062393188494,
+        "data_compra": "2024-01-25"
+    },
+    {
+        "data_venda": "2024-02-13",
+        "simbolo": "AES",
+        "quantidade_vendida": 9,
+        "preco_compra": 16.215360641479492,
+        "preco_venda": 15.28384494781494,
+        "lucro_prejuizo": -8.383641242980973,
+        "data_compra": "2024-01-26"
+    },
+    {
+        "data_venda": "2024-02-13",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 12,
+        "preco_compra": 9.075445175170898,
+        "preco_venda": 8.447585105895996,
+        "lucro_prejuizo": -7.534320831298828,
+        "data_compra": "2024-01-26"
+    },
+    {
+        "data_venda": "2024-02-13",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.999341011047363,
+        "preco_venda": 8.447585105895996,
+        "lucro_prejuizo": -0.5517559051513672,
+        "data_compra": "2024-02-01"
+    },
+    {
+        "data_venda": "2024-02-15",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 4,
+        "preco_compra": 142.11000061035156,
+        "preco_venda": 157.69000244140625,
+        "lucro_prejuizo": 62.32000732421875,
+        "data_compra": "2024-01-25"
+    },
+    {
+        "data_venda": "2024-02-20",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 176.75999450683594,
+        "preco_venda": 165.69000244140625,
+        "lucro_prejuizo": -11.069992065429688,
+        "data_compra": "2024-02-15"
+    },
+    {
+        "data_venda": "2024-02-26",
+        "simbolo": "AES",
+        "quantidade_vendida": 67,
+        "preco_compra": 15.96953010559082,
+        "preco_venda": 14.853986740112305,
+        "lucro_prejuizo": -74.74140548706055,
+        "data_compra": "2024-01-19"
+    },
+    {
+        "data_venda": "2024-02-26",
+        "simbolo": "AES",
+        "quantidade_vendida": 24,
+        "preco_compra": 15.893891334533691,
+        "preco_venda": 14.853986740112305,
+        "lucro_prejuizo": -24.95771026611328,
+        "data_compra": "2024-01-23"
+    },
+    {
+        "data_venda": "2024-02-26",
+        "simbolo": "AES",
+        "quantidade_vendida": 1,
+        "preco_compra": 15.9334077835083,
+        "preco_venda": 14.853986740112305,
+        "lucro_prejuizo": -1.079421043395996,
+        "data_compra": "2024-01-31"
+    },
+    {
+        "data_venda": "2024-02-26",
+        "simbolo": "AES",
+        "quantidade_vendida": 4,
+        "preco_compra": 16.028932571411133,
+        "preco_venda": 14.853986740112305,
+        "lucro_prejuizo": -4.6997833251953125,
+        "data_compra": "2024-02-15"
+    },
+    {
+        "data_venda": "2024-02-27",
+        "simbolo": "AES",
+        "quantidade_vendida": 12,
+        "preco_compra": 15.600783348083496,
+        "preco_venda": 14.424128532409668,
+        "lucro_prejuizo": -14.119857788085938,
+        "data_compra": "2024-01-24"
+    },
+    {
+        "data_venda": "2024-02-27",
+        "simbolo": "AES",
+        "quantidade_vendida": 4,
+        "preco_compra": 15.28384494781494,
+        "preco_venda": 14.424128532409668,
+        "lucro_prejuizo": -3.4388656616210866,
+        "data_compra": "2024-02-13"
+    },
+    {
+        "data_venda": "2024-02-29",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 168.4199981689453,
+        "preco_venda": 192.52999877929688,
+        "lucro_prejuizo": 24.110000610351562,
+        "data_compra": "2024-01-23"
+    },
+    {
+        "data_venda": "2024-02-29",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 165.69000244140625,
+        "preco_venda": 192.52999877929688,
+        "lucro_prejuizo": 26.839996337890625,
+        "data_compra": "2024-02-20"
+    },
+    {
+        "data_venda": "2024-03-01",
+        "simbolo": "ACN",
+        "quantidade_vendida": 3,
+        "preco_compra": 341.4313659667969,
+        "preco_venda": 376.3315124511719,
+        "lucro_prejuizo": 104.700439453125,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-03-04",
+        "simbolo": "AOS",
+        "quantidade_vendida": 1,
+        "preco_compra": 75.778564453125,
+        "preco_venda": 83.65229034423828,
+        "lucro_prejuizo": 7.873725891113281,
+        "data_compra": "2024-02-05"
+    },
+    {
+        "data_venda": "2024-03-04",
+        "simbolo": "HPE",
+        "quantidade_vendida": 1,
+        "preco_compra": 14.87770938873291,
+        "preco_venda": 16.698474884033203,
+        "lucro_prejuizo": 1.820765495300293,
+        "data_compra": "2024-02-05"
+    },
+    {
+        "data_venda": "2024-03-06",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 5,
+        "preco_compra": 146.49000549316406,
+        "preco_venda": 163.8699951171875,
+        "lucro_prejuizo": 86.89994812011719,
+        "data_compra": "2024-02-01"
+    },
+    {
+        "data_venda": "2024-03-07",
+        "simbolo": "ABT",
+        "quantidade_vendida": 15,
+        "preco_compra": 107.13848114013672,
+        "preco_venda": 118.50496673583984,
+        "lucro_prejuizo": 170.49728393554688,
+        "data_compra": "2024-01-02"
+    },
+    {
+        "data_venda": "2024-03-08",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 1,
+        "preco_compra": 149.6199951171875,
+        "preco_venda": 164.91000366210938,
+        "lucro_prejuizo": 15.290008544921875,
+        "data_compra": "2024-01-26"
+    },
+    {
+        "data_venda": "2024-03-13",
+        "simbolo": "MMM",
+        "quantidade_vendida": 5,
+        "preco_compra": 77.6593246459961,
+        "preco_venda": 85.49683380126953,
+        "lucro_prejuizo": 39.18754577636719,
+        "data_compra": "2024-01-23"
+    },
+    {
+        "data_venda": "2024-03-13",
+        "simbolo": "MMM",
+        "quantidade_vendida": 3,
+        "preco_compra": 75.34812927246094,
+        "preco_venda": 85.49683380126953,
+        "lucro_prejuizo": 30.44611358642578,
+        "data_compra": "2024-01-24"
+    },
+    {
+        "data_venda": "2024-03-13",
+        "simbolo": "MMM",
+        "quantidade_vendida": 2,
+        "preco_compra": 76.24512481689453,
+        "preco_venda": 85.49683380126953,
+        "lucro_prejuizo": 18.50341796875,
+        "data_compra": "2024-01-31"
+    },
+    {
+        "data_venda": "2024-03-13",
+        "simbolo": "AFL",
+        "quantidade_vendida": 4,
+        "preco_compra": 74.59194946289062,
+        "preco_venda": 82.55155181884766,
+        "lucro_prejuizo": 31.838409423828125,
+        "data_compra": "2024-02-01"
+    },
+    {
+        "data_venda": "2024-03-13",
+        "simbolo": "MMM",
+        "quantidade_vendida": 10,
+        "preco_compra": 74.93598937988281,
+        "preco_venda": 85.49683380126953,
+        "lucro_prejuizo": 105.60844421386719,
+        "data_compra": "2024-02-05"
+    },
+    {
+        "data_venda": "2024-03-13",
+        "simbolo": "AFL",
+        "quantidade_vendida": 10,
+        "preco_compra": 74.7192153930664,
+        "preco_venda": 82.55155181884766,
+        "lucro_prejuizo": 78.3233642578125,
+        "data_compra": "2024-02-05"
+    },
+    {
+        "data_venda": "2024-03-13",
+        "simbolo": "BAC",
+        "quantidade_vendida": 1,
+        "preco_compra": 32.171329498291016,
+        "preco_venda": 35.432498931884766,
+        "lucro_prejuizo": 3.26116943359375,
+        "data_compra": "2024-02-05"
+    },
+    {
+        "data_venda": "2024-03-13",
+        "simbolo": "MMM",
+        "quantidade_vendida": 3,
+        "preco_compra": 74.8794174194336,
+        "preco_venda": 85.49683380126953,
+        "lucro_prejuizo": 31.852249145507812,
+        "data_compra": "2024-02-13"
+    },
+    {
+        "data_venda": "2024-03-13",
+        "simbolo": "MMM",
+        "quantidade_vendida": 1,
+        "preco_compra": 75.12089538574219,
+        "preco_venda": 85.49683380126953,
+        "lucro_prejuizo": 10.375938415527344,
+        "data_compra": "2024-03-04"
+    },
+    {
+        "data_venda": "2024-03-13",
+        "simbolo": "MMM",
+        "quantidade_vendida": 1,
+        "preco_compra": 77.14185333251953,
+        "preco_venda": 85.49683380126953,
+        "lucro_prejuizo": 8.35498046875,
+        "data_compra": "2024-03-08"
+    },
+    {
+        "data_venda": "2024-03-14",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 202.63999938964844,
+        "preco_venda": 187.05999755859372,
+        "lucro_prejuizo": -15.580001831054716,
+        "data_compra": "2024-03-01"
+    },
+    {
+        "data_venda": "2024-03-14",
+        "simbolo": "AES",
+        "quantidade_vendida": 1,
+        "preco_compra": 15.35071086883545,
+        "preco_venda": 14.357261657714844,
+        "lucro_prejuizo": -0.9934492111206055,
+        "data_compra": "2024-03-04"
+    },
+    {
+        "data_venda": "2024-03-14",
+        "simbolo": "AES",
+        "quantidade_vendida": 4,
+        "preco_compra": 15.493996620178224,
+        "preco_venda": 14.357261657714844,
+        "lucro_prejuizo": -4.546939849853523,
+        "data_compra": "2024-03-06"
+    },
+    {
+        "data_venda": "2024-03-14",
+        "simbolo": "AES",
+        "quantidade_vendida": 5,
+        "preco_compra": 15.522653579711914,
+        "preco_venda": 14.357261657714844,
+        "lucro_prejuizo": -5.826959609985352,
+        "data_compra": "2024-03-08"
+    },
+    {
+        "data_venda": "2024-03-18",
+        "simbolo": "ABT",
+        "quantidade_vendida": 11,
+        "preco_compra": 118.50496673583984,
+        "preco_venda": 110.19434356689452,
+        "lucro_prejuizo": -91.4168548583986,
+        "data_compra": "2024-03-07"
+    },
+    {
+        "data_venda": "2024-03-21",
+        "simbolo": "ACN",
+        "quantidade_vendida": 1,
+        "preco_compra": 364.3893432617188,
+        "preco_venda": 340.8112487792969,
+        "lucro_prejuizo": -23.578094482421932,
+        "data_compra": "2024-01-24"
+    },
+    {
+        "data_venda": "2024-03-21",
+        "simbolo": "ACN",
+        "quantidade_vendida": 1,
+        "preco_compra": 370.1974792480469,
+        "preco_venda": 340.8112487792969,
+        "lucro_prejuizo": -29.38623046875,
+        "data_compra": "2024-02-29"
+    },
+    {
+        "data_venda": "2024-03-21",
+        "simbolo": "ACN",
+        "quantidade_vendida": 2,
+        "preco_compra": 376.3315124511719,
+        "preco_venda": 340.8112487792969,
+        "lucro_prejuizo": -71.04052734375,
+        "data_compra": "2024-03-01"
+    },
+    {
+        "data_venda": "2024-03-25",
+        "simbolo": "ALB",
+        "quantidade_vendida": 1,
+        "preco_compra": 123.8673324584961,
+        "preco_venda": 116.91282653808594,
+        "lucro_prejuizo": -6.954505920410156,
+        "data_compra": "2024-03-13"
+    },
+    {
+        "data_venda": "2024-03-26",
+        "simbolo": "AES",
+        "quantidade_vendida": 16,
+        "preco_compra": 14.424128532409668,
+        "preco_venda": 15.895197868347168,
+        "lucro_prejuizo": 23.537109375,
+        "data_compra": "2024-02-27"
+    },
+    {
+        "data_venda": "2024-03-26",
+        "simbolo": "AES",
+        "quantidade_vendida": 5,
+        "preco_compra": 14.357261657714844,
+        "preco_venda": 15.895197868347168,
+        "lucro_prejuizo": 7.689681053161621,
+        "data_compra": "2024-03-14"
+    },
+    {
+        "data_venda": "2024-03-27",
+        "simbolo": "AES",
+        "quantidade_vendida": 90,
+        "preco_compra": 14.853986740112305,
+        "preco_venda": 16.477895736694336,
+        "lucro_prejuizo": 146.1518096923828,
+        "data_compra": "2024-02-26"
+    },
+    {
+        "data_venda": "2024-03-27",
+        "simbolo": "AES",
+        "quantidade_vendida": 1,
+        "preco_compra": 14.519652366638184,
+        "preco_venda": 16.477895736694336,
+        "lucro_prejuizo": 1.9582433700561523,
+        "data_compra": "2024-02-29"
+    },
+    {
+        "data_venda": "2024-03-27",
+        "simbolo": "AES",
+        "quantidade_vendida": 7,
+        "preco_compra": 14.777567863464355,
+        "preco_venda": 16.477895736694336,
+        "lucro_prejuizo": 11.902295112609863,
+        "data_compra": "2024-03-01"
+    },
+    {
+        "data_venda": "2024-04-04",
+        "simbolo": "ABBV",
+        "quantidade_vendida": 1,
+        "preco_compra": 174.2234649658203,
+        "preco_venda": 161.99876403808594,
+        "lucro_prejuizo": -12.224700927734375,
+        "data_compra": "2024-03-07"
+    },
+    {
+        "data_venda": "2024-04-04",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 178.67999267578125,
+        "preco_venda": 165.8300018310547,
+        "lucro_prejuizo": -12.849990844726562,
+        "data_compra": "2024-03-21"
+    },
+    {
+        "data_venda": "2024-04-04",
+        "simbolo": "AES",
+        "quantidade_vendida": 2,
+        "preco_compra": 15.713703155517578,
+        "preco_venda": 17.328062057495117,
+        "lucro_prejuizo": 3.228717803955078,
+        "data_compra": "2024-03-25"
+    },
+    {
+        "data_venda": "2024-04-04",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 177.8699951171875,
+        "preco_venda": 165.8300018310547,
+        "lucro_prejuizo": -12.039993286132812,
+        "data_compra": "2024-03-26"
+    },
+    {
+        "data_venda": "2024-04-04",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 179.58999633789062,
+        "preco_venda": 165.8300018310547,
+        "lucro_prejuizo": -13.759994506835938,
+        "data_compra": "2024-03-27"
+    },
+    {
+        "data_venda": "2024-04-08",
+        "simbolo": "DOC",
+        "quantidade_vendida": 1,
+        "preco_compra": 16.50545310974121,
+        "preco_venda": 18.17131805419922,
+        "lucro_prejuizo": 1.6658649444580078,
+        "data_compra": "2024-03-13"
+    },
+    {
+        "data_venda": "2024-04-11",
+        "simbolo": "AFL",
+        "quantidade_vendida": 1,
+        "preco_compra": 83.75337219238281,
+        "preco_venda": 78.45352935791016,
+        "lucro_prejuizo": -5.299842834472656,
+        "data_compra": "2024-03-21"
+    },
+    {
+        "data_venda": "2024-04-12",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 15,
+        "preco_compra": 9.08554458618164,
+        "preco_venda": 8.59365177154541,
+        "lucro_prejuizo": -7.378392219543457,
+        "data_compra": "2024-03-07"
+    },
+    {
+        "data_venda": "2024-04-12",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.09518814086914,
+        "preco_venda": 8.59365177154541,
+        "lucro_prejuizo": -0.5015363693237305,
+        "data_compra": "2024-03-14"
+    },
+    {
+        "data_venda": "2024-04-12",
+        "simbolo": "ACN",
+        "quantidade_vendida": 4,
+        "preco_compra": 336.771240234375,
+        "preco_venda": 312.74981689453125,
+        "lucro_prejuizo": -96.085693359375,
+        "data_compra": "2024-03-27"
+    },
+    {
+        "data_venda": "2024-04-12",
+        "simbolo": "AES",
+        "quantidade_vendida": 9,
+        "preco_compra": 17.328062057495117,
+        "preco_venda": 16.095800399780273,
+        "lucro_prejuizo": -11.090354919433594,
+        "data_compra": "2024-04-04"
+    },
+    {
+        "data_venda": "2024-04-12",
+        "simbolo": "AES",
+        "quantidade_vendida": 1,
+        "preco_compra": 17.48089599609375,
+        "preco_venda": 16.095800399780273,
+        "lucro_prejuizo": -1.3850955963134766,
+        "data_compra": "2024-04-08"
+    },
+    {
+        "data_venda": "2024-04-12",
+        "simbolo": "AES",
+        "quantidade_vendida": 4,
+        "preco_compra": 17.022382736206055,
+        "preco_venda": 16.095800399780273,
+        "lucro_prejuizo": -3.706329345703125,
+        "data_compra": "2024-04-11"
+    },
+    {
+        "data_venda": "2024-04-15",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 3,
+        "preco_compra": 163.8699951171875,
+        "preco_venda": 155.60000610351562,
+        "lucro_prejuizo": -24.809967041015625,
+        "data_compra": "2024-03-06"
+    },
+    {
+        "data_venda": "2024-04-15",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 2,
+        "preco_compra": 164.75999450683594,
+        "preco_venda": 155.60000610351562,
+        "lucro_prejuizo": -18.319976806640625,
+        "data_compra": "2024-03-13"
+    },
+    {
+        "data_venda": "2024-04-15",
+        "simbolo": "AES",
+        "quantidade_vendida": 5,
+        "preco_compra": 16.477895736694336,
+        "preco_venda": 15.436683654785156,
+        "lucro_prejuizo": -5.206060409545898,
+        "data_compra": "2024-03-27"
+    },
+    {
+        "data_venda": "2024-04-16",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.027673721313477,
+        "preco_venda": 8.51649284362793,
+        "lucro_prejuizo": -0.5111808776855469,
+        "data_compra": "2024-03-08"
+    },
+    {
+        "data_venda": "2024-04-16",
+        "simbolo": "ARE",
+        "quantidade_vendida": 1,
+        "preco_compra": 119.57365417480467,
+        "preco_venda": 112.89602661132812,
+        "lucro_prejuizo": -6.677627563476548,
+        "data_compra": "2024-03-13"
+    },
+    {
+        "data_venda": "2024-04-16",
+        "simbolo": "AES",
+        "quantidade_vendida": 12,
+        "preco_compra": 16.095800399780273,
+        "preco_venda": 15.19787311553955,
+        "lucro_prejuizo": -10.775127410888672,
+        "data_compra": "2024-04-12"
+    },
+    {
+        "data_venda": "2024-04-17",
+        "simbolo": "ABT",
+        "quantidade_vendida": 11,
+        "preco_compra": 110.19434356689452,
+        "preco_venda": 104.29967498779295,
+        "lucro_prejuizo": -64.84135437011719,
+        "data_compra": "2024-03-18"
+    },
+    {
+        "data_venda": "2024-04-17",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 163.27999877929688,
+        "preco_venda": 154.02000427246094,
+        "lucro_prejuizo": -9.259994506835938,
+        "data_compra": "2024-04-12"
+    },
+    {
+        "data_venda": "2024-04-17",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 163.4600067138672,
+        "preco_venda": 154.02000427246094,
+        "lucro_prejuizo": -9.44000244140625,
+        "data_compra": "2024-04-16"
+    },
+    {
+        "data_venda": "2024-04-18",
+        "simbolo": "ALLE",
+        "quantidade_vendida": 1,
+        "preco_compra": 131.30723571777344,
+        "preco_venda": 123.92193603515624,
+        "lucro_prejuizo": -7.385299682617202,
+        "data_compra": "2024-03-13"
+    },
+    {
+        "data_venda": "2024-04-18",
+        "simbolo": "ABT",
+        "quantidade_vendida": 1,
+        "preco_compra": 109.28290557861328,
+        "preco_venda": 103.67919158935548,
+        "lucro_prejuizo": -5.603713989257798,
+        "data_compra": "2024-03-21"
+    },
+    {
+        "data_venda": "2024-04-18",
+        "simbolo": "ABT",
+        "quantidade_vendida": 1,
+        "preco_compra": 109.27311706542967,
+        "preco_venda": 103.67919158935548,
+        "lucro_prejuizo": -5.59392547607419,
+        "data_compra": "2024-03-26"
+    },
+    {
+        "data_venda": "2024-04-19",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 1,
+        "preco_compra": 163.5399932861328,
+        "preco_venda": 155.00999450683594,
+        "lucro_prejuizo": -8.529998779296875,
+        "data_compra": "2024-03-07"
+    },
+    {
+        "data_venda": "2024-04-25",
+        "simbolo": "ACN",
+        "quantidade_vendida": 1,
+        "preco_compra": 326.42926025390625,
+        "preco_venda": 306.4035949707031,
+        "lucro_prejuizo": -20.025665283203125,
+        "data_compra": "2024-04-04"
+    },
+    {
+        "data_venda": "2024-04-29",
+        "simbolo": "AES",
+        "quantidade_vendida": 55,
+        "preco_compra": 15.436683654785156,
+        "preco_venda": 17.060592651367188,
+        "lucro_prejuizo": 89.31499481201172,
+        "data_compra": "2024-04-15"
+    },
+    {
+        "data_venda": "2024-04-29",
+        "simbolo": "AES",
+        "quantidade_vendida": 9,
+        "preco_compra": 15.19787311553955,
+        "preco_venda": 17.060592651367188,
+        "lucro_prejuizo": 16.76447582244873,
+        "data_compra": "2024-04-16"
+    },
+    {
+        "data_venda": "2024-04-29",
+        "simbolo": "AES",
+        "quantidade_vendida": 23,
+        "preco_compra": 15.41757869720459,
+        "preco_venda": 17.060592651367188,
+        "lucro_prejuizo": 37.789320945739746,
+        "data_compra": "2024-04-17"
+    },
+    {
+        "data_venda": "2024-04-30",
+        "simbolo": "MMM",
+        "quantidade_vendida": 7,
+        "preco_compra": 85.49683380126953,
+        "preco_venda": 94.8261260986328,
+        "lucro_prejuizo": 65.30504608154287,
+        "data_compra": "2024-03-13"
+    },
+    {
+        "data_venda": "2024-04-30",
+        "simbolo": "MMM",
+        "quantidade_vendida": 3,
+        "preco_compra": 84.71637725830078,
+        "preco_venda": 94.8261260986328,
+        "lucro_prejuizo": 30.32924652099605,
+        "data_compra": "2024-03-14"
+    },
+    {
+        "data_venda": "2024-04-30",
+        "simbolo": "MMM",
+        "quantidade_vendida": 1,
+        "preco_compra": 86.1294174194336,
+        "preco_venda": 94.8261260986328,
+        "lucro_prejuizo": 8.696708679199205,
+        "data_compra": "2024-03-25"
+    },
+    {
+        "data_venda": "2024-04-30",
+        "simbolo": "AES",
+        "quantidade_vendida": 2,
+        "preco_compra": 15.541759490966797,
+        "preco_venda": 17.266048431396484,
+        "lucro_prejuizo": 3.448577880859375,
+        "data_compra": "2024-04-18"
+    },
+    {
+        "data_venda": "2024-04-30",
+        "simbolo": "AES",
+        "quantidade_vendida": 3,
+        "preco_compra": 15.665940284729004,
+        "preco_venda": 17.266048431396484,
+        "lucro_prejuizo": 4.800324440002441,
+        "data_compra": "2024-04-19"
+    },
+    {
+        "data_venda": "2024-05-01",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.447585105895996,
+        "preco_venda": 9.45205307006836,
+        "lucro_prejuizo": 1.0044679641723633,
+        "data_compra": "2024-02-13"
+    },
+    {
+        "data_venda": "2024-05-01",
+        "simbolo": "AES",
+        "quantidade_vendida": 3,
+        "preco_compra": 15.895197868347168,
+        "preco_venda": 17.526487350463867,
+        "lucro_prejuizo": 4.893868446350098,
+        "data_compra": "2024-03-26"
+    },
+    {
+        "data_venda": "2024-05-01",
+        "simbolo": "ACN",
+        "quantidade_vendida": 4,
+        "preco_compra": 312.74981689453125,
+        "preco_venda": 296.1504821777344,
+        "lucro_prejuizo": -66.3973388671875,
+        "data_compra": "2024-04-12"
+    },
+    {
+        "data_venda": "2024-05-01",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.584006309509277,
+        "preco_venda": 9.45205307006836,
+        "lucro_prejuizo": 0.868046760559082,
+        "data_compra": "2024-04-18"
+    },
+    {
+        "data_venda": "2024-05-01",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 158.3800048828125,
+        "preco_venda": 144.27000427246094,
+        "lucro_prejuizo": -14.110000610351562,
+        "data_compra": "2024-04-30"
+    },
+    {
+        "data_venda": "2024-05-02",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.59365177154541,
+        "preco_venda": 9.519566535949709,
+        "lucro_prejuizo": 0.9259147644042987,
+        "data_compra": "2024-04-12"
+    },
+    {
+        "data_venda": "2024-05-02",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.622586250305176,
+        "preco_venda": 9.519566535949709,
+        "lucro_prejuizo": 0.896980285644533,
+        "data_compra": "2024-04-15"
+    },
+    {
+        "data_venda": "2024-05-02",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.622586250305176,
+        "preco_venda": 9.519566535949709,
+        "lucro_prejuizo": 0.896980285644533,
+        "data_compra": "2024-04-30"
+    },
+    {
+        "data_venda": "2024-05-03",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.694924354553223,
+        "preco_venda": 9.654597282409668,
+        "lucro_prejuizo": 0.9596729278564453,
+        "data_compra": "2024-02-26"
+    },
+    {
+        "data_venda": "2024-05-03",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 8,
+        "preco_compra": 8.767260551452637,
+        "preco_venda": 9.654597282409668,
+        "lucro_prejuizo": 7.09869384765625,
+        "data_compra": "2024-03-01"
+    },
+    {
+        "data_venda": "2024-05-03",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.747970581054688,
+        "preco_venda": 9.654597282409668,
+        "lucro_prejuizo": 0.9066267013549805,
+        "data_compra": "2024-04-11"
+    },
+    {
+        "data_venda": "2024-05-06",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.844420433044434,
+        "preco_venda": 9.731756210327148,
+        "lucro_prejuizo": 0.8873357772827148,
+        "data_compra": "2024-03-04"
+    },
+    {
+        "data_venda": "2024-05-07",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.856645584106445,
+        "preco_venda": 9.760690689086914,
+        "lucro_prejuizo": 0.9040451049804688,
+        "data_compra": "2024-01-24"
+    },
+    {
+        "data_venda": "2024-05-07",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 12,
+        "preco_compra": 8.8733549118042,
+        "preco_venda": 9.760690689086914,
+        "lucro_prejuizo": 10.648029327392578,
+        "data_compra": "2024-03-06"
+    },
+    {
+        "data_venda": "2024-05-08",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 8,
+        "preco_compra": 8.950514793395996,
+        "preco_venda": 9.85714054107666,
+        "lucro_prejuizo": 7.2530059814453125,
+        "data_compra": "2024-03-21"
+    },
+    {
+        "data_venda": "2024-05-09",
+        "simbolo": "AES",
+        "quantidade_vendida": 87,
+        "preco_compra": 17.060592651367188,
+        "preco_venda": 19.282028198242188,
+        "lucro_prejuizo": 193.264892578125,
+        "data_compra": "2024-04-29"
+    },
+    {
+        "data_venda": "2024-05-09",
+        "simbolo": "AES",
+        "quantidade_vendida": 7,
+        "preco_compra": 17.266048431396484,
+        "preco_venda": 19.282028198242188,
+        "lucro_prejuizo": 14.111858367919922,
+        "data_compra": "2024-04-30"
+    },
+    {
+        "data_venda": "2024-05-09",
+        "simbolo": "AES",
+        "quantidade_vendida": 4,
+        "preco_compra": 17.526487350463867,
+        "preco_venda": 19.282028198242188,
+        "lucro_prejuizo": 7.022163391113281,
+        "data_compra": "2024-05-01"
+    },
+    {
+        "data_venda": "2024-05-14",
+        "simbolo": "ABT",
+        "quantidade_vendida": 2,
+        "preco_compra": 108.2406005859375,
+        "preco_venda": 102.438232421875,
+        "lucro_prejuizo": -11.604736328125,
+        "data_compra": "2024-01-04"
+    },
+    {
+        "data_venda": "2024-05-14",
+        "simbolo": "ABT",
+        "quantidade_vendida": 2,
+        "preco_compra": 107.9108657836914,
+        "preco_venda": 102.438232421875,
+        "lucro_prejuizo": -10.945266723632812,
+        "data_compra": "2024-04-04"
+    },
+    {
+        "data_venda": "2024-05-15",
+        "simbolo": "MMM",
+        "quantidade_vendida": 1,
+        "preco_compra": 89.8838882446289,
+        "preco_venda": 99.47359466552734,
+        "lucro_prejuizo": 9.589706420898438,
+        "data_compra": "2024-04-18"
+    },
+    {
+        "data_venda": "2024-05-15",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 144.27000427246094,
+        "preco_venda": 159.6699981689453,
+        "lucro_prejuizo": 15.399993896484375,
+        "data_compra": "2024-05-01"
+    },
+    {
+        "data_venda": "2024-05-15",
+        "simbolo": "AES",
+        "quantidade_vendida": 1,
+        "preco_compra": 18.259571075439453,
+        "preco_venda": 20.38165283203125,
+        "lucro_prejuizo": 2.122081756591797,
+        "data_compra": "2024-05-02"
+    },
+    {
+        "data_venda": "2024-05-15",
+        "simbolo": "AES",
+        "quantidade_vendida": 2,
+        "preco_compra": 18.172758102416992,
+        "preco_venda": 20.38165283203125,
+        "lucro_prejuizo": 4.417789459228516,
+        "data_compra": "2024-05-07"
+    },
+    {
+        "data_venda": "2024-05-17",
+        "simbolo": "AFL",
+        "quantidade_vendida": 5,
+        "preco_compra": 78.47817993164062,
+        "preco_venda": 87.053466796875,
+        "lucro_prejuizo": 42.876434326171875,
+        "data_compra": "2024-02-15"
+    },
+    {
+        "data_venda": "2024-05-17",
+        "simbolo": "AFL",
+        "quantidade_vendida": 1,
+        "preco_compra": 78.51262664794922,
+        "preco_venda": 87.053466796875,
+        "lucro_prejuizo": 8.540840148925781,
+        "data_compra": "2024-02-26"
+    },
+    {
+        "data_venda": "2024-05-17",
+        "simbolo": "APD",
+        "quantidade_vendida": 4,
+        "preco_compra": 229.38327026367188,
+        "preco_venda": 257.76446533203125,
+        "lucro_prejuizo": 113.5247802734375,
+        "data_compra": "2024-03-21"
+    },
+    {
+        "data_venda": "2024-05-17",
+        "simbolo": "MMM",
+        "quantidade_vendida": 1,
+        "preco_compra": 93.873046875,
+        "preco_venda": 103.4234619140625,
+        "lucro_prejuizo": 9.5504150390625,
+        "data_compra": "2024-05-07"
+    },
+    {
+        "data_venda": "2024-05-28",
+        "simbolo": "ABBV",
+        "quantidade_vendida": 1,
+        "preco_compra": 159.9570770263672,
+        "preco_venda": 151.2799530029297,
+        "lucro_prejuizo": -8.6771240234375,
+        "data_compra": "2024-04-17"
+    },
+    {
+        "data_venda": "2024-05-29",
+        "simbolo": "AOS",
+        "quantidade_vendida": 10,
+        "preco_compra": 84.69427490234375,
+        "preco_venda": 80.03797912597656,
+        "lucro_prejuizo": -46.562957763671875,
+        "data_compra": "2024-03-13"
+    },
+    {
+        "data_venda": "2024-05-29",
+        "simbolo": "ABT",
+        "quantidade_vendida": 1,
+        "preco_compra": 105.65880584716795,
+        "preco_venda": 99.20779418945312,
+        "lucro_prejuizo": -6.4510116577148295,
+        "data_compra": "2024-04-19"
+    },
+    {
+        "data_venda": "2024-05-30",
+        "simbolo": "ACN",
+        "quantidade_vendida": 1,
+        "preco_compra": 306.4035949707031,
+        "preco_venda": 282.40692138671875,
+        "lucro_prejuizo": -23.996673583984375,
+        "data_compra": "2024-04-25"
+    },
+    {
+        "data_venda": "2024-05-30",
+        "simbolo": "AES",
+        "quantidade_vendida": 4,
+        "preco_compra": 18.683988571166992,
+        "preco_venda": 20.99898910522461,
+        "lucro_prejuizo": 9.260002136230469,
+        "data_compra": "2024-05-08"
+    },
+    {
+        "data_venda": "2024-05-30",
+        "simbolo": "AKAM",
+        "quantidade_vendida": 1,
+        "preco_compra": 95.20999908447266,
+        "preco_venda": 90.22000122070312,
+        "lucro_prejuizo": -4.989997863769531,
+        "data_compra": "2024-05-17"
+    },
+    {
+        "data_venda": "2024-05-31",
+        "simbolo": "AFL",
+        "quantidade_vendida": 2,
+        "preco_compra": 80.93598937988281,
+        "preco_venda": 89.03881072998047,
+        "lucro_prejuizo": 16.205642700195312,
+        "data_compra": "2024-03-06"
+    },
+    {
+        "data_venda": "2024-05-31",
+        "simbolo": "ACN",
+        "quantidade_vendida": 4,
+        "preco_compra": 296.1504821777344,
+        "preco_venda": 279.91802978515625,
+        "lucro_prejuizo": -64.9298095703125,
+        "data_compra": "2024-05-01"
+    },
+    {
+        "data_venda": "2024-06-04",
+        "simbolo": "AES",
+        "quantidade_vendida": 4,
+        "preco_compra": 20.99898910522461,
+        "preco_venda": 19.76432037353516,
+        "lucro_prejuizo": -4.938674926757798,
+        "data_compra": "2024-05-30"
+    },
+    {
+        "data_venda": "2024-06-07",
+        "simbolo": "APD",
+        "quantidade_vendida": 1,
+        "preco_compra": 245.9015655517578,
+        "preco_venda": 274.2781982421875,
+        "lucro_prejuizo": 28.376632690429688,
+        "data_compra": "2024-05-09"
+    },
+    {
+        "data_venda": "2024-06-07",
+        "simbolo": "AES",
+        "quantidade_vendida": 6,
+        "preco_compra": 20.38165283203125,
+        "preco_venda": 19.166278839111328,
+        "lucro_prejuizo": -7.292243957519531,
+        "data_compra": "2024-05-15"
+    },
+    {
+        "data_venda": "2024-06-07",
+        "simbolo": "AES",
+        "quantidade_vendida": 3,
+        "preco_compra": 20.38165283203125,
+        "preco_venda": 19.166278839111328,
+        "lucro_prejuizo": -3.6461219787597656,
+        "data_compra": "2024-05-28"
+    },
+    {
+        "data_venda": "2024-06-17",
+        "simbolo": "AES",
+        "quantidade_vendida": 79,
+        "preco_compra": 19.282028198242188,
+        "preco_venda": 18.172758102416992,
+        "lucro_prejuizo": -87.63233757019043,
+        "data_compra": "2024-05-09"
+    },
+    {
+        "data_venda": "2024-06-17",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 166.75,
+        "preco_venda": 158.39999389648438,
+        "lucro_prejuizo": -8.350006103515625,
+        "data_compra": "2024-05-30"
+    },
+    {
+        "data_venda": "2024-06-17",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 166.89999389648438,
+        "preco_venda": 158.39999389648438,
+        "lucro_prejuizo": -8.5,
+        "data_compra": "2024-05-31"
+    },
+    {
+        "data_venda": "2024-06-17",
+        "simbolo": "AES",
+        "quantidade_vendida": 8,
+        "preco_compra": 19.166278839111328,
+        "preco_venda": 18.172758102416992,
+        "lucro_prejuizo": -7.9481658935546875,
+        "data_compra": "2024-06-07"
+    },
+    {
+        "data_venda": "2024-06-18",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 164.47000122070312,
+        "preco_venda": 154.6300048828125,
+        "lucro_prejuizo": -9.839996337890625,
+        "data_compra": "2024-05-17"
+    },
+    {
+        "data_venda": "2024-06-27",
+        "simbolo": "AMZN",
+        "quantidade_vendida": 1,
+        "preco_compra": 176.55999755859375,
+        "preco_venda": 197.8500061035156,
+        "lucro_prejuizo": 21.290008544921847,
+        "data_compra": "2024-03-13"
+    },
+    {
+        "data_venda": "2024-06-28",
+        "simbolo": "AES",
+        "quantidade_vendida": 85,
+        "preco_compra": 18.172758102416992,
+        "preco_venda": 16.947736740112305,
+        "lucro_prejuizo": -104.12681579589844,
+        "data_compra": "2024-06-17"
+    },
+    {
+        "data_venda": "2024-06-28",
+        "simbolo": "APD",
+        "quantidade_vendida": 1,
+        "preco_compra": 267.97882080078125,
+        "preco_venda": 253.2017822265625,
+        "lucro_prejuizo": -14.77703857421875,
+        "data_compra": "2024-06-17"
+    },
+    {
+        "data_venda": "2024-06-28",
+        "simbolo": "AES",
+        "quantidade_vendida": 2,
+        "preco_compra": 18.413902282714844,
+        "preco_venda": 16.947736740112305,
+        "lucro_prejuizo": -2.932331085205078,
+        "data_compra": "2024-06-27"
+    },
+    {
+        "data_venda": "2024-07-01",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 2,
+        "preco_compra": 9.95358943939209,
+        "preco_venda": 9.375533103942873,
+        "lucro_prejuizo": -1.156112670898434,
+        "data_compra": "2024-05-09"
+    },
+    {
+        "data_venda": "2024-07-01",
+        "simbolo": "APD",
+        "quantidade_vendida": 3,
+        "preco_compra": 257.76446533203125,
+        "preco_venda": 244.36915588378903,
+        "lucro_prejuizo": -40.18592834472665,
+        "data_compra": "2024-05-17"
+    },
+    {
+        "data_venda": "2024-07-01",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.905365943908691,
+        "preco_venda": 9.375533103942873,
+        "lucro_prejuizo": -0.5298328399658185,
+        "data_compra": "2024-05-17"
+    },
+    {
+        "data_venda": "2024-07-01",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.932205200195312,
+        "preco_venda": 9.375533103942873,
+        "lucro_prejuizo": -0.5566720962524396,
+        "data_compra": "2024-05-31"
+    },
+    {
+        "data_venda": "2024-07-05",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.775946617126465,
+        "preco_venda": 9.277871131896973,
+        "lucro_prejuizo": -0.4980754852294922,
+        "data_compra": "2024-06-07"
+    },
+    {
+        "data_venda": "2024-07-05",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 154.6300048828125,
+        "preco_venda": 171.89999389648438,
+        "lucro_prejuizo": 17.269989013671875,
+        "data_compra": "2024-06-18"
+    },
+    {
+        "data_venda": "2024-07-08",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 159.47000122070312,
+        "preco_venda": 178.69000244140625,
+        "lucro_prejuizo": 19.220001220703125,
+        "data_compra": "2024-06-27"
+    },
+    {
+        "data_venda": "2024-07-11",
+        "simbolo": "AFL",
+        "quantidade_vendida": 10,
+        "preco_compra": 82.55155181884766,
+        "preco_venda": 91.5652313232422,
+        "lucro_prejuizo": 90.13679504394545,
+        "data_compra": "2024-03-13"
+    },
+    {
+        "data_venda": "2024-07-12",
+        "simbolo": "ACN",
+        "quantidade_vendida": 4,
+        "preco_compra": 279.91802978515625,
+        "preco_venda": 309.3707580566406,
+        "lucro_prejuizo": 117.8109130859375,
+        "data_compra": "2024-05-31"
+    },
+    {
+        "data_venda": "2024-07-15",
+        "simbolo": "ACN",
+        "quantidade_vendida": 1,
+        "preco_compra": 285.9766845703125,
+        "preco_venda": 316.5813903808594,
+        "lucro_prejuizo": 30.604705810546875,
+        "data_compra": "2024-06-07"
+    },
+    {
+        "data_venda": "2024-07-16",
+        "simbolo": "AOS",
+        "quantidade_vendida": 1,
+        "preco_compra": 81.74510955810547,
+        "preco_venda": 90.76431274414062,
+        "lucro_prejuizo": 9.019203186035156,
+        "data_compra": "2024-04-30"
+    },
+    {
+        "data_venda": "2024-07-16",
+        "simbolo": "AOS",
+        "quantidade_vendida": 1,
+        "preco_compra": 80.03797912597656,
+        "preco_venda": 90.76431274414062,
+        "lucro_prejuizo": 10.726333618164062,
+        "data_compra": "2024-05-29"
+    },
+    {
+        "data_venda": "2024-07-16",
+        "simbolo": "AOS",
+        "quantidade_vendida": 1,
+        "preco_compra": 80.17613220214844,
+        "preco_venda": 90.76431274414062,
+        "lucro_prejuizo": 10.588180541992188,
+        "data_compra": "2024-06-04"
+    },
+    {
+        "data_venda": "2024-07-16",
+        "simbolo": "LNT",
+        "quantidade_vendida": 1,
+        "preco_compra": 48.42914962768555,
+        "preco_venda": 53.29449462890625,
+        "lucro_prejuizo": 4.865345001220703,
+        "data_compra": "2024-06-17"
+    },
+    {
+        "data_venda": "2024-07-17",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 171.89999389648438,
+        "preco_venda": 159.42999267578125,
+        "lucro_prejuizo": -12.470001220703125,
+        "data_compra": "2024-07-05"
+    },
+    {
+        "data_venda": "2024-07-17",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 178.69000244140625,
+        "preco_venda": 159.42999267578125,
+        "lucro_prejuizo": -19.260009765625,
+        "data_compra": "2024-07-08"
+    },
+    {
+        "data_venda": "2024-07-17",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 181.6100006103516,
+        "preco_venda": 159.42999267578125,
+        "lucro_prejuizo": -22.18000793457034,
+        "data_compra": "2024-07-12"
+    },
+    {
+        "data_venda": "2024-07-18",
+        "simbolo": "ALL",
+        "quantidade_vendida": 1,
+        "preco_compra": 157.7097930908203,
+        "preco_venda": 175.0500030517578,
+        "lucro_prejuizo": 17.3402099609375,
+        "data_compra": "2024-03-13"
+    },
+    {
+        "data_venda": "2024-07-18",
+        "simbolo": "ABT",
+        "quantidade_vendida": 9,
+        "preco_compra": 104.29967498779295,
+        "preco_venda": 99.08065032958984,
+        "lucro_prejuizo": -46.971221923828,
+        "data_compra": "2024-04-17"
+    },
+    {
+        "data_venda": "2024-07-24",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 155.77000427246094,
+        "preco_venda": 144.6300048828125,
+        "lucro_prejuizo": -11.139999389648438,
+        "data_compra": "2024-07-18"
+    },
+    {
+        "data_venda": "2024-07-25",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 1,
+        "preco_compra": 151.6300048828125,
+        "preco_venda": 140.02999877929688,
+        "lucro_prejuizo": -11.600006103515625,
+        "data_compra": "2024-06-28"
+    },
+    {
+        "data_venda": "2024-07-25",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 3,
+        "preco_compra": 151.6300048828125,
+        "preco_venda": 140.02999877929688,
+        "lucro_prejuizo": -34.800018310546875,
+        "data_compra": "2024-07-01"
+    },
+    {
+        "data_venda": "2024-07-26",
+        "simbolo": "MMM",
+        "quantidade_vendida": 8,
+        "preco_compra": 94.8261260986328,
+        "preco_venda": 125.80908203125,
+        "lucro_prejuizo": 247.8636474609376,
+        "data_compra": "2024-04-30"
+    },
+    {
+        "data_venda": "2024-07-26",
+        "simbolo": "MMM",
+        "quantidade_vendida": 1,
+        "preco_compra": 95.4549560546875,
+        "preco_venda": 125.80908203125,
+        "lucro_prejuizo": 30.3541259765625,
+        "data_compra": "2024-05-03"
+    },
+    {
+        "data_venda": "2024-07-26",
+        "simbolo": "MMM",
+        "quantidade_vendida": 1,
+        "preco_compra": 99.47359466552734,
+        "preco_venda": 125.80908203125,
+        "lucro_prejuizo": 26.335487365722656,
+        "data_compra": "2024-05-15"
+    },
+    {
+        "data_venda": "2024-07-26",
+        "simbolo": "MMM",
+        "quantidade_vendida": 1,
+        "preco_compra": 97.63164520263672,
+        "preco_venda": 125.80908203125,
+        "lucro_prejuizo": 28.17743682861328,
+        "data_compra": "2024-05-28"
+    },
+    {
+        "data_venda": "2024-07-26",
+        "simbolo": "MMM",
+        "quantidade_vendida": 7,
+        "preco_compra": 96.52354431152344,
+        "preco_venda": 125.80908203125,
+        "lucro_prejuizo": 204.99876403808594,
+        "data_compra": "2024-05-29"
+    },
+    {
+        "data_venda": "2024-07-26",
+        "simbolo": "LNT",
+        "quantidade_vendida": 1,
+        "preco_compra": 49.62842559814453,
+        "preco_venda": 54.61076354980469,
+        "lucro_prejuizo": 4.982337951660156,
+        "data_compra": "2024-06-28"
+    },
+    {
+        "data_venda": "2024-07-26",
+        "simbolo": "MMM",
+        "quantidade_vendida": 2,
+        "preco_compra": 102.21245574951172,
+        "preco_venda": 125.80908203125,
+        "lucro_prejuizo": 47.19325256347656,
+        "data_compra": "2024-07-16"
+    },
+    {
+        "data_venda": "2024-07-30",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.277871131896973,
+        "preco_venda": 10.234955787658691,
+        "lucro_prejuizo": 0.9570846557617188,
+        "data_compra": "2024-07-05"
+    },
+    {
+        "data_venda": "2024-08-01",
+        "simbolo": "LNT",
+        "quantidade_vendida": 2,
+        "preco_compra": 50.40843963623047,
+        "preco_venda": 55.67185974121094,
+        "lucro_prejuizo": 10.526840209960938,
+        "data_compra": "2024-05-09"
+    },
+    {
+        "data_venda": "2024-08-01",
+        "simbolo": "AFL",
+        "quantidade_vendida": 7,
+        "preco_compra": 87.053466796875,
+        "preco_venda": 100.7098617553711,
+        "lucro_prejuizo": 95.59476470947266,
+        "data_compra": "2024-05-17"
+    },
+    {
+        "data_venda": "2024-08-01",
+        "simbolo": "AFL",
+        "quantidade_vendida": 2,
+        "preco_compra": 88.2363052368164,
+        "preco_venda": 100.7098617553711,
+        "lucro_prejuizo": 24.947113037109375,
+        "data_compra": "2024-07-01"
+    },
+    {
+        "data_venda": "2024-08-01",
+        "simbolo": "ABT",
+        "quantidade_vendida": 8,
+        "preco_compra": 99.08065032958984,
+        "preco_venda": 109.0609893798828,
+        "lucro_prejuizo": 79.84271240234364,
+        "data_compra": "2024-07-18"
+    },
+    {
+        "data_venda": "2024-08-02",
+        "simbolo": "ABT",
+        "quantidade_vendida": 1,
+        "preco_compra": 99.20779418945312,
+        "preco_venda": 110.2095184326172,
+        "lucro_prejuizo": 11.001724243164077,
+        "data_compra": "2024-05-29"
+    },
+    {
+        "data_venda": "2024-08-02",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 1,
+        "preco_compra": 140.02999877929688,
+        "preco_venda": 128.22999572753906,
+        "lucro_prejuizo": -11.800003051757812,
+        "data_compra": "2024-07-25"
+    },
+    {
+        "data_venda": "2024-08-02",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 5,
+        "preco_compra": 140.10000610351562,
+        "preco_venda": 128.22999572753906,
+        "lucro_prejuizo": -59.35005187988281,
+        "data_compra": "2024-07-26"
+    },
+    {
+        "data_venda": "2024-08-02",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 3,
+        "preco_compra": 135.08999633789062,
+        "preco_venda": 128.22999572753906,
+        "lucro_prejuizo": -20.580001831054688,
+        "data_compra": "2024-08-01"
+    },
+    {
+        "data_venda": "2024-08-05",
+        "simbolo": "AES",
+        "quantidade_vendida": 89,
+        "preco_compra": 16.947736740112305,
+        "preco_venda": 15.867372512817385,
+        "lucro_prejuizo": -96.15241622924789,
+        "data_compra": "2024-06-28"
+    },
+    {
+        "data_venda": "2024-08-05",
+        "simbolo": "AES",
+        "quantidade_vendida": 8,
+        "preco_compra": 16.822341918945312,
+        "preco_venda": 15.867372512817385,
+        "lucro_prejuizo": -7.639755249023423,
+        "data_compra": "2024-07-01"
+    },
+    {
+        "data_venda": "2024-08-05",
+        "simbolo": "AES",
+        "quantidade_vendida": 7,
+        "preco_compra": 17.02490234375,
+        "preco_venda": 15.867372512817385,
+        "lucro_prejuizo": -8.102708816528308,
+        "data_compra": "2024-07-16"
+    },
+    {
+        "data_venda": "2024-08-05",
+        "simbolo": "AES",
+        "quantidade_vendida": 1,
+        "preco_compra": 16.928443908691406,
+        "preco_venda": 15.867372512817385,
+        "lucro_prejuizo": -1.0610713958740217,
+        "data_compra": "2024-07-30"
+    },
+    {
+        "data_venda": "2024-08-06",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 138.32000732421875,
+        "preco_venda": 130.17999267578125,
+        "lucro_prejuizo": -8.1400146484375,
+        "data_compra": "2024-07-25"
+    },
+    {
+        "data_venda": "2024-08-07",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 7,
+        "preco_compra": 128.22999572753906,
+        "preco_venda": 113.01000213623048,
+        "lucro_prejuizo": -106.53995513916006,
+        "data_compra": "2024-08-02"
+    },
+    {
+        "data_venda": "2024-08-08",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.375533103942873,
+        "preco_venda": 10.361916542053224,
+        "lucro_prejuizo": 0.9863834381103516,
+        "data_compra": "2024-07-01"
+    },
+    {
+        "data_venda": "2024-08-12",
+        "simbolo": "AOS",
+        "quantidade_vendida": 4,
+        "preco_compra": 83.3831787109375,
+        "preco_venda": 78.1201400756836,
+        "lucro_prejuizo": -21.052154541015625,
+        "data_compra": "2024-07-26"
+    },
+    {
+        "data_venda": "2024-08-13",
+        "simbolo": "AFL",
+        "quantidade_vendida": 9,
+        "preco_compra": 91.5652313232422,
+        "preco_venda": 100.78912353515624,
+        "lucro_prejuizo": 83.0150299072263,
+        "data_compra": "2024-07-11"
+    },
+    {
+        "data_venda": "2024-08-15",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.519566535949709,
+        "preco_venda": 10.596304893493652,
+        "lucro_prejuizo": 1.0767383575439435,
+        "data_compra": "2024-05-02"
+    },
+    {
+        "data_venda": "2024-08-15",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 4,
+        "preco_compra": 9.50249195098877,
+        "preco_venda": 10.596304893493652,
+        "lucro_prejuizo": 4.375251770019531,
+        "data_compra": "2024-05-29"
+    },
+    {
+        "data_venda": "2024-08-15",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.580622673034668,
+        "preco_venda": 10.596304893493652,
+        "lucro_prejuizo": 1.0156822204589844,
+        "data_compra": "2024-06-27"
+    },
+    {
+        "data_venda": "2024-08-15",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.55132293701172,
+        "preco_venda": 10.596304893493652,
+        "lucro_prejuizo": 1.0449819564819318,
+        "data_compra": "2024-06-28"
+    },
+    {
+        "data_venda": "2024-08-15",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 9,
+        "preco_compra": 9.580622673034668,
+        "preco_venda": 10.596304893493652,
+        "lucro_prejuizo": 9.14113998413086,
+        "data_compra": "2024-07-11"
+    },
+    {
+        "data_venda": "2024-08-15",
+        "simbolo": "AMD",
+        "quantidade_vendida": 2,
+        "preco_compra": 128.6699981689453,
+        "preco_venda": 147.36000061035156,
+        "lucro_prejuizo": 37.3800048828125,
+        "data_compra": "2024-08-07"
+    },
+    {
+        "data_venda": "2024-08-16",
+        "simbolo": "AFL",
+        "quantidade_vendida": 1,
+        "preco_compra": 93.19005584716795,
+        "preco_venda": 103.79109954833984,
+        "lucro_prejuizo": 10.60104370117189,
+        "data_compra": "2024-07-17"
+    },
+    {
+        "data_venda": "2024-08-16",
+        "simbolo": "AFL",
+        "quantidade_vendida": 1,
+        "preco_compra": 93.41793060302734,
+        "preco_venda": 103.79109954833984,
+        "lucro_prejuizo": 10.3731689453125,
+        "data_compra": "2024-07-18"
+    },
+    {
+        "data_venda": "2024-08-16",
+        "simbolo": "AFL",
+        "quantidade_vendida": 1,
+        "preco_compra": 93.24951171875,
+        "preco_venda": 103.79109954833984,
+        "lucro_prejuizo": 10.541587829589844,
+        "data_compra": "2024-07-25"
+    },
+    {
+        "data_venda": "2024-08-19",
+        "simbolo": "ABT",
+        "quantidade_vendida": 2,
+        "preco_compra": 100.20252990722656,
+        "preco_venda": 110.79368591308594,
+        "lucro_prejuizo": 21.18231201171875,
+        "data_compra": "2024-05-30"
+    },
+    {
+        "data_venda": "2024-08-21",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.648985862731934,
+        "preco_venda": 10.674434661865234,
+        "lucro_prejuizo": 1.0254487991333008,
+        "data_compra": "2024-05-30"
+    },
+    {
+        "data_venda": "2024-08-21",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 4,
+        "preco_compra": 9.67828369140625,
+        "preco_venda": 10.674434661865234,
+        "lucro_prejuizo": 3.9846038818359375,
+        "data_compra": "2024-07-12"
+    },
+    {
+        "data_venda": "2024-08-23",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.731756210327148,
+        "preco_venda": 10.840459823608398,
+        "lucro_prejuizo": 1.10870361328125,
+        "data_compra": "2024-05-06"
+    },
+    {
+        "data_venda": "2024-08-23",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 3,
+        "preco_compra": 9.727115631103516,
+        "preco_venda": 10.840459823608398,
+        "lucro_prejuizo": 3.3400325775146484,
+        "data_compra": "2024-06-17"
+    },
+    {
+        "data_venda": "2024-08-23",
+        "simbolo": "AES",
+        "quantidade_vendida": 105,
+        "preco_compra": 15.867372512817385,
+        "preco_venda": 17.610933303833008,
+        "lucro_prejuizo": 183.07388305664043,
+        "data_compra": "2024-08-05"
+    },
+    {
+        "data_venda": "2024-08-23",
+        "simbolo": "AES",
+        "quantidade_vendida": 11,
+        "preco_compra": 15.964776039123535,
+        "preco_venda": 17.610933303833008,
+        "lucro_prejuizo": 18.1077299118042,
+        "data_compra": "2024-08-07"
+    },
+    {
+        "data_venda": "2024-08-26",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 9,
+        "preco_compra": 9.912672996520996,
+        "preco_venda": 10.908823013305664,
+        "lucro_prejuizo": 8.965350151062012,
+        "data_compra": "2024-07-25"
+    },
+    {
+        "data_venda": "2024-08-28",
+        "simbolo": "AFL",
+        "quantidade_vendida": 1,
+        "preco_compra": 98.32215118408205,
+        "preco_venda": 108.34034729003906,
+        "lucro_prejuizo": 10.018196105957017,
+        "data_compra": "2024-08-02"
+    },
+    {
+        "data_venda": "2024-08-30",
+        "simbolo": "ACN",
+        "quantidade_vendida": 3,
+        "preco_compra": 309.3707580566406,
+        "preco_venda": 340.56378173828125,
+        "lucro_prejuizo": 93.57907104492188,
+        "data_compra": "2024-07-12"
+    },
+    {
+        "data_venda": "2024-08-30",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 3,
+        "preco_compra": 10.08846378326416,
+        "preco_venda": 11.17250919342041,
+        "lucro_prejuizo": 3.25213623046875,
+        "data_compra": "2024-07-17"
+    },
+    {
+        "data_venda": "2024-08-30",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 2,
+        "preco_compra": 10.078697204589844,
+        "preco_venda": 11.17250919342041,
+        "lucro_prejuizo": 2.187623977661133,
+        "data_compra": "2024-07-18"
+    },
+    {
+        "data_venda": "2024-08-30",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 2,
+        "preco_compra": 10.13729476928711,
+        "preco_venda": 11.17250919342041,
+        "lucro_prejuizo": 2.0704288482666016,
+        "data_compra": "2024-07-26"
+    },
+    {
+        "data_venda": "2024-08-30",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 2,
+        "preco_compra": 10.147061347961426,
+        "preco_venda": 11.17250919342041,
+        "lucro_prejuizo": 2.0508956909179688,
+        "data_compra": "2024-08-07"
+    },
+    {
+        "data_venda": "2024-08-30",
+        "simbolo": "AES",
+        "quantidade_vendida": 84,
+        "preco_compra": 17.610933303833008,
+        "preco_venda": 16.685577392578125,
+        "lucro_prejuizo": -77.72989654541016,
+        "data_compra": "2024-08-23"
+    },
+    {
+        "data_venda": "2024-09-03",
+        "simbolo": "ABT",
+        "quantidade_vendida": 4,
+        "preco_compra": 102.438232421875,
+        "preco_venda": 113.52640533447266,
+        "lucro_prejuizo": 44.352691650390625,
+        "data_compra": "2024-05-14"
+    },
+    {
+        "data_venda": "2024-09-03",
+        "simbolo": "ABT",
+        "quantidade_vendida": 1,
+        "preco_compra": 103.00946044921876,
+        "preco_venda": 113.52640533447266,
+        "lucro_prejuizo": 10.516944885253892,
+        "data_compra": "2024-05-15"
+    },
+    {
+        "data_venda": "2024-09-03",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 147.36000061035156,
+        "preco_venda": 136.94000244140625,
+        "lucro_prejuizo": -10.419998168945312,
+        "data_compra": "2024-08-15"
+    },
+    {
+        "data_venda": "2024-09-03",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 148.55999755859375,
+        "preco_venda": 136.94000244140625,
+        "lucro_prejuizo": -11.6199951171875,
+        "data_compra": "2024-08-16"
+    },
+    {
+        "data_venda": "2024-09-03",
+        "simbolo": "AES",
+        "quantidade_vendida": 2,
+        "preco_compra": 17.21156883239746,
+        "preco_venda": 16.31543731689453,
+        "lucro_prejuizo": -1.7922630310058594,
+        "data_compra": "2024-08-21"
+    },
+    {
+        "data_venda": "2024-09-03",
+        "simbolo": "AES",
+        "quantidade_vendida": 6,
+        "preco_compra": 17.43560218811035,
+        "preco_venda": 16.31543731689453,
+        "lucro_prejuizo": -6.720989227294922,
+        "data_compra": "2024-08-26"
+    },
+    {
+        "data_venda": "2024-09-04",
+        "simbolo": "WAB",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.103466987609863,
+        "preco_venda": 8.394988059997559,
+        "lucro_prejuizo": -0.7084789276123047,
+        "data_compra": "2024-08-28"
+    },
+    {
+        "data_venda": "2024-09-06",
+        "simbolo": "AES",
+        "quantidade_vendida": 4,
+        "preco_compra": 16.696943283081055,
+        "preco_venda": 15.76996612548828,
+        "lucro_prejuizo": -3.707908630371101,
+        "data_compra": "2024-07-24"
+    },
+    {
+        "data_venda": "2024-09-06",
+        "simbolo": "AES",
+        "quantidade_vendida": 2,
+        "preco_compra": 16.685577392578125,
+        "preco_venda": 15.76996612548828,
+        "lucro_prejuizo": -1.831222534179691,
+        "data_compra": "2024-08-02"
+    },
+    {
+        "data_venda": "2024-09-06",
+        "simbolo": "AES",
+        "quantidade_vendida": 1,
+        "preco_compra": 16.82194709777832,
+        "preco_venda": 15.76996612548828,
+        "lucro_prejuizo": -1.0519809722900408,
+        "data_compra": "2024-08-15"
+    },
+    {
+        "data_venda": "2024-09-06",
+        "simbolo": "AES",
+        "quantidade_vendida": 2,
+        "preco_compra": 16.812206268310547,
+        "preco_venda": 15.76996612548828,
+        "lucro_prejuizo": -2.084480285644535,
+        "data_compra": "2024-08-16"
+    },
+    {
+        "data_venda": "2024-09-06",
+        "simbolo": "AES",
+        "quantidade_vendida": 1,
+        "preco_compra": 16.919353485107422,
+        "preco_venda": 15.76996612548828,
+        "lucro_prejuizo": -1.1493873596191424,
+        "data_compra": "2024-08-19"
+    },
+    {
+        "data_venda": "2024-09-06",
+        "simbolo": "AES",
+        "quantidade_vendida": 6,
+        "preco_compra": 16.75376319885254,
+        "preco_venda": 15.76996612548828,
+        "lucro_prejuizo": -5.9027824401855575,
+        "data_compra": "2024-08-28"
+    },
+    {
+        "data_venda": "2024-09-06",
+        "simbolo": "AES",
+        "quantidade_vendida": 78,
+        "preco_compra": 16.685577392578125,
+        "preco_venda": 15.76996612548828,
+        "lucro_prejuizo": -71.41767883300795,
+        "data_compra": "2024-08-30"
+    },
+    {
+        "data_venda": "2024-09-09",
+        "simbolo": "ABT",
+        "quantidade_vendida": 2,
+        "preco_compra": 103.67919158935548,
+        "preco_venda": 115.27890014648438,
+        "lucro_prejuizo": 23.199417114257784,
+        "data_compra": "2024-04-18"
+    },
+    {
+        "data_venda": "2024-09-10",
+        "simbolo": "ABT",
+        "quantidade_vendida": 1,
+        "preco_compra": 104.91241455078124,
+        "preco_venda": 115.9521713256836,
+        "lucro_prejuizo": 11.039756774902358,
+        "data_compra": "2024-07-25"
+    },
+    {
+        "data_venda": "2024-09-11",
+        "simbolo": "ACN",
+        "quantidade_vendida": 1,
+        "preco_compra": 316.5813903808594,
+        "preco_venda": 348.889892578125,
+        "lucro_prejuizo": 32.308502197265625,
+        "data_compra": "2024-07-15"
+    },
+    {
+        "data_venda": "2024-09-11",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 134.35000610351562,
+        "preco_venda": 149.86000061035156,
+        "lucro_prejuizo": 15.509994506835938,
+        "data_compra": "2024-09-06"
+    },
+    {
+        "data_venda": "2024-09-11",
+        "simbolo": "AES",
+        "quantidade_vendida": 85,
+        "preco_compra": 15.76996612548828,
+        "preco_venda": 17.39664077758789,
+        "lucro_prejuizo": 138.26734542846694,
+        "data_compra": "2024-09-06"
+    },
+    {
+        "data_venda": "2024-09-13",
+        "simbolo": "AES",
+        "quantidade_vendida": 2,
+        "preco_compra": 16.291818618774414,
+        "preco_venda": 18.05899810791016,
+        "lucro_prejuizo": 3.5343589782714915,
+        "data_compra": "2024-07-17"
+    },
+    {
+        "data_venda": "2024-09-13",
+        "simbolo": "AES",
+        "quantidade_vendida": 4,
+        "preco_compra": 16.276473999023438,
+        "preco_venda": 18.05899810791016,
+        "lucro_prejuizo": 7.130096435546889,
+        "data_compra": "2024-08-12"
+    },
+    {
+        "data_venda": "2024-09-13",
+        "simbolo": "AES",
+        "quantidade_vendida": 4,
+        "preco_compra": 16.31543731689453,
+        "preco_venda": 18.05899810791016,
+        "lucro_prejuizo": 6.974243164062514,
+        "data_compra": "2024-09-03"
+    },
+    {
+        "data_venda": "2024-09-19",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 3,
+        "preco_compra": 113.01000213623048,
+        "preco_venda": 128.75,
+        "lucro_prejuizo": 47.21999359130855,
+        "data_compra": "2024-08-07"
+    },
+    {
+        "data_venda": "2024-09-19",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 5,
+        "preco_compra": 116.8499984741211,
+        "preco_venda": 128.75,
+        "lucro_prejuizo": 59.50000762939453,
+        "data_compra": "2024-08-23"
+    },
+    {
+        "data_venda": "2024-09-20",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 4,
+        "preco_compra": 117.30999755859376,
+        "preco_venda": 131.17999267578125,
+        "lucro_prejuizo": 55.47998046874994,
+        "data_compra": "2024-08-30"
+    },
+    {
+        "data_venda": "2024-09-23",
+        "simbolo": "MMM",
+        "quantidade_vendida": 2,
+        "preco_compra": 122.04945373535156,
+        "preco_venda": 134.9224395751953,
+        "lucro_prejuizo": 25.7459716796875,
+        "data_compra": "2024-08-12"
+    },
+    {
+        "data_venda": "2024-09-24",
+        "simbolo": "MMM",
+        "quantidade_vendida": 1,
+        "preco_compra": 123.56320190429688,
+        "preco_venda": 136.49407958984375,
+        "lucro_prejuizo": 12.930877685546875,
+        "data_compra": "2024-08-06"
+    },
+    {
+        "data_venda": "2024-09-26",
+        "simbolo": "AOS",
+        "quantidade_vendida": 1,
+        "preco_compra": 79.69259643554688,
+        "preco_venda": 88.46087646484375,
+        "lucro_prejuizo": 8.768280029296875,
+        "data_compra": "2024-07-24"
+    },
+    {
+        "data_venda": "2024-09-26",
+        "simbolo": "MMM",
+        "quantidade_vendida": 12,
+        "preco_compra": 125.80908203125,
+        "preco_venda": 138.70233154296875,
+        "lucro_prejuizo": 154.718994140625,
+        "data_compra": "2024-07-26"
+    },
+    {
+        "data_venda": "2024-09-26",
+        "simbolo": "AOS",
+        "quantidade_vendida": 1,
+        "preco_compra": 79.48701477050781,
+        "preco_venda": 88.46087646484375,
+        "lucro_prejuizo": 8.973861694335938,
+        "data_compra": "2024-08-15"
+    },
+    {
+        "data_venda": "2024-09-26",
+        "simbolo": "AOS",
+        "quantidade_vendida": 1,
+        "preco_compra": 79.93273162841797,
+        "preco_venda": 88.46087646484375,
+        "lucro_prejuizo": 8.528144836425781,
+        "data_compra": "2024-08-19"
+    },
+    {
+        "data_venda": "2024-09-26",
+        "simbolo": "AOS",
+        "quantidade_vendida": 1,
+        "preco_compra": 79.20967864990234,
+        "preco_venda": 88.46087646484375,
+        "lucro_prejuizo": 9.251197814941406,
+        "data_compra": "2024-09-13"
+    },
+    {
+        "data_venda": "2024-09-27",
+        "simbolo": "AES",
+        "quantidade_vendida": 94,
+        "preco_compra": 17.39664077758789,
+        "preco_venda": 19.54930305480957,
+        "lucro_prejuizo": 202.3502540588379,
+        "data_compra": "2024-09-11"
+    },
+    {
+        "data_venda": "2024-09-30",
+        "simbolo": "AFL",
+        "quantidade_vendida": 7,
+        "preco_compra": 100.7098617553711,
+        "preco_venda": 111.29698944091795,
+        "lucro_prejuizo": 74.10989379882803,
+        "data_compra": "2024-08-01"
+    },
+    {
+        "data_venda": "2024-09-30",
+        "simbolo": "AFL",
+        "quantidade_vendida": 8,
+        "preco_compra": 100.78912353515624,
+        "preco_venda": 111.29698944091795,
+        "lucro_prejuizo": 84.06292724609375,
+        "data_compra": "2024-08-13"
+    },
+    {
+        "data_venda": "2024-10-01",
+        "simbolo": "AFL",
+        "quantidade_vendida": 1,
+        "preco_compra": 101.59162902832033,
+        "preco_venda": 112.31239318847656,
+        "lucro_prejuizo": 10.720764160156236,
+        "data_compra": "2024-08-15"
+    },
+    {
+        "data_venda": "2024-10-03",
+        "simbolo": "ACN",
+        "quantidade_vendida": 1,
+        "preco_compra": 324.2800598144531,
+        "preco_venda": 359.77557373046875,
+        "lucro_prejuizo": 35.495513916015625,
+        "data_compra": "2024-07-17"
+    },
+    {
+        "data_venda": "2024-10-03",
+        "simbolo": "AES",
+        "quantidade_vendida": 1,
+        "preco_compra": 19.714893341064453,
+        "preco_venda": 18.633689880371094,
+        "lucro_prejuizo": -1.0812034606933594,
+        "data_compra": "2024-10-01"
+    },
+    {
+        "data_venda": "2024-10-04",
+        "simbolo": "AFL",
+        "quantidade_vendida": 1,
+        "preco_compra": 103.79109954833984,
+        "preco_venda": 114.74141693115234,
+        "lucro_prejuizo": 10.9503173828125,
+        "data_compra": "2024-08-16"
+    },
+    {
+        "data_venda": "2024-10-04",
+        "simbolo": "AES",
+        "quantidade_vendida": 75,
+        "preco_compra": 19.54930305480957,
+        "preco_venda": 18.419397354125977,
+        "lucro_prejuizo": -84.74292755126953,
+        "data_compra": "2024-09-27"
+    },
+    {
+        "data_venda": "2024-10-08",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 156.74000549316406,
+        "preco_venda": 172.8000030517578,
+        "lucro_prejuizo": 16.05999755859375,
+        "data_compra": "2024-09-19"
+    },
+    {
+        "data_venda": "2024-10-08",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 155.9499969482422,
+        "preco_venda": 172.8000030517578,
+        "lucro_prejuizo": 16.850006103515625,
+        "data_compra": "2024-09-20"
+    },
+    {
+        "data_venda": "2024-10-08",
+        "simbolo": "AES",
+        "quantidade_vendida": 7,
+        "preco_compra": 18.633689880371094,
+        "preco_venda": 17.67911720275879,
+        "lucro_prejuizo": -6.682008743286133,
+        "data_compra": "2024-10-03"
+    },
+    {
+        "data_venda": "2024-10-09",
+        "simbolo": "AES",
+        "quantidade_vendida": 15,
+        "preco_compra": 18.409656524658203,
+        "preco_venda": 17.231050491333008,
+        "lucro_prejuizo": -17.67909049987793,
+        "data_compra": "2024-09-19"
+    },
+    {
+        "data_venda": "2024-10-09",
+        "simbolo": "AES",
+        "quantidade_vendida": 6,
+        "preco_compra": 18.409656524658203,
+        "preco_venda": 17.231050491333008,
+        "lucro_prejuizo": -7.071636199951172,
+        "data_compra": "2024-09-20"
+    },
+    {
+        "data_venda": "2024-10-09",
+        "simbolo": "AES",
+        "quantidade_vendida": 72,
+        "preco_compra": 18.419397354125977,
+        "preco_venda": 17.231050491333008,
+        "lucro_prejuizo": -85.56097412109375,
+        "data_compra": "2024-10-04"
+    },
+    {
+        "data_venda": "2024-10-10",
+        "simbolo": "AES",
+        "quantidade_vendida": 5,
+        "preco_compra": 18.05899810791016,
+        "preco_venda": 16.880390167236328,
+        "lucro_prejuizo": -5.893039703369158,
+        "data_compra": "2024-09-13"
+    },
+    {
+        "data_venda": "2024-10-11",
+        "simbolo": "AOS",
+        "quantidade_vendida": 3,
+        "preco_compra": 88.46087646484375,
+        "preco_venda": 80.10112762451172,
+        "lucro_prejuizo": -25.079246520996094,
+        "data_compra": "2024-09-26"
+    },
+    {
+        "data_venda": "2024-10-11",
+        "simbolo": "AOS",
+        "quantidade_vendida": 1,
+        "preco_compra": 88.09439849853516,
+        "preco_venda": 80.10112762451172,
+        "lucro_prejuizo": -7.9932708740234375,
+        "data_compra": "2024-10-01"
+    },
+    {
+        "data_venda": "2024-10-15",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 2,
+        "preco_compra": 10.20565700531006,
+        "preco_venda": 11.229249000549316,
+        "lucro_prejuizo": 2.047183990478512,
+        "data_compra": "2024-08-16"
+    },
+    {
+        "data_venda": "2024-10-15",
+        "simbolo": "WAB",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.268821716308594,
+        "preco_venda": 10.112807273864746,
+        "lucro_prejuizo": 1.8439855575561523,
+        "data_compra": "2024-09-26"
+    },
+    {
+        "data_venda": "2024-10-15",
+        "simbolo": "WAB",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.414399147033691,
+        "preco_venda": 10.112807273864746,
+        "lucro_prejuizo": 1.6984081268310547,
+        "data_compra": "2024-10-03"
+    },
+    {
+        "data_venda": "2024-10-15",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 170.89999389648438,
+        "preco_venda": 156.63999938964844,
+        "lucro_prejuizo": -14.259994506835938,
+        "data_compra": "2024-10-04"
+    },
+    {
+        "data_venda": "2024-10-17",
+        "simbolo": "AKAM",
+        "quantidade_vendida": 1,
+        "preco_compra": 95.13999938964844,
+        "preco_venda": 104.7300033569336,
+        "lucro_prejuizo": 9.590003967285156,
+        "data_compra": "2024-07-12"
+    },
+    {
+        "data_venda": "2024-10-17",
+        "simbolo": "ACN",
+        "quantidade_vendida": 2,
+        "preco_compra": 340.56378173828125,
+        "preco_venda": 375.1499938964844,
+        "lucro_prejuizo": 69.17242431640625,
+        "data_compra": "2024-08-30"
+    },
+    {
+        "data_venda": "2024-10-17",
+        "simbolo": "ACN",
+        "quantidade_vendida": 1,
+        "preco_compra": 340.4940490722656,
+        "preco_venda": 375.1499938964844,
+        "lucro_prejuizo": 34.65594482421875,
+        "data_compra": "2024-09-03"
+    },
+    {
+        "data_venda": "2024-10-21",
+        "simbolo": "AES",
+        "quantidade_vendida": 6,
+        "preco_compra": 17.67911720275879,
+        "preco_venda": 16.76350212097168,
+        "lucro_prejuizo": -5.493690490722656,
+        "data_compra": "2024-10-08"
+    },
+    {
+        "data_venda": "2024-10-22",
+        "simbolo": "MMM",
+        "quantidade_vendida": 10,
+        "preco_compra": 138.70233154296875,
+        "preco_venda": 131.03311157226562,
+        "lucro_prejuizo": -76.69219970703125,
+        "data_compra": "2024-09-26"
+    },
+    {
+        "data_venda": "2024-10-23",
+        "simbolo": "MMM",
+        "quantidade_vendida": 2,
+        "preco_compra": 134.9224395751953,
+        "preco_venda": 127.23332977294922,
+        "lucro_prejuizo": -15.378219604492188,
+        "data_compra": "2024-09-23"
+    },
+    {
+        "data_venda": "2024-10-23",
+        "simbolo": "MMM",
+        "quantidade_vendida": 1,
+        "preco_compra": 136.49407958984375,
+        "preco_venda": 127.23332977294922,
+        "lucro_prejuizo": -9.260749816894531,
+        "data_compra": "2024-09-24"
+    },
+    {
+        "data_venda": "2024-10-23",
+        "simbolo": "MMM",
+        "quantidade_vendida": 1,
+        "preco_compra": 134.06698608398438,
+        "preco_venda": 127.23332977294922,
+        "lucro_prejuizo": -6.833656311035156,
+        "data_compra": "2024-10-03"
+    },
+    {
+        "data_venda": "2024-10-23",
+        "simbolo": "MMM",
+        "quantidade_vendida": 2,
+        "preco_compra": 134.03713989257812,
+        "preco_venda": 127.23332977294922,
+        "lucro_prejuizo": -13.607620239257812,
+        "data_compra": "2024-10-11"
+    },
+    {
+        "data_venda": "2024-10-25",
+        "simbolo": "AOS",
+        "quantidade_vendida": 1,
+        "preco_compra": 80.18035888671875,
+        "preco_venda": 76.13915252685547,
+        "lucro_prejuizo": -4.041206359863281,
+        "data_compra": "2024-10-15"
+    },
+    {
+        "data_venda": "2024-10-25",
+        "simbolo": "MMM",
+        "quantidade_vendida": 8,
+        "preco_compra": 131.03311157226562,
+        "preco_venda": 124.09004974365234,
+        "lucro_prejuizo": -55.54449462890625,
+        "data_compra": "2024-10-22"
+    },
+    {
+        "data_venda": "2024-10-29",
+        "simbolo": "AES",
+        "quantidade_vendida": 93,
+        "preco_compra": 17.231050491333008,
+        "preco_venda": 16.09140396118164,
+        "lucro_prejuizo": -105.98712730407715,
+        "data_compra": "2024-10-09"
+    },
+    {
+        "data_venda": "2024-10-29",
+        "simbolo": "AES",
+        "quantidade_vendida": 7,
+        "preco_compra": 16.958314895629883,
+        "preco_venda": 16.09140396118164,
+        "lucro_prejuizo": -6.068376541137695,
+        "data_compra": "2024-10-15"
+    },
+    {
+        "data_venda": "2024-10-30",
+        "simbolo": "AES",
+        "quantidade_vendida": 5,
+        "preco_compra": 16.880390167236328,
+        "preco_venda": 15.993998527526855,
+        "lucro_prejuizo": -4.431958198547363,
+        "data_compra": "2024-10-10"
+    },
+    {
+        "data_venda": "2024-10-30",
+        "simbolo": "AES",
+        "quantidade_vendida": 3,
+        "preco_compra": 16.870649337768555,
+        "preco_venda": 15.993998527526855,
+        "lucro_prejuizo": -2.6299524307250977,
+        "data_compra": "2024-10-11"
+    },
+    {
+        "data_venda": "2024-10-30",
+        "simbolo": "ACN",
+        "quantidade_vendida": 1,
+        "preco_compra": 375.1499938964844,
+        "preco_venda": 346.57000732421875,
+        "lucro_prejuizo": -28.579986572265625,
+        "data_compra": "2024-10-17"
+    },
+    {
+        "data_venda": "2024-10-31",
+        "simbolo": "AFL",
+        "quantidade_vendida": 12,
+        "preco_compra": 111.29698944091795,
+        "preco_venda": 104.31852722167967,
+        "lucro_prejuizo": -83.74154663085938,
+        "data_compra": "2024-09-30"
+    },
+    {
+        "data_venda": "2024-10-31",
+        "simbolo": "AMD",
+        "quantidade_vendida": 2,
+        "preco_compra": 156.25,
+        "preco_venda": 144.07000732421875,
+        "lucro_prejuizo": -24.3599853515625,
+        "data_compra": "2024-10-17"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 2,
+        "preco_compra": 10.674434661865234,
+        "preco_venda": 10.132990837097168,
+        "lucro_prejuizo": -1.0828876495361328,
+        "data_compra": "2024-08-21"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 2,
+        "preco_compra": 10.840459823608398,
+        "preco_venda": 10.132990837097168,
+        "lucro_prejuizo": -1.414937973022461,
+        "data_compra": "2024-08-23"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 11.17250919342041,
+        "preco_venda": 10.132990837097168,
+        "lucro_prejuizo": -1.0395183563232422,
+        "data_compra": "2024-08-30"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 10.85395336151123,
+        "preco_venda": 10.132990837097168,
+        "lucro_prejuizo": -0.7209625244140625,
+        "data_compra": "2024-09-13"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 10.972467422485352,
+        "preco_venda": 10.132990837097168,
+        "lucro_prejuizo": -0.8394765853881836,
+        "data_compra": "2024-09-19"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 4,
+        "preco_compra": 10.765067100524902,
+        "preco_venda": 10.132990837097168,
+        "lucro_prejuizo": -2.5283050537109375,
+        "data_compra": "2024-09-20"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 9,
+        "preco_compra": 11.209497451782228,
+        "preco_venda": 10.132990837097168,
+        "lucro_prejuizo": -9.688559532165543,
+        "data_compra": "2024-09-26"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 5,
+        "preco_compra": 11.209497451782228,
+        "preco_venda": 10.132990837097168,
+        "lucro_prejuizo": -5.382533073425302,
+        "data_compra": "2024-09-27"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 7,
+        "preco_compra": 11.18974494934082,
+        "preco_venda": 10.132990837097168,
+        "lucro_prejuizo": -7.397278785705566,
+        "data_compra": "2024-09-30"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 11.110734939575195,
+        "preco_venda": 10.132990837097168,
+        "lucro_prejuizo": -0.9777441024780273,
+        "data_compra": "2024-10-17"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AES",
+        "quantidade_vendida": 1,
+        "preco_compra": 16.76350212097168,
+        "preco_venda": 14.480278968811035,
+        "lucro_prejuizo": -2.2832231521606445,
+        "data_compra": "2024-10-21"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AES",
+        "quantidade_vendida": 2,
+        "preco_compra": 16.55895233154297,
+        "preco_venda": 14.480278968811035,
+        "lucro_prejuizo": -4.157346725463867,
+        "data_compra": "2024-10-22"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 10.85395336151123,
+        "preco_venda": 10.132990837097168,
+        "lucro_prejuizo": -0.7209625244140625,
+        "data_compra": "2024-10-22"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AES",
+        "quantidade_vendida": 3,
+        "preco_compra": 16.636877059936523,
+        "preco_venda": 14.480278968811035,
+        "lucro_prejuizo": -6.469794273376465,
+        "data_compra": "2024-10-23"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AES",
+        "quantidade_vendida": 42,
+        "preco_compra": 16.09140396118164,
+        "preco_venda": 14.480278968811035,
+        "lucro_prejuizo": -67.66724967956543,
+        "data_compra": "2024-10-29"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 10.794696807861328,
+        "preco_venda": 10.132990837097168,
+        "lucro_prejuizo": -0.6617059707641602,
+        "data_compra": "2024-10-29"
+    },
+    {
+        "data_venda": "2024-11-01",
+        "simbolo": "AES",
+        "quantidade_vendida": 14,
+        "preco_compra": 16.062183380126953,
+        "preco_venda": 14.480278968811035,
+        "lucro_prejuizo": -22.14666175842285,
+        "data_compra": "2024-10-31"
+    },
+    {
+        "data_venda": "2024-11-05",
+        "simbolo": "ADM",
+        "quantidade_vendida": 4,
+        "preco_compra": 55.16972351074219,
+        "preco_venda": 51.514198303222656,
+        "lucro_prejuizo": -14.622100830078125,
+        "data_compra": "2024-10-22"
+    },
+    {
+        "data_venda": "2024-11-05",
+        "simbolo": "DELL",
+        "quantidade_vendida": 6,
+        "preco_compra": 119.0133285522461,
+        "preco_venda": 132.9276123046875,
+        "lucro_prejuizo": 83.48570251464844,
+        "data_compra": "2024-10-23"
+    },
+    {
+        "data_venda": "2024-11-05",
+        "simbolo": "DAY",
+        "quantidade_vendida": 6,
+        "preco_compra": 70.08000183105469,
+        "preco_venda": 77.16000366210938,
+        "lucro_prejuizo": 42.480010986328125,
+        "data_compra": "2024-10-30"
+    },
+    {
+        "data_venda": "2024-11-06",
+        "simbolo": "LNT",
+        "quantidade_vendida": 1,
+        "preco_compra": 59.7334213256836,
+        "preco_venda": 56.51299285888672,
+        "lucro_prejuizo": -3.220428466796882,
+        "data_compra": "2024-09-27"
+    },
+    {
+        "data_venda": "2024-11-06",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 2,
+        "preco_compra": 126.80999755859376,
+        "preco_venda": 140.91000366210938,
+        "lucro_prejuizo": 28.20001220703122,
+        "data_compra": "2024-09-30"
+    },
+    {
+        "data_venda": "2024-11-06",
+        "simbolo": "AES",
+        "quantidade_vendida": 19,
+        "preco_compra": 15.267786026000977,
+        "preco_venda": 13.978242874145508,
+        "lucro_prejuizo": -24.501319885253906,
+        "data_compra": "2024-11-05"
+    },
+    {
+        "data_venda": "2024-11-07",
+        "simbolo": "PANW",
+        "quantidade_vendida": 1,
+        "preco_compra": 10.364127159118652,
+        "preco_venda": 11.478617668151855,
+        "lucro_prejuizo": 1.1144905090332031,
+        "data_compra": "2024-09-04"
+    },
+    {
+        "data_venda": "2024-11-07",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 2,
+        "preco_compra": 128.75,
+        "preco_venda": 147.3699951171875,
+        "lucro_prejuizo": 37.239990234375,
+        "data_compra": "2024-09-19"
+    },
+    {
+        "data_venda": "2024-11-07",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 2,
+        "preco_compra": 129.25,
+        "preco_venda": 147.3699951171875,
+        "lucro_prejuizo": 36.239990234375,
+        "data_compra": "2024-09-26"
+    },
+    {
+        "data_venda": "2024-11-07",
+        "simbolo": "ABNB",
+        "quantidade_vendida": 2,
+        "preco_compra": 128.25,
+        "preco_venda": 147.3699951171875,
+        "lucro_prejuizo": 38.239990234375,
+        "data_compra": "2024-09-27"
+    },
+    {
+        "data_venda": "2024-11-07",
+        "simbolo": "TROW",
+        "quantidade_vendida": 2,
+        "preco_compra": 154.7899932861328,
+        "preco_venda": 179.1699981689453,
+        "lucro_prejuizo": 48.760009765625,
+        "data_compra": "2024-10-17"
+    },
+    {
+        "data_venda": "2024-11-07",
+        "simbolo": "DIS",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.130000114440918,
+        "preco_venda": 9.369999885559082,
+        "lucro_prejuizo": 1.239999771118164,
+        "data_compra": "2024-10-31"
+    },
+    {
+        "data_venda": "2024-11-07",
+        "simbolo": "AES",
+        "quantidade_vendida": 43,
+        "preco_compra": 14.480278968811035,
+        "preco_venda": 13.436832427978516,
+        "lucro_prejuizo": -44.86820125579834,
+        "data_compra": "2024-11-01"
+    },
+    {
+        "data_venda": "2024-11-08",
+        "simbolo": "SPGI",
+        "quantidade_vendida": 4,
+        "preco_compra": 291.0379333496094,
+        "preco_venda": 321.5830993652344,
+        "lucro_prejuizo": 122.1806640625,
+        "data_compra": "2024-10-31"
+    },
+    {
+        "data_venda": "2024-11-12",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 10.596304893493652,
+        "preco_venda": 10.06385612487793,
+        "lucro_prejuizo": -0.5324487686157227,
+        "data_compra": "2024-08-15"
+    },
+    {
+        "data_venda": "2024-11-12",
+        "simbolo": "AOS",
+        "quantidade_vendida": 1,
+        "preco_compra": 77.85269927978516,
+        "preco_venda": 72.77055358886719,
+        "lucro_prejuizo": -5.082145690917969,
+        "data_compra": "2024-10-21"
+    },
+    {
+        "data_venda": "2024-11-12",
+        "simbolo": "AES",
+        "quantidade_vendida": 37,
+        "preco_compra": 13.978242874145508,
+        "preco_venda": 13.23995590209961,
+        "lucro_prejuizo": -27.316617965698242,
+        "data_compra": "2024-11-06"
+    },
+    {
+        "data_venda": "2024-11-14",
+        "simbolo": "LVS",
+        "quantidade_vendida": 12,
+        "preco_compra": 51.52859878540039,
+        "preco_venda": 48.52999877929688,
+        "lucro_prejuizo": -35.9832000732421,
+        "data_compra": "2024-11-01"
+    },
+    {
+        "data_venda": "2024-11-15",
+        "simbolo": "AOS",
+        "quantidade_vendida": 1,
+        "preco_compra": 76.13915252685547,
+        "preco_venda": 71.86515045166016,
+        "lucro_prejuizo": -4.2740020751953125,
+        "data_compra": "2024-10-25"
+    },
+    {
+        "data_venda": "2024-11-15",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 144.07000732421875,
+        "preco_venda": 134.89999389648438,
+        "lucro_prejuizo": -9.170013427734375,
+        "data_compra": "2024-10-31"
+    },
+    {
+        "data_venda": "2024-11-15",
+        "simbolo": "AOS",
+        "quantidade_vendida": 1,
+        "preco_compra": 75.82504272460938,
+        "preco_venda": 71.86515045166016,
+        "lucro_prejuizo": -3.9598922729492188,
+        "data_compra": "2024-11-06"
+    },
+    {
+        "data_venda": "2024-11-15",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 143.6300048828125,
+        "preco_venda": 134.89999389648438,
+        "lucro_prejuizo": -8.730010986328125,
+        "data_compra": "2024-11-12"
+    },
+    {
+        "data_venda": "2024-11-18",
+        "simbolo": "AOS",
+        "quantidade_vendida": 2,
+        "preco_compra": 75.62409210205078,
+        "preco_venda": 71.78555297851562,
+        "lucro_prejuizo": -7.6770782470703125,
+        "data_compra": "2024-10-29"
+    },
+    {
+        "data_venda": "2024-11-18",
+        "simbolo": "OXY",
+        "quantidade_vendida": 1,
+        "preco_compra": 225.84104919433597,
+        "preco_venda": 213.7354736328125,
+        "lucro_prejuizo": -12.105575561523466,
+        "data_compra": "2024-11-08"
+    },
+    {
+        "data_venda": "2024-11-19",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 10.361916542053224,
+        "preco_venda": 9.767570495605469,
+        "lucro_prejuizo": -0.5943460464477557,
+        "data_compra": "2024-08-08"
+    },
+    {
+        "data_venda": "2024-11-19",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 10,
+        "preco_compra": 10.449811935424805,
+        "preco_venda": 9.767570495605469,
+        "lucro_prejuizo": -6.822414398193359,
+        "data_compra": "2024-08-13"
+    },
+    {
+        "data_venda": "2024-11-19",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 10.37168312072754,
+        "preco_venda": 9.767570495605469,
+        "lucro_prejuizo": -0.6041126251220721,
+        "data_compra": "2024-08-19"
+    },
+    {
+        "data_venda": "2024-11-20",
+        "simbolo": "AES",
+        "quantidade_vendida": 4,
+        "preco_compra": 13.781366348266602,
+        "preco_venda": 13.07261085510254,
+        "lucro_prejuizo": -2.835021972656243,
+        "data_compra": "2024-11-14"
+    },
+    {
+        "data_venda": "2024-11-22",
+        "simbolo": "CMG",
+        "quantidade_vendida": 1,
+        "preco_compra": 55.72999954223633,
+        "preco_venda": 62.0099983215332,
+        "lucro_prejuizo": 6.279998779296875,
+        "data_compra": "2024-10-30"
+    },
+    {
+        "data_venda": "2024-11-25",
+        "simbolo": "LNT",
+        "quantidade_vendida": 1,
+        "preco_compra": 57.30435562133789,
+        "preco_venda": 63.08634948730469,
+        "lucro_prejuizo": 5.781993865966797,
+        "data_compra": "2024-08-30"
+    },
+    {
+        "data_venda": "2024-11-26",
+        "simbolo": "AES",
+        "quantidade_vendida": 24,
+        "preco_compra": 13.436832427978516,
+        "preco_venda": 12.38354206085205,
+        "lucro_prejuizo": -25.278968811035156,
+        "data_compra": "2024-11-07"
+    },
+    {
+        "data_venda": "2024-11-26",
+        "simbolo": "AES",
+        "quantidade_vendida": 23,
+        "preco_compra": 13.23995590209961,
+        "preco_venda": 12.38354206085205,
+        "lucro_prejuizo": -19.697518348693848,
+        "data_compra": "2024-11-12"
+    },
+    {
+        "data_venda": "2024-11-26",
+        "simbolo": "AES",
+        "quantidade_vendida": 4,
+        "preco_compra": 13.07261085510254,
+        "preco_venda": 12.38354206085205,
+        "lucro_prejuizo": -2.7562751770019602,
+        "data_compra": "2024-11-20"
+    },
+    {
+        "data_venda": "2024-11-29",
+        "simbolo": "DIS",
+        "quantidade_vendida": 13,
+        "preco_compra": 9.5,
+        "preco_venda": 10.479999542236328,
+        "lucro_prejuizo": 12.739994049072266,
+        "data_compra": "2024-11-19"
+    },
+    {
+        "data_venda": "2024-12-04",
+        "simbolo": "SO",
+        "quantidade_vendida": 2,
+        "preco_compra": 29.932321548461918,
+        "preco_venda": 33.97105026245117,
+        "lucro_prejuizo": 8.077457427978509,
+        "data_compra": "2024-10-17"
+    },
+    {
+        "data_venda": "2024-12-05",
+        "simbolo": "WAB",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.0600004196167,
+        "preco_venda": 8.470000267028809,
+        "lucro_prejuizo": -0.5900001525878906,
+        "data_compra": "2024-11-25"
+    },
+    {
+        "data_venda": "2024-12-09",
+        "simbolo": "CMCSA",
+        "quantidade_vendida": 4,
+        "preco_compra": 41.87789535522461,
+        "preco_venda": 38.72440719604492,
+        "lucro_prejuizo": -12.61395263671875,
+        "data_compra": "2024-10-17"
+    },
+    {
+        "data_venda": "2024-12-09",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 141.66000366210938,
+        "preco_venda": 130.8699951171875,
+        "lucro_prejuizo": -10.790008544921875,
+        "data_compra": "2024-11-05"
+    },
+    {
+        "data_venda": "2024-12-10",
+        "simbolo": "WAB",
+        "quantidade_vendida": 1,
+        "preco_compra": 8.550271987915039,
+        "preco_venda": 10.420000076293944,
+        "lucro_prejuizo": 1.8697280883789045,
+        "data_compra": "2024-11-14"
+    },
+    {
+        "data_venda": "2024-12-11",
+        "simbolo": "MPWR",
+        "quantidade_vendida": 1,
+        "preco_compra": 54.97999954223633,
+        "preco_venda": 52.09999847412109,
+        "lucro_prejuizo": -2.8800010681152415,
+        "data_compra": "2024-11-25"
+    },
+    {
+        "data_venda": "2024-12-12",
+        "simbolo": "STT",
+        "quantidade_vendida": 1,
+        "preco_compra": 138.8464813232422,
+        "preco_venda": 126.39701080322266,
+        "lucro_prejuizo": -12.449470520019531,
+        "data_compra": "2024-11-15"
+    },
+    {
+        "data_venda": "2024-12-13",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 10.489999771118164,
+        "preco_venda": 9.899999618530272,
+        "lucro_prejuizo": -0.5900001525878924,
+        "data_compra": "2024-11-22"
+    },
+    {
+        "data_venda": "2024-12-16",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 10.390000343322754,
+        "preco_venda": 9.84000015258789,
+        "lucro_prejuizo": -0.5500001907348633,
+        "data_compra": "2024-11-26"
+    },
+    {
+        "data_venda": "2024-12-17",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 12,
+        "preco_compra": 10.254487991333008,
+        "preco_venda": 9.729999542236328,
+        "lucro_prejuizo": -6.293861389160156,
+        "data_compra": "2024-08-01"
+    },
+    {
+        "data_venda": "2024-12-17",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 10.274022102355955,
+        "preco_venda": 9.729999542236328,
+        "lucro_prejuizo": -0.5440225601196271,
+        "data_compra": "2024-08-02"
+    },
+    {
+        "data_venda": "2024-12-17",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 10.244722366333008,
+        "preco_venda": 9.729999542236328,
+        "lucro_prejuizo": -0.5147228240966797,
+        "data_compra": "2024-08-06"
+    },
+    {
+        "data_venda": "2024-12-17",
+        "simbolo": "AFL",
+        "quantidade_vendida": 2,
+        "preco_compra": 109.1865234375,
+        "preco_venda": 102.75,
+        "lucro_prejuizo": -12.873046875,
+        "data_compra": "2024-11-14"
+    },
+    {
+        "data_venda": "2024-12-17",
+        "simbolo": "AES",
+        "quantidade_vendida": 11,
+        "preco_compra": 13.387614250183104,
+        "preco_venda": 12.66901397705078,
+        "lucro_prejuizo": -7.904603004455566,
+        "data_compra": "2024-12-09"
+    },
+    {
+        "data_venda": "2024-12-17",
+        "simbolo": "AES",
+        "quantidade_vendida": 1,
+        "preco_compra": 13.426989555358888,
+        "preco_venda": 12.66901397705078,
+        "lucro_prejuizo": -0.757975578308109,
+        "data_compra": "2024-12-10"
+    },
+    {
+        "data_venda": "2024-12-17",
+        "simbolo": "AES",
+        "quantidade_vendida": 4,
+        "preco_compra": 13.377769470214844,
+        "preco_venda": 12.66901397705078,
+        "lucro_prejuizo": -2.835021972656257,
+        "data_compra": "2024-12-11"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "AFL",
+        "quantidade_vendida": 3,
+        "preco_compra": 107.3846664428711,
+        "preco_venda": 100.37000274658205,
+        "lucro_prejuizo": -21.043991088867145,
+        "data_compra": "2024-09-19"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "AFL",
+        "quantidade_vendida": 1,
+        "preco_compra": 107.43444061279295,
+        "preco_venda": 100.37000274658205,
+        "lucro_prejuizo": -7.064437866210909,
+        "data_compra": "2024-09-20"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 10.132990837097168,
+        "preco_venda": 9.4399995803833,
+        "lucro_prejuizo": -0.6929912567138672,
+        "data_compra": "2024-11-01"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 10.07373332977295,
+        "preco_venda": 9.4399995803833,
+        "lucro_prejuizo": -0.6337337493896484,
+        "data_compra": "2024-11-06"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "AFL",
+        "quantidade_vendida": 3,
+        "preco_compra": 106.95660400390624,
+        "preco_venda": 100.37000274658205,
+        "lucro_prejuizo": -19.75980377197257,
+        "data_compra": "2024-11-07"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 5,
+        "preco_compra": 10.083609580993652,
+        "preco_venda": 9.4399995803833,
+        "lucro_prejuizo": -3.218050003051758,
+        "data_compra": "2024-11-07"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "AFL",
+        "quantidade_vendida": 9,
+        "preco_compra": 107.7828598022461,
+        "preco_venda": 100.37000274658205,
+        "lucro_prejuizo": -66.71571350097643,
+        "data_compra": "2024-11-08"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 9,
+        "preco_compra": 10.093485832214355,
+        "preco_venda": 9.4399995803833,
+        "lucro_prejuizo": -5.881376266479492,
+        "data_compra": "2024-11-08"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "VST",
+        "quantidade_vendida": 1,
+        "preco_compra": 282.67999267578125,
+        "preco_venda": 264.8900146484375,
+        "lucro_prejuizo": -17.78997802734375,
+        "data_compra": "2024-11-14"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 2,
+        "preco_compra": 10.053980827331545,
+        "preco_venda": 9.4399995803833,
+        "lucro_prejuizo": -1.227962493896488,
+        "data_compra": "2024-11-14"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "OTIS",
+        "quantidade_vendida": 2,
+        "preco_compra": 112.5881118774414,
+        "preco_venda": 104.7724609375,
+        "lucro_prejuizo": -15.631301879882812,
+        "data_compra": "2024-11-26"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "MMM",
+        "quantidade_vendida": 1,
+        "preco_compra": 133.52999877929688,
+        "preco_venda": 125.52999877929688,
+        "lucro_prejuizo": -8.0,
+        "data_compra": "2024-11-29"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "AES",
+        "quantidade_vendida": 5,
+        "preco_compra": 13.22026824951172,
+        "preco_venda": 12.304791450500488,
+        "lucro_prejuizo": -4.577383995056161,
+        "data_compra": "2024-12-04"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "AES",
+        "quantidade_vendida": 1,
+        "preco_compra": 13.082454681396484,
+        "preco_venda": 12.304791450500488,
+        "lucro_prejuizo": -0.7776632308959961,
+        "data_compra": "2024-12-05"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "AMD",
+        "quantidade_vendida": 1,
+        "preco_compra": 130.8699951171875,
+        "preco_venda": 121.41000366210938,
+        "lucro_prejuizo": -9.459991455078125,
+        "data_compra": "2024-12-09"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "AES",
+        "quantidade_vendida": 9,
+        "preco_compra": 13.308863639831545,
+        "preco_venda": 12.304791450500488,
+        "lucro_prejuizo": -9.036649703979508,
+        "data_compra": "2024-12-12"
+    },
+    {
+        "data_venda": "2024-12-18",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.989999771118164,
+        "preco_venda": 9.4399995803833,
+        "lucro_prejuizo": -0.5500001907348633,
+        "data_compra": "2024-12-12"
+    },
+    {
+        "data_venda": "2024-12-19",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.899999618530272,
+        "preco_venda": 9.399999618530272,
+        "lucro_prejuizo": -0.5,
+        "data_compra": "2024-12-13"
+    },
+    {
+        "data_venda": "2024-12-30",
+        "simbolo": "WDAY",
+        "quantidade_vendida": 3,
+        "preco_compra": 90.73999786376952,
+        "preco_venda": 85.83000183105469,
+        "lucro_prejuizo": -14.729988098144489,
+        "data_compra": "2024-11-15"
+    },
+    {
+        "data_venda": "2024-12-30",
+        "simbolo": "AMCR",
+        "quantidade_vendida": 1,
+        "preco_compra": 9.84000015258789,
+        "preco_venda": 9.34000015258789,
+        "lucro_prejuizo": -0.5,
+        "data_compra": "2024-12-16"
+    }
+]
