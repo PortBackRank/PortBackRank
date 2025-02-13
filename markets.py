@@ -1,3 +1,4 @@
+import os
 import time
 from typing import List
 import pandas as pd
@@ -40,6 +41,66 @@ def read_symbols(file_path):
 class MarketData:
     """Gerenciamento de dados dos mercados configurados em MARKETS."""
 
+    def __init__(self, file_path: str = None):
+        """
+            Inicializa a instância de MarketData a partir de uma sigla de mercado ou caminho de arquivo.
+
+            O parâmetro 'file_path' pode ser:
+            1. Uma **sigla de mercado** (ex: 'IBOV', 'IFIX', etc.) que corresponde a um mercado existente em MARKETS.
+            2. Um **caminho de arquivo** (ex: 'assets/IBOVQuad.csv') que será utilizado para identificar o mercado
+               correspondente e, caso não exista, o mercado será criado dinamicamente.
+
+            A sigla de mercado é utilizada para buscar a configuração já existente no dicionário MARKETS.
+            Caso seja fornecido um caminho de arquivo, a função tentará identificar o mercado associado ao arquivo
+            e criá-lo caso não exista.
+
+            Parâmetros:
+            file_path (str, opcional): O caminho do arquivo ou a sigla do mercado. Se não for fornecido, o valor padrão é None.
+
+            Exceções:
+            ValueError: Levanta um erro se o parâmetro 'file_path' for None ou inválido.
+
+            Exemplos:
+            # Usando uma sigla de mercado (ex: 'IBOV')
+            market_ibov = MarketData("IBOV")
+
+            # Usando um caminho de arquivo (ex: 'assets/IBOVQuad.csv')
+            market_ibov_file = MarketData("assets/IBOVQuad.csv")
+        """
+        self.file_path = file_path
+        self.market = self.from_file_path(file_path)
+        if self.market is None:
+            raise ValueError(
+                "O parâmetro 'file_path' ou 'market' precisa ser fornecido!")
+
+    @classmethod
+    def from_file_path(cls, file_path: str):
+        """Identifica o mercado pelo arquivo ou pela sigla e cria dinamicamente caso não exista."""
+        if file_path is None:
+            raise ValueError(
+                "É necessário fornecer um 'file_path' ou uma sigla de mercado válida.")
+
+        market = None
+        if file_path.upper() in MARKETS:
+            market = file_path.upper()
+        else:
+            file_name = os.path.basename(file_path)
+            for key, config in MARKETS.items():
+                if os.path.basename(config["source_file"]).lower() == file_name.lower():
+                    market = key
+                    break
+
+        if market is None:
+            market = file_name.replace(".csv", "").upper()
+            MARKETS[market] = {
+                "cache_file": f"recent_assets_{market.lower()}.json",
+                "sub_dir": market.lower(),
+                "source_file": file_path
+            }
+
+        cls.list_recent_symbols(market)
+        return market
+
     @classmethod
     def download_data(cls, market: str):
         """Carrega e processa os dados do mercado definido."""
@@ -60,8 +121,20 @@ class MarketData:
         return {market: symbols}
 
     @classmethod
-    def list_recent_symbols(cls, market: str, force_update=False):
-        """Lista os ativos salvos no cache de um mercado."""
+    def list_recent_symbols(cls, market: str = None, force_update=False):
+        """Lista os ativos salvos no cache de um mercado.
+
+        Quando chamado na instância, o parâmetro 'market' é opcional e será usado o valor da instância.
+        Quando chamado na classe, o parâmetro 'market' é obrigatório.
+        """
+        # if market is None and hasattr(cls, 'market'):
+        #     market = cls.market
+        #     print(f"Usando mercado {market} da instância.")
+
+        if market is None:
+            raise ValueError(
+                "É necessário fornecer o 'market' ou a instância deve ser usada.")
+
         if market not in MARKETS:
             raise ValueError(
                 f"Mercado inválido. Opções disponíveis: {list(MARKETS.keys())}")
@@ -140,7 +213,7 @@ def list_recent_symbols(market: str, force_update=False):
 
 
 def teste():
-    data = MarketData()
+    data = MarketData("assets/s&p500.csv")
     symbols_ibra = data.list_recent_symbols("SP500", force_update=True)
     print(len(symbols_ibra))
 

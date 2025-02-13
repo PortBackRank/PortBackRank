@@ -13,7 +13,7 @@ import yfinance as yf
 from tqdm import tqdm
 from files import open_dataframe, save_dataframe, save_json
 from b3 import update_symbols, get_symbol_list
-from markets import list_recent_symbols
+from markets import MarketData
 
 SUB_DIR_HIST = "historical"
 
@@ -23,30 +23,38 @@ class Yahoo:
     subdir = SUB_DIR_HIST
 
     @classmethod
+    def _save_asset_data(cls, asset: str, asset_data) -> None:
+        """Save asset data to JSON and CSV files if data is available."""
+        if asset_data.empty:
+            return
+
+        asset_data_reset = asset_data.reset_index()
+        asset_data_reset['Date'] = asset_data_reset['Date'].astype(str)
+        data_dict = asset_data_reset.to_dict(orient='records')
+
+        save_json(f"{asset}.json", data_dict, cls.subdir)
+        save_dataframe(f"{asset}.csv", asset_data_reset, cls.subdir)
+
+    @classmethod
+    def download_history(cls, asset: str) -> None:
+        """Download historical data for a single asset."""
+        asset_data = yf.Ticker(asset).history(period="max")
+        cls._save_asset_data(asset, asset_data)
+
+    @classmethod
     def download_histories(cls, assets: List[str]) -> None:
-        '''Download historical data for all assets in the list'''
+        """Download historical data for all assets in the list concurrently."""
         tickers = yf.Tickers(assets)
+        assets_list = list(tickers.tickers.keys())
 
-        with tqdm(total=len(tickers.tickers.keys()), desc="Downloading data", unit="asset") as pbar:
-            def download_asset_data(asset):
-                asset_data = tickers.tickers[asset].history(period="max")
-
-                if not asset_data.empty:
-                    asset_data_reset = asset_data.reset_index()
-                    asset_data_reset['Date'] = asset_data_reset['Date'].astype(
-                        str)
-                    data_dict = asset_data_reset.to_dict(orient='records')
-
-                    json_file_name = f"{asset}.json"
-                    save_json(json_file_name, data_dict, cls.subdir)
-
-                    csv_file_name = f"{asset}.csv"
-                    save_dataframe(csv_file_name, asset_data_reset, cls.subdir)
-
+        with tqdm(total=len(assets_list), desc="Downloading data", unit="asset") as pbar:
+            def download_and_save(asset):
+                cls._save_asset_data(
+                    asset, tickers.tickers[asset].history(period="max"))
                 pbar.update(1)
 
             with concurrent.futures.ThreadPoolExecutor() as executor:
-                executor.map(download_asset_data, tickers.tickers.keys())
+                executor.map(download_and_save, assets_list)
 
     @classmethod
     def get_asset_data(cls, assets: List[str]) -> List[pd.DataFrame]:
@@ -79,7 +87,12 @@ class Yahoo:
     def get_asset_data_by_name(cls, asset: str) -> pd.DataFrame:
         '''Get historical data for a specific asset'''
         file_name = f"{asset}.csv"
-        return cls.load_dataframe(file_name)
+        try:
+            return cls.load_dataframe(file_name)
+        except FileNotFoundError:
+            print(f"File {file_name} not found. Downloading data for {asset}.")
+            cls.download_history(asset)
+            return cls.load_dataframe(file_name)
 
 
 class Data(Yahoo):
@@ -188,7 +201,7 @@ class Data(Yahoo):
 class MemData:
     '''In-memory data management for assets.'''
 
-    def __init__(self, interval: List[str]):
+    def __init__(self, interval: List[str], market_identifier: str = None):
         self.history_data: Dict[str, pd.DataFrame] = {}
         self.info_data: Dict[str, pd.DataFrame] = {}
         self.data = Data()
@@ -196,9 +209,13 @@ class MemData:
         # DESCOMENTE PARA USAR B3
         # self.assets = self.data.list_symbols()
 
-        # PERMITE USAR SP500, IBOX, IBXX, etc
-        self.assets = list_recent_symbols("SP500")
+        if market_identifier is None:  # POR ENQUANTO
+            market_identifier = "IBRA"
 
+        market_data = MarketData(market_identifier)
+
+        self.assets = market_data.list_recent_symbols(market_data.market)
+        print(f"Assets: {self.assets}")
         start_date, end_date = interval
         self.load(start_date, end_date)
 
@@ -283,17 +300,18 @@ def teste():
 def teste_sp500():
     '''Test function'''
     print('--------------Listando ativos----------------')
-    assets = list_recent_symbols("SP500")
+    market_data = MarketData("SP500")
+    assets = market_data.list_recent_symbols(market_data.market)
     print(assets)
 
-    # print('--------Baixando histórico de ativos---------')
-    Data.download_history(assets)
-    print('--------------Buscando histórico de 10 ativos----------------')
-    print(Data.fetch_history(assets=assets[:5]))
+    # # print('--------Baixando histórico de ativos---------')
+    # Data.download_history(assets)
+    # print('--------------Buscando histórico de 10 ativos----------------')
+    # print(Data.fetch_history(assets=assets[:5]))
 
-    print('--------------Buscando informação de ativos----------------')
-    print(Data.get_asset_info(assets[:10]))
-    print(Data.get_asset_info("AZUL4.SA"))
+    # print('--------------Buscando informação de ativos----------------')
+    # print(Data.get_asset_info(assets[:10]))
+    # print(Data.get_asset_info("AZUL4.SA"))
 
 
 def teste_mem_data():
@@ -320,4 +338,4 @@ def teste_mem_data():
 
 
 if __name__ == "__main__":
-    teste_mem_data()
+    teste_sp500()

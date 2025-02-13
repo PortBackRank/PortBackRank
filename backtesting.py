@@ -30,19 +30,20 @@ def save_results(results):
 class Backtesting:
     """ Classe para realizar backtesting de uma estratégia de investimento. """
 
-    def __init__(self, ranker_cls, capital: float, interval: List[str]):
+    def __init__(self, ranker_cls, capital: float, interval: List[str], market_identifier: str = None):
         """
         Inicializa o backtesting com as informações básicas.
 
         :param ranker_cls: Classe do Ranker para criar instâncias.
         :param capital: Capital inicial para todas as simulações.
         :param interval: Lista com a data inicial e final da simulação.
+        :param market_identifier: Sigla ou caminho dos ativos a serem usados.
         """
         self.ranker_cls = ranker_cls
         self.capital = capital
         self.interval = interval
         self.runner_cls = Runner
-        self.data = MemData(interval)
+        self.data = MemData(interval, market_identifier)
 
     def run(
         self,
@@ -170,7 +171,8 @@ def test_bt_with_ma():
 
     parameters = {"window": [[9, 21], [20, 50], [50, 200]]}
 
-    backtester = Backtesting(MARanker, capital=10000, interval=interval)
+    backtester = Backtesting(MARanker, capital=10000,
+                             interval=interval, market_identifier="IBOV")  # IBOV OU assets/hhh.csv
 
     parameter_grid = {
         'profit': [0.1, 0.15],
