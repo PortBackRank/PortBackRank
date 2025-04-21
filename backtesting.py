@@ -37,7 +37,15 @@ class Backtesting:
         :param ranker_cls: Classe do Ranker para criar instâncias.
         :param capital: Capital inicial para todas as simulações.
         :param interval: Lista com a data inicial e final da simulação.
-        :param market_identifier: Sigla ou caminho dos ativos a serem usados.
+        :param market_identifier: Sigla ou caminho dos ativos a serem usados(assets/IBOVQuad.csv OU IBOV).
+
+        O parâmetro 'market_identifier' pode ser:
+        1. Uma **sigla de mercado** (ex: 'IBOV', 'IFIX', etc.) que corresponde a um mercado existente em MARKETS.
+        2. Um **caminho de arquivo** (ex: 'assets/IBOVQuad.csv') que será utilizado para identificar o mercado
+        correspondente e, caso não exista, o mercado será criado dinamicamente.
+
+        EXEMPLO:
+        backtester = Backtesting(MARanker, capital=10000, interval=["2024-01-01", "2024-12-31"], market_identifier="SP500")
         """
         self.ranker_cls = ranker_cls
         self.capital = capital
@@ -172,7 +180,7 @@ def test_bt_with_ma():
     parameters = {"window": [[9, 21], [20, 50], [50, 200]]}
 
     backtester = Backtesting(MARanker, capital=10000,
-                             interval=interval, market_identifier="IBOV")  # IBOV OU assets/hhh.csv
+                             interval=interval, market_identifier="SP500")  # IBOV OU assets/hhh.csv
 
     parameter_grid = {
         'profit': [0.1, 0.15],
@@ -183,7 +191,7 @@ def test_bt_with_ma():
     results = backtester.run(
         parameter_grid, ranker_grid=parameters, n_jobs=-1)
 
-    generate_performance_plot()
+    generate_performance_plot(market_symbol="SP500")
 
     print(results)
 

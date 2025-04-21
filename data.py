@@ -215,41 +215,63 @@ class MemData:
         market_data = MarketData(market_identifier)
 
         self.assets = market_data.list_recent_symbols(market_data.market)
-        print(f"Assets: {self.assets}")
+
         start_date, end_date = interval
         self.load(start_date, end_date)
+
+    # def load(self, start_date: str, end_date: str):
+    #     """
+    #     Loads historical data and asset information into memory.
+
+    #     :param start_date: Start date for the data.
+    #     :param end_date: End date for the data.
+    #     """
+    #     if end_date is None:
+    #         end_date = datetime.today().strftime('%Y-%m-%d')
+
+    #     print(f"Carregando dados de {start_date} até {end_date}...")
+
+    #     historical_data = self.data.get_history_interval(
+    #         assets=self.assets, start_date=start_date, end_date=end_date)
+
+    #     dias = 0
+    #     for asset_data in historical_data:
+    #         dias_atual = len(asset_data["data"])
+    #         dias = max(dias, dias_atual)
+
+    #     threshold = dias * 0.95
+
+    #     self.assets = [asset_data["symbol"] for asset_data in historical_data
+    #                    if len(asset_data["data"]) >= threshold]
+
+    #     filtered_info_data = self.data.get_asset_info(self.assets)
+    #     self.info_data = {asset: data for asset,
+    #                       data in zip(self.assets, filtered_info_data)}
+
+    #     self.history_data = {asset_data["symbol"]: asset_data["data"] for asset_data in historical_data
+    #                          if asset_data["symbol"] in self.assets}
 
     def load(self, start_date: str, end_date: str):
         """
         Loads historical data and asset information into memory.
 
-        :param start_date: Start date for the data.
-        :param end_date: End date for the data.
+        :param assets: List of assets to load. If empty, loads all assets.
+        :param data: Instance of the Data class to fetch the data.
         """
+
         if end_date is None:
             end_date = datetime.today().strftime('%Y-%m-%d')
-
-        print(f"Carregando dados de {start_date} até {end_date}...")
 
         historical_data = self.data.get_history_interval(
             assets=self.assets, start_date=start_date, end_date=end_date)
 
-        dias = 0
         for asset_data in historical_data:
-            dias_atual = len(asset_data["data"])
-            dias = max(dias, dias_atual)
+            asset = asset_data["symbol"]
+            self.history_data[asset] = asset_data["data"]
 
-        threshold = dias * 0.95
-
-        self.assets = [asset_data["symbol"] for asset_data in historical_data
-                       if len(asset_data["data"]) >= threshold]
-
-        filtered_info_data = self.data.get_asset_info(self.assets)
-        self.info_data = {asset: data for asset,
-                          data in zip(self.assets, filtered_info_data)}
-
-        self.history_data = {asset_data["symbol"]: asset_data["data"] for asset_data in historical_data
-                             if asset_data["symbol"] in self.assets}
+        info_data = self.data.get_asset_info(self.assets)
+        for asset, data in zip(self.assets, info_data):
+            self.info_data[asset] = data
 
         print("Data loaded successfully.")
 
