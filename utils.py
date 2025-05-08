@@ -1,5 +1,8 @@
-import os
 import json
+import os
+from datetime import datetime
+
+import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -32,7 +35,7 @@ def save_json(filename, data):
         json.dump(data, file, indent=4, default=convert_numpy)
 
 
-def generate_performance_plot(directory: str = "results", output_prefix: str = "performance_comparison"):
+def generate_performance_plot(directory: str = "results", output_prefix: str = "performance_comparison", market_symbol: str = "IBrA"):
     """
     Gera um gráfico contendo todas as linhas das simulações a partir dos arquivos JSON na pasta `directory`.
 
@@ -40,51 +43,106 @@ def generate_performance_plot(directory: str = "results", output_prefix: str = "
     :param output_prefix: Prefixo para o nome do arquivo de saída do gráfico.
     """
 
-    plt.figure(figsize=(10, 6))
+    INITIAL_VALUE = 10_000
+    all_percentages = []
+    dates = []
 
+    color_palette = plt.cm.get_cmap('tab20').colors[:12]
+
+    plt.figure(figsize=(12, 6))
+
+    color_index = 0
     for filename in os.listdir(directory):
-        if filename.endswith(".json"):
+        if filename.endswith(".json") and not filename.startswith("sp500") and not filename.startswith("ibra") and not filename.startswith("ibov"):
             try:
                 with open(os.path.join(directory, filename), "r") as timeline_file:
                     timeline = json.load(timeline_file)
 
-                    # Extrair parâmetros do nome do arquivo
                     params = filename.replace(
                         "timeline_", "").replace(".json", "")
                     labels = params.split("_")
+
+                    if len(labels) < 5:
+                        print(
+                            f"Formato de nome de arquivo inesperado: {filename}")
+                        continue
+
                     profit = labels[0].replace("profit", "")
                     loss = labels[1].replace("loss", "")
                     div = labels[2].replace("div", "")
                     short = labels[3].replace("short", "")
                     long = labels[4].replace("long", "")
 
-                    allocation_over_time = []
-                    for entry in timeline:
-                        allocation = sum(
-                            item['quantidade'] * item['preco_compra'] for item in entry['portfolio']
-                        )
-                        allocation_over_time.append(allocation)
+                    allocation_over_time = [
+                        entry["balance"] + sum(item["quantidade"] * item["preco_compra"]
+                                               for item in entry["portfolio"])
+                        for entry in timeline
+                    ]
 
-                    interval = range(len(allocation_over_time))
+                    if not allocation_over_time:
+                        continue
 
-                    plt.plot(interval[2:], allocation_over_time[2:], label=f"Profit={profit}, Loss={loss}, "
-                             f"Div={div}, Short={short}, Long={long}")
+                    allocation_percent = [
+                        (value - INITIAL_VALUE) / INITIAL_VALUE * 100 for value in allocation_over_time]
+                    all_percentages.extend(allocation_percent)
+
+                    if not dates:
+                        dates = [datetime.strptime(
+                            entry["date"], "%Y-%m-%d") for entry in timeline]
+
+                    plt.plot(dates, allocation_percent, label=f"Profit={profit}, Loss={loss}, "
+                             f"Div={div}, Short={short}, Long={long}", color=color_palette[color_index])
+
+                    color_index = (color_index + 1) % len(color_palette)
 
             except FileNotFoundError:
                 print(f"Arquivo não encontrado: {filename}")
                 continue
 
-    plt.title("Alocação em Ativos por Configuração")
-    plt.xlabel("Período")
-    plt.ylabel("Valor (R$)")
-    plt.legend(loc='upper left', fontsize=8)
+    sp500_values = []
+    symbol = market_symbol.lower()
+    print(symbol)
+    try:
+        with open(os.path.join(directory, symbol+".json"), "r") as sp500_file:
+            sp500_data = json.load(sp500_file)
+            sp500_values = [entry["value"] for entry in sp500_data]
+            sp500_dates = [datetime.strptime(
+                entry["date"], "%Y-%m-%d") for entry in sp500_data]
+
+            sp500_initial = sp500_values[0]
+            sp500_percent = [(value - sp500_initial) /
+                             sp500_initial * 100 for value in sp500_values]
+
+            plt.plot(sp500_dates, sp500_percent, label=market_symbol,
+                     color="black", linestyle="dashed", linewidth=2)
+
+            all_percentages.extend(sp500_percent)
+    except FileNotFoundError:
+        print("Arquivo de dados do S&P 500 não encontrado. Linha não adicionada.")
+
+    if all_percentages:
+        y_min = min(all_percentages)
+        y_max = max(all_percentages)
+        y_range = y_max - y_min
+        margin = y_range * 0.10
+        plt.ylim(y_min - margin, y_max + margin)
+
+    plt.gca().xaxis.set_major_locator(mdates.MonthLocator())
+    plt.gca().xaxis.set_major_formatter(mdates.DateFormatter("%m/%Y"))
+    plt.xticks(rotation=45, fontsize=12)
+
+    plt.xlabel("Período", fontsize=12)
+    plt.ylabel("Variação Percentual (%)", fontsize=14)
+
+    plt.axhline(0, color='black', linestyle='--', linewidth=1)
+    plt.legend(loc='upper left', fontsize=8.5)
     plt.grid(True)
     plt.tight_layout()
 
-    plt.savefig(f"results/{output_prefix}.png", format="png")
+    plt.savefig(f"{directory}/{output_prefix}.png", format="png")
     plt.show()
 
     plt.close()
 
-
-# generate_performance_plot()
+# NAO FUNCIONA MUITO BEM O GENERATE
+# generate_performance_plot(market_symbol="IBrA")
