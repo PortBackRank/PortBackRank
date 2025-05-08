@@ -159,7 +159,10 @@ class Data(Yahoo):
 
         if not historical_data:
             print("Empty historical data")
-            return []
+            cls.update_symbols(update=True)
+            historical_data = cls.fetch_history(assets=assets)
+            if not historical_data:
+                return []
 
         result = []
 
@@ -215,41 +218,12 @@ class MemData:
         market_data = MarketData(market_identifier)
 
         self.assets = market_data.list_recent_symbols(market_data.market)
+        if not self.assets:
+            print(f"Nenhum ativo encontrado para {market_identifier}.")
+            return
 
         start_date, end_date = interval
         self.load(start_date, end_date)
-
-    # def load(self, start_date: str, end_date: str):
-    #     """
-    #     Loads historical data and asset information into memory.
-
-    #     :param start_date: Start date for the data.
-    #     :param end_date: End date for the data.
-    #     """
-    #     if end_date is None:
-    #         end_date = datetime.today().strftime('%Y-%m-%d')
-
-    #     print(f"Carregando dados de {start_date} até {end_date}...")
-
-    #     historical_data = self.data.get_history_interval(
-    #         assets=self.assets, start_date=start_date, end_date=end_date)
-
-    #     dias = 0
-    #     for asset_data in historical_data:
-    #         dias_atual = len(asset_data["data"])
-    #         dias = max(dias, dias_atual)
-
-    #     threshold = dias * 0.95
-
-    #     self.assets = [asset_data["symbol"] for asset_data in historical_data
-    #                    if len(asset_data["data"]) >= threshold]
-
-    #     filtered_info_data = self.data.get_asset_info(self.assets)
-    #     self.info_data = {asset: data for asset,
-    #                       data in zip(self.assets, filtered_info_data)}
-
-    #     self.history_data = {asset_data["symbol"]: asset_data["data"] for asset_data in historical_data
-    #                          if asset_data["symbol"] in self.assets}
 
     def load(self, start_date: str, end_date: str):
         """
@@ -322,11 +296,10 @@ def teste():
 def teste_sp500():
     '''Test function'''
     print('--------------Listando ativos----------------')
-    market_data = MarketData("SP500")
-    assets = market_data.list_recent_symbols(market_data.market)
+    market_data = MarketData("IFIX")
+    assets = market_data.list_recent_symbols(
+        market_data.market, force_update=True)
     print(assets)
-
-    # # print('--------Baixando histórico de ativos---------')
     # Data.download_history(assets)
     # print('--------------Buscando histórico de 10 ativos----------------')
     # print(Data.fetch_history(assets=assets[:5]))
@@ -338,7 +311,7 @@ def teste_sp500():
 
 def teste_mem_data():
     interval = ["2024-01-10", "2024-11-10"]
-    mem_data = MemData(interval)
+    mem_data = MemData(interval, market_identifier="CUSTOM3.csv")
 
     print("Todos os dados históricos:")
     todas_info = mem_data.get_all_history()
@@ -352,12 +325,15 @@ def teste_mem_data():
     print("Histórico de um ativo que existe em sp500:")
     print(todas_info.get('AAPL'))
 
-    print("informações de ativos:")
+    print("Histórico de um ativo que existe em ibra:")
+    print(todas_info.get('B3SA3.SA'))
+
+    print("informações de ativos ---- descomentar :")
     # print(mem_data.get_assets())
 
-    print("Todas as informações:")
+    print("Todas as informações----- descomentar:")
     # print(mem_data.get_all_info())
 
 
 if __name__ == "__main__":
-    teste_sp500()
+    teste_mem_data()
