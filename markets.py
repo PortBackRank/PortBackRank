@@ -23,16 +23,27 @@ SUB_DIR_HIST = "historical"
 def read_symbols(file_path):
     """Lê os códigos das ações e retorna uma lista."""
     try:
-        df = pd.read_csv(file_path, encoding="ISO-8859-1",
-                         sep=None, engine="python")
+        if "assets" not in file_path:
+            file_path = os.path.join("assets/", file_path)
+
+        df = None
+        if "SP500" in file_path:
+            df = pd.read_csv(file_path, encoding="ISO-8859-1",
+                             sep=None, engine="python")
+        else:
+            df = pd.read_csv(file_path, encoding="ISO-8859-1", sep=",")
+
         df.columns = df.columns.str.strip()
 
-        if "Código" in df.columns:
-            return df["Código"].dropna().tolist()
+        if "Codigo" in df.columns:
+            return df["Codigo"].dropna().tolist()
         elif "Symbol" in df.columns:
             return df["Symbol"].dropna().tolist()
-        raise KeyError(
-            f"A coluna 'Código' não foi encontrada no arquivo {file_path}. Verifique os cabeçalhos.")
+        else:
+            return df.iloc[1:, 0].dropna().tolist()
+
+        # raise KeyError(
+        #     f"A coluna 'Código' não foi encontrada no arquivo {file_path}. Verifique os cabeçalhos.")
     except Exception as e:
         print(f"Erro ao ler {file_path}: {e}")
         return []
@@ -68,6 +79,7 @@ class MarketData:
             market_ibov_file = MarketData("assets/IBOVQuad.csv")
         """
         self.file_path = file_path
+        print(f"Inicializando MarketData com file_path: {file_path}")
         self.market = self.from_file_path(file_path)
         if self.market is None:
             raise ValueError(
@@ -142,10 +154,12 @@ class MarketData:
         config = MARKETS[market]
         item_list = open_json(config["cache_file"], config["sub_dir"])
 
-        if item_list is None or force_update:
+        if force_update or not item_list:
             print(f"Baixando dados para {market}...")
-            cls.download_data(market)
-            cls.download_info(market)
+            assets = cls.download_data(market)
+
+            if assets and market in assets:
+                cls.download_info(market)
 
         item_list = open_json(config["cache_file"], config["sub_dir"])
         return item_list
@@ -176,7 +190,8 @@ class MarketData:
     @classmethod
     def download_info(cls, market: str):
         """Baixa informações dos ativos de um mercado usando o Yahoo Finance."""
-        symbols = cls.list_recent_symbols(market)
+        config = MARKETS[market]
+        symbols = open_json(config["cache_file"], config["sub_dir"])
         if not symbols:
             print(f"Nenhum ativo encontrado para {market}.")
             return []
@@ -213,7 +228,7 @@ def list_recent_symbols(market: str, force_update=False):
 
 
 def teste():
-    data = MarketData("assets/s&p500.csv")
+    data = MarketData("s&p500.csv")
     symbols_ibra = data.list_recent_symbols("SP500", force_update=True)
     print(len(symbols_ibra))
 
