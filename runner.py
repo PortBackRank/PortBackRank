@@ -35,27 +35,53 @@ class Runner:
 
         self.timeline = []
 
-    def single_run(self, interval: List[str], ranker_conf: Dict[str, float], capital: float) -> Dict:
+    def prepare_data(self, interval: List[str], ranker_conf: Dict[str, float], capital: float):
         """
-        Executa uma simulação para uma única configuração de ranker, 
-        mantendo o portfólio com a quantidade e o preço de compra dos ativos.
-
-        :param interval: Lista com a data inicial e final da simulação.
-        :param ranker_conf: Configuração do ranker a ser utilizada.
-        :param capital: Capital inicial.
-        :return: Estado final do portfólio.
+        Prepara o ambiente para uma nova simulação:
+        - inicializa o ranker
+        - reseta saldo, portfólio e logs
+        - pré-carrega históricos e infos em memória
+        - cria índice por data para acesso rápido
         """
+        # inicializa ranker com os parâmetros e dados
+        self._ranker_instance = self.ranker(parameters=ranker_conf, data=self.data)
 
-        ranker = self.ranker(parameters=ranker_conf, data=self.data)
-
-        start_date, end_date = interval
-
+        # reseta estados internos
         self.balance = capital
         self.__portfolio = []
-        shared_data = {}
-
+        self.timeline = []
         self.sell_log = []
         self.buy_log = []
+
+        # Pré-carrega históricos e infos (só uma vez)
+        self._all_history = self.data.get_all_history()
+        self._all_info = self.data.get_all_info()
+
+        # Pré-indexa históricos por data para acelerar acesso
+        self._history_by_date = {}
+        for simbolo, df in self._all_history.items():
+            # converte index para string no formato yyyy-mm-dd
+            df = df.copy()
+            df['date_str'] = df.index.strftime('%Y-%m-%d')
+            # cria dicionário data->linha
+            self._history_by_date[simbolo] = {
+                d: row for d, row in df.set_index('date_str').iterrows()
+            }
+
+        # guarda intervalo
+        self._interval = interval
+
+
+    def single_run(self, interval: List[str], ranker_conf: Dict[str, float], capital: float) -> Dict:
+        """
+        Executa uma simulação para uma única configuração de ranker,
+        mantendo o portfólio com a quantidade e o preço de compra dos ativos.
+        """
+        # chama prepare_data
+        self.prepare_data(interval, ranker_conf, capital)
+
+        start_date, end_date = interval
+        ranker = self._ranker_instance
 
         for date in pd.date_range(start_date, end_date).strftime('%Y-%m-%d'):
             self._sell(date)
@@ -81,25 +107,17 @@ class Runner:
         """
         Vende ativos que atingiram o percentual de lucro ou perda,
         respeitando a ordem FIFO e verificando o volume diário.
-
-        :param date: Data atual para verificar se algum ativo atendeu ao critério de venda.
         """
-        dados_historicos = self.data.get_all_history()
-
         historicos_ativos = {}
 
         for simbolo in [item['simbolo'] for item in self.__portfolio]:
-            historico = dados_historicos.get(simbolo)
-            if historico is not None and not historico.empty:
-                historico_data = historico.loc[
-                    historico.index.date == datetime.strptime(
-                        date, '%Y-%m-%d').date()
-                ]
-                if not historico_data.empty:
-                    historicos_ativos[simbolo] = {
-                        'preco_atual': historico_data['Close'].iloc[0],
-                        'volume_diario': historico_data['Volume'].iloc[0]
-                    }
+            # acesso direto ao histórico pré-indexado
+            day_row = self._history_by_date.get(simbolo, {}).get(date)
+            if day_row is not None:
+                historicos_ativos[simbolo] = {
+                    'preco_atual': day_row['Close'],
+                    'volume_diario': day_row['Volume']
+                }
 
         novos_portfolio = []
         for item in self.__portfolio:
@@ -150,44 +168,35 @@ class Runner:
         """
         Compra ativos com base no ranking, respeitando diversificação por setor
         e verificando o volume diário disponível.
-
-        :param date: Data atual para comprar ativos.
-        :param ranker: Instância do ranker a ser utilizado para definir os ativos.
         """
         ranked_symbols = ranker.rank(date)
-
         if not ranked_symbols:
             return
 
-        dados_historicos = self.data.get_all_history()
-        todas_infos = self.data.get_all_info()
+        dados_historicos = self._history_by_date
+        todas_infos = self._all_info
 
         total_portfolio_value = sum(
             item['preco_compra'] * item['quantidade'] for item in self.__portfolio
         )
 
         setor_percentual = {}
-
         if total_portfolio_value > 0:
             for item in self.__portfolio:
                 setor = item.get('sector')
                 preco_compra = item.get('preco_compra', 0)
                 quantidade = item.get('quantidade', 0)
-
                 if not setor:
-                    print(f"Setor não encontrado para o símbolo {
-                          item['simbolo']}.")
+                    print(f"Setor não encontrado para o símbolo {item['simbolo']}.")
                     continue
-
                 valor_item = preco_compra * quantidade
-
                 setor_percentual[setor] = setor_percentual.get(
                     setor, 0) + (valor_item / total_portfolio_value)
 
         balance_disponivel = self.balance
 
         for simbolo in ranked_symbols:
-            if balance_disponivel <= 2:  # Valor mínimo para comprar uma ação, mudar depois
+            if balance_disponivel <= 2:
                 break
 
             ativo_info = todas_infos.get(simbolo)
@@ -202,21 +211,12 @@ class Runner:
                 setor_percentual.get(setor, 0) * total_portfolio_value
             )
 
-            historico = dados_historicos.get(simbolo)
-            if historico is None or historico.empty:
+            day_row = dados_historicos.get(simbolo, {}).get(date)
+            if day_row is None:
                 continue
 
-            historico_data = historico.loc[
-                historico.index.date == datetime.strptime(
-                    date, '%Y-%m-%d').date()
-            ]
-
-            if historico_data.empty:
-                continue
-
-            preco_atual = historico_data['Close'].iloc[0]
-
-            volume_diario = historico_data['Volume'].iloc[0]
+            preco_atual = day_row['Close']
+            volume_diario = day_row['Volume']
 
             if pd.isna(preco_atual) or pd.isna(volume_diario):
                 continue

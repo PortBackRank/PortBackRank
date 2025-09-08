@@ -3,7 +3,7 @@ from ranker import MARanker
 
 
 def test_bt_with_ma():
-    interval = ["2024-01-01", "2024-06-30"]
+    interval = ["2024-03-01", "2024-07-01"]
 
     parameters = {"window": [[9, 21], [20, 50], [50, 200]]}
 

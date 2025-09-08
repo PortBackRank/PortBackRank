@@ -210,14 +210,16 @@ class MemData:
         self.data = Data()
 
         # DESCOMENTE PARA USAR B3
-        # self.assets = self.data.list_symbols()
+        self.assets = self.data.list_symbols()
 
-        if market_identifier is None:  # POR ENQUANTO
-            market_identifier = "IBRA"
+        #if market_identifier is None:  
+           # market_identifier = "IBRA"
 
-        market_data = MarketData(market_identifier)
+        #market_data = MarketData(market_identifier)
 
-        self.assets = market_data.list_recent_symbols(market_data.market)
+        #self.assets = market_data.list_recent_symbols(market_data.market, force_update=True)
+        print(f"Ativos disponíveis: {len(self.assets)}")
+        print(self.assets[:5])
         if not self.assets:
             print(f"Nenhum ativo encontrado para {market_identifier}.")
             return
@@ -311,7 +313,7 @@ def teste_sp500():
 
 def teste_mem_data():
     interval = ["2024-01-10", "2024-11-10"]
-    mem_data = MemData(interval, market_identifier="CUSTOM3.csv")
+    mem_data = MemData(interval, market_identifier="SP500")
 
     print("Todos os dados históricos:")
     todas_info = mem_data.get_all_history()
