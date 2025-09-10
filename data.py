@@ -204,7 +204,7 @@ class Data(Yahoo):
 class MemData:
     '''In-memory data management for assets.'''
 
-    def __init__(self, interval: List[str], market_identifier: str = None):
+    def __init__(self, interval: List[str], market_identifier = "SP500"):
         self.history_data: Dict[str, pd.DataFrame] = {}
         self.info_data: Dict[str, pd.DataFrame] = {}
         self.data = Data()

@@ -3,14 +3,14 @@ from ranker import MARanker
 
 
 def test_bt_with_ma():
-    interval = ["2024-03-01", "2024-07-01"]
+    interval = ["2024-01-01", "2024-12-31"]
 
     parameters = {"window": [[9, 21], [20, 50], [50, 200]]}
 
     # QUANDO VAI PASSAR UM MERCADO TEM ALGUNS PRÉ DEFINIDOS OU PASSA O CAMINHO DO CSV
     # "SP500" ou "custom_teste.csv"
     backtester = Backtesting(MARanker, capital=10000,
-                             interval=interval, market_identifier="custom_teste.csv")
+                             interval=interval, market_identifier="SP500")
 
     parameter_grid = {
         'profit': [0.1, 0.15],
