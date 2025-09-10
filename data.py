@@ -210,14 +210,14 @@ class MemData:
         self.data = Data()
 
         # DESCOMENTE PARA USAR B3
-        self.assets = self.data.list_symbols()
+        #self.assets = self.data.list_symbols()
 
         #if market_identifier is None:  
            # market_identifier = "IBRA"
 
-        #market_data = MarketData(market_identifier)
+        market_data = MarketData(market_identifier)
 
-        #self.assets = market_data.list_recent_symbols(market_data.market, force_update=True)
+        self.assets = market_data.list_recent_symbols(market_data.market, force_update=True)
         print(f"Ativos disponíveis: {len(self.assets)}")
         print(self.assets[:5])
         if not self.assets:

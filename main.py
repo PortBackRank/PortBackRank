@@ -1,16 +1,24 @@
 from backtesting import Backtesting
 from ranker import MARanker
-
+from data import Data        
+from markets import MarketData
 
 def test_bt_with_ma():
     interval = ["2024-01-01", "2024-12-31"]
 
     parameters = {"window": [[9, 21], [20, 50], [50, 200]]}
 
-    # QUANDO VAI PASSAR UM MERCADO TEM ALGUNS PRÉ DEFINIDOS OU PASSA O CAMINHO DO CSV
-    # "SP500" ou "custom_teste.csv"
-    backtester = Backtesting(MARanker, capital=10000,
-                             interval=interval, market_identifier="SP500")
+    market_data = MarketData("SP500")
+    assets = market_data.list_recent_symbols(market_data.market, force_update=True)
+
+    Data.download_history(assets)
+
+    backtester = Backtesting(
+        MARanker,
+        capital=10000,
+        interval=interval,
+        market_identifier="SP500"
+    )
 
     parameter_grid = {
         'profit': [0.1, 0.15],
@@ -18,8 +26,7 @@ def test_bt_with_ma():
         'diversification': [0.1, 0.2]
     }
 
-    results = backtester.run(
-        parameter_grid, ranker_grid=parameters, n_jobs=-1)
+    results = backtester.run(parameter_grid, ranker_grid=parameters, n_jobs=-1)
 
     print(results)
 
