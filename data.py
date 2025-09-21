@@ -217,7 +217,7 @@ class MemData:
 
         market_data = MarketData(market_identifier)
 
-        self.assets = market_data.list_recent_symbols(market_data.market, force_update=True)
+        self.assets = market_data.list_recent_symbols(market_data.market, force_update=False)
         print(f"Ativos disponíveis: {len(self.assets)}")
         print(self.assets[:5])
         if not self.assets:

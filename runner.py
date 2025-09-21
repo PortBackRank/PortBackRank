@@ -77,7 +77,6 @@ class Runner:
         Executa uma simulação para uma única configuração de ranker,
         mantendo o portfólio com a quantidade e o preço de compra dos ativos.
         """
-        # chama prepare_data
         self.prepare_data(interval, ranker_conf, capital)
 
         start_date, end_date = interval
