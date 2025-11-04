@@ -67,16 +67,19 @@ class Yahoo:
         return assets_data
 
     @classmethod
-    def get_info(cls, assets: List[str]) -> List[pd.DataFrame]:
-        '''Load information about one or more assets'''
-        info_data = []
+    def get_info(cls, assets: List[str]) -> Dict[str, pd.DataFrame]:
+        '''Load information about one or more assets.
+        Returns a mapping {symbol: DataFrame} and skips missing/empty files
+        without breaking alignment with the original symbol list.'''
+        info_map: Dict[str, pd.DataFrame] = {}
         history = cls()
         for asset in assets:
             file_name = f"{asset}_info.csv"
             asset_data = history.load_dataframe(file_name)
-            if not asset_data.empty:
-                info_data.append(asset_data)
-        return info_data
+            # Some loaders return None when the file does not exist.
+            if isinstance(asset_data, pd.DataFrame) and not asset_data.empty:
+                info_map[asset] = asset_data
+        return info_map
 
     @classmethod
     def load_dataframe(cls, file_name: str) -> pd.DataFrame:
@@ -85,14 +88,24 @@ class Yahoo:
 
     @classmethod
     def get_asset_data_by_name(cls, asset: str) -> pd.DataFrame:
-        '''Get historical data for a specific asset'''
+        '''Get historical data for a specific asset.
+        If the CSV is missing or empty, attempt to download and load again.'''
         file_name = f"{asset}.csv"
+        df = None
         try:
-            return cls.load_dataframe(file_name)
+            df = cls.load_dataframe(file_name)
         except FileNotFoundError:
-            print(f"File {file_name} not found. Downloading data for {asset}.")
+            df = None
+
+        # open_dataframe may return None instead of raising. Treat as missing.
+        if df is None or (isinstance(df, pd.DataFrame) and df.empty):
+            print(f"File {file_name} not found or empty. Downloading data for {asset}.")
             cls.download_history(asset)
-            return cls.load_dataframe(file_name)
+            try:
+                df = cls.load_dataframe(file_name)
+            except FileNotFoundError:
+                df = None
+        return df
 
 
 class Data(Yahoo):
@@ -112,8 +125,8 @@ class Data(Yahoo):
         return get_symbol_list()
 
     @classmethod
-    def get_asset_info(cls, symbols: List[str]) -> List[pd.DataFrame]:
-        """Returns information for the assets in the given list of symbols."""
+    def get_asset_info(cls, symbols: List[str]) -> Dict[str, pd.DataFrame]:
+        """Returns a mapping of symbol -> info DataFrame for the given symbols."""
         return cls.get_info(assets=symbols)
 
     @classmethod
@@ -128,15 +141,12 @@ class Data(Yahoo):
         Now returns a list of dictionaries with symbol
         as the key and its corresponding dataframe as the value.
         """
-        asset_data_list = cls.get_asset_data(assets=assets)
-
-        if asset_data_list:
-            result = []
-            for asset, data in zip(assets, asset_data_list):
-                result.append({"symbol": asset, "data": data})
-            return result
-        else:
-            return []
+        result = []
+        for asset in assets:
+            df = cls.get_asset_data_by_name(asset)
+            if isinstance(df, pd.DataFrame) and not df.empty:
+                result.append({"symbol": asset, "data": df})
+        return result
 
     @classmethod
     def get_history_interval(
@@ -246,7 +256,8 @@ class MemData:
             self.history_data[asset] = asset_data["data"]
 
         info_data = self.data.get_asset_info(self.assets)
-        for asset, data in zip(self.assets, info_data):
+        # Populate only for symbols that actually have info, preserving alignment
+        for asset, data in info_data.items():
             self.info_data[asset] = data
 
         print("Data loaded successfully.")

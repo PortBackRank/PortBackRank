@@ -96,9 +96,11 @@ def _ensure_market_assets(market_code: str = "SP500"):
     for asset in assets:
         try:
             df = Data.get_asset_data_by_name(asset)
-            if df.empty:
-                assets_to_download.append(asset)
         except (FileNotFoundError, pd.errors.EmptyDataError):
+            df = None
+
+        # Treat missing/None or empty as needing download
+        if not isinstance(df, pd.DataFrame) or df.empty:
             assets_to_download.append(asset)
 
     if assets_to_download:
