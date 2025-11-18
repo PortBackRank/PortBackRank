@@ -16,28 +16,28 @@ def _calc_allocation(entry):
 
 def _print_df_full(df: pd.DataFrame):
     try:
-        old_max_cols = pd.get_option('display.max_columns')
-        old_width = pd.get_option('display.width')
+        old_max_cols = pd.get_option("display.max_columns")
+        old_width = pd.get_option("display.width")
         old_max_colwidth = None
         try:
-            old_max_colwidth = pd.get_option('display.max_colwidth')
+            old_max_colwidth = pd.get_option("display.max_colwidth")
         except Exception:
             pass
 
-        pd.set_option('display.max_columns', None)
-        pd.set_option('display.width', None)
+        pd.set_option("display.max_columns", None)
+        pd.set_option("display.width", None)
         try:
-            pd.set_option('display.max_colwidth', None)
+            pd.set_option("display.max_colwidth", None)
         except Exception:
-            pd.set_option('display.max_colwidth', 0)
+            pd.set_option("display.max_colwidth", 0)
 
         print(df.to_string(index=False))
     finally:
         try:
-            pd.set_option('display.max_columns', old_max_cols)
-            pd.set_option('display.width', old_width)
+            pd.set_option("display.max_columns", old_max_cols)
+            pd.set_option("display.width", old_width)
             if old_max_colwidth is not None:
-                pd.set_option('display.max_colwidth', old_max_colwidth)
+                pd.set_option("display.max_colwidth", old_max_colwidth)
         except Exception:
             pass
 
@@ -49,13 +49,15 @@ def print_monthly_results(results_df):
             start_date, end_date = [s.strip() for s in interval_str.split(" - ")]
 
             result_dict = row.to_dict()
-            timeline_path = generate_filename("timeline", result_dict, start_date, end_date)
+            timeline_path = generate_filename(
+                "timeline", result_dict, start_date, end_date
+            )
 
             if not os.path.exists(timeline_path):
                 print(f"Timeline não encontrada para a linha {i}: {timeline_path}")
                 continue
 
-            with open(timeline_path, "r") as f:
+            with open(timeline_path, "r", encoding="utf-8") as f:
                 timeline = json.load(f)
 
             tl_df = pd.DataFrame(timeline)
@@ -79,7 +81,11 @@ def print_monthly_results(results_df):
             if "period" in row:
                 label_params.append(f"RSI={row['period']}")
 
-            print(f"\nConfig {i} | profit={row['profit']} loss={row['loss']} div={row['diversification']} {' '.join(label_params)}")
+            print(
+                f"\nConfig {i} | profit={row['profit']} "
+                f"loss={row['loss']} div={row['diversification']} "
+                f"{' '.join(label_params)}"
+            )
             for idx, rec in monthly.iterrows():
                 ym = idx.strftime("%Y-%m")
                 val = 0.0 if pd.isna(rec["ret_mes_%"]) else rec["ret_mes_%"]
@@ -89,25 +95,48 @@ def print_monthly_results(results_df):
 
 
 def _ensure_market_assets(market_code: str = "SP500"):
+    """
+    Garante que todos os ativos do mercado tenham histórico baixado.
+
+    - Sempre reconstrói a lista de símbolos a partir do CSV oficial.
+    - Tenta baixar histórico para quem estiver faltando, com múltiplas tentativas.
+    - No final, informa quais ainda ficaram sem dados.
+    """
     market_data = MarketData(market_code)
-    assets = market_data.list_recent_symbols(market_data.market, force_update=False)
+    # force_update=True: garante que o JSON venha sempre do CSV
+    assets = market_data.list_recent_symbols(market_data.market, force_update=True)
 
-    assets_to_download = []
-    for asset in assets:
-        try:
-            df = Data.get_asset_data_by_name(asset)
-        except (FileNotFoundError, pd.errors.EmptyDataError):
-            df = None
+    max_retries = 3
+    missing = []
 
-        # Treat missing/None or empty as needing download
-        if not isinstance(df, pd.DataFrame) or df.empty:
-            assets_to_download.append(asset)
+    for attempt in range(1, max_retries + 1):
+        missing = []
+        for asset in assets:
+            try:
+                df = Data.load_dataframe(f"{asset}.csv")
+            except (FileNotFoundError, pd.errors.EmptyDataError):
+                df = None
 
-    if assets_to_download:
-        print(f"Baixando {len(assets_to_download)} ativos sem dados locais.")
-        Data.download_history(assets_to_download)
-    else:
-        print("Todos os ativos já possuem dados locais.")
+            if not isinstance(df, pd.DataFrame) or df.empty:
+                missing.append(asset)
+
+        if not missing:
+            print("Todos os ativos possuem dados locais.")
+            break
+
+        print(
+            f"Tentativa {attempt}/{max_retries}: "
+            f"baixando {len(missing)} ativos sem dados locais."
+        )
+        Data.download_history(missing)
+
+    if missing:
+        print(
+            "Após as tentativas de download, ainda faltam dados "
+            "históricos para:"
+        )
+        for asset in missing:
+            print(f"  - {asset}")
 
 
 def run_backtest_ma():
@@ -180,3 +209,4 @@ def main_menu():
 
 if __name__ == "__main__":
     main_menu()
+

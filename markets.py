@@ -1,35 +1,64 @@
 import os
 import time
-from typing import List
+from typing import List, Dict
+
 import pandas as pd
 import yfinance as yf
 import requests
 from tqdm import tqdm
+
 from files import open_dataframe, open_json, save_json, save_dataframe
 
-MARKETS = {
-    "IBOV": {"cache_file": "recent_assets_ibov.json", "sub_dir": "ibov", "source_file": "assets/IBOVQuad.csv"},
-    "IFIX": {"cache_file": "recent_assets_ifix.json", "sub_dir": "ifix", "source_file": "assets/IFIXQuad.csv"},
-    "IBRA": {"cache_file": "recent_assets_ibra.json", "sub_dir": "ibra", "source_file": "assets/IBRAQuad.csv"},
-    "SMLL": {"cache_file": "recent_assets_smll.json", "sub_dir": "smll", "source_file": "assets/SMLLQuad.csv"},
-    "IBXX": {"cache_file": "recent_assets_ibxx.json", "sub_dir": "ibxx", "source_file": "assets/IBXXQuad.csv"},
-    "SP500": {"cache_file": "recent_assets_sp500.json", "sub_dir": "sp500", "source_file": "assets/s&p500.csv"}
-}
 
+MARKETS: Dict[str, Dict[str, str]] = {
+    "IBOV": {
+        "cache_file": "recent_assets_ibov.json",
+        "sub_dir": "ibov",
+        "source_file": "assets/IBOVQuad.csv",
+    },
+    "IFIX": {
+        "cache_file": "recent_assets_ifix.json",
+        "sub_dir": "ifix",
+        "source_file": "assets/IFIXQuad.csv",
+    },
+    "IBRA": {
+        "cache_file": "recent_assets_ibra.json",
+        "sub_dir": "ibra",
+        "source_file": "assets/IBRAQuad.csv",
+    },
+    "SMLL": {
+        "cache_file": "recent_assets_smll.json",
+        "sub_dir": "smll",
+        "source_file": "assets/SMLLQuad.csv",
+    },
+    "IBXX": {
+        "cache_file": "recent_assets_ibxx.json",
+        "sub_dir": "ibxx",
+        "source_file": "assets/IBXXQuad.csv",
+    },
+    "SP500": {
+        "cache_file": "recent_assets_sp500.json",
+        "sub_dir": "sp500",
+        "source_file": "assets/s&p500.csv",
+    },
+}
 
 SUB_DIR_HIST = "historical"
 
 
-def read_symbols(file_path):
+def read_symbols(file_path: str) -> List[str]:
     """Lê os códigos das ações e retorna uma lista."""
     try:
         if "assets" not in file_path:
-            file_path = os.path.join("assets/", file_path)
+            file_path = os.path.join("assets", file_path)
 
-        df = None
-        if "SP500" in file_path:
-            df = pd.read_csv(file_path, encoding="ISO-8859-1",
-                             sep=None, engine="python")
+        if "SP500" in file_path.upper():
+            df = pd.read_csv(
+                file_path,
+                encoding="ISO-8859-1",
+                sep=None,
+                engine="python",
+            )
         else:
             df = pd.read_csv(file_path, encoding="ISO-8859-1", sep=",")
 
@@ -37,13 +66,9 @@ def read_symbols(file_path):
 
         if "Codigo" in df.columns:
             return df["Codigo"].dropna().tolist()
-        elif "Symbol" in df.columns:
+        if "Symbol" in df.columns:
             return df["Symbol"].dropna().tolist()
-        else:
-            return df.iloc[1:, 0].dropna().tolist()
-
-        # raise KeyError(
-        #     f"A coluna 'Código' não foi encontrada no arquivo {file_path}. Verifique os cabeçalhos.")
+        return df.iloc[1:, 0].dropna().tolist()
     except Exception as e:
         print(f"Erro ao ler {file_path}: {e}")
         return []
@@ -54,7 +79,7 @@ class MarketData:
 
     def __init__(self, file_path: str = None):
         """
-            Inicializa a instância de MarketData a partir de uma sigla de mercado ou caminho de arquivo.
+        Inicializa a instância de MarketData a partir de uma sigla de mercado ou caminho de arquivo.
 
             O parâmetro 'file_path' pode ser:
             1. Uma **sigla de mercado** (ex: 'IBOV', 'IFIX', etc.) que corresponde a um mercado existente em MARKETS.
@@ -83,14 +108,16 @@ class MarketData:
         self.market = self.from_file_path(file_path)
         if self.market is None:
             raise ValueError(
-                "O parâmetro 'file_path' ou 'market' precisa ser fornecido!")
+                "O parâmetro 'file_path' ou 'market' precisa ser fornecido!"
+            )
 
     @classmethod
-    def from_file_path(cls, file_path: str):
+    def from_file_path(cls, file_path: str) -> str:
         """Identifica o mercado pelo arquivo ou pela sigla e cria dinamicamente caso não exista."""
         if file_path is None:
             raise ValueError(
-                "É necessário fornecer um 'file_path' ou uma sigla de mercado válida.")
+                "É necessário fornecer um 'file_path' ou uma sigla de mercado válida."
+            )
 
         market = None
         if file_path.upper() in MARKETS:
@@ -103,29 +130,31 @@ class MarketData:
                     break
 
         if market is None:
+            file_name = os.path.basename(file_path)
             market = file_name.replace(".csv", "").upper()
             MARKETS[market] = {
                 "cache_file": f"recent_assets_{market.lower()}.json",
                 "sub_dir": market.lower(),
-                "source_file": file_path
+                "source_file": file_path,
             }
 
-        cls.list_recent_symbols(market)
+        # Garante que o cache inicial exista (sem forçar update)
+        cls.list_recent_symbols(market, force_update=False)
         return market
 
     @classmethod
-    def download_data(cls, market: str):
-        """Carrega e processa os dados do mercado definido."""
+    def download_data(cls, market: str) -> Dict[str, List[str]]:
+        """Lê o arquivo fonte do mercado e atualiza o JSON de cache com todos os símbolos."""
         if market not in MARKETS:
             raise ValueError(
-                f"Mercado inválido. Opções disponíveis: {list(MARKETS.keys())}")
+                f"Mercado inválido. Opções disponíveis: {list(MARKETS.keys())}"
+            )
 
         config = MARKETS[market]
         if market == "SP500":
             symbols = read_symbols(config["source_file"])
         else:
-            symbols = [
-                symbol + ".SA" for symbol in read_symbols(config["source_file"])]
+            symbols = [s + ".SA" for s in read_symbols(config["source_file"])]
 
         save_json(config["cache_file"], symbols, config["sub_dir"])
         print(f"{market}: {len(symbols)} ativos")
@@ -133,23 +162,20 @@ class MarketData:
         return {market: symbols}
 
     @classmethod
-    def list_recent_symbols(cls, market: str = None, force_update=False):
-        """Lista os ativos salvos no cache de um mercado.
-
-        Quando chamado na instância, o parâmetro 'market' é opcional e será usado o valor da instância.
-        Quando chamado na classe, o parâmetro 'market' é obrigatório.
+    def list_recent_symbols(cls, market: str = None, force_update: bool = False) -> List[str]:
         """
-        # if market is None and hasattr(cls, 'market'):
-        #     market = cls.market
-        #     print(f"Usando mercado {market} da instância.")
+        Lista os ativos salvos no cache de um mercado.
 
+        Sempre que `force_update=True`, reconstrói a lista a partir do CSV
+        oficial do índice, garantindo o mesmo universo em qualquer máquina.
+        """
         if market is None:
-            raise ValueError(
-                "É necessário fornecer o 'market' ou a instância deve ser usada.")
+            raise ValueError("É necessário fornecer o 'market'.")
 
         if market not in MARKETS:
             raise ValueError(
-                f"Mercado inválido. Opções disponíveis: {list(MARKETS.keys())}")
+                f"Mercado inválido. Opções disponíveis: {list(MARKETS.keys())}"
+            )
 
         config = MARKETS[market]
         item_list = open_json(config["cache_file"], config["sub_dir"])
@@ -161,8 +187,9 @@ class MarketData:
             if assets and market in assets:
                 cls.download_info(market)
 
-        item_list = open_json(config["cache_file"], config["sub_dir"])
-        return item_list
+            item_list = open_json(config["cache_file"], config["sub_dir"])
+
+        return item_list or []
 
     @classmethod
     def get_info(cls, symbol: str):
@@ -172,24 +199,37 @@ class MarketData:
         return open_dataframe(csv_file_name, SUB_DIR_HIST)
 
     @classmethod
-    def remove_symbols(cls, market: str, symbol_list: List[str]):
+    def remove_symbols(cls, market: str, symbol_list: List[str]) -> List[str]:
         """Remove símbolos do cache, mantendo apenas os fornecidos na lista."""
         print(f"Removendo ativos não listados em {market}...")
         if market not in MARKETS:
             raise ValueError(
-                f"Mercado inválido. Opções disponíveis: {list(MARKETS.keys())}")
+                f"Mercado inválido. Opções disponíveis: {list(MARKETS.keys())}"
+            )
 
         current_list = cls.list_recent_symbols(market)
-        updated_list = [
-            symbol for symbol in current_list if symbol in symbol_list]
+        updated_list = [symbol for symbol in current_list if symbol in symbol_list]
 
-        save_json(MARKETS[market]["cache_file"],
-                  updated_list, MARKETS[market]["sub_dir"])
+        save_json(
+            MARKETS[market]["cache_file"],
+            updated_list,
+            MARKETS[market]["sub_dir"],
+        )
         return updated_list
 
     @classmethod
-    def download_info(cls, market: str):
-        """Baixa informações dos ativos de um mercado usando o Yahoo Finance."""
+    def download_info(cls, market: str) -> List[str]:
+        """
+        Baixa informações dos ativos de um mercado usando o Yahoo Finance.
+
+        Não remove símbolos do cache quando falha ao obter as
+        informações, permitindo tentar novamente em futuras execuções.
+        """
+        if market not in MARKETS:
+            raise ValueError(
+                f"Mercado inválido. Opções disponíveis: {list(MARKETS.keys())}"
+            )
+
         config = MARKETS[market]
         symbols = open_json(config["cache_file"], config["sub_dir"])
         if not symbols:
@@ -198,43 +238,51 @@ class MarketData:
 
         desired_fields = {"sector", "industry"}
         asset_info = yf.Tickers(symbols)
-        assets_with_info = []
 
-        with tqdm(total=len(asset_info.tickers), desc=f"Baixando infos {market}", unit="ativo") as pbar:
+        with tqdm(
+            total=len(asset_info.tickers),
+            desc=f"Baixando infos {market}",
+            unit="ativo",
+        ) as pbar:
             for asset, ticker_data in asset_info.tickers.items():
                 time.sleep(0.1)
                 try:
                     asset_info_dict = ticker_data.info
-                    filtered_info = {field: asset_info_dict.get(
-                        field) for field in desired_fields}
+                    filtered_info = {
+                        field: asset_info_dict.get(field)
+                        for field in desired_fields
+                    }
 
                     if all(filtered_info[field] for field in desired_fields):
-                        assets_with_info.append(asset)
                         csv_file_name = f"{asset}_info.csv"
-                        save_dataframe(csv_file_name, pd.DataFrame(
-                            [filtered_info]), SUB_DIR_HIST)
-
-                    pbar.update(1)
-                except (requests.exceptions.RequestException, KeyError, ValueError) as e:
+                        save_dataframe(
+                            csv_file_name,
+                            pd.DataFrame([filtered_info]),
+                            SUB_DIR_HIST,
+                        )
+                except Exception as e:
+                    # Inclui timeouts do curl_cffi, erros de rede e de parsing.
                     print(f"Erro ao processar {asset}: {e}")
-                    continue
+                finally:
+                    pbar.update(1)
 
-        cls.remove_symbols(market, assets_with_info)
-        return assets_with_info
+        return symbols
 
 
-def list_recent_symbols(market: str, force_update=False):
+def list_recent_symbols(market: str, force_update: bool = False) -> List[str]:
+    """Função helper para manter compatibilidade com chamadas existentes."""
     return MarketData.list_recent_symbols(market, force_update)
 
 
 def teste():
     data = MarketData("s&p500.csv")
-    symbols_ibra = data.list_recent_symbols("SP500", force_update=True)
-    print(len(symbols_ibra))
+    symbols_sp500 = data.list_recent_symbols("SP500", force_update=True)
+    print(len(symbols_sp500))
 
-    print(data.get_info(symbol=symbols_ibra[19]))
-    print(len(symbols_ibra))
+    print(data.get_info(symbol=symbols_sp500[0]))
+    print(len(symbols_sp500))
 
 
 if __name__ == "__main__":
     teste()
+
