@@ -121,10 +121,11 @@ class MARanker(Ranker):
             else:
                 continue
 
-            ranked_symbols.append((symbol, strength))
+            ranked_symbols.append((strength, symbol ))
 
-        ranked_symbols.sort(key=lambda x: x[1], reverse=True)
-        return [x[0] for x in ranked_symbols]
+        # ranked_symbols.sort(key=lambda x: x[1], reverse=True)
+        ranked_symbols.sort(reverse=True)       
+        return [x[1] for x in ranked_symbols]
 
 
 def test_ma_ranker():
