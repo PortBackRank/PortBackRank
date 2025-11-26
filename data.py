@@ -30,7 +30,9 @@ class Yahoo:
 
         asset_data_reset = asset_data.reset_index()
         asset_data_reset['Date'] = asset_data_reset['Date'].astype(str)
-        # data_dict = asset_data_reset.to_dict(orient='records')
+
+        numeric_columns = asset_data_reset.select_dtypes(include=['float64', 'float32']).columns
+        asset_data_reset[numeric_columns] = asset_data_reset[numeric_columns].round(4)
 
         # save_json(f"{asset}.json", data_dict, cls.subdir)
         save_dataframe(f"{asset}.csv", asset_data_reset, cls.subdir)
