@@ -3,7 +3,6 @@
 '''
 
 from typing import List, Dict, Type
-
 from datetime import datetime
 import pandas as pd
 from ranker import MARanker, Ranker, RandomRanker
@@ -19,43 +18,64 @@ class Runner:
         :param loss: Limite de perda para venda (porcentagem).
         :param diversification: Porcentagem máxima para cada setor (porcentagem).
         :param ranker: Classe do ranker a ser utilizada.
+        :param data: Instância de MemData com os dados históricos e de setor.
         """
         self.profit = profit
         self.loss = loss
         self.diversification = diversification
-
         self.ranker = ranker
+        self.data = data
 
         # representando as ações compradas (símbolo, quantidade, preço médio, etc.)
         self.__portfolio: List[Dict[str, float]] = []
-
-        self.data = data
-
         self.balance = 0
-
         self.timeline = []
+
+    def prepare_data(self, interval: List[str], ranker_conf: Dict[str, float], capital: float):
+        """
+        Prepara o ambiente para uma nova simulação:
+        - inicializa o ranker
+        - reseta saldo, portfólio e logs
+        - pré-carrega históricos e setores em memória
+        - cria índice por data para acesso rápido
+        """
+        # inicializa ranker com os parâmetros e dados
+        self._ranker_instance = self.ranker(parameters=ranker_conf, data=self.data)
+
+        # reseta estados internos
+        self.balance = capital
+        self.__portfolio = []
+        self.timeline = []
+        self.sell_log = []
+        self.buy_log = []
+
+        # Pré-carrega históricos
+        self._all_history = self.data.get_all_history()
+        
+        # Pré-carrega setores do CSV
+        self._all_sectors = self.data.get_all_sectors()
+
+        # Pré-indexa históricos por data para acelerar acesso
+        self._history_by_date = {}
+        for simbolo, df in self._all_history.items():
+            df = df.copy()
+            df['date_str'] = df.index.strftime('%Y-%m-%d')
+            self._history_by_date[simbolo] = {
+                d: row for d, row in df.set_index('date_str').iterrows()
+            }
+
+        # guarda intervalo
+        self._interval = interval
 
     def single_run(self, interval: List[str], ranker_conf: Dict[str, float], capital: float) -> Dict:
         """
-        Executa uma simulação para uma única configuração de ranker, 
+        Executa uma simulação para uma única configuração de ranker,
         mantendo o portfólio com a quantidade e o preço de compra dos ativos.
-
-        :param interval: Lista com a data inicial e final da simulação.
-        :param ranker_conf: Configuração do ranker a ser utilizada.
-        :param capital: Capital inicial.
-        :return: Estado final do portfólio.
         """
-
-        ranker = self.ranker(parameters=ranker_conf, data=self.data)
+        self.prepare_data(interval, ranker_conf, capital)
 
         start_date, end_date = interval
-
-        self.balance = capital
-        self.__portfolio = []
-        shared_data = {}
-
-        self.sell_log = []
-        self.buy_log = []
+        ranker = self._ranker_instance
 
         for date in pd.date_range(start_date, end_date).strftime('%Y-%m-%d'):
             self._sell(date)
@@ -81,25 +101,16 @@ class Runner:
         """
         Vende ativos que atingiram o percentual de lucro ou perda,
         respeitando a ordem FIFO e verificando o volume diário.
-
-        :param date: Data atual para verificar se algum ativo atendeu ao critério de venda.
         """
-        dados_historicos = self.data.get_all_history()
-
         historicos_ativos = {}
 
         for simbolo in [item['simbolo'] for item in self.__portfolio]:
-            historico = dados_historicos.get(simbolo)
-            if historico is not None and not historico.empty:
-                historico_data = historico.loc[
-                    historico.index.date == datetime.strptime(
-                        date, '%Y-%m-%d').date()
-                ]
-                if not historico_data.empty:
-                    historicos_ativos[simbolo] = {
-                        'preco_atual': historico_data['Close'].iloc[0],
-                        'volume_diario': historico_data['Volume'].iloc[0]
-                    }
+            day_row = self._history_by_date.get(simbolo, {}).get(date)
+            if day_row is not None:
+                historicos_ativos[simbolo] = {
+                    'preco_atual': day_row['Close'],
+                    'volume_diario': day_row['Volume']
+                }
 
         novos_portfolio = []
         for item in self.__portfolio:
@@ -140,7 +151,6 @@ class Runner:
                         'data_compra': data_compra,
                         'sector': item['sector']
                     })
-
             else:
                 novos_portfolio.append(item)
 
@@ -150,51 +160,42 @@ class Runner:
         """
         Compra ativos com base no ranking, respeitando diversificação por setor
         e verificando o volume diário disponível.
-
-        :param date: Data atual para comprar ativos.
-        :param ranker: Instância do ranker a ser utilizado para definir os ativos.
         """
         ranked_symbols = ranker.rank(date)
-
         if not ranked_symbols:
             return
 
-        dados_historicos = self.data.get_all_history()
-        todas_infos = self.data.get_all_info()
+        dados_historicos = self._history_by_date
 
         total_portfolio_value = sum(
             item['preco_compra'] * item['quantidade'] for item in self.__portfolio
         )
 
         setor_percentual = {}
-
         if total_portfolio_value > 0:
             for item in self.__portfolio:
                 setor = item.get('sector')
                 preco_compra = item.get('preco_compra', 0)
                 quantidade = item.get('quantidade', 0)
-
-                if not setor:
-                    print(f"Setor não encontrado para o símbolo {
-                          item['simbolo']}.")
+                if not setor or setor == 'Unknown':
                     continue
-
                 valor_item = preco_compra * quantidade
-
                 setor_percentual[setor] = setor_percentual.get(
                     setor, 0) + (valor_item / total_portfolio_value)
 
         balance_disponivel = self.balance
 
         for simbolo in ranked_symbols:
-            if balance_disponivel <= 2:  # Valor mínimo para comprar uma ação, mudar depois
+            if balance_disponivel <= 2:
                 break
 
-            ativo_info = todas_infos.get(simbolo)
-            if ativo_info is None or ativo_info.empty:
+            # Busca setor do cache carregado do CSV (não do yfinance!)
+            sector_info = self._all_sectors.get(simbolo, {})
+            setor = sector_info.get('sector', 'Unknown')
+            
+            if setor == 'Unknown':
+                # Ignora ativos sem setor definido
                 continue
-
-            setor = ativo_info.iloc[0]['sector']
 
             max_investimento_setor = (
                 balance_disponivel * self.diversification if setor not in setor_percentual
@@ -202,21 +203,12 @@ class Runner:
                 setor_percentual.get(setor, 0) * total_portfolio_value
             )
 
-            historico = dados_historicos.get(simbolo)
-            if historico is None or historico.empty:
+            day_row = dados_historicos.get(simbolo, {}).get(date)
+            if day_row is None:
                 continue
 
-            historico_data = historico.loc[
-                historico.index.date == datetime.strptime(
-                    date, '%Y-%m-%d').date()
-            ]
-
-            if historico_data.empty:
-                continue
-
-            preco_atual = historico_data['Close'].iloc[0]
-
-            volume_diario = historico_data['Volume'].iloc[0]
+            preco_atual = day_row['Close']
+            volume_diario = day_row['Volume']
 
             if pd.isna(preco_atual) or pd.isna(volume_diario):
                 continue
@@ -255,7 +247,7 @@ class Runner:
 
     def _record_state(self, date):
         """
-        Grava o estado completo do portfólio e saldo em uma data específica,
+        Grava o estado completo do portfólio e saldo em uma data específica.
 
         :param date: Data atual da simulação.
         """
@@ -291,15 +283,16 @@ def test_runner():
 
     try:
         result = runner.single_run(interval, ranker_config, capital)
-
         print("Execução do Runner bem sucedida")
+        print(f"Saldo final: {result['balance']}")
     except Exception as e:
         print(f"Erro durante o teste: {e}")
+        import traceback
+        traceback.print_exc()
 
 
 def test_runner_ma():
     interval = ["2024-04-10", "2024-08-10"]
-
     ranker_config = {"window": [9, 21]}
 
     runner = Runner(
@@ -307,15 +300,18 @@ def test_runner_ma():
         loss=0.05,
         diversification=0.2,
         ranker=MARanker,
-        data=MemData(interval)
+        data=MemData(interval, market_identifier="SP500")
     )
 
     try:
         result = runner.single_run(interval, ranker_config, capital=10000)
-
         print("Execução do Runner bem sucedida")
+        print(f"Saldo final: {result['balance']}")
+        print(f"Valor do portfolio: {sum(item['quantidade'] * item['preco_compra'] for item in result['portfolio'])}")
     except Exception as e:
         print(f"Erro durante o teste: {e}")
+        import traceback
+        traceback.print_exc()
 
 
 if __name__ == "__main__":

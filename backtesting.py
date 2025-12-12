@@ -30,7 +30,7 @@ def save_results(results):
 class Backtesting:
     """ Classe para realizar backtesting de uma estratégia de investimento. """
 
-    def __init__(self, ranker_cls, capital: float, interval: List[str], market_identifier: str = None):
+    def __init__(self, ranker_cls, capital: float, interval: List[str], market_identifier = "SP500"):
         """
         Inicializa o backtesting com as informações básicas.
 
@@ -100,8 +100,7 @@ class Backtesting:
 
                 return self._evaluate_results(results_runner, runner_config, ranker_config)
             except Exception as e:
-                print(f"Erro ao rodar configuração {
-                      runner_config} com ranker {ranker_config}: {e}")
+                print(f"Erro ao rodar configuração {runner_config} com ranker {ranker_config}: {e}")
                 return None
 
         results = [
@@ -124,7 +123,7 @@ class Backtesting:
         self, result: List[Dict], runner_params: Dict, ranker_params: Dict
     ) -> Dict:
         """
-        Calcula métricas de performance da simulação.
+        //Calcula métricas de performance da simulação.
 
         :param result: Resultado da simulação (lista de dicionários).
         :param runner_params: Parâmetros usados na simulação para o Runner.

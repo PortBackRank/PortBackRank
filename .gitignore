@@ -1,2 +1,6 @@
 results/
 .$diagrama.drawio.bkp
+__pycache__/
+*.pyc
+.vscode/
+.env

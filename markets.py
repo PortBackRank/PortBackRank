@@ -1,35 +1,48 @@
 import os
-import time
-from typing import List
+from typing import List, Dict
+
 import pandas as pd
-import yfinance as yf
-import requests
-from tqdm import tqdm
-from files import open_dataframe, open_json, save_json, save_dataframe
 
-MARKETS = {
-    "IBOV": {"cache_file": "recent_assets_ibov.json", "sub_dir": "ibov", "source_file": "assets/IBOVQuad.csv"},
-    "IFIX": {"cache_file": "recent_assets_ifix.json", "sub_dir": "ifix", "source_file": "assets/IFIXQuad.csv"},
-    "IBRA": {"cache_file": "recent_assets_ibra.json", "sub_dir": "ibra", "source_file": "assets/IBRAQuad.csv"},
-    "SMLL": {"cache_file": "recent_assets_smll.json", "sub_dir": "smll", "source_file": "assets/SMLLQuad.csv"},
-    "IBXX": {"cache_file": "recent_assets_ibxx.json", "sub_dir": "ibxx", "source_file": "assets/IBXXQuad.csv"},
-    "SP500": {"cache_file": "recent_assets_sp500.json", "sub_dir": "sp500", "source_file": "assets/s&p500.csv"}
+from files import open_dataframe
+
+
+MARKETS: Dict[str, Dict[str, str]] = {
+    "IBOV": {
+        "source_file": "assets/IBOVQuad.csv",
+    },
+    "IFIX": {
+        "source_file": "assets/IFIXQuad.csv",
+    },
+    "IBRA": {
+        "source_file": "assets/IBRAQuad.csv",
+    },
+    "SMLL": {
+        "source_file": "assets/SMLLQuad.csv",
+    },
+    "IBXX": {
+        "source_file": "assets/IBXXQuad.csv",
+    },
+    "SP500": {
+        "source_file": "assets/s&p500.csv",
+    },
 }
-
 
 SUB_DIR_HIST = "historical"
 
 
-def read_symbols(file_path):
+def read_symbols(file_path: str) -> List[str]:
     """Lê os códigos das ações e retorna uma lista."""
     try:
         if "assets" not in file_path:
-            file_path = os.path.join("assets/", file_path)
+            file_path = os.path.join("assets", file_path)
 
-        df = None
-        if "SP500" in file_path:
-            df = pd.read_csv(file_path, encoding="ISO-8859-1",
-                             sep=None, engine="python")
+        if "SP500" in file_path.upper():
+            df = pd.read_csv(
+                file_path,
+                encoding="ISO-8859-1",
+                sep=None,
+                engine="python",
+            )
         else:
             df = pd.read_csv(file_path, encoding="ISO-8859-1", sep=",")
 
@@ -37,13 +50,9 @@ def read_symbols(file_path):
 
         if "Codigo" in df.columns:
             return df["Codigo"].dropna().tolist()
-        elif "Symbol" in df.columns:
+        if "Symbol" in df.columns:
             return df["Symbol"].dropna().tolist()
-        else:
-            return df.iloc[1:, 0].dropna().tolist()
-
-        # raise KeyError(
-        #     f"A coluna 'Código' não foi encontrada no arquivo {file_path}. Verifique os cabeçalhos.")
+        return df.iloc[1:, 0].dropna().tolist()
     except Exception as e:
         print(f"Erro ao ler {file_path}: {e}")
         return []
@@ -54,43 +63,32 @@ class MarketData:
 
     def __init__(self, file_path: str = None):
         """
-            Inicializa a instância de MarketData a partir de uma sigla de mercado ou caminho de arquivo.
+        Inicializa a instância de MarketData a partir de uma sigla de mercado ou caminho de arquivo.
 
-            O parâmetro 'file_path' pode ser:
-            1. Uma **sigla de mercado** (ex: 'IBOV', 'IFIX', etc.) que corresponde a um mercado existente em MARKETS.
-            2. Um **caminho de arquivo** (ex: 'assets/IBOVQuad.csv') que será utilizado para identificar o mercado
-               correspondente e, caso não exista, o mercado será criado dinamicamente.
+        O parâmetro 'file_path' pode ser:
+        1. Uma **sigla de mercado** (ex: 'IBOV', 'IFIX', etc.)
+        2. Um **caminho de arquivo** (ex: 'assets/IBOVQuad.csv')
 
-            A sigla de mercado é utilizada para buscar a configuração já existente no dicionário MARKETS.
-            Caso seja fornecido um caminho de arquivo, a função tentará identificar o mercado associado ao arquivo
-            e criá-lo caso não exista.
-
-            Parâmetros:
-            file_path (str, opcional): O caminho do arquivo ou a sigla do mercado. Se não for fornecido, o valor padrão é None.
-
-            Exceções:
-            ValueError: Levanta um erro se o parâmetro 'file_path' for None ou inválido.
-
-            Exemplos:
-            # Usando uma sigla de mercado (ex: 'IBOV')
-            market_ibov = MarketData("IBOV")
-
-            # Usando um caminho de arquivo (ex: 'assets/IBOVQuad.csv')
-            market_ibov_file = MarketData("assets/IBOVQuad.csv")
+        Exemplos:
+        market_ibov = MarketData("IBOV")
+        market_sp500 = MarketData("SP500")
+        market_custom = MarketData("assets/custom.csv")
         """
         self.file_path = file_path
         print(f"Inicializando MarketData com file_path: {file_path}")
         self.market = self.from_file_path(file_path)
         if self.market is None:
             raise ValueError(
-                "O parâmetro 'file_path' ou 'market' precisa ser fornecido!")
+                "O parâmetro 'file_path' ou 'market' precisa ser fornecido!"
+            )
 
     @classmethod
-    def from_file_path(cls, file_path: str):
-        """Identifica o mercado pelo arquivo ou pela sigla e cria dinamicamente caso não exista."""
+    def from_file_path(cls, file_path: str) -> str:
+        """Identifica o mercado pelo arquivo ou pela sigla."""
         if file_path is None:
             raise ValueError(
-                "É necessário fornecer um 'file_path' ou uma sigla de mercado válida.")
+                "É necessário fornecer um 'file_path' ou uma sigla de mercado válida."
+            )
 
         market = None
         if file_path.upper() in MARKETS:
@@ -103,137 +101,112 @@ class MarketData:
                     break
 
         if market is None:
+            # Cria mercado dinamicamente
+            file_name = os.path.basename(file_path)
             market = file_name.replace(".csv", "").upper()
             MARKETS[market] = {
-                "cache_file": f"recent_assets_{market.lower()}.json",
-                "sub_dir": market.lower(),
-                "source_file": file_path
+                "source_file": file_path,
             }
 
-        cls.list_recent_symbols(market)
         return market
 
     @classmethod
-    def download_data(cls, market: str):
-        """Carrega e processa os dados do mercado definido."""
+    def list_recent_symbols(cls, market: str = None, force_update: bool = False) -> List[str]:
+        """
+        Lista os ativos lendo diretamente do CSV.
+        
+        :param market: Sigla do mercado
+        :param force_update: Ignorado (mantido por compatibilidade)
+        :return: Lista de símbolos
+        """
+        if market is None:
+            raise ValueError("É necessário fornecer o 'market'.")
+
         if market not in MARKETS:
             raise ValueError(
-                f"Mercado inválido. Opções disponíveis: {list(MARKETS.keys())}")
+                f"Mercado inválido. Opções disponíveis: {list(MARKETS.keys())}"
+            )
 
         config = MARKETS[market]
+        
+        # Lê diretamente do CSV (sem cache JSON)
         if market == "SP500":
             symbols = read_symbols(config["source_file"])
         else:
-            symbols = [
-                symbol + ".SA" for symbol in read_symbols(config["source_file"])]
-
-        save_json(config["cache_file"], symbols, config["sub_dir"])
-        print(f"{market}: {len(symbols)} ativos")
-
-        return {market: symbols}
+            symbols = [s + ".SA" for s in read_symbols(config["source_file"])]
+        
+        return symbols
 
     @classmethod
-    def list_recent_symbols(cls, market: str = None, force_update=False):
-        """Lista os ativos salvos no cache de um mercado.
-
-        Quando chamado na instância, o parâmetro 'market' é opcional e será usado o valor da instância.
-        Quando chamado na classe, o parâmetro 'market' é obrigatório.
+    def get_sector_mapping(cls, market: str) -> Dict[str, Dict[str, str]]:
         """
-        # if market is None and hasattr(cls, 'market'):
-        #     market = cls.market
-        #     print(f"Usando mercado {market} da instância.")
-
-        if market is None:
-            raise ValueError(
-                "É necessário fornecer o 'market' ou a instância deve ser usada.")
-
+        Lê o CSV de entrada e retorna mapeamento symbol -> {sector, industry}
+        
+        :param market: Mercado (ex: 'IBOV', 'SP500')
+        :return: Dicionário {symbol: {sector: ..., industry: ...}}
+        """
         if market not in MARKETS:
-            raise ValueError(
-                f"Mercado inválido. Opções disponíveis: {list(MARKETS.keys())}")
+            raise ValueError(f"Mercado inválido. Opções: {list(MARKETS.keys())}")
 
         config = MARKETS[market]
-        item_list = open_json(config["cache_file"], config["sub_dir"])
+        file_path = config["source_file"]
 
-        if force_update or not item_list:
-            print(f"Baixando dados para {market}...")
-            assets = cls.download_data(market)
+        try:
+            if "SP500" in market:
+                df = pd.read_csv(file_path, encoding="ISO-8859-1", sep=None, engine="python")
+            else:
+                df = pd.read_csv(file_path, encoding="ISO-8859-1", sep=",")
+            
+            df.columns = df.columns.str.strip()
+            
+            sector_map = {}
+            
+            # Para S&P500
+            if "Symbol" in df.columns:
+                for _, row in df.iterrows():
+                    symbol = str(row["Symbol"]).strip()
+                    sector_map[symbol] = {
+                        "sector": str(row.get("GICS Sector", "Unknown")).strip(),
+                        "industry": str(row.get("GICS Sub-Industry", "Unknown")).strip()
+                    }
+            
+            # Para arquivos brasileiros (B3)
+            elif "Codigo" in df.columns:
+                for _, row in df.iterrows():
+                    codigo = str(row["Codigo"]).strip()
+                    symbol = f"{codigo}.SA"
+                    sector_map[symbol] = {
+                        "sector": str(row.get("Setor", "Unknown")).strip(),
+                        "industry": str(row.get("Subsetor", row.get("Segmento", "Unknown"))).strip()
+                    }
+            
+            print(f"Setores carregados para {market}: {len(sector_map)} ativos")
+            return sector_map
 
-            if assets and market in assets:
-                cls.download_info(market)
-
-        item_list = open_json(config["cache_file"], config["sub_dir"])
-        return item_list
-
-    @classmethod
-    def get_info(cls, symbol: str):
-        """Obtém informações salvas localmente para um ativo."""
-        csv_file_name = f"{symbol}_info.csv"
-        print(f"Lendo {csv_file_name}...")
-        return open_dataframe(csv_file_name, SUB_DIR_HIST)
-
-    @classmethod
-    def remove_symbols(cls, market: str, symbol_list: List[str]):
-        """Remove símbolos do cache, mantendo apenas os fornecidos na lista."""
-        print(f"Removendo ativos não listados em {market}...")
-        if market not in MARKETS:
-            raise ValueError(
-                f"Mercado inválido. Opções disponíveis: {list(MARKETS.keys())}")
-
-        current_list = cls.list_recent_symbols(market)
-        updated_list = [
-            symbol for symbol in current_list if symbol in symbol_list]
-
-        save_json(MARKETS[market]["cache_file"],
-                  updated_list, MARKETS[market]["sub_dir"])
-        return updated_list
-
-    @classmethod
-    def download_info(cls, market: str):
-        """Baixa informações dos ativos de um mercado usando o Yahoo Finance."""
-        config = MARKETS[market]
-        symbols = open_json(config["cache_file"], config["sub_dir"])
-        if not symbols:
-            print(f"Nenhum ativo encontrado para {market}.")
-            return []
-
-        desired_fields = {"sector", "industry"}
-        asset_info = yf.Tickers(symbols)
-        assets_with_info = []
-
-        with tqdm(total=len(asset_info.tickers), desc=f"Baixando infos {market}", unit="ativo") as pbar:
-            for asset, ticker_data in asset_info.tickers.items():
-                time.sleep(0.1)
-                try:
-                    asset_info_dict = ticker_data.info
-                    filtered_info = {field: asset_info_dict.get(
-                        field) for field in desired_fields}
-
-                    if all(filtered_info[field] for field in desired_fields):
-                        assets_with_info.append(asset)
-                        csv_file_name = f"{asset}_info.csv"
-                        save_dataframe(csv_file_name, pd.DataFrame(
-                            [filtered_info]), SUB_DIR_HIST)
-
-                    pbar.update(1)
-                except (requests.exceptions.RequestException, KeyError, ValueError) as e:
-                    print(f"Erro ao processar {asset}: {e}")
-                    continue
-
-        cls.remove_symbols(market, assets_with_info)
-        return assets_with_info
+        except Exception as e:
+            print(f"Erro ao ler setores de {file_path}: {e}")
+            return {}
 
 
-def list_recent_symbols(market: str, force_update=False):
+def list_recent_symbols(market: str, force_update: bool = False) -> List[str]:
+    """Função helper para manter compatibilidade com chamadas existentes."""
     return MarketData.list_recent_symbols(market, force_update)
 
 
 def teste():
-    data = MarketData("s&p500.csv")
-    symbols_ibra = data.list_recent_symbols("SP500", force_update=True)
-    print(len(symbols_ibra))
-
-    print(data.get_info(symbol=symbols_ibra[19]))
-    print(len(symbols_ibra))
+    """Testa a leitura de mercados"""
+    data = MarketData("SP500")
+    symbols_sp500 = data.list_recent_symbols("SP500")
+    print(f"Total de ativos SP500: {len(symbols_sp500)}")
+    print(f"Primeiros 5: {symbols_sp500[:5]}")
+    
+    print("\nTestando setores:")
+    sectors = data.get_sector_mapping("SP500")
+    print(f"Total de setores mapeados: {len(sectors)}")
+    for i, (symbol, info) in enumerate(sectors.items()):
+        if i >= 3:
+            break
+        print(f"{symbol}: {info['sector']} - {info['industry']}")
 
 
 if __name__ == "__main__":
