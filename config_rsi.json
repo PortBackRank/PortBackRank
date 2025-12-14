@@ -1,0 +1,15 @@
+{
+  "id": "SP500",
+  "capital": 10000,
+  "ranker": "RSIRanker",
+  "ranker-params": {
+    "window": [[9, 9], [14, 14], [21, 21]],
+    "oversold": [30],
+    "overbought": [70],
+    "mode": ["mean_reversion"],
+    "profit": [0.1, 0.15],
+    "loss": [0.05],
+    "diversification": [0.1, 0.2]
+  }
+}
+

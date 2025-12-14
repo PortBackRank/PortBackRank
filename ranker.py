@@ -147,7 +147,7 @@ if __name__ == "__main__":
     test_ma_ranker()
 
 class RSIRanker(Ranker):
-    """RSI-based Ranker."""
+    """RSI Ranker Class"""
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
         super().__init__(parameters, interval, data)
@@ -162,18 +162,49 @@ class RSIRanker(Ranker):
         self.overbought = float(self.parameters.get("overbought", 70))
         self.mode = self.parameters.get("mode", "mean_reversion")
 
+    @staticmethod
+    def _compute_rsi(close: pd.Series, period: int) -> pd.Series:
+        """
+        Calcula o RSI pelo método clássico de Wilder
+        A série resultante só começa a ter valores após o período inicial
+        """
+        delta = close.diff()
+        gain = delta.clip(lower=0)
+        loss = -delta.clip(upper=0)
+
+        rsi = pd.Series(index=close.index, dtype="float64")
+
+        # Necessário pelo menos (period + 1) pontos para ter delta suficiente
+        if len(close) < period + 1:
+            return rsi
+
+        avg_gain = gain.iloc[1:period + 1].mean()
+        avg_loss = loss.iloc[1:period + 1].mean()
+
+        def _calc_rsi(avg_g, avg_l):
+            if avg_l == 0 and avg_g == 0:
+                return 50.0
+            if avg_l == 0:
+                return 100.0
+            if avg_g == 0:
+                return 0.0
+            rs = avg_g / avg_l
+            return 100 - (100 / (1 + rs))
+
+        rsi.iloc[period] = _calc_rsi(avg_gain, avg_loss)
+
+        for i in range(period + 1, len(close)):
+            avg_gain = (avg_gain * (period - 1) + gain.iloc[i]) / period
+            avg_loss = (avg_loss * (period - 1) + loss.iloc[i]) / period
+            rsi.iloc[i] = _calc_rsi(avg_gain, avg_loss)
+
+        return rsi
+
     def _ensure_rsi(self, df: pd.DataFrame) -> pd.DataFrame:
         key = f"rsi{self.period}"
         if key in df.columns:
             return df
-        delta = df['Close'].diff()
-        up = delta.clip(lower=0)
-        down = -delta.clip(upper=0)
-        roll_up = up.ewm(alpha=1 / self.period, adjust=False).mean()
-        roll_down = down.ewm(alpha=1 / self.period, adjust=False).mean()
-        rs = roll_up / roll_down
-        rsi = 100 - (100 / (1 + rs))
-        df[key] = rsi.replace([float('inf'), float('-inf')], float('nan')).ffill()
+        df[key] = self._compute_rsi(df['Close'], self.period)
         return df
 
     def rank(self, date: str = None) -> List[str]:
@@ -195,12 +226,40 @@ class RSIRanker(Ranker):
             prev = df.iloc[idx - 1]
             strength = float('-inf')
             if self.mode == 'mean_reversion':
-                if prev[key] <= self.oversold and latest[key] > self.oversold:
-                    strength = latest[key] - self.oversold
+                if pd.notna(prev[key]) and pd.notna(latest[key]):
+                    # Compra no cruzamento para fora da sobrevenda
+                    if prev[key] <= self.oversold < latest[key]:
+                        strength = latest[key] - self.oversold
+                    # Penaliza ativos que acabaram de sair da sobrecompra
+                    elif prev[key] >= self.overbought > latest[key]:
+                        strength = - (prev[key] - self.overbought)
             else:
-                if prev[key] <= 50 and latest[key] > 50:
-                    strength = latest[key] - 50
+                if pd.notna(prev[key]) and pd.notna(latest[key]):
+                    # Tendência: cruzamento acima de 50, limita em sobrecompra
+                    threshold = 50
+                    if prev[key] <= threshold < latest[key] <= self.overbought:
+                        strength = latest[key] - threshold
             ranked_symbols.append((symbol, strength))
 
         ranked_symbols.sort(key=lambda x: x[1], reverse=True)
         return [x[0] for x in ranked_symbols]
+
+
+def test_rsi_ranker():
+    """
+    Função simples para testar o funcionamento do RSIRanker
+    """
+    interval = ["2024-01-10", "2024-11-10"]
+    data = MemData(interval=interval)
+
+    parameters = {
+        "window": [14],
+        "oversold": 30,
+        "overbought": 70,
+        "mode": "mean_reversion",
+    }
+
+    ranker = RSIRanker(data=data, parameters=parameters)
+    ranked_symbols = ranker.rank(date="2024-05-29")
+
+    print("Símbolos ranqueados por RSI:", ranked_symbols)
