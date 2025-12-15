@@ -12,17 +12,7 @@ import requests
 import yfinance as yf
 from tqdm import tqdm
 from files import open_json, save_dataframe, save_json
-
-
-SUB_DIR_HIST = "historical"
-TIMEOUT = 1
-
-URL_QUOTE = 'https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_M'
-
-SUB_DIR_B3 = 'b3'
-
-RECENT_ASSETS_FILE = 'recent_assets.json'
-
+from names import *
 
 def previous_month(date):
     '''Returns the previous month of a given date'''

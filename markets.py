@@ -4,30 +4,7 @@ from typing import List, Dict
 import pandas as pd
 
 from files import open_dataframe
-
-
-MARKETS: Dict[str, Dict[str, str]] = {
-    "IBOV": {
-        "source_file": "assets/IBOVQuad.csv",
-    },
-    "IFIX": {
-        "source_file": "assets/IFIXQuad.csv",
-    },
-    "IBRA": {
-        "source_file": "assets/IBRAQuad.csv",
-    },
-    "SMLL": {
-        "source_file": "assets/SMLLQuad.csv",
-    },
-    "IBXX": {
-        "source_file": "assets/IBXXQuad.csv",
-    },
-    "SP500": {
-        "source_file": "assets/s&p500.csv",
-    },
-}
-
-SUB_DIR_HIST = "historical"
+from names import MARKETS
 
 
 def read_symbols(file_path: str) -> List[str]:
@@ -67,7 +44,7 @@ class MarketData:
 
         O parâmetro 'file_path' pode ser:
         1. Uma **sigla de mercado** (ex: 'IBOV', 'IFIX', etc.)
-        2. Um **caminho de arquivo** (ex: 'assets/IBOVQuad.csv')
+        2. Um **caminho de arquivo** (ex: 'assets/IBOV.csv')
 
         Exemplos:
         market_ibov = MarketData("IBOV")
@@ -186,7 +163,16 @@ class MarketData:
         except Exception as e:
             print(f"Erro ao ler setores de {file_path}: {e}")
             return {}
-
+        
+    @classmethod
+    def get_symbol_list(cls, market: str = "SP500"):
+        '''Return the list of symbols'''
+        return MarketData.list_recent_symbols(market=market)
+    
+    # @classmethod
+    # def update_symbols(cls, , update=False):
+    #     '''Update the list of symbols'''
+    #     MarketData.list_recent_symbols(market=market, force_update=update)
 
 def list_recent_symbols(market: str, force_update: bool = False) -> List[str]:
     """Função helper para manter compatibilidade com chamadas existentes."""
@@ -200,6 +186,8 @@ def teste():
     print(f"Total de ativos SP500: {len(symbols_sp500)}")
     print(f"Primeiros 5: {symbols_sp500[:5]}")
     
+    print(f"Atualização dos ativos: {data.update_symbols(update=True)}")
+
     print("\nTestando setores:")
     sectors = data.get_sector_mapping("SP500")
     print(f"Total de setores mapeados: {len(sectors)}")

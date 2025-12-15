@@ -37,11 +37,11 @@ class Backtesting:
         :param ranker_cls: Classe do Ranker para criar instâncias.
         :param capital: Capital inicial para todas as simulações.
         :param interval: Lista com a data inicial e final da simulação.
-        :param market_identifier: Sigla ou caminho dos ativos a serem usados(IBOVQuad.csv OU IBOV).
+        :param market_identifier: Sigla ou caminho dos ativos a serem usados(IBOV.csv OU IBOV).
 
         O parâmetro 'market_identifier' pode ser:
         1. Uma **sigla de mercado** (ex: 'IBOV', 'IFIX', etc.) que corresponde a um mercado existente em MARKETS.
-        2. Um **caminho de arquivo** (ex: 'assets/IBOVQuad.csv') que será utilizado para identificar o mercado
+        2. Um **caminho de arquivo** (ex: 'assets/IBOV.csv') que será utilizado para identificar o mercado
         correspondente e, caso não exista, o mercado será criado dinamicamente.
 
         EXEMPLO:

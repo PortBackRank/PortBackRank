@@ -9,8 +9,7 @@ from os.path import isdir, isfile
 from os import mkdir, sep
 from pathlib import Path
 import pandas as pd
-
-DIR_CACHE = '.cache/port_back'
+from names import DIR_CACHE
 
 
 def dir_cache():
@@ -39,7 +38,6 @@ def open_json(file, subdir=None):
         with open(file_name, 'r', encoding='utf-8') as file:
             return json.load(file)
     return None
-
 
 def save_json(file, content, subdir=None):
     '''Saves JSON file'''

@@ -1,7 +1,7 @@
 
-"""
+'''
 Ranker module for the investment strategy.
-"""
+'''
 
 from abc import ABC, abstractmethod
 from typing import List

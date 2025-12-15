@@ -11,20 +11,19 @@ from typing import Dict, List, Optional
 import pandas as pd
 import yfinance as yf
 from tqdm import tqdm
-from files import open_dataframe, save_dataframe, save_json
-from b3 import update_symbols, get_symbol_list
+from files import open_dataframe, save_dataframe
 from markets import MarketData
+from names import SUB_DIR_HIST 
 
-SUB_DIR_HIST = "historical"
 
+class Data():
+    '''Data management'''
 
-class Yahoo:
-    '''Yahoo Finance data management'''
     subdir = SUB_DIR_HIST
 
     @classmethod
     def _save_asset_data(cls, asset: str, asset_data) -> None:
-        """Save asset data to JSON and CSV files if data is available."""
+        """Save asset data to CSV files if data is available."""
         if asset_data.empty:
             return
 
@@ -34,7 +33,6 @@ class Yahoo:
         numeric_columns = asset_data_reset.select_dtypes(include=['float64', 'float32']).columns
         asset_data_reset[numeric_columns] = asset_data_reset[numeric_columns].round(4)
 
-        # save_json(f"{asset}.json", data_dict, cls.subdir)
         save_dataframe(f"{asset}.csv", asset_data_reset, cls.subdir)
 
     @classmethod
@@ -68,20 +66,6 @@ class Yahoo:
                 assets_data.append(asset_data)
         return assets_data
 
-    @classmethod
-    def get_info(cls, assets: List[str]) -> Dict[str, pd.DataFrame]:
-        '''Load information about one or more assets.
-        Returns a mapping {symbol: DataFrame} and skips missing/empty files
-        without breaking alignment with the original symbol list.'''
-        info_map: Dict[str, pd.DataFrame] = {}
-        history = cls()
-        for asset in assets:
-            file_name = f"{asset}_info.csv"
-            asset_data = history.load_dataframe(file_name)
-            # Some loaders return None when the file does not exist.
-            if isinstance(asset_data, pd.DataFrame) and not asset_data.empty:
-                info_map[asset] = asset_data
-        return info_map
 
     @classmethod
     def load_dataframe(cls, file_name: str) -> pd.DataFrame:
@@ -109,27 +93,20 @@ class Yahoo:
                 df = None
         return df
 
-
-class Data(Yahoo):
-    '''Data management'''
-
-    def __init__(self, end_date: Optional[str] = None):
+    def __init__(self, market: str = "SP500", end_date: Optional[str] = None, precision= 2):
+        self.market = market
         self.end_date = end_date
+        self.precision = precision
 
     @classmethod
-    def update_symbols(cls, update: bool = False) -> None:
+    def update_symbols(cls, market: str,update: bool = False) -> None:
         """Updates the list of symbols and removes those without desired information."""
-        update_symbols(update=update)
+        return MarketData.list_recent_symbols(market=market,force_update=update)
 
     @classmethod
-    def list_symbols(cls) -> List[str]:
+    def list_symbols(cls, market: str = "SP500") -> List[str]:
         """Returns a list of symbols."""
-        return get_symbol_list()
-
-    @classmethod
-    def get_asset_info(cls, symbols: List[str]) -> Dict[str, pd.DataFrame]:
-        """Returns a mapping of symbol -> info DataFrame for the given symbols."""
-        return cls.get_info(assets=symbols)
+        return MarketData.get_symbol_list(market=market)
 
     @classmethod
     def download_history(cls, assets: List[str]) -> None:
@@ -224,7 +201,7 @@ class MemData:
         :param market_identifier: Identificador do mercado (ex: "SP500", "IBOV")
         """
         self.history_data: Dict[str, pd.DataFrame] = {}
-        self.sector_data: Dict[str, Dict[str, str]] = {}  # NOVO!
+        self.sector_data: Dict[str, Dict[str, str]] = {}  
         self.data = Data()
 
         # Carrega lista de ativos do mercado
@@ -284,44 +261,29 @@ class MemData:
         """
         return self.history_data
     
-    def get_sector_info(self, symbol: str) -> Dict[str, str]:
-        """
-        Retorna informações de setor para um símbolo específico.
-        
-        :param symbol: Símbolo do ativo
-        :return: Dict com 'sector' e 'industry'
-        """
-        return self.sector_data.get(symbol, {
-            'sector': 'Unknown',
-            'industry': 'Unknown'
-        })
-    
-    def get_all_sectors(self) -> Dict[str, Dict[str, str]]:
-        """
-        Retorna todas as informações de setor carregadas do CSV.
-        
-        :return: Dict {symbol: {sector, industry}}
-        """
-        return self.sector_data
-
 def teste():
     '''Test function'''
-    print('--------------Atualizando ativos (deve descomentar a linha abaixo)----------------')
-    # Data.update_symbols(update=True)
+    try:
+        df_assets = pd.read_csv('assets/SP500.csv')
+        
+        if 'symbol' in  df_assets.columns:
+            assets = df_assets['symbol'].tolist()
+        else:
+            assets = df_assets.iloc[:,0].tolist()
 
-    print('--------------Listando ativos----------------')
-    assets = Data.list_symbols()
-    print(assets)
-
-    print('--------Baixando histórico de ativos (deve descomentar a linha abaixo)---------')
-    # Data.download_history(assets)
-
-    print('--------------Buscando histórico de 10 ativos----------------')
-    print(Data.fetch_history(assets=assets[:10]))
-
-    print('--------------Buscando historico de um ativo----------------')
-    print(Data.fetch_history(assets=['EQPA3.SA']))
-
+        assets = [asset for asset in assets if pd.notna(asset) and asset != '']
+            
+        print(f"Total de ativos carregados do CSV: {len(assets)}")
+        print(f"Primeiros 5 ativos: {assets[:5]}")
+    
+    except FileNotFoundError:
+        print("Arquivo 'assets.csv' não encontrado!")
+        print("Usando lista padrão do mercado SP500 como fallback")
+        assets = Data.list_symbols(market="SP500")
+    except Exception as e:
+        print(f"Erro ao ler CSV: {e}")
+        print("Usando lista padrão do mercado SP500 como fallback")
+        assets = Data.list_symbols(market="SP500")
 
 def teste_sp500():
     '''Test function'''
@@ -330,13 +292,6 @@ def teste_sp500():
     assets = market_data.list_recent_symbols(
         market_data.market, force_update=True)
     print(assets)
-    # Data.download_history(assets)
-    # print('--------------Buscando histórico de 10 ativos----------------')
-    # print(Data.fetch_history(assets=assets[:5]))
-
-    # print('--------------Buscando informação de ativos----------------')
-    # print(Data.get_asset_info(assets[:10]))
-    # print(Data.get_asset_info("AZUL4.SA"))
 
 
 def teste_mem_data():
@@ -366,4 +321,4 @@ def teste_mem_data():
 
 
 if __name__ == "__main__":
-    teste_mem_data()
+    teste()
