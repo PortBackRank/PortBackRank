@@ -138,14 +138,21 @@ class MarketData:
             
             sector_map = {}
             
-            # Para S&P500
-            if "Symbol" in df.columns:
+            # Para S&P500 - VERSÃO ATUALIZADA
+            if "symbol" in df.columns:  # Mudou de "Symbol" para "symbol"
                 for _, row in df.iterrows():
-                    symbol = str(row["Symbol"]).strip()
+                    symbol = str(row["symbol"]).strip()
+                    
+                    # Tenta diferentes variações de nomes de colunas
+                    sector = str(row.get("sector", row.get("GICS Sector", "Unknown"))).strip()
+                    industry = str(row.get("industry", row.get("GICS Sub-Industry", "Unknown"))).strip()
+                    
                     sector_map[symbol] = {
-                        "sector": str(row.get("GICS Sector", "Unknown")).strip(),
-                        "industry": str(row.get("GICS Sub-Industry", "Unknown")).strip()
+                        "sector": sector,
+                        "industry": industry
                     }
+                
+                print(f"Setores carregados para {market}: {len(sector_map)} ativos")
             
             # Para arquivos brasileiros (B3)
             elif "Codigo" in df.columns:
@@ -156,23 +163,29 @@ class MarketData:
                         "sector": str(row.get("Setor", "Unknown")).strip(),
                         "industry": str(row.get("Subsetor", row.get("Segmento", "Unknown"))).strip()
                     }
+                
+                print(f"Setores carregados para {market}: {len(sector_map)} ativos")
             
-            print(f"Setores carregados para {market}: {len(sector_map)} ativos")
+            else:
+                print(f"AVISO: Colunas não reconhecidas no CSV. Colunas encontradas: {df.columns.tolist()}")
+            
             return sector_map
 
         except Exception as e:
             print(f"Erro ao ler setores de {file_path}: {e}")
+            import traceback
+            traceback.print_exc()
             return {}
-        
+      
     @classmethod
     def get_symbol_list(cls, market: str = "SP500"):
         '''Return the list of symbols'''
         return MarketData.list_recent_symbols(market=market)
     
-    # @classmethod
-    # def update_symbols(cls, , update=False):
-    #     '''Update the list of symbols'''
-    #     MarketData.list_recent_symbols(market=market, force_update=update)
+    @classmethod
+    def update_symbols(cls, market: str, update=False):
+        '''Update the list of symbols'''
+        return MarketData.list_recent_symbols(market=market, force_update=update)
 
 def list_recent_symbols(market: str, force_update: bool = False) -> List[str]:
     """Função helper para manter compatibilidade com chamadas existentes."""
@@ -186,7 +199,7 @@ def teste():
     print(f"Total de ativos SP500: {len(symbols_sp500)}")
     print(f"Primeiros 5: {symbols_sp500[:5]}")
     
-    print(f"Atualização dos ativos: {data.update_symbols(update=True)}")
+    print(f"Atualização dos ativos: {data.update_symbols(market='SP500',update=True)}")
 
     print("\nTestando setores:")
     sectors = data.get_sector_mapping("SP500")

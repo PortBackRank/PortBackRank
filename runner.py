@@ -177,7 +177,7 @@ class Runner:
                 setor = item.get('sector')
                 preco_compra = item.get('preco_compra', 0)
                 quantidade = item.get('quantidade', 0)
-                if not setor or setor == 'Unknown':
+                if not setor or setor == 'Unknown - Unknown':
                     continue
                 valor_item = preco_compra * quantidade
                 setor_percentual[setor] = setor_percentual.get(
@@ -189,20 +189,23 @@ class Runner:
             if balance_disponivel <= 2:
                 break
 
-            # Busca setor do cache carregado do CSV (não do yfinance!)
-            sector_info = self._all_sectors.get(simbolo, {})
-            setor = sector_info.get('sector', 'Unknown')
+            # Obtém o setor pelo cache do csv em uma string ('industry - sector')
+            setor = self._all_sectors.get(simbolo, 'Unknown - Unknown')
             
-            if setor == 'Unknown':
-                # Ignora ativos sem setor definido
+            # Ignora ativos sem setor definido
+            if setor == 'Unknown - Unknown':
                 continue
 
-            max_investimento_setor = (
-                balance_disponivel * self.diversification if setor not in setor_percentual
-                else total_portfolio_value * self.diversification -
-                setor_percentual.get(setor, 0) * total_portfolio_value
-            )
+            # Calcula investimento máximo no setor
+            if setor not in setor_percentual:
+                max_investimento_setor = balance_disponivel * self.diversification
+            else:
+                max_investimento_setor = (
+                    total_portfolio_value * self.diversification -
+                    setor_percentual.get(setor, 0) * total_portfolio_value
+                )
 
+            # Busca dados históricos do dia
             day_row = dados_historicos.get(simbolo, {}).get(date)
             if day_row is None:
                 continue
@@ -213,6 +216,7 @@ class Runner:
             if pd.isna(preco_atual) or pd.isna(volume_diario):
                 continue
 
+            # Calcula quantidade a comprar
             quantidade_max = int(balance_disponivel // preco_atual)
             quantidade_setor = int(max_investimento_setor // preco_atual)
             quantidade_comprar = min(
@@ -221,6 +225,7 @@ class Runner:
             if quantidade_comprar <= 0:
                 continue
 
+            # Registra compra
             self.buy_log.append({
                 'data_compra': date,
                 'simbolo': simbolo,
@@ -237,10 +242,14 @@ class Runner:
                 'sector': setor
             })
 
-            balance_disponivel -= quantidade_comprar * preco_atual
-            total_portfolio_value += quantidade_comprar * preco_atual
+            # Atualiza saldos
+            valor_compra = quantidade_comprar * preco_atual
+            balance_disponivel -= valor_compra
+            total_portfolio_value += valor_compra
+            
+            # Atualiza percentual do setor
             setor_percentual[setor] = setor_percentual.get(setor, 0) + (
-                quantidade_comprar * preco_atual / total_portfolio_value
+                valor_compra / total_portfolio_value
             )
 
         self.balance = balance_disponivel

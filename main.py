@@ -279,8 +279,9 @@ def run_from_config(config_path: str, download_mode: str = "missing"):
 
 def _parse_args(argv=None):
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", required=True)
+    parser.add_argument("-c","--config", required=True)
     parser.add_argument(
+        "-d",
         "--download-data",
         choices=["all", "missing", "none"],
         default="missing",
