@@ -25,6 +25,7 @@ def _print_df_full(df: pd.DataFrame):
         except Exception:
             pass
 
+
         pd.set_option("display.max_columns", None)
         pd.set_option("display.width", None)
         try:
@@ -256,7 +257,7 @@ def run_from_config(config_path: str, download_mode: str = "missing"):
     mode = (download_mode or "missing").lower()
     if mode == "all":
         assets = list_recent_symbols(market_identifier, force_update=True)
-        Data.download_history(assets)
+        Data.download_histories(assets)
     elif mode == "missing":
         _ensure_market_assets(market_identifier)
     elif mode == "none":
