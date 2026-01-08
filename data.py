@@ -162,7 +162,7 @@ class Data():
 
         numeric_columns = asset_data_reset.select_dtypes(
             include=['float64', 'float32']).columns
-        asset_data_reset[numeric_columns] = asset_data_reset[numeric_columns].round(4)
+        asset_data_reset[numeric_columns] = asset_data_reset[numeric_columns].round(2)
 
         save_dataframe(f"{asset}.csv", asset_data_reset, cls.subdir)
 
@@ -187,6 +187,7 @@ class Data():
         :param file_name: Name of the file
         :return: DataFrame or None if not found
         """
+        
         return open_dataframe(file_name, cls.subdir)
 
     @classmethod
@@ -338,6 +339,43 @@ class MemData:
 def teste():
     '''Test function'''
     try:
+        # Escolhe um ativo para testar (pode ser qualquer um que você tenha)
+        test_asset = "AAPL"  # ou "ACGL" que vejo na sua lista
+        
+        print(f"Testando arredondamento do ativo: {test_asset}")
+        
+        # Carrega o DataFrame do ativo usando a função que modificamos
+        df = Data.get_asset_data_by_name(test_asset)
+        
+        if df is not None and not df.empty:
+            print(f"\nDados carregados com sucesso!")
+            print(f"Total de linhas: {len(df)}")
+            
+            # Mostra as primeiras linhas das colunas de preço
+            price_cols = ['Open', 'High', 'Low', 'Close']
+            existing_cols = [col for col in price_cols if col in df.columns]
+            
+            print(f"\nPrimeiras 5 linhas das colunas de preço:")
+            print(df[existing_cols].head())
+            
+            # Verifica se os valores têm no máximo 2 casas decimais
+            print(f"\nVerificando arredondamento...")
+            for col in existing_cols:
+                max_decimals = df[col].apply(lambda x: len(str(x).split('.')[-1]) if '.' in str(x) else 0).max()
+                print(f"  {col}: máximo de {max_decimals} casas decimais")
+                if max_decimals <= 2:
+                    print(f"Arredondado corretamente")
+                else:
+                    print(f"ERRO, não está arredondado para 2 casas")
+        else:
+            print(f"Erro: não foi possível carregar dados de {test_asset}")
+            
+    except Exception as e:
+        print(f"Erro no teste: {e}")
+        import traceback
+        traceback.print_exc()
+    
+    try:
         df_assets = pd.read_csv('assets/SP500.csv')
         
         if 'symbol' in df_assets.columns:
@@ -348,8 +386,8 @@ def teste():
         assets = [asset for asset in assets if pd.notna(asset) and asset != '']
             
         print(f"Total de ativos carregados do CSV: {len(assets)}")
-        print(f"Primeiros 5 ativos: {assets[:5]}")
-        print(f"Sector-Industry of all assets{assets}")
+        print(f"First 5 assets: {assets[:5]}")
+        print(f"Sector-Industry of 5 assets{assets[:5]}")
     except FileNotFoundError:
         print("Arquivo 'assets.csv' não encontrado!")
         print("Usando lista padrão do mercado SP500 como fallback")
@@ -410,4 +448,4 @@ def teste_mem_data():
 
 
 if __name__ == "__main__":
-    teste_mem_data()
+    teste()

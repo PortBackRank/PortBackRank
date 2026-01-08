@@ -47,10 +47,19 @@ def save_json(file, content, subdir=None):
 
 
 def open_dataframe(file, subdir=None):
-    '''Opens CSV file as a DataFrame'''
+    '''Opens CSV file as a DataFrame and rounds price columns to 2 decimal places'''
     file_name = file_path(file, subdir)
     if isfile(file_name):
-        return pd.read_csv(file_name, index_col=False)
+        df = pd.read_csv(file_name, index_col=False)
+        
+        # Arredondar apenas colunas de preço para 2 casas decimais
+        price_columns = ['Open', 'High', 'Low', 'Close']
+        existing_price_cols = [col for col in price_columns if col in df.columns]
+        
+        if existing_price_cols:
+            df[existing_price_cols] = df[existing_price_cols].round(2)
+        
+        return df
     return None
 
 

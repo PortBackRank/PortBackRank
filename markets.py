@@ -3,7 +3,7 @@ from typing import List, Dict
 
 import pandas as pd
 
-from files import open_dataframe
+
 from names import MARKETS
 
 
