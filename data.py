@@ -55,7 +55,7 @@ class Data():
         
         :param asset: Asset symbol
         """
-        asset_data = yf.Ticker(asset).history(period="max")
+        asset_data = yf.Ticker(asset).history(period="max", auto_adjust=False)
         cls._save_asset_data(asset, asset_data)
 
     @classmethod
@@ -70,7 +70,7 @@ class Data():
         with tqdm(total=len(assets_list), desc="Downloading data", unit="asset") as pbar:
             def download_and_save(asset):
                 cls._save_asset_data(
-                    asset, tickers.tickers[asset].history(period="max"))
+                    asset, tickers.tickers[asset].history(period="max", auto_adjust=False))
                 pbar.update(1)
 
             with concurrent.futures.ThreadPoolExecutor() as executor:
