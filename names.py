@@ -10,6 +10,7 @@ TIMEOUT = 1
 URL_QUOTE = 'https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_M'
 SUB_DIR_B3 = 'b3'
 RECENT_ASSETS_FILE = 'recent_assets.json'
+APP_NAME = 'PortBackRank'
 
 # files.py const
 DIR_CACHE = '.cache/port_back'
