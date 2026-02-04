@@ -11,10 +11,10 @@ from data import MemData
 
 
 class Ranker(ABC):
-    """class abstract Ranker"""
+    '''class abstract Ranker'''
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
-        """
+        '''
         Constructor for the Ranker class, 
         which defines default parameters for the investment strategy.
 
@@ -22,7 +22,7 @@ class Ranker(ABC):
         :param interval: List of two strings representing the start and end dates of the data to be used.
         :param data: Data instance to be used for the strategy.
             If not provided, the current date will be used.
-        """
+        '''
         self.interval = interval
 
         self.data = data
@@ -30,34 +30,34 @@ class Ranker(ABC):
 
     @abstractmethod
     def rank(self, date: str = None) -> List[str]:
-        """
+        '''
         Abstract method that must be implemented by subclasses.
 
         :return: List of ranked stock symbols.
-        """
+        '''
 
 
 class RandomRanker(Ranker):
-    """RandomRanker class"""
+    '''RandomRanker class'''
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
-        """
+        '''
         Constructor for the RandomRanker class, allowing for an optional seed for reproducibility.
 
         :param parameters: Optional dictionary of parameters for the strategy.
         :param date: List of two strings representing the start and end dates of the data to be used.
         :param data: Data instance to be used for the strategy.
         :param seed: Optional seed for randomization.
-        """
+        '''
         super().__init__(parameters, interval, data)
-        self.seed = self.parameters.get("SEED", 42)
+        self.seed = self.parameters.get('SEED', 42)
 
     def rank(self, date: str = None) -> List[str]:
-        """
+        '''
         Generates a random ranking of symbols based on the data retrieved from the `Data` instance.
 
         :return: List of symbols in random order.
-        """
+        '''
         symbols = self.data.get_assets()
 
         if self.seed is not None:
@@ -69,26 +69,26 @@ class RandomRanker(Ranker):
 
 
 def test_random_ranker():
-    """
+    '''
     Função simples para testar o funcionamento do RandomRanker.
-    """
-    interval = ["2024-01-10", "2024-11-10"]
+    '''
+    interval = ['2024-01-10', '2024-11-10']
     data = MemData(interval=interval)
 
-    parameters = {"SEED": 42}
+    parameters = {'SEED': 42}
 
     ranker = RandomRanker(data=data, parameters=parameters)
     ranked_symbols = ranker.rank()
 
-    print("Símbolos ranqueados aleatoriamente:", ranked_symbols)
+    print('Símbolos ranqueados aleatoriamente:', ranked_symbols)
 
 
 class MARanker(Ranker):
-    """Mean Reversion Ranker class"""
+    '''Mean Reversion Ranker class'''
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
         super().__init__(parameters, interval, data)
-        windows = self.parameters.get("window")
+        windows = self.parameters.get('window')
         self._short = windows[0]
         self._long = windows[1]
 
@@ -129,41 +129,41 @@ class MARanker(Ranker):
 
 
 def test_ma_ranker():
-    """
+    '''
     Função simples para testar o funcionamento do MARanker.
-    """
-    interval = ["2024-01-10", "2024-11-10"]
+    '''
+    interval = ['2024-01-10', '2024-11-10']
     data = MemData(interval=interval)
 
-    parameters = {"window": [9, 21]}
+    parameters = {'window': [9, 21]}
 
     ranker = MARanker(data=data, parameters=parameters)
-    ranked_symbols = ranker.rank(date="2024-05-29")
+    ranked_symbols = ranker.rank(date='2024-05-29')
 
-    print("Símbolos ranqueados por Mean Reversion:", ranked_symbols)
+    print('Símbolos ranqueados por Mean Reversion:', ranked_symbols)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     test_ma_ranker()
 
 class RSIRanker(Ranker):
-    """RSI-based Ranker."""
+    '''RSI-based Ranker.'''
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
         super().__init__(parameters, interval, data)
-        self.period = int(self.parameters.get("period", 14))
-        win = self.parameters.get("window")
+        self.period = int(self.parameters.get('period', 14))
+        win = self.parameters.get('window')
         try:
             if isinstance(win, (list, tuple)) and len(win) >= 1:
                 self.period = int(win[0])
         except Exception:
             pass
-        self.oversold = float(self.parameters.get("oversold", 30))
-        self.overbought = float(self.parameters.get("overbought", 70))
-        self.mode = self.parameters.get("mode", "mean_reversion")
+        self.oversold = float(self.parameters.get('oversold', 30))
+        self.overbought = float(self.parameters.get('overbought', 70))
+        self.mode = self.parameters.get('mode', 'mean_reversion')
 
     def _ensure_rsi(self, df: pd.DataFrame) -> pd.DataFrame:
-        key = f"rsi{self.period}"
+        key = f'rsi{self.period}'
         if key in df.columns:
             return df
         delta = df['Close'].diff()
@@ -179,7 +179,7 @@ class RSIRanker(Ranker):
     def rank(self, date: str = None) -> List[str]:
         dict_data = self.data.get_all_history()
         ranked_symbols = []
-        key = f"rsi{self.period}"
+        key = f'rsi{self.period}'
         for symbol, df in dict_data.items():
             if 'Close' not in df.columns or df.empty:
                 continue

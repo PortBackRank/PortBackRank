@@ -13,11 +13,11 @@ from utils import generate_filename, save_json, generate_performance_plot
 
 
 def save_results(results):
-    """
+    ''''
     Recebe os resultados das execuções paralelizadas e salva os arquivos.
-    """
+    '''
     for result in results:
-        start_date, end_date = result['intervalo'].split(" - ")
+        start_date, end_date = result['intervalo'].split(' - ')
 
         save_json(generate_filename('timeline', result, start_date,
                   end_date), result['shared_data']['timeline'])
@@ -28,10 +28,10 @@ def save_results(results):
 
 
 class Backtesting:
-    """ Classe para realizar backtesting de uma estratégia de investimento. """
+    ''' Classe para realizar backtesting de uma estratégia de investimento. '''
 
-    def __init__(self, ranker_cls, capital: float, interval: List[str], market_identifier = "SP500"):
-        """
+    def __init__(self, ranker_cls, capital: float, interval: List[str], market_identifier = 'SP500'):
+        '''
         Inicializa o backtesting com as informações básicas.
 
         :param ranker_cls: Classe do Ranker para criar instâncias.
@@ -45,8 +45,8 @@ class Backtesting:
         correspondente e, caso não exista, o mercado será criado dinamicamente.
 
         EXEMPLO:
-        backtester = Backtesting(MARanker, capital=10000, interval=["2024-01-01", "2024-12-31"], market_identifier="SP500")
-        """
+        backtester = Backtesting(MARanker, capital=10000, interval=['2024-01-01', '2024-12-31'], market_identifier='SP500')
+        '''
         self.ranker_cls = ranker_cls
         self.capital = capital
         self.interval = interval
@@ -59,7 +59,7 @@ class Backtesting:
         ranker_grid: Dict[str, List[float]],
         n_jobs: int = -1
     ) -> pd.DataFrame:
-        """
+        '''
         Executa o backtesting variando os parâmetros do Runner e do ranker.
 
         :param parameter_grid: Dicionário com os parâmetros a variar e seus valores.
@@ -68,7 +68,7 @@ class Backtesting:
                             Exemplo: {'SEED': [0, 1, 42]}.
         :param n_jobs: Número de processos paralelos (-1 usa todos os núcleos disponíveis).
         :return: DataFrame com os resultados das simulações.
-        """
+        '''
         runner_params = list(product(*parameter_grid.values()))
         ranker_params = list(product(*ranker_grid.values()))
         parameter_names = list(parameter_grid.keys())
@@ -100,7 +100,7 @@ class Backtesting:
 
                 return self._evaluate_results(results_runner, runner_config, ranker_config)
             except Exception as e:
-                print(f"Erro ao rodar configuração {runner_config} com ranker {ranker_config}: {e}")
+                print(f'Erro ao rodar configuração {runner_config} com ranker {ranker_config}: {e}')
                 return None
 
         results = [
@@ -122,14 +122,14 @@ class Backtesting:
     def _evaluate_results(
         self, result: List[Dict], runner_params: Dict, ranker_params: Dict
     ) -> Dict:
-        """
+        '''
         //Calcula métricas de performance da simulação.
 
         :param result: Resultado da simulação (lista de dicionários).
         :param runner_params: Parâmetros usados na simulação para o Runner.
         :param ranker_params: Parâmetros usados na simulação para o Ranker.
         :return: Dicionário com as métricas calculadas.
-        """
+        '''
         caixa_final = result[-1]['balance'] if result else 0
 
         portfolio_value = sum(
@@ -142,12 +142,12 @@ class Backtesting:
         shared_data = result[-1].get('shared_data', {}) if result else {}
 
         return {
-            'intervalo': f"{self.interval[0]} - {self.interval[1]}",
+            'intervalo': f'{self.interval[0]} - {self.interval[1]}',
             **runner_params,
             **ranker_params,
             'caixa_final': caixa_final,
             'portfolio_value': portfolio_value,
-            'retorno_total': f"{retorno_total:.2f}%",
+            'retorno_total': f'{retorno_total:.2f}%',
             'shared_data': shared_data,
             'sell_log': result[-1].get('sell_log', []),
             'buy_log': result[-1].get('buy_log', [])
@@ -155,7 +155,7 @@ class Backtesting:
 
 
 def test_bt_with_random():
-    interval = ["2024-01-01", "2024-12-31"]
+    interval = ['2024-01-01', '2024-12-31']
 
     backtester = Backtesting(RandomRanker, capital=10000, interval=interval)
 
@@ -165,7 +165,7 @@ def test_bt_with_random():
         'diversification': [0.2]
     }
 
-    ranker_ranges = {"SEED": [0, 1, 42]}
+    ranker_ranges = {'SEED': [0, 1, 42]}
 
     results = backtester.run(
         parameter_grid, ranker_grid=ranker_ranges, n_jobs=-1)
@@ -174,12 +174,12 @@ def test_bt_with_random():
 
 
 def test_bt_with_ma():
-    interval = ["2024-01-01", "2024-06-30"]
+    interval = ['2024-01-01', '2024-06-30']
 
-    parameters = {"window": [[9, 21], [20, 50], [50, 200]]}
+    parameters = {'window': [[9, 21], [20, 50], [50, 200]]}
 
     backtester = Backtesting(MARanker, capital=10000,
-                             interval=interval, market_identifier="SP500")
+                             interval=interval, market_identifier='SP500')
 
     parameter_grid = {
         'profit': [0.1, 0.15],
@@ -190,10 +190,10 @@ def test_bt_with_ma():
     results = backtester.run(
         parameter_grid, ranker_grid=parameters, n_jobs=-1)
 
-    # generate_performance_plot(market_symbol="SP500")
+    # generate_performance_plot(market_symbol='SP500')
 
     print(results)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     test_bt_with_ma()

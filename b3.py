@@ -103,12 +103,12 @@ class AssetHistory:
 
     @classmethod
     def download_info(cls, symbols: List[str]) -> List[str]:
-        """Download information for the given list of assets."""
+        '''Download information for the given list of assets.'''
         desired_fields = {'sector', 'industry'}
         asset_info = yf.Tickers(symbols)
         assets_with_info = []
 
-        with tqdm(total=len(asset_info.tickers), desc="Downloading information", unit="asset") as pbar:
+        with tqdm(total=len(asset_info.tickers), desc='Downloading information', unit='asset') as pbar:
             for asset, ticker_data in asset_info.tickers.items():
                 time.sleep(0.1)
                 try:
@@ -119,13 +119,13 @@ class AssetHistory:
                     if all(filtered_info[field] for field in desired_fields):
                         assets_with_info.append(asset)
 
-                        csv_file_name = f"{asset}_info.csv"
+                        csv_file_name = f'{asset}_info.csv'
                         save_dataframe(csv_file_name, pd.DataFrame(
                             [filtered_info]), cls.subdir)
 
                     pbar.update(1)
                 except (requests.exceptions.RequestException, KeyError, ValueError) as e:
-                    print(f"Error processing {asset}: {e}")
+                    print(f'Error processing {asset}: {e}')
                     continue
 
         cls.remove_symbols(assets_with_info)

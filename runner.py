@@ -11,7 +11,7 @@ from data import MemData
 
 class Runner:
     def __init__(self, profit, loss, diversification, ranker: Type[Ranker], data: MemData):
-        """
+        '''
         Inicializa a classe Runner com os parâmetros fornecidos.
 
         :param profit: Lucro alvo para venda (porcentagem).
@@ -19,7 +19,7 @@ class Runner:
         :param diversification: Porcentagem máxima para cada setor (porcentagem).
         :param ranker: Classe do ranker a ser utilizada.
         :param data: Instância de MemData com os dados históricos e de setor.
-        """
+        '''
         self.profit = profit
         self.loss = loss
         self.diversification = diversification
@@ -32,13 +32,13 @@ class Runner:
         self.timeline = []
 
     def prepare_data(self, interval: List[str], ranker_conf: Dict[str, float], capital: float):
-        """
+        '''
         Prepara o ambiente para uma nova simulação:
         - inicializa o ranker
         - reseta saldo, portfólio e logs
         - pré-carrega históricos e setores em memória
         - cria índice por data para acesso rápido
-        """
+        '''
         # inicializa ranker com os parâmetros e dados
         self._ranker_instance = self.ranker(parameters=ranker_conf, data=self.data)
 
@@ -68,10 +68,10 @@ class Runner:
         self._interval = interval
 
     def single_run(self, interval: List[str], ranker_conf: Dict[str, float], capital: float) -> Dict:
-        """
+        '''
         Executa uma simulação para uma única configuração de ranker,
         mantendo o portfólio com a quantidade e o preço de compra dos ativos.
-        """
+        '''
         self.prepare_data(interval, ranker_conf, capital)
 
         start_date, end_date = interval
@@ -98,10 +98,10 @@ class Runner:
         }
 
     def _sell(self, date: str):
-        """
+        '''
         Vende ativos que atingiram o percentual de lucro ou perda,
         respeitando a ordem FIFO e verificando o volume diário.
-        """
+        '''
         historicos_ativos = {}
 
         for simbolo in [item['simbolo'] for item in self.__portfolio]:
@@ -157,10 +157,10 @@ class Runner:
         self.__portfolio = novos_portfolio
 
     def _buy(self, date: str, ranker: Ranker):
-        """
+        '''
         Compra ativos com base no ranking, respeitando diversificação por setor
         e verificando o volume diário disponível.
-        """
+        '''
         ranked_symbols = ranker.rank(date)
         if not ranked_symbols:
             return
@@ -255,11 +255,11 @@ class Runner:
         self.balance = balance_disponivel
 
     def _record_state(self, date):
-        """
+        '''
         Grava o estado completo do portfólio e saldo em uma data específica.
 
         :param date: Data atual da simulação.
-        """
+        '''
         self.timeline.append({
             'date': date,
             'balance': float(self.balance),
@@ -277,10 +277,10 @@ class Runner:
 
 
 def test_runner():
-    interval = ["2024-06-10", "2024-11-10"]
+    interval = ['2024-06-10', '2024-11-10']
     capital = 10000
 
-    ranker_config = {"SEED": 42}
+    ranker_config = {'SEED': 42}
 
     runner = Runner(
         profit=0.1,
@@ -292,36 +292,36 @@ def test_runner():
 
     try:
         result = runner.single_run(interval, ranker_config, capital)
-        print("Execução do Runner bem sucedida")
-        print(f"Saldo final: {result['balance']}")
+        print('Execução do Runner bem sucedida')
+        print(f'Saldo final: {result["balance"]}')
     except Exception as e:
-        print(f"Erro durante o teste: {e}")
+        print(f'Erro durante o teste: {e}')
         import traceback
         traceback.print_exc()
 
 
 def test_runner_ma():
-    interval = ["2024-04-10", "2024-08-10"]
-    ranker_config = {"window": [9, 21]}
+    interval = ['2024-04-10', '2024-08-10']
+    ranker_config = {'window': [9, 21]}
 
     runner = Runner(
         profit=0.1,
         loss=0.05,
         diversification=0.2,
         ranker=MARanker,
-        data=MemData(interval, market_identifier="SP500")
+        data=MemData(interval, market_identifier='SP500')
     )
 
     try:
         result = runner.single_run(interval, ranker_config, capital=10000)
-        print("Execução do Runner bem sucedida")
-        print(f"Saldo final: {result['balance']}")
-        print(f"Valor do portfolio: {sum(item['quantidade'] * item['preco_compra'] for item in result['portfolio'])}")
+        print('Execução do Runner bem sucedida')
+        print(f'Saldo final: {result["balance"]}')
+        print(f'Valor do portfolio: {sum(item["quantidade"] * item["preco_compra"] for item in result["portfolio"])}')
     except Exception as e:
-        print(f"Erro durante o teste: {e}")
+        print(f'Erro durante o teste: {e}')
         import traceback
         traceback.print_exc()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     test_runner_ma()
