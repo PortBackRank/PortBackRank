@@ -14,6 +14,7 @@ from tqdm import tqdm
 from files import open_dataframe, save_dataframe
 from markets import MarketData
 from names import SUB_DIR_HIST 
+from logger import * 
 
 
 class Data():
@@ -21,17 +22,17 @@ class Data():
 
     subdir = SUB_DIR_HIST
 
-    def __init__(self, end_date: Optional[str] = None, precision: int = 2):
-        '''Initialize Data class for historical data management.
-        
-        :param end_date: Optional end date for data
-        :param precision: Decimal precision for numeric values
-        '''
+    def __init__(self, market: str = 'SP500', end_date: Optional[str] = None, precision: int = 2):
         self.end_date = end_date
         self.precision = precision
 
-    @classmethod
-    def update_symbols(cls, market: str, update: bool = False) -> List[str]:
+        self.market_data = MarketData(market)
+        self.sector_info = {}
+        mapping = self.market_data.get_sector_mapping(market)
+        for s, info in mapping.items():
+            self.sector_info[s] = f"{info.get('industry')} - {info.get('sector')}"
+
+    def update_symbols(self, market: str, update: bool = False) -> List[str]:
         '''Updates the list of symbols via MarketData.
         
         :param market: Market identifier (e.g., 'SP500', 'IBOV')
@@ -40,8 +41,7 @@ class Data():
         '''
         return MarketData.list_recent_symbols(market=market, force_update=update)
 
-    @classmethod
-    def list_symbols(cls, market: str = 'SP500') -> List[str]:
+    def list_symbols(self, market: str = 'SP500') -> List[str]:
         '''Returns a list of symbols via MarketData.
         
         :param market: Market identifier
@@ -49,17 +49,17 @@ class Data():
         '''
         return MarketData.get_symbol_list(market=market)
 
-    @classmethod
-    def download_history(cls, asset: str) -> None:
+
+    def download_history(self, asset: str) -> None:
         '''Downloads historical data for a single asset.
         
         :param asset: Asset symbol
         '''
         asset_data = yf.Ticker(asset).history(period='max', auto_adjust=False)
-        cls._save_asset_data(asset, asset_data)
+        self._save_asset_data(asset, asset_data)
 
-    @classmethod
-    def download_histories(cls, assets: List[str]) -> None:
+
+    def download_histories(self, assets: List[str]) -> None:
         '''Downloads historical data for all assets in the list concurrently.
         
         :param assets: List of asset symbols
@@ -69,15 +69,14 @@ class Data():
 
         with tqdm(total=len(assets_list), desc='Downloading data', unit='asset') as pbar:
             def download_and_save(asset):
-                cls._save_asset_data(
+                self._save_asset_data(
                     asset, tickers.tickers[asset].history(period='max', auto_adjust=False))
                 pbar.update(1)
 
             with concurrent.futures.ThreadPoolExecutor() as executor:
                 executor.map(download_and_save, assets_list)
 
-    @classmethod
-    def fetch_history(cls, assets: List[str]) -> List[Dict[str, pd.DataFrame]]:
+    def fetch_history(self, assets: List[str]) -> List[Dict[str, pd.DataFrame]]:
         '''Fetches and concatenates historical data for the given list of assets.
         
         :param assets: List of asset symbols
@@ -85,14 +84,14 @@ class Data():
         '''
         result = []
         for asset in assets:
-            df = cls.get_asset_data_by_name(asset)
+            df = self.get_asset_data_by_name(asset)
             if isinstance(df, pd.DataFrame) and not df.empty:
                 result.append({'symbol': asset, 'data': df})
         return result
 
-    @classmethod
+
     def get_history_interval(
-        cls,
+        self,
         assets: List[str],
         start_date: str,
         end_date: str,
@@ -106,10 +105,10 @@ class Data():
         :param column_filter: Column to filter (default is 'Close')
         :return: List of dictionaries with the symbol and the data in a DataFrame
         '''
-        historical_data = cls.fetch_history(assets=assets)
+        historical_data = self.fetch_history(assets=assets)
 
         if not historical_data:
-            print('Empty historical data')
+            logger.info('Empty historical data')
             return []
 
         result = []
@@ -147,8 +146,7 @@ class Data():
 
         return result
     
-    @classmethod
-    def _save_asset_data(cls, asset: str, asset_data: pd.DataFrame) -> None:
+    def _save_asset_data(self, asset: str, asset_data: pd.DataFrame) -> None:
         '''Save asset data to CSV files if data is available.
         
         :param asset: Asset symbol
@@ -164,10 +162,10 @@ class Data():
             include=['float64', 'float32']).columns
         asset_data_reset[numeric_columns] = asset_data_reset[numeric_columns].round(2)
 
-        save_dataframe(f'{asset}.csv', asset_data_reset, cls.subdir)
+        save_dataframe(f'{asset}.csv', asset_data_reset, self.subdir)
 
-    @classmethod
-    def get_asset_data(cls, assets: List[str]) -> List[pd.DataFrame]:
+
+    def get_asset_data(self, assets: List[str]) -> List[pd.DataFrame]:
         '''Load historical data for one or more assets.
         
         :param assets: List of asset symbols
@@ -175,23 +173,21 @@ class Data():
         '''
         assets_data = []
         for asset in assets:
-            asset_data = cls.get_asset_data_by_name(asset)
+            asset_data = self.get_asset_data_by_name(asset)
             if asset_data is not None and not asset_data.empty:
                 assets_data.append(asset_data)
         return assets_data
 
-    @classmethod
-    def load_dataframe(cls, file_name: str) -> Optional[pd.DataFrame]:
+    def load_dataframe(self, file_name: str) -> Optional[pd.DataFrame]:
         '''Load data from a CSV file.
         
         :param file_name: Name of the file
         :return: DataFrame or None if not found
         '''
         
-        return open_dataframe(file_name, cls.subdir)
+        return open_dataframe(file_name, self.subdir)
 
-    @classmethod
-    def get_asset_data_by_name(cls, asset: str) -> Optional[pd.DataFrame]:
+    def get_asset_data_by_name(self, asset: str) -> Optional[pd.DataFrame]:
         '''Get historical data for a specific asset.
         If the CSV is missing or empty, attempt to download and load again.
         
@@ -202,16 +198,16 @@ class Data():
         df = None
         
         try:
-            df = cls.load_dataframe(file_name)
+            df = self.load_dataframe(file_name)
         except FileNotFoundError:
             df = None
 
         # open_dataframe may return None instead of raising
         if df is None or (isinstance(df, pd.DataFrame) and df.empty):
             print(f'File {file_name} not found or empty. Downloading data for {asset}.')
-            cls.download_history(asset)
+            self.download_history(asset)
             try:
-                df = cls.load_dataframe(file_name)
+                df = self.load_dataframe(file_name)
             except FileNotFoundError:
                 df = None
         
@@ -251,13 +247,13 @@ class MemData:
         # Load sector information from MarketData
         self.load_sector_info()
 
-        print(f'Assets available: {len(self.assets)}')
-        print(f'Sectors in cache: {len(self.sector_info)}')
+        logger.info(f'Assets available: {len(self.assets)}')
+        logger.info(f'Sectors in cache: {len(self.sector_info)}')
         if self.assets:
-            print(f'First 5 assets: {self.assets[:5]}')
+            logger.info(f'First 5 assets: {self.assets[:5]}')
         
         if not self.assets:
-            print(f'No assets found for {market_identifier}.')
+            logger.info(f'No assets found for {market_identifier}.')
             return
 
         # Load historical data using Data class
@@ -278,9 +274,9 @@ class MemData:
                 # Concatenate industry and sector
                 self.sector_info[symbol] = f'{industry} - {sector}'
             
-            print(f'Loaded sector info for {len(self.sector_info)} symbols')
+            logger.info(f'Loaded sector info for {len(self.sector_info)} symbols')
         except Exception as e:
-            print(f'Error loading sector info: {e}')
+            logger.info(f'Error loading sector info: {e}')
             import traceback
             traceback.print_exc()
             self.sector_info = {}
@@ -294,7 +290,7 @@ class MemData:
         if end_date is None:
             end_date = datetime.today().strftime('%Y-%m-%d')
 
-        print(f'Loading historical data from {start_date} to {end_date}...')
+        logger.info(f'Loading historical data from {start_date} to {end_date}...')
         
         # Use Data class to get historical data
         historical_data = self.data.get_history_interval(
@@ -305,7 +301,7 @@ class MemData:
             asset = asset_data['symbol']
             self.history_data[asset] = asset_data['data']
 
-        print(f'Historical data loaded: {len(self.history_data)} assets')
+        logger.info(f'Historical data loaded: {len(self.history_data)} assets')
 
     def get_assets(self) -> List[str]:
         '''Returns the list of assets in memory.
