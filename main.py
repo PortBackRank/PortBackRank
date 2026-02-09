@@ -101,6 +101,7 @@ def _ensure_market_assets(market_code: str = 'SP500'):
     market_data = MarketData(market_code)
     assets = market_data.list_recent_symbols(market_data.market, force_update=False)
 
+    data_handler = Data(market=market_code)
     max_retries = 3
     missing = []
 
@@ -124,8 +125,8 @@ def _ensure_market_assets(market_code: str = 'SP500'):
             f'baixando {len(missing)} ativos sem dados locais.'
         )
         print('Ativos faltando:', ', '.join(missing))
-        Data.download_history(missing)
-
+        data_handler.download_histories(missing)
+    
     if missing:
         print('Após as tentativas de download, ainda faltam dados históricos para:')
         for asset in missing:
@@ -254,11 +255,12 @@ def run_from_config(config_path: str, download_mode: str = 'missing'):
     ranker_cls = _get_ranker_class(ranker_name)
 
     runner_grid, ranker_grid = _build_grids(config)
-
+    data_handler =Data(market=market_identifier)
+    
     mode = (download_mode or 'missing').lower()
     if mode == 'all':
         assets = list_recent_symbols(market_identifier, force_update=True)
-        Data.download_histories(assets)
+        data_handler.download_histories
     elif mode == 'missing':
         _ensure_market_assets(market_identifier)
     elif mode == 'none':
