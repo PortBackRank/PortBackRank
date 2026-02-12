@@ -10,19 +10,22 @@ from data import MemData
 
 
 class Runner:
-    def __init__(self, profit, loss, diversification, ranker: Type[Ranker], data: MemData):
+    def __init__(self, profit, loss, diversification, volume, ranker: Type[Ranker], data: MemData):
         '''
         Inicializa a classe Runner com os parâmetros fornecidos.
 
         :param profit: Lucro alvo para venda (porcentagem).
         :param loss: Limite de perda para venda (porcentagem).
         :param diversification: Porcentagem máxima para cada setor (porcentagem).
+        :param volume: Definir a porcentagem do volume a ser considerada
         :param ranker: Classe do ranker a ser utilizada.
         :param data: Instância de MemData com os dados históricos e de setor.
+
         '''
         self.profit = profit
         self.loss = loss
         self.diversification = diversification
+        self.volume = volume
         self.ranker = ranker
         self.data = data
 
@@ -46,23 +49,16 @@ class Runner:
         self.balance = capital
         self.__portfolio = []
         self.timeline = []
-        self.sell_log = []
-        self.buy_log = []
+        self.trade_log = []
 
-        # Pré-carrega históricos
+        # Pré-carrega históricos e setores
         self._all_history = self.data.get_all_history()
-        
-        # Pré-carrega setores do CSV
         self._all_sectors = self.data.get_all_sectors()
 
         # Pré-indexa históricos por data para acelerar acesso
-        self._history_by_date = {}
-        for simbolo, df in self._all_history.items():
-            df = df.copy()
-            df['date_str'] = df.index.strftime('%Y-%m-%d')
-            self._history_by_date[simbolo] = {
-                d: row for d, row in df.set_index('date_str').iterrows()
-            }
+        self._history_by_date = self.data.get_history_by_date()
+
+        self._ranker_instance.prepare(self.data)
 
         # guarda intervalo
         self._interval = interval
@@ -86,15 +82,15 @@ class Runner:
             'timeline': self.timeline,
             'profit': self.profit,
             'loss': self.loss,
-            'diversification': self.diversification
+            'diversification': self.diversification,
+            'volume': self.volume
         }
 
         return {
             'balance': self.balance,
             'portfolio': self.__portfolio,
             'shared_data': shared_data,
-            'sell_log': self.sell_log,
-            'buy_log': self.buy_log
+            'trade_log': self.trade_log
         }
 
     def _sell(self, date: str):
@@ -133,14 +129,16 @@ class Runner:
                 valor_venda = preco_atual * quantidade_vender
                 self.balance += valor_venda
 
-                self.sell_log.append({
-                    'data_venda': date,
+                self.trade_log.append({
+                    'data': date,
                     'simbolo': simbolo,
-                    'quantidade_vendida': quantidade_vender,
-                    'preco_compra': preco_compra,
-                    'preco_venda': preco_atual,
+                    'tipo': 'SELL',
+                    'quantidade': quantidade_vender,
+                    'preco': preco_atual,
+                    'custo_compra': preco_compra,
                     'lucro_prejuizo': (preco_atual - preco_compra) * quantidade_vender,
-                    'data_compra': data_compra
+                    'data_origem': data_compra, # Data de quando foi comprado
+                    'setor': item.get('sector', 'Unknown')
                 })
 
                 if quantidade > quantidade_vender:
@@ -226,12 +224,16 @@ class Runner:
                 continue
 
             # Registra compra
-            self.buy_log.append({
-                'data_compra': date,
+            self.trade_log.append({
+                'data': date,
                 'simbolo': simbolo,
+                'tipo': 'BUY',
                 'quantidade': quantidade_comprar,
-                'preco_compra': preco_atual,
-                'sector': setor
+                'preco': preco_atual,
+                'custo_compra': preco_atual,
+                'lucro_prejuizo': 0,
+                'data_origem': date,
+                'setor': setor
             })
 
             self.__portfolio.append({

@@ -247,6 +247,7 @@ class MemData:
         # Load sector information from MarketData
         self.load_sector_info()
 
+
         logger.info(f'Assets available: {len(self.assets)}')
         logger.info(f'Sectors in cache: {len(self.sector_info)}')
         if self.assets:
@@ -259,6 +260,10 @@ class MemData:
         # Load historical data using Data class
         start_date, end_date = interval
         self.load(start_date, end_date)
+        
+        # Gera o índice baseado nos dados carregados
+        self._history_by_date = {}
+        self._generate_date_index() 
 
     def load_sector_info(self) -> None:
         '''Load and concatenate sector information as 'industry - sector'.
@@ -316,6 +321,21 @@ class MemData:
         :return: Dictionary with asset symbols as keys and dataframes as values
         '''
         return self.history_data
+    
+    def _generate_date_index(self):
+        '''Pré-indexa históricos por data para acelerar acesso'''
+        for simbolo, df in self.get_all_history().items():
+            df_copy = df.copy()
+            # Garante que o índice seja datetime se não for, e cria a string
+            df_copy['date_str'] = df_copy.index.strftime('%Y-%m-%d')
+            self._history_by_date[simbolo] = {
+                d: row for d, row in df_copy.set_index('date_str').iterrows()
+            }
+
+    def get_history_by_date(self):
+    
+        return self._history_by_date
+    
     
     def get_sector(self, symbol: str) -> str:
         '''Get sector information for a specific symbol.

@@ -9,23 +9,50 @@ import pandas as pd
 from data import MemData
 from ranker import MARanker, RandomRanker
 from runner import Runner
+from logger import logger
+from files import save_dataframe
 from utils import generate_filename, save_json, generate_performance_plot
+import os 
+import json
 
 
 def save_results(results):
-    ''''
+    '''
     Recebe os resultados das execuções paralelizadas e salva os arquivos.
     '''
     for result in results:
         start_date, end_date = result['intervalo'].split(' - ')
 
-        save_json(generate_filename('timeline', result, start_date,
-                  end_date), result['shared_data']['timeline'])
-        save_json(generate_filename('sell_buy_logs/sell_log',
-                  result, start_date, end_date), result['sell_log'])
-        save_json(generate_filename('sell_buy_logs/buy_log',
-                  result, start_date, end_date), result['buy_log'])
+        timeline_filename = generate_filename('timeline', result, start_date, end_date)
+        
+        # Cria diretório se necessário
+        directory = os.path.dirname(timeline_filename)
+        if directory and not os.path.exists(directory):
+            os.makedirs(directory, exist_ok=True)
+        
+        # Salva o JSON diretamente
+        with open(timeline_filename, 'w', encoding='utf-8') as f:
+            json.dump(result['shared_data']['timeline'], f, indent=2, ensure_ascii=False)
+        
+        # Processar trade_log
+        trades = result.get('trade_log', [])
+        
+        if trades:
+            df_trades = pd.DataFrame(trades)
+            filename_base = generate_filename('trade_logs/trades', result, start_date, end_date)
+            csv_filename = filename_base.replace('.json', '.csv')
+            
+            # Cria diretório se necessário
+            directory = os.path.dirname(csv_filename)
+            if directory and not os.path.exists(directory):
+                os.makedirs(directory, exist_ok=True)
 
+            # Salva CSV diretamente
+            df_trades.to_csv(csv_filename, index=False)
+            
+            logger.info(f"Trade log salvo: {csv_filename}")
+        else:
+            logger.warning(f"Sem negociações para salvar no intervalo {result['intervalo']}")
 
 class Backtesting:
     ''' Classe para realizar backtesting de uma estratégia de investimento. '''
@@ -85,6 +112,7 @@ class Backtesting:
                 profit=runner_config['profit'],
                 loss=runner_config['loss'],
                 diversification=runner_config['diversification'],
+                volume=runner_config.get('volume', 1.0),
                 ranker=self.ranker_cls,
                 data=self.data
             )
@@ -93,8 +121,7 @@ class Backtesting:
 
                 results_runner = []
 
-                result = runner.single_run(
-                    self.interval, ranker_config, self.capital)
+                result = runner.single_run(self.interval, ranker_config, self.capital)
 
                 results_runner.append(result)
 
@@ -114,9 +141,9 @@ class Backtesting:
 
         for result in results:
             del result['shared_data']
-            del result['sell_log']
-            del result['buy_log']
-
+            result.pop('trade_log', None)  
+            result.pop('sell_log', None)   
+            result.pop('buy_log', None)
         return pd.DataFrame(results)
 
     def _evaluate_results(
@@ -141,6 +168,8 @@ class Backtesting:
 
         shared_data = result[-1].get('shared_data', {}) if result else {}
 
+
+        trade_log = result[-1].get('trade_log', []) if result else []
         return {
             'intervalo': f'{self.interval[0]} - {self.interval[1]}',
             **runner_params,
@@ -149,8 +178,7 @@ class Backtesting:
             'portfolio_value': portfolio_value,
             'retorno_total': f'{retorno_total:.2f}%',
             'shared_data': shared_data,
-            'sell_log': result[-1].get('sell_log', []),
-            'buy_log': result[-1].get('buy_log', [])
+            'trade_log': trade_log
         }
 
 

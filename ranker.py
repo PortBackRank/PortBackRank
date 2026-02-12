@@ -36,6 +36,14 @@ class Ranker(ABC):
         :return: List of ranked stock symbols.
         '''
 
+    @abstractmethod
+    def prepare(self, data: MemData) -> None:
+        '''
+        Prepara os dados ou indicadores necessários antes da simulação.
+
+        :param mem_data: Objeto MemData contendo o histórico e setores.
+        '''
+
 
 class RandomRanker(Ranker):
     '''RandomRanker class'''
@@ -67,6 +75,14 @@ class RandomRanker(Ranker):
 
         return symbols
 
+    def prepare(self, data: MemData) -> None:
+        '''
+        Prepara os dados ou indicadores necessários antes da simulação.
+
+        :param mem_data: Objeto MemData contendo o histórico e setores.
+        '''
+        pass
+
 
 def test_random_ranker():
     '''
@@ -81,6 +97,8 @@ def test_random_ranker():
     ranked_symbols = ranker.rank()
 
     print('Símbolos ranqueados aleatoriamente:', ranked_symbols)
+
+
 
 
 class MARanker(Ranker):
@@ -126,6 +144,11 @@ class MARanker(Ranker):
         # ranked_symbols.sort(key=lambda x: x[1], reverse=True)
         ranked_symbols.sort(reverse=True)       
         return [x[1] for x in ranked_symbols]
+    
+    def prepare(self, data: MemData) -> None:
+        
+        pass
+    
 
 
 def test_ma_ranker():
@@ -204,3 +227,7 @@ class RSIRanker(Ranker):
 
         ranked_symbols.sort(key=lambda x: x[1], reverse=True)
         return [x[0] for x in ranked_symbols]
+
+    def prepare(self, data: MemData) -> None:
+        
+        pass
