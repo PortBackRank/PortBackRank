@@ -1,5 +1,5 @@
 from backtesting import Backtesting
-from ranker import MARanker, RSIRanker
+from ranker import MARanker, RSIRanker, EMARanker
 from data import Data
 from markets import MarketData, list_recent_symbols
 from utils import generate_filename
@@ -181,6 +181,28 @@ def run_backtest_rsi():
     _print_df_full(results)
     # print_monthly_results(results)
 
+def run_backtest_ema():
+    interval = ["2024-01-01", "2024-12-31"]
+    _ensure_market_assets("SP500")
+
+    backtester = Backtesting(
+        EMARanker,
+        capital=10000,
+        interval=interval,
+        market_identifier="SP500",
+    )
+
+    ranker_grid = {"window": [[9, 21], [20, 50], [50, 200]]}
+    runner_grid = {
+        "profit": [0.1, 0.15],
+        "loss": [0.05],
+        "diversification": [0.1, 0.2],
+    }
+
+    results = backtester.run(runner_grid, ranker_grid=ranker_grid, n_jobs=-1)
+    _print_df_full(results)
+    # print_monthly_results(results)
+
 '''
 def main_menu():
      print("\n=== PortBackRank - Escolha o indicador ===")
@@ -238,6 +260,8 @@ def _get_ranker_class(name: str):
         return MARanker
     if name == "RSIRanker":
         return RSIRanker
+    if name == "EMARanker":
+        return EMARanker
     raise ValueError(f"Ranker '{name}' não suportado.")
 
 

@@ -263,3 +263,62 @@ def test_rsi_ranker():
     ranked_symbols = ranker.rank(date="2024-05-29")
 
     print("Símbolos ranqueados por RSI:", ranked_symbols)
+
+
+class EMARanker(Ranker):
+    """EMA Ranker Class"""
+
+    def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
+        super().__init__(parameters, interval, data)
+        windows = self.parameters.get("window")
+        self._short = windows[0]
+        self._long = windows[1]
+
+    def rank(self, date: str = None) -> List[str]:
+        dict_data = self.data.get_all_history()
+        ranked_symbols = []
+        for symbol, df_data in dict_data.items():
+            # Calculate exponential moving averages
+            short = 'ema' + str(self._short)
+            long = 'ema' + str(self._long)
+            df_data[short] = df_data['Close'].ewm(span=self._short, adjust=False).mean()
+            df_data[long] = df_data['Close'].ewm(span=self._long, adjust=False).mean()
+            # Default strength is negative infinity
+            strength = float('-inf')
+
+            if date in df_data.index:
+                idx = df_data.index.get_loc(date)
+
+                if isinstance(idx, slice):
+                    idx = idx.start
+
+                # Verifique se o índice é válido (>= 1)
+                if idx >= 1:
+                    latest = df_data.iloc[idx]
+                    prev = df_data.iloc[idx-1]
+                    # Check EMA crossover
+                    if prev[short] <= prev[long] and latest[short] > latest[long]:
+                        # Calculate strength
+                        strength = (latest[short] / latest[long] - 1) * 100
+            else:
+                continue
+
+            ranked_symbols.append((strength, symbol))
+
+        ranked_symbols.sort(reverse=True)
+        return [x[1] for x in ranked_symbols]
+
+
+def test_ema_ranker():
+    """
+    Função simples para testar o funcionamento do EMARanker
+    """
+    interval = ["2024-01-10", "2024-11-10"]
+    data = MemData(interval=interval)
+
+    parameters = {"window": [9, 21]}
+
+    ranker = EMARanker(data=data, parameters=parameters)
+    ranked_symbols = ranker.rank(date="2024-05-29")
+
+    print("Símbolos ranqueados por EMA:", ranked_symbols)

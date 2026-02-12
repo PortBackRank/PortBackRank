@@ -1,0 +1,12 @@
+{
+    "id": "SP500",
+    "assets": "sp500.csv",
+    "capital": 10000,
+    "ranker": "EMARanker",
+    "ranker-params": {
+        "window": [[9, 21], [20, 50], [50, 200]],
+        "profit": [0.1, 0.15],
+        "loss": [0.05],
+        "diversification": [0.1, 0.2]
+    }
+}
