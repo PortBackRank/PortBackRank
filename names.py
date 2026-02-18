@@ -51,3 +51,33 @@ SUB_DIR_HIST = HISTORICAL_SUBDIR
 URL_QUOTE = B3_QUOTE_URL
 TIMEOUT = REQUEST_TIMEOUT
 RECENT_ASSETS_FILE = RECENT_ASSETS_FILENAME
+
+# Common directories and filenames
+ASSETS_DIR = 'assets'
+RESULTS_DIR = 'results'
+TIMELINE_DIR = f'{RESULTS_DIR}'
+
+# CSV and DataFrame column name constants
+CSV_ENCODING = 'ISO-8859-1'
+COL_DATE = 'Date'
+COL_OPEN = 'Open'
+COL_HIGH = 'High'
+COL_LOW = 'Low'
+COL_CLOSE = 'Close'
+COL_VOLUME = 'Volume'
+
+# Symbol / code column names (various formats in different CSVs)
+COL_SYMBOL = 'symbol'
+COL_SYMBOL_ALT = 'Symbol'
+COL_CODE = 'Code'
+COL_CODE_PT = 'Codigo'
+
+# Sector / industry column names (English / Portuguese variations)
+COL_SECTOR = 'sector'
+COL_SECTOR_PT = 'Setor'
+COL_INDUSTRY = 'industry'
+COL_INDUSTRY_PT = 'Subsetor'
+COL_SEGMENT_PT = 'Segmento'
+
+# Default market identifier
+DEFAULT_MARKET = 'SP500'
