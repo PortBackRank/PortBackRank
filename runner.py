@@ -3,7 +3,6 @@
 '''
 
 from typing import List, Dict, Type
-from datetime import datetime
 import pandas as pd
 from ranker import MARanker, Ranker, RandomRanker
 from data import MemData
@@ -14,12 +13,13 @@ class Runner:
         '''
         Initialize Runner with provided parameters.
 
-        :param profit: Target profit threshold for selling (percentage).
-        :param loss: Loss limit for selling (percentage).
-        :param diversification: Maximum sector diversification (percentage).
-        :param volume: Percentage of daily volume to consider.
-        :param ranker: Ranker class to use.
-        :param data: MemData instance containing historical and sector data.
+        Args:
+            profit: Target profit threshold for selling (percentage).
+            loss: Loss limit for selling (percentage).
+            diversification: Maximum sector diversification (percentage).
+            volume: Percentage of daily volume to consider.
+            ranker: Ranker class to use for asset ranking.
+            data: MemData instance containing historical and sector data.
         '''
         self.profit = profit
         self.loss = loss
@@ -28,7 +28,7 @@ class Runner:
         self.ranker = ranker
         self.data = data
 
-        # represent purchased stocks (symbol, quantity, purchase price, etc.)
+        # Portfolio of purchased stocks (symbol, quantity, purchase price, etc.)
         self.__portfolio: List[Dict[str, float]] = []
         self.balance = 0
         self.timeline = []
@@ -36,36 +36,45 @@ class Runner:
     def prepare_data(self, interval: List[str], ranker_conf: Dict[str, float], capital: float):
         '''
         Prepare environment for a new simulation:
-        - initialize ranker
-        - reset balance, portfolio and logs
-        - preload historical data and sectors into memory
-        - create date-index for quick lookup
+        - Initialize ranker with configuration
+        - Reset balance, portfolio and transaction logs
+        - Preload historical data and sector information into memory
+        - Create date-indexed lookup structure for faster data access
         '''
-        # initialize ranker with parameters and data
+        # Initialize ranker with parameters and data
         self._ranker_instance = self.ranker(parameters=ranker_conf, data=self.data)
 
-        # reset internal state
+        # Reset internal state
         self.balance = capital
         self.__portfolio = []
         self.timeline = []
         self.trade_log = []
 
-        # preload history and sector information
+        # Preload history and sector information
         self._all_history = self.data.get_all_history()
         self._all_sectors = self.data.get_all_sectors()
 
-        # pre-index history by date for faster lookup
+        # Pre-index history by date for faster lookup
         self._history_by_date = self.data.get_history_by_date()
 
         self._ranker_instance.prepare(self.data)
 
-        # keep interval for reference
+        # Keep interval for reference
         self._interval = interval
 
     def single_run(self, interval: List[str], ranker_conf: Dict[str, float], capital: float) -> Dict:
         '''
-        Execute a simulation for a single ranker configuration,
-        maintaining portfolio with quantity and purchase price of assets.
+        Execute a simulation for a single ranker configuration.
+        
+        Maintains portfolio with quantity and purchase price of each asset.
+        
+        Args:
+            interval: Date range [start_date, end_date] in 'YYYY-MM-DD' format.
+            ranker_conf: Configuration parameters for the ranker.
+            capital: Initial capital for the simulation.
+            
+        Returns:
+            Dictionary containing final balance, portfolio, shared configuration, and trade log.
         '''
         self.prepare_data(interval, ranker_conf, capital)
 
@@ -94,8 +103,9 @@ class Runner:
 
     def _sell(self, date: str):
         '''
-        Sell assets that have reached the profit or loss threshold,
-        respecting FIFO order and checking daily volume.
+        Sell assets that have reached profit or loss thresholds.
+        
+        Respects FIFO order and enforces daily volume constraints.
         '''
         asset_histories = {}
 
@@ -123,6 +133,7 @@ class Runner:
 
             percent_change = (current_price - purchase_price) / purchase_price
 
+            # Check if profit target or loss limit reached
             if percent_change >= self.profit or percent_change <= -self.loss:
                 to_sell = min(quantity, daily_volume)
                 sale_value = current_price * to_sell
@@ -136,7 +147,7 @@ class Runner:
                     'price': current_price,
                     'cost': purchase_price,
                     'profit_loss': (current_price - purchase_price) * to_sell,
-                    'origin_date': purchase_date,  # when it was bought
+                    'origin_date': purchase_date,
                     'sector': item.get('sector', 'Unknown')
                 })
 
@@ -155,8 +166,9 @@ class Runner:
 
     def _buy(self, date: str, ranker: Ranker):
         '''
-        Buy assets based on ranker output, enforcing sector diversification
-        and checking available daily volume.
+        Buy assets based on ranker output.
+        
+        Enforces sector diversification constraints and respects daily volume limits.
         '''
         ranked_symbols = ranker.rank(date)
         if not ranked_symbols:
@@ -186,14 +198,14 @@ class Runner:
             if available_balance <= 2:
                 break
 
-            # get sector from cache as 'industry - sector'
+            # Get sector from cache as 'industry - sector'
             sector = self._all_sectors.get(symbol, 'Unknown - Unknown')
             
-            # skip assets without defined sector
+            # Skip assets without defined sector
             if sector == 'Unknown - Unknown':
                 continue
 
-            # compute max investment for this sector
+            # Compute maximum investment allowed for this sector
             if sector not in sector_percentage:
                 max_sector_investment = available_balance * self.diversification
             else:
@@ -202,7 +214,7 @@ class Runner:
                     sector_percentage.get(sector, 0) * total_portfolio_value
                 )
 
-            # fetch today's historical row
+            # Fetch today's historical data
             day_row = historical_data.get(symbol, {}).get(date)
             if day_row is None:
                 continue
@@ -213,7 +225,7 @@ class Runner:
             if pd.isna(current_price) or pd.isna(daily_volume):
                 continue
 
-            # calculate how many shares we can buy
+            # Calculate shares to buy respecting all constraints
             max_qty = int(available_balance // current_price)
             sector_qty = int(max_sector_investment // current_price)
             qty_to_buy = min(
@@ -222,7 +234,7 @@ class Runner:
             if qty_to_buy <= 0:
                 continue
 
-            # record purchase
+            # Record purchase transaction
             self.trade_log.append({
                 'date': date,
                 'symbol': symbol,
@@ -243,23 +255,23 @@ class Runner:
                 'sector': sector
             })
 
-            # update balances
+            # Update balances and sector tracking
             purchase_value = qty_to_buy * current_price
             available_balance -= purchase_value
             total_portfolio_value += purchase_value
             
-            # update sector percentage
             sector_percentage[sector] = sector_percentage.get(sector, 0) + (
                 purchase_value / total_portfolio_value
             )
 
         self.balance = available_balance
 
-    def _record_state(self, date):
+    def _record_state(self, date: str):
         '''
         Record full portfolio and balance state for the given date.
 
-        :param date: Current simulation date.
+        Args:
+            date: Current simulation date in 'YYYY-MM-DD' format.
         '''
         self.timeline.append({
             'date': date,
@@ -278,6 +290,7 @@ class Runner:
 
 
 def test_runner():
+    '''Test basic runner functionality with RandomRanker.'''
     interval = ['2024-06-10', '2024-11-10']
     capital = 10000
 
@@ -302,6 +315,7 @@ def test_runner():
 
 
 def test_runner_ma():
+    '''Test runner functionality with Moving Average ranker.'''
     interval = ['2024-04-10', '2024-08-10']
     ranker_config = {'window': [9, 21]}
 

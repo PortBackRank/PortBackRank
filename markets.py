@@ -36,7 +36,7 @@ def read_symbols(file_path: str) -> List[str]:
 
 
 class MarketData:
-    '''Management of data for markets configured in MARKETS.'''
+    '''Market data manager for markets defined in MARKETS.'''
 
     def __init__(self, file_path: str = None):
         '''
@@ -61,7 +61,7 @@ class MarketData:
 
     @classmethod
     def from_file_path(cls, file_path: str) -> str:
-        '''Identifies the market by file or abbreviation.'''
+        '''Identify the market from a file path or market code.'''
         if file_path is None:
             raise ValueError(
                 'A valid \'file_path\' or market abbreviation must be provided.'
@@ -138,7 +138,7 @@ class MarketData:
             
             sector_map = {}
             
-            # For S&P500 - UPDATED VERSION
+            # For S&P500 - updated format
             if 'symbol' in df.columns:
                 for _, row in df.iterrows():
                     symbol = str(row['symbol']).strip()
@@ -152,7 +152,7 @@ class MarketData:
                         'industry': industry
                     }
                 
-                print(f'Sectors loaded for {market}: {len(sector_map)} assets')
+                print(f'Sectors loaded for {market}: {len(sector_map)} symbols')
             
             # For Brazilian files (B3)
             elif 'Code' in df.columns:
@@ -164,7 +164,7 @@ class MarketData:
                         'industry': str(row.get('Subsector', row.get('Segment', 'Unknown'))).strip()
                     }
                 
-                print(f'Sectors loaded for {market}: {len(sector_map)} assets')
+                print(f'Sectors loaded for {market}: {len(sector_map)} symbols')
             
             else:
                 print(f'WARNING: Unrecognized columns in CSV. Columns found: {df.columns.tolist()}')
@@ -179,27 +179,27 @@ class MarketData:
       
     @classmethod
     def get_symbol_list(cls, market: str = 'SP500'):
-        '''Return the list of symbols'''
+        '''Return the list of symbols.'''
         return MarketData.list_recent_symbols(market=market)
-    
+
     @classmethod
     def update_symbols(cls, market: str, update=False):
-        '''Update the list of symbols'''
+        '''Update the list of symbols.'''
         return MarketData.list_recent_symbols(market=market, force_update=update)
 
 def list_recent_symbols(market: str, force_update: bool = False) -> List[str]:
-    '''Helper function to maintain compatibility with existing calls.'''
+    '''Compatibility helper for existing callers.'''
     return MarketData.list_recent_symbols(market, force_update)
 
 
-def test():
-    '''Tests market reading'''
+def test_markets():
+    '''Run quick checks for market reading and sector mapping.'''
     data = MarketData('SP500')
     symbols_sp500 = data.list_recent_symbols('SP500')
-    print(f'Total SP500 assets: {len(symbols_sp500)}')
+    print(f'Total SP500 symbols: {len(symbols_sp500)}')
     print(f'First 5: {symbols_sp500[:5]}')
     
-    print(f'Asset update: {data.update_symbols(market="SP500", update=True)}')
+    print(f'Update result: {data.update_symbols(market="SP500", update=True)}')
 
     print('\nTesting sectors:')
     sectors = data.get_sector_mapping('SP500')
@@ -211,4 +211,4 @@ def test():
 
 
 if __name__ == '__main__':
-    test()
+    test_markets()

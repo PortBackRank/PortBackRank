@@ -8,7 +8,7 @@ import numpy as np
 
 
 def convert_numpy(obj):
-    '''Convert numpy objects to JSON-serializable Python types.'''
+    """Convert numpy objects to JSON-serializable Python types."""
     if isinstance(obj, np.integer):
         return int(obj)
     elif isinstance(obj, np.floating):
@@ -19,12 +19,23 @@ def convert_numpy(obj):
 
 
 def get_safe_int(value):
-    '''Ensure the value is an int if applicable.'''
+    """Ensure the value is an integer if applicable."""
     return int(value) if isinstance(value, (int, np.integer)) else value
 
 
 def generate_filename(prefix, result, start_date, end_date):
-    '''Generate filenames in a centralized manner.'''
+    """
+    Generate filenames in a centralized manner.
+    
+    Args:
+        prefix: Directory prefix path.
+        result: Dictionary containing profit, loss, diversification, and window parameters.
+        start_date: Starting date for the simulation.
+        end_date: Ending date for the simulation.
+    
+    Returns:
+        Full path to the generated filename.
+    """
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     
     # Split the prefix into parts
@@ -36,26 +47,37 @@ def generate_filename(prefix, result, start_date, end_date):
     # Previous elements are subdirectories
     subdirs = prefix_parts[:-1] if len(prefix_parts) > 1 else []
     
-    # Build the filename
+    # Build the filename with parameters
     filename = f'{file_prefix}_profit{get_safe_int(result["profit"])}_loss{get_safe_int(result["loss"])}_div{get_safe_int(result["diversification"])}_short{get_safe_int(result["window"][0])}_long{get_safe_int(result["window"][1])}_{start_date}_to_{end_date}.json'
     
     return os.path.join(project_root, 'results', *subdirs, filename)
 
+
 def save_json(filename, data):
-    '''Save a dictionary as JSON.'''
+    """
+    Save a dictionary as JSON.
+    
+    Args:
+        filename: Output file path.
+        data: Dictionary to serialize.
+    """
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     with open(filename, 'w') as file:
         json.dump(data, file, indent=4, default=convert_numpy)
 
 
 def generate_performance_plot(directory: str = 'results', output_prefix: str = 'performance_comparison', market_symbol: str = 'IBrA'):
-    '''
-    Generate a plot showing all simulation lines from JSON files in `directory`.
+    """
+    Generate a plot showing all simulation lines from JSON files in a directory.
+    
+    This function reads simulation timeline data from JSON files and plots the performance
+    of each simulation strategy alongside the market benchmark.
 
-    :param directory: Folder where the JSON files are located.
-    :param output_prefix: Prefix for the output plot filename.
-    '''
-
+    Args:
+        directory: Folder where the JSON files are located. Defaults to 'results'.
+        output_prefix: Prefix for the output plot filename. Defaults to 'performance_comparison'.
+        market_symbol: Market index symbol to compare against (e.g., 'IBrA', 'IBOV', 'S&P500'). Defaults to 'IBrA'.
+    """
     INITIAL_VALUE = 10_000
     all_percentages = []
     dates = []
@@ -71,13 +93,12 @@ def generate_performance_plot(directory: str = 'results', output_prefix: str = '
                 with open(os.path.join(directory, filename), 'r') as timeline_file:
                     timeline = json.load(timeline_file)
 
-                    params = filename.replace(
-                        'timeline_', '').replace('.json', '')
+                    # Extract parameters from filename
+                    params = filename.replace('timeline_', '').replace('.json', '')
                     labels = params.split('_')
 
                     if len(labels) < 5:
-                        print(
-                            f'Unexpected filename format: {filename}')
+                        print(f'Unexpected filename format: {filename}')
                         continue
 
                     profit = labels[0].replace('profit', '')
@@ -86,6 +107,7 @@ def generate_performance_plot(directory: str = 'results', output_prefix: str = '
                     short = labels[3].replace('short', '')
                     long = labels[4].replace('long', '')
 
+                    # Calculate total allocation value over time
                     allocation_over_time = [
                         entry['balance'] + sum(item['quantity'] * item['purchase_price']
                                                for item in entry['portfolio'])
@@ -95,14 +117,16 @@ def generate_performance_plot(directory: str = 'results', output_prefix: str = '
                     if not allocation_over_time:
                         continue
 
+                    # Convert to percentage change from initial value
                     allocation_percent = [
                         (value - INITIAL_VALUE) / INITIAL_VALUE * 100 for value in allocation_over_time]
                     all_percentages.extend(allocation_percent)
 
+                    # Extract dates from timeline (only once)
                     if not dates:
-                        dates = [datetime.strptime(
-                            entry['date'], '%Y-%m-%d') for entry in timeline]
+                        dates = [datetime.strptime(entry['date'], '%Y-%m-%d') for entry in timeline]
 
+                    # Plot simulation line
                     plt.plot(dates, allocation_percent, label=f'Profit={profit}, Loss={loss}, '
                              f'Div={div}, Short={short}, Long={long}', color=color_palette[color_index])
 
@@ -112,27 +136,27 @@ def generate_performance_plot(directory: str = 'results', output_prefix: str = '
                 print(f'File not found: {filename}')
                 continue
 
-    sp500_values = []
+    # Load and plot market benchmark
+    market_values = []
     symbol = market_symbol.lower()
     print(symbol)
     try:
-        with open(os.path.join(directory, symbol+'.json'), 'r') as sp500_file:
-            sp500_data = json.load(sp500_file)
-            sp500_values = [entry['value'] for entry in sp500_data]
-            sp500_dates = [datetime.strptime(
-                entry['date'], '%Y-%m-%d') for entry in sp500_data]
+        with open(os.path.join(directory, symbol + '.json'), 'r') as market_file:
+            market_data = json.load(market_file)
+            market_values = [entry['value'] for entry in market_data]
+            market_dates = [datetime.strptime(entry['date'], '%Y-%m-%d') for entry in market_data]
 
-            sp500_initial = sp500_values[0]
-            sp500_percent = [(value - sp500_initial) /
-                             sp500_initial * 100 for value in sp500_values]
+            market_initial = market_values[0]
+            market_percent = [(value - market_initial) / market_initial * 100 for value in market_values]
 
-            plt.plot(sp500_dates, sp500_percent, label=market_symbol,
+            plt.plot(market_dates, market_percent, label=market_symbol,
                      color='black', linestyle='dashed', linewidth=2)
 
-            all_percentages.extend(sp500_percent)
+            all_percentages.extend(market_percent)
     except FileNotFoundError:
-        print('S&P 500 data file not found. Line not added.')
+        print(f'{market_symbol} data file not found. Benchmark line not added.')
 
+    # Set y-axis limits with margin
     if all_percentages:
         y_min = min(all_percentages)
         y_max = max(all_percentages)
@@ -140,10 +164,12 @@ def generate_performance_plot(directory: str = 'results', output_prefix: str = '
         margin = y_range * 0.10
         plt.ylim(y_min - margin, y_max + margin)
 
+    # Format x-axis
     plt.gca().xaxis.set_major_locator(mdates.MonthLocator())
     plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%m/%Y'))
     plt.xticks(rotation=45, fontsize=12)
 
+    # Labels and formatting
     plt.xlabel('Period', fontsize=12)
     plt.ylabel('Percent Change (%)', fontsize=14)
 
@@ -152,10 +178,11 @@ def generate_performance_plot(directory: str = 'results', output_prefix: str = '
     plt.grid(True)
     plt.tight_layout()
 
+    # Save and display
     plt.savefig(f'{directory}/{output_prefix}.png', format='png')
     plt.show()
 
     plt.close()
 
-# NAO FUNCIONA MUITO BEM O GENERATE
+# Example usage:
 # generate_performance_plot(market_symbol='IBrA')

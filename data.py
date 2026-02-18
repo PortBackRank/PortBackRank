@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-Data class
+Data management module for downloading and caching historical financial data.
 '''
 
 import concurrent.futures
@@ -18,51 +18,71 @@ from logger import *
 
 
 class Data():
-    '''Data management - downloading and caching historical data'''
+    '''Data management class for downloading and caching historical market data.
+    
+    Handles downloading of historical data from external sources and managing
+    local cache storage via CSV files.
+    '''
 
     subdir = SUB_DIR_HIST
 
     def __init__(self, market: str = 'SP500', end_date: Optional[str] = None, precision: int = 2):
+        '''Initialize Data manager with market configuration.
+        
+        Args:
+            market: Market identifier (e.g., 'SP500', 'IBOV'). Defaults to 'SP500'.
+            end_date: Optional end date for data retrieval (YYYY-MM-DD format).
+            precision: Number of decimal places for numeric data. Defaults to 2.
+        '''
         self.end_date = end_date
         self.precision = precision
 
         self.market_data = MarketData(market)
         self.sector_info = {}
         mapping = self.market_data.get_sector_mapping(market)
-        for s, info in mapping.items():
-            self.sector_info[s] = f"{info.get('industry')} - {info.get('sector')}"
+        for symbol, info in mapping.items():
+            self.sector_info[symbol] = f"{info.get('industry')} - {info.get('sector')}"
 
     def update_symbols(self, market: str, update: bool = False) -> List[str]:
-        '''Updates the list of symbols via MarketData.
+        '''Update the list of symbols from the market data source.
         
-        :param market: Market identifier (e.g., 'SP500', 'IBOV')
-        :param update: Force update from source
-        :return: List of symbols
+        Args:
+            market: Market identifier (e.g., 'SP500', 'IBOV').
+            update: Force update from remote source if True.
+            
+        Returns:
+            List of current market symbols.
         '''
         return MarketData.list_recent_symbols(market=market, force_update=update)
 
     def list_symbols(self, market: str = 'SP500') -> List[str]:
-        '''Returns a list of symbols via MarketData.
+        '''Retrieve the list of symbols for a specific market.
         
-        :param market: Market identifier
-        :return: List of symbols
+        Args:
+            market: Market identifier (e.g., 'SP500', 'IBOV'). Defaults to 'SP500'.
+            
+        Returns:
+            List of market symbols.
         '''
         return MarketData.get_symbol_list(market=market)
 
-
     def download_history(self, asset: str) -> None:
-        '''Downloads historical data for a single asset.
+        '''Download historical price data for a single asset.
         
-        :param asset: Asset symbol
+        Args:
+            asset: Asset symbol (ticker) to download.
         '''
         asset_data = yf.Ticker(asset).history(period='max', auto_adjust=False)
         self._save_asset_data(asset, asset_data)
 
-
     def download_histories(self, assets: List[str]) -> None:
-        '''Downloads historical data for all assets in the list concurrently.
+        '''Download historical data for multiple assets concurrently.
         
-        :param assets: List of asset symbols
+        Downloads data in parallel using ThreadPoolExecutor for improved performance.
+        Progress is tracked with a progress bar.
+        
+        Args:
+            assets: List of asset symbols to download.
         '''
         tickers = yf.Tickers(assets)
         assets_list = list(tickers.tickers.keys())
@@ -77,10 +97,15 @@ class Data():
                 executor.map(download_and_save, assets_list)
 
     def fetch_history(self, assets: List[str]) -> List[Dict[str, pd.DataFrame]]:
-        '''Fetches and concatenates historical data for the given list of assets.
+        '''Fetch historical data for given assets from cache.
         
-        :param assets: List of asset symbols
-        :return: List of dictionaries with symbol and corresponding dataframe
+        Retrieves cached data for valid, non-empty DataFrames only.
+        
+        Args:
+            assets: List of asset symbols.
+            
+        Returns:
+            List of dictionaries containing 'symbol' and 'data' (DataFrame) keys.
         '''
         result = []
         for asset in assets:
@@ -89,7 +114,6 @@ class Data():
                 result.append({'symbol': asset, 'data': df})
         return result
 
-
     def get_history_interval(
         self,
         assets: List[str],
@@ -97,13 +121,21 @@ class Data():
         end_date: str,
         column_filter: Optional[str] = 'Close',
     ) -> List[Dict[str, pd.DataFrame]]:
-        '''Returns historical data filtered by a time interval.
+        '''Retrieve historical data filtered by date range and columns.
 
-        :param assets: List of assets
-        :param start_date: Start date of the interval (YYYY-MM-DD)
-        :param end_date: End date of the interval (YYYY-MM-DD)
-        :param column_filter: Column to filter (default is 'Close')
-        :return: List of dictionaries with the symbol and the data in a DataFrame
+        Fetches historical data and filters by specified time interval.
+        Automatically includes 'Volume' and filtered price column(s).
+
+        Args:
+            assets: List of asset symbols.
+            start_date: Start of date range (YYYY-MM-DD format).
+            end_date: End of date range (YYYY-MM-DD format).
+            column_filter: Price column to include ('Close', custom column, or 'None').
+                Defaults to 'Close'.
+            
+        Returns:
+            List of dictionaries with 'symbol' and 'data' (filtered DataFrame) keys.
+            Empty list if no data matches criteria.
         '''
         historical_data = self.fetch_history(assets=assets)
 
@@ -147,10 +179,14 @@ class Data():
         return result
     
     def _save_asset_data(self, asset: str, asset_data: pd.DataFrame) -> None:
-        '''Save asset data to CSV files if data is available.
+        '''Save asset data to CSV file with proper formatting.
         
-        :param asset: Asset symbol
-        :param asset_data: DataFrame with asset data
+        Rounds numeric columns to specified precision and converts dates to strings
+        before persisting to CSV. Skips empty DataFrames.
+        
+        Args:
+            asset: Asset symbol (used as filename).
+            asset_data: DataFrame containing asset historical data.
         '''
         if asset_data.empty:
             return
@@ -160,16 +196,18 @@ class Data():
 
         numeric_columns = asset_data_reset.select_dtypes(
             include=['float64', 'float32']).columns
-        asset_data_reset[numeric_columns] = asset_data_reset[numeric_columns].round(2)
+        asset_data_reset[numeric_columns] = asset_data_reset[numeric_columns].round(self.precision)
 
         save_dataframe(f'{asset}.csv', asset_data_reset, self.subdir)
-
 
     def get_asset_data(self, assets: List[str]) -> List[pd.DataFrame]:
         '''Load historical data for one or more assets.
         
-        :param assets: List of asset symbols
-        :return: List of DataFrames with historical data
+        Args:
+            assets: List of asset symbols.
+            
+        Returns:
+            List of DataFrames with historical data (empty frames excluded).
         '''
         assets_data = []
         for asset in assets:
@@ -179,20 +217,27 @@ class Data():
         return assets_data
 
     def load_dataframe(self, file_name: str) -> Optional[pd.DataFrame]:
-        '''Load data from a CSV file.
+        '''Load DataFrame from CSV file.
         
-        :param file_name: Name of the file
-        :return: DataFrame or None if not found
+        Args:
+            file_name: Name of the CSV file to load.
+            
+        Returns:
+            DataFrame if file exists and is valid, None otherwise.
         '''
-        
         return open_dataframe(file_name, self.subdir)
 
     def get_asset_data_by_name(self, asset: str) -> Optional[pd.DataFrame]:
-        '''Get historical data for a specific asset.
-        If the CSV is missing or empty, attempt to download and load again.
+        '''Retrieve historical data for a specific asset with automatic fallback.
         
-        :param asset: Asset symbol
-        :return: DataFrame with historical data or None
+        Attempts to load cached data. If not found or empty, automatically downloads
+        the data and retries loading. Logs warnings for missing files.
+        
+        Args:
+            asset: Asset symbol.
+            
+        Returns:
+            DataFrame with historical data, or None if unable to retrieve.
         '''
         file_name = f'{asset}.csv'
         df = None
@@ -215,38 +260,40 @@ class Data():
 
 
 class MemData:
-    '''In-memory data management for assets with sector information.
+    '''In-memory data management with historical and sector information.
     
     Responsibilities:
-    - Load historical data into memory (via Data class)
-    - Manage sector/industry information (via MarketData class)
-    - Provide unified data access methods
+    - Load and cache historical data in memory (via Data class)
+    - Manage sector and industry classification data (via MarketData class)
+    - Provide unified access to consolidated market data
+    - Pre-index data by date for optimized lookups
     '''
 
     def __init__(self, interval: List[str], market_identifier: str = 'SP500'):
         '''Initialize MemData with historical data and sector information.
         
-        :param interval: List with [start_date, end_date]
-        :param market_identifier: Market identifier (e.g., 'SP500', 'IBOV')
+        Args:
+            interval: List containing [start_date, end_date] in YYYY-MM-DD format.
+            market_identifier: Market identifier (e.g., 'SP500', 'IBOV'). 
+                Defaults to 'SP500'.
         '''
         self.history_data: Dict[str, pd.DataFrame] = {}
         self.sector_info: Dict[str, str] = {}  # symbol -> 'industry - sector'
         self.market_identifier = market_identifier
 
-        # Initialize Data instance (only for historical data)
+        # Initialize Data instance for historical data retrieval
         self.data = Data()
 
-        # Initialize MarketData (for symbols and sectors)
+        # Initialize MarketData for symbol lists and sector classification
         self.market_data = MarketData(market_identifier)
         
-        # Load asset list from MarketData
+        # Load current list of assets for the market
         self.assets = self.market_data.list_recent_symbols(
             self.market_data.market, force_update=False
         )
         
-        # Load sector information from MarketData
+        # Load sector classification information
         self.load_sector_info()
-
 
         logger.info(f'Assets available: {len(self.assets)}')
         logger.info(f'Sectors in cache: {len(self.sector_info)}')
@@ -257,47 +304,53 @@ class MemData:
             logger.info(f'No assets found for {market_identifier}.')
             return
 
-        # Load historical data using Data class
+        # Load historical data for the specified interval
         start_date, end_date = interval
         self.load(start_date, end_date)
         
-        # Gera o índice baseado nos dados carregados
+        # Pre-index historical data by date for faster access
         self._history_by_date = {}
         self._generate_date_index() 
 
     def load_sector_info(self) -> None:
-        '''Load and concatenate sector information as 'industry - sector'.
-        Uses MarketData.get_sector_mapping() to read from CSV.
+        '''Load sector and industry classifications from MarketData source.
+        
+        Combines industry and sector information into a single string format
+        ('industry - sector') for each symbol. Logs errors gracefully.
         '''
         try:
-            # MarketData.get_sector_mapping retorna: {symbol: {sector: ..., industry: ...}}
+            # MarketData.get_sector_mapping returns: {symbol: {sector: ..., industry: ...}}
             sector_mapping = self.market_data.get_sector_mapping(self.market_data.market)
             
             for symbol, info in sector_mapping.items():
                 industry = info.get('industry', 'Unknown')
                 sector = info.get('sector', 'Unknown')
-                # Concatenate industry and sector
+                # Store combined industry and sector designation
                 self.sector_info[symbol] = f'{industry} - {sector}'
             
-            logger.info(f'Loaded sector info for {len(self.sector_info)} symbols')
+            logger.info(f'Loaded sector information for {len(self.sector_info)} symbols')
         except Exception as e:
-            logger.info(f'Error loading sector info: {e}')
+            logger.info(f'Error loading sector information: {e}')
             import traceback
             traceback.print_exc()
             self.sector_info = {}
     
     def load(self, start_date: str, end_date: str) -> None:
-        '''Loads historical data into memory using Data class.
+        '''Load historical market data into memory for specified date range.
 
-        :param start_date: Start date (YYYY-MM-DD)
-        :param end_date: End date (YYYY-MM-DD)
+        Retrieves historical price data for all assets and stores in memory.
+        If end_date is None, uses current date. Logs loaded asset count.
+
+        Args:
+            start_date: Start date in YYYY-MM-DD format.
+            end_date: End date in YYYY-MM-DD format (None defaults to today).
         '''
         if end_date is None:
             end_date = datetime.today().strftime('%Y-%m-%d')
 
         logger.info(f'Loading historical data from {start_date} to {end_date}...')
         
-        # Use Data class to get historical data
+        # Use Data class to retrieve historical data for date interval
         historical_data = self.data.get_history_interval(
             assets=self.assets, start_date=start_date, end_date=end_date
         )
@@ -309,159 +362,164 @@ class MemData:
         logger.info(f'Historical data loaded: {len(self.history_data)} assets')
 
     def get_assets(self) -> List[str]:
-        '''Returns the list of assets in memory.
+        '''Get the list of all loaded assets.
 
-        :return: List of asset symbols
+        Returns:
+            List of asset symbols currently in memory.
         '''
         return list(self.assets)
 
     def get_all_history(self) -> Dict[str, pd.DataFrame]:
-        '''Returns all stored historical data.
+        '''Retrieve all loaded historical data.
 
-        :return: Dictionary with asset symbols as keys and dataframes as values
+        Returns:
+            Dictionary mapping asset symbols to their historical price DataFrames.
         '''
         return self.history_data
     
-    def _generate_date_index(self):
-        '''Pre-index historical data by date for faster access.'''
+    def _generate_date_index(self) -> None:
+        '''Pre-index historical data by date for optimized lookups.
+        
+        Creates nested dictionary structure mapping symbols to date-based row access.
+        Improves performance for repeated date-range queries.
+        '''
         for symbol, df in self.get_all_history().items():
             df_copy = df.copy()
-            # Ensure index is datetime (if not), then generate string key
+            # Ensure index is datetime, then generate string key for lookup
             df_copy['date_str'] = df_copy.index.strftime('%Y-%m-%d')
             self._history_by_date[symbol] = {
-                d: row for d, row in df_copy.set_index('date_str').iterrows()
+                date_key: row for date_key, row in df_copy.set_index('date_str').iterrows()
             }
 
-    def get_history_by_date(self):
-    
+    def get_history_by_date(self) -> Dict[str, Dict[str, pd.Series]]:
+        '''Retrieve date-indexed historical data structure.
+        
+        Returns:
+            Nested dictionary: symbol -> (date_string -> Series data)
+        '''
         return self._history_by_date
     
-    
     def get_sector(self, symbol: str) -> str:
-        '''Get sector information for a specific symbol.
+        '''Get sector classification for a specific asset.
         
-        :param symbol: Asset symbol
-        :return: Concatenated 'industry - sector' string
+        Args:
+            symbol: Asset symbol.
+            
+        Returns:
+            Sector information in 'industry - sector' format,
+            or 'Unknown - Unknown' if not found.
         '''
         return self.sector_info.get(symbol, 'Unknown - Unknown')
     
     def get_all_sectors(self) -> Dict[str, str]:
-        '''Get all sector information.
+        '''Get sector classifications for all loaded assets.
         
-        :return: Dictionary mapping symbols to 'industry - sector'
+        Returns:
+            Dictionary mapping symbols to 'industry - sector' strings.
         '''
         return self.sector_info.copy()
 
+
 def test():
-    '''Simple test routine.'''
+    '''Basic functionality test for data loading and rounding verification.'''
     try:
-        # choose an asset to test (can be any available symbol)
-        test_asset = 'AAPL'  # or 'ACGL' as seen in the list
+        # Choose an asset to test (works with any valid symbol)
+        test_asset = 'AAPL'
         
         print(f'Testing rounding for asset: {test_asset}')
         
-        # load the DataFrame for the asset using our helper
-        df = Data.get_asset_data_by_name(test_asset)
+        # Load DataFrame using Data helper method
+        data_instance = Data()
+        df = data_instance.get_asset_data_by_name(test_asset)
         
         if df is not None and not df.empty:
             print('\nData loaded successfully!')
             print(f'Number of rows: {len(df)}')
             
-            # show first rows of price columns
+            # Display price-related columns
             price_cols = ['Open', 'High', 'Low', 'Close']
             existing_cols = [col for col in price_cols if col in df.columns]
             
             print('\nFirst 5 rows of price columns:')
             print(df[existing_cols].head())
             
-            # Verifica se os valores têm no máximo 2 casas decimais
-            print(f'\nChecking rounding...')
+            # Verify rounding to 2 decimal places
+            print('\nVerifying rounding precision...')
             for col in existing_cols:
-                max_decimals = df[col].apply(lambda x: len(str(x).split('.')[-1]) if '.' in str(x) else 0).max()
-                print(f'  {col}: maximum {max_decimals} decimal places')
-                if max_decimals <= 2:
-                    print('Rounded correctly')
-                else:
-                    print('ERROR: not rounded to 2 decimals')
+                max_decimals = df[col].apply(
+                    lambda x: len(str(x).split('.')[-1]) if '.' in str(x) else 0
+                ).max()
+                status = 'OK' if max_decimals <= 2 else 'ERROR'
+                print(f'  {col}: {max_decimals} decimal places [{status}]')
         else:
             print(f'Error: could not load data for {test_asset}')
             
     except Exception as e:
-        print(f'Erro no teste: {e}')
+        print(f'Error in test: {e}')
         import traceback
         traceback.print_exc()
     
+    # Load and display asset list
     try:
         df_assets = pd.read_csv('assets/SP500.csv')
         
         if 'symbol' in df_assets.columns:
             assets = df_assets['symbol'].tolist()
         else:
-            assets = df_assets.iloc[:,0].tolist()
+            assets = df_assets.iloc[:, 0].tolist()
 
         assets = [asset for asset in assets if pd.notna(asset) and asset != '']
             
-        print(f'Total assets loaded from CSV: {len(assets)}')
+        print(f'\nTotal assets loaded from CSV: {len(assets)}')
         print(f'First 5 assets: {assets[:5]}')
-        print(f'Sector-Industry of first 5 assets: {assets[:5]}')
     except FileNotFoundError:
-        print('Arquivo \'assets.csv\' não encontrado!')
-        print('Usando lista padrão do mercado SP500 como fallback')
-        assets = Data.list_symbols(market='SP500')
+        print("\nFile 'assets/SP500.csv' not found!")
+        print('Using default SP500 market list as fallback')
+        data_instance = Data()
+        assets = data_instance.list_symbols(market='SP500')
     except Exception as e:
-            print(f'Error reading CSV: {e}')
-            print('Using default SP500 market list as fallback')
+        print(f'Error reading CSV: {e}')
+        print('Using default SP500 market list as fallback')
 
 
 def test_sp500():
-    '''Test SP500-related functions.'''
-    print('--------------Listing assets----------------')
+    '''Test SP500 market data functionality.'''
+    print('-' * 40 + 'Listing assets' + '-' * 40)
     market_data = MarketData('SP500')
     assets = market_data.list_recent_symbols(market_data.market, force_update=True)
+    print(f'Found {len(assets)} assets')
     print(assets)
 
-    print('--------------Testing sectors via MemData----------------')
-    # Data no longer has get_sector method - use MemData instead
+    print('\n' + '-' * 40 + 'Testing sectors via MemData' + '-' * 40)
     interval = ['2024-01-10', '2024-11-10']
     mem_data = MemData(interval, market_identifier='SP500')
-    print(mem_data.get_sector('AAPL')) 
-    print(len(mem_data.get_all_sectors()))
+    print(f'AAPL sector: {mem_data.get_sector("AAPL")}')
+    print(f'Total sectors loaded: {len(mem_data.get_all_sectors())}')
 
 
 def test_mem_data():
-    '''MemData diagnostics.''' 
+    '''Diagnostic test for MemData functionality.''' 
     interval = ['2024-01-10', '2024-11-10']
     mem_data = MemData(interval, market_identifier='SP500')
 
-    print('All historical data:')
-    all_info = mem_data.get_all_history()
+    print('Testing historical data retrieval:')
+    all_history = mem_data.get_all_history()
+    print(f'Total assets with data: {len(all_history)}')
 
-    print('History for a symbol not in SP500:')
-    print(all_info.get('EQPA3.SA'))
+    test_symbols = [('EQPA3.SA', 'Non-SP500'), ('PETR4.SA', 'IBOV'), 
+                    ('AAPL', 'SP500'), ('B3SA3.SA', 'IBRA')]
+    
+    for symbol, market_type in test_symbols:
+        data = all_history.get(symbol)
+        status = 'Found' if data is not None else 'Not found'
+        print(f'  {symbol} ({market_type}): {status}')
 
-    print('History for a symbol in IBOV:')
-    print(all_info.get('PETR4.SA'))
-
-    print('History for a symbol in SP500:')
-    print(all_info.get('AAPL'))
-
-    print('History for a symbol in IBRA:')
-    print(all_info.get('B3SA3.SA'))
-
-    print('Sector of an existing symbol')
-    print(mem_data.get_sector('MSFT'))
-
-    print('Sectors for all symbols')
+    print('\nTesting sector information:')
+    print(f'  MSFT sector: {mem_data.get_sector("MSFT")}')
+    
     sectors = mem_data.get_all_sectors()
-    print(sectors)
-
-    print('asset info ---- uncomment:')
-    # print(mem_data.get_assets())
-
-    print('all info ---- uncomment:')
-    # print(mem_data.get_all_info())
+    print(f'  Total sectors available: {len(sectors)}')
 
 
 if __name__ == '__main__':
     test()
-    

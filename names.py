@@ -1,25 +1,28 @@
 # -*- coding: utf-8 -*-
 
 '''
-Global constants and names
+Global constants and configuration names for PortBackRank application.
+
+This module defines shared constants used across the application for B3 data
+fetching, file management, and market index configuration.
 '''
 
 from typing import Dict
 
-# b3.py constants
-# "Historical" directory for B3 data
-SUB_DIR_HIST = 'historical'
-TIMEOUT = 1
-URL_QUOTE = 'https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_M'
-SUB_DIR_B3 = 'b3'
-RECENT_ASSETS_FILE = 'recent_assets.json'
+# B3 data fetching constants
+# Subdirectory name for storing historical B3 market data
+HISTORICAL_SUBDIR = 'historical'
+REQUEST_TIMEOUT = 1
+B3_QUOTE_URL = 'https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_M'
+B3_SUBDIR = 'b3'
+RECENT_ASSETS_FILENAME = 'recent_assets.json'
 APP_NAME = 'PortBackRank'
 
-# files.py constants
-DIR_CACHE = '.cache/port_back'
+# File management constants
+CACHE_DIR = '.cache/port_back'
 
-# markets.py dict
-# Dictionary mapping market names to their source CSV files
+# Market configuration
+# Dictionary mapping market index names to their respective CSV source files
 MARKETS: Dict[str, Dict[str, str]] = {
     'IBOV': {
         'source_file': 'assets/IBOV.csv',
@@ -40,3 +43,11 @@ MARKETS: Dict[str, Dict[str, str]] = {
         'source_file': 'assets/SP500.csv',
     }
 }
+
+# Backwards-compatible aliases (old names used across the codebase)
+# Keep these so existing imports continue to work while names were modernized above.
+DIR_CACHE = CACHE_DIR
+SUB_DIR_HIST = HISTORICAL_SUBDIR
+URL_QUOTE = B3_QUOTE_URL
+TIMEOUT = REQUEST_TIMEOUT
+RECENT_ASSETS_FILE = RECENT_ASSETS_FILENAME

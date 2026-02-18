@@ -1,5 +1,9 @@
 '''
-    Class Backtesting
+Backtesting module
+
+Contains the Backtesting class for running investment strategy simulations
+by varying Runner and Ranker parameters, as well as utilities for saving
+results to disk.
 '''
 
 from itertools import product
@@ -10,75 +14,72 @@ from data import MemData
 from ranker import MARanker, RandomRanker
 from runner import Runner
 from logger import logger
-from files import save_dataframe
-from utils import generate_filename, save_json, generate_performance_plot
-import os 
+from utils import generate_filename
+import os
 import json
 
 
 def save_results(results):
     '''
-    Receives results from parallel executions and writes files to disk.
+    Receives results from parallel executions and saves files to disk.
+
+    For each result:
+    - Generates a JSON file with the timeline.
+    - If there is a trade_log, saves a CSV with the trades.
+
+    Parameters:
+    - results: list of dictionaries with simulation results.
     '''
     for result in results:
         start_date, end_date = result['interval'].split(' - ')
 
         timeline_filename = generate_filename('timeline', result, start_date, end_date)
-        
-        # create directory if necessary
+
+        # Ensures directory exists before writing the file
         directory = os.path.dirname(timeline_filename)
         if directory and not os.path.exists(directory):
             os.makedirs(directory, exist_ok=True)
-        
-        # save the JSON directly
+
+        # Saves timeline as JSON
         with open(timeline_filename, 'w', encoding='utf-8') as f:
-            json.dump(result['shared_data']['timeline'], f, indent=2, ensure_ascii=False)
-        
-        # process trade_log
+            json.dump(result['shared_data'].get('timeline', []), f, indent=2, ensure_ascii=False)
+
+        # Processes trade_log (if present) and saves as CSV
         trades = result.get('trade_log', [])
-        
         if trades:
             df_trades = pd.DataFrame(trades)
             filename_base = generate_filename('trade_logs/trades', result, start_date, end_date)
             csv_filename = filename_base.replace('.json', '.csv')
-            
-            # create directory if necessary
+
             directory = os.path.dirname(csv_filename)
             if directory and not os.path.exists(directory):
                 os.makedirs(directory, exist_ok=True)
 
-            # save CSV directly
             df_trades.to_csv(csv_filename, index=False)
-            
             logger.info(f"Trade log saved: {csv_filename}")
         else:
             logger.warning(f"No trades to save for interval {result['interval']}")
 
 
 class Backtesting:
-    '''Class used to perform backtesting of an investment strategy.'''
+    '''Class for running investment strategy backtests.
 
-    def __init__(self, ranker_cls, capital: float, interval: List[str], market_identifier = 'SP500'):
+    The class organizes the execution of simulations varying Runner and Ranker
+    parameters, allows parallel execution, and aggregates performance metrics.
+    '''
+
+    def __init__(self, ranker_cls, capital: float, interval: List[str], market_identifier='SP500'):
         '''
-        Initialize the backtesting with basic information.
+        Initializes the backtester.
 
-        :param ranker_cls: Ranker class used to create instances.
-        :param capital: Initial capital for all simulations.
-        :param interval: List with the start and end dates of the simulation.
-        :param market_identifier: Symbol or path of the assets to be used
-                                  (e.g. IBOV.csv or 'IBOV').
+        Parameters:
+        - ranker_cls: Ranker class used in simulations.
+        - capital: initial capital for all simulations.
+        - interval: list [start_date, end_date] for the simulation.
+        - market_identifier: market identifier (symbol or file path).
 
-        The ``market_identifier`` parameter can be:
-        1. A **market symbol** (e.g. 'IBOV', 'IFIX', etc.) corresponding to an
-           existing market in MARKETS.
-        2. A **file path** (e.g. 'assets/IBOV.csv') that will be used to
-           identify the corresponding market and, if it does not exist, the
-           market will be created dynamically.
-
-        EXAMPLE::
-            backtester = Backtesting(MARanker, capital=10000,
-                                     interval=['2024-01-01', '2024-12-31'],
-                                     market_identifier='SP500')
+        The market_identifier parameter can be a symbol (e.g., 'SP500') or
+        a file path (e.g., 'assets/IBOV.csv').
         '''
         self.ranker_cls = ranker_cls
         self.capital = capital
@@ -93,15 +94,17 @@ class Backtesting:
         n_jobs: int = -1
     ) -> pd.DataFrame:
         '''
-        Execute backtesting while varying Runner and ranker parameters.
+        Runs backtests varying Runner and Ranker parameters.
 
-        :param parameter_grid: Dictionary with parameters to vary and their
-                               values. Example: ``{'profit': [0.05, 0.1],
-                               'loss': [0.05, 0.1]}``.
-        :param ranker_grid: Dictionary with ranker parameters to vary.
-                            Example: ``{'SEED': [0, 1, 42]}``.
-        :param n_jobs: Number of parallel jobs (-1 uses all available cores).
-        :return: DataFrame with the simulation results.
+        Parameters:
+        - parameter_grid: dictionary with Runner parameters and their value lists.
+                          E.g.: {'profit': [0.05, 0.1], 'loss': [0.05, 0.1]}.
+        - ranker_grid: dictionary with Ranker parameters.
+                       E.g.: {'SEED': [0, 1, 42]}.
+        - n_jobs: number of parallel jobs (-1 uses all available cores).
+
+        Returns:
+        - DataFrame with aggregated results by parameter combination.
         '''
         runner_params = list(product(*parameter_grid.values()))
         ranker_params = list(product(*ranker_grid.values()))
@@ -133,7 +136,7 @@ class Backtesting:
 
                 return self._evaluate_results(results_runner, runner_config, ranker_config)
             except Exception as e:
-                print(f'Error running configuration {runner_config} with ranker {ranker_config}: {e}')
+                print(f'Error executing configuration {runner_config} with ranker {ranker_config}: {e}')
                 return None
 
         results = [
@@ -142,13 +145,14 @@ class Backtesting:
             ) if res is not None
         ]
 
-        # uncomment to save the timeline files when using MARanker
+        # Saves auxiliary files (timeline, trade logs)
         save_results(results)
 
+        # Removes heavy data before creating the final DataFrame
         for result in results:
             del result['shared_data']
-            result.pop('trade_log', None)  
-            result.pop('sell_log', None)   
+            result.pop('trade_log', None)
+            result.pop('sell_log', None)
             result.pop('buy_log', None)
         return pd.DataFrame(results)
 
@@ -156,12 +160,15 @@ class Backtesting:
         self, result: List[Dict], runner_params: Dict, ranker_params: Dict
     ) -> Dict:
         '''
-        Calculate performance metrics of the simulation.
+        Calculates performance metrics from a simulation result.
 
-        :param result: Simulation result (list of dictionaries).
-        :param runner_params: Parameters used in the Runner.
-        :param ranker_params: Parameters used in the Ranker.
-        :return: Dictionary with computed metrics.
+        Parameters:
+        - result: list of states/results over time (last contains final state).
+        - runner_params: Runner parameters used in the simulation.
+        - ranker_params: Ranker parameters used in the simulation.
+
+        Returns:
+        - dictionary with aggregated metrics (final cash, portfolio value, total return, etc.).
         '''
         final_cash = result[-1]['balance'] if result else 0
 
@@ -188,6 +195,7 @@ class Backtesting:
 
 
 def test_bt_with_random():
+    '''Quick test using RandomRanker.'''
     interval = ['2024-01-01', '2024-12-31']
 
     backtester = Backtesting(RandomRanker, capital=10000, interval=interval)
@@ -207,6 +215,7 @@ def test_bt_with_random():
 
 
 def test_bt_with_ma():
+    '''Test using MARanker (moving averages).'''
     interval = ['2024-01-01', '2024-06-30']
 
     parameters = {'window': [[9, 21], [20, 50], [50, 200]]}
@@ -223,6 +232,7 @@ def test_bt_with_ma():
     results = backtester.run(
         parameter_grid, ranker_grid=parameters, n_jobs=-1)
 
+    # To generate performance plots, reactivate the call below
     # generate_performance_plot(market_symbol='SP500')
 
     print(results)

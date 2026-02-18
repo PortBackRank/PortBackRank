@@ -10,12 +10,14 @@ import os
 
 
 def _calc_allocation(entry):
+    """Calculate total portfolio allocation (cash + invested value)."""
     return entry['balance'] + sum(
         item['quantity'] * item['purchase_price'] for item in entry['portfolio']
     )
 
 
 def _print_df_full(df: pd.DataFrame):
+    """Display entire DataFrame without truncation."""
     try:
         old_max_cols = pd.get_option('display.max_columns')
         old_width = pd.get_option('display.width')
@@ -44,6 +46,7 @@ def _print_df_full(df: pd.DataFrame):
 
 
 def print_monthly_results(results_df):
+    """Print monthly returns summary for each backtest configuration."""
     for i, row in results_df.iterrows():
         try:
             interval_str = row['interval']
@@ -94,9 +97,12 @@ def print_monthly_results(results_df):
 
 
 def _ensure_market_assets(market_code: str = 'SP500'):
-    '''
-    Ensures that all market assets have downloaded history.
-    '''
+    """
+    Ensure all market assets have downloaded historical data.
+    
+    Attempts to download missing asset histories up to max_retries times.
+    Prints status messages and lists any assets with persistent missing data.
+    """
     market_data = MarketData(market_code)
     assets = market_data.list_recent_symbols(market_data.market, force_update=False)
 
@@ -133,6 +139,7 @@ def _ensure_market_assets(market_code: str = 'SP500'):
 
 
 def run_backtest_ma():
+    """Run backtest with Moving Average ranker."""
     interval = ['2024-01-01', '2024-12-31']
     _ensure_market_assets('SP500')
 
@@ -152,10 +159,10 @@ def run_backtest_ma():
 
     results = backtester.run(runner_grid, ranker_grid=ranker_grid, n_jobs=-1)
     _print_df_full(results)
-    # print_monthly_results(results)
 
 
 def run_backtest_rsi():
+    """Run backtest with RSI (Relative Strength Index) ranker."""
     interval = ['2024-01-01', '2024-12-31']
     _ensure_market_assets('SP500')
 
@@ -180,44 +187,21 @@ def run_backtest_rsi():
 
     results = backtester.run(runner_grid, ranker_grid=ranker_grid, n_jobs=-1)
     _print_df_full(results)
-    # print_monthly_results(results)
 
-'''
-def main_menu():
-    print('\n=== PortBackRank - Choose an indicator ===')
-    print('1) Moving Averages (MA)')
-    print('2) RSI (Relative Strength Index)')
-    print('0) Exit')
 
-    choice = input('Select an option: ').strip()
-    if choice == '1':
-        run_backtest_ma()
-    elif choice == '2':
-        run_backtest_rsi()
-    elif choice == '0':
-        print('Exiting')
-    else:
-        print('Invalid option.')
-'''
-
-'''
-
-Explanation of terminal commands to run the code:
-
-python main.py --config config.json --download-data all -> rebuilds the index universe + downloads everything.
-python main.py --config config.json --download-data missing -> trusts the universe already in 
-cache and only downloads history for what doesn't have a CSV
-python main.py --config config.json --download-data none -> doesn't perform any batch download before backtest
-
-If you need to change any parameters, edit the config.json file
-
-'''
 def _load_config(path: str) -> dict:
+    """Load configuration from JSON file."""
     with open(path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
 
 def _build_grids(config: dict):
+    """
+    Build parameter grids for backtesting from configuration.
+    
+    Returns:
+        tuple: (runner_grid, ranker_grid) for backtesting iterations.
+    """
     params = config.get('ranker-params') or {}
 
     runner_grid = {
@@ -235,14 +219,23 @@ def _build_grids(config: dict):
 
 
 def _get_ranker_class(name: str):
+    """Get ranker class by name."""
     if name == 'MARanker':
         return MARanker
     if name == 'RSIRanker':
         return RSIRanker
-    raise ValueError(f'Ranker \'{name}\' not supported.')
+    raise ValueError(f'Ranker "{name}" is not supported.')
 
 
 def run_from_config(config_path: str, download_mode: str = 'missing'):
+    """
+    Run backtest from configuration file.
+    
+    Args:
+        config_path: Path to configuration JSON file.
+        download_mode: 'all' (rebuild universe), 'missing' (download missing only),
+                      or 'none' (skip downloads).
+    """
     config = _load_config(config_path)
 
     market_identifier = config.get('id', 'SP500')
@@ -261,8 +254,6 @@ def run_from_config(config_path: str, download_mode: str = 'missing'):
         data_handler.download_histories(assets)
     elif mode == 'missing':
         _ensure_market_assets(market_identifier)
-    elif mode == 'none':
-        pass
 
     backtester = Backtesting(
         ranker_cls,
@@ -280,18 +271,27 @@ def run_from_config(config_path: str, download_mode: str = 'missing'):
 
 
 def _parse_args(argv=None):
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-c', '--config', required=True)
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser(
+        description='PortBackRank - Portfolio backtesting with technical indicators'
+    )
     parser.add_argument(
-        '-d',
-        '--download-data',
+        '-c', '--config',
+        required=True,
+        help='Path to configuration JSON file'
+    )
+    parser.add_argument(
+        '-d', '--download-data',
         choices=['all', 'missing', 'none'],
         default='missing',
+        help='Download strategy: all (rebuild universe), missing (download only missing), '
+             'or none (skip downloads)'
     )
     return parser.parse_args(argv)
 
 
 def main(argv=None):
+    """Entry point for the application."""
     args = _parse_args(argv)
     run_from_config(args.config, download_mode=args.download_data)
 
