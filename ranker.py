@@ -39,9 +39,9 @@ class Ranker(ABC):
     @abstractmethod
     def prepare(self, data: MemData) -> None:
         '''
-        Prepara os dados ou indicadores necessários antes da simulação.
+        Prepare any required data or indicators before the simulation.
 
-        :param mem_data: Objeto MemData contendo o histórico e setores.
+        :param data: MemData object containing historical data and sectors.
         '''
 
 
@@ -77,16 +77,16 @@ class RandomRanker(Ranker):
 
     def prepare(self, data: MemData) -> None:
         '''
-        Prepara os dados ou indicadores necessários antes da simulação.
+        Prepare any data or indicators needed before simulation.
 
-        :param mem_data: Objeto MemData contendo o histórico e setores.
+        :param data: MemData object containing historical data and sectors.
         '''
         pass
 
 
 def test_random_ranker():
     '''
-    Função simples para testar o funcionamento do RandomRanker.
+    Simple function to test RandomRanker functionality.
     '''
     interval = ['2024-01-10', '2024-11-10']
     data = MemData(interval=interval)
@@ -153,7 +153,7 @@ class MARanker(Ranker):
 
 def test_ma_ranker():
     '''
-    Função simples para testar o funcionamento do MARanker.
+    Simple function to test MARanker functionality.
     '''
     interval = ['2024-01-10', '2024-11-10']
     data = MemData(interval=interval)

@@ -13,7 +13,7 @@ from names import DIR_CACHE
 
 
 def dir_cache():
-    '''Data directory'''
+    '''Cache directory'''
     _data_dir = str(Path.home()) + sep + DIR_CACHE
     if not isdir(_data_dir):
         mkdir(_data_dir)
@@ -21,7 +21,7 @@ def dir_cache():
 
 
 def file_path(file_name, subdir=None):
-    '''Symbol file'''
+    '''File path'''
     directory = dir_cache()
     if subdir:
         directory += sep + subdir
@@ -39,6 +39,7 @@ def open_json(file, subdir=None):
             return json.load(file)
     return None
 
+
 def save_json(file, content, subdir=None):
     '''Saves JSON file'''
     file_name = file_path(file, subdir)
@@ -52,7 +53,7 @@ def open_dataframe(file, subdir=None):
     if isfile(file_name):
         df = pd.read_csv(file_name, index_col=False)
         
-        # Arredondar apenas colunas de preço para 2 casas decimais
+        # Round only price columns to 2 decimal places
         price_columns = ['Open', 'High', 'Low', 'Close']
         existing_price_cols = [col for col in price_columns if col in df.columns]
         

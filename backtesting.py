@@ -18,23 +18,23 @@ import json
 
 def save_results(results):
     '''
-    Recebe os resultados das execuções paralelizadas e salva os arquivos.
+    Receives results from parallel executions and writes files to disk.
     '''
     for result in results:
-        start_date, end_date = result['intervalo'].split(' - ')
+        start_date, end_date = result['interval'].split(' - ')
 
         timeline_filename = generate_filename('timeline', result, start_date, end_date)
         
-        # Cria diretório se necessário
+        # create directory if necessary
         directory = os.path.dirname(timeline_filename)
         if directory and not os.path.exists(directory):
             os.makedirs(directory, exist_ok=True)
         
-        # Salva o JSON diretamente
+        # save the JSON directly
         with open(timeline_filename, 'w', encoding='utf-8') as f:
             json.dump(result['shared_data']['timeline'], f, indent=2, ensure_ascii=False)
         
-        # Processar trade_log
+        # process trade_log
         trades = result.get('trade_log', [])
         
         if trades:
@@ -42,37 +42,43 @@ def save_results(results):
             filename_base = generate_filename('trade_logs/trades', result, start_date, end_date)
             csv_filename = filename_base.replace('.json', '.csv')
             
-            # Cria diretório se necessário
+            # create directory if necessary
             directory = os.path.dirname(csv_filename)
             if directory and not os.path.exists(directory):
                 os.makedirs(directory, exist_ok=True)
 
-            # Salva CSV diretamente
+            # save CSV directly
             df_trades.to_csv(csv_filename, index=False)
             
-            logger.info(f"Trade log salvo: {csv_filename}")
+            logger.info(f"Trade log saved: {csv_filename}")
         else:
-            logger.warning(f"Sem negociações para salvar no intervalo {result['intervalo']}")
+            logger.warning(f"No trades to save for interval {result['interval']}")
+
 
 class Backtesting:
-    ''' Classe para realizar backtesting de uma estratégia de investimento. '''
+    '''Class used to perform backtesting of an investment strategy.'''
 
     def __init__(self, ranker_cls, capital: float, interval: List[str], market_identifier = 'SP500'):
         '''
-        Inicializa o backtesting com as informações básicas.
+        Initialize the backtesting with basic information.
 
-        :param ranker_cls: Classe do Ranker para criar instâncias.
-        :param capital: Capital inicial para todas as simulações.
-        :param interval: Lista com a data inicial e final da simulação.
-        :param market_identifier: Sigla ou caminho dos ativos a serem usados(IBOV.csv OU IBOV).
+        :param ranker_cls: Ranker class used to create instances.
+        :param capital: Initial capital for all simulations.
+        :param interval: List with the start and end dates of the simulation.
+        :param market_identifier: Symbol or path of the assets to be used
+                                  (e.g. IBOV.csv or 'IBOV').
 
-        O parâmetro 'market_identifier' pode ser:
-        1. Uma **sigla de mercado** (ex: 'IBOV', 'IFIX', etc.) que corresponde a um mercado existente em MARKETS.
-        2. Um **caminho de arquivo** (ex: 'assets/IBOV.csv') que será utilizado para identificar o mercado
-        correspondente e, caso não exista, o mercado será criado dinamicamente.
+        The ``market_identifier`` parameter can be:
+        1. A **market symbol** (e.g. 'IBOV', 'IFIX', etc.) corresponding to an
+           existing market in MARKETS.
+        2. A **file path** (e.g. 'assets/IBOV.csv') that will be used to
+           identify the corresponding market and, if it does not exist, the
+           market will be created dynamically.
 
-        EXEMPLO:
-        backtester = Backtesting(MARanker, capital=10000, interval=['2024-01-01', '2024-12-31'], market_identifier='SP500')
+        EXAMPLE::
+            backtester = Backtesting(MARanker, capital=10000,
+                                     interval=['2024-01-01', '2024-12-31'],
+                                     market_identifier='SP500')
         '''
         self.ranker_cls = ranker_cls
         self.capital = capital
@@ -87,14 +93,15 @@ class Backtesting:
         n_jobs: int = -1
     ) -> pd.DataFrame:
         '''
-        Executa o backtesting variando os parâmetros do Runner e do ranker.
+        Execute backtesting while varying Runner and ranker parameters.
 
-        :param parameter_grid: Dicionário com os parâmetros a variar e seus valores.
-                               Exemplo: {'profit': [0.05, 0.1], 'loss': [0.05, 0.1]}.
-        :param ranker_grid: Dicionário com os parâmetros do rankera variar.
-                            Exemplo: {'SEED': [0, 1, 42]}.
-        :param n_jobs: Número de processos paralelos (-1 usa todos os núcleos disponíveis).
-        :return: DataFrame com os resultados das simulações.
+        :param parameter_grid: Dictionary with parameters to vary and their
+                               values. Example: ``{'profit': [0.05, 0.1],
+                               'loss': [0.05, 0.1]}``.
+        :param ranker_grid: Dictionary with ranker parameters to vary.
+                            Example: ``{'SEED': [0, 1, 42]}``.
+        :param n_jobs: Number of parallel jobs (-1 uses all available cores).
+        :return: DataFrame with the simulation results.
         '''
         runner_params = list(product(*parameter_grid.values()))
         ranker_params = list(product(*ranker_grid.values()))
@@ -118,7 +125,6 @@ class Backtesting:
             )
 
             try:
-
                 results_runner = []
 
                 result = runner.single_run(self.interval, ranker_config, self.capital)
@@ -127,7 +133,7 @@ class Backtesting:
 
                 return self._evaluate_results(results_runner, runner_config, ranker_config)
             except Exception as e:
-                print(f'Erro ao rodar configuração {runner_config} com ranker {ranker_config}: {e}')
+                print(f'Error running configuration {runner_config} with ranker {ranker_config}: {e}')
                 return None
 
         results = [
@@ -136,7 +142,7 @@ class Backtesting:
             ) if res is not None
         ]
 
-        # descomente para salvar os arquivos de timeline, caso use o MARanker
+        # uncomment to save the timeline files when using MARanker
         save_results(results)
 
         for result in results:
@@ -150,33 +156,32 @@ class Backtesting:
         self, result: List[Dict], runner_params: Dict, ranker_params: Dict
     ) -> Dict:
         '''
-        //Calcula métricas de performance da simulação.
+        Calculate performance metrics of the simulation.
 
-        :param result: Resultado da simulação (lista de dicionários).
-        :param runner_params: Parâmetros usados na simulação para o Runner.
-        :param ranker_params: Parâmetros usados na simulação para o Ranker.
-        :return: Dicionário com as métricas calculadas.
+        :param result: Simulation result (list of dictionaries).
+        :param runner_params: Parameters used in the Runner.
+        :param ranker_params: Parameters used in the Ranker.
+        :return: Dictionary with computed metrics.
         '''
-        caixa_final = result[-1]['balance'] if result else 0
+        final_cash = result[-1]['balance'] if result else 0
 
         portfolio_value = sum(
-            item['quantidade'] * item['preco_compra'] for item in result[-1]['portfolio']
+            item['quantity'] * item['purchase_price'] for item in result[-1]['portfolio']
         ) if result else 0
 
-        retorno_total = (caixa_final + portfolio_value) / self.capital - 1
-        retorno_total = round(retorno_total * 100, 2)
+        total_return = (final_cash + portfolio_value) / self.capital - 1
+        total_return = round(total_return * 100, 2)
 
         shared_data = result[-1].get('shared_data', {}) if result else {}
 
-
         trade_log = result[-1].get('trade_log', []) if result else []
         return {
-            'intervalo': f'{self.interval[0]} - {self.interval[1]}',
+            'interval': f'{self.interval[0]} - {self.interval[1]}',
             **runner_params,
             **ranker_params,
-            'caixa_final': caixa_final,
+            'final_cash': final_cash,
             'portfolio_value': portfolio_value,
-            'retorno_total': f'{retorno_total:.2f}%',
+            'total_return': f'{total_return:.2f}%',
             'shared_data': shared_data,
             'trade_log': trade_log
         }

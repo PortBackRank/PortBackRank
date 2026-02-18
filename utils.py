@@ -8,7 +8,7 @@ import numpy as np
 
 
 def convert_numpy(obj):
-    ''' Converte objetos numpy para tipos Python compatíveis com JSON '''
+    '''Convert numpy objects to JSON-serializable Python types.'''
     if isinstance(obj, np.integer):
         return int(obj)
     elif isinstance(obj, np.floating):
@@ -19,30 +19,30 @@ def convert_numpy(obj):
 
 
 def get_safe_int(value):
-    ''' Garante que o valor seja um int, se aplicável '''
+    '''Ensure the value is an int if applicable.'''
     return int(value) if isinstance(value, (int, np.integer)) else value
 
 
 def generate_filename(prefix, result, start_date, end_date):
-    ''' Gera o nome do arquivo de forma centralizada '''
+    '''Generate filenames in a centralized manner.'''
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     
-    # Separa o prefix em partes 
+    # Split the prefix into parts
     prefix_parts = prefix.split('/')
     
-    # O último elemento é o nome base do arquivo
+    # The last element is the base filename
     file_prefix = prefix_parts[-1] if len(prefix_parts) > 0 else prefix
     
-    # Os elementos anteriores são subdiretórios
+    # Previous elements are subdirectories
     subdirs = prefix_parts[:-1] if len(prefix_parts) > 1 else []
     
-    # Gera o nome do arquivo
+    # Build the filename
     filename = f'{file_prefix}_profit{get_safe_int(result["profit"])}_loss{get_safe_int(result["loss"])}_div{get_safe_int(result["diversification"])}_short{get_safe_int(result["window"][0])}_long{get_safe_int(result["window"][1])}_{start_date}_to_{end_date}.json'
     
     return os.path.join(project_root, 'results', *subdirs, filename)
 
 def save_json(filename, data):
-    ''' Salva um dicionário como JSON '''
+    '''Save a dictionary as JSON.'''
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     with open(filename, 'w') as file:
         json.dump(data, file, indent=4, default=convert_numpy)
@@ -50,10 +50,10 @@ def save_json(filename, data):
 
 def generate_performance_plot(directory: str = 'results', output_prefix: str = 'performance_comparison', market_symbol: str = 'IBrA'):
     '''
-    Gera um gráfico contendo todas as linhas das simulações a partir dos arquivos JSON na pasta `directory`.
+    Generate a plot showing all simulation lines from JSON files in `directory`.
 
-    :param directory: Pasta onde os arquivos JSON estão localizados.
-    :param output_prefix: Prefixo para o nome do arquivo de saída do gráfico.
+    :param directory: Folder where the JSON files are located.
+    :param output_prefix: Prefix for the output plot filename.
     '''
 
     INITIAL_VALUE = 10_000
@@ -77,7 +77,7 @@ def generate_performance_plot(directory: str = 'results', output_prefix: str = '
 
                     if len(labels) < 5:
                         print(
-                            f'Formato de nome de arquivo inesperado: {filename}')
+                            f'Unexpected filename format: {filename}')
                         continue
 
                     profit = labels[0].replace('profit', '')
@@ -87,7 +87,7 @@ def generate_performance_plot(directory: str = 'results', output_prefix: str = '
                     long = labels[4].replace('long', '')
 
                     allocation_over_time = [
-                        entry['balance'] + sum(item['quantidade'] * item['preco_compra']
+                        entry['balance'] + sum(item['quantity'] * item['purchase_price']
                                                for item in entry['portfolio'])
                         for entry in timeline
                     ]
@@ -109,7 +109,7 @@ def generate_performance_plot(directory: str = 'results', output_prefix: str = '
                     color_index = (color_index + 1) % len(color_palette)
 
             except FileNotFoundError:
-                print(f'Arquivo não encontrado: {filename}')
+                print(f'File not found: {filename}')
                 continue
 
     sp500_values = []
@@ -131,7 +131,7 @@ def generate_performance_plot(directory: str = 'results', output_prefix: str = '
 
             all_percentages.extend(sp500_percent)
     except FileNotFoundError:
-        print('Arquivo de dados do S&P 500 não encontrado. Linha não adicionada.')
+        print('S&P 500 data file not found. Line not added.')
 
     if all_percentages:
         y_min = min(all_percentages)
@@ -144,8 +144,8 @@ def generate_performance_plot(directory: str = 'results', output_prefix: str = '
     plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%m/%Y'))
     plt.xticks(rotation=45, fontsize=12)
 
-    plt.xlabel('Período', fontsize=12)
-    plt.ylabel('Variação Percentual (%)', fontsize=14)
+    plt.xlabel('Period', fontsize=12)
+    plt.ylabel('Percent Change (%)', fontsize=14)
 
     plt.axhline(0, color='black', linestyle='--', linewidth=1)
     plt.legend(loc='upper left', fontsize=8.5)

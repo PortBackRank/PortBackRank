@@ -323,12 +323,12 @@ class MemData:
         return self.history_data
     
     def _generate_date_index(self):
-        '''Pré-indexa históricos por data para acelerar acesso'''
-        for simbolo, df in self.get_all_history().items():
+        '''Pre-index historical data by date for faster access.'''
+        for symbol, df in self.get_all_history().items():
             df_copy = df.copy()
-            # Garante que o índice seja datetime se não for, e cria a string
+            # Ensure index is datetime (if not), then generate string key
             df_copy['date_str'] = df_copy.index.strftime('%Y-%m-%d')
-            self._history_by_date[simbolo] = {
+            self._history_by_date[symbol] = {
                 d: row for d, row in df_copy.set_index('date_str').iterrows()
             }
 
@@ -352,39 +352,39 @@ class MemData:
         '''
         return self.sector_info.copy()
 
-def teste():
-    '''Test function'''
+def test():
+    '''Simple test routine.'''
     try:
-        # Escolhe um ativo para testar (pode ser qualquer um que você tenha)
-        test_asset = 'AAPL'  # ou 'ACGL' que vejo na sua lista
+        # choose an asset to test (can be any available symbol)
+        test_asset = 'AAPL'  # or 'ACGL' as seen in the list
         
-        print(f'Testando arredondamento do ativo: {test_asset}')
+        print(f'Testing rounding for asset: {test_asset}')
         
-        # Carrega o DataFrame do ativo usando a função que modificamos
+        # load the DataFrame for the asset using our helper
         df = Data.get_asset_data_by_name(test_asset)
         
         if df is not None and not df.empty:
-            print(f'\nDados carregados com sucesso!')
-            print(f'Total de linhas: {len(df)}')
+            print('\nData loaded successfully!')
+            print(f'Number of rows: {len(df)}')
             
-            # Mostra as primeiras linhas das colunas de preço
+            # show first rows of price columns
             price_cols = ['Open', 'High', 'Low', 'Close']
             existing_cols = [col for col in price_cols if col in df.columns]
             
-            print(f'\nPrimeiras 5 linhas das colunas de preço:')
+            print('\nFirst 5 rows of price columns:')
             print(df[existing_cols].head())
             
             # Verifica se os valores têm no máximo 2 casas decimais
-            print(f'\nVerificando arredondamento...')
+            print(f'\nChecking rounding...')
             for col in existing_cols:
                 max_decimals = df[col].apply(lambda x: len(str(x).split('.')[-1]) if '.' in str(x) else 0).max()
-                print(f'  {col}: máximo de {max_decimals} casas decimais')
+                print(f'  {col}: maximum {max_decimals} decimal places')
                 if max_decimals <= 2:
-                    print(f'Arredondado corretamente')
+                    print('Rounded correctly')
                 else:
-                    print(f'ERRO, não está arredondado para 2 casas')
+                    print('ERROR: not rounded to 2 decimals')
         else:
-            print(f'Erro: não foi possível carregar dados de {test_asset}')
+            print(f'Error: could not load data for {test_asset}')
             
     except Exception as e:
         print(f'Erro no teste: {e}')
@@ -401,67 +401,67 @@ def teste():
 
         assets = [asset for asset in assets if pd.notna(asset) and asset != '']
             
-        print(f'Total de ativos carregados do CSV: {len(assets)}')
+        print(f'Total assets loaded from CSV: {len(assets)}')
         print(f'First 5 assets: {assets[:5]}')
-        print(f'Sector-Industry of 5 assets{assets[:5]}')
+        print(f'Sector-Industry of first 5 assets: {assets[:5]}')
     except FileNotFoundError:
         print('Arquivo \'assets.csv\' não encontrado!')
         print('Usando lista padrão do mercado SP500 como fallback')
         assets = Data.list_symbols(market='SP500')
     except Exception as e:
-        print(f'Erro ao ler CSV: {e}')
-        print('Usando lista padrão do mercado SP500 como fallback')
-        assets = Data.list_symbols(market='SP500')
+            print(f'Error reading CSV: {e}')
+            print('Using default SP500 market list as fallback')
 
 
-def teste_sp500():
-    '''Test function'''
-    print('--------------Listando ativos----------------')
+def test_sp500():
+    '''Test SP500-related functions.'''
+    print('--------------Listing assets----------------')
     market_data = MarketData('SP500')
     assets = market_data.list_recent_symbols(market_data.market, force_update=True)
     print(assets)
 
-    print('--------------Testando setores via MemData----------------')
-    # Data não tem mais get_sector - usar MemData
+    print('--------------Testing sectors via MemData----------------')
+    # Data no longer has get_sector method - use MemData instead
     interval = ['2024-01-10', '2024-11-10']
     mem_data = MemData(interval, market_identifier='SP500')
     print(mem_data.get_sector('AAPL')) 
     print(len(mem_data.get_all_sectors()))
 
 
-def teste_mem_data():
-    '''Test function'''
+def test_mem_data():
+    '''MemData diagnostics.''' 
     interval = ['2024-01-10', '2024-11-10']
     mem_data = MemData(interval, market_identifier='SP500')
 
-    print('Todos os dados históricos:')
-    todas_info = mem_data.get_all_history()
+    print('All historical data:')
+    all_info = mem_data.get_all_history()
 
-    print('Histórico de um ativo que nao existe no sp500:')
-    print(todas_info.get('EQPA3.SA'))
+    print('History for a symbol not in SP500:')
+    print(all_info.get('EQPA3.SA'))
 
-    print('Histórico de um ativo que existe no ibov:')
-    print(todas_info.get('PETR4.SA'))
+    print('History for a symbol in IBOV:')
+    print(all_info.get('PETR4.SA'))
 
-    print('Histórico de um ativo que existe em sp500:')
-    print(todas_info.get('AAPL'))
+    print('History for a symbol in SP500:')
+    print(all_info.get('AAPL'))
 
-    print('Histórico de um ativo que existe em ibra:')
-    print(todas_info.get('B3SA3.SA'))
+    print('History for a symbol in IBRA:')
+    print(all_info.get('B3SA3.SA'))
 
-    print('Setores de um ativo existente')
+    print('Sector of an existing symbol')
     print(mem_data.get_sector('MSFT'))
 
-    print('Setores de todos os ativos')
+    print('Sectors for all symbols')
     sectors = mem_data.get_all_sectors()
     print(sectors)
 
-    print('informações de ativos ---- descomentar :')
+    print('asset info ---- uncomment:')
     # print(mem_data.get_assets())
 
-    print('Todas as informações----- descomentar:')
+    print('all info ---- uncomment:')
     # print(mem_data.get_all_info())
 
 
 if __name__ == '__main__':
-    teste()
+    test()
+    

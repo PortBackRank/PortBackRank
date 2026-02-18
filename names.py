@@ -1,10 +1,13 @@
+# -*- coding: utf-8 -*-
+
 '''
-Docstring for names
+Global constants and names
 '''
 
 from typing import Dict
 
-# b3.py const
+# b3.py constants
+# "Historical" directory for B3 data
 SUB_DIR_HIST = 'historical'
 TIMEOUT = 1
 URL_QUOTE = 'https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_M'
@@ -12,10 +15,11 @@ SUB_DIR_B3 = 'b3'
 RECENT_ASSETS_FILE = 'recent_assets.json'
 APP_NAME = 'PortBackRank'
 
-# files.py const
+# files.py constants
 DIR_CACHE = '.cache/port_back'
 
 # markets.py dict
+# Dictionary mapping market names to their source CSV files
 MARKETS: Dict[str, Dict[str, str]] = {
     'IBOV': {
         'source_file': 'assets/IBOV.csv',
@@ -34,5 +38,5 @@ MARKETS: Dict[str, Dict[str, str]] = {
     },
     'SP500': {
         'source_file': 'assets/SP500.csv',
-    },
+    }
 }
