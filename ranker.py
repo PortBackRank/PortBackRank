@@ -322,3 +322,93 @@ def test_ema_ranker():
     ranked_symbols = ranker.rank(date="2024-05-29")
 
     print("Símbolos ranqueados por EMA:", ranked_symbols)
+
+
+class BollingerRanker(Ranker):
+    """Bollinger Bands Ranker class"""
+
+    def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
+        super().__init__(parameters, interval, data)
+        self.period = int(self.parameters.get("period", 20))
+        self.std_dev = float(self.parameters.get("std_dev", 2))
+        self.mode = self.parameters.get("mode", "mean_reversion")
+
+    def _ensure_bbands(self, df: pd.DataFrame) -> pd.DataFrame:
+        mid_key = f"bb_mid_{self.period}"
+        std_key = f"bb_std_{self.period}"
+        upper_key = f"bb_upper_{self.period}_{self.std_dev}"
+        lower_key = f"bb_lower_{self.period}_{self.std_dev}"
+
+        if upper_key in df.columns and lower_key in df.columns:
+            return df
+
+        df[mid_key] = df["Close"].rolling(self.period).mean()
+        df[std_key] = df["Close"].rolling(self.period).std()
+        df[upper_key] = df[mid_key] + (self.std_dev * df[std_key])
+        df[lower_key] = df[mid_key] - (self.std_dev * df[std_key])
+        return df
+
+    def rank(self, date: str = None) -> List[str]:
+        dict_data = self.data.get_all_history()
+        ranked_symbols = []
+        upper_key = f"bb_upper_{self.period}_{self.std_dev}"
+        lower_key = f"bb_lower_{self.period}_{self.std_dev}"
+
+        for symbol, df in dict_data.items():
+            if "Close" not in df.columns or df.empty:
+                continue
+
+            df = self._ensure_bbands(df.copy())
+
+            if date not in df.index:
+                continue
+
+            idx = df.index.get_loc(date)
+            if isinstance(idx, slice):
+                idx = idx.start
+            if idx < 1:
+                continue
+
+            latest = df.iloc[idx]
+            prev = df.iloc[idx - 1]
+            strength = float("-inf")
+
+            if pd.notna(prev[lower_key]) and pd.notna(latest[lower_key]) and pd.notna(prev[upper_key]) and pd.notna(latest[upper_key]):
+                band_width = latest[upper_key] - latest[lower_key]
+                norm = band_width if pd.notna(band_width) and band_width > 0 else 1.0
+
+                if self.mode == "mean_reversion":
+                    # Compra ao reentrar na banda após tocar/romper a banda inferior.
+                    if prev["Close"] <= prev[lower_key] and latest["Close"] > latest[lower_key]:
+                        strength = ((latest["Close"] - latest[lower_key]) / norm) * 100
+                    # Penaliza saída da sobrecompra.
+                    elif prev["Close"] >= prev[upper_key] and latest["Close"] < latest[upper_key]:
+                        strength = -((prev["Close"] - prev[upper_key]) / norm) * 100
+                else:
+                    # Modo tendência: breakout acima da banda superior.
+                    if prev["Close"] <= prev[upper_key] and latest["Close"] > latest[upper_key]:
+                        strength = ((latest["Close"] - latest[upper_key]) / norm) * 100
+
+            ranked_symbols.append((symbol, strength))
+
+        ranked_symbols.sort(key=lambda x: x[1], reverse=True)
+        return [x[0] for x in ranked_symbols]
+
+
+def test_bollinger_ranker():
+    """
+    Função simples para testar o funcionamento do BollingerRanker.
+    """
+    interval = ["2024-01-10", "2024-11-10"]
+    data = MemData(interval=interval)
+
+    parameters = {
+        "period": 20,
+        "std_dev": 2,
+        "mode": "mean_reversion",
+    }
+
+    ranker = BollingerRanker(data=data, parameters=parameters)
+    ranked_symbols = ranker.rank(date="2024-05-29")
+
+    print("Símbolos ranqueados por Bollinger Bands:", ranked_symbols)

@@ -1,35 +1,32 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 
 '''
 Files
 '''
 
 import json
-from os.path import isdir, isfile
-from os import mkdir, sep
+from os.path import isfile
 from pathlib import Path
 import pandas as pd
 
-DIR_CACHE = '.cache/port_back'
+DIR_CACHE = Path('.cache') / 'port_back'
 
 
 def dir_cache():
     '''Data directory'''
-    _data_dir = str(Path.home()) + sep + DIR_CACHE
-    if not isdir(_data_dir):
-        mkdir(_data_dir)
-    return _data_dir
+    data_dir = Path.home() / DIR_CACHE
+    data_dir.mkdir(parents=True, exist_ok=True)
+    return str(data_dir)
 
 
 def file_path(file_name, subdir=None):
     '''Symbol file'''
-    directory = dir_cache()
+    directory = Path(dir_cache())
     if subdir:
-        directory += sep + subdir
-    if not isdir(directory):
-        mkdir(directory)
-    file_name = directory + sep + file_name
-    return file_name
+        directory = directory / subdir
+    directory.mkdir(parents=True, exist_ok=True)
+    file_name = directory / file_name
+    return str(file_name)
 
 
 def open_json(file, subdir=None):

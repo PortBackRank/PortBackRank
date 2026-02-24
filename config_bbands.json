@@ -1,0 +1,14 @@
+{
+    "id": "SP500",
+    "assets": "sp500.csv",
+    "capital": 10000,
+    "ranker": "BollingerRanker",
+    "ranker-params": {
+        "period": [10, 20, 30],
+        "std_dev": [2],
+        "mode": ["mean_reversion"],
+        "profit": [0.1, 0.15],
+        "loss": [0.05],
+        "diversification": [0.1, 0.2]
+    }
+}

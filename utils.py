@@ -25,7 +25,28 @@ def get_safe_int(value):
 
 def generate_filename(prefix, result, start_date, end_date):
     """ Gera o nome do arquivo de forma centralizada """
-    return f'results/{prefix}_profit{get_safe_int(result["profit"])}_loss{get_safe_int(result["loss"])}_div{get_safe_int(result["diversification"])}_short{get_safe_int(result["window"][0])}_long{get_safe_int(result["window"][1])}_{start_date}_to_{end_date}.json'
+    base_parts = [
+        f'profit{get_safe_int(result["profit"])}',
+        f'loss{get_safe_int(result["loss"])}',
+        f'div{get_safe_int(result["diversification"])}',
+    ]
+
+    if "window" in result and isinstance(result["window"], (list, tuple)) and len(result["window"]) >= 2:
+        base_parts.append(f'short{get_safe_int(result["window"][0])}')
+        base_parts.append(f'long{get_safe_int(result["window"][1])}')
+    else:
+        optional_params = ["period", "std_dev", "oversold", "overbought", "mode", "SEED"]
+        for key in optional_params:
+            if key in result:
+                value = result[key]
+                if isinstance(value, str):
+                    value = value.replace(" ", "")
+                else:
+                    value = get_safe_int(value)
+                base_parts.append(f"{key}{value}")
+
+    suffix = "_".join(base_parts)
+    return f"results/{prefix}_{suffix}_{start_date}_to_{end_date}.json"
 
 
 def save_json(filename, data):

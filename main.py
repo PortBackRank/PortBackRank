@@ -1,5 +1,5 @@
 from backtesting import Backtesting
-from ranker import MARanker, RSIRanker, EMARanker
+from ranker import MARanker, RSIRanker, EMARanker, BollingerRanker
 from data import Data
 from markets import MarketData, list_recent_symbols
 from utils import generate_filename
@@ -262,6 +262,8 @@ def _get_ranker_class(name: str):
         return RSIRanker
     if name == "EMARanker":
         return EMARanker
+    if name == "BollingerRanker":
+        return BollingerRanker
     raise ValueError(f"Ranker '{name}' não suportado.")
 
 
