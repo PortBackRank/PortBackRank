@@ -33,6 +33,74 @@ class Runner:
         self.balance = 0
         self.timeline = []
 
+    def _get_formatted_portfolio(self) -> Dict:
+        """
+        Transforma a lista linear self.__portfolio na estrutura hierárquica
+        solicitada pelo orientador.
+        """
+        if not self.__portfolio:
+            return {"lista_setores": [], "valor_total": 0.0}
+
+        # Dicionário temporário para agrupar por setor e por ativo
+        # Estrutura: { 'setor': { 'ativo': [compras] } }
+        grouped = {}
+        valor_total_portfolio = 0.0
+
+        for item in self.__portfolio:
+            setor = item.get('sector', 'Desconhecido')
+            setor = item['sector']
+            simbolo = item['symbol']
+            qtd = item['quantity']
+            preco = item['purchase_price']
+            valor_item = qtd * preco
+            
+            valor_total_portfolio += valor_item
+
+            if setor not in grouped:
+                grouped[setor] = {}
+            if simbolo not in grouped[setor]:
+                grouped[setor][simbolo] = []
+            
+            grouped[setor][simbolo].append({
+                "data": item['purchase_date'],
+                "quantidade": qtd,
+                "valor_total": round(valor_item, 2)
+            })
+
+        # Agora montamos a estrutura final conforme a recomendação
+        lista_setores_final = []
+        for setor, ativos in grouped.items():
+            valor_total_setor = 0.0
+            lista_ativos_final = []
+
+            for simbolo, compras in ativos.items():
+                qtd_total_ativo = sum(c['quantidade'] for c in compras)
+                valor_total_ativo = sum(c['valor_total'] for c in compras)
+                preco_medio = valor_total_ativo / qtd_total_ativo if qtd_total_ativo > 0 else 0
+
+                lista_ativos_final.append({
+                    simbolo: {
+                        "lista_compras": compras,
+                        "quantidade_total": qtd_total_ativo,
+                        "valor_total": round(valor_total_ativo, 2),
+                        "preco_medio": round(preco_medio, 2)
+                    }
+                })
+                valor_total_setor += valor_total_ativo
+
+            lista_setores_final.append({
+                setor: {
+                    "lista_ativos": lista_ativos_final,
+                    "valor_total": round(valor_total_setor, 2),
+                    "porcentagem_portfolio": round(valor_total_setor / valor_total_portfolio, 4) if (valor_total_portfolio and valor_total_portfolio > 0) else 0.0
+                }
+            })
+
+        return {
+            "lista_setores": lista_setores_final,
+            "valor_total": round(valor_total_portfolio, 2)
+        }
+
     def prepare_data(self, interval: List[str], ranker_conf: Dict[str, float], capital: float):
         '''
         Prepare environment for a new simulation:
@@ -95,8 +163,8 @@ class Runner:
         }
 
         return {
-            'balance': self.balance,
-            'portfolio': self.__portfolio,
+            'balance': round(self.balance, 2),
+            'portfolio': self._get_formatted_portfolio(),
             'shared_data': shared_data,
             'trade_log': self.trade_log
         }
@@ -273,21 +341,13 @@ class Runner:
         Args:
             date: Current simulation date in 'YYYY-MM-DD' format.
         '''
+        status_atual = self._get_formatted_portfolio()
+            
         self.timeline.append({
             'date': date,
             'balance': float(self.balance),
-            'portfolio': [
-                {
-                    'symbol': item['symbol'],
-                    'quantity': int(item['quantity']),
-                    'purchase_price': float(item['purchase_price']),
-                    'purchase_date': item['purchase_date'],
-                    'sector': item['sector']
-                }
-                for item in self.__portfolio
-            ]
+            'portfolio': status_atual['lista_setores']
         })
-
 
 def test_runner():
     '''Test basic runner functionality with RandomRanker.'''

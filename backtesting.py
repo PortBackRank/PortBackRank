@@ -21,45 +21,49 @@ import json
 
 def save_results(results):
     '''
-    Receives results from parallel executions and saves files to disk.
-
-    For each result:
-    - Generates a JSON file with the timeline.
-    - If there is a trade_log, saves a CSV with the trades.
-
-    Parameters:
-    - results: list of dictionaries with simulation results.
+    Recebe os resultados das execuções paralelas e salva os arquivos no disco.
+    Mantém a gravação da timeline (JSON) e dos logs de trade (CSV).
     '''
     for result in results:
-        start_date, end_date = result['interval'].split(' - ')
+        interval = result.get('interval', '')
+        if ' - ' not in interval:
+            logger.error(f"Intervalo inválido: {interval}")
+            continue
+            
+        start_date, end_date = interval.split(' - ')
 
         timeline_filename = generate_filename('timeline', result, start_date, end_date)
+        
+        abs_timeline_path = os.path.abspath(timeline_filename)
+        directory_timeline = os.path.dirname(abs_timeline_path)
+        
+        if not os.path.exists(directory_timeline):
+            os.makedirs(directory_timeline, exist_ok=True)
 
-        # Ensures directory exists before writing the file
-        directory = os.path.dirname(timeline_filename)
-        if directory and not os.path.exists(directory):
-            os.makedirs(directory, exist_ok=True)
+        data_to_save = result.get('shared_data', {}).get('timeline', [])
+        
+        if data_to_save:
+            with open(abs_timeline_path, 'w', encoding='utf-8') as f:
+                json.dump(data_to_save, f, indent=2, ensure_ascii=False)
+            logger.info(f"Timeline salva com sucesso: {abs_timeline_path}")
+        else:
+            logger.warning(f"Timeline vazia para o intervalo {interval}. Arquivo não gerado.")
 
-        # Saves timeline as JSON
-        with open(timeline_filename, 'w', encoding='utf-8') as f:
-            json.dump(result['shared_data'].get('timeline', []), f, indent=2, ensure_ascii=False)
-
-        # Processes trade_log (if present) and saves as CSV
         trades = result.get('trade_log', [])
         if trades:
             df_trades = pd.DataFrame(trades)
+            
             filename_base = generate_filename('trade_logs/trades', result, start_date, end_date)
-            csv_filename = filename_base.replace('.json', '.csv')
+            csv_filename = os.path.abspath(filename_base.replace('.json', '.csv'))
 
-            directory = os.path.dirname(csv_filename)
-            if directory and not os.path.exists(directory):
-                os.makedirs(directory, exist_ok=True)
+            directory_trades = os.path.dirname(csv_filename)
+            if not os.path.exists(directory_trades):
+                os.makedirs(directory_trades, exist_ok=True)
 
             df_trades.to_csv(csv_filename, index=False)
-            logger.info(f"Trade log saved: {csv_filename}")
+            logger.info(f"Trade log salvo: {csv_filename}")
         else:
-            logger.warning(f"No trades to save for interval {result['interval']}")
-
+            logger.warning(f"Nenhum trade realizado no intervalo {interval}")
 
 class Backtesting:
     '''Class for running investment strategy backtests.
@@ -145,16 +149,26 @@ class Backtesting:
             ) if res is not None
         ]
 
+        if not results:
+            logger.error("Nenhuma simulação foi concluída com sucesso. Verifique os erros acima.")
+            return pd.DataFrame() # Retorna DF vazio em vez de None
+        
         # Saves auxiliary files (timeline, trade logs)
-        save_results(results)
+        try:
+            save_results(results)
+            logger.info("Todos os logs de timeline e trades foram salvos com sucesso.")
+        except Exception as e:
+            logger.error(f"Erro crítico ao salvar resultados: {e}")
 
-        # Removes heavy data before creating the final DataFrame
+        # 2. Só remova os dados pesados APÓS a confirmação do salvamento
         for result in results:
-            del result['shared_data']
+            result.pop('shared_data', None)
             result.pop('trade_log', None)
             result.pop('sell_log', None)
             result.pop('buy_log', None)
+        
         return pd.DataFrame(results)
+
 
     def _evaluate_results(
         self, result: List[Dict], runner_params: Dict, ranker_params: Dict
@@ -170,11 +184,12 @@ class Backtesting:
         Returns:
         - dictionary with aggregated metrics (final cash, portfolio value, total return, etc.).
         '''
-        final_cash = result[-1]['balance'] if result else 0
 
-        portfolio_value = sum(
-            item['quantity'] * item['purchase_price'] for item in result[-1]['portfolio']
-        ) if result else 0
+        last_state = result[-1] if result else 0
+        final_cash = last_state.get('balance', 0)
+
+        portfolio_data = last_state.get('portfolio', {})
+        portfolio_value = portfolio_data.get('valor_total', 0.0)
 
         total_return = (final_cash + portfolio_value) / self.capital - 1
         total_return = round(total_return * 100, 2)

@@ -11,9 +11,9 @@ import os
 
 def _calc_allocation(entry):
     """Calculate total portfolio allocation (cash + invested value)."""
-    return entry['balance'] + sum(
-        item['quantity'] * item['purchase_price'] for item in entry['portfolio']
-    )
+    portfolio_total = entry['portfolio'].get('valor_total', 0.0)
+
+    return entry['balance'] + portfolio_total
 
 
 def _print_df_full(df: pd.DataFrame):
@@ -33,6 +33,11 @@ def _print_df_full(df: pd.DataFrame):
             pd.set_option('display.max_colwidth', None)
         except Exception:
             pd.set_option('display.max_colwidth', 0)
+        
+        if df is None or df.empty:
+            print("Aviso: O DataFrame de resultados está vazio ou é nulo.")
+            return
+
 
         print(df.to_string(index=False))
     finally:
