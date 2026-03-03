@@ -1,0 +1,15 @@
+{
+    "id": "SP500",
+    "assets": "sp500.csv",
+    "capital": 10000,
+    "ranker": "MACDRanker",
+    "ranker-params": {
+        "fast": [8, 12, 16],
+        "slow": [26],
+        "signal": [6, 9],
+        "mode": ["trend"],
+        "profit": [0.1, 0.15],
+        "loss": [0.05],
+        "diversification": [0.2]
+    }
+}

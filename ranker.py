@@ -412,3 +412,93 @@ def test_bollinger_ranker():
     ranked_symbols = ranker.rank(date="2024-05-29")
 
     print("Símbolos ranqueados por Bollinger Bands:", ranked_symbols)
+
+
+class MACDRanker(Ranker):
+    """MACD Ranker Class"""
+
+    def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
+        super().__init__(parameters, interval, data)
+        self.fast = int(self.parameters.get("fast", 12))
+        self.slow = int(self.parameters.get("slow", 26))
+        self.signal = int(self.parameters.get("signal", 9))
+        self.mode = self.parameters.get("mode", "trend")
+
+        if self.fast >= self.slow:
+            raise ValueError("No MACD, 'fast' deve ser menor que 'slow'.")
+
+    def _ensure_macd(self, df: pd.DataFrame) -> pd.DataFrame:
+        macd_key = f"macd_{self.fast}_{self.slow}"
+        signal_key = f"macd_signal_{self.signal}"
+        hist_key = f"macd_hist_{self.fast}_{self.slow}_{self.signal}"
+
+        if macd_key in df.columns and signal_key in df.columns and hist_key in df.columns:
+            return df
+
+        ema_fast = df["Close"].ewm(span=self.fast, adjust=False).mean()
+        ema_slow = df["Close"].ewm(span=self.slow, adjust=False).mean()
+        df[macd_key] = ema_fast - ema_slow
+        df[signal_key] = df[macd_key].ewm(span=self.signal, adjust=False).mean()
+        df[hist_key] = df[macd_key] - df[signal_key]
+        return df
+
+    def rank(self, date: str = None) -> List[str]:
+        dict_data = self.data.get_all_history()
+        ranked_symbols = []
+        macd_key = f"macd_{self.fast}_{self.slow}"
+        signal_key = f"macd_signal_{self.signal}"
+        hist_key = f"macd_hist_{self.fast}_{self.slow}_{self.signal}"
+
+        for symbol, df in dict_data.items():
+            if "Close" not in df.columns or df.empty:
+                continue
+
+            df = self._ensure_macd(df.copy())
+
+            if date not in df.index:
+                continue
+
+            idx = df.index.get_loc(date)
+            if isinstance(idx, slice):
+                idx = idx.start
+            if idx < 1:
+                continue
+
+            latest = df.iloc[idx]
+            prev = df.iloc[idx - 1]
+            strength = float("-inf")
+
+            if pd.notna(prev[macd_key]) and pd.notna(prev[signal_key]) and pd.notna(latest[macd_key]) and pd.notna(latest[signal_key]):
+                crossed_up = prev[macd_key] <= prev[signal_key] and latest[macd_key] > latest[signal_key]
+
+                if self.mode == "trend":
+                    if crossed_up and latest[macd_key] > 0:
+                        strength = latest[hist_key]
+                else:
+                    if crossed_up and latest[macd_key] < 0:
+                        strength = abs(latest[hist_key])
+
+            ranked_symbols.append((symbol, strength))
+
+        ranked_symbols.sort(key=lambda x: x[1], reverse=True)
+        return [x[0] for x in ranked_symbols]
+
+
+def test_macd_ranker():
+    """
+    Função simples para testar o funcionamento do MACDRanker.
+    """
+    interval = ["2024-01-10", "2024-11-10"]
+    data = MemData(interval=interval)
+
+    parameters = {
+        "fast": 12,
+        "slow": 26,
+        "signal": 9,
+        "mode": "trend",
+    }
+
+    ranker = MACDRanker(data=data, parameters=parameters)
+    ranked_symbols = ranker.rank(date="2024-05-29")
+
+    print("Símbolos ranqueados por MACD:", ranked_symbols)
