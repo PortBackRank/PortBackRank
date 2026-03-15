@@ -48,8 +48,9 @@ def generate_filename(prefix, result, start_date, end_date):
     subdirs = prefix_parts[:-1] if len(prefix_parts) > 1 else []
     
     # Build the filename with parameters
-    filename = f'{file_prefix}_profit{get_safe_int(result["profit"])}_loss{get_safe_int(result["loss"])}_div{get_safe_int(result["diversification"])}_short{get_safe_int(result["window"][0])}_long{get_safe_int(result["window"][1])}_{start_date}_to_{end_date}.json'
-    
+    window = result.get('window', [0, 0]) 
+    filename = f"{file_prefix}_profit{...}_short{get_safe_int(window[0])}_long{get_safe_int(window[1])}.."
+
     return os.path.join(project_root, 'results', *subdirs, filename)
 
 

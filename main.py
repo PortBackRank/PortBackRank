@@ -13,7 +13,7 @@ def _calc_allocation(entry):
     """Calculate total portfolio allocation (cash + invested value)."""
     portfolio_total = entry['portfolio'].get('valor_total', 0.0)
 
-    return entry['balance'] + portfolio_total
+    return entry.get('final_total_value', 0.0)
 
 
 def _print_df_full(df: pd.DataFrame):
@@ -48,58 +48,6 @@ def _print_df_full(df: pd.DataFrame):
                 pd.set_option('display.max_colwidth', old_max_colwidth)
         except Exception:
             pass
-
-
-def print_monthly_results(results_df):
-    """Print monthly returns summary for each backtest configuration."""
-    for i, row in results_df.iterrows():
-        try:
-            interval_str = row['interval']
-            start_date, end_date = [s.strip() for s in interval_str.split(' - ')]
-
-            result_dict = row.to_dict()
-            timeline_path = generate_filename(
-                'timeline', result_dict, start_date, end_date
-            )
-
-            if not os.path.exists(timeline_path):
-                print(f'Timeline not found for row {i}: {timeline_path}')
-                continue
-
-            with open(timeline_path, 'r', encoding='utf-8') as f:
-                timeline = json.load(f)
-
-            tl_df = pd.DataFrame(timeline)
-            if tl_df.empty:
-                continue
-            tl_df['date'] = pd.to_datetime(tl_df['date'])
-            tl_df['allocation'] = [_calc_allocation(entry) for entry in timeline]
-
-            monthly = tl_df.resample('ME', on='date').last()[['allocation']]
-            monthly['ret_month_%'] = monthly['allocation'].pct_change() * 100
-
-            label_params = []
-            if 'window' in row:
-                try:
-                    short_long = row['window']
-                    label_params.append(f'MA={short_long}')
-                except Exception:
-                    pass
-            if 'period' in row:
-                label_params.append(f'RSI={row["period"]}')
-
-            print(
-                f'\nConfig {i} | profit={row["profit"]} '
-                f'loss={row["loss"]} diversification={row["diversification"]} '
-                f'{" ".join(label_params)}'
-            )
-            for idx, rec in monthly.iterrows():
-                ym = idx.strftime('%Y-%m')
-                val = 0.0 if pd.isna(rec['ret_month_%']) else rec['ret_month_%']
-                print(f'  {ym}: {val:.2f}%')
-        except Exception as e:
-            print(f'Error generating monthly summary for row {i}: {e}')
-
 
 def _ensure_market_assets(market_code: str = 'SP500'):
     """
@@ -160,9 +108,10 @@ def run_backtest_ma():
         'profit': [0.1, 0.15],
         'loss': [0.05],
         'diversification': [0.1, 0.2],
+        'volume': [0.1]
     }
 
-    results = backtester.run(runner_grid, ranker_grid=ranker_grid, n_jobs=-1)
+    results = backtester.run(runner_grid, ranker_grid=ranker_grid, n_jobs=1)
     _print_df_full(results)
 
 
