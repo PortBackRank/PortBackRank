@@ -36,7 +36,7 @@ def generate_filename(prefix, result, start_date, end_date):
     Returns:
         Full path to the generated filename.
     """
-    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    project_root = os.path.dirname(os.path.abspath(__file__))
     
     # Split the prefix into parts
     prefix_parts = prefix.split('/')

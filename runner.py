@@ -2,9 +2,10 @@
     class Runner
 '''
 
-from typing import List, Dict, Type
-import pandas as pd
 import os
+import pandas as pd
+from pathlib import Path
+from typing import List, Dict, Type
 from ranker import MARanker, Ranker, RandomRanker
 from data import MemData
 from utils import generate_filename 
@@ -70,29 +71,28 @@ class Runner:
         self._interval = interval
 
     def _save_logs(self, result_data: Dict, ranker_conf: Dict):
-        """Cria pastas e salva arquivos CSV."""
-        import os
-        from utils import generate_filename
+        project_root = Path(__file__).resolve().parent
 
-        # Contexto para o nome do arquivo (precisa de todos os parâmetros)
         ctx = {**result_data, **ranker_conf}
         start_date, end_date = result_data['interval'].split(' - ')
 
-        # Caminhos
-        trades_path = generate_filename('results/trade_logs/trades', ctx, start_date, end_date).replace('.json', '.csv')
-        port_path = generate_filename('results/portfolios/final_portfolio', ctx, start_date, end_date).replace('.json', '.csv')
+        rel_trades = generate_filename('trade_logs/trades', ctx, start_date, end_date).replace('.json', '.csv')
+        rel_port = generate_filename('portfolios/final_portfolio', ctx, start_date, end_date).replace('.json', '.csv')
 
-        # Cria as pastas se não existirem
-        os.makedirs(os.path.dirname(trades_path), exist_ok=True)
-        os.makedirs(os.path.dirname(port_path), exist_ok=True)
+        trades_path = project_root / "results" / rel_trades
+        port_path = project_root / "results" / rel_port
 
-        # Salva Trade Log
+        trades_path.parent.mkdir(parents=True, exist_ok=True)
+        port_path.parent.mkdir(parents=True, exist_ok=True)
+
+        # Salva
         if self.trade_log:
             pd.DataFrame(self.trade_log).to_csv(trades_path, index=False)
-        
-        # Salva Portfolio Final
-        if not self.__portfolio_details.empty:
-            self.__portfolio_details.to_csv(port_path, index=False)
+            # print(f"Log de trades salvo em: {trades_path}")
+
+        if hasattr(self, '_Runner__portfolio_details') and not self._Runner__portfolio_details.empty:
+            self._Runner__portfolio_details.to_csv(port_path, index=False)
+            # print(f"Portfolio salvo em: {port_path}")
 
     def single_run(self, interval: List[str], ranker_conf: Dict[str, float], capital: float) -> Dict:
         self.prepare_data(interval, ranker_conf, capital)
