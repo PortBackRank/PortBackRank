@@ -103,11 +103,18 @@ class Backtesting:
                 print(f"Erro ao rodar configuração {runner_config} com ranker {ranker_config}: {e}")
                 return None
 
-        results = [
-            res for res in Parallel(n_jobs=n_jobs)(
+        try:
+            parallel_results = Parallel(n_jobs=n_jobs)(
                 delayed(run_simulation)(comb) for comb in combinations
-            ) if res is not None
-        ]
+            )
+        except PermissionError:
+            print(
+                "Execução paralela indisponível neste ambiente. "
+                "Reexecutando de forma sequencial."
+            )
+            parallel_results = [run_simulation(comb) for comb in combinations]
+
+        results = [res for res in parallel_results if res is not None]
 
         # descomente para salvar os arquivos de timeline, caso use o MARanker
         save_results(results)
