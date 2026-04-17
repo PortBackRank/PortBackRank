@@ -1,5 +1,5 @@
 {
-  "id": "SP500",
+  "id": "IBOV",
   "capital": 10000,
   "interval": ["2025-01-01", "2025-12-31"],
   "ranker": "RSIRanker",
