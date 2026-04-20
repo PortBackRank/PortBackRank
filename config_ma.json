@@ -1,7 +1,8 @@
 {
-    "id": "SP500",
-    "assets": "sp500.csv",
+    "id": "IBOV",
+    "assets": "IBOVQuad.csv",
     "capital": 10000,
+    "interval": ["2025-01-01", "2025-12-31"],
     "ranker": "MARanker",
     "ranker-params": {
         "window": [[9, 21], [20, 50], [50, 200]],

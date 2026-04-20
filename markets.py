@@ -44,15 +44,17 @@ def read_symbols(file_path: str) -> List[str]:
                 engine="python",
             )
         else:
-            df = pd.read_csv(file_path, encoding="ISO-8859-1", sep=",")
+            df = pd.read_csv(file_path, encoding="ISO-8859-1", sep=";")
 
         df.columns = df.columns.str.strip()
 
+        if "Código" in df.columns:
+            return df["Código"].dropna().astype(str).str.strip().tolist()
         if "Codigo" in df.columns:
-            return df["Codigo"].dropna().tolist()
+            return df["Codigo"].dropna().astype(str).str.strip().tolist()
         if "Symbol" in df.columns:
-            return df["Symbol"].dropna().tolist()
-        return df.iloc[1:, 0].dropna().tolist()
+            return df["Symbol"].dropna().astype(str).str.strip().tolist()
+        return df.iloc[1:, 0].dropna().astype(str).str.strip().tolist()
     except Exception as e:
         print(f"Erro ao ler {file_path}: {e}")
         return []
@@ -155,7 +157,7 @@ class MarketData:
             if "SP500" in market:
                 df = pd.read_csv(file_path, encoding="ISO-8859-1", sep=None, engine="python")
             else:
-                df = pd.read_csv(file_path, encoding="ISO-8859-1", sep=",")
+                df = pd.read_csv(file_path, encoding="ISO-8859-1", sep=";")
             
             df.columns = df.columns.str.strip()
             
@@ -171,6 +173,16 @@ class MarketData:
                     }
             
             # Para arquivos brasileiros (B3)
+            elif "Código" in df.columns:
+                for _, row in df.iterrows():
+                    codigo = str(row["Código"]).strip()
+                    symbol = f"{codigo}.SA"
+                    sector_map[symbol] = {
+                        "sector": str(row.get("Setor", "Unknown")).strip(),
+                        "industry": str(row.get("Subsetor", row.get("Segmento", "Unknown"))).strip()
+                    }
+
+            # Para arquivos brasileiros (B3) sem acento
             elif "Codigo" in df.columns:
                 for _, row in df.iterrows():
                     codigo = str(row["Codigo"]).strip()

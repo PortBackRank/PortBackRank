@@ -1,0 +1,16 @@
+{
+    "id": "IBOV",
+    "assets": "IBOVQuad.csv",
+    "capital": 10000,
+    "interval": ["2025-01-01", "2025-12-31"],
+    "ranker": "MACDRanker",
+    "ranker-params": {
+        "fast": [8, 12, 16],
+        "slow": [26],
+        "signal": [6, 9],
+        "mode": ["trend"],
+        "profit": [0.1, 0.15],
+        "loss": [0.05],
+        "diversification": [0.2]
+    }
+}

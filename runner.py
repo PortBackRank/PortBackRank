@@ -194,8 +194,9 @@ class Runner:
             setor = sector_info.get('sector', 'Unknown')
             
             if setor == 'Unknown':
-                # Ignora ativos sem setor definido
-                continue
+                # Quando o arquivo-base não traz setor, usa o símbolo como pseudo-setor
+                # para manter o backtest funcionando sem desativar a diversificação.
+                setor = simbolo
 
             max_investimento_setor = (
                 balance_disponivel * self.diversification if setor not in setor_percentual

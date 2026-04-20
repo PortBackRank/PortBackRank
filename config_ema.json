@@ -1,0 +1,13 @@
+{
+    "id": "IBOV",
+    "assets": "IBOVQuad.csv",
+    "capital": 10000,
+    "interval": ["2025-01-01", "2025-12-31"],
+    "ranker": "EMARanker",
+    "ranker-params": {
+        "window": [[9, 21], [20, 50], [50, 200]],
+        "profit": [0.1, 0.15],
+        "loss": [0.05],
+        "diversification": [0.1, 0.2]
+    }
+}
