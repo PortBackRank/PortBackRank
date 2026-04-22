@@ -1,6 +1,10 @@
 
 '''
-Ranker module for the investment strategy.
+Ranker Module - Asset Ranking Strategies
+
+Provides abstract Ranker base class and concrete implementations
+(MARanker, RandomRanker, RSIRanker) for ranking assets based on
+trading signals and technical indicators.
 '''
 
 from abc import ABC, abstractmethod
@@ -11,17 +15,20 @@ from data import MemData
 
 
 class Ranker(ABC):
-    '''class abstract Ranker'''
+    '''
+    Abstract base class for asset ranking strategies.
+    
+    Defines the interface for implementations that rank assets
+    based on market data and technical indicators.
+    '''
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
         '''
-        Constructor for the Ranker class, 
-        which defines default parameters for the investment strategy.
-
-        :param parameters: Optional dictionary of parameters for the strategy.
-        :param interval: List of two strings representing the start and end dates of the data to be used.
-        :param data: Data instance to be used for the strategy.
-            If not provided, the current date will be used.
+        Initializes ranker with strategy parameters.
+        
+        :param parameters: Strategy-specific parameter dict
+        :param interval: [start_date, end_date] for data filtering
+        :param data: MemData instance with historical data and sectors
         '''
         self.interval = interval
 
@@ -31,32 +38,38 @@ class Ranker(ABC):
     @abstractmethod
     def rank(self, date: str = None) -> List[str]:
         '''
-        Abstract method that must be implemented by subclasses.
-
-        :return: List of ranked stock symbols.
+        Abstract ranking method to be implemented by subclasses.
+        
+        :param date: Reference date for ranking calculation
+        :return: Sorted list of asset symbols ranked by signal strength
         '''
 
 
 class RandomRanker(Ranker):
-    '''RandomRanker class'''
+    '''
+    Random asset ranker for baseline strategy testing.
+    
+    Shuffles the asset list randomly for comparison against
+    smarter ranking strategies. Supports seeding for reproducibility.
+    '''
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
         '''
-        Constructor for the RandomRanker class, allowing for an optional seed for reproducibility.
-
-        :param parameters: Optional dictionary of parameters for the strategy.
-        :param date: List of two strings representing the start and end dates of the data to be used.
-        :param data: Data instance to be used for the strategy.
-        :param seed: Optional seed for randomization.
+        Initializes RandomRanker with optional seed.
+        
+        :param parameters: Dict with optional 'SEED' key for reproducibility
+        :param interval: Date interval for data
+        :param data: MemData instance
         '''
         super().__init__(parameters, interval, data)
         self.seed = self.parameters.get('SEED', 42)
 
     def rank(self, date: str = None) -> List[str]:
         '''
-        Generates a random ranking of symbols based on the data retrieved from the `Data` instance.
-
-        :return: List of symbols in random order.
+        Returns randomly shuffled asset list.
+        
+        :param date: Ignored for random ranking
+        :return: Randomly permuted list of all available assets
         '''
         symbols = self.data.get_assets()
 
@@ -70,7 +83,7 @@ class RandomRanker(Ranker):
 
 def test_random_ranker():
     '''
-    Função simples para testar o funcionamento do RandomRanker.
+    Simple function to test RandomRanker functionality.
     '''
     interval = ['2024-01-10', '2024-11-10']
     data = MemData(interval=interval)
@@ -80,11 +93,16 @@ def test_random_ranker():
     ranker = RandomRanker(data=data, parameters=parameters)
     ranked_symbols = ranker.rank()
 
-    print('Símbolos ranqueados aleatoriamente:', ranked_symbols)
+    print('Randomly ranked symbols:', ranked_symbols)
 
 
 class MARanker(Ranker):
-    '''Mean Reversion Ranker class'''
+    '''
+    Mean Reversion ranker using Moving Average crossover signals.
+    
+    Identifies buy signals when short MA crosses above long MA,
+    indicating potential mean reversion opportunities.
+    '''
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
         super().__init__(parameters, interval, data)
@@ -108,9 +126,9 @@ class MARanker(Ranker):
                 idx = df_data.index.get_loc(date)
 
                 if isinstance(idx, slice):
-                    idx = idx.start  # ou idx.stop
+                    idx = idx.start  # or idx.stop
 
-                # Verifique se o índice é válido (>= 1)
+                # Check if index is valid (>= 1)
                 if idx >= 1:
                     latest = df_data.iloc[idx]
                     prev = df_data.iloc[idx-1]
@@ -130,7 +148,7 @@ class MARanker(Ranker):
 
 def test_ma_ranker():
     '''
-    Função simples para testar o funcionamento do MARanker.
+    Simple function to test MARanker functionality.
     '''
     interval = ['2024-01-10', '2024-11-10']
     data = MemData(interval=interval)
@@ -140,14 +158,19 @@ def test_ma_ranker():
     ranker = MARanker(data=data, parameters=parameters)
     ranked_symbols = ranker.rank(date='2024-05-29')
 
-    print('Símbolos ranqueados por Mean Reversion:', ranked_symbols)
+    print('Symbols ranked by Mean Reversion:', ranked_symbols)
 
 
 if __name__ == '__main__':
     test_ma_ranker()
 
 class RSIRanker(Ranker):
-    '''RSI-based Ranker.'''
+    '''
+    Relative Strength Index (RSI) based ranker.
+    
+    Identifies overbought/oversold conditions and mean reversion
+    opportunities based on RSI values.
+    '''
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
         super().__init__(parameters, interval, data)

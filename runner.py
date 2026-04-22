@@ -1,5 +1,8 @@
 '''
-    class Runner
+Runner Module - Simulation Execution Engine
+
+Provides the Runner class which executes trading simulations
+based on portfolio management rules and asset ranking strategies.
 '''
 
 from typing import List, Dict, Type
@@ -7,18 +10,25 @@ from datetime import datetime
 import pandas as pd
 from ranker import MARanker, Ranker, RandomRanker
 from data import MemData
+from names import COL_BALANCE, COL_PORTFOLIO, COL_QUANTITY, COL_PURCHASE_PRICE, COL_SYMBOL_FIELD, COL_SECTOR_INFO, COL_ENTRY_DATE
 
 
 class Runner:
+    '''
+    Trading simulation engine that executes buy/sell decisions.
+    
+    Maintains portfolio with position tracking and executes trades
+    according to profit targets, loss limits, and diversification rules.
+    '''
     def __init__(self, profit, loss, diversification, ranker: Type[Ranker], data: MemData):
         '''
-        Inicializa a classe Runner com os parâmetros fornecidos.
+        Initializes the trading engine.
 
-        :param profit: Lucro alvo para venda (porcentagem).
-        :param loss: Limite de perda para venda (porcentagem).
-        :param diversification: Porcentagem máxima para cada setor (porcentagem).
-        :param ranker: Classe do ranker a ser utilizada.
-        :param data: Instância de MemData com os dados históricos e de setor.
+        :param profit: Profit target percentage (e.g., 0.1 = 10% gain triggers sell)
+        :param loss: Maximum loss percentage (e.g., 0.05 = 5% loss triggers sell)
+        :param diversification: Max portfolio % per sector (e.g., 0.2 = 20% max per sector)
+        :param ranker: Asset ranking strategy class (MARanker, RandomRanker, etc.)
+        :param data: MemData instance with historical prices and sectors
         '''
         self.profit = profit
         self.loss = loss
@@ -26,51 +36,56 @@ class Runner:
         self.ranker = ranker
         self.data = data
 
-        # representando as ações compradas (símbolo, quantidade, preço médio, etc.)
-        self.__portfolio: List[Dict[str, float]] = []
-        self.balance = 0
-        self.timeline = []
-
     def prepare_data(self, interval: List[str], ranker_conf: Dict[str, float], capital: float):
         '''
-        Prepara o ambiente para uma nova simulação:
-        - inicializa o ranker
-        - reseta saldo, portfólio e logs
-        - pré-carrega históricos e setores em memória
-        - cria índice por data para acesso rápido
+        Prepares the simulation environment.
+        
+        Initializes ranker, resets state, pre-loads data tables,
+        and creates date indexes for O(1) history lookups.
+        
+        :param interval: [start_date, end_date] for simulation period
+        :param ranker_conf: Configuration dict for the ranker
+        :param capital: Initial capital amount
         '''
-        # inicializa ranker com os parâmetros e dados
+        # Initialize ranker with parameters and data
         self._ranker_instance = self.ranker(parameters=ranker_conf, data=self.data)
 
-        # reseta estados internos
+        # Reset internal states
         self.balance = capital
         self.__portfolio = []
         self.timeline = []
         self.sell_log = []
         self.buy_log = []
 
-        # Pré-carrega históricos
+        # Pre-load historical data
         self._all_history = self.data.get_all_history()
         
-        # Pré-carrega setores do CSV
+        # Pre-load sectors from CSV
         self._all_sectors = self.data.get_all_sectors()
 
-        # Pré-indexa históricos por data para acelerar acesso
+        # Pre-index historical data by date for faster access
         self._history_by_date = {}
-        for simbolo, df in self._all_history.items():
+        for symbol, df in self._all_history.items():
             df = df.copy()
             df['date_str'] = df.index.strftime('%Y-%m-%d')
-            self._history_by_date[simbolo] = {
+            self._history_by_date[symbol] = {
                 d: row for d, row in df.set_index('date_str').iterrows()
             }
 
-        # guarda intervalo
+        # Store interval
         self._interval = interval
 
     def single_run(self, interval: List[str], ranker_conf: Dict[str, float], capital: float) -> Dict:
         '''
-        Executa uma simulação para uma única configuração de ranker,
-        mantendo o portfólio com a quantidade e o preço de compra dos ativos.
+        Executes a single simulation from start_date to end_date.
+        
+        Processes daily price data, executing sell orders (profit/loss targets),
+        then buy orders (based on ranking), and recording state.
+        
+        :param interval: Simulation period [start_date, end_date]
+        :param ranker_conf: Ranker configuration
+        :param capital: Starting capital
+        :return: Dict with final balance, portfolio, and execution logs
         '''
         self.prepare_data(interval, ranker_conf, capital)
 
@@ -99,176 +114,189 @@ class Runner:
 
     def _sell(self, date: str):
         '''
-        Vende ativos que atingiram o percentual de lucro ou perda,
-        respeitando a ordem FIFO e verificando o volume diário.
+        Executes sell orders for positions meeting profit/loss criteria.
+        
+        Checks each position against profit target or loss limit.
+        Uses FIFO ordering for partial fills respecting daily volume.
+        Updates portfolio and records every transaction.
+        
+        :param date: Current simulation date
         '''
-        historicos_ativos = {}
+        historical_assets = {}
 
-        for simbolo in [item['simbolo'] for item in self.__portfolio]:
-            day_row = self._history_by_date.get(simbolo, {}).get(date)
+        for symbol in [item['symbol'] for item in self.__portfolio]:
+            day_row = self._history_by_date.get(symbol, {}).get(date)
             if day_row is not None:
-                historicos_ativos[simbolo] = {
-                    'preco_atual': day_row['Close'],
-                    'volume_diario': day_row['Volume']
+                historical_assets[symbol] = {
+                    'current_price': day_row['Close'],
+                    'daily_volume': day_row['Volume']
                 }
 
-        novos_portfolio = []
+        new_portfolio = []
         for item in self.__portfolio:
-            simbolo = item['simbolo']
-            preco_compra = item['preco_compra']
-            quantidade = item['quantidade']
-            data_compra = item['data_compra']
+            symbol = item['symbol']
+            purchase_price = item['purchase_price']
+            quantity = item['quantity']
+            purchase_date = item['purchase_date']
 
-            if simbolo not in historicos_ativos:
-                novos_portfolio.append(item)
+            if symbol not in historical_assets:
+                new_portfolio.append(item)
                 continue
 
-            preco_atual = historicos_ativos[simbolo]['preco_atual']
-            volume_diario = historicos_ativos[simbolo]['volume_diario']
+            current_price = historical_assets[symbol]['current_price']
+            daily_volume = historical_assets[symbol]['daily_volume']
 
-            percentual_variacao = (preco_atual - preco_compra) / preco_compra
+            percentage_change = (current_price - purchase_price) / purchase_price
 
-            if percentual_variacao >= self.profit or percentual_variacao <= -self.loss:
-                quantidade_vender = min(quantidade, volume_diario)
-                valor_venda = preco_atual * quantidade_vender
-                self.balance += valor_venda
+            if percentage_change >= self.profit or percentage_change <= -self.loss:
+                quantity_to_sell = min(quantity, daily_volume)
+                sale_value = current_price * quantity_to_sell
+                self.balance += sale_value
 
                 self.sell_log.append({
-                    'data_venda': date,
-                    'simbolo': simbolo,
-                    'quantidade_vendida': quantidade_vender,
-                    'preco_compra': preco_compra,
-                    'preco_venda': preco_atual,
-                    'lucro_prejuizo': (preco_atual - preco_compra) * quantidade_vender,
-                    'data_compra': data_compra
+                    'sale_date': date,
+                    'symbol': symbol,
+                    'quantity_sold': quantity_to_sell,
+                    'purchase_price': purchase_price,
+                    'sale_price': current_price,
+                    'profit_loss': (current_price - purchase_price) * quantity_to_sell,
+                    'purchase_date': purchase_date
                 })
 
-                if quantidade > quantidade_vender:
-                    novos_portfolio.append({
-                        'simbolo': simbolo,
-                        'quantidade': quantidade - quantidade_vender,
-                        'preco_compra': preco_compra,
-                        'data_compra': data_compra,
+                if quantity > quantity_to_sell:
+                    new_portfolio.append({
+                        'symbol': symbol,
+                        'quantity': quantity - quantity_to_sell,
+                        'purchase_price': purchase_price,
+                        'purchase_date': purchase_date,
                         'sector': item['sector']
                     })
             else:
-                novos_portfolio.append(item)
+                new_portfolio.append(item)
 
-        self.__portfolio = novos_portfolio
+        self.__portfolio = new_portfolio
 
     def _buy(self, date: str, ranker: Ranker):
         '''
-        Compra ativos com base no ranking, respeitando diversificação por setor
-        e verificando o volume diário disponível.
+        Executes buy orders based on ranking and constraints.
+        
+        Ranks assets, respects sector diversification limits, checks
+        daily volume availability, and logs all purchases.
+        
+        :param date: Current simulation date
+        :param ranker: Initialized ranker instance for ranking assets
         '''
         ranked_symbols = ranker.rank(date)
         if not ranked_symbols:
             return
 
-        dados_historicos = self._history_by_date
+        historical_data = self._history_by_date
 
         total_portfolio_value = sum(
-            item['preco_compra'] * item['quantidade'] for item in self.__portfolio
+            item['purchase_price'] * item['quantity'] for item in self.__portfolio
         )
 
-        setor_percentual = {}
+        sector_percentage = {}
         if total_portfolio_value > 0:
             for item in self.__portfolio:
-                setor = item.get('sector')
-                preco_compra = item.get('preco_compra', 0)
-                quantidade = item.get('quantidade', 0)
-                if not setor or setor == 'Unknown - Unknown':
+                sector = item.get('sector')
+                purchase_price = item.get('purchase_price', 0)
+                quantity = item.get('quantity', 0)
+                if not sector or sector == 'Unknown - Unknown':
                     continue
-                valor_item = preco_compra * quantidade
-                setor_percentual[setor] = setor_percentual.get(
-                    setor, 0) + (valor_item / total_portfolio_value)
+                item_value = purchase_price * quantity
+                sector_percentage[sector] = sector_percentage.get(
+                    sector, 0) + (item_value / total_portfolio_value)
 
-        balance_disponivel = self.balance
+        available_balance = self.balance
 
-        for simbolo in ranked_symbols:
-            if balance_disponivel <= 2:
+        for symbol in ranked_symbols:
+            if available_balance <= 2:
                 break
 
-            # Obtém o setor pelo cache do csv em uma string ('industry - sector')
-            setor = self._all_sectors.get(simbolo, 'Unknown - Unknown')
+            # Gets the sector from the CSV cache as a string ('industry - sector')
+            sector = self._all_sectors.get(symbol, 'Unknown - Unknown')
             
-            # Ignora ativos sem setor definido
-            if setor == 'Unknown - Unknown':
+            # Ignores assets without defined sector
+            if sector == 'Unknown - Unknown':
                 continue
 
-            # Calcula investimento máximo no setor
-            if setor not in setor_percentual:
-                max_investimento_setor = balance_disponivel * self.diversification
+            # Calculates maximum investment in sector
+            if sector not in sector_percentage:
+                max_investment_sector = available_balance * self.diversification
             else:
-                max_investimento_setor = (
+                max_investment_sector = (
                     total_portfolio_value * self.diversification -
-                    setor_percentual.get(setor, 0) * total_portfolio_value
+                    sector_percentage.get(sector, 0) * total_portfolio_value
                 )
 
-            # Busca dados históricos do dia
-            day_row = dados_historicos.get(simbolo, {}).get(date)
+            # Retrieves historical data for the day
+            day_row = historical_data.get(symbol, {}).get(date)
             if day_row is None:
                 continue
 
-            preco_atual = day_row['Close']
-            volume_diario = day_row['Volume']
+            current_price = day_row['Close']
+            daily_volume = day_row['Volume']
 
-            if pd.isna(preco_atual) or pd.isna(volume_diario):
+            if pd.isna(current_price) or pd.isna(daily_volume):
                 continue
 
-            # Calcula quantidade a comprar
-            quantidade_max = int(balance_disponivel // preco_atual)
-            quantidade_setor = int(max_investimento_setor // preco_atual)
-            quantidade_comprar = min(
-                quantidade_max, quantidade_setor, volume_diario)
+            # Calculates quantity to buy
+            quantity_max = int(available_balance // current_price)
+            quantity_sector = int(max_investment_sector // current_price)
+            quantity_to_buy = min(
+                quantity_max, quantity_sector, daily_volume)
 
-            if quantidade_comprar <= 0:
+            if quantity_to_buy <= 0:
                 continue
 
-            # Registra compra
+            # Records purchase
             self.buy_log.append({
-                'data_compra': date,
-                'simbolo': simbolo,
-                'quantidade': quantidade_comprar,
-                'preco_compra': preco_atual,
-                'sector': setor
+                'purchase_date': date,
+                'symbol': symbol,
+                'quantity': quantity_to_buy,
+                'purchase_price': current_price,
+                'sector': sector
             })
 
             self.__portfolio.append({
-                'simbolo': simbolo,
-                'quantidade': quantidade_comprar,
-                'preco_compra': preco_atual,
-                'data_compra': date,
-                'sector': setor
+                'symbol': symbol,
+                'quantity': quantity_to_buy,
+                'purchase_price': current_price,
+                'purchase_date': date,
+                'sector': sector
             })
 
-            # Atualiza saldos
-            valor_compra = quantidade_comprar * preco_atual
-            balance_disponivel -= valor_compra
-            total_portfolio_value += valor_compra
+            # Updates balances
+            purchase_value = quantity_to_buy * current_price
+            available_balance -= purchase_value
+            total_portfolio_value += purchase_value
             
-            # Atualiza percentual do setor
-            setor_percentual[setor] = setor_percentual.get(setor, 0) + (
-                valor_compra / total_portfolio_value
+            # Updates sector percentage
+            sector_percentage[sector] = sector_percentage.get(sector, 0) + (
+                purchase_value / total_portfolio_value
             )
 
-        self.balance = balance_disponivel
+        self.balance = available_balance
 
     def _record_state(self, date):
         '''
-        Grava o estado completo do portfólio e saldo em uma data específica.
+        Records portfolio state for analysis and visualization.
+        
+        Creates timeline entry with current balance, portfolio composition,
+        and position details for later backtest analysis.
 
-        :param date: Data atual da simulação.
+        :param date: Current simulation date
         '''
         self.timeline.append({
             'date': date,
             'balance': float(self.balance),
             'portfolio': [
                 {
-                    'simbolo': item['simbolo'],
-                    'quantidade': int(item['quantidade']),
-                    'preco_compra': float(item['preco_compra']),
-                    'data_compra': item['data_compra'],
+                    'symbol': item['symbol'],
+                    'quantity': int(item['quantity']),
+                    'purchase_price': float(item['purchase_price']),
+                    'purchase_date': item['purchase_date'],
                     'sector': item['sector']
                 }
                 for item in self.__portfolio
@@ -292,10 +320,10 @@ def test_runner():
 
     try:
         result = runner.single_run(interval, ranker_config, capital)
-        print('Execução do Runner bem sucedida')
-        print(f'Saldo final: {result["balance"]}')
+        print('Runner execution successful')
+        print(f'Final balance: {result["balance"]}')
     except Exception as e:
-        print(f'Erro durante o teste: {e}')
+        print(f'Error during test: {e}')
         import traceback
         traceback.print_exc()
 
@@ -314,11 +342,11 @@ def test_runner_ma():
 
     try:
         result = runner.single_run(interval, ranker_config, capital=10000)
-        print('Execução do Runner bem sucedida')
-        print(f'Saldo final: {result["balance"]}')
-        print(f'Valor do portfolio: {sum(item["quantidade"] * item["preco_compra"] for item in result["portfolio"])}')
+        print('Runner execution successful')
+        print(f'Final balance: {result["balance"]}')
+        print(f'Portfolio value: {sum(item["quantity"] * item["purchase_price"] for item in result["portfolio"])}')
     except Exception as e:
-        print(f'Erro durante o teste: {e}')
+        print(f'Error during test: {e}')
         import traceback
         traceback.print_exc()
 

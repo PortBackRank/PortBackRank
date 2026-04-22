@@ -9,13 +9,24 @@ import json
 import os
 
 
-def _calc_allocation(entry):
+def _calculate_allocation(entry):
+    '''
+    Calculates total portfolio value at a simulation timestamp.
+    
+    Sums available cash and current market value of all positions.
+    '''
     return entry['balance'] + sum(
-        item['quantidade'] * item['preco_compra'] for item in entry['portfolio']
+        item['quantity'] * item['purchase_price'] for item in entry['portfolio']
     )
 
 
 def _print_df_full(df: pd.DataFrame):
+    '''
+    Displays full DataFrame contents without truncation.
+    
+    Temporarily modifies Pandas display options to show all columns.
+    Restores original settings after printing.
+    '''
     try:
         old_max_cols = pd.get_option('display.max_columns')
         old_width = pd.get_option('display.width')
@@ -45,9 +56,15 @@ def _print_df_full(df: pd.DataFrame):
 
 
 def print_monthly_results(results_df):
+    '''
+    Prints monthly return summary for each simulation.
+    
+    Extracts timeline data and calculates monthly percentage returns,
+    displaying results grouped by configuration parameters.
+    '''
     for i, row in results_df.iterrows():
         try:
-            interval_str = row['intervalo']
+            interval_str = row['start_date'] + ' - ' + row['end_date']
             start_date, end_date = [s.strip() for s in interval_str.split(' - ')]
 
             result_dict = row.to_dict()
@@ -56,7 +73,7 @@ def print_monthly_results(results_df):
             )
 
             if not os.path.exists(timeline_path):
-                print(f'Timeline não encontrada para a linha {i}: {timeline_path}')
+                print(f'Timeline not found for row {i}: {timeline_path}')
                 continue
 
             with open(timeline_path, 'r', encoding='utf-8') as f:
@@ -66,10 +83,10 @@ def print_monthly_results(results_df):
             if tl_df.empty:
                 continue
             tl_df['date'] = pd.to_datetime(tl_df['date'])
-            tl_df['allocation'] = [_calc_allocation(entry) for entry in timeline]
+            tl_df['allocation'] = [_calculate_allocation(entry) for entry in timeline]
 
             monthly = tl_df.resample('ME', on='date').last()[['allocation']]
-            monthly['ret_mes_%'] = monthly['allocation'].pct_change() * 100
+            monthly['monthly_return_%'] = monthly['allocation'].pct_change() * 100
 
             label_params = []
             if 'window' in row:
@@ -88,15 +105,20 @@ def print_monthly_results(results_df):
             )
             for idx, rec in monthly.iterrows():
                 ym = idx.strftime('%Y-%m')
-                val = 0.0 if pd.isna(rec['ret_mes_%']) else rec['ret_mes_%']
+                val = 0.0 if pd.isna(rec['monthly_return_%']) else rec['monthly_return_%']
                 print(f'  {ym}: {val:.2f}%')
         except Exception as e:
-            print(f'Erro ao gerar resumo mensal para linha {i}: {e}')
+            print(f'Error generating monthly summary for row {i}: {e}')
 
 
 def _ensure_market_assets(market_code: str = 'SP500'):
     '''
-    Garante que todos os ativos do mercado tenham histórico baixado.
+    Ensures all market assets have historical data cached locally.
+    
+    Attempts multi-pass download: first checks for missing data,
+    then retries missing assets up to max_retries times.
+    
+    :param market_code: Market identifier
     '''
     market_data = MarketData(market_code)
     assets = market_data.list_recent_symbols(market_data.market, force_update=False)
@@ -117,18 +139,18 @@ def _ensure_market_assets(market_code: str = 'SP500'):
                 missing.append(asset)
 
         if not missing:
-            print('Todos os ativos possuem dados locais.')
+            print('All assets have local data.')
             break
 
         print(
-            f'Tentativa {attempt}/{max_retries}: '
-            f'baixando {len(missing)} ativos sem dados locais.'
+            f'Attempt {attempt}/{max_retries}: '
+            f'downloading {len(missing)} assets without local data.'
         )
-        print('Ativos faltando:', ', '.join(missing))
+        print('Missing assets:', ', '.join(missing))
         data_handler.download_histories(missing)
     
     if missing:
-        print('Após as tentativas de download, ainda faltam dados históricos para:')
+        print('After download attempts, historical data is still missing for:')
         for asset in missing:
             print(f'  - {asset}')
 
@@ -185,41 +207,59 @@ def run_backtest_rsi():
 
 '''
 def main_menu():
-    print('\n=== PortBackRank - Escolha o indicador ===')
-    print('1) Médias Móveis (MA)')
-    print('2) RSI (Índice de Força Relativa)')
-    print('0) Sair')
+    print('\n=== PortBackRank - Choose the indicator ===')
+    print('1) Moving Averages (MA)')
+    print('2) RSI (Relative Strength Index)')
+    print('0) Exit')
     )
 
-    choice = input('Selecione uma opção: ').strip()
+    choice = input('Select an option: ').strip()
     if choice == '1':
         run_backtest_ma()
     elif choice == '2':
         run_backtest_rsi()
     elif choice == '0':
-        print('Saindo')
+        print('Exiting')
     else:
-        print('Opção inválida.')
+        print('Invalid option.')
 '''
 
 '''
 
-Explicação dos comandos que devem ser feitos no terminal para rodar o código:
+Explanation of commands that should be run in the terminal:
 
-python main.py --config config.json --download-data all -> reconstrói o universo do índice + baixa tudo.
-python main.py --config config.json --download-data missing -> confia no universo que já está em 
-cache e só baixa histórico do que não tiver CSV
-python main.py --config config.json --download-data none -> não faz nenhum download em lote antes do backtest
+python main.py --config config.json --download-data all -> rebuilds the index universe + downloads everything.
+python main.py --config config.json --download-data missing -> trusts the universe already in
+cache and only downloads history for what doesn't have CSV
+python main.py --config config.json --download-data none -> doesn't perform any batch downloads before backtesting
 
-Se precisar alterar algum parâmetro mudar no arquivo config.json
+If you need to change any parameter, modify the config.json file
 
 '''
 def _load_config(path: str) -> dict:
+    '''
+    Loads backtesting configuration from JSON file.
+    
+    Configuration should contain ranker type, parameter grids,
+    date interval, market identifier, and initial capital.
+    
+    :param path: Path to configuration JSON file
+    :return: Configuration dictionary
+    '''
     with open(path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
 
 def _build_grids(config: dict):
+    '''
+    Separates runner and ranker parameters from configuration.
+    
+    Runner grid contains: profit, loss, diversification targets.
+    Ranker grid contains: strategy-specific parameters (window, period, etc.).
+    
+    :param config: Configuration dictionary
+    :return: Tuple of (runner_grid, ranker_grid) dictionaries
+    '''
     params = config.get('ranker-params') or {}
 
     runner_grid = {
@@ -237,14 +277,36 @@ def _build_grids(config: dict):
 
 
 def _get_ranker_class(name: str):
+    '''
+    Returns ranker class corresponding to strategy name.
+    
+    Supported strategies:
+    - MARanker: Moving Average crossover strategy
+    - RSIRanker: Relative Strength Index strategy
+    
+    :param name: Strategy name
+    :return: Ranker class
+    :raises ValueError: If strategy name not recognized
+    '''
     if name == 'MARanker':
         return MARanker
     if name == 'RSIRanker':
         return RSIRanker
-    raise ValueError(f'Ranker \'{name}\' não suportado.')
+    raise ValueError(f'Ranker \'{name}\' not supported.')
 
 
 def run_from_config(config_path: str, download_mode: str = 'missing'):
+    '''
+    Runs backtesting with configuration from JSON file.
+    
+    Supports three download modes:
+    - 'all': Force rebuild of symbol list and download everything
+    - 'missing': Trust cached symbols, download only missing data
+    - 'none': Skip all downloads
+    
+    :param config_path: Path to configuration JSON file
+    :param download_mode: Data download strategy
+    '''
     config = _load_config(config_path)
 
     market_identifier = config.get('id', 'SP500')
@@ -255,7 +317,7 @@ def run_from_config(config_path: str, download_mode: str = 'missing'):
     ranker_cls = _get_ranker_class(ranker_name)
 
     runner_grid, ranker_grid = _build_grids(config)
-    data_handler =Data(market=market_identifier)
+    data_handler = Data(market=market_identifier)
     
     mode = (download_mode or 'missing').lower()
     if mode == 'all':
@@ -282,6 +344,11 @@ def run_from_config(config_path: str, download_mode: str = 'missing'):
 
 
 def _parse_args(argv=None):
+    '''
+    Parses command-line arguments.
+    
+    Usage: python main.py --config config.json [--download-data {all|missing|none}]
+    '''
     parser = argparse.ArgumentParser()
     parser.add_argument('-c','--config', required=True)
     parser.add_argument(
@@ -294,6 +361,12 @@ def _parse_args(argv=None):
 
 
 def main(argv=None):
+    '''
+    Main entry point for command-line execution.
+    
+    Usage:
+        python main.py --config config.json --download-data missing
+    '''
     args = _parse_args(argv)
     run_from_config(args.config, download_mode=args.download_data)
 

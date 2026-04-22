@@ -1,5 +1,9 @@
 '''
-    Class Backtesting
+Backtesting Module - Investment Strategy Evaluation Framework
+
+This module provides the Backtesting class, which enables running
+multiple backtesting simulations with different parameter combinations
+using parallel processing for improved performance.
 '''
 
 from itertools import product
@@ -10,42 +14,57 @@ from data import MemData
 from ranker import MARanker, RandomRanker
 from runner import Runner
 from utils import generate_filename, save_json, generate_performance_plot
+from names import PREFIX_TIMELINE, PREFIX_BUY_LOG, PREFIX_SELL_LOG, SUBDIR_SELL_BUY_LOGS
 
 
 def save_results(results):
-    ''''
-    Recebe os resultados das execuções paralelizadas e salva os arquivos.
+    '''
+    Saves backtesting results to JSON files.
+    
+    Processes results from parallel executions and persists:
+    - Timeline data (balance and portfolio evolution)
+    - Buy logs (purchase transactions)
+    - Sell logs (sale transactions)
     '''
     for result in results:
-        start_date, end_date = result['intervalo'].split(' - ')
+        start_date = result['start_date']
+        end_date = result['end_date']
 
-        save_json(generate_filename('timeline', result, start_date,
+        save_json(generate_filename(PREFIX_TIMELINE, result, start_date,
                   end_date), result['shared_data']['timeline'])
-        save_json(generate_filename('sell_buy_logs/sell_log',
+        save_json(generate_filename(f'{SUBDIR_SELL_BUY_LOGS}/{PREFIX_SELL_LOG}',
                   result, start_date, end_date), result['sell_log'])
-        save_json(generate_filename('sell_buy_logs/buy_log',
+        save_json(generate_filename(f'{SUBDIR_SELL_BUY_LOGS}/{PREFIX_BUY_LOG}',
                   result, start_date, end_date), result['buy_log'])
 
 
 class Backtesting:
-    ''' Classe para realizar backtesting de uma estratégia de investimento. '''
+    '''
+    Backtesting engine for evaluating investment strategies.
+    
+    Supports parameterized testing of multiple strategy configurations
+    using different rankers and runner parameters. Executes simulations
+    in parallel to improve performance.
+    '''
 
     def __init__(self, ranker_cls, capital: float, interval: List[str], market_identifier = 'SP500'):
         '''
-        Inicializa o backtesting com as informações básicas.
+        Initializes the backtesting engine.
 
-        :param ranker_cls: Classe do Ranker para criar instâncias.
-        :param capital: Capital inicial para todas as simulações.
-        :param interval: Lista com a data inicial e final da simulação.
-        :param market_identifier: Sigla ou caminho dos ativos a serem usados(IBOV.csv OU IBOV).
+        :param ranker_cls: Ranker class (e.g., MARanker, RandomRanker) for asset ranking
+        :param capital: Initial capital in currency units for all simulations
+        :param interval: Simulation period as [start_date, end_date] in 'YYYY-MM-DD' format
+        :param market_identifier: Market identifier (ticker like 'SP500' or file path like 'assets/IBOV.csv')
+                                 Market identifiers can be predefined (IBOV, IFIX) or custom file paths.
+                                 If not found in MARKETS config, will be created dynamically.
 
-        O parâmetro 'market_identifier' pode ser:
-        1. Uma **sigla de mercado** (ex: 'IBOV', 'IFIX', etc.) que corresponde a um mercado existente em MARKETS.
-        2. Um **caminho de arquivo** (ex: 'assets/IBOV.csv') que será utilizado para identificar o mercado
-        correspondente e, caso não exista, o mercado será criado dinamicamente.
-
-        EXEMPLO:
-        backtester = Backtesting(MARanker, capital=10000, interval=['2024-01-01', '2024-12-31'], market_identifier='SP500')
+        Example:
+            backtester = Backtesting(
+                MARanker,
+                capital=10000,
+                interval=['2024-01-01', '2024-12-31'],
+                market_identifier='SP500'
+            )
         '''
         self.ranker_cls = ranker_cls
         self.capital = capital
@@ -60,14 +79,19 @@ class Backtesting:
         n_jobs: int = -1
     ) -> pd.DataFrame:
         '''
-        Executa o backtesting variando os parâmetros do Runner e do ranker.
+        Executes backtesting simulations with parameter combinations.
+        
+        Creates all combinations of runner and ranker parameters, then runs
+        parallel simulations for each combination. Results are aggregated
+        and returned as a DataFrame.
 
-        :param parameter_grid: Dicionário com os parâmetros a variar e seus valores.
-                               Exemplo: {'profit': [0.05, 0.1], 'loss': [0.05, 0.1]}.
-        :param ranker_grid: Dicionário com os parâmetros do rankera variar.
-                            Exemplo: {'SEED': [0, 1, 42]}.
-        :param n_jobs: Número de processos paralelos (-1 usa todos os núcleos disponíveis).
-        :return: DataFrame com os resultados das simulações.
+        :param parameter_grid: Runner parameters to test.
+                              Keys: 'profit', 'loss', 'diversification'
+                              Example: {'profit': [0.05, 0.1], 'loss': [0.05, 0.1]}
+        :param ranker_grid: Ranker-specific parameters to test.
+                           Example: {'window': [[9, 21], [20, 50]], 'SEED': [42]}
+        :param n_jobs: Parallel execution: -1 (all cores), 1 (sequential), N (N processes)
+        :return: DataFrame with results for each parameter combination
         '''
         runner_params = list(product(*parameter_grid.values()))
         ranker_params = list(product(*ranker_grid.values()))
@@ -100,7 +124,7 @@ class Backtesting:
 
                 return self._evaluate_results(results_runner, runner_config, ranker_config)
             except Exception as e:
-                print(f'Erro ao rodar configuração {runner_config} com ranker {ranker_config}: {e}')
+                print(f'Error running configuration {runner_config} with ranker {ranker_config}: {e}')
                 return None
 
         results = [
@@ -109,7 +133,8 @@ class Backtesting:
             ) if res is not None
         ]
 
-        # descomente para salvar os arquivos de timeline, caso use o MARanker
+        # Save simulation timelines and transaction logs to JSON files
+        # Useful for detailed analysis and performance visualization
         save_results(results)
 
         for result in results:
@@ -123,38 +148,43 @@ class Backtesting:
         self, result: List[Dict], runner_params: Dict, ranker_params: Dict
     ) -> Dict:
         '''
-        //Calcula métricas de performance da simulação.
+        Calculates and aggregates performance metrics from simulation.
+        
+        Computes final balance, portfolio value, and total return percentage.
+        Combines these metrics with the parameters used for easy result analysis.
 
-        :param result: Resultado da simulação (lista de dicionários).
-        :param runner_params: Parâmetros usados na simulação para o Runner.
-        :param ranker_params: Parâmetros usados na simulação para o Ranker.
-        :return: Dicionário com as métricas calculadas.
+        :param result: Simulation timeline as list of state dictionaries
+        :param runner_params: Runner configuration used (profit, loss, diversification)
+        :param ranker_params: Ranker configuration used (window, SEED, etc.)
+        :return: Dictionary with metrics and configuration for result storage
         '''
-        caixa_final = result[-1]['balance'] if result else 0
+        final_cash = result[-1]['balance'] if result else 0
 
         portfolio_value = sum(
-            item['quantidade'] * item['preco_compra'] for item in result[-1]['portfolio']
+            item['quantity'] * item['purchase_price'] for item in result[-1]['portfolio']
         ) if result else 0
 
-        retorno_total = (caixa_final + portfolio_value) / self.capital - 1
-        retorno_total = round(retorno_total * 100, 2)
+        total_return = (final_cash + portfolio_value) / self.capital - 1
+        total_return = round(total_return * 100, 2)
 
         shared_data = result[-1].get('shared_data', {}) if result else {}
 
         return {
-            'intervalo': f'{self.interval[0]} - {self.interval[1]}',
+            'start_date': self.interval[0],
+            'end_date': self.interval[1],
             **runner_params,
             **ranker_params,
-            'caixa_final': caixa_final,
+            'final_cash': final_cash,
             'portfolio_value': portfolio_value,
-            'retorno_total': f'{retorno_total:.2f}%',
+            'total_return': f'{total_return:.2f}%',
             'shared_data': shared_data,
             'sell_log': result[-1].get('sell_log', []),
             'buy_log': result[-1].get('buy_log', [])
         }
 
 
-def test_bt_with_random():
+def test_backtest_random():
+    '''Test backtesting with RandomRanker strategy.'''
     interval = ['2024-01-01', '2024-12-31']
 
     backtester = Backtesting(RandomRanker, capital=10000, interval=interval)
@@ -173,7 +203,8 @@ def test_bt_with_random():
     print(results)
 
 
-def test_bt_with_ma():
+def test_backtest_ma():
+    '''Test backtesting with Moving Average (MA) Ranker strategy.'''
     interval = ['2024-01-01', '2024-06-30']
 
     parameters = {'window': [[9, 21], [20, 50], [50, 200]]}
@@ -196,4 +227,4 @@ def test_bt_with_ma():
 
 
 if __name__ == '__main__':
-    test_bt_with_ma()
+    test_backtest_ma()

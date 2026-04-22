@@ -4,11 +4,20 @@ from typing import List, Dict
 import pandas as pd
 
 
-from names import MARKETS
+from names import MARKETS, MARKET_SP500, MARKET_KEY_SOURCE_FILE, SYMBOL_SUFFIX_SA, COL_SECTOR, COL_INDUSTRY, COL_GICS_SECTOR, COL_GICS_SUBINDUSTRY, COL_CODIGO, COL_SETOR, COL_SUBSETOR, COL_SEGMENTO, COL_SYMBOL
 
 
 def read_symbols(file_path: str) -> List[str]:
-    '''Lê os códigos das ações e retorna uma lista.'''
+    '''
+    Reads asset symbols from market CSV file.
+    
+    Supports multiple formats:
+    - SP500: Symbol column with ISO-8859-1 encoding and flexible separator
+    - Brazilian B3: Codigo column with clean ticker symbols
+    
+    :param file_path: Path to market CSV file
+    :return: List of valid ticker symbols
+    '''
     try:
         if 'assets' not in file_path:
             file_path = os.path.join('assets', file_path)
@@ -25,10 +34,15 @@ def read_symbols(file_path: str) -> List[str]:
 
         df.columns = df.columns.str.strip()
 
-        if 'Codigo' in df.columns:
-            return df['Codigo'].dropna().tolist()
+        # Try to find symbol column - standardized format uses 'symbol' (lowercase)
+        if 'symbol' in df.columns:
+            return df['symbol'].dropna().tolist()
+        # Fallback for older formats with uppercase
         if 'Symbol' in df.columns:
             return df['Symbol'].dropna().tolist()
+        if 'Codigo' in df.columns:
+            return df['Codigo'].dropna().tolist()
+        # Last resort: use first column
         return df.iloc[1:, 0].dropna().tolist()
     except Exception as e:
         print(f'Erro ao ler {file_path}: {e}')
@@ -36,35 +50,40 @@ def read_symbols(file_path: str) -> List[str]:
 
 
 class MarketData:
-    '''Gerenciamento de dados dos mercados configurados em MARKETS.'''
+    '''
+    Market configuration and asset symbol management.
+    
+    Manages market identification, asset listing, and sector/industry
+    classification for backtesting simulations. Supports S&P 500 and Brazilian B3 markets.
+    '''
 
     def __init__(self, file_path: str = None):
         '''
-        Inicializa a instância de MarketData a partir de uma sigla de mercado ou caminho de arquivo.
+        Initializes MarketData instance from a market ticker or file path.
 
-        O parâmetro 'file_path' pode ser:
-        1. Uma **sigla de mercado** (ex: 'IBOV', 'IFIX', etc.)
-        2. Um **caminho de arquivo** (ex: 'assets/IBOV.csv')
+        The 'file_path' parameter can be:
+        1. A **market ticker** (e.g., 'IBOV', 'IFIX', etc.)
+        2. A **file path** (e.g., 'assets/IBOV.csv')
 
-        Exemplos:
+        Examples:
         market_ibov = MarketData('IBOV')
         market_sp500 = MarketData('SP500')
         market_custom = MarketData('assets/custom.csv')
         '''
         self.file_path = file_path
-        print(f'Inicializando MarketData com file_path: {file_path}')
+        print(f'Initializing MarketData with file_path: {file_path}')
         self.market = self.from_file_path(file_path)
         if self.market is None:
             raise ValueError(
-                'O parâmetro \'file_path\' ou \'market\' precisa ser fornecido!'
+                'The \'file_path\' or \'market\' parameter needs to be provided!'
             )
 
     @classmethod
     def from_file_path(cls, file_path: str) -> str:
-        '''Identifica o mercado pelo arquivo ou pela sigla.'''
+        '''Identifies the market by file or by ticker.'''
         if file_path is None:
             raise ValueError(
-                'É necessário fornecer um \'file_path\' ou uma sigla de mercado válida.'
+                'It is necessary to provide a \'file_path\' or a valid market ticker.'
             )
 
         market = None
@@ -78,7 +97,7 @@ class MarketData:
                     break
 
         if market is None:
-            # Cria mercado dinamicamente
+            # Creates market dynamically
             file_name = os.path.basename(file_path)
             market = file_name.replace('.csv', '').upper()
             MARKETS[market] = {
@@ -90,46 +109,54 @@ class MarketData:
     @classmethod
     def list_recent_symbols(cls, market: str = None, force_update: bool = False) -> List[str]:
         '''
-        Lista os ativos lendo diretamente do CSV.
+        Returns current list of available assets in specified market.
         
-        :param market: Sigla do mercado
-        :param force_update: Ignorado (mantido por compatibilidade)
-        :return: Lista de símbolos
+        Reads directly from market CSV file and formats symbols appropriately:
+        For S&P 500: symbols returned as-is (e.g., AAPL)
+        For Brazilian markets: symbols appended with .SA suffix (e.g., VALE3.SA)
+        
+        :param market: Market ticker ('SP500', 'IBOV', 'IFIX', etc.)
+        :param force_update: Ignored; kept for API compatibility
+        :return: List of ticker symbols ready for data downloads
         '''
         if market is None:
-            raise ValueError('É necessário fornecer o \'market\'.')
+            raise ValueError('It is necessary to provide the \'market\'.')
 
         if market not in MARKETS:
             raise ValueError(
-                f'Mercado inválido. Opções disponíveis: {list(MARKETS.keys())}'
+                f'Invalid market. Available options: {list(MARKETS.keys())}'
             )
 
         config = MARKETS[market]
         
-        # Lê diretamente do CSV (sem cache JSON)
-        if market == 'SP500':
-            symbols = read_symbols(config['source_file'])
+        # Reads directly from CSV (without JSON cache)
+        if market == MARKET_SP500:
+            symbols = read_symbols(config[MARKET_KEY_SOURCE_FILE])
         else:
-            symbols = [s + '.SA' for s in read_symbols(config['source_file'])]
+            symbols = [s + SYMBOL_SUFFIX_SA for s in read_symbols(config[MARKET_KEY_SOURCE_FILE])]
         
         return symbols
 
     @classmethod
     def get_sector_mapping(cls, market: str) -> Dict[str, Dict[str, str]]:
         '''
-        Lê o CSV de entrada e retorna mapeamento symbol -> {sector, industry}
+        Retrieves asset-to-sector mapping for diversification control.
         
-        :param market: Mercado (ex: 'IBOV', 'SP500')
-        :return: Dicionário {symbol: {sector: ..., industry: ...}}
+        Reads market CSV and extracts GICS sector and sub-industry classification
+        for each symbol. Supports both S&P 500 and Brazilian market formats.
+        
+        :param market: Market identifier ('SP500', 'IBOV', etc.)
+        :return: Dictionary mapping symbols to {sector, industry} classification
+        :raises ValueError: If market not configured in MARKETS
         '''
         if market not in MARKETS:
-            raise ValueError(f'Mercado inválido. Opções: {list(MARKETS.keys())}')
+            raise ValueError(f'Invalid market. Options: {list(MARKETS.keys())}')
 
         config = MARKETS[market]
-        file_path = config['source_file']
+        file_path = config[MARKET_KEY_SOURCE_FILE]
 
         try:
-            if 'SP500' in market:
+            if MARKET_SP500 in market:
                 df = pd.read_csv(file_path, encoding='ISO-8859-1', sep=None, engine='python')
             else:
                 df = pd.read_csv(file_path, encoding='ISO-8859-1', sep=',')
@@ -138,41 +165,49 @@ class MarketData:
             
             sector_map = {}
             
-            # Para S&P500 - VERSÃO ATUALIZADA
-            if 'symbol' in df.columns:  # Mudou de 'Symbol' para 'symbol'
+            # For S&P500 - UPDATED VERSION
+            if 'symbol' in df.columns:  # Changed from 'Symbol' to 'symbol'
                 for _, row in df.iterrows():
                     symbol = str(row['symbol']).strip()
                     
-                    # Tenta diferentes variações de nomes de colunas
-                    sector = str(row.get('sector', row.get('GICS Sector', 'Unknown'))).strip()
-                    industry = str(row.get('industry', row.get('GICS Sub-Industry', 'Unknown'))).strip()
+                    # Tries different variations of column names
+                    sector = str(row.get(COL_SECTOR, row.get(COL_GICS_SECTOR, 'Unknown'))).strip()
+                    industry = str(row.get(COL_INDUSTRY, row.get(COL_GICS_SUBINDUSTRY, 'Unknown'))).strip()
                     
                     sector_map[symbol] = {
-                        'sector': sector,
-                        'industry': industry
+                        COL_SECTOR: sector,
+                        COL_INDUSTRY: industry
                     }
                 
-                print(f'Setores carregados para {market}: {len(sector_map)} ativos')
+                print(f'Sectors loaded for {market}: {len(sector_map)} assets')
             
-            # Para arquivos brasileiros (B3)
-            elif 'Codigo' in df.columns:
+            # For Brazilian files (B3) - now using standardized format with 'symbol' column
+            elif 'symbol' in df.columns:
                 for _, row in df.iterrows():
-                    codigo = str(row['Codigo']).strip()
-                    symbol = f'{codigo}.SA'
+                    symbol = str(row['symbol']).strip()
                     sector_map[symbol] = {
-                        'sector': str(row.get('Setor', 'Unknown')).strip(),
-                        'industry': str(row.get('Subsetor', row.get('Segmento', 'Unknown'))).strip()
+                        COL_SECTOR: str(row.get('sector', 'Unknown')).strip(),
+                        COL_INDUSTRY: str(row.get('industry', 'Unknown')).strip()
+                    }
+            # Fallback for older format with 'Codigo' column
+            elif COL_CODIGO in df.columns:
+                for _, row in df.iterrows():
+                    codigo = str(row[COL_CODIGO]).strip()
+                    symbol = f'{codigo}{SYMBOL_SUFFIX_SA}'
+                    sector_map[symbol] = {
+                        COL_SECTOR: str(row.get(COL_SETOR, 'Unknown')).strip(),
+                        COL_INDUSTRY: str(row.get(COL_SUBSETOR, row.get(COL_SEGMENTO, 'Unknown'))).strip()
                     }
                 
-                print(f'Setores carregados para {market}: {len(sector_map)} ativos')
+                print(f'Sectors loaded for {market}: {len(sector_map)} assets')
             
             else:
-                print(f'AVISO: Colunas não reconhecidas no CSV. Colunas encontradas: {df.columns.tolist()}')
+                print(f'WARNING: Columns not recognized in CSV. Columns found: {df.columns.tolist()}')
             
             return sector_map
 
         except Exception as e:
-            print(f'Erro ao ler setores de {file_path}: {e}')
+            print(f'Error reading sectors from {file_path}: {e}')
             import traceback
             traceback.print_exc()
             return {}
@@ -188,18 +223,18 @@ class MarketData:
         return MarketData.list_recent_symbols(market=market, force_update=update)
 
 def list_recent_symbols(market: str, force_update: bool = False) -> List[str]:
-    '''Função helper para manter compatibilidade com chamadas existentes.'''
+    '''Helper function to maintain compatibility with existing calls.'''
     return MarketData.list_recent_symbols(market, force_update)
 
 
-def teste():
-    '''Testa a leitura de mercados'''
+def test():
+    '''Test market reading'''
     data = MarketData('SP500')
     symbols_sp500 = data.list_recent_symbols('SP500')
-    print(f'Total de ativos SP500: {len(symbols_sp500)}')
-    print(f'Primeiros 5: {symbols_sp500[:5]}')
+    print(f'Total SP500 assets: {len(symbols_sp500)}')
+    print(f'First 5: {symbols_sp500[:5]}')
     
-    print(f'Atualização dos ativos: {data.update_symbols(market="SP500", update=True)}')
+    print(f'Updating assets: {data.update_symbols(market="SP500", update=True)}')
 
     print('\nTestando setores:')
     sectors = data.get_sector_mapping('SP500')
@@ -211,4 +246,4 @@ def teste():
 
 
 if __name__ == '__main__':
-    teste()
+    test()

@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 '''
-Universal logger module
+Universal Logger Module
+
+Provides centralized logging with both file and console output.
+Configured to write logs to user home directory with INFO level.
+All modules should use logger instance for application-wide consistency.
 '''
 
 import logging
