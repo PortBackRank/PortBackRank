@@ -23,7 +23,7 @@ def read_symbols(file_path: str) -> List[str]:
         if 'assets' not in file_path:
             file_path = os.path.join('assets', file_path)
 
-        if 'SP500' in file_path.upper():
+        if 'SP500' in file_path.upper() or 'IBOV' in file_path.upper():
             df = pd.read_csv(
                 file_path,
                 encoding='utf-8',
@@ -164,7 +164,7 @@ class MarketData:
         file_path = config[MARKET_KEY_SOURCE_FILE]
 
         try:
-            if MARKET_SP500 in market:
+            if MARKET_SP500 in market or 'IBOV' in market:
                 df = pd.read_csv(file_path, encoding='utf-8', sep='|')
             else:
                 df = pd.read_csv(file_path, encoding='ISO-8859-1', sep=',')
@@ -229,20 +229,20 @@ def list_recent_symbols(market: str, force_update: bool = False) -> List[str]:
 
 def test():
     '''Test market reading'''
-    data = MarketData('SP500')
-    symbols_sp500 = data.list_recent_symbols('SP500')
-    print(f'Total SP500 assets: {len(symbols_sp500)}')
-    print(f'First 5: {symbols_sp500[:5]}')
-    
-    print(f'Updating assets: {data.update_symbols(market="SP500", update=True)}')
-
-    print('\nTesting sectors:')
-    sectors = data.get_sector_mapping('SP500')
-    print(f'Total mapped sectors: {len(sectors)}')
-    for i, (symbol, info) in enumerate(sectors.items()):
-        if i >= 3:
-            break
-        print(f'{symbol}: {info[COL_SECTOR]} - {info[COL_INDUSTRY]}')
+    for market_name in ['SP500', 'IBOV']:
+        print(f"\n--- Testing {market_name} ---")
+        data = MarketData(market_name)
+        symbols = data.list_recent_symbols(market_name)
+        print(f'Total {market_name} assets: {len(symbols)}')
+        print(f'First 5: {symbols[:5]}')
+        
+        print('\nTesting sectors:')
+        sectors = data.get_sector_mapping(market_name)
+        print(f'Total mapped sectors: {len(sectors)}')
+        for i, (symbol, info) in enumerate(sectors.items()):
+            if i >= 3:
+                break
+            print(f'{symbol}: {info[COL_SECTOR]} - {info[COL_INDUSTRY]}')
 
 
 if __name__ == '__main__':
