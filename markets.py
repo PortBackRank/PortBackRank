@@ -23,7 +23,7 @@ MARKETS: Dict[str, Dict[str, str]] = {
         "source_file": "assets/IBXXQuad.csv",
     },
     "SP500": {
-        "source_file": "assets/s&p500.csv",
+        "source_file": "assets/SP500.csv",
     },
 }
 
@@ -39,9 +39,8 @@ def read_symbols(file_path: str) -> List[str]:
         if "SP500" in file_path.upper():
             df = pd.read_csv(
                 file_path,
-                encoding="ISO-8859-1",
-                sep=None,
-                engine="python",
+                encoding="utf-8",
+                sep="|",
             )
         else:
             df = pd.read_csv(file_path, encoding="ISO-8859-1", sep=",")
@@ -50,6 +49,8 @@ def read_symbols(file_path: str) -> List[str]:
 
         if "Codigo" in df.columns:
             return df["Codigo"].dropna().tolist()
+        if "symbol" in df.columns:
+            return df["symbol"].dropna().tolist()
         if "Symbol" in df.columns:
             return df["Symbol"].dropna().tolist()
         return df.iloc[1:, 0].dropna().tolist()
@@ -153,7 +154,7 @@ class MarketData:
 
         try:
             if "SP500" in market:
-                df = pd.read_csv(file_path, encoding="ISO-8859-1", sep=None, engine="python")
+                df = pd.read_csv(file_path, encoding="utf-8", sep="|")
             else:
                 df = pd.read_csv(file_path, encoding="ISO-8859-1", sep=",")
             
@@ -162,12 +163,12 @@ class MarketData:
             sector_map = {}
             
             # Para S&P500
-            if "Symbol" in df.columns:
+            if "symbol" in df.columns:
                 for _, row in df.iterrows():
-                    symbol = str(row["Symbol"]).strip()
+                    symbol = str(row["symbol"]).strip()
                     sector_map[symbol] = {
-                        "sector": str(row.get("GICS Sector", "Unknown")).strip(),
-                        "industry": str(row.get("GICS Sub-Industry", "Unknown")).strip()
+                        "sector": str(row.get("sector", "Unknown")).strip(),
+                        "industry": str(row.get("industry", "Unknown")).strip()
                     }
             
             # Para arquivos brasileiros (B3)
