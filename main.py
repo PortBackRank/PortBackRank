@@ -67,7 +67,7 @@ def _ensure_market_assets(market_code: str = 'SP500'):
         missing = []
         for asset in assets:
             try:
-                df = Data.load_dataframe(f'{asset}.csv')
+                df = data_handler.load_dataframe(f'{asset}.csv')
             except (FileNotFoundError, pd.errors.EmptyDataError):
                 df = None
 
@@ -103,11 +103,11 @@ def run_backtest_ma():
         market_identifier='SP500',
     )
 
-    ranker_grid = {'window': [[9, 21], [20, 50], [50, 200]]}
+    ranker_grid = {'window': [9, 21]}
     runner_grid = {
         'profit': [0.1, 0.15],
         'loss': [0.05],
-        'diversification': [0.1, 0.2],
+        'diversification': [0.1],
         'volume': [0.1]
     }
 
@@ -162,6 +162,7 @@ def _build_grids(config: dict):
         'profit': params.get('profit', []),
         'loss': params.get('loss', []),
         'diversification': params.get('diversification', []),
+        'volume': params.get('volume', [1.0]),
     }
 
     ranker_grid = {}
@@ -181,7 +182,7 @@ def _get_ranker_class(name: str):
     raise ValueError(f'Ranker "{name}" is not supported.')
 
 
-def run_from_config(config_path: str, download_mode: str = 'missing'):
+def run_from_config(config_path: str, download_mode: str = 'missing', price_type: str = None, trace: bool = False):
     """
     Run backtest from configuration file.
     
@@ -189,37 +190,46 @@ def run_from_config(config_path: str, download_mode: str = 'missing'):
         config_path: Path to configuration JSON file.
         download_mode: 'all' (rebuild universe), 'missing' (download missing only),
                       or 'none' (skip downloads).
+        price_type: Price type to use for backtesting.
+        trace: Enable trace mode for detailed output.
     """
     config = _load_config(config_path)
 
-    market_identifier = config.get('id', 'SP500')
-    interval = config.get('interval', ['2024-01-01', '2024-12-31'])
+    market_identifier = config.get('id', 'custom_teste')
+    interval = config.get('interval', ['2024-01-01', '2024-06-30'])
     capital = config.get('capital', 10000)
 
     ranker_name = config.get('ranker', 'MARanker')
     ranker_cls = _get_ranker_class(ranker_name)
+
+    if price_type is None:
+        price_type = config.get('price-type', 'C')
 
     runner_grid, ranker_grid = _build_grids(config)
     data_handler = Data(market=market_identifier)
     
     mode = (download_mode or 'missing').lower()
     if mode == 'all':
-        assets = list_recent_symbols(market_identifier, force_update=True)
+        assets = list_recent_symbols(data_handler.market_data.market, force_update=True)
         data_handler.download_histories(assets)
     elif mode == 'missing':
         _ensure_market_assets(market_identifier)
+
+    n_jobs = config.get('n_jobs', 1)
 
     backtester = Backtesting(
         ranker_cls,
         capital=capital,
         interval=interval,
         market_identifier=market_identifier,
+        price_type=price_type,
+        trace=trace
     )
 
     results = backtester.run(
         runner_grid,
         ranker_grid=ranker_grid,
-        n_jobs=-1,
+        n_jobs=n_jobs,
     )
     _print_df_full(results)
 
@@ -241,13 +251,24 @@ def _parse_args(argv=None):
         help='Download strategy: all (rebuild universe), missing (download only missing), '
              'or none (skip downloads)'
     )
+    parser.add_argument(
+        '-p', '--price-type',
+        choices=['O', 'H', 'L', 'C'],
+        default=None,
+        help='Price type to use for backtesting (default: from config)'
+    )
+    parser.add_argument(
+        '-t', '--trace',
+        action='store_true',
+        help='Enable trace mode for detailed output'
+    )
     return parser.parse_args(argv)
 
 
 def main(argv=None):
     """Entry point for the application."""
     args = _parse_args(argv)
-    run_from_config(args.config, download_mode=args.download_data)
+    run_from_config(args.config, download_mode=args.download_data, price_type=args.price_type, trace=args.trace)
 
 
 if __name__ == '__main__':

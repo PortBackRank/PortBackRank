@@ -41,6 +41,9 @@ MARKETS: Dict[str, Dict[str, str]] = {
     },
     'SP500': {
         'source_file': 'assets/SP500.csv',
+    },
+    'CUSTOM_TESTE': {
+        'source_file': 'assets/custom_teste.csv',
     }
 }
 

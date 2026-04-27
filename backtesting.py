@@ -23,7 +23,7 @@ class Backtesting:
     parameters, allows parallel execution, and aggregates performance metrics.
     '''
 
-    def __init__(self, ranker_cls, capital: float, interval: List[str], market_identifier='SP500'):
+    def __init__(self, ranker_cls, capital: float, interval: List[str], market_identifier='SP500', price_type='C', trace: bool = False):
         '''
         Initializes the backtester.
 
@@ -32,6 +32,8 @@ class Backtesting:
         - capital: initial capital for all simulations.
         - interval: list [start_date, end_date] for the simulation.
         - market_identifier: market identifier (symbol or file path).
+        - price_type: the price type (O, H, L, C, etc.) to evaluate in strategy.
+        - trace: whether to generate tracking files.
 
         The market_identifier parameter can be a symbol (e.g., 'SP500') or
         a file path (e.g., 'assets/IBOV.csv').
@@ -40,7 +42,8 @@ class Backtesting:
         self.capital = capital
         self.interval = interval
         self.runner_cls = Runner
-        self.data = MemData(interval, market_identifier)
+        self.data = MemData(interval, market_identifier, price_type=price_type)
+        self.trace = trace
 
     def run(
         self,
@@ -79,7 +82,8 @@ class Backtesting:
                 diversification=runner_config['diversification'],
                 volume=runner_config.get('volume', 1.0),
                 ranker=self.ranker_cls,
-                data=self.data
+                data=self.data,
+                trace=self.trace
             )
 
             try:
@@ -118,6 +122,7 @@ class Backtesting:
             'profit': runner_params['profit'],
             'loss': runner_params['loss'],
             'diversification': runner_params['diversification'],
+            'volume': runner_params.get('volume', 1.0),
             'window': ranker_params.get('window'),
             'caixa_final': result.get('balance'),
             'portfolio_value': portfolio_value,

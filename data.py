@@ -11,7 +11,7 @@ from typing import Dict, List, Optional
 import pandas as pd
 import yfinance as yf
 from tqdm import tqdm
-from files import open_dataframe, save_dataframe
+from utils import open_dataframe, save_dataframe
 from markets import MarketData
 from names import SUB_DIR_HIST 
 from logger import * 
@@ -39,7 +39,7 @@ class Data():
 
         self.market_data = MarketData(market)
         self.sector_info = {}
-        mapping = self.market_data.get_sector_mapping(market)
+        mapping = self.market_data.get_sector_mapping(self.market_data.market)
         for symbol, info in mapping.items():
             self.sector_info[symbol] = f"{info.get('industry')} - {info.get('sector')}"
 
@@ -120,6 +120,7 @@ class Data():
         start_date: str,
         end_date: str,
         column_filter: Optional[str] = 'Close',
+        price_type: str = 'C',
     ) -> List[Dict[str, pd.DataFrame]]:
         '''Retrieve historical data filtered by date range and columns.
 
@@ -156,7 +157,7 @@ class Data():
 
         for asset in historical_data:
             symbol = asset['symbol']
-            data = asset['data']
+            data = asset['data'].copy()
 
             data['Date'] = pd.to_datetime(
                 data['Date'], utc=True).dt.tz_localize(None)
@@ -169,6 +170,22 @@ class Data():
                 continue
 
             filtered_data.set_index('Date', inplace=True)
+            
+            if price_type == 'O':
+                filtered_data['Close'] = filtered_data['Open']
+            elif price_type == 'H':
+                filtered_data['Close'] = filtered_data['High']
+            elif price_type == 'L':
+                filtered_data['Close'] = filtered_data['Low']
+            elif price_type == 'CN':
+                filtered_data['Close'] = filtered_data['Close'].shift(-1)
+            elif price_type == 'HL2':
+                filtered_data['Close'] = (filtered_data['High'] + filtered_data['Low']) / 2.0
+            elif price_type == 'HLC3':
+                filtered_data['Close'] = (filtered_data['High'] + filtered_data['Low'] + filtered_data['Close']) / 3.0
+            elif price_type == 'OHLC4':
+                filtered_data['Close'] = (filtered_data['Open'] + filtered_data['High'] + filtered_data['Low'] + filtered_data['Close']) / 4.0
+
             filtered_data = filtered_data[columns_to_return]
 
             result.append({
@@ -269,17 +286,19 @@ class MemData:
     - Pre-index data by date for optimized lookups
     '''
 
-    def __init__(self, interval: List[str], market_identifier: str = 'SP500'):
+    def __init__(self, interval: List[str], market_identifier: str = 'SP500', price_type: str = 'C'):
         '''Initialize MemData with historical data and sector information.
         
         Args:
             interval: List containing [start_date, end_date] in YYYY-MM-DD format.
             market_identifier: Market identifier (e.g., 'SP500', 'IBOV'). 
                 Defaults to 'SP500'.
+            price_type: The type of price to simulate logic with. Defaults to 'C'.
         '''
         self.history_data: Dict[str, pd.DataFrame] = {}
         self.sector_info: Dict[str, str] = {}  # symbol -> 'industry - sector'
         self.market_identifier = market_identifier
+        self.price_type = price_type
 
         # Initialize Data instance for historical data retrieval
         self.data = Data()
@@ -352,7 +371,7 @@ class MemData:
         
         # Use Data class to retrieve historical data for date interval
         historical_data = self.data.get_history_interval(
-            assets=self.assets, start_date=start_date, end_date=end_date
+            assets=self.assets, start_date=start_date, end_date=end_date, price_type=self.price_type
         )
 
         for asset_data in historical_data:

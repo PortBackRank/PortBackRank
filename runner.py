@@ -11,7 +11,7 @@ from data import MemData
 from utils import generate_filename 
 
 class Runner:
-    def __init__(self, profit, loss, diversification, volume, ranker: Type[Ranker], data: MemData):
+    def __init__(self, profit, loss, diversification, volume, ranker: Type[Ranker], data: MemData, trace: bool = False):
         '''
         Initialize Runner with provided parameters.
         '''
@@ -21,6 +21,7 @@ class Runner:
         self.volume = volume
         self.ranker = ranker
         self.data = data
+        self.trace = trace
 
         self.__portfolio_details = pd.DataFrame(columns=[
             'sector', 'asset', 'date', 'quantity', 'unit_value'
@@ -63,6 +64,7 @@ class Runner:
         })
         self.portfolio_summary = {}
         self.trade_log = []
+        self.portfolio_log = []
 
         self._all_history = self.data.get_all_history()
         self._all_sectors = self.data.get_all_sectors()
@@ -70,37 +72,72 @@ class Runner:
         self._ranker_instance.prepare(self.data)
         self._interval = interval
 
-    def _save_logs(self, result_data: Dict, ranker_conf: Dict):
+    def _log_portfolio_state(self, date: str):
+        for index, row in self.__portfolio_details.iterrows():
+            symbol = row['asset']
+            day_row = self._history_by_date.get(symbol, {}).get(date)
+            current_price = day_row['Close'] if day_row is not None and not pd.isna(day_row['Close']) else row['unit_value']
+            
+            self.portfolio_log.append({
+                'date': date,
+                'symbol': symbol,
+                'sector': row['sector'],
+                'quantity': row['quantity'],
+                'buy_price': row['unit_value'],
+                'price': current_price
+            })
+
+    def _save_trace(self, result_data: Dict, ranker_conf: Dict):
+        if not self.trace:
+            return
+
         project_root = Path(__file__).resolve().parent
 
-        ctx = {**result_data, **ranker_conf}
-        start_date, end_date = result_data['interval'].split(' - ')
+        # Obter identifier de maneira segura
+        market_id = 'unknown'
+        if hasattr(self.data, 'market_identifier'):
+            market_id = self.data.market_identifier
+        elif hasattr(self.data, 'market'):
+            market_id = self.data.market
 
-        rel_trades = generate_filename('trade_logs/trades', ctx, start_date, end_date).replace('.json', '.csv')
-        rel_port = generate_filename('portfolios/final_portfolio', ctx, start_date, end_date).replace('.json', '.csv')
-
-        trades_path = project_root / "results" / rel_trades
-        port_path = project_root / "results" / rel_port
+        ranker_name = self.ranker.__name__
+        windows = '-'.join(map(str, ranker_conf.get('window', [])))
+        
+        # Ex: sp500-MARanker-9-21-P01-L005-D01
+        folder_name = f"{market_id}-{ranker_name}-{windows}-P{str(self.profit).replace('.', '')}-L{str(self.loss).replace('.', '')}-D{str(self.diversification).replace('.', '')}"
+        
+        trades_path = project_root / "tracking" / folder_name / "trades.csv"
+        port_path = project_root / "tracking" / folder_name / "portfolio.csv"
 
         trades_path.parent.mkdir(parents=True, exist_ok=True)
-        port_path.parent.mkdir(parents=True, exist_ok=True)
 
-        # Salva
+        # Salva trades.csv (date|symbol|operation|quantity|price|balance)
         if self.trade_log:
-            pd.DataFrame(self.trade_log).to_csv(trades_path, index=False)
-            # print(f"Log de trades salvo em: {trades_path}")
+            df_trades = pd.DataFrame(self.trade_log)
+            rename_map = {'type': 'operation', 'total_balance': 'balance'}
+            df_trades = df_trades.rename(columns=rename_map)
+            cols = ['date', 'symbol', 'operation', 'quantity', 'price', 'balance']
+            cols_to_save = [c for c in cols if c in df_trades.columns]
+            df_trades[cols_to_save].to_csv(trades_path, index=False, sep='|')
 
-        if hasattr(self, '_Runner__portfolio_details') and not self._Runner__portfolio_details.empty:
-            self._Runner__portfolio_details.to_csv(port_path, index=False)
-            # print(f"Portfolio salvo em: {port_path}")
+        # Salva portfolio.csv (date|symbol|sector|quantity|buy_price|price)
+        if self.portfolio_log:
+            df_port = pd.DataFrame(self.portfolio_log)
+            cols = ['date', 'symbol', 'sector', 'quantity', 'buy_price', 'price']
+            cols_to_save = [c for c in cols if c in df_port.columns]
+            df_port[cols_to_save].to_csv(port_path, index=False, sep='|')
 
     def single_run(self, interval: List[str], ranker_conf: Dict[str, float], capital: float) -> Dict:
         self.prepare_data(interval, ranker_conf, capital)
         start_date, end_date = interval
 
         for date in pd.date_range(start_date, end_date).strftime('%Y-%m-%d'):
+            trades_before = len(self.trade_log)
             self._sell(date)
             self._buy(date, self._ranker_instance)
+            
+            if len(self.trade_log) > trades_before:
+                self._log_portfolio_state(date)
 
         # Dados consolidados para retorno
         result = {
@@ -112,7 +149,7 @@ class Runner:
             'final_total_value': round(self.total_portfolio_value, 2)
         }
 
-        self._save_logs(result, ranker_conf)
+        self._save_trace(result, ranker_conf)
 
         return result
 
@@ -145,7 +182,7 @@ class Runner:
             percent_change = (current_price - purchase_price) / purchase_price
 
             if percent_change >= self.profit or percent_change <= -self.loss:
-                to_sell = min(quantity, daily_volume)
+                to_sell = min(quantity, int(daily_volume * self.volume))
                 self.balance += (current_price * to_sell)
                 
                 self._update_portfolio_metrics()
@@ -205,7 +242,7 @@ class Runner:
 
             max_qty = int(available_balance // current_price)
             sector_qty = int(max(0, max_sector_investment) // current_price)
-            qty_to_buy = min(max_qty, sector_qty, daily_volume)
+            qty_to_buy = min(max_qty, sector_qty, int(daily_volume * self.volume))
 
             if qty_to_buy <= 0:
                 continue
