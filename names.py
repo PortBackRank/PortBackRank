@@ -47,13 +47,22 @@ MARKETS: Dict[str, Dict[str, str]] = {
     }
 }
 
-# Backwards-compatible aliases (old names used across the codebase)
-# Keep these so existing imports continue to work while names were modernized above.
+# Backwards-compatible aliases
 DIR_CACHE = CACHE_DIR
 SUB_DIR_HIST = HISTORICAL_SUBDIR
 URL_QUOTE = B3_QUOTE_URL
 TIMEOUT = REQUEST_TIMEOUT
 RECENT_ASSETS_FILE = RECENT_ASSETS_FILENAME
+
+# Market constants
+MARKET_SP500 = 'SP500'
+MARKET_IBOV = 'IBOV'
+MARKET_IFIX = 'IFIX'
+MARKET_IBRA = 'IBRA'
+MARKET_SMLL = 'SMLL'
+MARKET_IBXX = 'IBXX'
+MARKET_KEY_SOURCE_FILE = 'source_file'
+SYMBOL_SUFFIX_SA = '.SA'
 
 # Common directories and filenames
 ASSETS_DIR = 'assets'
@@ -69,18 +78,25 @@ COL_LOW = 'Low'
 COL_CLOSE = 'Close'
 COL_VOLUME = 'Volume'
 
-# Symbol / code column names (various formats in different CSVs)
+# Symbol / code column names
 COL_SYMBOL = 'symbol'
 COL_SYMBOL_ALT = 'Symbol'
 COL_CODE = 'Code'
-COL_CODE_PT = 'Codigo'
+COL_CODIGO = 'Codigo'
 
-# Sector / industry column names (English / Portuguese variations)
+# Sector / industry column names
 COL_SECTOR = 'sector'
 COL_SECTOR_PT = 'Setor'
 COL_INDUSTRY = 'industry'
 COL_INDUSTRY_PT = 'Subsetor'
 COL_SEGMENT_PT = 'Segmento'
+
+# Legacy column names for compatibility
+COL_GICS_SECTOR = 'GICS Sector'
+COL_GICS_SUBINDUSTRY = 'GICS Sub-Industry'
+COL_SETOR = 'Setor'
+COL_SUBSETOR = 'Subsetor'
+COL_SEGMENTO = 'Segmento'
 
 # Default market identifier
 DEFAULT_MARKET = 'SP500'
