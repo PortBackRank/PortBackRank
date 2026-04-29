@@ -7,12 +7,16 @@ import argparse
 import pandas as pd
 import json
 import os
+from names import (
+    MARKET_SP500, RANKER_MA, RANKER_RSI, MODE_ALL, MODE_MISSING, MODE_NONE,
+    KEY_ID, KEY_INTERVAL, KEY_CAPITAL, KEY_RANKER, KEY_RANKER_PARAMS,
+    KEY_PROFIT, KEY_LOSS, KEY_DIVERSIFICATION, KEY_VOLUME,
+    DEFAULT_INTERVAL, DEFAULT_CAPITAL, MARKET_CUSTOM_TESTE
+)
 
 
 def _calc_allocation(entry):
     """Calculate total portfolio allocation (cash + invested value)."""
-    portfolio_total = entry['portfolio'].get('valor_total', 0.0)
-
     return entry.get('final_total_value', 0.0)
 
 
@@ -38,7 +42,6 @@ def _print_df_full(df: pd.DataFrame):
             print("Aviso: O DataFrame de resultados está vazio ou é nulo.")
             return
 
-
         print(df.to_string(index=False))
     finally:
         try:
@@ -49,12 +52,9 @@ def _print_df_full(df: pd.DataFrame):
         except Exception:
             pass
 
-def _ensure_market_assets(market_code: str = 'SP500'):
+def _ensure_market_assets(market_code: str = MARKET_SP500):
     """
     Ensure all market assets have downloaded historical data.
-    
-    Attempts to download missing asset histories up to max_retries times.
-    Prints status messages and lists any assets with persistent missing data.
     """
     market_data = MarketData(market_code)
     assets = market_data.list_recent_symbols(market_data.market, force_update=False)
@@ -93,22 +93,22 @@ def _ensure_market_assets(market_code: str = 'SP500'):
 
 def run_backtest_ma():
     """Run backtest with Moving Average ranker."""
-    interval = ['2024-01-01', '2024-12-31']
-    _ensure_market_assets('SP500')
+    interval = DEFAULT_INTERVAL
+    _ensure_market_assets(MARKET_SP500)
 
     backtester = Backtesting(
-        MARanker,
-        capital=10000,
+        _get_ranker_class(RANKER_MA),
+        capital=DEFAULT_CAPITAL,
         interval=interval,
-        market_identifier='SP500',
+        market_identifier=MARKET_SP500,
     )
 
-    ranker_grid = {'window': [9, 21]}
+    ranker_grid = {KEY_WINDOW: [9, 21]}
     runner_grid = {
-        'profit': [0.1, 0.15],
-        'loss': [0.05],
-        'diversification': [0.1],
-        'volume': [0.1]
+        KEY_PROFIT: [0.1, 0.15],
+        KEY_LOSS: [0.05],
+        KEY_DIVERSIFICATION: [0.1, 0.2],
+        KEY_VOLUME: [0.1]
     }
 
     results = backtester.run(runner_grid, ranker_grid=ranker_grid, n_jobs=1)
@@ -117,26 +117,26 @@ def run_backtest_ma():
 
 def run_backtest_rsi():
     """Run backtest with RSI (Relative Strength Index) ranker."""
-    interval = ['2024-01-01', '2024-12-31']
-    _ensure_market_assets('SP500')
+    interval = DEFAULT_INTERVAL
+    _ensure_market_assets(MARKET_SP500)
 
     backtester = Backtesting(
-        RSIRanker,
-        capital=10000,
+        _get_ranker_class(RANKER_RSI),
+        capital=DEFAULT_CAPITAL,
         interval=interval,
-        market_identifier='SP500',
+        market_identifier=MARKET_SP500,
     )
 
     ranker_grid = {
-        'window': [[9, 9], [14, 14], [21, 21]],
+        KEY_WINDOW: [[9, 9], [14, 14], [21, 21]],
         'oversold': [30],
         'overbought': [70],
         'mode': ['mean_reversion'],
     }
     runner_grid = {
-        'profit': [0.1, 0.15],
-        'loss': [0.05],
-        'diversification': [0.1, 0.2],
+        KEY_PROFIT: [0.1, 0.15],
+        KEY_LOSS: [0.05],
+        KEY_DIVERSIFICATION: [0.1, 0.2],
     }
 
     results = backtester.run(runner_grid, ranker_grid=ranker_grid, n_jobs=-1)
@@ -152,17 +152,14 @@ def _load_config(path: str) -> dict:
 def _build_grids(config: dict):
     """
     Build parameter grids for backtesting from configuration.
-    
-    Returns:
-        tuple: (runner_grid, ranker_grid) for backtesting iterations.
     """
-    params = config.get('ranker-params') or {}
+    params = config.get(KEY_RANKER_PARAMS) or {}
 
     runner_grid = {
-        'profit': params.get('profit', []),
-        'loss': params.get('loss', []),
-        'diversification': params.get('diversification', []),
-        'volume': params.get('volume', [1.0]),
+        KEY_PROFIT: params.get(KEY_PROFIT, []),
+        KEY_LOSS: params.get(KEY_LOSS, []),
+        KEY_DIVERSIFICATION: params.get(KEY_DIVERSIFICATION, []),
+        KEY_VOLUME: params.get(KEY_VOLUME, [1.0]),
     }
 
     ranker_grid = {}
@@ -175,31 +172,24 @@ def _build_grids(config: dict):
 
 def _get_ranker_class(name: str):
     """Get ranker class by name."""
-    if name == 'MARanker':
+    if name == RANKER_MA:
         return MARanker
-    if name == 'RSIRanker':
+    if name == RANKER_RSI:
         return RSIRanker
     raise ValueError(f'Ranker "{name}" is not supported.')
 
 
-def run_from_config(config_path: str, download_mode: str = 'missing', price_type: str = None, trace: bool = False):
+def run_from_config(config_path: str, download_mode: str = MODE_MISSING, price_type: str = None, trace: bool = False):
     """
     Run backtest from configuration file.
-    
-    Args:
-        config_path: Path to configuration JSON file.
-        download_mode: 'all' (rebuild universe), 'missing' (download missing only),
-                      or 'none' (skip downloads).
-        price_type: Price type to use for backtesting.
-        trace: Enable trace mode for detailed output.
     """
     config = _load_config(config_path)
 
-    market_identifier = config.get('id', 'custom_teste')
-    interval = config.get('interval', ['2024-01-01', '2024-06-30'])
-    capital = config.get('capital', 10000)
+    market_identifier = config.get(KEY_ID, MARKET_CUSTOM_TESTE)
+    interval = config.get(KEY_INTERVAL, ['2024-01-01', '2024-06-30'])
+    capital = config.get(KEY_CAPITAL, DEFAULT_CAPITAL)
 
-    ranker_name = config.get('ranker', 'MARanker')
+    ranker_name = config.get(KEY_RANKER, RANKER_MA)
     ranker_cls = _get_ranker_class(ranker_name)
 
     if price_type is None:
@@ -208,11 +198,11 @@ def run_from_config(config_path: str, download_mode: str = 'missing', price_type
     runner_grid, ranker_grid = _build_grids(config)
     data_handler = Data(market=market_identifier)
     
-    mode = (download_mode or 'missing').lower()
-    if mode == 'all':
+    mode = (download_mode or MODE_MISSING).lower()
+    if mode == MODE_ALL:
         assets = list_recent_symbols(data_handler.market_data.market, force_update=True)
         data_handler.download_histories(assets)
-    elif mode == 'missing':
+    elif mode == MODE_MISSING:
         _ensure_market_assets(market_identifier)
 
     n_jobs = config.get('n_jobs', 1)
@@ -246,8 +236,8 @@ def _parse_args(argv=None):
     )
     parser.add_argument(
         '-d', '--download-data',
-        choices=['all', 'missing', 'none'],
-        default='missing',
+        choices=[MODE_ALL, MODE_MISSING, MODE_NONE],
+        default=MODE_MISSING,
         help='Download strategy: all (rebuild universe), missing (download only missing), '
              'or none (skip downloads)'
     )
