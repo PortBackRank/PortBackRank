@@ -13,6 +13,11 @@ import pandas as pd
 from data import MemData
 from ranker import MARanker, RandomRanker
 from runner import Runner
+from names import (
+    MARKET_SP500, KEY_PROFIT, KEY_LOSS, KEY_DIVERSIFICATION, KEY_VOLUME,
+    KEY_WINDOW, KEY_CAIXA_FINAL, KEY_PORTFOLIO_VALUE, KEY_RETORNO_TOTAL,
+    KEY_FINAL_TOTAL_VALUE, KEY_INTERVAL, KEY_BALANCE
+)
 
 
 
@@ -23,7 +28,7 @@ class Backtesting:
     parameters, allows parallel execution, and aggregates performance metrics.
     '''
 
-    def __init__(self, ranker_cls, capital: float, interval: List[str], market_identifier='SP500', price_type='C', trace: bool = False):
+    def __init__(self, ranker_cls, capital: float, interval: List[str], market_identifier=MARKET_SP500, price_type='C', trace: bool = False):
         '''
         Initializes the backtester.
 
@@ -35,7 +40,7 @@ class Backtesting:
         - price_type: the price type (O, H, L, C, etc.) to evaluate in strategy.
         - trace: whether to generate tracking files.
 
-        The market_identifier parameter can be a symbol (e.g., 'SP500') or
+        The market_identifier parameter can be a symbol (e.g., MARKET_SP500) or
         a file path (e.g., 'assets/IBOV.csv').
         '''
         self.ranker_cls = ranker_cls
@@ -77,10 +82,10 @@ class Backtesting:
             ranker_config = dict(zip(ranker_names, ranker_values))
 
             runner = self.runner_cls(
-                profit=runner_config['profit'],
-                loss=runner_config['loss'],
-                diversification=runner_config['diversification'],
-                volume=runner_config.get('volume', 1.0),
+                profit=runner_config[KEY_PROFIT],
+                loss=runner_config[KEY_LOSS],
+                diversification=runner_config[KEY_DIVERSIFICATION],
+                volume=runner_config.get(KEY_VOLUME, 1.0),
                 ranker=self.ranker_cls,
                 data=self.data,
                 trace=self.trace
@@ -113,20 +118,20 @@ class Backtesting:
         Returns:
         - dictionary with aggregated metrics (final cash, portfolio value, total return, etc.).
         '''
-        portfolio_value = result.get('final_total_value', 0)
+        portfolio_value = result.get(KEY_FINAL_TOTAL_VALUE, 0)
         total_return = ((portfolio_value - self.capital) / self.capital) * 100
         
         # Retornamos apenas o que deve aparecer na tabela do console
         eval_dict = {
-            'intervalo': result.get('interval'),
-            'profit': runner_params['profit'],
-            'loss': runner_params['loss'],
-            'diversification': runner_params['diversification'],
-            'volume': runner_params.get('volume', 1.0),
-            'window': ranker_params.get('window'),
-            'caixa_final': result.get('balance'),
-            'portfolio_value': portfolio_value,
-            'retorno_total': f"{total_return:.2f}%"
+            'intervalo': result.get(KEY_INTERVAL),
+            KEY_PROFIT: runner_params[KEY_PROFIT],
+            KEY_LOSS: runner_params[KEY_LOSS],
+            KEY_DIVERSIFICATION: runner_params[KEY_DIVERSIFICATION],
+            KEY_VOLUME: runner_params.get(KEY_VOLUME, 1.0),
+            KEY_WINDOW: ranker_params.get(KEY_WINDOW),
+            KEY_CAIXA_FINAL: result.get(KEY_BALANCE),
+            KEY_PORTFOLIO_VALUE: portfolio_value,
+            KEY_RETORNO_TOTAL: f"{total_return:.2f}%"
         }
         
         # Adiciona dinamicamente os parâmetros do ranker (ex: window)
@@ -161,7 +166,7 @@ def test_bt_with_ma():
     parameters = {'window': [[9, 21], [20, 50], [50, 200]]}
 
     backtester = Backtesting(MARanker, capital=10000,
-                             interval=interval, market_identifier='SP500')
+                             interval=interval, market_identifier=MARKET_SP500)
 
     parameter_grid = {
         'profit': [0.1, 0.15],

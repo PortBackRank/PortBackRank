@@ -13,7 +13,11 @@ import yfinance as yf
 from tqdm import tqdm
 from utils import open_dataframe, save_dataframe
 from markets import MarketData
-from names import SUB_DIR_HIST 
+from names import (
+    DIR_HISTORICAL, MARKET_SP500, MARKET_IBOV, MARKET_IBRA,
+    COL_DATE, COL_CLOSE, COL_VOLUME, COL_OPEN, COL_HIGH, COL_LOW,
+    YF_PERIOD_MAX, YF_AUTO_ADJUST, STR_UNKNOWN, STR_UNKNOWN_FULL
+)
 from logger import * 
 
 
@@ -24,13 +28,13 @@ class Data():
     local cache storage via CSV files.
     '''
 
-    subdir = SUB_DIR_HIST
+    subdir = DIR_HISTORICAL
 
-    def __init__(self, market: str = 'SP500', end_date: Optional[str] = None, precision: int = 2):
+    def __init__(self, market: str = MARKET_SP500, end_date: Optional[str] = None, precision: int = 2):
         '''Initialize Data manager with market configuration.
         
         Args:
-            market: Market identifier (e.g., 'SP500', 'IBOV'). Defaults to 'SP500'.
+            market: Market identifier (e.g., MARKET_SP500, MARKET_IBOV). Defaults to MARKET_SP500.
             end_date: Optional end date for data retrieval (YYYY-MM-DD format).
             precision: Number of decimal places for numeric data. Defaults to 2.
         '''
@@ -55,11 +59,11 @@ class Data():
         '''
         return MarketData.list_recent_symbols(market=market, force_update=update)
 
-    def list_symbols(self, market: str = 'SP500') -> List[str]:
+    def list_symbols(self, market: str = MARKET_SP500) -> List[str]:
         '''Retrieve the list of symbols for a specific market.
         
         Args:
-            market: Market identifier (e.g., 'SP500', 'IBOV'). Defaults to 'SP500'.
+            market: Market identifier (e.g., MARKET_SP500, MARKET_IBOV). Defaults to MARKET_SP500.
             
         Returns:
             List of market symbols.
@@ -72,7 +76,7 @@ class Data():
         Args:
             asset: Asset symbol (ticker) to download.
         '''
-        asset_data = yf.Ticker(asset).history(period='max', auto_adjust=False)
+        asset_data = yf.Ticker(asset).history(period=YF_PERIOD_MAX, auto_adjust=YF_AUTO_ADJUST)
         self._save_asset_data(asset, asset_data)
 
     def download_histories(self, assets: List[str]) -> None:
@@ -90,7 +94,7 @@ class Data():
         with tqdm(total=len(assets_list), desc='Downloading data', unit='asset') as pbar:
             def download_and_save(asset):
                 self._save_asset_data(
-                    asset, tickers.tickers[asset].history(period='max', auto_adjust=False))
+                    asset, tickers.tickers[asset].history(period=YF_PERIOD_MAX, auto_adjust=YF_AUTO_ADJUST))
                 pbar.update(1)
 
             with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -119,7 +123,7 @@ class Data():
         assets: List[str],
         start_date: str,
         end_date: str,
-        column_filter: Optional[str] = 'Close',
+        column_filter: Optional[str] = COL_CLOSE,
         price_type: str = 'C',
     ) -> List[Dict[str, pd.DataFrame]]:
         '''Retrieve historical data filtered by date range and columns.
@@ -131,8 +135,9 @@ class Data():
             assets: List of asset symbols.
             start_date: Start of date range (YYYY-MM-DD format).
             end_date: End of date range (YYYY-MM-DD format).
-            column_filter: Price column to include ('Close', custom column, or 'None').
-                Defaults to 'Close'.
+            column_filter: Price column to include (COL_CLOSE, custom column, or 'None').
+                Defaults to COL_CLOSE.
+            price_type: The type of price to simulate logic with. Defaults to 'C'.
             
         Returns:
             List of dictionaries with 'symbol' and 'data' (filtered DataFrame) keys.
@@ -149,9 +154,9 @@ class Data():
         start_date_dt = pd.to_datetime(start_date, utc=True).tz_localize(None)
         end_date_dt = pd.to_datetime(end_date, utc=True).tz_localize(None)
 
-        columns_to_return = ['Volume']
-        if column_filter in {'Close', None}:
-            columns_to_return.append('Close')
+        columns_to_return = [COL_VOLUME]
+        if column_filter in {COL_CLOSE, None}:
+            columns_to_return.append(COL_CLOSE)
         elif column_filter != 'None':
             columns_to_return.append(column_filter)
 
@@ -159,32 +164,32 @@ class Data():
             symbol = asset['symbol']
             data = asset['data'].copy()
 
-            data['Date'] = pd.to_datetime(
-                data['Date'], utc=True).dt.tz_localize(None)
+            data[COL_DATE] = pd.to_datetime(
+                data[COL_DATE], utc=True).dt.tz_localize(None)
 
             filtered_data = data[
                 (data['Date'] >= start_date_dt) & (data['Date'] <= end_date_dt)
-            ].copy()
+            ]
 
             if filtered_data.empty:
                 continue
 
-            filtered_data.set_index('Date', inplace=True)
+            filtered_data.set_index(COL_DATE, inplace=True)
             
             if price_type == 'O':
-                filtered_data['Close'] = filtered_data['Open']
+                filtered_data[COL_CLOSE] = filtered_data[COL_OPEN]
             elif price_type == 'H':
-                filtered_data['Close'] = filtered_data['High']
+                filtered_data[COL_CLOSE] = filtered_data[COL_HIGH]
             elif price_type == 'L':
-                filtered_data['Close'] = filtered_data['Low']
+                filtered_data[COL_CLOSE] = filtered_data[COL_LOW]
             elif price_type == 'CN':
-                filtered_data['Close'] = filtered_data['Close'].shift(-1)
+                filtered_data[COL_CLOSE] = filtered_data[COL_CLOSE].shift(-1)
             elif price_type == 'HL2':
-                filtered_data['Close'] = (filtered_data['High'] + filtered_data['Low']) / 2.0
+                filtered_data[COL_CLOSE] = (filtered_data[COL_HIGH] + filtered_data[COL_LOW]) / 2.0
             elif price_type == 'HLC3':
-                filtered_data['Close'] = (filtered_data['High'] + filtered_data['Low'] + filtered_data['Close']) / 3.0
+                filtered_data[COL_CLOSE] = (filtered_data[COL_HIGH] + filtered_data[COL_LOW] + filtered_data[COL_CLOSE]) / 3.0
             elif price_type == 'OHLC4':
-                filtered_data['Close'] = (filtered_data['Open'] + filtered_data['High'] + filtered_data['Low'] + filtered_data['Close']) / 4.0
+                filtered_data[COL_CLOSE] = (filtered_data[COL_OPEN] + filtered_data[COL_HIGH] + filtered_data[COL_LOW] + filtered_data[COL_CLOSE]) / 4.0
 
             filtered_data = filtered_data[columns_to_return]
 
@@ -209,7 +214,7 @@ class Data():
             return
 
         asset_data_reset = asset_data.reset_index()
-        asset_data_reset['Date'] = asset_data_reset['Date'].astype(str)
+        asset_data_reset[COL_DATE] = asset_data_reset[COL_DATE].astype(str)
 
         numeric_columns = asset_data_reset.select_dtypes(
             include=['float64', 'float32']).columns
@@ -286,13 +291,13 @@ class MemData:
     - Pre-index data by date for optimized lookups
     '''
 
-    def __init__(self, interval: List[str], market_identifier: str = 'SP500', price_type: str = 'C'):
+    def __init__(self, interval: List[str], market_identifier: str = MARKET_SP500, price_type: str = 'C'):
         '''Initialize MemData with historical data and sector information.
         
         Args:
             interval: List containing [start_date, end_date] in YYYY-MM-DD format.
             market_identifier: Market identifier (e.g., 'SP500', 'IBOV'). 
-                Defaults to 'SP500'.
+                Defaults to MARKET_SP500.
             price_type: The type of price to simulate logic with. Defaults to 'C'.
         '''
         self.history_data: Dict[str, pd.DataFrame] = {}
@@ -342,8 +347,8 @@ class MemData:
             sector_mapping = self.market_data.get_sector_mapping(self.market_data.market)
             
             for symbol, info in sector_mapping.items():
-                industry = info.get('industry', 'Unknown')
-                sector = info.get('sector', 'Unknown')
+                industry = info.get('industry', STR_UNKNOWN)
+                sector = info.get('sector', STR_UNKNOWN)
                 # Store combined industry and sector designation
                 self.sector_info[symbol] = f'{industry} - {sector}'
             
@@ -428,7 +433,7 @@ class MemData:
             Sector information in 'industry - sector' format,
             or 'Unknown - Unknown' if not found.
         '''
-        return self.sector_info.get(symbol, 'Unknown - Unknown')
+        return self.sector_info.get(symbol, STR_UNKNOWN_FULL)
     
     def get_all_sectors(self) -> Dict[str, str]:
         '''Get sector classifications for all loaded assets.
@@ -456,20 +461,18 @@ def test():
             print(f'Number of rows: {len(df)}')
             
             # Display price-related columns
-            price_cols = ['Open', 'High', 'Low', 'Close']
-            existing_cols = [col for col in price_cols if col in df.columns]
-            
-            print('\nFirst 5 rows of price columns:')
+            existing_cols = [c for c in [COL_OPEN, COL_HIGH, COL_LOW, COL_CLOSE, COL_VOLUME] if c in df.columns]
             print(df[existing_cols].head())
             
             # Verify rounding to 2 decimal places
             print('\nVerifying rounding precision...')
             for col in existing_cols:
-                max_decimals = df[col].apply(
-                    lambda x: len(str(x).split('.')[-1]) if '.' in str(x) else 0
-                ).max()
-                status = 'OK' if max_decimals <= 2 else 'ERROR'
-                print(f'  {col}: {max_decimals} decimal places [{status}]')
+                if df[col].dtype in ['float64', 'float32']:
+                    max_decimals = df[col].apply(
+                        lambda x: len(str(x).split('.')[-1]) if '.' in str(x) else 0
+                    ).max()
+                    status = 'OK' if max_decimals <= 2 else 'ERROR'
+                    print(f'  {col}: {max_decimals} decimal places [{status}]')
         else:
             print(f'Error: could not load data for {test_asset}')
             
@@ -495,7 +498,7 @@ def test():
         print("\nFile 'assets/SP500.csv' not found!")
         print('Using default SP500 market list as fallback')
         data_instance = Data()
-        assets = data_instance.list_symbols(market='SP500')
+        assets = data_instance.list_symbols(market=MARKET_SP500)
     except Exception as e:
         print(f'Error reading CSV: {e}')
         print('Using default SP500 market list as fallback')
@@ -504,14 +507,14 @@ def test():
 def test_sp500():
     '''Test SP500 market data functionality.'''
     print('-' * 40 + 'Listing assets' + '-' * 40)
-    market_data = MarketData('SP500')
+    market_data = MarketData(MARKET_SP500)
     assets = market_data.list_recent_symbols(market_data.market, force_update=True)
     print(f'Found {len(assets)} assets')
     print(assets)
 
     print('\n' + '-' * 40 + 'Testing sectors via MemData' + '-' * 40)
     interval = ['2024-01-10', '2024-11-10']
-    mem_data = MemData(interval, market_identifier='SP500')
+    mem_data = MemData(interval, market_identifier=MARKET_SP500)
     print(f'AAPL sector: {mem_data.get_sector("AAPL")}')
     print(f'Total sectors loaded: {len(mem_data.get_all_sectors())}')
 
@@ -519,14 +522,14 @@ def test_sp500():
 def test_mem_data():
     '''Diagnostic test for MemData functionality.''' 
     interval = ['2024-01-10', '2024-11-10']
-    mem_data = MemData(interval, market_identifier='SP500')
+    mem_data = MemData(interval, market_identifier=MARKET_SP500)
 
     print('Testing historical data retrieval:')
     all_history = mem_data.get_all_history()
     print(f'Total assets with data: {len(all_history)}')
 
-    test_symbols = [('EQPA3.SA', 'Non-SP500'), ('PETR4.SA', 'IBOV'), 
-                    ('AAPL', 'SP500'), ('B3SA3.SA', 'IBRA')]
+    test_symbols = [('EQPA3.SA', 'Non-SP500'), ('PETR4.SA', MARKET_IBOV), 
+                    ('AAPL', MARKET_SP500), ('B3SA3.SA', MARKET_IBRA)]
     
     for symbol, market_type in test_symbols:
         data = all_history.get(symbol)

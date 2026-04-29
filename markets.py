@@ -3,9 +3,14 @@ from typing import List, Dict
 
 import pandas as pd
 
-from names import MARKETS, MARKET_SP500, MARKET_KEY_SOURCE_FILE, SYMBOL_SUFFIX_SA, COL_SECTOR, COL_INDUSTRY, COL_GICS_SECTOR, COL_GICS_SUBINDUSTRY, COL_CODIGO, COL_SETOR, COL_SUBSETOR, COL_SEGMENTO, COL_SYMBOL
+from names import (
+    MARKETS, MARKET_SP500, MARKET_IBOV, MARKET_KEY_SOURCE_FILE, SYMBOL_SUFFIX_SA,
+    COL_SECTOR, COL_INDUSTRY, COL_GICS_SECTOR, COL_GICS_SUBINDUSTRY, COL_CODIGO,
+    COL_SETOR, COL_SUBSETOR, COL_SEGMENTO, COL_SYMBOL, COL_SYMBOL_ALT,
+    SEP_PIPE, SEP_COMMA, ENCODING_UTF8, ENCODING_ISO, STR_UNKNOWN, DIR_ASSETS, DIR_HISTORICAL
+)
 
-SUB_DIR_HIST = 'historical'
+SUB_DIR_HIST = DIR_HISTORICAL
 
 
 def read_symbols(file_path: str) -> List[str]:
@@ -20,28 +25,28 @@ def read_symbols(file_path: str) -> List[str]:
     :return: List of valid ticker symbols
     '''
     try:
-        if 'assets' not in file_path:
-            file_path = os.path.join('assets', file_path)
+        if DIR_ASSETS not in file_path:
+            file_path = os.path.join(DIR_ASSETS, file_path)
 
-        if 'SP500' in file_path.upper() or 'IBOV' in file_path.upper():
+        if MARKET_SP500 in file_path.upper() or MARKET_IBOV in file_path.upper():
             df = pd.read_csv(
                 file_path,
-                encoding='utf-8',
-                sep='|',
+                encoding=ENCODING_UTF8,
+                sep=SEP_PIPE,
             )
         else:
-            df = pd.read_csv(file_path, encoding='ISO-8859-1', sep=',')
+            df = pd.read_csv(file_path, encoding=ENCODING_ISO, sep=SEP_COMMA)
 
         df.columns = df.columns.str.strip()
 
         # Try to find symbol column - standardized format uses 'symbol' (lowercase)
-        if 'symbol' in df.columns:
-            return df['symbol'].dropna().tolist()
+        if COL_SYMBOL in df.columns:
+            return df[COL_SYMBOL].dropna().tolist()
         # Fallback for older formats with uppercase
-        if 'Symbol' in df.columns:
-            return df['Symbol'].dropna().tolist()
-        if 'Codigo' in df.columns:
-            return df['Codigo'].dropna().tolist()
+        if COL_SYMBOL_ALT in df.columns:
+            return df[COL_SYMBOL_ALT].dropna().tolist()
+        if COL_CODIGO in df.columns:
+            return df[COL_CODIGO].dropna().tolist()
             
         return df.iloc[1:, 0].dropna().tolist()
     except Exception as e:
@@ -164,10 +169,10 @@ class MarketData:
         file_path = config[MARKET_KEY_SOURCE_FILE]
 
         try:
-            if MARKET_SP500 in market or 'IBOV' in market:
-                df = pd.read_csv(file_path, encoding='utf-8', sep='|')
+            if MARKET_SP500 in market or MARKET_IBOV in market:
+                df = pd.read_csv(file_path, encoding=ENCODING_UTF8, sep=SEP_PIPE)
             else:
-                df = pd.read_csv(file_path, encoding='ISO-8859-1', sep=',')
+                df = pd.read_csv(file_path, encoding=ENCODING_ISO, sep=SEP_COMMA)
             
             df.columns = df.columns.str.strip()
             
@@ -179,8 +184,8 @@ class MarketData:
                     symbol = str(row['symbol']).strip()
                     
                     # Tries different variations of column names
-                    sector = str(row.get(COL_SECTOR, row.get(COL_GICS_SECTOR, 'Unknown'))).strip()
-                    industry = str(row.get(COL_INDUSTRY, row.get(COL_GICS_SUBINDUSTRY, 'Unknown'))).strip()
+                    sector = str(row.get(COL_SECTOR, row.get(COL_GICS_SECTOR, STR_UNKNOWN))).strip()
+                    industry = str(row.get(COL_INDUSTRY, row.get(COL_GICS_SUBINDUSTRY, STR_UNKNOWN))).strip()
                     
                     sector_map[symbol] = {
                         COL_SECTOR: sector,
@@ -195,8 +200,8 @@ class MarketData:
                     codigo = str(row[COL_CODIGO]).strip()
                     symbol = f'{codigo}{SYMBOL_SUFFIX_SA}'
                     sector_map[symbol] = {
-                        COL_SECTOR: str(row.get(COL_SETOR, 'Unknown')).strip(),
-                        COL_INDUSTRY: str(row.get(COL_SUBSETOR, row.get(COL_SEGMENTO, 'Unknown'))).strip()
+                        COL_SECTOR: str(row.get(COL_SETOR, STR_UNKNOWN)).strip(),
+                        COL_INDUSTRY: str(row.get(COL_SUBSETOR, row.get(COL_SEGMENTO, STR_UNKNOWN))).strip()
                     }
                 
                 print(f'Sectors loaded for {market}: {len(sector_map)} assets')
@@ -213,7 +218,7 @@ class MarketData:
             return {}
       
     @classmethod
-    def get_symbol_list(cls, market: str = 'SP500'):
+    def get_symbol_list(cls, market: str = MARKET_SP500):
         '''Return the list of symbols'''
         return MarketData.list_recent_symbols(market=market)
     
@@ -229,7 +234,7 @@ def list_recent_symbols(market: str, force_update: bool = False) -> List[str]:
 
 def test():
     '''Test market reading'''
-    for market_name in ['SP500', 'IBOV']:
+    for market_name in [MARKET_SP500, MARKET_IBOV]:
         print(f"\n--- Testing {market_name} ---")
         data = MarketData(market_name)
         symbols = data.list_recent_symbols(market_name)

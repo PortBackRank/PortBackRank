@@ -9,7 +9,7 @@ output handlers, ensuring consistent log formatting across the application.
 import logging
 from pathlib import Path
 from os import sep
-from names import *
+from names import APP_NAME
 
 # Log file path in user's home directory
 LOG_FILE = str(Path.home()) + sep + APP_NAME + '.log'

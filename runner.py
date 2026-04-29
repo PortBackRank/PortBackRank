@@ -9,6 +9,14 @@ from typing import List, Dict, Type
 from ranker import MARanker, Ranker, RandomRanker
 from data import MemData
 from utils import generate_filename 
+from names import (
+    COL_SECTOR, COL_DATE, KEY_ASSET, KEY_QUANTITY, KEY_UNIT_VALUE,
+    KEY_TOTAL_ASSET_VALUE, KEY_TYPE, KEY_PRICE, KEY_COST, KEY_PROFIT_LOSS,
+    KEY_ORIGIN_DATE, KEY_BALANCE, KEY_PORTFOLIO_VALUE, KEY_INTERVAL,
+    KEY_PROFIT, KEY_LOSS, KEY_DIVERSIFICATION, KEY_FINAL_TOTAL_VALUE,
+    STR_UNKNOWN_FULL, TYPE_BUY, TYPE_SELL, DIR_RESULTS, MARKET_SP500,
+    COL_SYMBOL, COL_CLOSE, COL_VOLUME, KEY_WINDOW, SEP_PIPE, DIR_TRACKING
+)
 
 class Runner:
     def __init__(self, profit, loss, diversification, volume, ranker: Type[Ranker], data: MemData, trace: bool = False):
@@ -24,7 +32,7 @@ class Runner:
         self.trace = trace
 
         self.__portfolio_details = pd.DataFrame(columns=[
-            'sector', 'asset', 'date', 'quantity', 'unit_value'
+            COL_SECTOR, KEY_ASSET, COL_DATE, KEY_QUANTITY, KEY_UNIT_VALUE
         ])
 
         self.portfolio_summary = {} # Dict: sector -> total_value
@@ -41,13 +49,13 @@ class Runner:
 
         # Calculate total value per row
         temp_df = self.__portfolio_details.copy()
-        temp_df['total_asset_value'] = temp_df['quantity'] * temp_df['unit_value']
+        temp_df[KEY_TOTAL_ASSET_VALUE] = temp_df[KEY_QUANTITY] * temp_df[KEY_UNIT_VALUE]
 
         # Group by sector for the summary
-        self.portfolio_summary = temp_df.groupby('sector')['total_asset_value'].sum().to_dict()
+        self.portfolio_summary = temp_df.groupby(COL_SECTOR)[KEY_TOTAL_ASSET_VALUE].sum().to_dict()
         
         # Total Value = Cash + Sum of all assets
-        self.total_portfolio_value = self.balance + temp_df['total_asset_value'].sum()
+        self.total_portfolio_value = self.balance + temp_df[KEY_TOTAL_ASSET_VALUE].sum()
 
     def prepare_data(self, interval: List[str], ranker_conf: Dict[str, float], capital: float):
         '''Resets environment for a new simulation run.'''
@@ -56,11 +64,11 @@ class Runner:
         self.balance = capital
         self.total_portfolio_value = capital
         self.__portfolio_details = pd.DataFrame({
-            'sector': pd.Series(dtype='str'),
-            'asset': pd.Series(dtype='str'),
-            'date': pd.Series(dtype='str'),
-            'quantity': pd.Series(dtype='int'),
-            'unit_value': pd.Series(dtype='float')
+            COL_SECTOR: pd.Series(dtype='str'),
+            KEY_ASSET: pd.Series(dtype='str'),
+            COL_DATE: pd.Series(dtype='str'),
+            KEY_QUANTITY: pd.Series(dtype='int'),
+            KEY_UNIT_VALUE: pd.Series(dtype='float')
         })
         self.portfolio_summary = {}
         self.trade_log = []
@@ -74,17 +82,17 @@ class Runner:
 
     def _log_portfolio_state(self, date: str):
         for index, row in self.__portfolio_details.iterrows():
-            symbol = row['asset']
+            symbol = row[KEY_ASSET]
             day_row = self._history_by_date.get(symbol, {}).get(date)
-            current_price = day_row['Close'] if day_row is not None and not pd.isna(day_row['Close']) else row['unit_value']
+            current_price = day_row[COL_CLOSE] if day_row is not None and not pd.isna(day_row[COL_CLOSE]) else row[KEY_UNIT_VALUE]
             
             self.portfolio_log.append({
-                'date': date,
-                'symbol': symbol,
-                'sector': row['sector'],
-                'quantity': row['quantity'],
-                'buy_price': row['unit_value'],
-                'price': current_price
+                COL_DATE: date,
+                COL_SYMBOL: symbol,
+                COL_SECTOR: row[COL_SECTOR],
+                KEY_QUANTITY: row[KEY_QUANTITY],
+                'buy_price': row[KEY_UNIT_VALUE],
+                KEY_PRICE: current_price
             })
 
     def _save_trace(self, result_data: Dict, ranker_conf: Dict):
@@ -101,31 +109,31 @@ class Runner:
             market_id = self.data.market
 
         ranker_name = self.ranker.__name__
-        windows = '-'.join(map(str, ranker_conf.get('window', [])))
+        windows = '-'.join(map(str, ranker_conf.get(KEY_WINDOW, [])))
         
         # Ex: sp500-MARanker-9-21-P01-L005-D01
         folder_name = f"{market_id}-{ranker_name}-{windows}-P{str(self.profit).replace('.', '')}-L{str(self.loss).replace('.', '')}-D{str(self.diversification).replace('.', '')}"
         
-        trades_path = project_root / "tracking" / folder_name / "trades.csv"
-        port_path = project_root / "tracking" / folder_name / "portfolio.csv"
+        trades_path = project_root / DIR_TRACKING / folder_name / "trades.csv"
+        port_path = project_root / DIR_TRACKING / folder_name / "portfolio.csv"
 
         trades_path.parent.mkdir(parents=True, exist_ok=True)
 
         # Salva trades.csv (date|symbol|operation|quantity|price|balance)
         if self.trade_log:
             df_trades = pd.DataFrame(self.trade_log)
-            rename_map = {'type': 'operation', 'total_balance': 'balance'}
+            rename_map = {KEY_TYPE: 'operation', KEY_BALANCE: 'balance'}
             df_trades = df_trades.rename(columns=rename_map)
-            cols = ['date', 'symbol', 'operation', 'quantity', 'price', 'balance']
+            cols = [COL_DATE, COL_SYMBOL, 'operation', KEY_QUANTITY, KEY_PRICE, 'balance']
             cols_to_save = [c for c in cols if c in df_trades.columns]
-            df_trades[cols_to_save].to_csv(trades_path, index=False, sep='|')
+            df_trades[cols_to_save].to_csv(trades_path, index=False, sep=SEP_PIPE)
 
         # Salva portfolio.csv (date|symbol|sector|quantity|buy_price|price)
         if self.portfolio_log:
             df_port = pd.DataFrame(self.portfolio_log)
-            cols = ['date', 'symbol', 'sector', 'quantity', 'buy_price', 'price']
+            cols = [COL_DATE, COL_SYMBOL, COL_SECTOR, KEY_QUANTITY, 'buy_price', KEY_PRICE]
             cols_to_save = [c for c in cols if c in df_port.columns]
-            df_port[cols_to_save].to_csv(port_path, index=False, sep='|')
+            df_port[cols_to_save].to_csv(port_path, index=False, sep=SEP_PIPE)
 
     def single_run(self, interval: List[str], ranker_conf: Dict[str, float], capital: float) -> Dict:
         self.prepare_data(interval, ranker_conf, capital)
@@ -141,12 +149,13 @@ class Runner:
 
         # Dados consolidados para retorno
         result = {
-            'interval': f"{interval[0]} - {interval[1]}",
-            'profit': self.profit,
-            'loss': self.loss,
-            'diversification': self.diversification,
-            'balance': round(self.balance, 2),
-            'final_total_value': round(self.total_portfolio_value, 2)
+            KEY_INTERVAL: f"{interval[0]} - {interval[1]}",
+            KEY_PROFIT: self.profit,
+            KEY_LOSS: self.loss,
+            KEY_DIVERSIFICATION: self.diversification,
+            KEY_BALANCE: round(self.balance, 2),
+            KEY_FINAL_TOTAL_VALUE: round(self.total_portfolio_value, 2),
+            'portfolio_details': self.__portfolio_details.copy()
         }
 
         self._save_trace(result, ranker_conf)
@@ -158,24 +167,24 @@ class Runner:
         if self.__portfolio_details.empty:
             return
 
-        symbols_in_portfolio = self.__portfolio_details['asset'].unique()
+        symbols_in_portfolio = self.__portfolio_details[KEY_ASSET].unique()
         asset_histories = {}
         for symbol in symbols_in_portfolio:
             day_row = self._history_by_date.get(symbol, {}).get(date)
             if day_row is not None:
                 asset_histories[symbol] = {
-                    'current_price': day_row['Close'],
-                    'daily_volume': day_row['Volume']
+                    'current_price': day_row[COL_CLOSE],
+                    'daily_volume': day_row[COL_VOLUME]
                 }
 
         indices_to_remove = []
         for index, row in self.__portfolio_details.iterrows():
-            symbol = row['asset']
+            symbol = row[KEY_ASSET]
             if symbol not in asset_histories:
                 continue
 
-            purchase_price = row['unit_value'] 
-            quantity = row['quantity']
+            purchase_price = row[KEY_UNIT_VALUE] 
+            quantity = row[KEY_QUANTITY]
             current_price = asset_histories[symbol]['current_price']
             daily_volume = asset_histories[symbol]['daily_volume']
 
@@ -188,21 +197,21 @@ class Runner:
                 self._update_portfolio_metrics()
 
                 self.trade_log.append({
-                    'date': date,
-                    'symbol': symbol,
-                    'type': 'SELL',
-                    'quantity': to_sell,
-                    'price': current_price,
-                    'cost': purchase_price,
-                    'profit_loss': (current_price - purchase_price) * to_sell,
-                    'origin_date': row['date'],
-                    'sector': row['sector'],
-                    'total_balance': round(self.balance, 2),
-                    'total_portfolio_value': round(self.total_portfolio_value, 2)
+                    COL_DATE: date,
+                    COL_SYMBOL: symbol,
+                    KEY_TYPE: TYPE_SELL,
+                    KEY_QUANTITY: to_sell,
+                    KEY_PRICE: current_price,
+                    KEY_COST: purchase_price,
+                    KEY_PROFIT_LOSS: (current_price - purchase_price) * to_sell,
+                    KEY_ORIGIN_DATE: row[COL_DATE],
+                    COL_SECTOR: row[COL_SECTOR],
+                    KEY_BALANCE: round(self.balance, 2),
+                    KEY_PORTFOLIO_VALUE: round(self.total_portfolio_value, 2)
                 })
 
                 if quantity > to_sell:
-                    self.__portfolio_details.at[index, 'quantity'] = quantity - to_sell
+                    self.__portfolio_details.at[index, KEY_QUANTITY] = quantity - to_sell
                 else:
                     indices_to_remove.append(index)
 
@@ -222,8 +231,8 @@ class Runner:
             if available_balance <= 2:
                 break
 
-            sector = self._all_sectors.get(symbol, 'Unknown - Unknown')
-            if sector == 'Unknown - Unknown':
+            sector = self._all_sectors.get(symbol, STR_UNKNOWN_FULL)
+            if sector == STR_UNKNOWN_FULL:
                 continue
 
             current_sector_val = self.portfolio_summary.get(sector, 0)
@@ -234,11 +243,11 @@ class Runner:
                 max_sector_investment = (total_val * self.diversification) - current_sector_val
 
             day_row = self._history_by_date.get(symbol, {}).get(date)
-            if day_row is None or pd.isna(day_row['Close']):
+            if day_row is None or pd.isna(day_row[COL_CLOSE]):
                 continue
 
-            current_price = day_row['Close']
-            daily_volume = day_row['Volume']
+            current_price = day_row[COL_CLOSE]
+            daily_volume = day_row[COL_VOLUME]
 
             max_qty = int(available_balance // current_price)
             sector_qty = int(max(0, max_sector_investment) // current_price)
@@ -251,11 +260,11 @@ class Runner:
             available_balance = self.balance 
 
             new_buy = {
-                'sector': sector,
-                'asset': symbol,
-                'date': date,
-                'quantity': qty_to_buy,
-                'unit_value': current_price
+                COL_SECTOR: sector,
+                KEY_ASSET: symbol,
+                COL_DATE: date,
+                KEY_QUANTITY: qty_to_buy,
+                KEY_UNIT_VALUE: current_price
             }
             self.__portfolio_details = pd.concat(
                 [self.__portfolio_details, pd.DataFrame([new_buy])], 
@@ -266,13 +275,13 @@ class Runner:
             total_val = self.total_portfolio_value
 
             self.trade_log.append({
-                'date': date,
-                'symbol': symbol,
-                'type': 'BUY',
-                'quantity': qty_to_buy,
-                'price': current_price,
-                'total_balance': round(self.balance, 2),
-                'total_portfolio_value': round(self.total_portfolio_value, 2)
+                COL_DATE: date,
+                COL_SYMBOL: symbol,
+                KEY_TYPE: TYPE_BUY,
+                KEY_QUANTITY: qty_to_buy,
+                KEY_PRICE: current_price,
+                KEY_BALANCE: round(self.balance, 2),
+                KEY_PORTFOLIO_VALUE: round(self.total_portfolio_value, 2)
             })
 
 def test_runner():
@@ -293,7 +302,7 @@ def test_runner():
     try:
         result = runner.single_run(interval, ranker_config, capital)
         print('Runner execution successful')
-        print(f'Final balance: {result["balance"]}')
+        print(f'Final balance: {result[KEY_BALANCE]}')
     except Exception as e:
         print(f'Error during test: {e}')
         import traceback
@@ -312,18 +321,18 @@ def test_runner_ma():
         diversification=0.2,
         volume=0.1, # Adicionado o parâmetro volume que faltava no seu teste
         ranker=MARanker,
-        data=MemData(interval, market_identifier='SP500')
+        data=MemData(interval, market_identifier=MARKET_SP500)
     )
 
     try:
         result = runner.single_run(interval, ranker_config, capital)
         print('Runner execution successful')
-        print(f"Final balance: {result['balance']}")
+        print(f"Final balance: {result[KEY_BALANCE]}")
         
         # Acessando o DataFrame de detalhes
         df_portfolio = result['portfolio_details']
         if not df_portfolio.empty:
-            total_portfolio = (df_portfolio['quantity'] * df_portfolio['unit_value']).sum()
+            total_portfolio = (df_portfolio[KEY_QUANTITY] * df_portfolio[KEY_UNIT_VALUE]).sum()
             print(f'Portfolio value: {round(total_portfolio, 2)}')
         else:
             print('Portfolio is empty.')
