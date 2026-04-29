@@ -1,0 +1,403 @@
+date|symbol|sector|quantity|buy_price|price
+2024-01-02|ZTS|Pharmaceuticals - Health Care|10|196.57|196.57
+2024-01-02|ZBRA|Electronic Equipment & Instruments - Information Technology|7|267.98|267.98
+2024-01-02|ZBH|Health Care Equipment - Health Care|16|121.39|121.39
+2024-01-02|YUM|Restaurants - Consumer Discretionary|15|129.03|129.03
+2024-01-02|XYL|Industrial Machinery & Supplies & Components - Industrials|17|113.67|113.67
+2024-01-02|XOM|Integrated Oil & Gas - Energy|3|102.36|102.36
+2024-01-02|WY|Timber REITs - Real Estate|1|34.79|34.79
+2024-01-03|ZTS|Pharmaceuticals - Health Care|10|196.57|192.93
+2024-01-03|ZBH|Health Care Equipment - Health Care|16|121.39|120.47
+2024-01-03|YUM|Restaurants - Consumer Discretionary|15|129.03|129.1
+2024-01-03|XYL|Industrial Machinery & Supplies & Components - Industrials|17|113.67|111.56
+2024-01-03|XOM|Integrated Oil & Gas - Energy|3|102.36|103.22
+2024-01-03|WY|Timber REITs - Real Estate|1|34.79|34.06
+2024-01-03|ZBRA|Electronic Equipment & Instruments - Information Technology|7|252.52|252.52
+2024-01-17|ZTS|Pharmaceuticals - Health Care|10|196.57|190.9
+2024-01-17|ZBH|Health Care Equipment - Health Care|16|121.39|122.23
+2024-01-17|YUM|Restaurants - Consumer Discretionary|15|129.03|129.08
+2024-01-17|XYL|Industrial Machinery & Supplies & Components - Industrials|17|113.67|109.69
+2024-01-17|ZBRA|Electronic Equipment & Instruments - Information Technology|8|239.17|239.17
+2024-01-17|XEL|Multi-Utilities - Utilities|1|60.09|60.09
+2024-01-17|WBD|Broadcasting - Communication Services|3|10.16|10.16
+2024-01-24|ZBH|Health Care Equipment - Health Care|16|121.39|120.52
+2024-01-24|YUM|Restaurants - Consumer Discretionary|15|129.03|129.44
+2024-01-24|XYL|Industrial Machinery & Supplies & Components - Industrials|17|113.67|111.7
+2024-01-24|ZBRA|Electronic Equipment & Instruments - Information Technology|8|239.17|254.17
+2024-01-24|XEL|Multi-Utilities - Utilities|1|60.09|58.22
+2024-01-24|WBD|Broadcasting - Communication Services|3|10.16|10.41
+2024-01-24|ZTS|Pharmaceuticals - Health Care|10|186.07|186.07
+2024-02-09|ZBH|Health Care Equipment - Health Care|16|121.39|122.8
+2024-02-09|YUM|Restaurants - Consumer Discretionary|15|129.03|130.27
+2024-02-09|XYL|Industrial Machinery & Supplies & Components - Industrials|17|113.67|124.3
+2024-02-09|ZBRA|Electronic Equipment & Instruments - Information Technology|8|239.17|253.09
+2024-02-09|XEL|Multi-Utilities - Utilities|1|60.09|58.17
+2024-02-09|ZTS|Pharmaceuticals - Health Care|10|186.07|197.32
+2024-02-09|WBD|Broadcasting - Communication Services|3|9.64|9.64
+2024-02-15|ZBH|Health Care Equipment - Health Care|16|121.39|124.4
+2024-02-15|YUM|Restaurants - Consumer Discretionary|15|129.03|135.4
+2024-02-15|XYL|Industrial Machinery & Supplies & Components - Industrials|17|113.67|124.42
+2024-02-15|XEL|Multi-Utilities - Utilities|1|60.09|59.01
+2024-02-15|ZTS|Pharmaceuticals - Health Care|10|186.07|189.65
+2024-02-15|WBD|Broadcasting - Communication Services|3|9.64|10.14
+2024-02-15|ZBRA|Electronic Equipment & Instruments - Information Technology|7|283.75|283.75
+2024-02-15|XOM|Integrated Oil & Gas - Energy|2|103.73|103.73
+2024-02-15|XEL|Multi-Utilities - Utilities|1|59.01|59.01
+2024-02-15|WBD|Broadcasting - Communication Services|1|10.14|10.14
+2024-02-21|ZBH|Health Care Equipment - Health Care|16|121.39|128.35
+2024-02-21|YUM|Restaurants - Consumer Discretionary|15|129.03|135.23
+2024-02-21|XYL|Industrial Machinery & Supplies & Components - Industrials|17|113.67|123.49
+2024-02-21|XEL|Multi-Utilities - Utilities|1|60.09|59.81
+2024-02-21|ZTS|Pharmaceuticals - Health Care|10|186.07|188.38
+2024-02-21|WBD|Broadcasting - Communication Services|3|9.64|9.57
+2024-02-21|ZBRA|Electronic Equipment & Instruments - Information Technology|7|283.75|274.43
+2024-02-21|XOM|Integrated Oil & Gas - Energy|2|103.73|104.85
+2024-02-21|XEL|Multi-Utilities - Utilities|1|59.01|59.81
+2024-02-21|WBD|Broadcasting - Communication Services|1|9.57|9.57
+2024-02-22|ZBH|Health Care Equipment - Health Care|16|121.39|128.54
+2024-02-22|YUM|Restaurants - Consumer Discretionary|15|129.03|137.33
+2024-02-22|XEL|Multi-Utilities - Utilities|1|60.09|59.33
+2024-02-22|ZTS|Pharmaceuticals - Health Care|10|186.07|196.66
+2024-02-22|WBD|Broadcasting - Communication Services|3|9.64|9.56
+2024-02-22|ZBRA|Electronic Equipment & Instruments - Information Technology|7|283.75|279.48
+2024-02-22|XOM|Integrated Oil & Gas - Energy|2|103.73|104.76
+2024-02-22|XEL|Multi-Utilities - Utilities|1|59.01|59.33
+2024-02-22|WBD|Broadcasting - Communication Services|1|9.57|9.56
+2024-02-22|XYL|Industrial Machinery & Supplies & Components - Industrials|16|125.1|125.1
+2024-02-22|XOM|Integrated Oil & Gas - Energy|1|104.76|104.76
+2024-02-22|WBD|Broadcasting - Communication Services|2|9.56|9.56
+2024-02-23|ZBH|Health Care Equipment - Health Care|16|121.39|129.18
+2024-02-23|YUM|Restaurants - Consumer Discretionary|15|129.03|138.32
+2024-02-23|XEL|Multi-Utilities - Utilities|1|60.09|59.33
+2024-02-23|ZTS|Pharmaceuticals - Health Care|10|186.07|197.21
+2024-02-23|ZBRA|Electronic Equipment & Instruments - Information Technology|7|283.75|274.99
+2024-02-23|XOM|Integrated Oil & Gas - Energy|2|103.73|103.84
+2024-02-23|XEL|Multi-Utilities - Utilities|1|59.01|59.33
+2024-02-23|XYL|Industrial Machinery & Supplies & Components - Industrials|16|125.1|125.63
+2024-02-23|XOM|Integrated Oil & Gas - Energy|1|104.76|103.84
+2024-02-23|XEL|Multi-Utilities - Utilities|1|59.33|59.33
+2024-02-29|ZBH|Health Care Equipment - Health Care|16|121.39|124.36
+2024-02-29|YUM|Restaurants - Consumer Discretionary|15|129.03|138.42
+2024-02-29|ZTS|Pharmaceuticals - Health Care|10|186.07|198.33
+2024-02-29|ZBRA|Electronic Equipment & Instruments - Information Technology|7|283.75|279.48
+2024-02-29|XOM|Integrated Oil & Gas - Energy|2|103.73|104.52
+2024-02-29|XYL|Industrial Machinery & Supplies & Components - Industrials|16|125.1|127.05
+2024-02-29|XOM|Integrated Oil & Gas - Energy|1|104.76|104.52
+2024-02-29|XOM|Integrated Oil & Gas - Energy|1|104.52|104.52
+2024-02-29|XEL|Multi-Utilities - Utilities|1|52.69|52.69
+2024-03-01|ZBH|Health Care Equipment - Health Care|16|121.39|124.01
+2024-03-01|YUM|Restaurants - Consumer Discretionary|15|129.03|137.42
+2024-03-01|ZTS|Pharmaceuticals - Health Care|10|186.07|190.82
+2024-03-01|ZBRA|Electronic Equipment & Instruments - Information Technology|7|283.75|289.64
+2024-03-01|XOM|Integrated Oil & Gas - Energy|2|103.73|105.84
+2024-03-01|XYL|Industrial Machinery & Supplies & Components - Industrials|16|125.1|127.94
+2024-03-01|XOM|Integrated Oil & Gas - Energy|1|104.76|105.84
+2024-03-01|XOM|Integrated Oil & Gas - Energy|1|104.52|105.84
+2024-03-01|XEL|Multi-Utilities - Utilities|1|49.57|49.57
+2024-03-13|ZBH|Health Care Equipment - Health Care|16|121.39|126.59
+2024-03-13|YUM|Restaurants - Consumer Discretionary|15|129.03|138.36
+2024-03-13|ZBRA|Electronic Equipment & Instruments - Information Technology|7|283.75|284.5
+2024-03-13|XOM|Integrated Oil & Gas - Energy|2|103.73|109.53
+2024-03-13|XYL|Industrial Machinery & Supplies & Components - Industrials|16|125.1|128.02
+2024-03-13|XOM|Integrated Oil & Gas - Energy|1|104.76|109.53
+2024-03-13|XOM|Integrated Oil & Gas - Energy|1|104.52|109.53
+2024-03-13|XEL|Multi-Utilities - Utilities|1|49.57|51.5
+2024-03-13|ZTS|Pharmaceuticals - Health Care|10|176.23|176.23
+2024-03-25|ZBH|Health Care Equipment - Health Care|16|121.39|127.91
+2024-03-25|YUM|Restaurants - Consumer Discretionary|15|129.03|134.62
+2024-03-25|ZBRA|Electronic Equipment & Instruments - Information Technology|7|283.75|297.94
+2024-03-25|XYL|Industrial Machinery & Supplies & Components - Industrials|16|125.1|127.76
+2024-03-25|XOM|Integrated Oil & Gas - Energy|1|104.76|114.65
+2024-03-25|XOM|Integrated Oil & Gas - Energy|1|104.52|114.65
+2024-03-25|XEL|Multi-Utilities - Utilities|1|49.57|52.48
+2024-03-25|ZTS|Pharmaceuticals - Health Care|10|176.23|167.81
+2024-03-25|ZTS|Pharmaceuticals - Health Care|1|167.81|167.81
+2024-03-25|XEL|Multi-Utilities - Utilities|1|52.48|52.48
+2024-03-25|WBD|Broadcasting - Communication Services|1|8.46|8.46
+2024-03-26|ZBH|Health Care Equipment - Health Care|16|121.39|127.87
+2024-03-26|YUM|Restaurants - Consumer Discretionary|15|129.03|134.8
+2024-03-26|ZBRA|Electronic Equipment & Instruments - Information Technology|7|283.75|291.38
+2024-03-26|XYL|Industrial Machinery & Supplies & Components - Industrials|16|125.1|127.9
+2024-03-26|XOM|Integrated Oil & Gas - Energy|1|104.76|113.79
+2024-03-26|XOM|Integrated Oil & Gas - Energy|1|104.52|113.79
+2024-03-26|XEL|Multi-Utilities - Utilities|1|49.57|51.8
+2024-03-26|ZTS|Pharmaceuticals - Health Care|1|167.81|165.67
+2024-03-26|XEL|Multi-Utilities - Utilities|1|52.48|51.8
+2024-03-26|WBD|Broadcasting - Communication Services|1|8.46|8.38
+2024-03-26|ZTS|Pharmaceuticals - Health Care|10|165.67|165.67
+2024-03-28|ZBH|Health Care Equipment - Health Care|16|121.39|131.98
+2024-03-28|YUM|Restaurants - Consumer Discretionary|15|129.03|138.65
+2024-03-28|ZBRA|Electronic Equipment & Instruments - Information Technology|7|283.75|301.44
+2024-03-28|XYL|Industrial Machinery & Supplies & Components - Industrials|16|125.1|129.24
+2024-03-28|XEL|Multi-Utilities - Utilities|1|49.57|53.75
+2024-03-28|ZTS|Pharmaceuticals - Health Care|1|167.81|169.21
+2024-03-28|XEL|Multi-Utilities - Utilities|1|52.48|53.75
+2024-03-28|WBD|Broadcasting - Communication Services|1|8.46|8.73
+2024-03-28|ZTS|Pharmaceuticals - Health Care|10|165.67|169.21
+2024-03-28|ZTS|Pharmaceuticals - Health Care|1|169.21|169.21
+2024-03-28|XEL|Multi-Utilities - Utilities|1|53.75|53.75
+2024-03-28|WBD|Broadcasting - Communication Services|1|8.73|8.73
+2024-04-12|ZBH|Health Care Equipment - Health Care|16|121.39|124.48
+2024-04-12|YUM|Restaurants - Consumer Discretionary|15|129.03|137.8
+2024-04-12|ZBRA|Electronic Equipment & Instruments - Information Technology|7|283.75|289.68
+2024-04-12|XYL|Industrial Machinery & Supplies & Components - Industrials|16|125.1|128.11
+2024-04-12|XEL|Multi-Utilities - Utilities|1|49.57|53.17
+2024-04-12|XEL|Multi-Utilities - Utilities|1|52.48|53.17
+2024-04-12|WBD|Broadcasting - Communication Services|1|8.46|8.34
+2024-04-12|XEL|Multi-Utilities - Utilities|1|53.75|53.17
+2024-04-12|WBD|Broadcasting - Communication Services|1|8.73|8.34
+2024-04-12|ZTS|Pharmaceuticals - Health Care|12|149.98|149.98
+2024-04-16|ZBH|Health Care Equipment - Health Care|16|121.39|122.07
+2024-04-16|YUM|Restaurants - Consumer Discretionary|15|129.03|138.0
+2024-04-16|ZBRA|Electronic Equipment & Instruments - Information Technology|7|283.75|280.42
+2024-04-16|XYL|Industrial Machinery & Supplies & Components - Industrials|16|125.1|128.0
+2024-04-16|XEL|Multi-Utilities - Utilities|1|49.57|52.53
+2024-04-16|XEL|Multi-Utilities - Utilities|1|52.48|52.53
+2024-04-16|WBD|Broadcasting - Communication Services|1|8.46|8.14
+2024-04-16|XEL|Multi-Utilities - Utilities|1|53.75|52.53
+2024-04-16|ZTS|Pharmaceuticals - Health Care|12|149.98|153.02
+2024-04-16|WBD|Broadcasting - Communication Services|1|8.14|8.14
+2024-04-19|ZBH|Health Care Equipment - Health Care|16|121.39|119.43
+2024-04-19|YUM|Restaurants - Consumer Discretionary|15|129.03|138.5
+2024-04-19|XYL|Industrial Machinery & Supplies & Components - Industrials|16|125.1|127.84
+2024-04-19|XEL|Multi-Utilities - Utilities|1|52.48|54.72
+2024-04-19|WBD|Broadcasting - Communication Services|1|8.46|8.4
+2024-04-19|XEL|Multi-Utilities - Utilities|1|53.75|54.72
+2024-04-19|ZTS|Pharmaceuticals - Health Care|12|149.98|146.5
+2024-04-19|WBD|Broadcasting - Communication Services|1|8.14|8.4
+2024-04-19|ZTS|Pharmaceuticals - Health Care|1|146.5|146.5
+2024-04-19|ZBRA|Electronic Equipment & Instruments - Information Technology|6|268.07|268.07
+2024-04-19|XOM|Integrated Oil & Gas - Energy|1|119.88|119.88
+2024-04-19|XEL|Multi-Utilities - Utilities|1|54.72|54.72
+2024-04-26|ZBH|Health Care Equipment - Health Care|16|121.39|119.35
+2024-04-26|YUM|Restaurants - Consumer Discretionary|15|129.03|141.77
+2024-04-26|XYL|Industrial Machinery & Supplies & Components - Industrials|16|125.1|132.4
+2024-04-26|XEL|Multi-Utilities - Utilities|1|52.48|53.96
+2024-04-26|WBD|Broadcasting - Communication Services|1|8.46|8.11
+2024-04-26|XEL|Multi-Utilities - Utilities|1|53.75|53.96
+2024-04-26|ZTS|Pharmaceuticals - Health Care|12|149.98|158.42
+2024-04-26|WBD|Broadcasting - Communication Services|1|8.14|8.11
+2024-04-26|ZTS|Pharmaceuticals - Health Care|1|146.5|158.42
+2024-04-26|XOM|Integrated Oil & Gas - Energy|1|119.88|117.96
+2024-04-26|XEL|Multi-Utilities - Utilities|1|54.72|53.96
+2024-04-26|ZBRA|Electronic Equipment & Instruments - Information Technology|6|297.21|297.21
+2024-04-29|ZBH|Health Care Equipment - Health Care|16|121.39|121.71
+2024-04-29|XYL|Industrial Machinery & Supplies & Components - Industrials|16|125.1|132.59
+2024-04-29|XEL|Multi-Utilities - Utilities|1|52.48|54.48
+2024-04-29|WBD|Broadcasting - Communication Services|1|8.46|8.15
+2024-04-29|XEL|Multi-Utilities - Utilities|1|53.75|54.48
+2024-04-29|ZTS|Pharmaceuticals - Health Care|12|149.98|159.7
+2024-04-29|WBD|Broadcasting - Communication Services|1|8.14|8.15
+2024-04-29|ZTS|Pharmaceuticals - Health Care|1|146.5|159.7
+2024-04-29|XOM|Integrated Oil & Gas - Energy|1|119.88|119.64
+2024-04-29|XEL|Multi-Utilities - Utilities|1|54.72|54.48
+2024-04-29|ZBRA|Electronic Equipment & Instruments - Information Technology|6|297.21|300.01
+2024-04-29|YUM|Restaurants - Consumer Discretionary|14|143.19|143.19
+2024-04-29|XOM|Integrated Oil & Gas - Energy|1|119.64|119.64
+2024-04-29|WBD|Broadcasting - Communication Services|3|8.15|8.15
+2024-04-30|ZBH|Health Care Equipment - Health Care|16|121.39|120.28
+2024-04-30|XYL|Industrial Machinery & Supplies & Components - Industrials|16|125.1|130.7
+2024-04-30|XEL|Multi-Utilities - Utilities|1|52.48|53.73
+2024-04-30|XEL|Multi-Utilities - Utilities|1|53.75|53.73
+2024-04-30|ZTS|Pharmaceuticals - Health Care|12|149.98|159.24
+2024-04-30|ZTS|Pharmaceuticals - Health Care|1|146.5|159.24
+2024-04-30|XOM|Integrated Oil & Gas - Energy|1|119.88|118.27
+2024-04-30|XEL|Multi-Utilities - Utilities|1|54.72|53.73
+2024-04-30|ZBRA|Electronic Equipment & Instruments - Information Technology|6|297.21|314.56
+2024-04-30|YUM|Restaurants - Consumer Discretionary|14|143.19|141.25
+2024-04-30|XOM|Integrated Oil & Gas - Energy|1|119.64|118.27
+2024-04-30|WY|Timber REITs - Real Estate|1|30.17|30.17
+2024-04-30|WBD|Broadcasting - Communication Services|1|7.36|7.36
+2024-05-01|ZBH|Health Care Equipment - Health Care|16|121.39|119.56
+2024-05-01|XYL|Industrial Machinery & Supplies & Components - Industrials|16|125.1|130.96
+2024-05-01|XEL|Multi-Utilities - Utilities|1|52.48|53.78
+2024-05-01|XEL|Multi-Utilities - Utilities|1|53.75|53.78
+2024-05-01|ZTS|Pharmaceuticals - Health Care|12|149.98|158.5
+2024-05-01|ZTS|Pharmaceuticals - Health Care|1|146.5|158.5
+2024-05-01|XOM|Integrated Oil & Gas - Energy|1|119.88|116.03
+2024-05-01|XEL|Multi-Utilities - Utilities|1|54.72|53.78
+2024-05-01|ZBRA|Electronic Equipment & Instruments - Information Technology|6|297.21|309.05
+2024-05-01|XOM|Integrated Oil & Gas - Energy|1|119.64|116.03
+2024-05-01|WY|Timber REITs - Real Estate|1|30.17|30.2
+2024-05-01|WBD|Broadcasting - Communication Services|1|7.36|7.62
+2024-05-01|YUM|Restaurants - Consumer Discretionary|14|135.33|135.33
+2024-05-02|ZBH|Health Care Equipment - Health Care|16|121.39|118.46
+2024-05-02|XYL|Industrial Machinery & Supplies & Components - Industrials|16|125.1|135.99
+2024-05-02|XEL|Multi-Utilities - Utilities|1|52.48|53.79
+2024-05-02|XEL|Multi-Utilities - Utilities|1|53.75|53.79
+2024-05-02|XOM|Integrated Oil & Gas - Energy|1|119.88|116.24
+2024-05-02|XEL|Multi-Utilities - Utilities|1|54.72|53.79
+2024-05-02|ZBRA|Electronic Equipment & Instruments - Information Technology|6|297.21|312.71
+2024-05-02|XOM|Integrated Oil & Gas - Energy|1|119.64|116.24
+2024-05-02|WY|Timber REITs - Real Estate|1|30.17|31.01
+2024-05-02|WBD|Broadcasting - Communication Services|1|7.36|7.95
+2024-05-02|YUM|Restaurants - Consumer Discretionary|14|135.33|135.07
+2024-05-02|ZTS|Pharmaceuticals - Health Care|12|167.23|167.23
+2024-05-02|YUM|Restaurants - Consumer Discretionary|1|135.07|135.07
+2024-05-02|WY|Timber REITs - Real Estate|1|31.01|31.01
+2024-05-06|ZBH|Health Care Equipment - Health Care|16|121.39|120.56
+2024-05-06|XEL|Multi-Utilities - Utilities|1|52.48|54.36
+2024-05-06|XEL|Multi-Utilities - Utilities|1|53.75|54.36
+2024-05-06|XOM|Integrated Oil & Gas - Energy|1|119.88|116.75
+2024-05-06|XEL|Multi-Utilities - Utilities|1|54.72|54.36
+2024-05-06|ZBRA|Electronic Equipment & Instruments - Information Technology|6|297.21|315.79
+2024-05-06|XOM|Integrated Oil & Gas - Energy|1|119.64|116.75
+2024-05-06|WY|Timber REITs - Real Estate|1|30.17|31.08
+2024-05-06|WBD|Broadcasting - Communication Services|1|7.36|7.96
+2024-05-06|YUM|Restaurants - Consumer Discretionary|14|135.33|136.18
+2024-05-06|ZTS|Pharmaceuticals - Health Care|12|167.23|165.95
+2024-05-06|YUM|Restaurants - Consumer Discretionary|1|135.07|136.18
+2024-05-06|WY|Timber REITs - Real Estate|1|31.01|31.08
+2024-05-06|ZBH|Health Care Equipment - Health Care|1|120.56|120.56
+2024-05-06|XYL|Industrial Machinery & Supplies & Components - Industrials|15|139.2|139.2
+2024-05-06|WBD|Broadcasting - Communication Services|2|7.96|7.96
+2024-05-10|ZBH|Health Care Equipment - Health Care|16|121.39|121.31
+2024-05-10|XEL|Multi-Utilities - Utilities|1|52.48|55.46
+2024-05-10|XEL|Multi-Utilities - Utilities|1|53.75|55.46
+2024-05-10|XOM|Integrated Oil & Gas - Energy|1|119.88|117.96
+2024-05-10|XEL|Multi-Utilities - Utilities|1|54.72|55.46
+2024-05-10|ZBRA|Electronic Equipment & Instruments - Information Technology|6|297.21|315.8
+2024-05-10|XOM|Integrated Oil & Gas - Energy|1|119.64|117.96
+2024-05-10|WY|Timber REITs - Real Estate|1|30.17|30.97
+2024-05-10|YUM|Restaurants - Consumer Discretionary|14|135.33|137.62
+2024-05-10|ZTS|Pharmaceuticals - Health Care|12|167.23|169.04
+2024-05-10|YUM|Restaurants - Consumer Discretionary|1|135.07|137.62
+2024-05-10|WY|Timber REITs - Real Estate|1|31.01|30.97
+2024-05-10|ZBH|Health Care Equipment - Health Care|1|120.56|121.31
+2024-05-10|XYL|Industrial Machinery & Supplies & Components - Industrials|15|139.2|143.0
+2024-05-10|WBD|Broadcasting - Communication Services|2|7.96|8.15
+2024-05-10|WBD|Broadcasting - Communication Services|1|8.15|8.15
+2024-05-22|ZBH|Health Care Equipment - Health Care|16|121.39|119.33
+2024-05-22|XEL|Multi-Utilities - Utilities|1|52.48|55.52
+2024-05-22|XEL|Multi-Utilities - Utilities|1|53.75|55.52
+2024-05-22|XOM|Integrated Oil & Gas - Energy|1|119.88|115.48
+2024-05-22|XEL|Multi-Utilities - Utilities|1|54.72|55.52
+2024-05-22|XOM|Integrated Oil & Gas - Energy|1|119.64|115.48
+2024-05-22|WY|Timber REITs - Real Estate|1|30.17|30.7
+2024-05-22|YUM|Restaurants - Consumer Discretionary|14|135.33|139.13
+2024-05-22|ZTS|Pharmaceuticals - Health Care|12|167.23|172.05
+2024-05-22|YUM|Restaurants - Consumer Discretionary|1|135.07|139.13
+2024-05-22|WY|Timber REITs - Real Estate|1|31.01|30.7
+2024-05-22|ZBH|Health Care Equipment - Health Care|1|120.56|119.33
+2024-05-22|XYL|Industrial Machinery & Supplies & Components - Industrials|15|139.2|145.2
+2024-05-22|WBD|Broadcasting - Communication Services|2|7.96|8.06
+2024-05-22|WBD|Broadcasting - Communication Services|1|8.15|8.06
+2024-05-22|ZBRA|Electronic Equipment & Instruments - Information Technology|6|326.98|326.98
+2024-05-23|ZBH|Health Care Equipment - Health Care|16|121.39|115.85
+2024-05-23|XEL|Multi-Utilities - Utilities|1|52.48|54.05
+2024-05-23|XEL|Multi-Utilities - Utilities|1|53.75|54.05
+2024-05-23|XEL|Multi-Utilities - Utilities|1|54.72|54.05
+2024-05-23|WY|Timber REITs - Real Estate|1|30.17|30.11
+2024-05-23|YUM|Restaurants - Consumer Discretionary|14|135.33|137.01
+2024-05-23|ZTS|Pharmaceuticals - Health Care|12|167.23|170.9
+2024-05-23|YUM|Restaurants - Consumer Discretionary|1|135.07|137.01
+2024-05-23|WY|Timber REITs - Real Estate|1|31.01|30.11
+2024-05-23|ZBH|Health Care Equipment - Health Care|1|120.56|115.85
+2024-05-23|XYL|Industrial Machinery & Supplies & Components - Industrials|15|139.2|143.72
+2024-05-23|WBD|Broadcasting - Communication Services|2|7.96|7.7
+2024-05-23|ZBRA|Electronic Equipment & Instruments - Information Technology|6|326.98|324.06
+2024-05-23|XOM|Integrated Oil & Gas - Energy|2|113.51|113.51
+2024-05-23|WBD|Broadcasting - Communication Services|1|7.7|7.7
+2024-05-29|XEL|Multi-Utilities - Utilities|1|52.48|53.3
+2024-05-29|XEL|Multi-Utilities - Utilities|1|53.75|53.3
+2024-05-29|XEL|Multi-Utilities - Utilities|1|54.72|53.3
+2024-05-29|WY|Timber REITs - Real Estate|1|30.17|29.36
+2024-05-29|YUM|Restaurants - Consumer Discretionary|14|135.33|134.67
+2024-05-29|ZTS|Pharmaceuticals - Health Care|12|167.23|170.8
+2024-05-29|YUM|Restaurants - Consumer Discretionary|1|135.07|134.67
+2024-05-29|ZBH|Health Care Equipment - Health Care|1|120.56|115.14
+2024-05-29|XYL|Industrial Machinery & Supplies & Components - Industrials|15|139.2|137.95
+2024-05-29|WBD|Broadcasting - Communication Services|2|7.96|7.66
+2024-05-29|ZBRA|Electronic Equipment & Instruments - Information Technology|6|326.98|316.93
+2024-05-29|XOM|Integrated Oil & Gas - Energy|2|113.51|113.63
+2024-05-29|WBD|Broadcasting - Communication Services|1|7.7|7.66
+2024-05-29|ZBH|Health Care Equipment - Health Care|16|115.14|115.14
+2024-05-29|WY|Timber REITs - Real Estate|1|29.36|29.36
+2024-05-30|XEL|Multi-Utilities - Utilities|1|52.48|54.32
+2024-05-30|XEL|Multi-Utilities - Utilities|1|53.75|54.32
+2024-05-30|XEL|Multi-Utilities - Utilities|1|54.72|54.32
+2024-05-30|WY|Timber REITs - Real Estate|1|30.17|29.72
+2024-05-30|YUM|Restaurants - Consumer Discretionary|14|135.33|134.84
+2024-05-30|ZTS|Pharmaceuticals - Health Care|12|167.23|169.44
+2024-05-30|YUM|Restaurants - Consumer Discretionary|1|135.07|134.84
+2024-05-30|XYL|Industrial Machinery & Supplies & Components - Industrials|15|139.2|139.4
+2024-05-30|WBD|Broadcasting - Communication Services|2|7.96|8.08
+2024-05-30|ZBRA|Electronic Equipment & Instruments - Information Technology|6|326.98|316.62
+2024-05-30|XOM|Integrated Oil & Gas - Energy|2|113.51|113.99
+2024-05-30|WBD|Broadcasting - Communication Services|1|7.7|8.08
+2024-05-30|ZBH|Health Care Equipment - Health Care|16|115.14|114.44
+2024-05-30|WY|Timber REITs - Real Estate|1|29.36|29.72
+2024-05-30|ZBH|Health Care Equipment - Health Care|1|114.44|114.44
+2024-06-03|XEL|Multi-Utilities - Utilities|1|52.48|55.28
+2024-06-03|XEL|Multi-Utilities - Utilities|1|53.75|55.28
+2024-06-03|XEL|Multi-Utilities - Utilities|1|54.72|55.28
+2024-06-03|WY|Timber REITs - Real Estate|1|30.17|29.71
+2024-06-03|YUM|Restaurants - Consumer Discretionary|14|135.33|139.33
+2024-06-03|ZTS|Pharmaceuticals - Health Care|12|167.23|172.37
+2024-06-03|YUM|Restaurants - Consumer Discretionary|1|135.07|139.33
+2024-06-03|XYL|Industrial Machinery & Supplies & Components - Industrials|15|139.2|138.61
+2024-06-03|WBD|Broadcasting - Communication Services|2|7.96|8.33
+2024-06-03|XOM|Integrated Oil & Gas - Energy|2|113.51|114.45
+2024-06-03|WBD|Broadcasting - Communication Services|1|7.7|8.33
+2024-06-03|ZBH|Health Care Equipment - Health Care|16|115.14|113.12
+2024-06-03|WY|Timber REITs - Real Estate|1|29.36|29.71
+2024-06-03|ZBH|Health Care Equipment - Health Care|1|114.44|113.12
+2024-06-03|ZBRA|Electronic Equipment & Instruments - Information Technology|6|307.63|307.63
+2024-06-11|XEL|Multi-Utilities - Utilities|1|52.48|55.04
+2024-06-11|XEL|Multi-Utilities - Utilities|1|53.75|55.04
+2024-06-11|XEL|Multi-Utilities - Utilities|1|54.72|55.04
+2024-06-11|WY|Timber REITs - Real Estate|1|30.17|29.14
+2024-06-11|YUM|Restaurants - Consumer Discretionary|14|135.33|137.01
+2024-06-11|ZTS|Pharmaceuticals - Health Care|12|167.23|178.54
+2024-06-11|YUM|Restaurants - Consumer Discretionary|1|135.07|137.01
+2024-06-11|XYL|Industrial Machinery & Supplies & Components - Industrials|15|139.2|138.52
+2024-06-11|WBD|Broadcasting - Communication Services|2|7.96|8.04
+2024-06-11|XOM|Integrated Oil & Gas - Energy|2|113.51|112.17
+2024-06-11|WBD|Broadcasting - Communication Services|1|7.7|8.04
+2024-06-11|WY|Timber REITs - Real Estate|1|29.36|29.14
+2024-06-11|ZBH|Health Care Equipment - Health Care|1|114.44|109.23
+2024-06-11|ZBRA|Electronic Equipment & Instruments - Information Technology|6|307.63|301.38
+2024-06-11|ZBH|Health Care Equipment - Health Care|16|109.23|109.23
+2024-06-12|XEL|Multi-Utilities - Utilities|1|52.48|54.77
+2024-06-12|XEL|Multi-Utilities - Utilities|1|53.75|54.77
+2024-06-12|XEL|Multi-Utilities - Utilities|1|54.72|54.77
+2024-06-12|WY|Timber REITs - Real Estate|1|30.17|29.21
+2024-06-12|YUM|Restaurants - Consumer Discretionary|14|135.33|137.3
+2024-06-12|ZTS|Pharmaceuticals - Health Care|12|167.23|175.85
+2024-06-12|YUM|Restaurants - Consumer Discretionary|1|135.07|137.3
+2024-06-12|XYL|Industrial Machinery & Supplies & Components - Industrials|15|139.2|140.68
+2024-06-12|WBD|Broadcasting - Communication Services|2|7.96|7.81
+2024-06-12|XOM|Integrated Oil & Gas - Energy|2|113.51|110.93
+2024-06-12|WBD|Broadcasting - Communication Services|1|7.7|7.81
+2024-06-12|WY|Timber REITs - Real Estate|1|29.36|29.21
+2024-06-12|ZBRA|Electronic Equipment & Instruments - Information Technology|6|307.63|304.56
+2024-06-12|ZBH|Health Care Equipment - Health Care|16|109.23|107.45
+2024-06-12|ZBH|Health Care Equipment - Health Care|1|107.45|107.45
+2024-06-13|XEL|Multi-Utilities - Utilities|1|52.48|54.34
+2024-06-13|XEL|Multi-Utilities - Utilities|1|53.75|54.34
+2024-06-13|XEL|Multi-Utilities - Utilities|1|54.72|54.34
+2024-06-13|WY|Timber REITs - Real Estate|1|30.17|29.02
+2024-06-13|YUM|Restaurants - Consumer Discretionary|14|135.33|138.01
+2024-06-13|ZTS|Pharmaceuticals - Health Care|12|167.23|171.32
+2024-06-13|YUM|Restaurants - Consumer Discretionary|1|135.07|138.01
+2024-06-13|XYL|Industrial Machinery & Supplies & Components - Industrials|15|139.2|140.67
+2024-06-13|XOM|Integrated Oil & Gas - Energy|2|113.51|110.04
+2024-06-13|WY|Timber REITs - Real Estate|1|29.36|29.02
+2024-06-13|ZBRA|Electronic Equipment & Instruments - Information Technology|6|307.63|308.91
+2024-06-13|ZBH|Health Care Equipment - Health Care|16|109.23|106.97
+2024-06-13|ZBH|Health Care Equipment - Health Care|1|107.45|106.97
+2024-06-13|WBD|Broadcasting - Communication Services|3|7.29|7.29
+2024-06-20|XEL|Multi-Utilities - Utilities|1|52.48|53.53
+2024-06-20|XEL|Multi-Utilities - Utilities|1|53.75|53.53
+2024-06-20|XEL|Multi-Utilities - Utilities|1|54.72|53.53
+2024-06-20|YUM|Restaurants - Consumer Discretionary|14|135.33|134.15
+2024-06-20|ZTS|Pharmaceuticals - Health Care|12|167.23|168.18
+2024-06-20|YUM|Restaurants - Consumer Discretionary|1|135.07|134.15
+2024-06-20|XYL|Industrial Machinery & Supplies & Components - Industrials|15|139.2|139.23
+2024-06-20|XOM|Integrated Oil & Gas - Energy|2|113.51|111.74
+2024-06-20|WY|Timber REITs - Real Estate|1|29.36|28.64
+2024-06-20|ZBRA|Electronic Equipment & Instruments - Information Technology|6|307.63|296.64
+2024-06-20|ZBH|Health Care Equipment - Health Care|16|109.23|106.25
+2024-06-20|ZBH|Health Care Equipment - Health Care|1|107.45|106.25
+2024-06-20|WBD|Broadcasting - Communication Services|3|7.29|7.04
+2024-06-20|WY|Timber REITs - Real Estate|1|28.64|28.64

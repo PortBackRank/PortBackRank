@@ -164,7 +164,7 @@ class Data():
 
             filtered_data = data[
                 (data['Date'] >= start_date_dt) & (data['Date'] <= end_date_dt)
-            ]
+            ].copy()
 
             if filtered_data.empty:
                 continue

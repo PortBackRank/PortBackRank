@@ -1,0 +1,865 @@
+date|symbol|sector|quantity|buy_price|price
+2024-01-02|ZTS|Pharmaceuticals - Health Care|10|196.57|196.57
+2024-01-02|ZBRA|Electronic Equipment & Instruments - Information Technology|7|267.98|267.98
+2024-01-02|ZBH|Health Care Equipment - Health Care|16|121.39|121.39
+2024-01-02|YUM|Restaurants - Consumer Discretionary|15|129.03|129.03
+2024-01-02|XYL|Industrial Machinery & Supplies & Components - Industrials|17|113.67|113.67
+2024-01-02|XOM|Integrated Oil & Gas - Energy|3|102.36|102.36
+2024-01-02|WY|Timber REITs - Real Estate|1|34.79|34.79
+2024-01-03|ZTS|Pharmaceuticals - Health Care|10|196.57|192.93
+2024-01-03|ZBH|Health Care Equipment - Health Care|16|121.39|120.47
+2024-01-03|YUM|Restaurants - Consumer Discretionary|15|129.03|129.1
+2024-01-03|XYL|Industrial Machinery & Supplies & Components - Industrials|17|113.67|111.56
+2024-01-03|XOM|Integrated Oil & Gas - Energy|3|102.36|103.22
+2024-01-03|WY|Timber REITs - Real Estate|1|34.79|34.06
+2024-01-03|ZBRA|Electronic Equipment & Instruments - Information Technology|7|252.52|252.52
+2024-01-17|ZTS|Pharmaceuticals - Health Care|10|196.57|190.9
+2024-01-17|ZBH|Health Care Equipment - Health Care|16|121.39|122.23
+2024-01-17|YUM|Restaurants - Consumer Discretionary|15|129.03|129.08
+2024-01-17|XYL|Industrial Machinery & Supplies & Components - Industrials|17|113.67|109.69
+2024-01-17|ZBRA|Electronic Equipment & Instruments - Information Technology|8|239.17|239.17
+2024-01-17|XEL|Multi-Utilities - Utilities|1|60.09|60.09
+2024-01-17|WBD|Broadcasting - Communication Services|3|10.16|10.16
+2024-01-24|ZBH|Health Care Equipment - Health Care|16|121.39|120.52
+2024-01-24|YUM|Restaurants - Consumer Discretionary|15|129.03|129.44
+2024-01-24|XYL|Industrial Machinery & Supplies & Components - Industrials|17|113.67|111.7
+2024-01-24|ZBRA|Electronic Equipment & Instruments - Information Technology|8|239.17|254.17
+2024-01-24|XEL|Multi-Utilities - Utilities|1|60.09|58.22
+2024-01-24|WBD|Broadcasting - Communication Services|3|10.16|10.41
+2024-01-24|ZTS|Pharmaceuticals - Health Care|10|186.07|186.07
+2024-02-09|ZBH|Health Care Equipment - Health Care|16|121.39|122.8
+2024-02-09|YUM|Restaurants - Consumer Discretionary|15|129.03|130.27
+2024-02-09|XYL|Industrial Machinery & Supplies & Components - Industrials|17|113.67|124.3
+2024-02-09|ZBRA|Electronic Equipment & Instruments - Information Technology|8|239.17|253.09
+2024-02-09|XEL|Multi-Utilities - Utilities|1|60.09|58.17
+2024-02-09|ZTS|Pharmaceuticals - Health Care|10|186.07|197.32
+2024-02-09|WBD|Broadcasting - Communication Services|3|9.64|9.64
+2024-02-15|ZBH|Health Care Equipment - Health Care|16|121.39|124.4
+2024-02-15|YUM|Restaurants - Consumer Discretionary|15|129.03|135.4
+2024-02-15|XYL|Industrial Machinery & Supplies & Components - Industrials|17|113.67|124.42
+2024-02-15|XEL|Multi-Utilities - Utilities|1|60.09|59.01
+2024-02-15|ZTS|Pharmaceuticals - Health Care|10|186.07|189.65
+2024-02-15|WBD|Broadcasting - Communication Services|3|9.64|10.14
+2024-02-15|FSLR|Semiconductors - Information Technology|12|159.78|159.78
+2024-02-15|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|283.75
+2024-02-15|JCI|Building Products - Industrials|1|57.4|57.4
+2024-02-15|WBD|Broadcasting - Communication Services|1|10.14|10.14
+2024-02-21|ZBH|Health Care Equipment - Health Care|16|121.39|128.35
+2024-02-21|YUM|Restaurants - Consumer Discretionary|15|129.03|135.23
+2024-02-21|XYL|Industrial Machinery & Supplies & Components - Industrials|17|113.67|123.49
+2024-02-21|XEL|Multi-Utilities - Utilities|1|60.09|59.81
+2024-02-21|ZTS|Pharmaceuticals - Health Care|10|186.07|188.38
+2024-02-21|WBD|Broadcasting - Communication Services|3|9.64|9.57
+2024-02-21|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|274.43
+2024-02-21|JCI|Building Products - Industrials|1|57.4|57.8
+2024-02-21|TSLA|Automobile Manufacturers - Consumer Discretionary|9|194.77|194.77
+2024-02-21|KR|Food Retail - Consumer Staples|1|47.81|47.81
+2024-02-21|WBD|Broadcasting - Communication Services|1|9.57|9.57
+2024-02-22|ZBH|Health Care Equipment - Health Care|16|121.39|128.54
+2024-02-22|YUM|Restaurants - Consumer Discretionary|15|129.03|137.33
+2024-02-22|XEL|Multi-Utilities - Utilities|1|60.09|59.33
+2024-02-22|ZTS|Pharmaceuticals - Health Care|10|186.07|196.66
+2024-02-22|WBD|Broadcasting - Communication Services|3|9.64|9.56
+2024-02-22|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|279.48
+2024-02-22|JCI|Building Products - Industrials|1|57.4|58.27
+2024-02-22|TSLA|Automobile Manufacturers - Consumer Discretionary|9|194.77|197.41
+2024-02-22|KR|Food Retail - Consumer Staples|1|47.81|47.84
+2024-02-22|WBD|Broadcasting - Communication Services|1|9.57|9.56
+2024-02-22|TECH|Life Sciences Tools & Services - Health Care|28|71.76|71.76
+2024-02-22|EXC|Electric Utilities - Utilities|3|36.03|36.03
+2024-02-22|WBD|Broadcasting - Communication Services|1|9.56|9.56
+2024-02-23|ZBH|Health Care Equipment - Health Care|16|121.39|129.18
+2024-02-23|YUM|Restaurants - Consumer Discretionary|15|129.03|138.32
+2024-02-23|XEL|Multi-Utilities - Utilities|1|60.09|59.33
+2024-02-23|ZTS|Pharmaceuticals - Health Care|10|186.07|197.21
+2024-02-23|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|274.99
+2024-02-23|JCI|Building Products - Industrials|1|57.4|58.44
+2024-02-23|TSLA|Automobile Manufacturers - Consumer Discretionary|9|194.77|191.97
+2024-02-23|KR|Food Retail - Consumer Staples|1|47.81|48.21
+2024-02-23|TECH|Life Sciences Tools & Services - Health Care|28|71.76|71.62
+2024-02-23|EXC|Electric Utilities - Utilities|3|36.03|36.13
+2024-02-23|HBAN|Regional Banks - Financials|3|12.86|12.86
+2024-02-29|ZBH|Health Care Equipment - Health Care|16|121.39|124.36
+2024-02-29|YUM|Restaurants - Consumer Discretionary|15|129.03|138.42
+2024-02-29|ZTS|Pharmaceuticals - Health Care|10|186.07|198.33
+2024-02-29|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|279.48
+2024-02-29|JCI|Building Products - Industrials|1|57.4|59.27
+2024-02-29|TSLA|Automobile Manufacturers - Consumer Discretionary|9|194.77|201.88
+2024-02-29|KR|Food Retail - Consumer Staples|1|47.81|49.61
+2024-02-29|TECH|Life Sciences Tools & Services - Health Care|28|71.76|73.57
+2024-02-29|EXC|Electric Utilities - Utilities|3|36.03|35.84
+2024-02-29|HBAN|Regional Banks - Financials|3|12.86|13.04
+2024-02-29|FITB|Regional Banks - Financials|1|34.34|34.34
+2024-02-29|NCLH|Hotels, Resorts & Cruise Lines - Consumer Discretionary|1|19.39|19.39
+2024-03-05|ZBH|Health Care Equipment - Health Care|16|121.39|124.78
+2024-03-05|YUM|Restaurants - Consumer Discretionary|15|129.03|138.7
+2024-03-05|ZTS|Pharmaceuticals - Health Care|10|186.07|185.23
+2024-03-05|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|284.54
+2024-03-05|JCI|Building Products - Industrials|1|57.4|60.35
+2024-03-05|KR|Food Retail - Consumer Staples|1|47.81|49.48
+2024-03-05|TECH|Life Sciences Tools & Services - Health Care|28|71.76|73.4
+2024-03-05|EXC|Electric Utilities - Utilities|3|36.03|36.27
+2024-03-05|HBAN|Regional Banks - Financials|3|12.86|13.66
+2024-03-05|FITB|Regional Banks - Financials|1|34.34|36.35
+2024-03-05|NCLH|Hotels, Resorts & Cruise Lines - Consumer Discretionary|1|19.39|19.66
+2024-03-05|SNA|Industrial Machinery & Supplies & Components - Industrials|5|283.04|283.04
+2024-03-05|ROL|Environmental & Facilities Services - Industrials|4|44.28|44.28
+2024-03-05|WY|Timber REITs - Real Estate|1|34.44|34.44
+2024-03-07|ZBH|Health Care Equipment - Health Care|16|121.39|127.36
+2024-03-07|YUM|Restaurants - Consumer Discretionary|15|129.03|140.38
+2024-03-07|ZTS|Pharmaceuticals - Health Care|10|186.07|181.51
+2024-03-07|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|288.59
+2024-03-07|JCI|Building Products - Industrials|1|57.4|61.32
+2024-03-07|TECH|Life Sciences Tools & Services - Health Care|28|71.76|76.94
+2024-03-07|EXC|Electric Utilities - Utilities|3|36.03|36.83
+2024-03-07|HBAN|Regional Banks - Financials|3|12.86|13.53
+2024-03-07|FITB|Regional Banks - Financials|1|34.34|36.38
+2024-03-07|NCLH|Hotels, Resorts & Cruise Lines - Consumer Discretionary|1|19.39|19.63
+2024-03-07|SNA|Industrial Machinery & Supplies & Components - Industrials|5|283.04|294.61
+2024-03-07|ROL|Environmental & Facilities Services - Industrials|4|44.28|45.24
+2024-03-07|WY|Timber REITs - Real Estate|1|34.44|34.37
+2024-03-07|INTC|Semiconductors - Information Technology|1|46.15|46.15
+2024-03-07|WBD|Broadcasting - Communication Services|1|8.74|8.74
+2024-03-13|ZBH|Health Care Equipment - Health Care|16|121.39|126.59
+2024-03-13|YUM|Restaurants - Consumer Discretionary|15|129.03|138.36
+2024-03-13|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|284.5
+2024-03-13|JCI|Building Products - Industrials|1|57.4|62.3
+2024-03-13|TECH|Life Sciences Tools & Services - Health Care|28|71.76|72.49
+2024-03-13|EXC|Electric Utilities - Utilities|3|36.03|36.99
+2024-03-13|HBAN|Regional Banks - Financials|3|12.86|13.44
+2024-03-13|FITB|Regional Banks - Financials|1|34.34|36.23
+2024-03-13|NCLH|Hotels, Resorts & Cruise Lines - Consumer Discretionary|1|19.39|19.87
+2024-03-13|SNA|Industrial Machinery & Supplies & Components - Industrials|5|283.04|294.76
+2024-03-13|ROL|Environmental & Facilities Services - Industrials|4|44.28|46.27
+2024-03-13|WY|Timber REITs - Real Estate|1|34.44|34.56
+2024-03-13|WBD|Broadcasting - Communication Services|1|8.74|8.85
+2024-03-13|NEE|Multi-Utilities - Utilities|30|59.54|59.54
+2024-03-13|AES|Independent Power Producers & Energy Traders - Utilities|1|15.75|15.75
+2024-03-15|ZBH|Health Care Equipment - Health Care|16|121.39|125.17
+2024-03-15|YUM|Restaurants - Consumer Discretionary|15|129.03|136.84
+2024-03-15|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|285.86
+2024-03-15|TECH|Life Sciences Tools & Services - Health Care|28|71.76|72.52
+2024-03-15|EXC|Electric Utilities - Utilities|3|36.03|36.48
+2024-03-15|HBAN|Regional Banks - Financials|3|12.86|13.05
+2024-03-15|FITB|Regional Banks - Financials|1|34.34|35.24
+2024-03-15|NCLH|Hotels, Resorts & Cruise Lines - Consumer Discretionary|1|19.39|19.4
+2024-03-15|SNA|Industrial Machinery & Supplies & Components - Industrials|5|283.04|289.2
+2024-03-15|ROL|Environmental & Facilities Services - Industrials|4|44.28|46.35
+2024-03-15|WY|Timber REITs - Real Estate|1|34.44|34.33
+2024-03-15|WBD|Broadcasting - Communication Services|1|8.74|8.54
+2024-03-15|NEE|Multi-Utilities - Utilities|30|59.54|60.08
+2024-03-15|AES|Independent Power Producers & Energy Traders - Utilities|1|15.75|15.01
+2024-03-15|MGM|Casinos & Gaming - Consumer Discretionary|1|42.88|42.88
+2024-03-15|WBD|Broadcasting - Communication Services|3|8.54|8.54
+2024-03-18|ZBH|Health Care Equipment - Health Care|16|121.39|125.96
+2024-03-18|YUM|Restaurants - Consumer Discretionary|15|129.03|136.27
+2024-03-18|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|285.97
+2024-03-18|TECH|Life Sciences Tools & Services - Health Care|28|71.76|71.88
+2024-03-18|EXC|Electric Utilities - Utilities|3|36.03|36.6
+2024-03-18|HBAN|Regional Banks - Financials|3|12.86|13.02
+2024-03-18|FITB|Regional Banks - Financials|1|34.34|35.77
+2024-03-18|NCLH|Hotels, Resorts & Cruise Lines - Consumer Discretionary|1|19.39|19.65
+2024-03-18|SNA|Industrial Machinery & Supplies & Components - Industrials|5|283.04|287.33
+2024-03-18|ROL|Environmental & Facilities Services - Industrials|4|44.28|46.66
+2024-03-18|WY|Timber REITs - Real Estate|1|34.44|34.15
+2024-03-18|WBD|Broadcasting - Communication Services|1|8.74|8.48
+2024-03-18|NEE|Multi-Utilities - Utilities|30|59.54|60.17
+2024-03-18|MGM|Casinos & Gaming - Consumer Discretionary|1|42.88|44.12
+2024-03-18|WBD|Broadcasting - Communication Services|3|8.54|8.48
+2024-03-18|WBD|Broadcasting - Communication Services|2|8.48|8.48
+2024-03-27|ZBH|Health Care Equipment - Health Care|16|121.39|132.61
+2024-03-27|YUM|Restaurants - Consumer Discretionary|15|129.03|137.32
+2024-03-27|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|299.16
+2024-03-27|TECH|Life Sciences Tools & Services - Health Care|28|71.76|69.42
+2024-03-27|EXC|Electric Utilities - Utilities|3|36.03|37.31
+2024-03-27|HBAN|Regional Banks - Financials|3|12.86|13.79
+2024-03-27|FITB|Regional Banks - Financials|1|34.34|36.74
+2024-03-27|SNA|Industrial Machinery & Supplies & Components - Industrials|5|283.04|296.94
+2024-03-27|ROL|Environmental & Facilities Services - Industrials|4|44.28|46.7
+2024-03-27|WY|Timber REITs - Real Estate|1|34.44|35.93
+2024-03-27|WBD|Broadcasting - Communication Services|1|8.74|8.64
+2024-03-27|NEE|Multi-Utilities - Utilities|30|59.54|63.79
+2024-03-27|MGM|Casinos & Gaming - Consumer Discretionary|1|42.88|46.6
+2024-03-27|WBD|Broadcasting - Communication Services|3|8.54|8.64
+2024-03-27|WBD|Broadcasting - Communication Services|2|8.48|8.64
+2024-03-27|AES|Independent Power Producers & Energy Traders - Utilities|1|17.25|17.25
+2024-03-28|ZBH|Health Care Equipment - Health Care|16|121.39|131.98
+2024-03-28|YUM|Restaurants - Consumer Discretionary|15|129.03|138.65
+2024-03-28|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|301.44
+2024-03-28|TECH|Life Sciences Tools & Services - Health Care|28|71.76|70.39
+2024-03-28|EXC|Electric Utilities - Utilities|3|36.03|37.57
+2024-03-28|HBAN|Regional Banks - Financials|3|12.86|13.95
+2024-03-28|FITB|Regional Banks - Financials|1|34.34|37.21
+2024-03-28|SNA|Industrial Machinery & Supplies & Components - Industrials|5|283.04|296.22
+2024-03-28|ROL|Environmental & Facilities Services - Industrials|4|44.28|46.27
+2024-03-28|WY|Timber REITs - Real Estate|1|34.44|35.91
+2024-03-28|WBD|Broadcasting - Communication Services|1|8.74|8.73
+2024-03-28|NEE|Multi-Utilities - Utilities|30|59.54|63.91
+2024-03-28|WBD|Broadcasting - Communication Services|3|8.54|8.73
+2024-03-28|WBD|Broadcasting - Communication Services|2|8.48|8.73
+2024-03-28|AES|Independent Power Producers & Energy Traders - Utilities|1|17.25|17.93
+2024-03-28|GEN|Systems Software - Information Technology|2|22.4|22.4
+2024-04-03|ZBH|Health Care Equipment - Health Care|16|121.39|130.01
+2024-04-03|YUM|Restaurants - Consumer Discretionary|15|129.03|139.01
+2024-04-03|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|292.75
+2024-04-03|EXC|Electric Utilities - Utilities|3|36.03|37.21
+2024-04-03|HBAN|Regional Banks - Financials|3|12.86|13.61
+2024-04-03|FITB|Regional Banks - Financials|1|34.34|35.84
+2024-04-03|SNA|Industrial Machinery & Supplies & Components - Industrials|5|283.04|292.51
+2024-04-03|ROL|Environmental & Facilities Services - Industrials|4|44.28|45.47
+2024-04-03|WY|Timber REITs - Real Estate|1|34.44|34.94
+2024-04-03|WBD|Broadcasting - Communication Services|1|8.74|8.73
+2024-04-03|NEE|Multi-Utilities - Utilities|30|59.54|62.55
+2024-04-03|WBD|Broadcasting - Communication Services|3|8.54|8.73
+2024-04-03|WBD|Broadcasting - Communication Services|2|8.48|8.73
+2024-04-03|AES|Independent Power Producers & Energy Traders - Utilities|1|17.25|17.9
+2024-04-03|GEN|Systems Software - Information Technology|2|22.4|22.06
+2024-04-03|STX|Technology Hardware, Storage & Peripherals - Information Technology|20|91.63|91.63
+2024-04-03|LVS|Casinos & Gaming - Consumer Discretionary|1|53.96|53.96
+2024-04-03|WBD|Broadcasting - Communication Services|2|8.73|8.73
+2024-04-11|ZBH|Health Care Equipment - Health Care|16|121.39|127.52
+2024-04-11|YUM|Restaurants - Consumer Discretionary|15|129.03|138.33
+2024-04-11|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|297.54
+2024-04-11|EXC|Electric Utilities - Utilities|3|36.03|36.8
+2024-04-11|HBAN|Regional Banks - Financials|3|12.86|13.49
+2024-04-11|FITB|Regional Banks - Financials|1|34.34|34.86
+2024-04-11|SNA|Industrial Machinery & Supplies & Components - Industrials|5|283.04|291.54
+2024-04-11|ROL|Environmental & Facilities Services - Industrials|4|44.28|44.64
+2024-04-11|WY|Timber REITs - Real Estate|1|34.44|33.65
+2024-04-11|WBD|Broadcasting - Communication Services|1|8.74|8.54
+2024-04-11|NEE|Multi-Utilities - Utilities|30|59.54|63.94
+2024-04-11|WBD|Broadcasting - Communication Services|3|8.54|8.54
+2024-04-11|WBD|Broadcasting - Communication Services|2|8.48|8.54
+2024-04-11|AES|Independent Power Producers & Energy Traders - Utilities|1|17.25|17.82
+2024-04-11|STX|Technology Hardware, Storage & Peripherals - Information Technology|20|91.63|88.78
+2024-04-11|LVS|Casinos & Gaming - Consumer Discretionary|1|53.96|51.61
+2024-04-11|WBD|Broadcasting - Communication Services|2|8.73|8.54
+2024-04-11|WY|Timber REITs - Real Estate|1|33.65|33.65
+2024-04-11|WBD|Broadcasting - Communication Services|1|8.54|8.54
+2024-04-12|ZBH|Health Care Equipment - Health Care|16|121.39|124.48
+2024-04-12|YUM|Restaurants - Consumer Discretionary|15|129.03|137.8
+2024-04-12|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|289.68
+2024-04-12|EXC|Electric Utilities - Utilities|3|36.03|36.48
+2024-04-12|HBAN|Regional Banks - Financials|3|12.86|13.31
+2024-04-12|FITB|Regional Banks - Financials|1|34.34|34.53
+2024-04-12|SNA|Industrial Machinery & Supplies & Components - Industrials|5|283.04|289.58
+2024-04-12|ROL|Environmental & Facilities Services - Industrials|4|44.28|44.35
+2024-04-12|WY|Timber REITs - Real Estate|1|34.44|33.24
+2024-04-12|WBD|Broadcasting - Communication Services|1|8.74|8.34
+2024-04-12|NEE|Multi-Utilities - Utilities|30|59.54|63.08
+2024-04-12|WBD|Broadcasting - Communication Services|3|8.54|8.34
+2024-04-12|WBD|Broadcasting - Communication Services|2|8.48|8.34
+2024-04-12|AES|Independent Power Producers & Energy Traders - Utilities|1|17.25|16.85
+2024-04-12|WBD|Broadcasting - Communication Services|2|8.73|8.34
+2024-04-12|WY|Timber REITs - Real Estate|1|33.65|33.24
+2024-04-12|WBD|Broadcasting - Communication Services|1|8.54|8.34
+2024-04-12|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|183.78
+2024-04-12|XEL|Multi-Utilities - Utilities|1|53.17|53.17
+2024-04-12|WY|Timber REITs - Real Estate|1|33.24|33.24
+2024-04-12|WBD|Broadcasting - Communication Services|2|8.34|8.34
+2024-04-15|ZBH|Health Care Equipment - Health Care|16|121.39|124.0
+2024-04-15|YUM|Restaurants - Consumer Discretionary|15|129.03|137.67
+2024-04-15|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|283.0
+2024-04-15|EXC|Electric Utilities - Utilities|3|36.03|36.27
+2024-04-15|HBAN|Regional Banks - Financials|3|12.86|13.26
+2024-04-15|FITB|Regional Banks - Financials|1|34.34|34.62
+2024-04-15|SNA|Industrial Machinery & Supplies & Components - Industrials|5|283.04|285.83
+2024-04-15|ROL|Environmental & Facilities Services - Industrials|4|44.28|43.28
+2024-04-15|WBD|Broadcasting - Communication Services|1|8.74|8.36
+2024-04-15|NEE|Multi-Utilities - Utilities|30|59.54|62.75
+2024-04-15|WBD|Broadcasting - Communication Services|3|8.54|8.36
+2024-04-15|WBD|Broadcasting - Communication Services|2|8.48|8.36
+2024-04-15|WBD|Broadcasting - Communication Services|2|8.73|8.36
+2024-04-15|WY|Timber REITs - Real Estate|1|33.65|32.69
+2024-04-15|WBD|Broadcasting - Communication Services|1|8.54|8.36
+2024-04-15|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|180.72
+2024-04-15|XEL|Multi-Utilities - Utilities|1|53.17|53.17
+2024-04-15|WY|Timber REITs - Real Estate|1|33.24|32.69
+2024-04-15|WBD|Broadcasting - Communication Services|2|8.34|8.36
+2024-04-15|WY|Timber REITs - Real Estate|1|32.69|32.69
+2024-04-15|WBD|Broadcasting - Communication Services|2|8.36|8.36
+2024-04-16|ZBH|Health Care Equipment - Health Care|16|121.39|122.07
+2024-04-16|YUM|Restaurants - Consumer Discretionary|15|129.03|138.0
+2024-04-16|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|280.42
+2024-04-16|EXC|Electric Utilities - Utilities|3|36.03|35.75
+2024-04-16|HBAN|Regional Banks - Financials|3|12.86|13.04
+2024-04-16|FITB|Regional Banks - Financials|1|34.34|34.09
+2024-04-16|SNA|Industrial Machinery & Supplies & Components - Industrials|5|283.04|282.45
+2024-04-16|ROL|Environmental & Facilities Services - Industrials|4|44.28|43.31
+2024-04-16|NEE|Multi-Utilities - Utilities|30|59.54|61.7
+2024-04-16|WBD|Broadcasting - Communication Services|3|8.54|8.14
+2024-04-16|WBD|Broadcasting - Communication Services|2|8.48|8.14
+2024-04-16|WY|Timber REITs - Real Estate|1|33.65|31.97
+2024-04-16|WBD|Broadcasting - Communication Services|1|8.54|8.14
+2024-04-16|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|178.98
+2024-04-16|XEL|Multi-Utilities - Utilities|1|53.17|52.53
+2024-04-16|WY|Timber REITs - Real Estate|1|33.24|31.97
+2024-04-16|WBD|Broadcasting - Communication Services|2|8.34|8.14
+2024-04-16|WY|Timber REITs - Real Estate|1|32.69|31.97
+2024-04-16|WBD|Broadcasting - Communication Services|2|8.36|8.14
+2024-04-16|WBD|Broadcasting - Communication Services|3|8.14|8.14
+2024-04-17|ZBH|Health Care Equipment - Health Care|16|121.39|121.3
+2024-04-17|YUM|Restaurants - Consumer Discretionary|15|129.03|137.83
+2024-04-17|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|276.14
+2024-04-17|EXC|Electric Utilities - Utilities|3|36.03|36.42
+2024-04-17|HBAN|Regional Banks - Financials|3|12.86|13.15
+2024-04-17|FITB|Regional Banks - Financials|1|34.34|34.1
+2024-04-17|SNA|Industrial Machinery & Supplies & Components - Industrials|5|283.04|283.5
+2024-04-17|ROL|Environmental & Facilities Services - Industrials|4|44.28|43.01
+2024-04-17|NEE|Multi-Utilities - Utilities|30|59.54|63.79
+2024-04-17|WBD|Broadcasting - Communication Services|3|8.54|8.23
+2024-04-17|WBD|Broadcasting - Communication Services|2|8.48|8.23
+2024-04-17|WBD|Broadcasting - Communication Services|1|8.54|8.23
+2024-04-17|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|180.95
+2024-04-17|XEL|Multi-Utilities - Utilities|1|53.17|53.19
+2024-04-17|WBD|Broadcasting - Communication Services|2|8.34|8.23
+2024-04-17|WY|Timber REITs - Real Estate|1|32.69|31.52
+2024-04-17|WBD|Broadcasting - Communication Services|2|8.36|8.23
+2024-04-17|WBD|Broadcasting - Communication Services|3|8.14|8.23
+2024-04-17|XEL|Multi-Utilities - Utilities|1|53.19|53.19
+2024-04-17|WBD|Broadcasting - Communication Services|1|8.23|8.23
+2024-04-18|ZBH|Health Care Equipment - Health Care|16|121.39|119.33
+2024-04-18|YUM|Restaurants - Consumer Discretionary|15|129.03|137.87
+2024-04-18|ZBRA|Electronic Equipment & Instruments - Information Technology|1|283.75|273.03
+2024-04-18|EXC|Electric Utilities - Utilities|3|36.03|36.68
+2024-04-18|HBAN|Regional Banks - Financials|3|12.86|13.18
+2024-04-18|FITB|Regional Banks - Financials|1|34.34|34.22
+2024-04-18|ROL|Environmental & Facilities Services - Industrials|4|44.28|42.44
+2024-04-18|NEE|Multi-Utilities - Utilities|30|59.54|64.01
+2024-04-18|WBD|Broadcasting - Communication Services|3|8.54|8.31
+2024-04-18|WBD|Broadcasting - Communication Services|2|8.48|8.31
+2024-04-18|WBD|Broadcasting - Communication Services|1|8.54|8.31
+2024-04-18|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|182.02
+2024-04-18|XEL|Multi-Utilities - Utilities|1|53.17|53.76
+2024-04-18|WBD|Broadcasting - Communication Services|2|8.34|8.31
+2024-04-18|WY|Timber REITs - Real Estate|1|32.69|31.35
+2024-04-18|WBD|Broadcasting - Communication Services|2|8.36|8.31
+2024-04-18|WBD|Broadcasting - Communication Services|3|8.14|8.31
+2024-04-18|XEL|Multi-Utilities - Utilities|1|53.19|53.76
+2024-04-18|WBD|Broadcasting - Communication Services|1|8.23|8.31
+2024-04-18|ZTS|Pharmaceuticals - Health Care|8|153.11|153.11
+2024-04-18|WY|Timber REITs - Real Estate|2|31.35|31.35
+2024-04-18|WBD|Broadcasting - Communication Services|2|8.31|8.31
+2024-04-19|ZBH|Health Care Equipment - Health Care|16|121.39|119.43
+2024-04-19|YUM|Restaurants - Consumer Discretionary|15|129.03|138.5
+2024-04-19|EXC|Electric Utilities - Utilities|3|36.03|37.55
+2024-04-19|HBAN|Regional Banks - Financials|3|12.86|13.28
+2024-04-19|FITB|Regional Banks - Financials|1|34.34|36.25
+2024-04-19|ROL|Environmental & Facilities Services - Industrials|4|44.28|42.51
+2024-04-19|NEE|Multi-Utilities - Utilities|30|59.54|64.3
+2024-04-19|WBD|Broadcasting - Communication Services|3|8.54|8.4
+2024-04-19|WBD|Broadcasting - Communication Services|2|8.48|8.4
+2024-04-19|WBD|Broadcasting - Communication Services|1|8.54|8.4
+2024-04-19|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|184.13
+2024-04-19|XEL|Multi-Utilities - Utilities|1|53.17|54.72
+2024-04-19|WBD|Broadcasting - Communication Services|2|8.34|8.4
+2024-04-19|WY|Timber REITs - Real Estate|1|32.69|31.47
+2024-04-19|WBD|Broadcasting - Communication Services|2|8.36|8.4
+2024-04-19|WBD|Broadcasting - Communication Services|3|8.14|8.4
+2024-04-19|XEL|Multi-Utilities - Utilities|1|53.19|54.72
+2024-04-19|WBD|Broadcasting - Communication Services|1|8.23|8.4
+2024-04-19|ZTS|Pharmaceuticals - Health Care|8|153.11|146.5
+2024-04-19|WY|Timber REITs - Real Estate|2|31.35|31.47
+2024-04-19|WBD|Broadcasting - Communication Services|2|8.31|8.4
+2024-04-19|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|94.53
+2024-04-19|WFC|Diversified Banks - Financials|1|60.35|60.35
+2024-04-19|WBD|Broadcasting - Communication Services|2|8.4|8.4
+2024-04-23|ZBH|Health Care Equipment - Health Care|16|121.39|121.52
+2024-04-23|YUM|Restaurants - Consumer Discretionary|15|129.03|140.1
+2024-04-23|EXC|Electric Utilities - Utilities|3|36.03|37.56
+2024-04-23|HBAN|Regional Banks - Financials|3|12.86|13.63
+2024-04-23|FITB|Regional Banks - Financials|1|34.34|37.06
+2024-04-23|ROL|Environmental & Facilities Services - Industrials|4|44.28|42.65
+2024-04-23|WBD|Broadcasting - Communication Services|3|8.54|8.44
+2024-04-23|WBD|Broadcasting - Communication Services|2|8.48|8.44
+2024-04-23|WBD|Broadcasting - Communication Services|1|8.54|8.44
+2024-04-23|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|188.66
+2024-04-23|XEL|Multi-Utilities - Utilities|1|53.17|55.27
+2024-04-23|WBD|Broadcasting - Communication Services|2|8.34|8.44
+2024-04-23|WY|Timber REITs - Real Estate|1|32.69|31.71
+2024-04-23|WBD|Broadcasting - Communication Services|2|8.36|8.44
+2024-04-23|WBD|Broadcasting - Communication Services|3|8.14|8.44
+2024-04-23|XEL|Multi-Utilities - Utilities|1|53.19|55.27
+2024-04-23|WBD|Broadcasting - Communication Services|1|8.23|8.44
+2024-04-23|ZTS|Pharmaceuticals - Health Care|8|153.11|149.56
+2024-04-23|WY|Timber REITs - Real Estate|2|31.35|31.71
+2024-04-23|WBD|Broadcasting - Communication Services|2|8.31|8.44
+2024-04-23|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|94.02
+2024-04-23|WFC|Diversified Banks - Financials|1|60.35|60.94
+2024-04-23|WBD|Broadcasting - Communication Services|2|8.4|8.44
+2024-04-23|PM|Tobacco - Consumer Staples|19|97.66|97.66
+2024-04-23|LUV|Passenger Airlines - Industrials|4|29.46|29.46
+2024-04-23|WBD|Broadcasting - Communication Services|2|8.44|8.44
+2024-04-25|ZBH|Health Care Equipment - Health Care|16|121.39|119.75
+2024-04-25|YUM|Restaurants - Consumer Discretionary|15|129.03|141.56
+2024-04-25|EXC|Electric Utilities - Utilities|3|36.03|37.66
+2024-04-25|HBAN|Regional Banks - Financials|3|12.86|13.58
+2024-04-25|FITB|Regional Banks - Financials|1|34.34|36.82
+2024-04-25|ROL|Environmental & Facilities Services - Industrials|4|44.28|44.27
+2024-04-25|WBD|Broadcasting - Communication Services|3|8.54|8.29
+2024-04-25|WBD|Broadcasting - Communication Services|2|8.48|8.29
+2024-04-25|WBD|Broadcasting - Communication Services|1|8.54|8.29
+2024-04-25|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|191.32
+2024-04-25|XEL|Multi-Utilities - Utilities|1|53.17|55.01
+2024-04-25|WBD|Broadcasting - Communication Services|2|8.34|8.29
+2024-04-25|WY|Timber REITs - Real Estate|1|32.69|31.46
+2024-04-25|WBD|Broadcasting - Communication Services|2|8.36|8.29
+2024-04-25|WBD|Broadcasting - Communication Services|3|8.14|8.29
+2024-04-25|XEL|Multi-Utilities - Utilities|1|53.19|55.01
+2024-04-25|WBD|Broadcasting - Communication Services|1|8.23|8.29
+2024-04-25|ZTS|Pharmaceuticals - Health Care|8|153.11|153.36
+2024-04-25|WY|Timber REITs - Real Estate|2|31.35|31.46
+2024-04-25|WBD|Broadcasting - Communication Services|2|8.31|8.29
+2024-04-25|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|93.94
+2024-04-25|WFC|Diversified Banks - Financials|1|60.35|59.93
+2024-04-25|WBD|Broadcasting - Communication Services|2|8.4|8.29
+2024-04-25|PM|Tobacco - Consumer Staples|19|97.66|96.09
+2024-04-25|WBD|Broadcasting - Communication Services|2|8.44|8.29
+2024-04-25|CNC|Managed Health Care - Health Care|1|75.68|75.68
+2024-04-25|FOX|Broadcasting - Communication Services|1|29.25|29.25
+2024-04-26|ZBH|Health Care Equipment - Health Care|16|121.39|119.35
+2024-04-26|YUM|Restaurants - Consumer Discretionary|15|129.03|141.77
+2024-04-26|EXC|Electric Utilities - Utilities|3|36.03|37.32
+2024-04-26|HBAN|Regional Banks - Financials|3|12.86|13.55
+2024-04-26|FITB|Regional Banks - Financials|1|34.34|36.9
+2024-04-26|ROL|Environmental & Facilities Services - Industrials|4|44.28|44.9
+2024-04-26|WBD|Broadcasting - Communication Services|2|8.48|8.11
+2024-04-26|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|191.45
+2024-04-26|XEL|Multi-Utilities - Utilities|1|53.17|53.96
+2024-04-26|WBD|Broadcasting - Communication Services|2|8.34|8.11
+2024-04-26|WBD|Broadcasting - Communication Services|2|8.36|8.11
+2024-04-26|WBD|Broadcasting - Communication Services|3|8.14|8.11
+2024-04-26|XEL|Multi-Utilities - Utilities|1|53.19|53.96
+2024-04-26|WBD|Broadcasting - Communication Services|1|8.23|8.11
+2024-04-26|ZTS|Pharmaceuticals - Health Care|8|153.11|158.42
+2024-04-26|WY|Timber REITs - Real Estate|2|31.35|31.05
+2024-04-26|WBD|Broadcasting - Communication Services|2|8.31|8.11
+2024-04-26|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|94.12
+2024-04-26|WFC|Diversified Banks - Financials|1|60.35|59.91
+2024-04-26|WBD|Broadcasting - Communication Services|2|8.4|8.11
+2024-04-26|PM|Tobacco - Consumer Staples|19|97.66|95.02
+2024-04-26|WBD|Broadcasting - Communication Services|2|8.44|8.11
+2024-04-26|CNC|Managed Health Care - Health Care|1|75.68|74.0
+2024-04-26|FOX|Broadcasting - Communication Services|1|29.25|28.81
+2024-04-26|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|54.78
+2024-04-26|WBD|Broadcasting - Communication Services|2|8.11|8.11
+2024-04-29|ZBH|Health Care Equipment - Health Care|16|121.39|121.71
+2024-04-29|EXC|Electric Utilities - Utilities|3|36.03|37.72
+2024-04-29|HBAN|Regional Banks - Financials|3|12.86|13.57
+2024-04-29|FITB|Regional Banks - Financials|1|34.34|37.0
+2024-04-29|ROL|Environmental & Facilities Services - Industrials|4|44.28|44.77
+2024-04-29|WBD|Broadcasting - Communication Services|2|8.48|8.15
+2024-04-29|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|191.02
+2024-04-29|XEL|Multi-Utilities - Utilities|1|53.17|54.48
+2024-04-29|WBD|Broadcasting - Communication Services|2|8.34|8.15
+2024-04-29|WBD|Broadcasting - Communication Services|2|8.36|8.15
+2024-04-29|WBD|Broadcasting - Communication Services|3|8.14|8.15
+2024-04-29|XEL|Multi-Utilities - Utilities|1|53.19|54.48
+2024-04-29|WBD|Broadcasting - Communication Services|1|8.23|8.15
+2024-04-29|ZTS|Pharmaceuticals - Health Care|8|153.11|159.7
+2024-04-29|WY|Timber REITs - Real Estate|2|31.35|31.18
+2024-04-29|WBD|Broadcasting - Communication Services|2|8.31|8.15
+2024-04-29|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|94.06
+2024-04-29|WFC|Diversified Banks - Financials|1|60.35|59.8
+2024-04-29|WBD|Broadcasting - Communication Services|2|8.4|8.15
+2024-04-29|PM|Tobacco - Consumer Staples|19|97.66|95.6
+2024-04-29|WBD|Broadcasting - Communication Services|2|8.44|8.15
+2024-04-29|CNC|Managed Health Care - Health Care|1|75.68|73.83
+2024-04-29|FOX|Broadcasting - Communication Services|1|29.25|29.15
+2024-04-29|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|55.58
+2024-04-29|WBD|Broadcasting - Communication Services|2|8.11|8.15
+2024-04-29|BAC|Diversified Banks - Financials|51|37.55|37.55
+2024-04-29|LHX|Aerospace & Defense - Industrials|1|217.06|217.06
+2024-04-29|WBD|Broadcasting - Communication Services|2|8.15|8.15
+2024-04-30|ZBH|Health Care Equipment - Health Care|16|121.39|120.28
+2024-04-30|EXC|Electric Utilities - Utilities|3|36.03|37.58
+2024-04-30|HBAN|Regional Banks - Financials|3|12.86|13.47
+2024-04-30|FITB|Regional Banks - Financials|1|34.34|36.46
+2024-04-30|ROL|Environmental & Facilities Services - Industrials|4|44.28|44.56
+2024-04-30|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|189.57
+2024-04-30|XEL|Multi-Utilities - Utilities|1|53.17|53.73
+2024-04-30|XEL|Multi-Utilities - Utilities|1|53.19|53.73
+2024-04-30|ZTS|Pharmaceuticals - Health Care|8|153.11|159.24
+2024-04-30|WY|Timber REITs - Real Estate|2|31.35|30.17
+2024-04-30|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|92.26
+2024-04-30|WFC|Diversified Banks - Financials|1|60.35|59.32
+2024-04-30|PM|Tobacco - Consumer Staples|19|97.66|94.94
+2024-04-30|CNC|Managed Health Care - Health Care|1|75.68|73.06
+2024-04-30|FOX|Broadcasting - Communication Services|1|29.25|28.68
+2024-04-30|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|54.62
+2024-04-30|BAC|Diversified Banks - Financials|51|37.55|37.01
+2024-04-30|LHX|Aerospace & Defense - Industrials|1|217.06|214.05
+2024-04-30|CARR|Building Products - Industrials|2|61.49|61.49
+2024-04-30|KIM|Retail REITs - Real Estate|1|18.63|18.63
+2024-05-06|ZBH|Health Care Equipment - Health Care|16|121.39|120.56
+2024-05-06|EXC|Electric Utilities - Utilities|3|36.03|37.55
+2024-05-06|HBAN|Regional Banks - Financials|3|12.86|13.92
+2024-05-06|ROL|Environmental & Facilities Services - Industrials|4|44.28|47.1
+2024-05-06|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|195.18
+2024-05-06|XEL|Multi-Utilities - Utilities|1|53.17|54.36
+2024-05-06|XEL|Multi-Utilities - Utilities|1|53.19|54.36
+2024-05-06|ZTS|Pharmaceuticals - Health Care|8|153.11|165.95
+2024-05-06|WY|Timber REITs - Real Estate|2|31.35|31.08
+2024-05-06|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|93.36
+2024-05-06|WFC|Diversified Banks - Financials|1|60.35|60.19
+2024-05-06|PM|Tobacco - Consumer Staples|19|97.66|97.45
+2024-05-06|CNC|Managed Health Care - Health Care|1|75.68|75.14
+2024-05-06|FOX|Broadcasting - Communication Services|1|29.25|30.02
+2024-05-06|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|53.91
+2024-05-06|BAC|Diversified Banks - Financials|51|37.55|37.69
+2024-05-06|LHX|Aerospace & Defense - Industrials|1|217.06|214.75
+2024-05-06|CARR|Building Products - Industrials|2|61.49|64.06
+2024-05-06|KIM|Retail REITs - Real Estate|1|18.63|19.01
+2024-05-06|KEY|Regional Banks - Financials|2|15.13|15.13
+2024-05-06|WBD|Broadcasting - Communication Services|1|7.96|7.96
+2024-05-07|ZBH|Health Care Equipment - Health Care|16|121.39|121.43
+2024-05-07|EXC|Electric Utilities - Utilities|3|36.03|37.91
+2024-05-07|HBAN|Regional Banks - Financials|3|12.86|13.85
+2024-05-07|ROL|Environmental & Facilities Services - Industrials|4|44.28|47.2
+2024-05-07|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|195.89
+2024-05-07|XEL|Multi-Utilities - Utilities|1|53.17|55.02
+2024-05-07|XEL|Multi-Utilities - Utilities|1|53.19|55.02
+2024-05-07|WY|Timber REITs - Real Estate|2|31.35|30.85
+2024-05-07|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|93.78
+2024-05-07|WFC|Diversified Banks - Financials|1|60.35|60.26
+2024-05-07|PM|Tobacco - Consumer Staples|19|97.66|97.53
+2024-05-07|CNC|Managed Health Care - Health Care|1|75.68|75.9
+2024-05-07|FOX|Broadcasting - Communication Services|1|29.25|29.85
+2024-05-07|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|54.03
+2024-05-07|BAC|Diversified Banks - Financials|51|37.55|37.84
+2024-05-07|LHX|Aerospace & Defense - Industrials|1|217.06|215.91
+2024-05-07|CARR|Building Products - Industrials|2|61.49|64.26
+2024-05-07|KIM|Retail REITs - Real Estate|1|18.63|18.99
+2024-05-07|KEY|Regional Banks - Financials|2|15.13|14.93
+2024-05-07|WBD|Broadcasting - Communication Services|1|7.96|7.77
+2024-05-07|BA|Aerospace & Defense - Industrials|7|176.71|176.71
+2024-05-07|WDC|Technology Hardware, Storage & Peripherals - Information Technology|2|54.04|54.04
+2024-05-07|WBD|Broadcasting - Communication Services|1|7.77|7.77
+2024-05-14|ZBH|Health Care Equipment - Health Care|16|121.39|119.97
+2024-05-14|EXC|Electric Utilities - Utilities|3|36.03|38.4
+2024-05-14|HBAN|Regional Banks - Financials|3|12.86|14.08
+2024-05-14|ROL|Environmental & Facilities Services - Industrials|4|44.28|46.92
+2024-05-14|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|197.49
+2024-05-14|XEL|Multi-Utilities - Utilities|1|53.17|55.56
+2024-05-14|XEL|Multi-Utilities - Utilities|1|53.19|55.56
+2024-05-14|WY|Timber REITs - Real Estate|2|31.35|31.19
+2024-05-14|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|92.79
+2024-05-14|WFC|Diversified Banks - Financials|1|60.35|61.89
+2024-05-14|PM|Tobacco - Consumer Staples|19|97.66|99.84
+2024-05-14|CNC|Managed Health Care - Health Care|1|75.68|76.87
+2024-05-14|FOX|Broadcasting - Communication Services|1|29.25|30.96
+2024-05-14|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|54.9
+2024-05-14|BAC|Diversified Banks - Financials|51|37.55|38.49
+2024-05-14|LHX|Aerospace & Defense - Industrials|1|217.06|221.13
+2024-05-14|CARR|Building Products - Industrials|2|61.49|64.96
+2024-05-14|KIM|Retail REITs - Real Estate|1|18.63|19.21
+2024-05-14|KEY|Regional Banks - Financials|2|15.13|15.11
+2024-05-14|WBD|Broadcasting - Communication Services|1|7.96|8.56
+2024-05-14|BA|Aerospace & Defense - Industrials|7|176.71|180.76
+2024-05-14|WDC|Technology Hardware, Storage & Peripherals - Information Technology|2|54.04|55.59
+2024-05-14|WBD|Broadcasting - Communication Services|1|8.56|8.56
+2024-05-15|ZBH|Health Care Equipment - Health Care|16|121.39|120.98
+2024-05-15|EXC|Electric Utilities - Utilities|3|36.03|38.73
+2024-05-15|ROL|Environmental & Facilities Services - Industrials|4|44.28|47.17
+2024-05-15|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|198.46
+2024-05-15|XEL|Multi-Utilities - Utilities|1|53.17|55.79
+2024-05-15|XEL|Multi-Utilities - Utilities|1|53.19|55.79
+2024-05-15|WY|Timber REITs - Real Estate|2|31.35|31.36
+2024-05-15|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|91.67
+2024-05-15|WFC|Diversified Banks - Financials|1|60.35|62.34
+2024-05-15|PM|Tobacco - Consumer Staples|19|97.66|100.57
+2024-05-15|CNC|Managed Health Care - Health Care|1|75.68|78.09
+2024-05-15|FOX|Broadcasting - Communication Services|1|29.25|30.61
+2024-05-15|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|55.19
+2024-05-15|BAC|Diversified Banks - Financials|51|37.55|38.91
+2024-05-15|LHX|Aerospace & Defense - Industrials|1|217.06|222.09
+2024-05-15|CARR|Building Products - Industrials|2|61.49|65.8
+2024-05-15|KIM|Retail REITs - Real Estate|1|18.63|19.34
+2024-05-15|KEY|Regional Banks - Financials|2|15.13|15.57
+2024-05-15|WBD|Broadcasting - Communication Services|1|7.96|8.2
+2024-05-15|BA|Aerospace & Defense - Industrials|7|176.71|176.99
+2024-05-15|WDC|Technology Hardware, Storage & Peripherals - Information Technology|2|54.04|57.21
+2024-05-15|WBD|Broadcasting - Communication Services|1|8.56|8.2
+2024-05-15|TPR|Apparel, Accessories & Luxury Goods - Consumer Discretionary|1|42.67|42.67
+2024-05-17|ZBH|Health Care Equipment - Health Care|16|121.39|120.18
+2024-05-17|EXC|Electric Utilities - Utilities|3|36.03|38.58
+2024-05-17|ROL|Environmental & Facilities Services - Industrials|4|44.28|46.13
+2024-05-17|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|198.89
+2024-05-17|XEL|Multi-Utilities - Utilities|1|53.17|55.52
+2024-05-17|XEL|Multi-Utilities - Utilities|1|53.19|55.52
+2024-05-17|WY|Timber REITs - Real Estate|2|31.35|31.17
+2024-05-17|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|92.18
+2024-05-17|WFC|Diversified Banks - Financials|1|60.35|61.08
+2024-05-17|PM|Tobacco - Consumer Staples|19|97.66|99.83
+2024-05-17|CNC|Managed Health Care - Health Care|1|75.68|78.06
+2024-05-17|FOX|Broadcasting - Communication Services|1|29.25|30.53
+2024-05-17|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|57.13
+2024-05-17|BAC|Diversified Banks - Financials|51|37.55|39.29
+2024-05-17|LHX|Aerospace & Defense - Industrials|1|217.06|223.57
+2024-05-17|CARR|Building Products - Industrials|2|61.49|65.23
+2024-05-17|KIM|Retail REITs - Real Estate|1|18.63|19.22
+2024-05-17|KEY|Regional Banks - Financials|2|15.13|15.4
+2024-05-17|WBD|Broadcasting - Communication Services|1|7.96|8.05
+2024-05-17|BA|Aerospace & Defense - Industrials|7|176.71|184.95
+2024-05-17|WDC|Technology Hardware, Storage & Peripherals - Information Technology|2|54.04|54.5
+2024-05-17|TPR|Apparel, Accessories & Luxury Goods - Consumer Discretionary|1|42.67|42.32
+2024-05-17|WBD|Broadcasting - Communication Services|1|8.05|8.05
+2024-05-28|ZBH|Health Care Equipment - Health Care|16|121.39|116.33
+2024-05-28|EXC|Electric Utilities - Utilities|3|36.03|36.78
+2024-05-28|ROL|Environmental & Facilities Services - Industrials|4|44.28|46.16
+2024-05-28|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|192.25
+2024-05-28|XEL|Multi-Utilities - Utilities|1|53.17|53.74
+2024-05-28|XEL|Multi-Utilities - Utilities|1|53.19|53.74
+2024-05-28|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|92.0
+2024-05-28|WFC|Diversified Banks - Financials|1|60.35|59.48
+2024-05-28|PM|Tobacco - Consumer Staples|19|97.66|100.05
+2024-05-28|CNC|Managed Health Care - Health Care|1|75.68|72.72
+2024-05-28|FOX|Broadcasting - Communication Services|1|29.25|31.09
+2024-05-28|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|56.37
+2024-05-28|BAC|Diversified Banks - Financials|51|37.55|39.32
+2024-05-28|LHX|Aerospace & Defense - Industrials|1|217.06|218.87
+2024-05-28|CARR|Building Products - Industrials|2|61.49|64.67
+2024-05-28|KIM|Retail REITs - Real Estate|1|18.63|18.23
+2024-05-28|WBD|Broadcasting - Communication Services|1|7.96|7.87
+2024-05-28|BA|Aerospace & Defense - Industrials|7|176.71|175.08
+2024-05-28|WDC|Technology Hardware, Storage & Peripherals - Information Technology|2|54.04|57.55
+2024-05-28|TPR|Apparel, Accessories & Luxury Goods - Consumer Discretionary|1|42.67|41.41
+2024-05-28|WBD|Broadcasting - Communication Services|1|8.05|7.87
+2024-05-28|SBUX|Restaurants - Consumer Discretionary|1|77.48|77.48
+2024-05-28|WBD|Broadcasting - Communication Services|1|7.87|7.87
+2024-05-29|EXC|Electric Utilities - Utilities|3|36.03|36.18
+2024-05-29|ROL|Environmental & Facilities Services - Industrials|4|44.28|45.35
+2024-05-29|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|188.59
+2024-05-29|XEL|Multi-Utilities - Utilities|1|53.17|53.3
+2024-05-29|XEL|Multi-Utilities - Utilities|1|53.19|53.3
+2024-05-29|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|91.67
+2024-05-29|WFC|Diversified Banks - Financials|1|60.35|58.75
+2024-05-29|PM|Tobacco - Consumer Staples|19|97.66|99.6
+2024-05-29|FOX|Broadcasting - Communication Services|1|29.25|31.27
+2024-05-29|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|56.2
+2024-05-29|BAC|Diversified Banks - Financials|51|37.55|38.72
+2024-05-29|LHX|Aerospace & Defense - Industrials|1|217.06|215.24
+2024-05-29|CARR|Building Products - Industrials|2|61.49|63.07
+2024-05-29|KIM|Retail REITs - Real Estate|1|18.63|18.28
+2024-05-29|WBD|Broadcasting - Communication Services|1|7.96|7.66
+2024-05-29|BA|Aerospace & Defense - Industrials|7|176.71|171.65
+2024-05-29|WDC|Technology Hardware, Storage & Peripherals - Information Technology|2|54.04|58.53
+2024-05-29|TPR|Apparel, Accessories & Luxury Goods - Consumer Discretionary|1|42.67|41.52
+2024-05-29|WBD|Broadcasting - Communication Services|1|8.05|7.66
+2024-05-29|SBUX|Restaurants - Consumer Discretionary|1|77.48|76.88
+2024-05-29|WBD|Broadcasting - Communication Services|1|7.87|7.66
+2024-05-29|NCLH|Hotels, Resorts & Cruise Lines - Consumer Discretionary|116|16.49|16.49
+2024-06-03|EXC|Electric Utilities - Utilities|3|36.03|37.2
+2024-06-03|ROL|Environmental & Facilities Services - Industrials|4|44.28|46.04
+2024-06-03|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|194.46
+2024-06-03|XEL|Multi-Utilities - Utilities|1|53.17|55.28
+2024-06-03|XEL|Multi-Utilities - Utilities|1|53.19|55.28
+2024-06-03|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|94.4
+2024-06-03|WFC|Diversified Banks - Financials|1|60.35|59.34
+2024-06-03|PM|Tobacco - Consumer Staples|19|97.66|102.96
+2024-06-03|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|53.51
+2024-06-03|BAC|Diversified Banks - Financials|51|37.55|39.88
+2024-06-03|LHX|Aerospace & Defense - Industrials|1|217.06|226.65
+2024-06-03|CARR|Building Products - Industrials|2|61.49|61.99
+2024-06-03|KIM|Retail REITs - Real Estate|1|18.63|19.53
+2024-06-03|WBD|Broadcasting - Communication Services|1|7.96|8.33
+2024-06-03|BA|Aerospace & Defense - Industrials|7|176.71|184.57
+2024-06-03|WDC|Technology Hardware, Storage & Peripherals - Information Technology|2|54.04|56.67
+2024-06-03|TPR|Apparel, Accessories & Luxury Goods - Consumer Discretionary|1|42.67|44.28
+2024-06-03|WBD|Broadcasting - Communication Services|1|8.05|8.33
+2024-06-03|SBUX|Restaurants - Consumer Discretionary|1|77.48|82.08
+2024-06-03|WBD|Broadcasting - Communication Services|1|7.87|8.33
+2024-06-03|NCLH|Hotels, Resorts & Cruise Lines - Consumer Discretionary|116|16.49|17.19
+2024-06-03|WY|Timber REITs - Real Estate|1|29.71|29.71
+2024-06-05|EXC|Electric Utilities - Utilities|3|36.03|36.79
+2024-06-05|ROL|Environmental & Facilities Services - Industrials|4|44.28|47.45
+2024-06-05|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|198.48
+2024-06-05|XEL|Multi-Utilities - Utilities|1|53.17|55.16
+2024-06-05|XEL|Multi-Utilities - Utilities|1|53.19|55.16
+2024-06-05|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|94.32
+2024-06-05|WFC|Diversified Banks - Financials|1|60.35|58.68
+2024-06-05|PM|Tobacco - Consumer Staples|19|97.66|104.07
+2024-06-05|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|54.07
+2024-06-05|BAC|Diversified Banks - Financials|51|37.55|39.96
+2024-06-05|LHX|Aerospace & Defense - Industrials|1|217.06|224.15
+2024-06-05|CARR|Building Products - Industrials|2|61.49|63.17
+2024-06-05|KIM|Retail REITs - Real Estate|1|18.63|19.29
+2024-06-05|WBD|Broadcasting - Communication Services|1|7.96|8.3
+2024-06-05|BA|Aerospace & Defense - Industrials|7|176.71|189.85
+2024-06-05|WDC|Technology Hardware, Storage & Peripherals - Information Technology|2|54.04|58.13
+2024-06-05|TPR|Apparel, Accessories & Luxury Goods - Consumer Discretionary|1|42.67|43.5
+2024-06-05|WBD|Broadcasting - Communication Services|1|8.05|8.3
+2024-06-05|SBUX|Restaurants - Consumer Discretionary|1|77.48|81.16
+2024-06-05|WBD|Broadcasting - Communication Services|1|7.87|8.3
+2024-06-05|WY|Timber REITs - Real Estate|1|29.71|29.45
+2024-06-05|COR|Health Care Distributors - Health Care|8|231.77|231.77
+2024-06-05|PLTR|Internet Services & Infrastructure - Information Technology|12|22.96|22.96
+2024-06-05|WBD|Broadcasting - Communication Services|1|8.3|8.3
+2024-06-11|EXC|Electric Utilities - Utilities|3|36.03|36.21
+2024-06-11|ROL|Environmental & Facilities Services - Industrials|4|44.28|47.33
+2024-06-11|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|197.2
+2024-06-11|XEL|Multi-Utilities - Utilities|1|53.17|55.04
+2024-06-11|XEL|Multi-Utilities - Utilities|1|53.19|55.04
+2024-06-11|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|95.87
+2024-06-11|PM|Tobacco - Consumer Staples|19|97.66|103.82
+2024-06-11|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|55.66
+2024-06-11|BAC|Diversified Banks - Financials|51|37.55|38.86
+2024-06-11|LHX|Aerospace & Defense - Industrials|1|217.06|220.22
+2024-06-11|CARR|Building Products - Industrials|2|61.49|62.0
+2024-06-11|KIM|Retail REITs - Real Estate|1|18.63|18.3
+2024-06-11|WBD|Broadcasting - Communication Services|1|7.96|8.04
+2024-06-11|BA|Aerospace & Defense - Industrials|7|176.71|185.5
+2024-06-11|WDC|Technology Hardware, Storage & Peripherals - Information Technology|2|54.04|57.84
+2024-06-11|TPR|Apparel, Accessories & Luxury Goods - Consumer Discretionary|1|42.67|43.02
+2024-06-11|WBD|Broadcasting - Communication Services|1|8.05|8.04
+2024-06-11|SBUX|Restaurants - Consumer Discretionary|1|77.48|79.89
+2024-06-11|WBD|Broadcasting - Communication Services|1|7.87|8.04
+2024-06-11|WY|Timber REITs - Real Estate|1|29.71|29.14
+2024-06-11|COR|Health Care Distributors - Health Care|8|231.77|232.62
+2024-06-11|PLTR|Internet Services & Infrastructure - Information Technology|12|22.96|23.85
+2024-06-11|WBD|Broadcasting - Communication Services|1|8.3|8.04
+2024-06-11|LUV|Passenger Airlines - Industrials|2|28.05|28.05
+2024-06-12|EXC|Electric Utilities - Utilities|3|36.03|34.75
+2024-06-12|ROL|Environmental & Facilities Services - Industrials|4|44.28|47.92
+2024-06-12|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|198.76
+2024-06-12|XEL|Multi-Utilities - Utilities|1|53.17|54.77
+2024-06-12|XEL|Multi-Utilities - Utilities|1|53.19|54.77
+2024-06-12|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|93.68
+2024-06-12|PM|Tobacco - Consumer Staples|19|97.66|102.65
+2024-06-12|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|55.98
+2024-06-12|BAC|Diversified Banks - Financials|51|37.55|39.41
+2024-06-12|LHX|Aerospace & Defense - Industrials|1|217.06|218.97
+2024-06-12|CARR|Building Products - Industrials|2|61.49|64.38
+2024-06-12|KIM|Retail REITs - Real Estate|1|18.63|18.53
+2024-06-12|WBD|Broadcasting - Communication Services|1|7.96|7.81
+2024-06-12|BA|Aerospace & Defense - Industrials|7|176.71|182.67
+2024-06-12|TPR|Apparel, Accessories & Luxury Goods - Consumer Discretionary|1|42.67|42.83
+2024-06-12|WBD|Broadcasting - Communication Services|1|8.05|7.81
+2024-06-12|SBUX|Restaurants - Consumer Discretionary|1|77.48|79.38
+2024-06-12|WBD|Broadcasting - Communication Services|1|7.87|7.81
+2024-06-12|WY|Timber REITs - Real Estate|1|29.71|29.21
+2024-06-12|COR|Health Care Distributors - Health Care|8|231.77|230.14
+2024-06-12|PLTR|Internet Services & Infrastructure - Information Technology|12|22.96|23.77
+2024-06-12|LUV|Passenger Airlines - Industrials|2|28.05|28.44
+2024-06-12|SWKS|Semiconductors - Information Technology|1|102.64|102.64
+2024-06-12|F|Automobile Manufacturers - Consumer Discretionary|2|12.08|12.08
+2024-06-12|WBD|Broadcasting - Communication Services|1|7.81|7.81
+2024-06-13|EXC|Electric Utilities - Utilities|3|36.03|35.41
+2024-06-13|ROL|Environmental & Facilities Services - Industrials|4|44.28|47.86
+2024-06-13|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|199.91
+2024-06-13|XEL|Multi-Utilities - Utilities|1|53.17|54.34
+2024-06-13|XEL|Multi-Utilities - Utilities|1|53.19|54.34
+2024-06-13|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|94.18
+2024-06-13|PM|Tobacco - Consumer Staples|19|97.66|101.98
+2024-06-13|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|56.3
+2024-06-13|BAC|Diversified Banks - Financials|51|37.55|39.26
+2024-06-13|LHX|Aerospace & Defense - Industrials|1|217.06|219.2
+2024-06-13|CARR|Building Products - Industrials|2|61.49|63.99
+2024-06-13|KIM|Retail REITs - Real Estate|1|18.63|18.72
+2024-06-13|BA|Aerospace & Defense - Industrials|7|176.71|180.7
+2024-06-13|TPR|Apparel, Accessories & Luxury Goods - Consumer Discretionary|1|42.67|42.36
+2024-06-13|SBUX|Restaurants - Consumer Discretionary|1|77.48|80.24
+2024-06-13|WY|Timber REITs - Real Estate|1|29.71|29.02
+2024-06-13|COR|Health Care Distributors - Health Care|8|231.77|232.23
+2024-06-13|PLTR|Internet Services & Infrastructure - Information Technology|12|22.96|23.27
+2024-06-13|LUV|Passenger Airlines - Industrials|2|28.05|28.41
+2024-06-13|SWKS|Semiconductors - Information Technology|1|102.64|106.33
+2024-06-13|F|Automobile Manufacturers - Consumer Discretionary|2|12.08|11.94
+2024-06-13|WY|Timber REITs - Real Estate|1|29.02|29.02
+2024-06-17|EXC|Electric Utilities - Utilities|3|36.03|35.17
+2024-06-17|AVB|Multi-Family Residential REITs - Real Estate|9|183.78|201.6
+2024-06-17|XEL|Multi-Utilities - Utilities|1|53.17|53.24
+2024-06-17|XEL|Multi-Utilities - Utilities|1|53.19|53.24
+2024-06-17|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|95.0
+2024-06-17|PM|Tobacco - Consumer Staples|19|97.66|102.05
+2024-06-17|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|57.91
+2024-06-17|BAC|Diversified Banks - Financials|51|37.55|39.51
+2024-06-17|LHX|Aerospace & Defense - Industrials|1|217.06|220.69
+2024-06-17|CARR|Building Products - Industrials|2|61.49|65.12
+2024-06-17|KIM|Retail REITs - Real Estate|1|18.63|18.68
+2024-06-17|BA|Aerospace & Defense - Industrials|7|176.71|178.39
+2024-06-17|TPR|Apparel, Accessories & Luxury Goods - Consumer Discretionary|1|42.67|41.92
+2024-06-17|SBUX|Restaurants - Consumer Discretionary|1|77.48|81.33
+2024-06-17|WY|Timber REITs - Real Estate|1|29.71|29.15
+2024-06-17|COR|Health Care Distributors - Health Care|8|231.77|234.7
+2024-06-17|PLTR|Internet Services & Infrastructure - Information Technology|12|22.96|25.02
+2024-06-17|LUV|Passenger Airlines - Industrials|2|28.05|28.77
+2024-06-17|SWKS|Semiconductors - Information Technology|1|102.64|106.3
+2024-06-17|F|Automobile Manufacturers - Consumer Discretionary|2|12.08|11.85
+2024-06-17|WY|Timber REITs - Real Estate|1|29.02|29.15
+2024-06-17|ANET|Communications Equipment - Information Technology|2|85.02|85.02
+2024-06-17|WBD|Broadcasting - Communication Services|3|7.16|7.16
+2024-06-18|EXC|Electric Utilities - Utilities|3|36.03|34.89
+2024-06-18|XEL|Multi-Utilities - Utilities|1|53.17|53.12
+2024-06-18|XEL|Multi-Utilities - Utilities|1|53.19|53.12
+2024-06-18|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|94.78
+2024-06-18|PM|Tobacco - Consumer Staples|19|97.66|101.24
+2024-06-18|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|58.0
+2024-06-18|BAC|Diversified Banks - Financials|51|37.55|39.99
+2024-06-18|LHX|Aerospace & Defense - Industrials|1|217.06|222.45
+2024-06-18|CARR|Building Products - Industrials|2|61.49|65.72
+2024-06-18|KIM|Retail REITs - Real Estate|1|18.63|18.8
+2024-06-18|BA|Aerospace & Defense - Industrials|7|176.71|174.99
+2024-06-18|TPR|Apparel, Accessories & Luxury Goods - Consumer Discretionary|1|42.67|41.01
+2024-06-18|SBUX|Restaurants - Consumer Discretionary|1|77.48|80.2
+2024-06-18|WY|Timber REITs - Real Estate|1|29.71|28.87
+2024-06-18|COR|Health Care Distributors - Health Care|8|231.77|237.2
+2024-06-18|LUV|Passenger Airlines - Industrials|2|28.05|28.43
+2024-06-18|SWKS|Semiconductors - Information Technology|1|102.64|106.46
+2024-06-18|F|Automobile Manufacturers - Consumer Discretionary|2|12.08|11.78
+2024-06-18|WY|Timber REITs - Real Estate|1|29.02|28.87
+2024-06-18|ANET|Communications Equipment - Information Technology|2|85.02|85.08
+2024-06-18|WBD|Broadcasting - Communication Services|3|7.16|6.99
+2024-06-18|BXP|Office REITs - Real Estate|33|62.05|62.05
+2024-06-18|BMY|Pharmaceuticals - Health Care|2|40.81|40.81
+2024-06-18|WBD|Broadcasting - Communication Services|1|6.99|6.99
+2024-06-26|EXC|Electric Utilities - Utilities|3|36.03|34.8
+2024-06-26|XEL|Multi-Utilities - Utilities|1|53.17|53.79
+2024-06-26|XEL|Multi-Utilities - Utilities|1|53.19|53.79
+2024-06-26|NKE|Apparel, Accessories & Luxury Goods - Consumer Discretionary|2|94.53|94.06
+2024-06-26|PM|Tobacco - Consumer Staples|19|97.66|101.96
+2024-06-26|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|53.4
+2024-06-26|BAC|Diversified Banks - Financials|51|37.55|39.0
+2024-06-26|LHX|Aerospace & Defense - Industrials|1|217.06|223.48
+2024-06-26|CARR|Building Products - Industrials|2|61.49|62.86
+2024-06-26|KIM|Retail REITs - Real Estate|1|18.63|18.77
+2024-06-26|BA|Aerospace & Defense - Industrials|7|176.71|178.5
+2024-06-26|TPR|Apparel, Accessories & Luxury Goods - Consumer Discretionary|1|42.67|41.7
+2024-06-26|SBUX|Restaurants - Consumer Discretionary|1|77.48|79.15
+2024-06-26|COR|Health Care Distributors - Health Care|8|231.77|237.28
+2024-06-26|LUV|Passenger Airlines - Industrials|2|28.05|28.45
+2024-06-26|SWKS|Semiconductors - Information Technology|1|102.64|106.14
+2024-06-26|F|Automobile Manufacturers - Consumer Discretionary|2|12.08|12.11
+2024-06-26|WY|Timber REITs - Real Estate|1|29.02|27.96
+2024-06-26|ANET|Communications Equipment - Information Technology|2|85.02|83.68
+2024-06-26|WBD|Broadcasting - Communication Services|3|7.16|7.25
+2024-06-26|BXP|Office REITs - Real Estate|33|62.05|61.09
+2024-06-26|BMY|Pharmaceuticals - Health Care|2|40.81|42.5
+2024-06-26|WBD|Broadcasting - Communication Services|1|6.99|7.25
+2024-06-26|NI|Multi-Utilities - Utilities|1|29.02|29.02
+2024-06-28|EXC|Electric Utilities - Utilities|3|36.03|34.61
+2024-06-28|XEL|Multi-Utilities - Utilities|1|53.17|53.41
+2024-06-28|XEL|Multi-Utilities - Utilities|1|53.19|53.41
+2024-06-28|PM|Tobacco - Consumer Staples|19|97.66|101.33
+2024-06-28|TSCO|Other Specialty Retail - Consumer Discretionary|1|54.78|54.0
+2024-06-28|BAC|Diversified Banks - Financials|51|37.55|39.77
+2024-06-28|LHX|Aerospace & Defense - Industrials|1|217.06|224.58
+2024-06-28|CARR|Building Products - Industrials|2|61.49|63.08
+2024-06-28|KIM|Retail REITs - Real Estate|1|18.63|19.46
+2024-06-28|BA|Aerospace & Defense - Industrials|7|176.71|182.01
+2024-06-28|TPR|Apparel, Accessories & Luxury Goods - Consumer Discretionary|1|42.67|42.79
+2024-06-28|SBUX|Restaurants - Consumer Discretionary|1|77.48|77.85
+2024-06-28|COR|Health Care Distributors - Health Care|8|231.77|225.3
+2024-06-28|LUV|Passenger Airlines - Industrials|2|28.05|28.61
+2024-06-28|SWKS|Semiconductors - Information Technology|1|102.64|106.58
+2024-06-28|F|Automobile Manufacturers - Consumer Discretionary|2|12.08|12.54
+2024-06-28|WY|Timber REITs - Real Estate|1|29.02|28.39
+2024-06-28|ANET|Communications Equipment - Information Technology|2|85.02|87.62
+2024-06-28|WBD|Broadcasting - Communication Services|3|7.16|7.44
+2024-06-28|BXP|Office REITs - Real Estate|33|62.05|61.56
+2024-06-28|BMY|Pharmaceuticals - Health Care|2|40.81|41.53
+2024-06-28|WBD|Broadcasting - Communication Services|1|6.99|7.44
+2024-06-28|NI|Multi-Utilities - Utilities|1|29.02|28.81
+2024-06-28|RJF|Investment Banking & Brokerage - Financials|1|123.61|123.61
+2024-06-28|KIM|Retail REITs - Real Estate|1|19.46|19.46
+2024-06-28|WBD|Broadcasting - Communication Services|1|7.44|7.44

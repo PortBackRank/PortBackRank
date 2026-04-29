@@ -1,0 +1,737 @@
+date|symbol|sector|quantity|buy_price|price
+2024-01-02|ZTS|Pharmaceuticals - Health Care|5|196.57|196.57
+2024-01-02|ZBRA|Electronic Equipment & Instruments - Information Technology|3|267.98|267.98
+2024-01-02|ZBH|Health Care Equipment - Health Care|8|121.39|121.39
+2024-01-02|YUM|Restaurants - Consumer Discretionary|7|129.03|129.03
+2024-01-02|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|113.67
+2024-01-02|XOM|Integrated Oil & Gas - Energy|9|102.36|102.36
+2024-01-02|XEL|Multi-Utilities - Utilities|15|63.47|63.47
+2024-01-02|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|94.6
+2024-01-02|WY|Timber REITs - Real Estate|28|34.79|34.79
+2024-01-02|WTW|Insurance Brokers - Financials|4|239.95|239.95
+2024-01-02|WST|Health Care Supplies - Health Care|1|348.69|348.69
+2024-01-02|WRB|Property & Casualty Insurance - Financials|6|48.1|48.1
+2024-01-02|WMB|Oil & Gas Storage & Transportation - Energy|1|35.52|35.52
+2024-01-03|ZTS|Pharmaceuticals - Health Care|5|196.57|192.93
+2024-01-03|ZBH|Health Care Equipment - Health Care|8|121.39|120.47
+2024-01-03|YUM|Restaurants - Consumer Discretionary|7|129.03|129.1
+2024-01-03|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|111.56
+2024-01-03|XOM|Integrated Oil & Gas - Energy|9|102.36|103.22
+2024-01-03|XEL|Multi-Utilities - Utilities|15|63.47|63.58
+2024-01-03|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|94.03
+2024-01-03|WY|Timber REITs - Real Estate|28|34.79|34.06
+2024-01-03|WTW|Insurance Brokers - Financials|4|239.95|240.63
+2024-01-03|WST|Health Care Supplies - Health Care|1|348.69|338.27
+2024-01-03|WRB|Property & Casualty Insurance - Financials|6|48.1|48.37
+2024-01-03|WMB|Oil & Gas Storage & Transportation - Energy|1|35.52|36.31
+2024-01-03|ZBRA|Electronic Equipment & Instruments - Information Technology|3|252.52|252.52
+2024-01-17|ZTS|Pharmaceuticals - Health Care|5|196.57|190.9
+2024-01-17|ZBH|Health Care Equipment - Health Care|8|121.39|122.23
+2024-01-17|YUM|Restaurants - Consumer Discretionary|7|129.03|129.08
+2024-01-17|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|109.69
+2024-01-17|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|91.16
+2024-01-17|WTW|Insurance Brokers - Financials|4|239.95|247.07
+2024-01-17|WST|Health Care Supplies - Health Care|1|348.69|339.51
+2024-01-17|WRB|Property & Casualty Insurance - Financials|6|48.1|49.15
+2024-01-17|WMB|Oil & Gas Storage & Transportation - Energy|1|35.52|33.99
+2024-01-17|ZBRA|Electronic Equipment & Instruments - Information Technology|4|239.17|239.17
+2024-01-17|XOM|Integrated Oil & Gas - Energy|10|96.98|96.98
+2024-01-17|XEL|Multi-Utilities - Utilities|16|60.09|60.09
+2024-01-17|WY|Timber REITs - Real Estate|15|32.47|32.47
+2024-01-17|WBD|Broadcasting - Communication Services|2|10.16|10.16
+2024-01-24|ZBH|Health Care Equipment - Health Care|8|121.39|120.52
+2024-01-24|YUM|Restaurants - Consumer Discretionary|7|129.03|129.44
+2024-01-24|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|111.7
+2024-01-24|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|94.29
+2024-01-24|WTW|Insurance Brokers - Financials|4|239.95|250.99
+2024-01-24|WST|Health Care Supplies - Health Care|1|348.69|348.71
+2024-01-24|WRB|Property & Casualty Insurance - Financials|6|48.1|51.79
+2024-01-24|WMB|Oil & Gas Storage & Transportation - Energy|1|35.52|34.03
+2024-01-24|ZBRA|Electronic Equipment & Instruments - Information Technology|4|239.17|254.17
+2024-01-24|XOM|Integrated Oil & Gas - Energy|10|96.98|99.6
+2024-01-24|XEL|Multi-Utilities - Utilities|16|60.09|58.22
+2024-01-24|WY|Timber REITs - Real Estate|15|32.47|33.13
+2024-01-24|WBD|Broadcasting - Communication Services|2|10.16|10.41
+2024-01-24|ZTS|Pharmaceuticals - Health Care|5|186.07|186.07
+2024-01-25|ZBH|Health Care Equipment - Health Care|8|121.39|121.96
+2024-01-25|YUM|Restaurants - Consumer Discretionary|7|129.03|130.22
+2024-01-25|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|112.98
+2024-01-25|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|96.41
+2024-01-25|WTW|Insurance Brokers - Financials|4|239.95|250.72
+2024-01-25|WST|Health Care Supplies - Health Care|1|348.69|354.22
+2024-01-25|WMB|Oil & Gas Storage & Transportation - Energy|1|35.52|34.44
+2024-01-25|ZBRA|Electronic Equipment & Instruments - Information Technology|4|239.17|256.99
+2024-01-25|XOM|Integrated Oil & Gas - Energy|10|96.98|102.13
+2024-01-25|XEL|Multi-Utilities - Utilities|16|60.09|58.89
+2024-01-25|WY|Timber REITs - Real Estate|15|32.47|33.32
+2024-01-25|WBD|Broadcasting - Communication Services|2|10.16|10.58
+2024-01-25|ZTS|Pharmaceuticals - Health Care|5|186.07|187.32
+2024-01-25|WY|Timber REITs - Real Estate|10|33.32|33.32
+2024-02-07|ZBH|Health Care Equipment - Health Care|8|121.39|127.55
+2024-02-07|YUM|Restaurants - Consumer Discretionary|7|129.03|129.64
+2024-02-07|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|123.35
+2024-02-07|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|99.83
+2024-02-07|WTW|Insurance Brokers - Financials|4|239.95|271.79
+2024-02-07|WMB|Oil & Gas Storage & Transportation - Energy|1|35.52|34.29
+2024-02-07|ZBRA|Electronic Equipment & Instruments - Information Technology|4|239.17|247.11
+2024-02-07|XOM|Integrated Oil & Gas - Energy|10|96.98|102.22
+2024-02-07|XEL|Multi-Utilities - Utilities|16|60.09|58.37
+2024-02-07|WY|Timber REITs - Real Estate|15|32.47|32.86
+2024-02-07|WBD|Broadcasting - Communication Services|2|10.16|9.75
+2024-02-07|ZTS|Pharmaceuticals - Health Care|5|186.07|197.09
+2024-02-07|WY|Timber REITs - Real Estate|10|33.32|32.86
+2024-02-07|WY|Timber REITs - Real Estate|4|32.86|32.86
+2024-02-07|WRB|Property & Casualty Insurance - Financials|5|53.56|53.56
+2024-02-07|WBD|Broadcasting - Communication Services|2|9.75|9.75
+2024-02-09|ZBH|Health Care Equipment - Health Care|8|121.39|122.8
+2024-02-09|YUM|Restaurants - Consumer Discretionary|7|129.03|130.27
+2024-02-09|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|124.3
+2024-02-09|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|105.6
+2024-02-09|WTW|Insurance Brokers - Financials|4|239.95|271.86
+2024-02-09|WMB|Oil & Gas Storage & Transportation - Energy|1|35.52|34.03
+2024-02-09|ZBRA|Electronic Equipment & Instruments - Information Technology|4|239.17|253.09
+2024-02-09|XOM|Integrated Oil & Gas - Energy|10|96.98|101.77
+2024-02-09|XEL|Multi-Utilities - Utilities|16|60.09|58.17
+2024-02-09|WY|Timber REITs - Real Estate|15|32.47|33.28
+2024-02-09|ZTS|Pharmaceuticals - Health Care|5|186.07|197.32
+2024-02-09|WY|Timber REITs - Real Estate|10|33.32|33.28
+2024-02-09|WY|Timber REITs - Real Estate|4|32.86|33.28
+2024-02-09|WRB|Property & Casualty Insurance - Financials|5|53.56|53.65
+2024-02-09|WBD|Broadcasting - Communication Services|2|9.75|9.64
+2024-02-09|WBD|Broadcasting - Communication Services|2|9.64|9.64
+2024-02-14|ZBH|Health Care Equipment - Health Care|8|121.39|121.84
+2024-02-14|YUM|Restaurants - Consumer Discretionary|7|129.03|134.01
+2024-02-14|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|124.16
+2024-02-14|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|105.21
+2024-02-14|WTW|Insurance Brokers - Financials|4|239.95|275.16
+2024-02-14|ZBRA|Electronic Equipment & Instruments - Information Technology|4|239.17|252.96
+2024-02-14|XOM|Integrated Oil & Gas - Energy|10|96.98|100.84
+2024-02-14|XEL|Multi-Utilities - Utilities|16|60.09|58.68
+2024-02-14|WY|Timber REITs - Real Estate|15|32.47|33.03
+2024-02-14|ZTS|Pharmaceuticals - Health Care|5|186.07|184.08
+2024-02-14|WY|Timber REITs - Real Estate|10|33.32|33.03
+2024-02-14|WY|Timber REITs - Real Estate|4|32.86|33.03
+2024-02-14|WRB|Property & Casualty Insurance - Financials|5|53.56|54.61
+2024-02-14|WBD|Broadcasting - Communication Services|2|9.75|9.73
+2024-02-14|WBD|Broadcasting - Communication Services|2|9.64|9.73
+2024-02-14|WMB|Oil & Gas Storage & Transportation - Energy|1|33.05|33.05
+2024-02-15|ZBH|Health Care Equipment - Health Care|8|121.39|124.4
+2024-02-15|YUM|Restaurants - Consumer Discretionary|7|129.03|135.4
+2024-02-15|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|124.42
+2024-02-15|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|105.73
+2024-02-15|XOM|Integrated Oil & Gas - Energy|10|96.98|103.73
+2024-02-15|XEL|Multi-Utilities - Utilities|16|60.09|59.01
+2024-02-15|WY|Timber REITs - Real Estate|15|32.47|33.42
+2024-02-15|ZTS|Pharmaceuticals - Health Care|5|186.07|189.65
+2024-02-15|WY|Timber REITs - Real Estate|10|33.32|33.42
+2024-02-15|WY|Timber REITs - Real Estate|4|32.86|33.42
+2024-02-15|WRB|Property & Casualty Insurance - Financials|5|53.56|54.85
+2024-02-15|WBD|Broadcasting - Communication Services|2|9.75|10.14
+2024-02-15|WBD|Broadcasting - Communication Services|2|9.64|10.14
+2024-02-15|WMB|Oil & Gas Storage & Transportation - Energy|1|33.05|34.19
+2024-02-15|ZBRA|Electronic Equipment & Instruments - Information Technology|3|283.75|283.75
+2024-02-15|WY|Timber REITs - Real Estate|1|33.42|33.42
+2024-02-15|WTW|Insurance Brokers - Financials|3|277.44|277.44
+2024-02-15|WST|Health Care Supplies - Health Care|1|350.7|350.7
+2024-02-15|WRB|Property & Casualty Insurance - Financials|3|54.85|54.85
+2024-02-15|WBD|Broadcasting - Communication Services|1|10.14|10.14
+2024-02-21|ZBH|Health Care Equipment - Health Care|8|121.39|128.35
+2024-02-21|YUM|Restaurants - Consumer Discretionary|7|129.03|135.23
+2024-02-21|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|123.49
+2024-02-21|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|102.38
+2024-02-21|XOM|Integrated Oil & Gas - Energy|10|96.98|104.85
+2024-02-21|XEL|Multi-Utilities - Utilities|16|60.09|59.81
+2024-02-21|WY|Timber REITs - Real Estate|15|32.47|33.16
+2024-02-21|ZTS|Pharmaceuticals - Health Care|5|186.07|188.38
+2024-02-21|WY|Timber REITs - Real Estate|10|33.32|33.16
+2024-02-21|WY|Timber REITs - Real Estate|4|32.86|33.16
+2024-02-21|WRB|Property & Casualty Insurance - Financials|5|53.56|55.65
+2024-02-21|WBD|Broadcasting - Communication Services|2|9.75|9.57
+2024-02-21|WBD|Broadcasting - Communication Services|2|9.64|9.57
+2024-02-21|WMB|Oil & Gas Storage & Transportation - Energy|1|33.05|34.68
+2024-02-21|ZBRA|Electronic Equipment & Instruments - Information Technology|3|283.75|274.43
+2024-02-21|WY|Timber REITs - Real Estate|1|33.42|33.16
+2024-02-21|WTW|Insurance Brokers - Financials|3|277.44|275.0
+2024-02-21|WST|Health Care Supplies - Health Care|1|350.7|356.2
+2024-02-21|WRB|Property & Casualty Insurance - Financials|3|54.85|55.65
+2024-02-21|WBD|Broadcasting - Communication Services|1|9.57|9.57
+2024-02-23|ZBH|Health Care Equipment - Health Care|8|121.39|129.18
+2024-02-23|YUM|Restaurants - Consumer Discretionary|7|129.03|138.32
+2024-02-23|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|125.63
+2024-02-23|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|104.16
+2024-02-23|XOM|Integrated Oil & Gas - Energy|10|96.98|103.84
+2024-02-23|XEL|Multi-Utilities - Utilities|16|60.09|59.33
+2024-02-23|WY|Timber REITs - Real Estate|15|32.47|33.38
+2024-02-23|ZTS|Pharmaceuticals - Health Care|5|186.07|197.21
+2024-02-23|WY|Timber REITs - Real Estate|10|33.32|33.38
+2024-02-23|WY|Timber REITs - Real Estate|4|32.86|33.38
+2024-02-23|WRB|Property & Casualty Insurance - Financials|5|53.56|56.87
+2024-02-23|WMB|Oil & Gas Storage & Transportation - Energy|1|33.05|34.94
+2024-02-23|ZBRA|Electronic Equipment & Instruments - Information Technology|3|283.75|274.99
+2024-02-23|WY|Timber REITs - Real Estate|1|33.42|33.38
+2024-02-23|WTW|Insurance Brokers - Financials|3|277.44|277.57
+2024-02-23|WST|Health Care Supplies - Health Care|1|350.7|367.44
+2024-02-23|WRB|Property & Casualty Insurance - Financials|3|54.85|56.87
+2024-02-23|WMB|Oil & Gas Storage & Transportation - Energy|1|34.94|34.94
+2024-02-23|WBD|Broadcasting - Communication Services|1|8.61|8.61
+2024-02-29|ZBH|Health Care Equipment - Health Care|8|121.39|124.36
+2024-02-29|YUM|Restaurants - Consumer Discretionary|7|129.03|138.42
+2024-02-29|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|127.05
+2024-02-29|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|105.2
+2024-02-29|XOM|Integrated Oil & Gas - Energy|10|96.98|104.52
+2024-02-29|WY|Timber REITs - Real Estate|15|32.47|34.38
+2024-02-29|ZTS|Pharmaceuticals - Health Care|5|186.07|198.33
+2024-02-29|WY|Timber REITs - Real Estate|10|33.32|34.38
+2024-02-29|WY|Timber REITs - Real Estate|4|32.86|34.38
+2024-02-29|WRB|Property & Casualty Insurance - Financials|5|53.56|55.73
+2024-02-29|WMB|Oil & Gas Storage & Transportation - Energy|1|33.05|35.94
+2024-02-29|ZBRA|Electronic Equipment & Instruments - Information Technology|3|283.75|279.48
+2024-02-29|WY|Timber REITs - Real Estate|1|33.42|34.38
+2024-02-29|WTW|Insurance Brokers - Financials|3|277.44|272.61
+2024-02-29|WST|Health Care Supplies - Health Care|1|350.7|358.36
+2024-02-29|WRB|Property & Casualty Insurance - Financials|3|54.85|55.73
+2024-02-29|WMB|Oil & Gas Storage & Transportation - Energy|1|34.94|35.94
+2024-02-29|WBD|Broadcasting - Communication Services|1|8.61|8.79
+2024-02-29|XEL|Multi-Utilities - Utilities|16|52.69|52.69
+2024-03-01|ZBH|Health Care Equipment - Health Care|8|121.39|124.01
+2024-03-01|YUM|Restaurants - Consumer Discretionary|7|129.03|137.42
+2024-03-01|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|127.94
+2024-03-01|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|101.21
+2024-03-01|XOM|Integrated Oil & Gas - Energy|10|96.98|105.84
+2024-03-01|WY|Timber REITs - Real Estate|15|32.47|34.91
+2024-03-01|ZTS|Pharmaceuticals - Health Care|5|186.07|190.82
+2024-03-01|WY|Timber REITs - Real Estate|10|33.32|34.91
+2024-03-01|WY|Timber REITs - Real Estate|4|32.86|34.91
+2024-03-01|WRB|Property & Casualty Insurance - Financials|5|53.56|55.13
+2024-03-01|WMB|Oil & Gas Storage & Transportation - Energy|1|33.05|36.4
+2024-03-01|ZBRA|Electronic Equipment & Instruments - Information Technology|3|283.75|289.64
+2024-03-01|WY|Timber REITs - Real Estate|1|33.42|34.91
+2024-03-01|WTW|Insurance Brokers - Financials|3|277.44|271.18
+2024-03-01|WST|Health Care Supplies - Health Care|1|350.7|358.72
+2024-03-01|WRB|Property & Casualty Insurance - Financials|3|54.85|55.13
+2024-03-01|WMB|Oil & Gas Storage & Transportation - Energy|1|34.94|36.4
+2024-03-01|WBD|Broadcasting - Communication Services|1|8.61|8.67
+2024-03-01|XEL|Multi-Utilities - Utilities|16|49.57|49.57
+2024-03-04|ZBH|Health Care Equipment - Health Care|8|121.39|125.51
+2024-03-04|YUM|Restaurants - Consumer Discretionary|7|129.03|138.55
+2024-03-04|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|127.85
+2024-03-04|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|99.73
+2024-03-04|XOM|Integrated Oil & Gas - Energy|10|96.98|104.36
+2024-03-04|WY|Timber REITs - Real Estate|15|32.47|35.36
+2024-03-04|ZTS|Pharmaceuticals - Health Care|5|186.07|187.86
+2024-03-04|WY|Timber REITs - Real Estate|10|33.32|35.36
+2024-03-04|WY|Timber REITs - Real Estate|4|32.86|35.36
+2024-03-04|WRB|Property & Casualty Insurance - Financials|5|53.56|55.74
+2024-03-04|WMB|Oil & Gas Storage & Transportation - Energy|1|33.05|36.37
+2024-03-04|ZBRA|Electronic Equipment & Instruments - Information Technology|3|283.75|291.65
+2024-03-04|WY|Timber REITs - Real Estate|1|33.42|35.36
+2024-03-04|WTW|Insurance Brokers - Financials|3|277.44|272.09
+2024-03-04|WST|Health Care Supplies - Health Care|1|350.7|358.79
+2024-03-04|WRB|Property & Casualty Insurance - Financials|3|54.85|55.74
+2024-03-04|WMB|Oil & Gas Storage & Transportation - Energy|1|34.94|36.37
+2024-03-04|XEL|Multi-Utilities - Utilities|16|49.57|51.06
+2024-03-04|WBD|Broadcasting - Communication Services|1|8.11|8.11
+2024-03-13|ZBH|Health Care Equipment - Health Care|8|121.39|126.59
+2024-03-13|YUM|Restaurants - Consumer Discretionary|7|129.03|138.36
+2024-03-13|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|128.02
+2024-03-13|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|102.33
+2024-03-13|XOM|Integrated Oil & Gas - Energy|10|96.98|109.53
+2024-03-13|WY|Timber REITs - Real Estate|15|32.47|34.56
+2024-03-13|WY|Timber REITs - Real Estate|10|33.32|34.56
+2024-03-13|WY|Timber REITs - Real Estate|4|32.86|34.56
+2024-03-13|WRB|Property & Casualty Insurance - Financials|5|53.56|56.99
+2024-03-13|WMB|Oil & Gas Storage & Transportation - Energy|1|33.05|36.94
+2024-03-13|ZBRA|Electronic Equipment & Instruments - Information Technology|3|283.75|284.5
+2024-03-13|WY|Timber REITs - Real Estate|1|33.42|34.56
+2024-03-13|WTW|Insurance Brokers - Financials|3|277.44|274.9
+2024-03-13|WST|Health Care Supplies - Health Care|1|350.7|385.75
+2024-03-13|WRB|Property & Casualty Insurance - Financials|3|54.85|56.99
+2024-03-13|WMB|Oil & Gas Storage & Transportation - Energy|1|34.94|36.94
+2024-03-13|XEL|Multi-Utilities - Utilities|16|49.57|51.5
+2024-03-13|WBD|Broadcasting - Communication Services|1|8.11|8.85
+2024-03-13|ZTS|Pharmaceuticals - Health Care|5|176.23|176.23
+2024-03-18|ZBH|Health Care Equipment - Health Care|8|121.39|125.96
+2024-03-18|YUM|Restaurants - Consumer Discretionary|7|129.03|136.27
+2024-03-18|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|127.49
+2024-03-18|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|98.84
+2024-03-18|WY|Timber REITs - Real Estate|15|32.47|34.15
+2024-03-18|WY|Timber REITs - Real Estate|10|33.32|34.15
+2024-03-18|WY|Timber REITs - Real Estate|4|32.86|34.15
+2024-03-18|WRB|Property & Casualty Insurance - Financials|5|53.56|56.66
+2024-03-18|WMB|Oil & Gas Storage & Transportation - Energy|1|33.05|37.22
+2024-03-18|ZBRA|Electronic Equipment & Instruments - Information Technology|3|283.75|285.97
+2024-03-18|WY|Timber REITs - Real Estate|1|33.42|34.15
+2024-03-18|WTW|Insurance Brokers - Financials|3|277.44|273.82
+2024-03-18|WST|Health Care Supplies - Health Care|1|350.7|395.72
+2024-03-18|WRB|Property & Casualty Insurance - Financials|3|54.85|56.66
+2024-03-18|WMB|Oil & Gas Storage & Transportation - Energy|1|34.94|37.22
+2024-03-18|XEL|Multi-Utilities - Utilities|16|49.57|52.04
+2024-03-18|WBD|Broadcasting - Communication Services|1|8.11|8.48
+2024-03-18|ZTS|Pharmaceuticals - Health Care|5|176.23|170.69
+2024-03-18|XOM|Integrated Oil & Gas - Energy|8|112.3|112.3
+2024-03-18|XEL|Multi-Utilities - Utilities|4|52.04|52.04
+2024-03-18|WBD|Broadcasting - Communication Services|2|8.48|8.48
+2024-03-21|ZBH|Health Care Equipment - Health Care|8|121.39|127.07
+2024-03-21|YUM|Restaurants - Consumer Discretionary|7|129.03|136.57
+2024-03-21|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|129.99
+2024-03-21|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|99.96
+2024-03-21|WY|Timber REITs - Real Estate|15|32.47|35.53
+2024-03-21|WY|Timber REITs - Real Estate|10|33.32|35.53
+2024-03-21|WY|Timber REITs - Real Estate|4|32.86|35.53
+2024-03-21|WRB|Property & Casualty Insurance - Financials|5|53.56|57.21
+2024-03-21|ZBRA|Electronic Equipment & Instruments - Information Technology|3|283.75|295.06
+2024-03-21|WY|Timber REITs - Real Estate|1|33.42|35.53
+2024-03-21|WTW|Insurance Brokers - Financials|3|277.44|274.51
+2024-03-21|WST|Health Care Supplies - Health Care|1|350.7|395.89
+2024-03-21|WRB|Property & Casualty Insurance - Financials|3|54.85|57.21
+2024-03-21|WMB|Oil & Gas Storage & Transportation - Energy|1|34.94|38.43
+2024-03-21|XEL|Multi-Utilities - Utilities|16|49.57|52.3
+2024-03-21|WBD|Broadcasting - Communication Services|1|8.11|8.72
+2024-03-21|ZTS|Pharmaceuticals - Health Care|5|176.23|168.32
+2024-03-21|XOM|Integrated Oil & Gas - Energy|8|112.3|113.49
+2024-03-21|XEL|Multi-Utilities - Utilities|4|52.04|52.3
+2024-03-21|WBD|Broadcasting - Communication Services|2|8.48|8.72
+2024-03-21|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|38.43
+2024-03-26|ZBH|Health Care Equipment - Health Care|8|121.39|127.87
+2024-03-26|YUM|Restaurants - Consumer Discretionary|7|129.03|134.8
+2024-03-26|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|127.9
+2024-03-26|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|100.58
+2024-03-26|WY|Timber REITs - Real Estate|15|32.47|35.45
+2024-03-26|WY|Timber REITs - Real Estate|10|33.32|35.45
+2024-03-26|WY|Timber REITs - Real Estate|4|32.86|35.45
+2024-03-26|WRB|Property & Casualty Insurance - Financials|5|53.56|57.69
+2024-03-26|ZBRA|Electronic Equipment & Instruments - Information Technology|3|283.75|291.38
+2024-03-26|WY|Timber REITs - Real Estate|1|33.42|35.45
+2024-03-26|WTW|Insurance Brokers - Financials|3|277.44|274.14
+2024-03-26|WST|Health Care Supplies - Health Care|1|350.7|388.22
+2024-03-26|WRB|Property & Casualty Insurance - Financials|3|54.85|57.69
+2024-03-26|WMB|Oil & Gas Storage & Transportation - Energy|1|34.94|38.09
+2024-03-26|XEL|Multi-Utilities - Utilities|16|49.57|51.8
+2024-03-26|WBD|Broadcasting - Communication Services|1|8.11|8.38
+2024-03-26|XOM|Integrated Oil & Gas - Energy|8|112.3|113.79
+2024-03-26|XEL|Multi-Utilities - Utilities|4|52.04|51.8
+2024-03-26|WBD|Broadcasting - Communication Services|2|8.48|8.38
+2024-03-26|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|38.09
+2024-03-26|ZTS|Pharmaceuticals - Health Care|5|165.67|165.67
+2024-04-11|ZBH|Health Care Equipment - Health Care|8|121.39|127.52
+2024-04-11|YUM|Restaurants - Consumer Discretionary|7|129.03|138.33
+2024-04-11|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|128.79
+2024-04-11|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|104.86
+2024-04-11|WY|Timber REITs - Real Estate|15|32.47|33.65
+2024-04-11|WY|Timber REITs - Real Estate|10|33.32|33.65
+2024-04-11|WY|Timber REITs - Real Estate|4|32.86|33.65
+2024-04-11|WRB|Property & Casualty Insurance - Financials|5|53.56|54.79
+2024-04-11|ZBRA|Electronic Equipment & Instruments - Information Technology|3|283.75|297.54
+2024-04-11|WY|Timber REITs - Real Estate|1|33.42|33.65
+2024-04-11|WST|Health Care Supplies - Health Care|1|350.7|387.58
+2024-04-11|WRB|Property & Casualty Insurance - Financials|3|54.85|54.79
+2024-04-11|WMB|Oil & Gas Storage & Transportation - Energy|1|34.94|38.6
+2024-04-11|XEL|Multi-Utilities - Utilities|16|49.57|53.49
+2024-04-11|WBD|Broadcasting - Communication Services|1|8.11|8.54
+2024-04-11|XOM|Integrated Oil & Gas - Energy|8|112.3|121.79
+2024-04-11|XEL|Multi-Utilities - Utilities|4|52.04|53.49
+2024-04-11|WBD|Broadcasting - Communication Services|2|8.48|8.54
+2024-04-11|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|38.6
+2024-04-11|ZTS|Pharmaceuticals - Health Care|5|165.67|162.73
+2024-04-11|ZTS|Pharmaceuticals - Health Care|1|162.73|162.73
+2024-04-11|WTW|Insurance Brokers - Financials|2|260.31|260.31
+2024-04-11|WRB|Property & Casualty Insurance - Financials|1|54.79|54.79
+2024-04-11|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|38.6
+2024-04-11|WBD|Broadcasting - Communication Services|1|8.54|8.54
+2024-04-12|ZBH|Health Care Equipment - Health Care|8|121.39|124.48
+2024-04-12|YUM|Restaurants - Consumer Discretionary|7|129.03|137.8
+2024-04-12|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|128.11
+2024-04-12|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|101.18
+2024-04-12|WY|Timber REITs - Real Estate|15|32.47|33.24
+2024-04-12|WY|Timber REITs - Real Estate|10|33.32|33.24
+2024-04-12|WY|Timber REITs - Real Estate|4|32.86|33.24
+2024-04-12|WRB|Property & Casualty Insurance - Financials|5|53.56|54.77
+2024-04-12|ZBRA|Electronic Equipment & Instruments - Information Technology|3|283.75|289.68
+2024-04-12|WY|Timber REITs - Real Estate|1|33.42|33.24
+2024-04-12|WST|Health Care Supplies - Health Care|1|350.7|380.0
+2024-04-12|WRB|Property & Casualty Insurance - Financials|3|54.85|54.77
+2024-04-12|WMB|Oil & Gas Storage & Transportation - Energy|1|34.94|38.08
+2024-04-12|XEL|Multi-Utilities - Utilities|16|49.57|53.17
+2024-04-12|WBD|Broadcasting - Communication Services|1|8.11|8.34
+2024-04-12|XOM|Integrated Oil & Gas - Energy|8|112.3|120.37
+2024-04-12|XEL|Multi-Utilities - Utilities|4|52.04|53.17
+2024-04-12|WBD|Broadcasting - Communication Services|2|8.48|8.34
+2024-04-12|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|38.08
+2024-04-12|WTW|Insurance Brokers - Financials|2|260.31|260.31
+2024-04-12|WRB|Property & Casualty Insurance - Financials|1|54.79|54.77
+2024-04-12|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|38.08
+2024-04-12|WBD|Broadcasting - Communication Services|1|8.54|8.34
+2024-04-12|ZTS|Pharmaceuticals - Health Care|6|149.98|149.98
+2024-04-17|ZBH|Health Care Equipment - Health Care|8|121.39|121.3
+2024-04-17|YUM|Restaurants - Consumer Discretionary|7|129.03|137.83
+2024-04-17|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|126.22
+2024-04-17|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|97.48
+2024-04-17|WY|Timber REITs - Real Estate|15|32.47|31.52
+2024-04-17|WY|Timber REITs - Real Estate|4|32.86|31.52
+2024-04-17|WRB|Property & Casualty Insurance - Financials|5|53.56|53.81
+2024-04-17|ZBRA|Electronic Equipment & Instruments - Information Technology|3|283.75|276.14
+2024-04-17|WST|Health Care Supplies - Health Care|1|350.7|377.36
+2024-04-17|WRB|Property & Casualty Insurance - Financials|3|54.85|53.81
+2024-04-17|WMB|Oil & Gas Storage & Transportation - Energy|1|34.94|37.68
+2024-04-17|XEL|Multi-Utilities - Utilities|16|49.57|53.19
+2024-04-17|WBD|Broadcasting - Communication Services|1|8.11|8.23
+2024-04-17|XOM|Integrated Oil & Gas - Energy|8|112.3|118.63
+2024-04-17|XEL|Multi-Utilities - Utilities|4|52.04|53.19
+2024-04-17|WBD|Broadcasting - Communication Services|2|8.48|8.23
+2024-04-17|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|37.68
+2024-04-17|WTW|Insurance Brokers - Financials|2|260.31|259.27
+2024-04-17|WRB|Property & Casualty Insurance - Financials|1|54.79|53.81
+2024-04-17|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|37.68
+2024-04-17|WBD|Broadcasting - Communication Services|1|8.54|8.23
+2024-04-17|ZTS|Pharmaceuticals - Health Care|6|149.98|151.94
+2024-04-17|WY|Timber REITs - Real Estate|11|31.52|31.52
+2024-04-19|ZBH|Health Care Equipment - Health Care|8|121.39|119.43
+2024-04-19|YUM|Restaurants - Consumer Discretionary|7|129.03|138.5
+2024-04-19|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|127.84
+2024-04-19|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|94.99
+2024-04-19|WY|Timber REITs - Real Estate|15|32.47|31.47
+2024-04-19|WY|Timber REITs - Real Estate|4|32.86|31.47
+2024-04-19|WRB|Property & Casualty Insurance - Financials|5|53.56|54.93
+2024-04-19|WST|Health Care Supplies - Health Care|1|350.7|372.04
+2024-04-19|WRB|Property & Casualty Insurance - Financials|3|54.85|54.93
+2024-04-19|WMB|Oil & Gas Storage & Transportation - Energy|1|34.94|38.51
+2024-04-19|XEL|Multi-Utilities - Utilities|16|49.57|54.72
+2024-04-19|WBD|Broadcasting - Communication Services|1|8.11|8.4
+2024-04-19|XOM|Integrated Oil & Gas - Energy|8|112.3|119.88
+2024-04-19|XEL|Multi-Utilities - Utilities|4|52.04|54.72
+2024-04-19|WBD|Broadcasting - Communication Services|2|8.48|8.4
+2024-04-19|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|38.51
+2024-04-19|WTW|Insurance Brokers - Financials|2|260.31|264.52
+2024-04-19|WRB|Property & Casualty Insurance - Financials|1|54.79|54.93
+2024-04-19|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|38.51
+2024-04-19|WBD|Broadcasting - Communication Services|1|8.54|8.4
+2024-04-19|ZTS|Pharmaceuticals - Health Care|6|149.98|146.5
+2024-04-19|WY|Timber REITs - Real Estate|11|31.52|31.47
+2024-04-19|ZBRA|Electronic Equipment & Instruments - Information Technology|3|268.07|268.07
+2024-04-24|ZBH|Health Care Equipment - Health Care|8|121.39|121.17
+2024-04-24|YUM|Restaurants - Consumer Discretionary|7|129.03|141.81
+2024-04-24|XYL|Industrial Machinery & Supplies & Components - Industrials|8|113.67|130.67
+2024-04-24|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|97.06
+2024-04-24|WY|Timber REITs - Real Estate|15|32.47|31.54
+2024-04-24|WY|Timber REITs - Real Estate|4|32.86|31.54
+2024-04-24|WRB|Property & Casualty Insurance - Financials|5|53.56|51.9
+2024-04-24|WST|Health Care Supplies - Health Care|1|350.7|385.73
+2024-04-24|WMB|Oil & Gas Storage & Transportation - Energy|1|34.94|39.25
+2024-04-24|XEL|Multi-Utilities - Utilities|16|49.57|55.33
+2024-04-24|WBD|Broadcasting - Communication Services|1|8.11|8.38
+2024-04-24|XOM|Integrated Oil & Gas - Energy|8|112.3|121.05
+2024-04-24|XEL|Multi-Utilities - Utilities|4|52.04|55.33
+2024-04-24|WBD|Broadcasting - Communication Services|2|8.48|8.38
+2024-04-24|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|39.25
+2024-04-24|WTW|Insurance Brokers - Financials|2|260.31|264.48
+2024-04-24|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|39.25
+2024-04-24|WBD|Broadcasting - Communication Services|1|8.54|8.38
+2024-04-24|ZTS|Pharmaceuticals - Health Care|6|149.98|150.88
+2024-04-24|WY|Timber REITs - Real Estate|11|31.52|31.54
+2024-04-24|ZBRA|Electronic Equipment & Instruments - Information Technology|3|268.07|277.53
+2024-04-24|WRB|Property & Casualty Insurance - Financials|4|51.9|51.9
+2024-04-26|ZBH|Health Care Equipment - Health Care|8|121.39|119.35
+2024-04-26|YUM|Restaurants - Consumer Discretionary|7|129.03|141.77
+2024-04-26|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|95.88
+2024-04-26|WY|Timber REITs - Real Estate|15|32.47|31.05
+2024-04-26|WRB|Property & Casualty Insurance - Financials|5|53.56|51.1
+2024-04-26|WST|Health Care Supplies - Health Care|1|350.7|360.43
+2024-04-26|WMB|Oil & Gas Storage & Transportation - Energy|1|34.94|39.26
+2024-04-26|XEL|Multi-Utilities - Utilities|16|49.57|53.96
+2024-04-26|WBD|Broadcasting - Communication Services|1|8.11|8.11
+2024-04-26|XOM|Integrated Oil & Gas - Energy|8|112.3|117.96
+2024-04-26|XEL|Multi-Utilities - Utilities|4|52.04|53.96
+2024-04-26|WBD|Broadcasting - Communication Services|2|8.48|8.11
+2024-04-26|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|39.26
+2024-04-26|WTW|Insurance Brokers - Financials|2|260.31|250.95
+2024-04-26|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|39.26
+2024-04-26|ZTS|Pharmaceuticals - Health Care|6|149.98|158.42
+2024-04-26|WY|Timber REITs - Real Estate|11|31.52|31.05
+2024-04-26|ZBRA|Electronic Equipment & Instruments - Information Technology|3|268.07|297.21
+2024-04-26|WRB|Property & Casualty Insurance - Financials|4|51.9|51.1
+2024-04-26|XYL|Industrial Machinery & Supplies & Components - Industrials|7|132.4|132.4
+2024-04-26|WY|Timber REITs - Real Estate|5|31.05|31.05
+2024-04-26|WRB|Property & Casualty Insurance - Financials|2|51.1|51.1
+2024-04-30|ZBH|Health Care Equipment - Health Care|8|121.39|120.28
+2024-04-30|YUM|Restaurants - Consumer Discretionary|7|129.03|141.25
+2024-04-30|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|91.65
+2024-04-30|WRB|Property & Casualty Insurance - Financials|5|53.56|51.31
+2024-04-30|WST|Health Care Supplies - Health Care|1|350.7|357.48
+2024-04-30|WMB|Oil & Gas Storage & Transportation - Energy|1|34.94|38.36
+2024-04-30|XEL|Multi-Utilities - Utilities|16|49.57|53.73
+2024-04-30|XOM|Integrated Oil & Gas - Energy|8|112.3|118.27
+2024-04-30|XEL|Multi-Utilities - Utilities|4|52.04|53.73
+2024-04-30|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|38.36
+2024-04-30|WTW|Insurance Brokers - Financials|2|260.31|251.14
+2024-04-30|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|38.36
+2024-04-30|ZTS|Pharmaceuticals - Health Care|6|149.98|159.24
+2024-04-30|WY|Timber REITs - Real Estate|11|31.52|30.17
+2024-04-30|WRB|Property & Casualty Insurance - Financials|4|51.9|51.31
+2024-04-30|XYL|Industrial Machinery & Supplies & Components - Industrials|7|132.4|130.7
+2024-04-30|WY|Timber REITs - Real Estate|5|31.05|30.17
+2024-04-30|WRB|Property & Casualty Insurance - Financials|2|51.1|51.31
+2024-04-30|ZBRA|Electronic Equipment & Instruments - Information Technology|3|314.56|314.56
+2024-04-30|WY|Timber REITs - Real Estate|15|30.17|30.17
+2024-04-30|WBD|Broadcasting - Communication Services|4|7.36|7.36
+2024-05-14|ZBH|Health Care Equipment - Health Care|8|121.39|119.97
+2024-05-14|YUM|Restaurants - Consumer Discretionary|7|129.03|137.49
+2024-05-14|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|98.04
+2024-05-14|WRB|Property & Casualty Insurance - Financials|5|53.56|52.55
+2024-05-14|WST|Health Care Supplies - Health Care|1|350.7|354.48
+2024-05-14|XEL|Multi-Utilities - Utilities|16|49.57|55.56
+2024-05-14|XOM|Integrated Oil & Gas - Energy|8|112.3|117.67
+2024-05-14|XEL|Multi-Utilities - Utilities|4|52.04|55.56
+2024-05-14|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|40.36
+2024-05-14|WTW|Insurance Brokers - Financials|2|260.31|253.89
+2024-05-14|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|40.36
+2024-05-14|ZTS|Pharmaceuticals - Health Care|6|149.98|168.87
+2024-05-14|WY|Timber REITs - Real Estate|11|31.52|31.19
+2024-05-14|WRB|Property & Casualty Insurance - Financials|4|51.9|52.55
+2024-05-14|XYL|Industrial Machinery & Supplies & Components - Industrials|7|132.4|142.07
+2024-05-14|WY|Timber REITs - Real Estate|5|31.05|31.19
+2024-05-14|WRB|Property & Casualty Insurance - Financials|2|51.1|52.55
+2024-05-14|ZBRA|Electronic Equipment & Instruments - Information Technology|3|314.56|320.98
+2024-05-14|WY|Timber REITs - Real Estate|15|30.17|31.19
+2024-05-14|WY|Timber REITs - Real Estate|1|31.19|31.19
+2024-05-14|WMB|Oil & Gas Storage & Transportation - Energy|1|40.36|40.36
+2024-05-15|ZBH|Health Care Equipment - Health Care|8|121.39|120.98
+2024-05-15|YUM|Restaurants - Consumer Discretionary|7|129.03|138.34
+2024-05-15|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|97.62
+2024-05-15|WRB|Property & Casualty Insurance - Financials|5|53.56|52.25
+2024-05-15|WST|Health Care Supplies - Health Care|1|350.7|351.52
+2024-05-15|XEL|Multi-Utilities - Utilities|16|49.57|55.79
+2024-05-15|XOM|Integrated Oil & Gas - Energy|8|112.3|118.58
+2024-05-15|XEL|Multi-Utilities - Utilities|4|52.04|55.79
+2024-05-15|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|40.47
+2024-05-15|WTW|Insurance Brokers - Financials|2|260.31|255.63
+2024-05-15|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|40.47
+2024-05-15|WY|Timber REITs - Real Estate|11|31.52|31.36
+2024-05-15|WRB|Property & Casualty Insurance - Financials|4|51.9|52.25
+2024-05-15|XYL|Industrial Machinery & Supplies & Components - Industrials|7|132.4|143.79
+2024-05-15|WY|Timber REITs - Real Estate|5|31.05|31.36
+2024-05-15|WRB|Property & Casualty Insurance - Financials|2|51.1|52.25
+2024-05-15|ZBRA|Electronic Equipment & Instruments - Information Technology|3|314.56|323.87
+2024-05-15|WY|Timber REITs - Real Estate|15|30.17|31.36
+2024-05-15|WY|Timber REITs - Real Estate|1|31.19|31.36
+2024-05-15|WMB|Oil & Gas Storage & Transportation - Energy|1|40.36|40.47
+2024-05-15|ZTS|Pharmaceuticals - Health Care|5|173.28|173.28
+2024-05-15|XOM|Integrated Oil & Gas - Energy|1|118.58|118.58
+2024-05-15|WY|Timber REITs - Real Estate|1|31.36|31.36
+2024-05-15|WBD|Broadcasting - Communication Services|3|8.2|8.2
+2024-05-23|ZBH|Health Care Equipment - Health Care|8|121.39|115.85
+2024-05-23|YUM|Restaurants - Consumer Discretionary|7|129.03|137.01
+2024-05-23|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|94.09
+2024-05-23|WRB|Property & Casualty Insurance - Financials|5|53.56|52.57
+2024-05-23|XEL|Multi-Utilities - Utilities|16|49.57|54.05
+2024-05-23|XOM|Integrated Oil & Gas - Energy|8|112.3|113.51
+2024-05-23|XEL|Multi-Utilities - Utilities|4|52.04|54.05
+2024-05-23|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|40.11
+2024-05-23|WTW|Insurance Brokers - Financials|2|260.31|252.5
+2024-05-23|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|40.11
+2024-05-23|WY|Timber REITs - Real Estate|11|31.52|30.11
+2024-05-23|WRB|Property & Casualty Insurance - Financials|4|51.9|52.57
+2024-05-23|XYL|Industrial Machinery & Supplies & Components - Industrials|7|132.4|143.72
+2024-05-23|WY|Timber REITs - Real Estate|5|31.05|30.11
+2024-05-23|WRB|Property & Casualty Insurance - Financials|2|51.1|52.57
+2024-05-23|ZBRA|Electronic Equipment & Instruments - Information Technology|3|314.56|324.06
+2024-05-23|WY|Timber REITs - Real Estate|15|30.17|30.11
+2024-05-23|WY|Timber REITs - Real Estate|1|31.19|30.11
+2024-05-23|WMB|Oil & Gas Storage & Transportation - Energy|1|40.36|40.11
+2024-05-23|ZTS|Pharmaceuticals - Health Care|5|173.28|170.9
+2024-05-23|XOM|Integrated Oil & Gas - Energy|1|118.58|113.51
+2024-05-23|WY|Timber REITs - Real Estate|1|31.36|30.11
+2024-05-23|WTW|Insurance Brokers - Financials|1|252.5|252.5
+2024-05-23|WRB|Property & Casualty Insurance - Financials|1|52.57|52.57
+2024-05-23|WMB|Oil & Gas Storage & Transportation - Energy|1|40.11|40.11
+2024-05-23|WBD|Broadcasting - Communication Services|1|7.7|7.7
+2024-05-28|ZBH|Health Care Equipment - Health Care|8|121.39|116.33
+2024-05-28|YUM|Restaurants - Consumer Discretionary|7|129.03|135.86
+2024-05-28|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|93.51
+2024-05-28|WRB|Property & Casualty Insurance - Financials|5|53.56|52.38
+2024-05-28|XEL|Multi-Utilities - Utilities|16|49.57|53.74
+2024-05-28|XOM|Integrated Oil & Gas - Energy|8|112.3|114.86
+2024-05-28|XEL|Multi-Utilities - Utilities|4|52.04|53.74
+2024-05-28|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|40.67
+2024-05-28|WTW|Insurance Brokers - Financials|2|260.31|250.63
+2024-05-28|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|40.67
+2024-05-28|WRB|Property & Casualty Insurance - Financials|4|51.9|52.38
+2024-05-28|XYL|Industrial Machinery & Supplies & Components - Industrials|7|132.4|140.36
+2024-05-28|WY|Timber REITs - Real Estate|5|31.05|29.76
+2024-05-28|WRB|Property & Casualty Insurance - Financials|2|51.1|52.38
+2024-05-28|ZBRA|Electronic Equipment & Instruments - Information Technology|3|314.56|326.24
+2024-05-28|WY|Timber REITs - Real Estate|15|30.17|29.76
+2024-05-28|WY|Timber REITs - Real Estate|1|31.19|29.76
+2024-05-28|WMB|Oil & Gas Storage & Transportation - Energy|1|40.36|40.67
+2024-05-28|ZTS|Pharmaceuticals - Health Care|5|173.28|171.3
+2024-05-28|XOM|Integrated Oil & Gas - Energy|1|118.58|114.86
+2024-05-28|WTW|Insurance Brokers - Financials|1|252.5|250.63
+2024-05-28|WRB|Property & Casualty Insurance - Financials|1|52.57|52.38
+2024-05-28|WMB|Oil & Gas Storage & Transportation - Energy|1|40.11|40.67
+2024-05-28|WBD|Broadcasting - Communication Services|1|7.7|7.87
+2024-05-28|WY|Timber REITs - Real Estate|12|29.76|29.76
+2024-05-29|YUM|Restaurants - Consumer Discretionary|7|129.03|134.67
+2024-05-29|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|92.53
+2024-05-29|WRB|Property & Casualty Insurance - Financials|5|53.56|51.97
+2024-05-29|XEL|Multi-Utilities - Utilities|16|49.57|53.3
+2024-05-29|XOM|Integrated Oil & Gas - Energy|8|112.3|113.63
+2024-05-29|XEL|Multi-Utilities - Utilities|4|52.04|53.3
+2024-05-29|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|40.1
+2024-05-29|WTW|Insurance Brokers - Financials|2|260.31|249.68
+2024-05-29|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|40.1
+2024-05-29|WRB|Property & Casualty Insurance - Financials|4|51.9|51.97
+2024-05-29|XYL|Industrial Machinery & Supplies & Components - Industrials|7|132.4|137.95
+2024-05-29|WRB|Property & Casualty Insurance - Financials|2|51.1|51.97
+2024-05-29|ZBRA|Electronic Equipment & Instruments - Information Technology|3|314.56|316.93
+2024-05-29|WY|Timber REITs - Real Estate|15|30.17|29.36
+2024-05-29|WMB|Oil & Gas Storage & Transportation - Energy|1|40.36|40.1
+2024-05-29|ZTS|Pharmaceuticals - Health Care|5|173.28|170.8
+2024-05-29|XOM|Integrated Oil & Gas - Energy|1|118.58|113.63
+2024-05-29|WTW|Insurance Brokers - Financials|1|252.5|249.68
+2024-05-29|WRB|Property & Casualty Insurance - Financials|1|52.57|51.97
+2024-05-29|WMB|Oil & Gas Storage & Transportation - Energy|1|40.11|40.1
+2024-05-29|WBD|Broadcasting - Communication Services|1|7.7|7.66
+2024-05-29|WY|Timber REITs - Real Estate|12|29.76|29.36
+2024-05-29|ZBH|Health Care Equipment - Health Care|8|115.14|115.14
+2024-05-29|WY|Timber REITs - Real Estate|6|29.36|29.36
+2024-06-11|YUM|Restaurants - Consumer Discretionary|7|129.03|137.01
+2024-06-11|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|91.74
+2024-06-11|WRB|Property & Casualty Insurance - Financials|5|53.56|52.31
+2024-06-11|XEL|Multi-Utilities - Utilities|16|49.57|55.04
+2024-06-11|XOM|Integrated Oil & Gas - Energy|8|112.3|112.17
+2024-06-11|XEL|Multi-Utilities - Utilities|4|52.04|55.04
+2024-06-11|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|41.37
+2024-06-11|WTW|Insurance Brokers - Financials|2|260.31|257.21
+2024-06-11|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|41.37
+2024-06-11|WRB|Property & Casualty Insurance - Financials|4|51.9|52.31
+2024-06-11|XYL|Industrial Machinery & Supplies & Components - Industrials|7|132.4|138.52
+2024-06-11|WRB|Property & Casualty Insurance - Financials|2|51.1|52.31
+2024-06-11|ZBRA|Electronic Equipment & Instruments - Information Technology|3|314.56|301.38
+2024-06-11|WY|Timber REITs - Real Estate|15|30.17|29.14
+2024-06-11|WMB|Oil & Gas Storage & Transportation - Energy|1|40.36|41.37
+2024-06-11|ZTS|Pharmaceuticals - Health Care|5|173.28|178.54
+2024-06-11|WTW|Insurance Brokers - Financials|1|252.5|257.21
+2024-06-11|WRB|Property & Casualty Insurance - Financials|1|52.57|52.31
+2024-06-11|WMB|Oil & Gas Storage & Transportation - Energy|1|40.11|41.37
+2024-06-11|WBD|Broadcasting - Communication Services|1|7.7|8.04
+2024-06-11|WY|Timber REITs - Real Estate|12|29.76|29.14
+2024-06-11|WY|Timber REITs - Real Estate|6|29.36|29.14
+2024-06-11|ZBH|Health Care Equipment - Health Care|9|109.23|109.23
+2024-06-13|YUM|Restaurants - Consumer Discretionary|7|129.03|138.01
+2024-06-13|WYNN|Casinos & Gaming - Consumer Discretionary|10|94.6|90.49
+2024-06-13|WRB|Property & Casualty Insurance - Financials|5|53.56|52.18
+2024-06-13|XEL|Multi-Utilities - Utilities|16|49.57|54.34
+2024-06-13|XOM|Integrated Oil & Gas - Energy|8|112.3|110.04
+2024-06-13|XEL|Multi-Utilities - Utilities|4|52.04|54.34
+2024-06-13|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|41.52
+2024-06-13|WTW|Insurance Brokers - Financials|2|260.31|255.85
+2024-06-13|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|41.52
+2024-06-13|WRB|Property & Casualty Insurance - Financials|4|51.9|52.18
+2024-06-13|XYL|Industrial Machinery & Supplies & Components - Industrials|7|132.4|140.67
+2024-06-13|WRB|Property & Casualty Insurance - Financials|2|51.1|52.18
+2024-06-13|ZBRA|Electronic Equipment & Instruments - Information Technology|3|314.56|308.91
+2024-06-13|WY|Timber REITs - Real Estate|15|30.17|29.02
+2024-06-13|WMB|Oil & Gas Storage & Transportation - Energy|1|40.36|41.52
+2024-06-13|ZTS|Pharmaceuticals - Health Care|5|173.28|171.32
+2024-06-13|WTW|Insurance Brokers - Financials|1|252.5|255.85
+2024-06-13|WRB|Property & Casualty Insurance - Financials|1|52.57|52.18
+2024-06-13|WMB|Oil & Gas Storage & Transportation - Energy|1|40.11|41.52
+2024-06-13|WY|Timber REITs - Real Estate|12|29.76|29.02
+2024-06-13|WY|Timber REITs - Real Estate|6|29.36|29.02
+2024-06-13|ZBH|Health Care Equipment - Health Care|9|109.23|106.97
+2024-06-13|WBD|Broadcasting - Communication Services|1|7.29|7.29
+2024-06-14|YUM|Restaurants - Consumer Discretionary|7|129.03|136.79
+2024-06-14|WRB|Property & Casualty Insurance - Financials|5|53.56|52.1
+2024-06-14|XEL|Multi-Utilities - Utilities|16|49.57|53.77
+2024-06-14|XOM|Integrated Oil & Gas - Energy|8|112.3|109.11
+2024-06-14|XEL|Multi-Utilities - Utilities|4|52.04|53.77
+2024-06-14|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|41.17
+2024-06-14|WTW|Insurance Brokers - Financials|2|260.31|255.28
+2024-06-14|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|41.17
+2024-06-14|WRB|Property & Casualty Insurance - Financials|4|51.9|52.1
+2024-06-14|XYL|Industrial Machinery & Supplies & Components - Industrials|7|132.4|138.02
+2024-06-14|WRB|Property & Casualty Insurance - Financials|2|51.1|52.1
+2024-06-14|ZBRA|Electronic Equipment & Instruments - Information Technology|3|314.56|301.37
+2024-06-14|WY|Timber REITs - Real Estate|15|30.17|29.0
+2024-06-14|WMB|Oil & Gas Storage & Transportation - Energy|1|40.36|41.17
+2024-06-14|ZTS|Pharmaceuticals - Health Care|5|173.28|170.55
+2024-06-14|WTW|Insurance Brokers - Financials|1|252.5|255.28
+2024-06-14|WRB|Property & Casualty Insurance - Financials|1|52.57|52.1
+2024-06-14|WMB|Oil & Gas Storage & Transportation - Energy|1|40.11|41.17
+2024-06-14|WY|Timber REITs - Real Estate|12|29.76|29.0
+2024-06-14|WY|Timber REITs - Real Estate|6|29.36|29.0
+2024-06-14|ZBH|Health Care Equipment - Health Care|9|109.23|107.19
+2024-06-14|WBD|Broadcasting - Communication Services|1|7.29|7.24
+2024-06-14|WYNN|Casinos & Gaming - Consumer Discretionary|10|88.8|88.8
+2024-06-18|YUM|Restaurants - Consumer Discretionary|7|129.03|135.42
+2024-06-18|WRB|Property & Casualty Insurance - Financials|5|53.56|53.45
+2024-06-18|XEL|Multi-Utilities - Utilities|16|49.57|53.12
+2024-06-18|XOM|Integrated Oil & Gas - Energy|8|112.3|109.38
+2024-06-18|XEL|Multi-Utilities - Utilities|4|52.04|53.12
+2024-06-18|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|41.81
+2024-06-18|WTW|Insurance Brokers - Financials|2|260.31|255.48
+2024-06-18|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|41.81
+2024-06-18|WRB|Property & Casualty Insurance - Financials|4|51.9|53.45
+2024-06-18|XYL|Industrial Machinery & Supplies & Components - Industrials|7|132.4|140.37
+2024-06-18|WRB|Property & Casualty Insurance - Financials|2|51.1|53.45
+2024-06-18|WY|Timber REITs - Real Estate|15|30.17|28.87
+2024-06-18|WMB|Oil & Gas Storage & Transportation - Energy|1|40.36|41.81
+2024-06-18|ZTS|Pharmaceuticals - Health Care|5|173.28|169.66
+2024-06-18|WTW|Insurance Brokers - Financials|1|252.5|255.48
+2024-06-18|WRB|Property & Casualty Insurance - Financials|1|52.57|53.45
+2024-06-18|WMB|Oil & Gas Storage & Transportation - Energy|1|40.11|41.81
+2024-06-18|WY|Timber REITs - Real Estate|12|29.76|28.87
+2024-06-18|WY|Timber REITs - Real Estate|6|29.36|28.87
+2024-06-18|ZBH|Health Care Equipment - Health Care|9|109.23|106.69
+2024-06-18|WBD|Broadcasting - Communication Services|1|7.29|6.99
+2024-06-18|WYNN|Casinos & Gaming - Consumer Discretionary|10|88.8|89.2
+2024-06-18|ZBRA|Electronic Equipment & Instruments - Information Technology|3|295.25|295.25
+2024-06-20|YUM|Restaurants - Consumer Discretionary|7|129.03|134.15
+2024-06-20|WRB|Property & Casualty Insurance - Financials|5|53.56|54.02
+2024-06-20|XEL|Multi-Utilities - Utilities|16|49.57|53.53
+2024-06-20|XOM|Integrated Oil & Gas - Energy|8|112.3|111.74
+2024-06-20|XEL|Multi-Utilities - Utilities|4|52.04|53.53
+2024-06-20|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|42.4
+2024-06-20|WTW|Insurance Brokers - Financials|2|260.31|259.94
+2024-06-20|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|42.4
+2024-06-20|WRB|Property & Casualty Insurance - Financials|4|51.9|54.02
+2024-06-20|XYL|Industrial Machinery & Supplies & Components - Industrials|7|132.4|139.23
+2024-06-20|WRB|Property & Casualty Insurance - Financials|2|51.1|54.02
+2024-06-20|WMB|Oil & Gas Storage & Transportation - Energy|1|40.36|42.4
+2024-06-20|ZTS|Pharmaceuticals - Health Care|5|173.28|168.18
+2024-06-20|WTW|Insurance Brokers - Financials|1|252.5|259.94
+2024-06-20|WRB|Property & Casualty Insurance - Financials|1|52.57|54.02
+2024-06-20|WMB|Oil & Gas Storage & Transportation - Energy|1|40.11|42.4
+2024-06-20|WY|Timber REITs - Real Estate|12|29.76|28.64
+2024-06-20|WY|Timber REITs - Real Estate|6|29.36|28.64
+2024-06-20|ZBH|Health Care Equipment - Health Care|9|109.23|106.25
+2024-06-20|WBD|Broadcasting - Communication Services|1|7.29|7.04
+2024-06-20|WYNN|Casinos & Gaming - Consumer Discretionary|10|88.8|89.7
+2024-06-20|ZBRA|Electronic Equipment & Instruments - Information Technology|3|295.25|296.64
+2024-06-20|WYNN|Casinos & Gaming - Consumer Discretionary|1|89.7|89.7
+2024-06-20|WY|Timber REITs - Real Estate|11|28.64|28.64
+2024-06-20|WBD|Broadcasting - Communication Services|4|7.04|7.04
+2024-06-26|YUM|Restaurants - Consumer Discretionary|7|129.03|131.96
+2024-06-26|WRB|Property & Casualty Insurance - Financials|5|53.56|52.87
+2024-06-26|XEL|Multi-Utilities - Utilities|16|49.57|53.79
+2024-06-26|XOM|Integrated Oil & Gas - Energy|8|112.3|114.41
+2024-06-26|XEL|Multi-Utilities - Utilities|4|52.04|53.79
+2024-06-26|WMB|Oil & Gas Storage & Transportation - Energy|1|38.43|42.29
+2024-06-26|WTW|Insurance Brokers - Financials|2|260.31|263.65
+2024-06-26|WMB|Oil & Gas Storage & Transportation - Energy|1|38.6|42.29
+2024-06-26|WRB|Property & Casualty Insurance - Financials|4|51.9|52.87
+2024-06-26|XYL|Industrial Machinery & Supplies & Components - Industrials|7|132.4|136.21
+2024-06-26|WRB|Property & Casualty Insurance - Financials|2|51.1|52.87
+2024-06-26|WMB|Oil & Gas Storage & Transportation - Energy|1|40.36|42.29
+2024-06-26|ZTS|Pharmaceuticals - Health Care|5|173.28|170.9
+2024-06-26|WTW|Insurance Brokers - Financials|1|252.5|263.65
+2024-06-26|WRB|Property & Casualty Insurance - Financials|1|52.57|52.87
+2024-06-26|WMB|Oil & Gas Storage & Transportation - Energy|1|40.11|42.29
+2024-06-26|WY|Timber REITs - Real Estate|6|29.36|27.96
+2024-06-26|ZBH|Health Care Equipment - Health Care|9|109.23|108.11
+2024-06-26|WBD|Broadcasting - Communication Services|1|7.29|7.25
+2024-06-26|WYNN|Casinos & Gaming - Consumer Discretionary|10|88.8|88.13
+2024-06-26|ZBRA|Electronic Equipment & Instruments - Information Technology|3|295.25|307.12
+2024-06-26|WYNN|Casinos & Gaming - Consumer Discretionary|1|89.7|88.13
+2024-06-26|WY|Timber REITs - Real Estate|11|28.64|27.96
+2024-06-26|WBD|Broadcasting - Communication Services|4|7.04|7.25
+2024-06-26|WY|Timber REITs - Real Estate|12|27.96|27.96
