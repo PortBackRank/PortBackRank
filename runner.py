@@ -154,7 +154,8 @@ class Runner:
             KEY_LOSS: self.loss,
             KEY_DIVERSIFICATION: self.diversification,
             KEY_BALANCE: round(self.balance, 2),
-            KEY_FINAL_TOTAL_VALUE: round(self.total_portfolio_value, 2)
+            KEY_FINAL_TOTAL_VALUE: round(self.total_portfolio_value, 2),
+            'portfolio_details': self.__portfolio_details.copy()
         }
 
         self._save_trace(result, ranker_conf)
