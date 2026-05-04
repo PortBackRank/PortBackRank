@@ -13,14 +13,6 @@ class Ranker(ABC):
     '''Abstract base class for ranking strategies.'''
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
-        '''
-        Initialize the Ranker with optional parameters and data.
-
-        Args:
-            parameters: Optional dictionary containing strategy parameters.
-            interval: List of two strings representing start and end dates [start_date, end_date].
-            data: MemData instance containing historical data and market information.
-        '''
         self.interval = interval
         self.data = data
         self.parameters = parameters or {}
@@ -29,21 +21,12 @@ class Ranker(ABC):
     def rank(self, date: str = None) -> List[str]:
         '''
         Generate a ranked list of stock symbols based on the strategy.
-
-        Args:
-            date: Optional date string for ranking calculation.
-
-        Returns:
-            List[str]: Ranked stock symbols sorted by strategy criteria.
         '''
 
     @abstractmethod
-    def prepare(self, data: MemData) -> None:
+    def prepare(self) -> None:
         '''
         Prepare required data or indicators before simulation execution.
-
-        Args:
-            data: MemData object containing historical price data and sector information.
         '''
 
 
@@ -51,169 +34,106 @@ class RandomRanker(Ranker):
     '''Ranker that generates random symbol rankings.'''
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
-        '''
-        Initialize RandomRanker with optional seed for reproducibility.
-
-        Args:
-            parameters: Optional dictionary containing strategy parameters including 'SEED'.
-            interval: List of two strings representing start and end dates.
-            data: MemData instance for data retrieval.
-        '''
         super().__init__(parameters, interval, data)
         self.seed = self.parameters.get('SEED', 42)
 
     def rank(self, date: str = None) -> List[str]:
-        '''
-        Generate a random ranking of available symbols.
-
-        Args:
-            date: Unused parameter (for interface compatibility).
-
-        Returns:
-            List[str]: Symbols in random order.
-        '''
         symbols = self.data.get_assets()
-
         if self.seed is not None:
             random.seed(self.seed)
-
         random.shuffle(symbols)
-
         return symbols
 
-    def prepare(self, data: MemData) -> None:
-        '''
-        No preparation required for random ranking.
-
-        Args:
-            data: MemData object (unused).
-        '''
+    def prepare(self) -> None:
         pass
-
-
-def test_random_ranker():
-    '''Test RandomRanker functionality with sample data.'''
-    interval = ['2024-01-10', '2024-11-10']
-    data = MemData(interval=interval)
-
-    parameters = {'SEED': 42}
-
-    ranker = RandomRanker(data=data, parameters=parameters)
-    ranked_symbols = ranker.rank()
-
-    print('Randomly ranked symbols:', ranked_symbols)
 
 
 class MARanker(Ranker):
     '''Ranker based on Mean Reversion strategy using moving averages.'''
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
-        '''
-        Initialize MARanker with short and long moving average windows.
-
-        Args:
-            parameters: Dictionary containing 'window' key with [short_period, long_period].
-            interval: List of two strings representing start and end dates.
-            data: MemData instance for data retrieval.
-        '''
         super().__init__(parameters, interval, data)
         windows = self.parameters.get('window')
         self._short = windows[0]
         self._long = windows[1]
+        self.short_col = f'ma{self._short}'
+        self.long_col = f'ma{self._long}'
+
+    def prepare(self) -> None:
+        '''
+        Calculates moving averages vectorized across the MegaDataFrame.
+        '''
+        df = self.data.get_mega_df()
+        if df.empty:
+            return
+
+        # Calculate moving averages for all symbols at once using groupby
+        # Since MegaDataFrame has MultiIndex (Date, Symbol), we groupby Symbol
+        # and calculate rolling mean on 'Close'
+        
+        # Sort index to ensure chronological order before rolling
+        df.sort_index(level=['Symbol', 'Date'], inplace=True)
+        
+        df[self.short_col] = df.groupby(level='Symbol')['Close'].transform(lambda x: x.rolling(self._short).mean())
+        df[self.long_col] = df.groupby(level='Symbol')['Close'].transform(lambda x: x.rolling(self._long).mean())
+        
+        # Restore original sorting if needed
+        df.sort_index(level=['Date', 'Symbol'], inplace=True)
 
     def rank(self, date: str = None) -> List[str]:
         '''
-        Rank symbols based on mean reversion signals.
-
-        Identifies symbols where the short-term MA crosses above the long-term MA,
-        indicating potential mean reversion opportunities.
-
-        Args:
-            date: Date string for ranking calculation.
-
-        Returns:
-            List[str]: Symbols ranked by mean reversion strength (highest first).
+        Rank symbols based on mean reversion signals using pre-calculated indicators.
         '''
-        dict_data = self.data.get_all_history()
+        df = self.data.get_mega_df()
+        if df.empty or date not in df.index.get_level_values('Date'):
+            return []
+
+        # Get data for the current date
+        current_date_data = df.xs(date, level='Date')
+        
+        # Find previous date in the index
+        all_dates = df.index.get_level_values('Date').unique()
+        date_loc = all_dates.get_loc(date)
+        
+        if date_loc < 1:
+            return []
+            
+        prev_date = all_dates[date_loc - 1]
+        prev_date_data = df.xs(prev_date, level='Date')
+
         ranked_symbols = []
         
-        for symbol, df_data in dict_data.items():
-            # Calculate moving averages
-            short_col = f'ma{self._short}'
-            long_col = f'ma{self._long}'
-            df_data[short_col] = df_data['Close'].rolling(self._short).mean()
-            df_data[long_col] = df_data['Close'].rolling(self._long).mean()
+        for symbol in current_date_data.index:
+            if symbol not in prev_date_data.index:
+                continue
+                
+            latest = current_date_data.loc[symbol]
+            prev = prev_date_data.loc[symbol]
             
-            # Default to negative infinity (worst ranking)
-            strength = float('-inf')
-
-            if date in df_data.index:
-                idx = df_data.index.get_loc(date)
-
-                # Handle slice type indices
-                if isinstance(idx, slice):
-                    idx = idx.start
-
-                # Ensure sufficient history for comparison
-                if idx >= 1:
-                    latest = df_data.iloc[idx]
-                    prev = df_data.iloc[idx - 1]
-                    
-                    # Detect mean reversion: short MA crosses above long MA
-                    if prev[short_col] <= prev[long_col] and latest[short_col] > latest[long_col]:
-                        strength = (latest[short_col] / latest[long_col] - 1) * 100
-            else:
+            # Check if MAs are calculated
+            if pd.isna(latest[self.short_col]) or pd.isna(latest[self.long_col]) or \
+               pd.isna(prev[self.short_col]) or pd.isna(prev[self.long_col]):
                 continue
 
+            strength = float('-inf')
+            
+            # Detect mean reversion: short MA crosses above long MA
+            if prev[self.short_col] <= prev[self.long_col] and latest[self.short_col] > latest[self.long_col]:
+                strength = (latest[self.short_col] / latest[self.long_col] - 1) * 100
+                
             ranked_symbols.append((strength, symbol))
 
-        # Sort by strength in descending order
         ranked_symbols.sort(reverse=True)
         return [x[1] for x in ranked_symbols]
-
-    def prepare(self, data: MemData) -> None:
-        '''
-        No preparation required for mean reversion ranking.
-
-        Args:
-            data: MemData object (unused).
-        '''
-        pass
-
-
-def test_ma_ranker():
-    '''Test MARanker functionality with sample data and date.'''
-    interval = ['2024-01-10', '2024-11-10']
-    data = MemData(interval=interval)
-
-    parameters = {'window': [9, 21]}
-
-    ranker = MARanker(data=data, parameters=parameters)
-    ranked_symbols = ranker.rank(date='2024-05-29')
-
-    print('Mean Reversion ranked symbols:', ranked_symbols)
-
-
-if __name__ == '__main__':
-    test_ma_ranker()
 
 
 class RSIRanker(Ranker):
     '''Ranker based on Relative Strength Index (RSI) technical indicator.'''
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
-        '''
-        Initialize RSIRanker with RSI period and thresholds.
-
-        Args:
-            parameters: Dictionary with 'period', 'oversold', 'overbought', and 'mode' keys.
-            interval: List of two strings representing start and end dates.
-            data: MemData instance for data retrieval.
-        '''
         super().__init__(parameters, interval, data)
         self.period = int(self.parameters.get('period', 14))
         
-        # Override period from window parameter if provided
         win = self.parameters.get('window')
         try:
             if isinstance(win, (list, tuple)) and len(win) >= 1:
@@ -224,101 +144,86 @@ class RSIRanker(Ranker):
         self.oversold = float(self.parameters.get('oversold', 30))
         self.overbought = float(self.parameters.get('overbought', 70))
         self.mode = self.parameters.get('mode', 'mean_reversion')
+        self.rsi_col = f'rsi{self.period}'
 
-    def _ensure_rsi(self, df: pd.DataFrame) -> pd.DataFrame:
+    def prepare(self) -> None:
         '''
-        Calculate and add RSI column to dataframe if not present.
-
-        Args:
-            df: DataFrame with 'Close' price column.
-
-        Returns:
-            DataFrame with RSI column added.
+        Calculates RSI vectorized across the MegaDataFrame.
         '''
-        key = f'rsi{self.period}'
-        if key in df.columns:
-            return df
+        df = self.data.get_mega_df()
+        if df.empty:
+            return
+
+        df.sort_index(level=['Symbol', 'Date'], inplace=True)
         
-        # Calculate price changes
-        delta = df['Close'].diff()
-        up = delta.clip(lower=0)
-        down = -delta.clip(upper=0)
-        
-        # Calculate exponential moving averages of gains and losses
-        roll_up = up.ewm(alpha=1 / self.period, adjust=False).mean()
-        roll_down = down.ewm(alpha=1 / self.period, adjust=False).mean()
-        
-        # Calculate RSI
-        rs = roll_up / roll_down
-        rsi = 100 - (100 / (1 + rs))
-        
-        # Handle infinite values and fill gaps
-        df[key] = rsi.replace([float('inf'), float('-inf')], float('nan')).ffill()
-        return df
+        def compute_rsi(group):
+            delta = group.diff()
+            up = delta.clip(lower=0)
+            down = -delta.clip(upper=0)
+            roll_up = up.ewm(alpha=1 / self.period, adjust=False).mean()
+            roll_down = down.ewm(alpha=1 / self.period, adjust=False).mean()
+            rs = roll_up / roll_down
+            rsi = 100 - (100 / (1 + rs))
+            return rsi.replace([float('inf'), float('-inf')], float('nan')).ffill()
+
+        df[self.rsi_col] = df.groupby(level='Symbol')['Close'].transform(compute_rsi)
+        df.sort_index(level=['Date', 'Symbol'], inplace=True)
 
     def rank(self, date: str = None) -> List[str]:
         '''
-        Rank symbols based on RSI signal crossovers.
-
-        In mean_reversion mode: identifies symbols crossing above oversold level.
-        In momentum mode: identifies symbols crossing above 50 level.
-
-        Args:
-            date: Date string for ranking calculation.
-
-        Returns:
-            List[str]: Symbols ranked by signal strength (highest first).
+        Rank symbols based on RSI signal crossovers using pre-calculated indicators.
         '''
-        dict_data = self.data.get_all_history()
-        ranked_symbols = []
-        key = f'rsi{self.period}'
+        df = self.data.get_mega_df()
+        if df.empty or date not in df.index.get_level_values('Date'):
+            return []
+
+        current_date_data = df.xs(date, level='Date')
         
-        for symbol, df in dict_data.items():
-            # Skip invalid or empty data
-            if 'Close' not in df.columns or df.empty:
+        all_dates = df.index.get_level_values('Date').unique()
+        date_loc = all_dates.get_loc(date)
+        
+        if date_loc < 1:
+            return []
+            
+        prev_date = all_dates[date_loc - 1]
+        prev_date_data = df.xs(prev_date, level='Date')
+
+        ranked_symbols = []
+        
+        for symbol in current_date_data.index:
+            if symbol not in prev_date_data.index:
                 continue
+                
+            latest = current_date_data.loc[symbol]
+            prev = prev_date_data.loc[symbol]
             
-            df = self._ensure_rsi(df.copy())
-            
-            # Skip if date not in index
-            if date not in df.index:
+            if pd.isna(latest[self.rsi_col]) or pd.isna(prev[self.rsi_col]):
                 continue
-            
-            idx = df.index.get_loc(date)
-            
-            # Handle slice type indices
-            if isinstance(idx, slice):
-                idx = idx.start
-            
-            # Require sufficient history
-            if idx < 1:
-                continue
-            
-            latest = df.iloc[idx]
-            prev = df.iloc[idx - 1]
+
             strength = float('-inf')
             
-            # Detect signal crossover based on mode
             if self.mode == 'mean_reversion':
-                # Mean reversion: detect oversold bounce
-                if prev[key] <= self.oversold and latest[key] > self.oversold:
-                    strength = latest[key] - self.oversold
+                if prev[self.rsi_col] <= self.oversold and latest[self.rsi_col] > self.oversold:
+                    strength = latest[self.rsi_col] - self.oversold
             else:
-                # Momentum: detect midline cross
-                if prev[key] <= 50 and latest[key] > 50:
-                    strength = latest[key] - 50
+                if prev[self.rsi_col] <= 50 and latest[self.rsi_col] > 50:
+                    strength = latest[self.rsi_col] - 50
             
             ranked_symbols.append((symbol, strength))
 
-        # Sort by strength in descending order
         ranked_symbols.sort(key=lambda x: x[1], reverse=True)
         return [x[0] for x in ranked_symbols]
 
-    def prepare(self, data: MemData) -> None:
-        '''
-        No preparation required for RSI ranking.
 
-        Args:
-            data: MemData object (unused).
-        '''
-        pass
+if __name__ == '__main__':
+    print("Testing rankers with MegaDataFrame...")
+    from data import MemData
+    mem_data = MemData(['2024-01-01', '2024-06-30'])
+    
+    ma_ranker = MARanker(parameters={'window': [9, 21]}, data=mem_data)
+    ma_ranker.prepare()
+    print("MAs prepared.")
+    
+    rsi_ranker = RSIRanker(parameters={'period': 14}, data=mem_data)
+    rsi_ranker.prepare()
+    print("RSI prepared.")

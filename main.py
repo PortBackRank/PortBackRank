@@ -1,7 +1,6 @@
 from backtesting import Backtesting
 from ranker import MARanker, RSIRanker
-from data import Data
-from markets import MarketData, list_recent_symbols
+from data import Data, MemData, identify_market, read_symbols
 from utils import generate_filename
 import argparse
 import pandas as pd
@@ -56,20 +55,17 @@ def _ensure_market_assets(market_code: str = MARKET_SP500):
     """
     Ensure all market assets have downloaded historical data.
     """
-    market_data = MarketData(market_code)
-    assets = market_data.list_recent_symbols(market_data.market, force_update=False)
+    market_code = identify_market(market_code)
+    assets = read_symbols(market_code)
 
-    data_handler = Data(market=market_code)
+    data_handler = Data()
     max_retries = 3
     missing = []
 
     for attempt in range(1, max_retries + 1):
         missing = []
         for asset in assets:
-            try:
-                df = data_handler.load_dataframe(f'{asset}.csv')
-            except (FileNotFoundError, pd.errors.EmptyDataError):
-                df = None
+            df = data_handler.get_asset_data_by_name(asset)
 
             if not isinstance(df, pd.DataFrame) or df.empty:
                 missing.append(asset)
@@ -96,12 +92,16 @@ def run_backtest_ma():
     interval = DEFAULT_INTERVAL
     _ensure_market_assets(MARKET_SP500)
 
-    backtester = Backtesting(
-        _get_ranker_class(RANKER_MA),
-        capital=DEFAULT_CAPITAL,
-        interval=interval,
-        market_identifier=MARKET_SP500,
-    )
+    mem_data = MemData(interval, market_identifier=MARKET_SP500)
+    config = {
+        'ranker_cls': _get_ranker_class(RANKER_MA),
+        'capital': DEFAULT_CAPITAL,
+        'interval': interval,
+        'data': mem_data,
+        'trace': False
+    }
+
+    backtester = Backtesting(config)
 
     ranker_grid = {KEY_WINDOW: [9, 21]}
     runner_grid = {
@@ -120,12 +120,16 @@ def run_backtest_rsi():
     interval = DEFAULT_INTERVAL
     _ensure_market_assets(MARKET_SP500)
 
-    backtester = Backtesting(
-        _get_ranker_class(RANKER_RSI),
-        capital=DEFAULT_CAPITAL,
-        interval=interval,
-        market_identifier=MARKET_SP500,
-    )
+    mem_data = MemData(interval, market_identifier=MARKET_SP500)
+    config = {
+        'ranker_cls': _get_ranker_class(RANKER_RSI),
+        'capital': DEFAULT_CAPITAL,
+        'interval': interval,
+        'data': mem_data,
+        'trace': False
+    }
+
+    backtester = Backtesting(config)
 
     ranker_grid = {
         KEY_WINDOW: [[9, 9], [14, 14], [21, 21]],
@@ -196,25 +200,28 @@ def run_from_config(config_path: str, download_mode: str = MODE_MISSING, price_t
         price_type = config.get('price-type', 'C')
 
     runner_grid, ranker_grid = _build_grids(config)
-    data_handler = Data(market=market_identifier)
+    data_handler = Data()
     
     mode = (download_mode or MODE_MISSING).lower()
     if mode == MODE_ALL:
-        assets = list_recent_symbols(data_handler.market_data.market, force_update=True)
+        assets = read_symbols(identify_market(market_identifier))
         data_handler.download_histories(assets)
     elif mode == MODE_MISSING:
         _ensure_market_assets(market_identifier)
 
     n_jobs = config.get('n_jobs', 1)
 
-    backtester = Backtesting(
-        ranker_cls,
-        capital=capital,
-        interval=interval,
-        market_identifier=market_identifier,
-        price_type=price_type,
-        trace=trace
-    )
+    mem_data = MemData(interval, market_identifier=market_identifier, price_type=price_type)
+    
+    backtest_config = {
+        'ranker_cls': ranker_cls,
+        'capital': capital,
+        'interval': interval,
+        'data': mem_data,
+        'trace': trace
+    }
+
+    backtester = Backtesting(backtest_config)
 
     results = backtester.run(
         runner_grid,

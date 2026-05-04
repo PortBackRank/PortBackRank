@@ -1,7 +1,8 @@
-results/
+tracking/
 .$diagrama.drawio.bkp
 __pycache__/
 *.pyc
 .vscode/
 .env
 .venv
+/tracking

@@ -74,17 +74,27 @@ class Runner:
         self.trade_log = []
         self.portfolio_log = []
 
-        self._all_history = self.data.get_all_history()
         self._all_sectors = self.data.get_all_sectors()
-        self._history_by_date = self.data.get_history_by_date()
-        self._ranker_instance.prepare(self.data)
+        self.mega_df = self.data.get_mega_df()
+        
+        self._ranker_instance.prepare()
         self._interval = interval
 
     def _log_portfolio_state(self, date: str):
+        # We pre-slice the dataframe for the given date to speed up lookups
+        if not self.mega_df.empty and date in self.mega_df.index.get_level_values('Date'):
+            current_date_data = self.mega_df.xs(date, level='Date')
+        else:
+            current_date_data = None
+
         for index, row in self.__portfolio_details.iterrows():
             symbol = row[KEY_ASSET]
-            day_row = self._history_by_date.get(symbol, {}).get(date)
-            current_price = day_row[COL_CLOSE] if day_row is not None and not pd.isna(day_row[COL_CLOSE]) else row[KEY_UNIT_VALUE]
+            current_price = row[KEY_UNIT_VALUE]
+            
+            if current_date_data is not None and symbol in current_date_data.index:
+                price_val = current_date_data.loc[symbol, COL_CLOSE]
+                if not pd.isna(price_val):
+                    current_price = price_val
             
             self.portfolio_log.append({
                 COL_DATE: date,
@@ -105,8 +115,6 @@ class Runner:
         market_id = 'unknown'
         if hasattr(self.data, 'market_identifier'):
             market_id = self.data.market_identifier
-        elif hasattr(self.data, 'market'):
-            market_id = self.data.market
 
         ranker_name = self.ranker.__name__
         windows = '-'.join(map(str, ranker_conf.get(KEY_WINDOW, [])))
@@ -139,10 +147,16 @@ class Runner:
         self.prepare_data(interval, ranker_conf, capital)
         start_date, end_date = interval
 
+        # Iterating over the dates present in MegaDataFrame or just a date_range
+        # Let's use date_range for consistency, but checking if data exists
         for date in pd.date_range(start_date, end_date).strftime('%Y-%m-%d'):
+            if self.mega_df.empty or date not in self.mega_df.index.get_level_values('Date'):
+                continue
+                
+            current_date_data = self.mega_df.xs(date, level='Date')
             trades_before = len(self.trade_log)
-            self._sell(date)
-            self._buy(date, self._ranker_instance)
+            self._sell(date, current_date_data)
+            self._buy(date, self._ranker_instance, current_date_data)
             
             if len(self.trade_log) > trades_before:
                 self._log_portfolio_state(date)
@@ -163,18 +177,18 @@ class Runner:
         return result
 
 
-    def _sell(self, date: str):
+    def _sell(self, date: str, current_date_data: pd.DataFrame):
         if self.__portfolio_details.empty:
             return
 
         symbols_in_portfolio = self.__portfolio_details[KEY_ASSET].unique()
         asset_histories = {}
         for symbol in symbols_in_portfolio:
-            day_row = self._history_by_date.get(symbol, {}).get(date)
-            if day_row is not None:
+            if symbol in current_date_data.index:
+                row = current_date_data.loc[symbol]
                 asset_histories[symbol] = {
-                    'current_price': day_row[COL_CLOSE],
-                    'daily_volume': day_row[COL_VOLUME]
+                    'current_price': row[COL_CLOSE],
+                    'daily_volume': row[COL_VOLUME]
                 }
 
         indices_to_remove = []
@@ -219,7 +233,7 @@ class Runner:
             self.__portfolio_details = self.__portfolio_details.drop(indices_to_remove).reset_index(drop=True)
         self._update_portfolio_metrics()
 
-    def _buy(self, date: str, ranker: Ranker):
+    def _buy(self, date: str, ranker: Ranker, current_date_data: pd.DataFrame):
         ranked_symbols = ranker.rank(date)
         if not ranked_symbols:
             return
@@ -242,8 +256,11 @@ class Runner:
             else:
                 max_sector_investment = (total_val * self.diversification) - current_sector_val
 
-            day_row = self._history_by_date.get(symbol, {}).get(date)
-            if day_row is None or pd.isna(day_row[COL_CLOSE]):
+            if symbol not in current_date_data.index:
+                continue
+                
+            day_row = current_date_data.loc[symbol]
+            if pd.isna(day_row[COL_CLOSE]):
                 continue
 
             current_price = day_row[COL_CLOSE]
@@ -295,6 +312,7 @@ def test_runner():
         profit=0.1,
         loss=0.05,
         diversification=0.2,
+        volume=1.0,
         ranker=RandomRanker,
         data=MemData(interval)
     )
@@ -308,7 +326,6 @@ def test_runner():
         import traceback
         traceback.print_exc()
 
-
 def test_runner_ma():
     '''Test runner functionality with Moving Average ranker.'''
     interval = ['2024-04-10', '2024-08-10']
@@ -319,7 +336,7 @@ def test_runner_ma():
         profit=0.1,
         loss=0.05,
         diversification=0.2,
-        volume=0.1, # Adicionado o parâmetro volume que faltava no seu teste
+        volume=0.1, 
         ranker=MARanker,
         data=MemData(interval, market_identifier=MARKET_SP500)
     )
