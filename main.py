@@ -213,6 +213,10 @@ def run_from_config(config_path: str, download_mode: str = MODE_MISSING, price_t
 
     mem_data = MemData(interval, market_identifier=market_identifier, price_type=price_type)
     
+    if trace:
+        print("Salvando MegaDataFrame em 'megadataframe.csv' para demonstração...")
+        mem_data.mega_df.to_csv('megadataframe.csv')
+
     backtest_config = {
         'ranker_cls': ranker_cls,
         'capital': capital,
@@ -264,8 +268,13 @@ def _parse_args(argv=None):
 
 def main(argv=None):
     """Entry point for the application."""
+    import time 
+    
+    start = time.time()
     args = _parse_args(argv)
     run_from_config(args.config, download_mode=args.download_data, price_type=args.price_type, trace=args.trace)
+    end = time.time()
+    print('Time:', end - start)
 
 
 if __name__ == '__main__':
