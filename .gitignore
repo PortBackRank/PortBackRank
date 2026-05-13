@@ -1,9 +1,8 @@
-tracking/
 .$diagrama.drawio.bkp
 __pycache__/
 *.pyc
 .vscode/
 .env
 .venv
-/tracking
+tracking/
 megadataframe.csv

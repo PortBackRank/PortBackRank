@@ -62,33 +62,33 @@
 
 ### markets.py
 
-- [ ] (João Bruno, César) Remover essa classe e mover código estritamente necessário para **data.py** (tentar manter o mais simples possível para apenas ler o CSV com os ativos)
+- [x] (João Bruno, César) Remover essa classe e mover código estritamente necessário para **data.py** (tentar manter o mais simples possível para apenas ler o CSV com os ativos)
 
 
 ### data.py
 
-- [ ] (João Bruno, César) Não usar a classe MarketData, implementar lógica de leitura de arquivo CSV com ativos de forma mais simples e mudar atributo **market_data** para lista ou DataFrame
-- [ ] (João Bruno, César) Criar branch para manter o histórico em **MegaDataFrame** , DataFrame multi-index em **symbol** e **date** (nesse caso, a classe MemData pode ser eliminada)
-- [ ] (João Bruno, César) Unificar métodos **download_history()** e **download_histories()** da classe **Data**
-- [ ] (João Bruno, César) Remover método **update_symbols()** da classe **Data**
-- [ ] (João Bruno, César) Verificar outras possibilidades de simplificar classe **Data**:
-- [ ] (João Bruno, César) Remover os seguinte métodos da classe **MemData**:
-    - [ ] **load_sector_info()** (tratar no **__init__()**)
-    - [ ] **load()** (tratar no **__init__()**)
-    - [ ] **_generate_date_index()** (tratar no **__init__()**)
-- [ ] Verificar outras possibilidades de simplificar classe **MenData**:
+- [x] (João Bruno, César) Não usar a classe MarketData, implementar lógica de leitura de arquivo CSV com ativos de forma mais simples e mudar atributo **market_data** para lista ou DataFrame
+- [x] (João Bruno, César) Criar branch para manter o histórico em **MegaDataFrame** , DataFrame multi-index em **symbol** e **date** (nesse caso, a classe MemData pode ser eliminada)
+- [x] (João Bruno, César) Unificar métodos **download_history()** e **download_histories()** da classe **Data**
+- [x] (João Bruno, César) Remover método **update_symbols()** da classe **Data**
+- [x] (João Bruno, César) Verificar outras possibilidades de simplificar classe **Data**:
+- [x] (João Bruno, César) Remover os seguinte métodos da classe **MemData**:
+    - [x] **load_sector_info()** (tratar no **__init__()**)
+    - [x] **load()** (tratar no **__init__()**)
+    - [x] **_generate_date_index()** (tratar no **__init__()**)
+- [x] Verificar outras possibilidades de simplificar classe **MenData**:
 
 ### backtesting.py
 
-- [ ] Analisar viabilidade usar objetos e não classes (**runner_cls** e **ranker_cls**)
-- [ ] Receber parâmetros de simulação (**parameter_grid** e **ranker_grid**) na inicialização (por serem muitos parâmetros, talvez a melhor solução seja receber um dicionário com toda a configuração)
-- [ ] Não usar parâmetro **market_identifier** (pode receber objeto **MemData** ou criar tal objeto na inicialização)
-- [ ] Pensar em maneira mais organizada para execução paralela (atualmente **run_simulation()** dentro de **run()**)
+- [x] Analisar viabilidade usar objetos e não classes (**runner_cls** e **ranker_cls**)
+- [x] Receber parâmetros de simulação (**parameter_grid** e **ranker_grid**) na inicialização (por serem muitos parâmetros, talvez a melhor solução seja receber um dicionário com toda a configuração)
+- [x] Não usar parâmetro **market_identifier** (pode receber objeto **MemData** ou criar tal objeto na inicialização)
+- [x] Pensar em maneira mais organizada para execução paralela (atualmente **run_simulation()** dentro de **run()**)
 
 ### main.py
 
-- [ ] Incluir opção de habilitar / desabilitar arquivos de rastreamento (tracking)
-- [ ] Simplificar e manter apenas a execução via arquivo de configuração
+- [x] Incluir opção de habilitar / desabilitar arquivos de rastreamento (tracking)
+- [x] Simplificar e manter apenas a execução via arquivo de configuração
 
 ### names.py
 
@@ -96,6 +96,6 @@
 
 ### ranker.py
 
-- [ ] Implementar método **prepare()** da classe **MARanker** a ideia calcular as colunas de médias móveis uma única vez e apenas usá-las no método **rank()** (isso deve impactar ainda mais na implementação com MegaDataFrame)
+- [x] Implementar método **prepare()** da classe **MARanker** a ideia calcular as colunas de médias móveis uma única vez e apenas usá-las no método **rank()** (isso deve impactar ainda mais na implementação com MegaDataFrame)
 
 
