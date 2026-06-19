@@ -183,9 +183,9 @@ def _get_ranker_class(name: str):
     raise ValueError(f'Ranker "{name}" is not supported.')
 
 
-def run_from_config(config_path: str, download_mode: str = MODE_MISSING, price_type: str = None, trace: bool = False):
+def run_from_config(config_path: str, download_mode: str = MODE_MISSING, price_type = None, trace: bool = False):
     """
-    Run backtest from configuration file.
+    Run backtest from configuration file. Supports single or multiple price types.
     """
     config = _load_config(config_path)
 
@@ -196,8 +196,17 @@ def run_from_config(config_path: str, download_mode: str = MODE_MISSING, price_t
     ranker_name = config.get(KEY_RANKER, RANKER_MA)
     ranker_cls = _get_ranker_class(ranker_name)
 
+    # Normalize price_type to a list of price types
     if price_type is None:
-        price_type = config.get('price-type', 'C')
+        raw_price_type = config.get('price-type', 'C')
+        if isinstance(raw_price_type, list):
+            price_types = raw_price_type
+        else:
+            price_types = [raw_price_type]
+    elif isinstance(price_type, list):
+        price_types = price_type
+    else:
+        price_types = [price_type]
 
     runner_grid, ranker_grid = _build_grids(config)
     data_handler = Data()
@@ -211,28 +220,41 @@ def run_from_config(config_path: str, download_mode: str = MODE_MISSING, price_t
 
     n_jobs = config.get('n_jobs', 1)
 
-    mem_data = MemData(interval, market_identifier=market_identifier, price_type=price_type)
-    
-    if trace:
-        print("Salvando MegaDataFrame em 'megadataframe.csv' para demonstração...")
-        mem_data.mega_df.to_csv('megadataframe.csv')
+    all_results = []
 
-    backtest_config = {
-        'ranker_cls': ranker_cls,
-        'capital': capital,
-        'interval': interval,
-        'data': mem_data,
-        'trace': trace
-    }
+    for pt in price_types:
+        print(f"Running simulation for price type: {pt}")
+        mem_data = MemData(interval, market_identifier=market_identifier, price_type=pt)
+        
+        if trace:
+            print(f"Salvando MegaDataFrame em 'megadataframe_{pt}.csv' para demonstração...")
+            mem_data.mega_df.to_csv(f'megadataframe_{pt}.csv')
 
-    backtester = Backtesting(backtest_config)
+        backtest_config = {
+            'ranker_cls': ranker_cls,
+            'capital': capital,
+            'interval': interval,
+            'data': mem_data,
+            'trace': trace
+        }
 
-    results = backtester.run(
-        runner_grid,
-        ranker_grid=ranker_grid,
-        n_jobs=n_jobs,
-    )
-    _print_df_full(results)
+        backtester = Backtesting(backtest_config)
+
+        results = backtester.run(
+            runner_grid,
+            ranker_grid=ranker_grid,
+            n_jobs=n_jobs,
+        )
+        if results is not None and not results.empty:
+            results['price_type'] = pt
+            all_results.append(results)
+
+    if all_results:
+        final_results = pd.concat(all_results, ignore_index=True)
+    else:
+        final_results = pd.DataFrame()
+
+    _print_df_full(final_results)
 
 
 def _parse_args(argv=None):
@@ -254,9 +276,10 @@ def _parse_args(argv=None):
     )
     parser.add_argument(
         '-p', '--price-type',
-        choices=['O', 'H', 'L', 'C'],
+        nargs='+',
+        choices=['O', 'H', 'L', 'C', 'CN', 'HL2', 'HLC3', 'OHLC4'],
         default=None,
-        help='Price type to use for backtesting (default: from config)'
+        help='Price type(s) to use for backtesting (default: from config)'
     )
     parser.add_argument(
         '-t', '--trace',

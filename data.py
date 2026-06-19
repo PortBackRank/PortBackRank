@@ -6,6 +6,7 @@ Includes integration for market configurations and the MegaDataFrame structure
 for optimized backtesting.
 '''
 
+from concurrent import futures
 import os
 import concurrent.futures
 from datetime import datetime
@@ -145,15 +146,16 @@ class Data():
     def __init__(self, precision: int = 2):
         self.precision = precision
 
-    def download_histories(self, assets: List[str]) -> None:
+    def download_histories(self, assets: List[str], repair: bool = False) -> None:
         '''Download historical data for multiple assets concurrently (or single if len=1).'''
+            
         tickers = yf.Tickers(assets)
         assets_list = list(tickers.tickers.keys())
 
         with tqdm(total=len(assets_list), desc='Downloading data', unit='asset') as pbar:
             def download_and_save(asset):
                 try:
-                    df = tickers.tickers[asset].history(period=YF_PERIOD_MAX, auto_adjust=YF_AUTO_ADJUST)
+                    df = tickers.tickers[asset].history(period=YF_PERIOD_MAX, auto_adjust=YF_AUTO_ADJUST, repair=repair)
                     self._save_asset_data(asset, df)
                 except Exception as e:
                     logger.error(f"Error downloading {asset}: {e}")
@@ -177,7 +179,7 @@ class Data():
         df = open_dataframe(file_name, self.subdir)
         if df is None or df.empty:
             logger.info(f'File {file_name} not found or empty. Downloading data for {asset}.')
-            self.download_histories([asset])
+            self.download_histories([asset], repair=False)
             df = open_dataframe(file_name, self.subdir)
         return df
 
