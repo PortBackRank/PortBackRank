@@ -1,7 +1,6 @@
-
-"""
+'''
 Ranker module for the investment strategy.
-"""
+'''
 
 from abc import ABC, abstractmethod
 from typing import List
@@ -11,196 +10,220 @@ from data import MemData
 
 
 class Ranker(ABC):
-    """class abstract Ranker"""
+    '''Abstract base class for ranking strategies.'''
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
-        """
-        Constructor for the Ranker class, 
-        which defines default parameters for the investment strategy.
-
-        :param parameters: Optional dictionary of parameters for the strategy.
-        :param interval: List of two strings representing the start and end dates of the data to be used.
-        :param data: Data instance to be used for the strategy.
-            If not provided, the current date will be used.
-        """
         self.interval = interval
-
         self.data = data
         self.parameters = parameters or {}
 
     @abstractmethod
     def rank(self, date: str = None) -> List[str]:
-        """
-        Abstract method that must be implemented by subclasses.
+        '''
+        Generate a ranked list of stock symbols based on the strategy.
+        '''
 
-        :return: List of ranked stock symbols.
-        """
+    @abstractmethod
+    def prepare(self) -> None:
+        '''
+        Prepare required data or indicators before simulation execution.
+        '''
 
 
 class RandomRanker(Ranker):
-    """RandomRanker class"""
+    '''Ranker that generates random symbol rankings.'''
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
-        """
-        Constructor for the RandomRanker class, allowing for an optional seed for reproducibility.
-
-        :param parameters: Optional dictionary of parameters for the strategy.
-        :param date: List of two strings representing the start and end dates of the data to be used.
-        :param data: Data instance to be used for the strategy.
-        :param seed: Optional seed for randomization.
-        """
         super().__init__(parameters, interval, data)
-        self.seed = self.parameters.get("SEED", 42)
+        self.seed = self.parameters.get('SEED', 42)
 
     def rank(self, date: str = None) -> List[str]:
-        """
-        Generates a random ranking of symbols based on the data retrieved from the `Data` instance.
-
-        :return: List of symbols in random order.
-        """
         symbols = self.data.get_assets()
-
         if self.seed is not None:
             random.seed(self.seed)
-
         random.shuffle(symbols)
-
         return symbols
 
-
-def test_random_ranker():
-    """
-    Função simples para testar o funcionamento do RandomRanker.
-    """
-    interval = ["2024-01-10", "2024-11-10"]
-    data = MemData(interval=interval)
-
-    parameters = {"SEED": 42}
-
-    ranker = RandomRanker(data=data, parameters=parameters)
-    ranked_symbols = ranker.rank()
-
-    print("Símbolos ranqueados aleatoriamente:", ranked_symbols)
+    def prepare(self) -> None:
+        pass
 
 
 class MARanker(Ranker):
-    """Mean Reversion Ranker class"""
+    '''Ranker based on Mean Reversion strategy using moving averages.'''
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
         super().__init__(parameters, interval, data)
-        windows = self.parameters.get("window")
+        windows = self.parameters.get('window')
         self._short = windows[0]
         self._long = windows[1]
+        self.short_col = f'ma{self._short}'
+        self.long_col = f'ma{self._long}'
+
+    def prepare(self) -> None:
+        '''
+        Calculates moving averages vectorized across the MegaDataFrame.
+        '''
+        df = self.data.get_mega_df()
+        if df.empty:
+            return
+
+        # Calculate moving averages for all symbols at once using groupby
+        # Since MegaDataFrame has MultiIndex (Date, Symbol), we groupby Symbol
+        # and calculate rolling mean on 'Close'
+        
+        # Sort index to ensure chronological order before rolling
+        df.sort_index(level=['Symbol', 'Date'], inplace=True)
+        
+        df[self.short_col] = df.groupby(level='Symbol')['Close'].transform(lambda x: x.rolling(self._short).mean())
+        df[self.long_col] = df.groupby(level='Symbol')['Close'].transform(lambda x: x.rolling(self._long).mean())
+        
+        # Restore original sorting if needed
+        df.sort_index(level=['Date', 'Symbol'], inplace=True)
 
     def rank(self, date: str = None) -> List[str]:
-        dict_data = self.data.get_all_history()
+        '''
+        Rank symbols based on mean reversion signals using pre-calculated indicators.
+        '''
+        df = self.data.get_mega_df()
+        if df.empty or date not in df.index.get_level_values('Date'):
+            return []
+
+        # Get data for the current date
+        current_date_data = df.xs(date, level='Date')
+        
+        # Find previous date in the index
+        all_dates = df.index.get_level_values('Date').unique()
+        date_loc = all_dates.get_loc(date)
+        
+        if date_loc < 1:
+            return []
+            
+        prev_date = all_dates[date_loc - 1]
+        prev_date_data = df.xs(prev_date, level='Date')
+
         ranked_symbols = []
-        for symbol, df_data in dict_data.items():
-            # Calculate means
-            short = 'w' + str(self._short)
-            long = 'w' + str(self._long)
-            df_data[short] = df_data['Close'].rolling(self._short).mean()
-            df_data[long] = df_data['Close'].rolling(self._long).mean()
-            # Default strength is negative infinity
-            strength = float('-inf')
-
-            if date in df_data.index:
-                idx = df_data.index.get_loc(date)
-
-                if isinstance(idx, slice):
-                    idx = idx.start  # ou idx.stop
-
-                # Verifique se o índice é válido (>= 1)
-                if idx >= 1:
-                    latest = df_data.iloc[idx]
-                    prev = df_data.iloc[idx-1]
-                    # Check for mean reversion
-                    if prev[short] <= prev[long] and latest[short] > latest[long]:
-                        # Calculate strength
-                        strength = (latest[short] / latest[long] - 1) * 100
-            else:
+        
+        for symbol in current_date_data.index:
+            if symbol not in prev_date_data.index:
+                continue
+                
+            latest = current_date_data.loc[symbol]
+            prev = prev_date_data.loc[symbol]
+            
+            # Check if MAs are calculated
+            if pd.isna(latest[self.short_col]) or pd.isna(latest[self.long_col]) or \
+               pd.isna(prev[self.short_col]) or pd.isna(prev[self.long_col]):
                 continue
 
-            ranked_symbols.append((strength, symbol ))
+            strength = float('-inf')
+            
+            # Detect mean reversion: short MA crosses above long MA
+            if prev[self.short_col] <= prev[self.long_col] and latest[self.short_col] > latest[self.long_col]:
+                strength = (latest[self.short_col] / latest[self.long_col] - 1) * 100
+                
+            ranked_symbols.append((strength, symbol))
 
-        # ranked_symbols.sort(key=lambda x: x[1], reverse=True)
-        ranked_symbols.sort(reverse=True)       
+        ranked_symbols.sort(reverse=True)
         return [x[1] for x in ranked_symbols]
 
 
-def test_ma_ranker():
-    """
-    Função simples para testar o funcionamento do MARanker.
-    """
-    interval = ["2024-01-10", "2024-11-10"]
-    data = MemData(interval=interval)
-
-    parameters = {"window": [9, 21]}
-
-    ranker = MARanker(data=data, parameters=parameters)
-    ranked_symbols = ranker.rank(date="2024-05-29")
-
-    print("Símbolos ranqueados por Mean Reversion:", ranked_symbols)
-
-
-if __name__ == "__main__":
-    test_ma_ranker()
-
 class RSIRanker(Ranker):
-    """RSI-based Ranker."""
+    '''Ranker based on Relative Strength Index (RSI) technical indicator.'''
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
         super().__init__(parameters, interval, data)
-        self.period = int(self.parameters.get("period", 14))
-        win = self.parameters.get("window")
+        self.period = int(self.parameters.get('period', 14))
+        
+        win = self.parameters.get('window')
         try:
             if isinstance(win, (list, tuple)) and len(win) >= 1:
                 self.period = int(win[0])
         except Exception:
             pass
-        self.oversold = float(self.parameters.get("oversold", 30))
-        self.overbought = float(self.parameters.get("overbought", 70))
-        self.mode = self.parameters.get("mode", "mean_reversion")
+        
+        self.oversold = float(self.parameters.get('oversold', 30))
+        self.overbought = float(self.parameters.get('overbought', 70))
+        self.mode = self.parameters.get('mode', 'mean_reversion')
+        self.rsi_col = f'rsi{self.period}'
 
-    def _ensure_rsi(self, df: pd.DataFrame) -> pd.DataFrame:
-        key = f"rsi{self.period}"
-        if key in df.columns:
-            return df
-        delta = df['Close'].diff()
-        up = delta.clip(lower=0)
-        down = -delta.clip(upper=0)
-        roll_up = up.ewm(alpha=1 / self.period, adjust=False).mean()
-        roll_down = down.ewm(alpha=1 / self.period, adjust=False).mean()
-        rs = roll_up / roll_down
-        rsi = 100 - (100 / (1 + rs))
-        df[key] = rsi.replace([float('inf'), float('-inf')], float('nan')).ffill()
-        return df
+    def prepare(self) -> None:
+        '''
+        Calculates RSI vectorized across the MegaDataFrame.
+        '''
+        df = self.data.get_mega_df()
+        if df.empty:
+            return
+
+        df.sort_index(level=['Symbol', 'Date'], inplace=True)
+        
+        def compute_rsi(group):
+            delta = group.diff()
+            up = delta.clip(lower=0)
+            down = -delta.clip(upper=0)
+            roll_up = up.ewm(alpha=1 / self.period, adjust=False).mean()
+            roll_down = down.ewm(alpha=1 / self.period, adjust=False).mean()
+            rs = roll_up / roll_down
+            rsi = 100 - (100 / (1 + rs))
+            return rsi.replace([float('inf'), float('-inf')], float('nan')).ffill()
+
+        df[self.rsi_col] = df.groupby(level='Symbol')['Close'].transform(compute_rsi)
+        df.sort_index(level=['Date', 'Symbol'], inplace=True)
 
     def rank(self, date: str = None) -> List[str]:
-        dict_data = self.data.get_all_history()
+        '''
+        Rank symbols based on RSI signal crossovers using pre-calculated indicators.
+        '''
+        df = self.data.get_mega_df()
+        if df.empty or date not in df.index.get_level_values('Date'):
+            return []
+
+        current_date_data = df.xs(date, level='Date')
+        
+        all_dates = df.index.get_level_values('Date').unique()
+        date_loc = all_dates.get_loc(date)
+        
+        if date_loc < 1:
+            return []
+            
+        prev_date = all_dates[date_loc - 1]
+        prev_date_data = df.xs(prev_date, level='Date')
+
         ranked_symbols = []
-        key = f"rsi{self.period}"
-        for symbol, df in dict_data.items():
-            if 'Close' not in df.columns or df.empty:
+        
+        for symbol in current_date_data.index:
+            if symbol not in prev_date_data.index:
                 continue
-            df = self._ensure_rsi(df.copy())
-            if date not in df.index:
+                
+            latest = current_date_data.loc[symbol]
+            prev = prev_date_data.loc[symbol]
+            
+            if pd.isna(latest[self.rsi_col]) or pd.isna(prev[self.rsi_col]):
                 continue
-            idx = df.index.get_loc(date)
-            if isinstance(idx, slice):
-                idx = idx.start
-            if idx < 1:
-                continue
-            latest = df.iloc[idx]
-            prev = df.iloc[idx - 1]
+
             strength = float('-inf')
+            
             if self.mode == 'mean_reversion':
-                if prev[key] <= self.oversold and latest[key] > self.oversold:
-                    strength = latest[key] - self.oversold
+                if prev[self.rsi_col] <= self.oversold and latest[self.rsi_col] > self.oversold:
+                    strength = latest[self.rsi_col] - self.oversold
             else:
-                if prev[key] <= 50 and latest[key] > 50:
-                    strength = latest[key] - 50
+                if prev[self.rsi_col] <= 50 and latest[self.rsi_col] > 50:
+                    strength = latest[self.rsi_col] - 50
+            
             ranked_symbols.append((symbol, strength))
 
         ranked_symbols.sort(key=lambda x: x[1], reverse=True)
         return [x[0] for x in ranked_symbols]
+
+
+if __name__ == '__main__':
+    print("Testing rankers with MegaDataFrame...")
+    from data import MemData
+    mem_data = MemData(['2024-01-01', '2024-06-30'])
+    
+    ma_ranker = MARanker(parameters={'window': [9, 21]}, data=mem_data)
+    ma_ranker.prepare()
+    print("MAs prepared.")
+    
+    rsi_ranker = RSIRanker(parameters={'period': 14}, data=mem_data)
+    rsi_ranker.prepare()
+    print("RSI prepared.")

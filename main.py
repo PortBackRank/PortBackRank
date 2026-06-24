@@ -1,228 +1,169 @@
 from backtesting import Backtesting
 from ranker import MARanker, RSIRanker
-from data import Data
-from markets import MarketData, list_recent_symbols
+from data import Data, MemData, identify_market, read_symbols
 from utils import generate_filename
 import argparse
 import pandas as pd
 import json
 import os
+from names import (
+    MARKET_SP500, RANKER_MA, RANKER_RSI, MODE_ALL, MODE_MISSING, MODE_NONE,
+    KEY_ID, KEY_INTERVAL, KEY_CAPITAL, KEY_RANKER, KEY_RANKER_PARAMS,
+    KEY_PROFIT, KEY_LOSS, KEY_DIVERSIFICATION, KEY_VOLUME,
+    DEFAULT_INTERVAL, DEFAULT_CAPITAL, MARKET_CUSTOM_TESTE
+)
 
 
 def _calc_allocation(entry):
-    return entry["balance"] + sum(
-        item["quantidade"] * item["preco_compra"] for item in entry["portfolio"]
-    )
+    """Calculate total portfolio allocation (cash + invested value)."""
+    return entry.get('final_total_value', 0.0)
 
 
 def _print_df_full(df: pd.DataFrame):
+    """Display entire DataFrame without truncation."""
     try:
-        old_max_cols = pd.get_option("display.max_columns")
-        old_width = pd.get_option("display.width")
+        old_max_cols = pd.get_option('display.max_columns')
+        old_width = pd.get_option('display.width')
         old_max_colwidth = None
         try:
-            old_max_colwidth = pd.get_option("display.max_colwidth")
+            old_max_colwidth = pd.get_option('display.max_colwidth')
         except Exception:
             pass
 
-        pd.set_option("display.max_columns", None)
-        pd.set_option("display.width", None)
+        pd.set_option('display.max_columns', None)
+        pd.set_option('display.width', None)
         try:
-            pd.set_option("display.max_colwidth", None)
+            pd.set_option('display.max_colwidth', None)
         except Exception:
-            pd.set_option("display.max_colwidth", 0)
+            pd.set_option('display.max_colwidth', 0)
+        
+        if df is None or df.empty:
+            print("Aviso: O DataFrame de resultados está vazio ou é nulo.")
+            return
 
         print(df.to_string(index=False))
     finally:
         try:
-            pd.set_option("display.max_columns", old_max_cols)
-            pd.set_option("display.width", old_width)
+            pd.set_option('display.max_columns', old_max_cols)
+            pd.set_option('display.width', old_width)
             if old_max_colwidth is not None:
-                pd.set_option("display.max_colwidth", old_max_colwidth)
+                pd.set_option('display.max_colwidth', old_max_colwidth)
         except Exception:
             pass
 
-
-def print_monthly_results(results_df):
-    for i, row in results_df.iterrows():
-        try:
-            interval_str = row["intervalo"]
-            start_date, end_date = [s.strip() for s in interval_str.split(" - ")]
-
-            result_dict = row.to_dict()
-            timeline_path = generate_filename(
-                "timeline", result_dict, start_date, end_date
-            )
-
-            if not os.path.exists(timeline_path):
-                print(f"Timeline não encontrada para a linha {i}: {timeline_path}")
-                continue
-
-            with open(timeline_path, "r", encoding="utf-8") as f:
-                timeline = json.load(f)
-
-            tl_df = pd.DataFrame(timeline)
-            if tl_df.empty:
-                continue
-            tl_df["date"] = pd.to_datetime(tl_df["date"])
-            tl_df["allocation"] = [_calc_allocation(entry) for entry in timeline]
-
-            monthly = tl_df.resample("ME", on="date").last()[["allocation"]]
-            monthly["ret_mes_%"] = monthly["allocation"].pct_change() * 100
-
-            label_params = []
-            if "window" in row:
-                try:
-                    short_long = row["window"]
-                    label_params.append(f"MA={short_long}")
-                except Exception:
-                    pass
-            if "period" in row:
-                label_params.append(f"RSI={row['period']}")
-
-            print(
-                f"\nConfig {i} | profit={row['profit']} "
-                f"loss={row['loss']} div={row['diversification']} "
-                f"{' '.join(label_params)}"
-            )
-            for idx, rec in monthly.iterrows():
-                ym = idx.strftime("%Y-%m")
-                val = 0.0 if pd.isna(rec["ret_mes_%"]) else rec["ret_mes_%"]
-                print(f"  {ym}: {val:.2f}%")
-        except Exception as e:
-            print(f"Erro ao gerar resumo mensal para linha {i}: {e}")
-
-
-def _ensure_market_assets(market_code: str = "SP500"):
+def _ensure_market_assets(market_code: str = MARKET_SP500):
     """
-    Garante que todos os ativos do mercado tenham histórico baixado.
+    Ensure all market assets have downloaded historical data.
     """
-    market_data = MarketData(market_code)
-    assets = market_data.list_recent_symbols(market_data.market, force_update=False)
+    market_code = identify_market(market_code)
+    assets = read_symbols(market_code)
 
+    data_handler = Data()
     max_retries = 3
     missing = []
 
     for attempt in range(1, max_retries + 1):
         missing = []
         for asset in assets:
-            try:
-                df = Data.load_dataframe(f"{asset}.csv")
-            except (FileNotFoundError, pd.errors.EmptyDataError):
-                df = None
+            df = data_handler.get_asset_data_by_name(asset)
 
             if not isinstance(df, pd.DataFrame) or df.empty:
                 missing.append(asset)
 
         if not missing:
-            print("Todos os ativos possuem dados locais.")
+            print('All assets have local data.')
             break
 
         print(
-            f"Tentativa {attempt}/{max_retries}: "
-            f"baixando {len(missing)} ativos sem dados locais."
+            f'Attempt {attempt}/{max_retries}: '
+            f'downloading {len(missing)} assets without local data.'
         )
-        print("Ativos faltando:", ", ".join(missing))
-        Data.download_history(missing)
-
+        print('Missing assets:', ', '.join(missing))
+        data_handler.download_histories(missing)
+    
     if missing:
-        print("Após as tentativas de download, ainda faltam dados históricos para:")
+        print('After download attempts, historical data is still missing for:')
         for asset in missing:
-            print(f"  - {asset}")
+            print(f'  - {asset}')
 
 
 def run_backtest_ma():
-    interval = ["2024-01-01", "2024-12-31"]
-    _ensure_market_assets("SP500")
+    """Run backtest with Moving Average ranker."""
+    interval = DEFAULT_INTERVAL
+    _ensure_market_assets(MARKET_SP500)
 
-    backtester = Backtesting(
-        MARanker,
-        capital=10000,
-        interval=interval,
-        market_identifier="SP500",
-    )
-
-    ranker_grid = {"window": [[9, 21], [20, 50], [50, 200]]}
-    runner_grid = {
-        "profit": [0.1, 0.15],
-        "loss": [0.05],
-        "diversification": [0.1, 0.2],
+    mem_data = MemData(interval, market_identifier=MARKET_SP500)
+    config = {
+        'ranker_cls': _get_ranker_class(RANKER_MA),
+        'capital': DEFAULT_CAPITAL,
+        'interval': interval,
+        'data': mem_data,
+        'trace': False
     }
 
-    results = backtester.run(runner_grid, ranker_grid=ranker_grid, n_jobs=-1)
+    backtester = Backtesting(config)
+
+    ranker_grid = {KEY_WINDOW: [9, 21]}
+    runner_grid = {
+        KEY_PROFIT: [0.1, 0.15],
+        KEY_LOSS: [0.05],
+        KEY_DIVERSIFICATION: [0.1, 0.2],
+        KEY_VOLUME: [0.1]
+    }
+
+    results = backtester.run(runner_grid, ranker_grid=ranker_grid, n_jobs=1)
     _print_df_full(results)
-    # print_monthly_results(results)
 
 
 def run_backtest_rsi():
-    interval = ["2024-01-01", "2024-12-31"]
-    _ensure_market_assets("SP500")
+    """Run backtest with RSI (Relative Strength Index) ranker."""
+    interval = DEFAULT_INTERVAL
+    _ensure_market_assets(MARKET_SP500)
 
-    backtester = Backtesting(
-        RSIRanker,
-        capital=10000,
-        interval=interval,
-        market_identifier="SP500",
-    )
+    mem_data = MemData(interval, market_identifier=MARKET_SP500)
+    config = {
+        'ranker_cls': _get_ranker_class(RANKER_RSI),
+        'capital': DEFAULT_CAPITAL,
+        'interval': interval,
+        'data': mem_data,
+        'trace': False
+    }
+
+    backtester = Backtesting(config)
 
     ranker_grid = {
-        "window": [[9, 9], [14, 14], [21, 21]],
-        "oversold": [30],
-        "overbought": [70],
-        "mode": ["mean_reversion"],
+        KEY_WINDOW: [[9, 9], [14, 14], [21, 21]],
+        'oversold': [30],
+        'overbought': [70],
+        'mode': ['mean_reversion'],
     }
     runner_grid = {
-        "profit": [0.1, 0.15],
-        "loss": [0.05],
-        "diversification": [0.1, 0.2],
+        KEY_PROFIT: [0.1, 0.15],
+        KEY_LOSS: [0.05],
+        KEY_DIVERSIFICATION: [0.1, 0.2],
     }
 
     results = backtester.run(runner_grid, ranker_grid=ranker_grid, n_jobs=-1)
     _print_df_full(results)
-    # print_monthly_results(results)
 
-'''
-def main_menu():
-     print("\n=== PortBackRank - Escolha o indicador ===")
-     print("1) Médias Móveis (MA)")
-     print("2) RSI (Índice de Força Relativa)")
-     print("0) Sair")
 
-     choice = input("Selecione uma opção: ").strip()
-     if choice == "1":
-         run_backtest_ma()
-     elif choice == "2":
-         run_backtest_rsi()
-     elif choice == "0":
-         print("Saindo")
-     else:
-         print("Opção inválida.")
-'''
-
-'''
-
-Explicação dos comandos que devem ser feitos no terminal para rodar o código:
-
-python main.py --config config.json --download-data all -> reconstrói o universo do índice + baixa tudo.
-python main.py --config config.json --download-data missing -> confia no universo que já está em 
-cache e só baixa histórico do que não tiver CSV
-python main.py --config config.json --download-data none -> não faz nenhum download em lote antes do backtest
-
-Se precisar alterar algum parâmetro mudar no arquivo config.json
-
-'''
 def _load_config(path: str) -> dict:
-    with open(path, "r", encoding="utf-8") as f:
+    """Load configuration from JSON file."""
+    with open(path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
 
 def _build_grids(config: dict):
-    params = config.get("ranker-params") or {}
+    """
+    Build parameter grids for backtesting from configuration.
+    """
+    params = config.get(KEY_RANKER_PARAMS) or {}
 
     runner_grid = {
-        "profit": params.get("profit", []),
-        "loss": params.get("loss", []),
-        "diversification": params.get("diversification", []),
+        KEY_PROFIT: params.get(KEY_PROFIT, []),
+        KEY_LOSS: params.get(KEY_LOSS, []),
+        KEY_DIVERSIFICATION: params.get(KEY_DIVERSIFICATION, []),
+        KEY_VOLUME: params.get(KEY_VOLUME, [1.0]),
     }
 
     ranker_grid = {}
@@ -234,64 +175,130 @@ def _build_grids(config: dict):
 
 
 def _get_ranker_class(name: str):
-    if name == "MARanker":
+    """Get ranker class by name."""
+    if name == RANKER_MA:
         return MARanker
-    if name == "RSIRanker":
+    if name == RANKER_RSI:
         return RSIRanker
-    raise ValueError(f"Ranker '{name}' não suportado.")
+    raise ValueError(f'Ranker "{name}" is not supported.')
 
 
-def run_from_config(config_path: str, download_mode: str = "missing"):
+def run_from_config(config_path: str, download_mode: str = MODE_MISSING, price_type = None, trace: bool = False):
+    """
+    Run backtest from configuration file. Supports single or multiple price types.
+    """
     config = _load_config(config_path)
 
-    market_identifier = config.get("id", "SP500")
-    interval = config.get("interval", ["2024-01-01", "2024-12-31"])
-    capital = config.get("capital", 10000)
+    market_identifier = config.get(KEY_ID, MARKET_CUSTOM_TESTE)
+    interval = config.get(KEY_INTERVAL, ['2024-01-01', '2024-06-30'])
+    capital = config.get(KEY_CAPITAL, DEFAULT_CAPITAL)
 
-    ranker_name = config.get("ranker", "MARanker")
+    ranker_name = config.get(KEY_RANKER, RANKER_MA)
     ranker_cls = _get_ranker_class(ranker_name)
 
+    # Normalize price_type to a list of price types
+    if price_type is None:
+        raw_price_type = config.get('price-type', 'C')
+        if isinstance(raw_price_type, list):
+            price_types = raw_price_type
+        else:
+            price_types = [raw_price_type]
+    elif isinstance(price_type, list):
+        price_types = price_type
+    else:
+        price_types = [price_type]
+
     runner_grid, ranker_grid = _build_grids(config)
-
-    mode = (download_mode or "missing").lower()
-    if mode == "all":
-        assets = list_recent_symbols(market_identifier, force_update=True)
-        Data.download_history(assets)
-    elif mode == "missing":
+    data_handler = Data()
+    
+    mode = (download_mode or MODE_MISSING).lower()
+    if mode == MODE_ALL:
+        assets = read_symbols(identify_market(market_identifier))
+        data_handler.download_histories(assets)
+    elif mode == MODE_MISSING:
         _ensure_market_assets(market_identifier)
-    elif mode == "none":
-        pass
 
-    backtester = Backtesting(
-        ranker_cls,
-        capital=capital,
-        interval=interval,
-        market_identifier=market_identifier,
-    )
+    n_jobs = config.get('n_jobs', 1)
 
-    results = backtester.run(
-        runner_grid,
-        ranker_grid=ranker_grid,
-        n_jobs=-1,
-    )
-    _print_df_full(results)
+    all_results = []
+
+    for pt in price_types:
+        print(f"Running simulation for price type: {pt}")
+        mem_data = MemData(interval, market_identifier=market_identifier, price_type=pt)
+        
+        if trace:
+            print(f"Salvando MegaDataFrame em 'megadataframe_{pt}.csv' para demonstração...")
+            mem_data.mega_df.to_csv(f'megadataframe_{pt}.csv')
+
+        backtest_config = {
+            'ranker_cls': ranker_cls,
+            'capital': capital,
+            'interval': interval,
+            'data': mem_data,
+            'trace': trace
+        }
+
+        backtester = Backtesting(backtest_config)
+
+        results = backtester.run(
+            runner_grid,
+            ranker_grid=ranker_grid,
+            n_jobs=n_jobs,
+        )
+        if results is not None and not results.empty:
+            results['price_type'] = pt
+            all_results.append(results)
+
+    if all_results:
+        final_results = pd.concat(all_results, ignore_index=True)
+    else:
+        final_results = pd.DataFrame()
+
+    _print_df_full(final_results)
 
 
 def _parse_args(argv=None):
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--config", required=True)
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser(
+        description='PortBackRank - Portfolio backtesting with technical indicators'
+    )
     parser.add_argument(
-        "--download-data",
-        choices=["all", "missing", "none"],
-        default="missing",
+        '-c', '--config',
+        required=True,
+        help='Path to configuration JSON file'
+    )
+    parser.add_argument(
+        '-d', '--download-data',
+        choices=[MODE_ALL, MODE_MISSING, MODE_NONE],
+        default=MODE_MISSING,
+        help='Download strategy: all (rebuild universe), missing (download only missing), '
+             'or none (skip downloads)'
+    )
+    parser.add_argument(
+        '-p', '--price-type',
+        nargs='+',
+        choices=['O', 'H', 'L', 'C', 'CN', 'HL2', 'HLC3', 'OHLC4'],
+        default=None,
+        help='Price type(s) to use for backtesting (default: from config)'
+    )
+    parser.add_argument(
+        '-t', '--trace',
+        action='store_true',
+        help='Enable trace mode for detailed output'
     )
     return parser.parse_args(argv)
 
 
 def main(argv=None):
+    """Entry point for the application."""
+    import time 
+    
+    start = time.time()
     args = _parse_args(argv)
-    run_from_config(args.config, download_mode=args.download_data)
+    run_from_config(args.config, download_mode=args.download_data, price_type=args.price_type, trace=args.trace)
+    end = time.time()
+    print('Time:', end - start)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

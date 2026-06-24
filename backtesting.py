@@ -1,199 +1,174 @@
 '''
-    Class Backtesting
+Backtesting module
+
+Contains the Backtesting class for running investment strategy simulations
+by varying Runner and Ranker parameters, as well as utilities for saving
+results to disk.
 '''
 
 from itertools import product
-from typing import List, Dict
+from typing import List, Dict, Callable
 from joblib import Parallel, delayed
 import pandas as pd
 from data import MemData
-from ranker import MARanker, RandomRanker
+from ranker import MARanker, RandomRanker, Ranker
 from runner import Runner
-from utils import generate_filename, save_json, generate_performance_plot
+from names import (
+    MARKET_SP500, KEY_PROFIT, KEY_LOSS, KEY_DIVERSIFICATION, KEY_VOLUME,
+    KEY_WINDOW, KEY_CAIXA_FINAL, KEY_PORTFOLIO_VALUE, KEY_RETORNO_TOTAL,
+    KEY_FINAL_TOTAL_VALUE, KEY_INTERVAL, KEY_BALANCE
+)
 
 
-def save_results(results):
-    """
-    Recebe os resultados das execuções paralelizadas e salva os arquivos.
-    """
-    for result in results:
-        start_date, end_date = result['intervalo'].split(" - ")
+def _run_single_simulation(params, config_keys, runner_cls, ranker_cls, data, interval, capital, trace):
+    runner_values, ranker_values = params
+    parameter_names, ranker_names = config_keys
+    
+    runner_config = dict(zip(parameter_names, runner_values))
+    ranker_config = dict(zip(ranker_names, ranker_values))
 
-        save_json(generate_filename('timeline', result, start_date,
-                  end_date), result['shared_data']['timeline'])
-        save_json(generate_filename('sell_buy_logs/sell_log',
-                  result, start_date, end_date), result['sell_log'])
-        save_json(generate_filename('sell_buy_logs/buy_log',
-                  result, start_date, end_date), result['buy_log'])
+    runner = runner_cls(
+        profit=runner_config[KEY_PROFIT],
+        loss=runner_config[KEY_LOSS],
+        diversification=runner_config[KEY_DIVERSIFICATION],
+        volume=runner_config.get(KEY_VOLUME, 1.0),
+        ranker=ranker_cls,
+        data=data,
+        trace=trace
+    )
+
+    try:
+        result = runner.single_run(interval, ranker_config, capital)
+        # Evaluate results internally
+        portfolio_value = result.get(KEY_FINAL_TOTAL_VALUE, 0)
+        total_return = ((portfolio_value - capital) / capital) * 100
+        
+        eval_dict = {
+            'intervalo': result.get(KEY_INTERVAL),
+            KEY_PROFIT: runner_config[KEY_PROFIT],
+            KEY_LOSS: runner_config[KEY_LOSS],
+            KEY_DIVERSIFICATION: runner_config[KEY_DIVERSIFICATION],
+            KEY_VOLUME: runner_config.get(KEY_VOLUME, 1.0),
+            KEY_WINDOW: ranker_config.get(KEY_WINDOW),
+            KEY_CAIXA_FINAL: result.get(KEY_BALANCE),
+            KEY_PORTFOLIO_VALUE: portfolio_value,
+            KEY_RETORNO_TOTAL: f"{total_return:.2f}%"
+        }
+        eval_dict.update(ranker_config)
+        return eval_dict
+    except Exception as e:
+        print(f'Error executing configuration {runner_config}: {e}')
+        return None
 
 
 class Backtesting:
-    """ Classe para realizar backtesting de uma estratégia de investimento. """
+    '''Class for running investment strategy backtests.
 
-    def __init__(self, ranker_cls, capital: float, interval: List[str], market_identifier = "SP500"):
-        """
-        Inicializa o backtesting com as informações básicas.
+    The class organizes the execution of simulations varying Runner and Ranker
+    parameters, allows parallel execution, and aggregates performance metrics.
+    '''
 
-        :param ranker_cls: Classe do Ranker para criar instâncias.
-        :param capital: Capital inicial para todas as simulações.
-        :param interval: Lista com a data inicial e final da simulação.
-        :param market_identifier: Sigla ou caminho dos ativos a serem usados(IBOVQuad.csv OU IBOV).
+    def __init__(self, config: dict):
+        '''
+        Initializes the backtester with a configuration dictionary.
 
-        O parâmetro 'market_identifier' pode ser:
-        1. Uma **sigla de mercado** (ex: 'IBOV', 'IFIX', etc.) que corresponde a um mercado existente em MARKETS.
-        2. Um **caminho de arquivo** (ex: 'assets/IBOVQuad.csv') que será utilizado para identificar o mercado
-        correspondente e, caso não exista, o mercado será criado dinamicamente.
-
-        EXEMPLO:
-        backtester = Backtesting(MARanker, capital=10000, interval=["2024-01-01", "2024-12-31"], market_identifier="SP500")
-        """
-        self.ranker_cls = ranker_cls
-        self.capital = capital
-        self.interval = interval
-        self.runner_cls = Runner
-        self.data = MemData(interval, market_identifier)
+        Expected keys in config:
+        - ranker_cls: Ranker class used in simulations.
+        - capital: initial capital for all simulations.
+        - interval: list [start_date, end_date] for the simulation.
+        - data: MemData object with the simulation data.
+        - trace: whether to generate tracking files.
+        - runner_cls: (Optional) custom Runner class.
+        '''
+        self.ranker_cls = config.get('ranker_cls', RandomRanker)
+        self.capital = config.get('capital', 10000)
+        self.interval = config.get('interval', ['2024-01-01', '2024-12-31'])
+        self.data = config.get('data')
+        self.trace = config.get('trace', False)
+        self.runner_cls = config.get('runner_cls', Runner)
+        
+        if self.data is None:
+            raise ValueError("A 'data' object (MemData instance) must be provided in config.")
 
     def run(
         self,
         parameter_grid: Dict[str, List[float]],
         ranker_grid: Dict[str, List[float]],
-        n_jobs: int = -1
+        n_jobs: int = 1
     ) -> pd.DataFrame:
-        """
-        Executa o backtesting variando os parâmetros do Runner e do ranker.
+        '''
+        Runs backtests varying Runner and Ranker parameters.
 
-        :param parameter_grid: Dicionário com os parâmetros a variar e seus valores.
-                               Exemplo: {'profit': [0.05, 0.1], 'loss': [0.05, 0.1]}.
-        :param ranker_grid: Dicionário com os parâmetros do rankera variar.
-                            Exemplo: {'SEED': [0, 1, 42]}.
-        :param n_jobs: Número de processos paralelos (-1 usa todos os núcleos disponíveis).
-        :return: DataFrame com os resultados das simulações.
-        """
+        Parameters:
+        - parameter_grid: dictionary with Runner parameters and their value lists.
+        - ranker_grid: dictionary with Ranker parameters.
+        - n_jobs: number of parallel jobs (-1 uses all available cores).
+
+        Returns:
+        - DataFrame with aggregated results by parameter combination.
+        '''
         runner_params = list(product(*parameter_grid.values()))
         ranker_params = list(product(*ranker_grid.values()))
         parameter_names = list(parameter_grid.keys())
         ranker_names = list(ranker_grid.keys())
 
         combinations = list(product(runner_params, ranker_params))
+        config_keys = (parameter_names, ranker_names)
 
-        def run_simulation(params):
-            runner_values, ranker_values = params
-            runner_config = dict(zip(parameter_names, runner_values))
-            ranker_config = dict(zip(ranker_names, ranker_values))
-
-            runner = self.runner_cls(
-                profit=runner_config['profit'],
-                loss=runner_config['loss'],
-                diversification=runner_config['diversification'],
-                ranker=self.ranker_cls,
-                data=self.data
-            )
-
-            try:
-
-                results_runner = []
-
-                result = runner.single_run(
-                    self.interval, ranker_config, self.capital)
-
-                results_runner.append(result)
-
-                return self._evaluate_results(results_runner, runner_config, ranker_config)
-            except Exception as e:
-                print(f"Erro ao rodar configuração {runner_config} com ranker {ranker_config}: {e}")
-                return None
-
-        results = [
-            res for res in Parallel(n_jobs=n_jobs)(
-                delayed(run_simulation)(comb) for comb in combinations
-            ) if res is not None
-        ]
-
-        # descomente para salvar os arquivos de timeline, caso use o MARanker
-        save_results(results)
-
-        for result in results:
-            del result['shared_data']
-            del result['sell_log']
-            del result['buy_log']
-
+        results = Parallel(n_jobs=n_jobs)(
+            delayed(_run_single_simulation)(
+                c, config_keys, self.runner_cls, self.ranker_cls, 
+                self.data, self.interval, self.capital, self.trace
+            ) for c in combinations
+        )
         return pd.DataFrame(results)
-
-    def _evaluate_results(
-        self, result: List[Dict], runner_params: Dict, ranker_params: Dict
-    ) -> Dict:
-        """
-        //Calcula métricas de performance da simulação.
-
-        :param result: Resultado da simulação (lista de dicionários).
-        :param runner_params: Parâmetros usados na simulação para o Runner.
-        :param ranker_params: Parâmetros usados na simulação para o Ranker.
-        :return: Dicionário com as métricas calculadas.
-        """
-        caixa_final = result[-1]['balance'] if result else 0
-
-        portfolio_value = sum(
-            item['quantidade'] * item['preco_compra'] for item in result[-1]['portfolio']
-        ) if result else 0
-
-        retorno_total = (caixa_final + portfolio_value) / self.capital - 1
-        retorno_total = round(retorno_total * 100, 2)
-
-        shared_data = result[-1].get('shared_data', {}) if result else {}
-
-        return {
-            'intervalo': f"{self.interval[0]} - {self.interval[1]}",
-            **runner_params,
-            **ranker_params,
-            'caixa_final': caixa_final,
-            'portfolio_value': portfolio_value,
-            'retorno_total': f"{retorno_total:.2f}%",
-            'shared_data': shared_data,
-            'sell_log': result[-1].get('sell_log', []),
-            'buy_log': result[-1].get('buy_log', [])
-        }
 
 
 def test_bt_with_random():
-    interval = ["2024-01-01", "2024-12-31"]
-
-    backtester = Backtesting(RandomRanker, capital=10000, interval=interval)
+    '''Quick test using RandomRanker.'''
+    interval = ['2024-01-01', '2024-12-31']
+    data = MemData(interval)
+    config = {
+        'ranker_cls': RandomRanker,
+        'capital': 10000,
+        'interval': interval,
+        'data': data
+    }
+    backtester = Backtesting(config)
 
     parameter_grid = {
         'profit': [0.06, 0.1],
         'loss': [0.04],
         'diversification': [0.2]
     }
+    ranker_ranges = {'SEED': [0, 1, 42]}
 
-    ranker_ranges = {"SEED": [0, 1, 42]}
-
-    results = backtester.run(
-        parameter_grid, ranker_grid=ranker_ranges, n_jobs=-1)
-
+    results = backtester.run(parameter_grid, ranker_grid=ranker_ranges, n_jobs=1)
     print(results)
 
 
 def test_bt_with_ma():
-    interval = ["2024-01-01", "2024-06-30"]
+    '''Test using MARanker (moving averages).'''
+    interval = ['2024-01-01', '2024-06-30']
+    data = MemData(interval, market_identifier=MARKET_SP500)
+    config = {
+        'ranker_cls': MARanker,
+        'capital': 10000,
+        'interval': interval,
+        'data': data
+    }
+    backtester = Backtesting(config)
 
-    parameters = {"window": [[9, 21], [20, 50], [50, 200]]}
-
-    backtester = Backtesting(MARanker, capital=10000,
-                             interval=interval, market_identifier="SP500")
-
+    parameters = {'window': [[9, 21], [20, 50], [50, 200]]}
     parameter_grid = {
         'profit': [0.1, 0.15],
         'loss': [0.05],
         'diversification': [0.1, 0.2]
     }
 
-    results = backtester.run(
-        parameter_grid, ranker_grid=parameters, n_jobs=-1)
-
-    # generate_performance_plot(market_symbol="SP500")
-
+    results = backtester.run(parameter_grid, ranker_grid=parameters, n_jobs=1)
     print(results)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     test_bt_with_ma()
