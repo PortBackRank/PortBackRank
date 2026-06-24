@@ -15,8 +15,8 @@
 ### Correções gerais
 
 - [ ] (João Bruno, César) Atualizar arquivo LICENSE com informações do projeto
-- [ ] (João Bruno, César) Mover e adequar conteúdo do **index.md** para o **README.md**
-- [ ] (João Bruno, César) Criar pasta **doc** para incluir toda a documentação do projeto
+- [x] (João Bruno, César) Mover e adequar conteúdo do **index.md** para o **README.md**
+- [x] (João Bruno, César) Criar pasta **doc** para incluir toda a documentação do projeto
 - [ ] (João Bruno, César) Mover e atualizar **diagrama.drawio** para **doc/class_diagram.drawio**
 - [ ] (João Bruno, César) Padronizar strings no python com aspas simples
 - [ ] (João Bruno, César) Incluir opção de definir número de casas decimais (argumento no **main.py** ou configuração no arquivo JSON)
