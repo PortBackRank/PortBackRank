@@ -124,7 +124,21 @@ YF_AUTO_ADJUST = False
 # Placeholders and status
 STR_UNKNOWN = 'Unknown'
 STR_UNKNOWN_FULL = 'Unknown - Unknown'
+STR_UNKNOWN_ID = 'unknown'
 TYPE_BUY = 'BUY'
 TYPE_SELL = 'SELL'
+
+# Runner literals
+DATE_FMT = '%Y-%m-%d'
+KEY_BUY_PRICE = 'buy_price'
+KEY_OPERATION = 'operation'
+KEY_CURRENT_PRICE = 'current_price'
+KEY_DAILY_VOLUME = 'daily_volume'
+KEY_PORTFOLIO_DETAILS = 'portfolio_details'
+KEY_SEED = 'SEED'
+FILE_TRADES = 'trades.csv'
+FILE_PORTFOLIO = 'portfolio.csv'
+MIN_BALANCE = 2
+ROUND_DIGITS = 2
 
 # (End of module)

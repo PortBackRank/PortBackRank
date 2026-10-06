@@ -12,8 +12,11 @@ from names import (
     KEY_TOTAL_ASSET_VALUE, KEY_TYPE, KEY_PRICE, KEY_COST, KEY_PROFIT_LOSS,
     KEY_ORIGIN_DATE, KEY_BALANCE, KEY_PORTFOLIO_VALUE, KEY_INTERVAL,
     KEY_PROFIT, KEY_LOSS, KEY_DIVERSIFICATION, KEY_FINAL_TOTAL_VALUE,
-    STR_UNKNOWN_FULL, TYPE_BUY, TYPE_SELL, MARKET_SP500,
-    COL_SYMBOL, COL_CLOSE, COL_VOLUME, KEY_WINDOW, SEP_PIPE, DIR_TRACKING
+    STR_UNKNOWN_FULL, STR_UNKNOWN_ID, TYPE_BUY, TYPE_SELL, MARKET_SP500,
+    COL_SYMBOL, COL_CLOSE, COL_VOLUME, KEY_WINDOW, SEP_PIPE, DIR_TRACKING,
+    DATE_FMT, KEY_BUY_PRICE, KEY_OPERATION, KEY_CURRENT_PRICE, KEY_DAILY_VOLUME,
+    KEY_PORTFOLIO_DETAILS, KEY_SEED, FILE_TRADES, FILE_PORTFOLIO, MIN_BALANCE,
+    ROUND_DIGITS
 )
 
 class Runner:
@@ -80,8 +83,8 @@ class Runner:
 
     def _log_portfolio_state(self, date: str):
         # We pre-slice the dataframe for the given date to speed up lookups
-        if not self.mega_df.empty and date in self.mega_df.index.get_level_values('Date'):
-            current_date_data = self.mega_df.xs(date, level='Date')
+        if not self.mega_df.empty and date in self.mega_df.index.get_level_values(COL_DATE):
+            current_date_data = self.mega_df.xs(date, level=COL_DATE)
         else:
             current_date_data = None
 
@@ -99,7 +102,7 @@ class Runner:
                 COL_SYMBOL: symbol,
                 COL_SECTOR: row[COL_SECTOR],
                 KEY_QUANTITY: row[KEY_QUANTITY],
-                'buy_price': row[KEY_UNIT_VALUE],
+                KEY_BUY_PRICE: row[KEY_UNIT_VALUE],
                 KEY_PRICE: current_price
             })
 
@@ -110,7 +113,7 @@ class Runner:
         project_root = Path(__file__).resolve().parent
 
         # Obter identifier de maneira segura
-        market_id = 'unknown'
+        market_id = STR_UNKNOWN_ID
         if hasattr(self.data, 'market_identifier'):
             market_id = self.data.market_identifier
 
@@ -120,24 +123,24 @@ class Runner:
         # Ex: sp500-MARanker-9-21-P01-L005-D01
         folder_name = f"{market_id}-{ranker_name}-{windows}-P{str(self.profit).replace('.', '')}-L{str(self.loss).replace('.', '')}-D{str(self.diversification).replace('.', '')}"
         
-        trades_path = project_root / DIR_TRACKING / folder_name / "trades.csv"
-        port_path = project_root / DIR_TRACKING / folder_name / "portfolio.csv"
+        trades_path = project_root / DIR_TRACKING / folder_name / FILE_TRADES
+        port_path = project_root / DIR_TRACKING / folder_name / FILE_PORTFOLIO
 
         trades_path.parent.mkdir(parents=True, exist_ok=True)
 
         # Salva trades.csv (date|symbol|operation|quantity|price|balance)
         if self.trade_log:
             df_trades = pd.DataFrame(self.trade_log)
-            rename_map = {KEY_TYPE: 'operation', KEY_BALANCE: 'balance'}
+            rename_map = {KEY_TYPE: KEY_OPERATION, KEY_BALANCE: KEY_BALANCE}
             df_trades = df_trades.rename(columns=rename_map)
-            cols = [COL_DATE, COL_SYMBOL, 'operation', KEY_QUANTITY, KEY_PRICE, 'balance']
+            cols = [COL_DATE, COL_SYMBOL, KEY_OPERATION, KEY_QUANTITY, KEY_PRICE, KEY_BALANCE]
             cols_to_save = [c for c in cols if c in df_trades.columns]
             df_trades[cols_to_save].to_csv(trades_path, index=False, sep=SEP_PIPE)
 
         # Salva portfolio.csv (date|symbol|sector|quantity|buy_price|price)
         if self.portfolio_log:
             df_port = pd.DataFrame(self.portfolio_log)
-            cols = [COL_DATE, COL_SYMBOL, COL_SECTOR, KEY_QUANTITY, 'buy_price', KEY_PRICE]
+            cols = [COL_DATE, COL_SYMBOL, COL_SECTOR, KEY_QUANTITY, KEY_BUY_PRICE, KEY_PRICE]
             cols_to_save = [c for c in cols if c in df_port.columns]
             df_port[cols_to_save].to_csv(port_path, index=False, sep=SEP_PIPE)
 
@@ -147,11 +150,11 @@ class Runner:
 
         # Iterating over the dates present in MegaDataFrame or just a date_range
         # Let's use date_range for consistency, but checking if data exists
-        for date in pd.date_range(start_date, end_date).strftime('%Y-%m-%d'):
-            if self.mega_df.empty or date not in self.mega_df.index.get_level_values('Date'):
+        for date in pd.date_range(start_date, end_date).strftime(DATE_FMT):
+            if self.mega_df.empty or date not in self.mega_df.index.get_level_values(COL_DATE):
                 continue
                 
-            current_date_data = self.mega_df.xs(date, level='Date')
+            current_date_data = self.mega_df.xs(date, level=COL_DATE)
             trades_before = len(self.trade_log)
             self._sell(date, current_date_data)
             self._buy(date, self._ranker_instance, current_date_data)
@@ -165,9 +168,9 @@ class Runner:
             KEY_PROFIT: self.profit,
             KEY_LOSS: self.loss,
             KEY_DIVERSIFICATION: self.diversification,
-            KEY_BALANCE: round(self.balance, 2),
-            KEY_FINAL_TOTAL_VALUE: round(self.total_portfolio_value, 2),
-            'portfolio_details': self.__portfolio_details.copy()
+            KEY_BALANCE: round(self.balance, ROUND_DIGITS),
+            KEY_FINAL_TOTAL_VALUE: round(self.total_portfolio_value, ROUND_DIGITS),
+            KEY_PORTFOLIO_DETAILS: self.__portfolio_details.copy()
         }
 
         self._save_trace(result, ranker_conf)
@@ -185,8 +188,8 @@ class Runner:
             if symbol in current_date_data.index:
                 row = current_date_data.loc[symbol]
                 asset_histories[symbol] = {
-                    'current_price': row[COL_CLOSE],
-                    'daily_volume': row[COL_VOLUME]
+                    KEY_CURRENT_PRICE: row[COL_CLOSE],
+                    KEY_DAILY_VOLUME: row[COL_VOLUME]
                 }
 
         indices_to_remove = []
@@ -197,8 +200,8 @@ class Runner:
 
             purchase_price = row[KEY_UNIT_VALUE] 
             quantity = row[KEY_QUANTITY]
-            current_price = asset_histories[symbol]['current_price']
-            daily_volume = asset_histories[symbol]['daily_volume']
+            current_price = asset_histories[symbol][KEY_CURRENT_PRICE]
+            daily_volume = asset_histories[symbol][KEY_DAILY_VOLUME]
 
             percent_change = (current_price - purchase_price) / purchase_price
 
@@ -218,8 +221,8 @@ class Runner:
                     KEY_PROFIT_LOSS: (current_price - purchase_price) * to_sell,
                     KEY_ORIGIN_DATE: row[COL_DATE],
                     COL_SECTOR: row[COL_SECTOR],
-                    KEY_BALANCE: round(self.balance, 2),
-                    KEY_PORTFOLIO_VALUE: round(self.total_portfolio_value, 2)
+                    KEY_BALANCE: round(self.balance, ROUND_DIGITS),
+                    KEY_PORTFOLIO_VALUE: round(self.total_portfolio_value, ROUND_DIGITS)
                 })
 
                 if quantity > to_sell:
@@ -240,7 +243,7 @@ class Runner:
         available_balance = self.balance
 
         for symbol in ranked_symbols:
-            if available_balance <= 2:
+            if available_balance <= MIN_BALANCE:
                 break
 
             sector = self._all_sectors.get(symbol, STR_UNKNOWN_FULL)
@@ -295,8 +298,8 @@ class Runner:
                 KEY_TYPE: TYPE_BUY,
                 KEY_QUANTITY: qty_to_buy,
                 KEY_PRICE: current_price,
-                KEY_BALANCE: round(self.balance, 2),
-                KEY_PORTFOLIO_VALUE: round(self.total_portfolio_value, 2)
+                KEY_BALANCE: round(self.balance, ROUND_DIGITS),
+                KEY_PORTFOLIO_VALUE: round(self.total_portfolio_value, ROUND_DIGITS)
             })
 
 def test_runner():
@@ -304,7 +307,7 @@ def test_runner():
     interval = ['2024-06-10', '2024-11-10']
     capital = 10000
 
-    ranker_config = {'SEED': 42}
+    ranker_config = {KEY_SEED: 42}
 
     runner = Runner(
         profit=0.1,
@@ -345,10 +348,10 @@ def test_runner_ma():
         print(f"Final balance: {result[KEY_BALANCE]}")
         
         # Acessando o DataFrame de detalhes
-        df_portfolio = result['portfolio_details']
+        df_portfolio = result[KEY_PORTFOLIO_DETAILS]
         if not df_portfolio.empty:
             total_portfolio = (df_portfolio[KEY_QUANTITY] * df_portfolio[KEY_UNIT_VALUE]).sum()
-            print(f'Portfolio value: {round(total_portfolio, 2)}')
+            print(f'Portfolio value: {round(total_portfolio, ROUND_DIGITS)}')
         else:
             print('Portfolio is empty.')
             
