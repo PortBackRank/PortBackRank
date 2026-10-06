@@ -2,19 +2,17 @@
     class Runner
 '''
 
-import os
 import pandas as pd
 from pathlib import Path
 from typing import List, Dict, Type
 from ranker import MARanker, Ranker, RandomRanker
 from data import MemData
-from utils import generate_filename 
 from names import (
     COL_SECTOR, COL_DATE, KEY_ASSET, KEY_QUANTITY, KEY_UNIT_VALUE,
     KEY_TOTAL_ASSET_VALUE, KEY_TYPE, KEY_PRICE, KEY_COST, KEY_PROFIT_LOSS,
     KEY_ORIGIN_DATE, KEY_BALANCE, KEY_PORTFOLIO_VALUE, KEY_INTERVAL,
     KEY_PROFIT, KEY_LOSS, KEY_DIVERSIFICATION, KEY_FINAL_TOTAL_VALUE,
-    STR_UNKNOWN_FULL, TYPE_BUY, TYPE_SELL, DIR_RESULTS, MARKET_SP500,
+    STR_UNKNOWN_FULL, TYPE_BUY, TYPE_SELL, MARKET_SP500,
     COL_SYMBOL, COL_CLOSE, COL_VOLUME, KEY_WINDOW, SEP_PIPE, DIR_TRACKING
 )
 
