@@ -2,6 +2,7 @@ from backtesting import Backtesting
 from ranker import MARanker, RSIRanker
 from data import Data, MemData, identify_market, read_symbols
 from utils import generate_filename
+from logger import configure_logging
 import argparse
 import pandas as pd
 import json
@@ -10,7 +11,8 @@ from names import (
     MARKET_SP500, RANKER_MA, RANKER_RSI, MODE_ALL, MODE_MISSING, MODE_NONE,
     KEY_ID, KEY_INTERVAL, KEY_CAPITAL, KEY_RANKER, KEY_RANKER_PARAMS,
     KEY_PROFIT, KEY_LOSS, KEY_DIVERSIFICATION, KEY_VOLUME,
-    DEFAULT_INTERVAL, DEFAULT_CAPITAL, MARKET_CUSTOM_TESTE
+    DEFAULT_INTERVAL, DEFAULT_CAPITAL, set_base_dir_override,
+    DEFAULT_DECIMALS, KEY_DECIMALS
 )
 
 
@@ -38,7 +40,7 @@ def _print_df_full(df: pd.DataFrame):
             pd.set_option('display.max_colwidth', 0)
         
         if df is None or df.empty:
-            print("Aviso: O DataFrame de resultados está vazio ou é nulo.")
+            print('Aviso: O DataFrame de resultados está vazio ou é nulo.')
             return
 
         print(df.to_string(index=False))
@@ -183,13 +185,33 @@ def _get_ranker_class(name: str):
     raise ValueError(f'Ranker "{name}" is not supported.')
 
 
-def run_from_config(config_path: str, download_mode: str = MODE_MISSING, price_type = None, trace: bool = False):
+def run_from_config(config_path: str, download_mode: str = MODE_MISSING, price_type = None, trace: bool = False, data_dir: str = None, decimals: int = None):
     """
     Run backtest from configuration file. Supports single or multiple price types.
     """
     config = _load_config(config_path)
 
-    market_identifier = config.get(KEY_ID, MARKET_CUSTOM_TESTE)
+    # Apply data directory override (CLI > JSON > default)
+    data_dir_override = data_dir or config.get('data-dir')
+    if data_dir_override:
+        set_base_dir_override(data_dir_override)
+        print(f"Using custom data directory: {data_dir_override}")
+
+    # Resolve decimals (CLI > JSON > default)
+    if decimals is not None:
+        if decimals < 0:
+            raise ValueError(f'Decimals must be a non-negative integer, got {decimals}')
+        resolved_decimals = decimals
+    else:
+        config_decimals = config.get(KEY_DECIMALS)
+        if config_decimals is not None:
+            if not isinstance(config_decimals, int) or config_decimals < 0:
+                raise ValueError(f'Config "decimals" must be a non-negative integer, got {config_decimals}')
+            resolved_decimals = config_decimals
+        else:
+            resolved_decimals = DEFAULT_DECIMALS
+
+    market_identifier = config.get(KEY_ID, MARKET_SP500)
     interval = config.get(KEY_INTERVAL, ['2024-01-01', '2024-06-30'])
     capital = config.get(KEY_CAPITAL, DEFAULT_CAPITAL)
 
@@ -235,7 +257,9 @@ def run_from_config(config_path: str, download_mode: str = MODE_MISSING, price_t
             'capital': capital,
             'interval': interval,
             'data': mem_data,
-            'trace': trace
+            'decimals': resolved_decimals,
+            'trace': trace,
+            'n_jobs': n_jobs
         }
 
         backtester = Backtesting(backtest_config)
@@ -243,7 +267,6 @@ def run_from_config(config_path: str, download_mode: str = MODE_MISSING, price_t
         results = backtester.run(
             runner_grid,
             ranker_grid=ranker_grid,
-            n_jobs=n_jobs,
         )
         if results is not None and not results.empty:
             results['price_type'] = pt
@@ -282,9 +305,25 @@ def _parse_args(argv=None):
         help='Price type(s) to use for backtesting (default: from config)'
     )
     parser.add_argument(
+        '--data-dir',
+        default=None,
+        help='Base directory for cache and tracking files (default: $HOME/PortBackRank)'
+    )
+    parser.add_argument(
+        '--decimals',
+        type=int,
+        default=None,
+        help=f'Number of decimal places for output (default: {DEFAULT_DECIMALS}, from config, or CLI)'
+    )
+    parser.add_argument(
         '-t', '--trace',
         action='store_true',
         help='Enable trace mode for detailed output'
+    )
+    parser.add_argument(
+        '--debug',
+        action='store_true',
+        help='Enable debug logging'
     )
     return parser.parse_args(argv)
 
@@ -293,9 +332,13 @@ def main(argv=None):
     """Entry point for the application."""
     import time 
     
-    start = time.time()
     args = _parse_args(argv)
-    run_from_config(args.config, download_mode=args.download_data, price_type=args.price_type, trace=args.trace)
+    
+    # Configure logging based on debug flag
+    configure_logging(debug=args.debug)
+    
+    start = time.time()
+    run_from_config(args.config, download_mode=args.download_data, price_type=args.price_type, trace=args.trace, data_dir=args.data_dir, decimals=args.decimals)
     end = time.time()
     print('Time:', end - start)
 

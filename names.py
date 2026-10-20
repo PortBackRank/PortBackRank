@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Global constants and configuration names for PortBackRank application.
 
 This module defines shared constants used across the application for market data
 fetching, file management, and backtesting configuration.
-'''
+"""
 
-from typing import Dict
+from typing import Dict, Any
 
 # Application info
 APP_NAME = 'PortBackRank'
@@ -15,9 +15,51 @@ APP_NAME = 'PortBackRank'
 # File management and directories
 DIR_ASSETS = 'assets'
 DIR_RESULTS = 'results'
+
+# Centralized base directory for user data (cache, tracking, etc.)
+# Can be overridden via config or environment variable
+_BASE_DIR_OVERRIDE: str = None
+
+
+def set_base_dir_override(path: str) -> None:
+    """Set an override for the base directory.
+    
+    Args:
+        path: Custom base directory path.
+    """
+    global _BASE_DIR_OVERRIDE
+    _BASE_DIR_OVERRIDE = path
+
+
+def get_base_dir() -> str:
+    """Get the base directory for PortBackRank user data.
+    
+    Returns:
+        Path to the base directory (default: $HOME/PortBackRank)
+    """
+    import os
+    from pathlib import Path
+    
+    # Check for programmatic override
+    if _BASE_DIR_OVERRIDE:
+        return _BASE_DIR_OVERRIDE
+    
+    # Check for environment variable override
+    env_dir = os.environ.get('PORTBACKRANK_DIR')
+    if env_dir:
+        return env_dir
+    
+    # Default to $HOME/PortBackRank
+    return str(Path.home() / 'PortBackRank')
+
+# Subdirectories under base dir
+DIR_CACHE = 'cache'
 DIR_TRACKING = 'tracking'
-DIR_CACHE = '.cache/port_back'
 DIR_HISTORICAL = 'historical'
+
+# Legacy constants for backward compatibility (deprecated)
+LEGACY_DIR_CACHE = '.cache/port_back'
+LEGACY_DIR_TRACKING = 'tracking'
 
 # Market identifiers
 MARKET_SP500 = 'SP500'
@@ -26,7 +68,6 @@ MARKET_IFIX = 'IFIX'
 MARKET_IBRA = 'IBRA'
 MARKET_SMLL = 'SMLL'
 MARKET_IBXX = 'IBXX'
-MARKET_CUSTOM_TESTE = 'CUSTOM_TESTE'
 
 # Market configuration
 MARKET_KEY_SOURCE_FILE = 'source_file'
@@ -40,7 +81,6 @@ MARKETS: Dict[str, Dict[str, str]] = {
     MARKET_SMLL: {MARKET_KEY_SOURCE_FILE: f'{DIR_ASSETS}/SMLL.csv'},
     MARKET_IBXX: {MARKET_KEY_SOURCE_FILE: f'{DIR_ASSETS}/IBXX.csv'},
     MARKET_SP500: {MARKET_KEY_SOURCE_FILE: f'{DIR_ASSETS}/SP500.csv'},
-    MARKET_CUSTOM_TESTE: {MARKET_KEY_SOURCE_FILE: f'{DIR_ASSETS}/custom_teste.csv'}
 }
 
 # Default settings
@@ -140,5 +180,33 @@ FILE_TRADES = 'trades.csv'
 FILE_PORTFOLIO = 'portfolio.csv'
 MIN_BALANCE = 2
 ROUND_DIGITS = 2
+DEFAULT_DECIMALS = 2
+
+# Config keys
+KEY_DECIMALS = 'decimals'
+
+# Validation functions
+def validate_positive_float(value: float, name: str) -> float:
+    """Validate that a float value is positive."""
+    if value <= 0:
+        raise ValueError(f'{name} must be > 0')
+    return value
+
+
+def validate_diversification(value: float) -> float:
+    """Validate diversification is in (0, 1]."""
+    if not 0 < value <= 1:
+        raise ValueError(f'diversification must be in (0, 1]')
+    return value
+
+
+def validate_decimals(value: Any, default: int = 2) -> int:
+    """Validate decimals is a non-negative integer."""
+    if value is None:
+        return default
+    if not isinstance(value, int) or value < 0:
+        raise ValueError(f'decimals must be a non-negative integer, got {value}')
+    return value
+
 
 # (End of module)

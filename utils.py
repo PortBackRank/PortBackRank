@@ -12,7 +12,10 @@ from os.path import isdir, isfile
 from os import mkdir, sep
 from pathlib import Path
 from datetime import datetime
-from names import DIR_CACHE
+from names import (
+    DIR_CACHE, DIR_TRACKING, DIR_HISTORICAL, get_base_dir,
+    COL_OPEN, COL_HIGH, COL_LOW, COL_CLOSE, ENCODING_UTF8
+)
 import json
 import pandas as pd
 import matplotlib.dates as mdates
@@ -20,36 +23,65 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def dir_cache():
+def _get_base_dir() -> str:
+    """Get the base directory, creating it if necessary."""
+    base_dir = get_base_dir()
+    if not isdir(base_dir):
+        mkdir(base_dir)
+    return base_dir
+
+
+def _get_subdir(subdir: str) -> str:
+    """Get a subdirectory under the base dir, creating it if necessary."""
+    base_dir = _get_base_dir()
+    full_path = os.path.join(base_dir, subdir)
+    if not isdir(full_path):
+        mkdir(full_path)
+    return full_path
+
+
+def dir_cache() -> str:
     """
     Get or create the cache directory.
     
     Returns:
-        str: Path to the cache directory.
+        str: Path to the cache directory ($HOME/PortBackRank/cache).
     """
-    data_dir = str(Path.home()) + sep + DIR_CACHE
-    if not isdir(data_dir):
-        mkdir(data_dir)
-    return data_dir
+    return _get_subdir(DIR_CACHE)
 
 
-def file_path(file_name, subdir=None):
+def dir_tracking() -> str:
+    """
+    Get or create the tracking directory.
+    
+    Returns:
+        str: Path to the tracking directory ($HOME/PortBackRank/tracking).
+    """
+    return _get_subdir(DIR_TRACKING)
+
+
+def file_path(file_name: str, subdir: str = None, use_tracking: bool = False) -> str:
     """
     Get the full file path, creating subdirectories if necessary.
     
     Args:
         file_name (str): Name of the file.
-        subdir (str, optional): Subdirectory name. Defaults to None.
+        subdir (str, optional): Subdirectory name under cache/tracking. Defaults to None.
+        use_tracking (bool): If True, use tracking directory instead of cache. Defaults to False.
     
     Returns:
         str: Full path to the file.
     """
-    directory = dir_cache()
+    if use_tracking:
+        directory = dir_tracking()
+    else:
+        directory = dir_cache()
+    
     if subdir:
-        directory += sep + subdir
+        directory = os.path.join(directory, subdir)
     if not isdir(directory):
         mkdir(directory)
-    return directory + sep + file_name
+    return os.path.join(directory, file_name)
 
 
 def open_json(file, subdir=None):
@@ -65,7 +97,7 @@ def open_json(file, subdir=None):
     """
     file_name = file_path(file, subdir)
     if isfile(file_name):
-        with open(file_name, 'r', encoding='utf-8') as file:
+        with open(file_name, 'r', encoding=ENCODING_UTF8) as file:
             return json.load(file)
     return None
 
@@ -80,7 +112,7 @@ def save_json(file, content, subdir=None):
         subdir (str, optional): Subdirectory name. Defaults to None.
     """
     file_name = file_path(file, subdir)
-    with open(file_name, 'w', encoding='utf-8') as f:
+    with open(file_name, 'w', encoding=ENCODING_UTF8) as f:
         json.dump(content, f, indent=2, ensure_ascii=False)
 
 
@@ -100,7 +132,7 @@ def open_dataframe(file, subdir=None):
         df = pd.read_csv(file_name, index_col=False)
         
         # Round price columns to 2 decimal places
-        price_columns = ['Open', 'High', 'Low', 'Close']
+        price_columns = [COL_OPEN, COL_HIGH, COL_LOW, COL_CLOSE]
         existing_price_cols = [col for col in price_columns if col in df.columns]
         
         if existing_price_cols:
@@ -171,16 +203,16 @@ def generate_filename(prefix, result, start_date, end_date):
     return os.path.join(project_root, 'results', *subdirs, filename)
 
 
-def save_json(filename, data):
+def save_json_file(filename, data):
     """
-    Save a dictionary as JSON.
+    Save a dictionary as JSON to a specific file path.
     
     Args:
         filename: Output file path.
         data: Dictionary to serialize.
     """
     os.makedirs(os.path.dirname(filename), exist_ok=True)
-    with open(filename, 'w') as file:
+    with open(filename, 'w', encoding=ENCODING_UTF8) as file:
         json.dump(data, file, indent=4, default=convert_numpy)
 
 

@@ -1,3 +1,4 @@
+import logging
 import os
 from typing import List, Dict
 
@@ -10,11 +11,13 @@ from names import (
     SEP_PIPE, SEP_COMMA, ENCODING_UTF8, ENCODING_ISO, STR_UNKNOWN, DIR_ASSETS, DIR_HISTORICAL
 )
 
+logger = logging.getLogger(__name__)
+
 SUB_DIR_HIST = DIR_HISTORICAL
 
 
 def read_symbols(file_path: str) -> List[str]:
-    '''
+    """
     Reads asset symbols from market CSV file.
     
     Supports multiple formats:
@@ -23,7 +26,7 @@ def read_symbols(file_path: str) -> List[str]:
     
     :param file_path: Path to market CSV file
     :return: List of valid ticker symbols
-    '''
+    """
     try:
         if DIR_ASSETS not in file_path:
             file_path = os.path.join(DIR_ASSETS, file_path)
@@ -41,29 +44,32 @@ def read_symbols(file_path: str) -> List[str]:
 
         # Try to find symbol column - standardized format uses 'symbol' (lowercase)
         if COL_SYMBOL in df.columns:
-            return df[COL_SYMBOL].dropna().tolist()
+            symbols = df[COL_SYMBOL].dropna().tolist()
         # Fallback for older formats with uppercase
-        if COL_SYMBOL_ALT in df.columns:
-            return df[COL_SYMBOL_ALT].dropna().tolist()
-        if COL_CODIGO in df.columns:
-            return df[COL_CODIGO].dropna().tolist()
-            
-        return df.iloc[1:, 0].dropna().tolist()
+        elif COL_SYMBOL_ALT in df.columns:
+            symbols = df[COL_SYMBOL_ALT].dropna().tolist()
+        elif COL_CODIGO in df.columns:
+            symbols = df[COL_CODIGO].dropna().tolist()
+        else:
+            symbols = df.iloc[1:, 0].dropna().tolist()
+        
+        logger.debug('read_symbols(%s): %d symbols', file_path, len(symbols))
+        return symbols
     except Exception as e:
-        print(f'Error reading {file_path}: {e}')
+        logger.error('Error reading %s: %s', file_path, e)
         return []
 
 
 class MarketData:
-    '''
+    """
     Market configuration and asset symbol management.
     
     Manages market identification, asset listing, and sector/industry
     classification for backtesting simulations. Supports S&P 500 and Brazilian B3 markets.
-    '''
+    """
 
     def __init__(self, file_path: str = None):
-        '''
+        """
         Initializes MarketData instance from a market ticker or file path.
         
         The 'file_path' parameter can be:
@@ -74,18 +80,27 @@ class MarketData:
         market_ibov = MarketData('IBOV')
         market_sp500 = MarketData('SP500')
         market_custom = MarketData('assets/custom.csv')
-        '''
-        self.file_path = file_path
-        print(f'Initializing MarketData with file_path: {file_path}')
-        self.market = self.from_file_path(file_path)
-        if self.market is None:
+        """
+        self._file_path = file_path
+        logger.debug('Initializing MarketData with file_path: %s', file_path)
+        self._market = self.from_file_path(file_path)
+        if self._market is None:
             raise ValueError(
-                'The parameter \'file_path\' or \'market\' must be provided!'
+                "The parameter 'file_path' or 'market' must be provided!"
             )
+        logger.debug('MarketData initialized: market=%s', self._market)
+
+    @property
+    def file_path(self):
+        return self._file_path
+
+    @property
+    def market(self):
+        return self._market
 
     @classmethod
     def from_file_path(cls, file_path: str) -> str:
-        '''
+        """
         Identifies the market key from either a file path or a ticker symbol.
         
         Searches in the global MARKETS configuration. If no match is found,
@@ -93,10 +108,10 @@ class MarketData:
         
         :param file_path: Input identifier (file path or ticker)
         :return: Market key (e.g., 'SP500')
-        '''
+        """
         if file_path is None:
             raise ValueError(
-                'It is necessary to provide a \'file_path\' or a valid market ticker.'
+                "It is necessary to provide a 'file_path' or a valid market ticker."
             )
 
         market = None
@@ -116,12 +131,17 @@ class MarketData:
             MARKETS[market] = {
                 MARKET_KEY_SOURCE_FILE: file_path,
             }
+            logger.debug('Created dynamic market: %s -> %s', market, file_path)
+        else:
+            logger.debug('Identified market: %s', market)
+
+        return market
 
         return market
 
     @classmethod
     def list_recent_symbols(cls, market: str = None, force_update: bool = False) -> List[str]:
-        '''
+        """
         Returns current list of available assets in specified market.
         
         Reads directly from market CSV file and formats symbols appropriately:
@@ -131,9 +151,9 @@ class MarketData:
         :param market: Market ticker ('SP500', 'IBOV', 'IFIX', etc.)
         :param force_update: Ignored; kept for API compatibility
         :return: List of ticker symbols ready for data downloads
-        '''
+        """
         if market is None:
-            raise ValueError('It is necessary to provide the \'market\'.')
+            raise ValueError("It is necessary to provide the \'market\'.")
 
         if market not in MARKETS:
             raise ValueError(
@@ -152,7 +172,7 @@ class MarketData:
 
     @classmethod
     def get_sector_mapping(cls, market: str) -> Dict[str, Dict[str, str]]:
-        '''
+        """
         Retrieves asset-to-sector mapping for diversification control.
         
         Reads market CSV and extracts sector and industry classification
@@ -161,7 +181,7 @@ class MarketData:
         :param market: Market identifier ('SP500', 'IBOV', etc.)
         :return: Dictionary mapping symbols to {sector, industry} classification
         :raises ValueError: If market not configured in MARKETS
-        '''
+        """
         if market not in MARKETS:
             raise ValueError(f'Invalid market. Options: {list(MARKETS.keys())}')
 
@@ -219,21 +239,21 @@ class MarketData:
       
     @classmethod
     def get_symbol_list(cls, market: str = MARKET_SP500):
-        '''Return the list of symbols'''
+        """Return the list of symbols"""
         return MarketData.list_recent_symbols(market=market)
     
     @classmethod
     def update_symbols(cls, market: str, update=False):
-        '''Update the list of symbols'''
+        """Update the list of symbols"""
         return MarketData.list_recent_symbols(market=market, force_update=update)
 
 def list_recent_symbols(market: str, force_update: bool = False) -> List[str]:
-    '''Helper function to maintain compatibility with existing calls.'''
+    """Helper function to maintain compatibility with existing calls."""
     return MarketData.list_recent_symbols(market, force_update)
 
 
 def test():
-    '''Test market reading'''
+    """Test market reading"""
     for market_name in [MARKET_SP500, MARKET_IBOV]:
         print(f"\n--- Testing {market_name} ---")
         data = MarketData(market_name)

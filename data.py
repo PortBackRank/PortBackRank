@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Data management module for downloading and caching historical financial data.
 Includes integration for market configurations and the MegaDataFrame structure
 for optimized backtesting.
-'''
+"""
 
+import logging
 from concurrent import futures
 import os
 import concurrent.futures
@@ -25,7 +26,8 @@ from names import (
     COL_SUBSETOR, COL_SEGMENTO, COL_SYMBOL, COL_SYMBOL_ALT,
     SEP_PIPE, SEP_COMMA, ENCODING_UTF8, ENCODING_ISO, DIR_ASSETS, MARKETS
 )
-from logger import * 
+
+logger = logging.getLogger(__name__) 
 
 
 # ==========================================
@@ -33,7 +35,7 @@ from logger import *
 # ==========================================
 
 def identify_market(market_identifier: str) -> str:
-    '''Identifies the market key from either a file path or a ticker symbol.'''
+    """Identifies the market key from either a file path or a ticker symbol."""
     if market_identifier is None:
         raise ValueError("It is necessary to provide a 'market_identifier'.")
     if market_identifier.upper() in MARKETS:
@@ -51,7 +53,7 @@ def identify_market(market_identifier: str) -> str:
 
 
 def get_market_config(market: str) -> dict:
-    '''Retrieves the configuration dictionary for a given market.'''
+    """Retrieves the configuration dictionary for a given market."""
     market = identify_market(market)
     if market not in MARKETS:
         raise ValueError(f"Invalid market: {market}")
@@ -59,7 +61,7 @@ def get_market_config(market: str) -> dict:
 
 
 def read_symbols(market: str) -> List[str]:
-    '''Reads asset symbols from market CSV file and appends suffixes if necessary.'''
+    """Reads asset symbols from market CSV file and appends suffixes if necessary."""
     config = get_market_config(market)
     file_path = config[MARKET_KEY_SOURCE_FILE]
     if DIR_ASSETS not in file_path:
@@ -91,12 +93,12 @@ def read_symbols(market: str) -> List[str]:
             
         return symbols
     except Exception as e:
-        logger.error(f'Error reading symbols from {file_path}: {e}')
+        logger.error('Error reading symbols from %s: %s', file_path, e)
         return []
 
 
 def get_sector_mapping(market: str) -> Dict[str, str]:
-    '''Retrieves asset-to-sector mapping for diversification control.'''
+    """Retrieves asset-to-sector mapping for diversification control."""
     config = get_market_config(market)
     file_path = config[MARKET_KEY_SOURCE_FILE]
     if DIR_ASSETS not in file_path:
@@ -131,7 +133,7 @@ def get_sector_mapping(market: str) -> Dict[str, str]:
                 
         return sector_map
     except Exception as e:
-        logger.error(f'Error reading sectors from {file_path}: {e}')
+        logger.error('Error reading sectors from %s: %s', file_path, e)
         return {}
 
 
@@ -140,14 +142,24 @@ def get_sector_mapping(market: str) -> Dict[str, str]:
 # ==========================================
 
 class Data():
-    '''Data management class for downloading and caching historical market data.'''
-    subdir = DIR_HISTORICAL
+    """Data management class for downloading and caching historical market data."""
+    _SUBDIR = DIR_HISTORICAL
 
     def __init__(self, precision: int = 2):
-        self.precision = precision
+        self._precision = precision
+
+    @property
+    def precision(self) -> int:
+        """Number of decimal places for price rounding (read-only)."""
+        return self._precision
+
+    @property
+    def subdir(self) -> str:
+        """Cache subdirectory for historical data (read-only)."""
+        return self._SUBDIR
 
     def download_histories(self, assets: List[str], repair: bool = False) -> None:
-        '''Download historical data for multiple assets concurrently (or single if len=1).'''
+        """Download historical data for multiple assets concurrently (or single if len=1)."""
             
         tickers = yf.Tickers(assets)
         assets_list = list(tickers.tickers.keys())
@@ -158,7 +170,7 @@ class Data():
                     df = tickers.tickers[asset].history(period=YF_PERIOD_MAX, auto_adjust=YF_AUTO_ADJUST, repair=repair)
                     self._save_asset_data(asset, df)
                 except Exception as e:
-                    logger.error(f"Error downloading {asset}: {e}")
+                    logger.error('Error downloading %s: %s', asset, e)
                 pbar.update(1)
 
             with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -170,24 +182,25 @@ class Data():
         asset_data_reset = asset_data.reset_index()
         asset_data_reset[COL_DATE] = asset_data_reset[COL_DATE].astype(str)
         numeric_columns = asset_data_reset.select_dtypes(include=['float64', 'float32']).columns
-        asset_data_reset[numeric_columns] = asset_data_reset[numeric_columns].round(self.precision)
+        asset_data_reset[numeric_columns] = asset_data_reset[numeric_columns].round(self._precision)
         save_dataframe(f'{asset}.csv', asset_data_reset, self.subdir)
 
     def get_asset_data_by_name(self, asset: str) -> Optional[pd.DataFrame]:
-        '''Retrieve cached historical data. Downloads if missing or empty.'''
+        """Retrieve cached historical data. Downloads if missing or empty."""
         file_name = f'{asset}.csv'
         df = open_dataframe(file_name, self.subdir)
         if df is None or df.empty:
-            logger.info(f'File {file_name} not found or empty. Downloading data for {asset}.')
+            logger.debug('Cache miss for %s, downloading...', asset)
+            print(f'Downloading data for {asset}...')
             self.download_histories([asset], repair=False)
             df = open_dataframe(file_name, self.subdir)
         return df
 
     def get_mega_dataframe(self, assets: List[str], start_date: str, end_date: str, price_type: str = 'C') -> pd.DataFrame:
-        '''
+        """
         Loads requested assets, processes price_type, and concatenates them into 
         a single MegaDataFrame with MultiIndex (Date, Symbol) for fast vectorized access.
-        '''
+        """
         start_date_dt = pd.to_datetime(start_date, utc=True).tz_localize(None)
         fetch_start_date = start_date_dt - pd.Timedelta(days=365)
         end_date_dt = pd.to_datetime(end_date, utc=True).tz_localize(None)
@@ -234,59 +247,101 @@ class Data():
 
 
 class MemData:
-    '''
+    """
     In-memory data management acting as a facade for the MegaDataFrame
     and holding sector information for the current simulation context.
-    '''
+    """
 
     def __init__(self, interval: List[str], market_identifier: str = MARKET_SP500, price_type: str = 'C'):
-        self.market_identifier = identify_market(market_identifier)
-        self.price_type = price_type
+        self._market_identifier = identify_market(market_identifier)
+        self._price_type = price_type
         
         start_date, end_date = interval
         if end_date is None:
             end_date = datetime.today().strftime('%Y-%m-%d')
             
-        self.assets = read_symbols(self.market_identifier)
-        self.sector_info = get_sector_mapping(self.market_identifier)
+        self._assets = read_symbols(self._market_identifier)
+        self._sector_info = get_sector_mapping(self._market_identifier)
         
-        logger.info(f'Assets mapped for {self.market_identifier}: {len(self.assets)}')
-        logger.info(f'Sectors in cache: {len(self.sector_info)}')
+        logger.debug('Assets mapped for %s: %d', self._market_identifier, len(self._assets))
+        logger.debug('Sectors in cache: %d', len(self._sector_info))
+        print(f'Loading data for {self._market_identifier} ({len(self._assets)} assets)...')
         
-        self.data = Data()
-        logger.info(f'Loading MegaDataFrame from {start_date} to {end_date}...')
-        self.mega_df = self.data.get_mega_dataframe(self.assets, start_date, end_date, price_type)
+        self._data = Data()
+        logger.debug('Loading MegaDataFrame from %s to %s', start_date, end_date)
+        self._mega_df = self._data.get_mega_dataframe(self._assets, start_date, end_date, price_type)
         
         # Determine actual available assets and dates from the MegaDataFrame
-        if not self.mega_df.empty:
-            self.assets = list(self.mega_df.index.get_level_values('Symbol').unique())
+        if not self._mega_df.empty:
+            self._assets = list(self._mega_df.index.get_level_values('Symbol').unique())
             # Convert Timestamps to str for easier date logic, or just leave as DatetimeIndex
             # We'll expose a string list for compatibility
-            self.dates_ts = self.mega_df.index.get_level_values(COL_DATE).unique()
-            self.dates = list(self.dates_ts)
+            self._dates_ts = self._mega_df.index.get_level_values(COL_DATE).unique()
+            self._dates = list(self._dates_ts)
         else:
-            self.assets = []
-            self.dates = []
+            self._assets = []
+            self._dates = []
             
-        logger.info(f'MegaDataFrame loaded: {len(self.assets)} assets over {len(self.dates)} dates.')
+        logger.debug('MegaDataFrame loaded: %d assets over %d dates', len(self._assets), len(self._dates))
+        print(f'Ready: {len(self._assets)} assets, {len(self._dates)} dates')
+
+    @property
+    def market_identifier(self) -> str:
+        """Market identifier (read-only)."""
+        return self._market_identifier
+
+    @property
+    def price_type(self) -> str:
+        """Price type used for simulation (read-only)."""
+        return self._price_type
+
+    @property
+    def assets(self) -> List[str]:
+        """List of available asset symbols (read-only)."""
+        return self._assets
+
+    @property
+    def sector_info(self) -> Dict[str, str]:
+        """Sector mapping for all assets (read-only copy)."""
+        return self._sector_info.copy()
+
+    @property
+    def data(self) -> Data:
+        """Data manager instance (read-only)."""
+        return self._data
+
+    @property
+    def mega_df(self) -> pd.DataFrame:
+        """MegaDataFrame with all simulation data (read-only)."""
+        return self._mega_df
+
+    @property
+    def dates(self) -> List[str]:
+        """List of available dates as strings (read-only)."""
+        return self._dates
+
+    @property
+    def dates_ts(self):
+        """DatetimeIndex of available dates (read-only)."""
+        return self._dates_ts
 
     def get_assets(self) -> List[str]:
         return self.assets
 
     def get_sector(self, symbol: str) -> str:
-        return self.sector_info.get(symbol, STR_UNKNOWN_FULL)
+        return self._sector_info.get(symbol, STR_UNKNOWN_FULL)
     
     def get_all_sectors(self) -> Dict[str, str]:
-        return self.sector_info.copy()
+        return self._sector_info.copy()
 
     def get_mega_df(self) -> pd.DataFrame:
-        '''Returns the multi-indexed DataFrame containing all simulation data.'''
-        return self.mega_df
+        """Returns the multi-indexed DataFrame containing all simulation data."""
+        return self._mega_df
 
 
 def test():
-    '''Diagnostic test for MegaDataFrame loading and data reading.'''
-    print("Testing data loading with MemData...")
+    """Diagnostic test for MegaDataFrame loading and data reading."""
+    print('Testing data loading with MemData...')
     interval = ['2024-01-10', '2024-11-10']
     mem_data = MemData(interval, market_identifier=MARKET_SP500)
     
@@ -295,10 +350,10 @@ def test():
     df = mem_data.get_mega_df()
     if not df.empty:
         print(f"MegaDataFrame shape: {df.shape}")
-        print("Head:")
+        print('Head:')
         print(df.head())
     else:
-        print("MegaDataFrame is empty!")
+        print('MegaDataFrame is empty!')
 
 
 if __name__ == '__main__':

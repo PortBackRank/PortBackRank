@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1">
+  <xmi:Documentation exporter="PortBackRank" exporterVersion="1.0"/>
+  <uml:Model xmi:id="PortBackRank_Model" name="PortBackRank">
+    <packagedElement xmi:id="Data" name="Data" type="Class">
+      <ownedAttribute xmi:id="Data_precision" name="precision" type="int" visibility="private" defaultValue="2"/>
+      <ownedOperation xmi:id="Data_download_histories" name="download_histories" visibility="public">
+        <ownedParameter xmi:id="Data_download_histories_assets" name="assets" type="List[str]" direction="in"/>
+        <ownedParameter xmi:id="Data_download_histories_repair" name="repair" type="bool" direction="in" defaultValue="false"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Data__save_asset_data" name="_save_asset_data" visibility="private">
+        <ownedParameter xmi:id="Data__save_asset_data_asset" name="asset" type="str" direction="in"/>
+        <ownedParameter xmi:id="Data__save_asset_data_asset_data" name="asset_data" type="pd.DataFrame" direction="in"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Data_get_asset_data_by_name" name="get_asset_data_by_name" visibility="public">
+        <ownedParameter xmi:id="Data_get_asset_data_by_name_asset" name="asset" type="str" direction="in"/>
+        <ownedParameter xmi:id="Data_get_asset_data_by_name_return" name="return" type="Optional[pd.DataFrame]" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Data_get_mega_dataframe" name="get_mega_dataframe" visibility="public">
+        <ownedParameter xmi:id="Data_get_mega_dataframe_assets" name="assets" type="List[str]" direction="in"/>
+        <ownedParameter xmi:id="Data_get_mega_dataframe_start_date" name="start_date" type="str" direction="in"/>
+        <ownedParameter xmi:id="Data_get_mega_dataframe_end_date" name="end_date" type="str" direction="in"/>
+        <ownedParameter xmi:id="Data_get_mega_dataframe_price_type" name="price_type" type="str" direction="in" defaultValue="'C'"/>
+        <ownedParameter xmi:id="Data_get_mega_dataframe_return" name="return" type="pd.DataFrame" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:id="MemData" name="MemData" type="Class">
+      <ownedAttribute xmi:id="MemData_market_identifier" name="market_identifier" type="str" visibility="public"/>
+      <ownedAttribute xmi:id="MemData_price_type" name="price_type" type="str" visibility="public"/>
+      <ownedAttribute xmi:id="MemData_assets" name="assets" type="List[str]" visibility="public"/>
+      <ownedAttribute xmi:id="MemData_sector_info" name="sector_info" type="Dict[str, str]" visibility="public"/>
+      <ownedAttribute xmi:id="MemData_data" name="data" type="Data" visibility="public"/>
+      <ownedAttribute xmi:id="MemData_mega_df" name="mega_df" type="pd.DataFrame" visibility="public"/>
+      <ownedAttribute xmi:id="MemData_dates" name="dates" type="List[str]" visibility="public"/>
+      <ownedAttribute xmi:id="MemData_dates_ts" name="dates_ts" type="pd.DatetimeIndex" visibility="public"/>
+      <ownedOperation xmi:id="MemData___init__" name="__init__" visibility="public">
+        <ownedParameter xmi:id="MemData___init__interval" name="interval" type="List[str]" direction="in"/>
+        <ownedParameter xmi:id="MemData___init__market_identifier" name="market_identifier" type="str" direction="in" defaultValue="MARKET_SP500"/>
+        <ownedParameter xmi:id="MemData___init__price_type" name="price_type" type="str" direction="in" defaultValue="'C'"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="MemData_get_assets" name="get_assets" visibility="public">
+        <ownedParameter xmi:id="MemData_get_assets_return" name="return" type="List[str]" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="MemData_get_sector" name="get_sector" visibility="public">
+        <ownedParameter xmi:id="MemData_get_sector_symbol" name="symbol" type="str" direction="in"/>
+        <ownedParameter xmi:id="MemData_get_sector_return" name="return" type="str" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="MemData_get_all_sectors" name="get_all_sectors" visibility="public">
+        <ownedParameter xmi:id="MemData_get_all_sectors_return" name="return" type="Dict[str, str]" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="MemData_get_mega_df" name="get_mega_df" visibility="public">
+        <ownedParameter xmi:id="MemData_get_mega_df_return" name="return" type="pd.DataFrame" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:id="Ranker" name="Ranker" type="Class" isAbstract="true">
+      <ownedAttribute xmi:id="Ranker_interval" name="interval" type="List[str]" visibility="protected"/>
+      <ownedAttribute xmi:id="Ranker_data" name="data" type="MemData" visibility="protected"/>
+      <ownedAttribute xmi:id="Ranker_parameters" name="parameters" type="dict" visibility="protected"/>
+      <ownedOperation xmi:id="Ranker_rank" name="rank" visibility="public" isAbstract="true">
+        <ownedParameter xmi:id="Ranker_rank_date" name="date" type="str" direction="in" defaultValue="None"/>
+        <ownedParameter xmi:id="Ranker_rank_return" name="return" type="List[str]" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Ranker_prepare" name="prepare" visibility="public" isAbstract="true"/>
+    </packagedElement>
+    <packagedElement xmi:id="RandomRanker" name="RandomRanker" type="Class">
+      <generalization xmi:id="RandomRanker_gen" general="Ranker"/>
+      <ownedAttribute xmi:id="RandomRanker_seed" name="seed" type="int" visibility="private"/>
+      <ownedOperation xmi:id="RandomRanker___init__" name="__init__" visibility="public">
+        <ownedParameter xmi:id="RandomRanker___init__parameters" name="parameters" type="dict" direction="in" defaultValue="None"/>
+        <ownedParameter xmi:id="RandomRanker___init__interval" name="interval" type="List[str]" direction="in" defaultValue="None"/>
+        <ownedParameter xmi:id="RandomRanker___init__data" name="data" type="MemData" direction="in" defaultValue="None"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="RandomRanker_rank" name="rank" visibility="public">
+        <ownedParameter xmi:id="RandomRanker_rank_date" name="date" type="str" direction="in" defaultValue="None"/>
+        <ownedParameter xmi:id="RandomRanker_rank_return" name="return" type="List[str]" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="RandomRanker_prepare" name="prepare" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:id="MARanker" name="MARanker" type="Class">
+      <generalization xmi:id="MARanker_gen" general="Ranker"/>
+      <ownedAttribute xmi:id="MARanker__short" name="_short" type="int" visibility="private"/>
+      <ownedAttribute xmi:id="MARanker__long" name="_long" type="int" visibility="private"/>
+      <ownedAttribute xmi:id="MARanker_short_col" name="short_col" type="str" visibility="private"/>
+      <ownedAttribute xmi:id="MARanker_long_col" name="long_col" type="str" visibility="private"/>
+      <ownedOperation xmi:id="MARanker___init__" name="__init__" visibility="public">
+        <ownedParameter xmi:id="MARanker___init__parameters" name="parameters" type="dict" direction="in" defaultValue="None"/>
+        <ownedParameter xmi:id="MARanker___init__interval" name="interval" type="List[str]" direction="in" defaultValue="None"/>
+        <ownedParameter xmi:id="MARanker___init__data" name="data" type="MemData" direction="in" defaultValue="None"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="MARanker_prepare" name="prepare" visibility="public"/>
+      <ownedOperation xmi:id="MARanker_rank" name="rank" visibility="public">
+        <ownedParameter xmi:id="MARanker_rank_date" name="date" type="str" direction="in" defaultValue="None"/>
+        <ownedParameter xmi:id="MARanker_rank_return" name="return" type="List[str]" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:id="RSIRanker" name="RSIRanker" type="Class">
+      <generalization xmi:id="RSIRanker_gen" general="Ranker"/>
+      <ownedAttribute xmi:id="RSIRanker_period" name="period" type="int" visibility="private"/>
+      <ownedAttribute xmi:id="RSIRanker_oversold" name="oversold" type="float" visibility="private"/>
+      <ownedAttribute xmi:id="RSIRanker_overbought" name="overbought" type="float" visibility="private"/>
+      <ownedAttribute xmi:id="RSIRanker_mode" name="mode" type="str" visibility="private"/>
+      <ownedAttribute xmi:id="RSIRanker_rsi_col" name="rsi_col" type="str" visibility="private"/>
+      <ownedOperation xmi:id="RSIRanker___init__" name="__init__" visibility="public">
+        <ownedParameter xmi:id="RSIRanker___init__parameters" name="parameters" type="dict" direction="in" defaultValue="None"/>
+        <ownedParameter xmi:id="RSIRanker___init__interval" name="interval" type="List[str]" direction="in" defaultValue="None"/>
+        <ownedParameter xmi:id="RSIRanker___init__data" name="data" type="MemData" direction="in" defaultValue="None"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="RSIRanker_prepare" name="prepare" visibility="public"/>
+      <ownedOperation xmi:id="RSIRanker_rank" name="rank" visibility="public">
+        <ownedParameter xmi:id="RSIRanker_rank_date" name="date" type="str" direction="in" defaultValue="None"/>
+        <ownedParameter xmi:id="RSIRanker_rank_return" name="return" type="List[str]" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:id="Runner" name="Runner" type="Class">
+      <ownedAttribute xmi:id="Runner_profit" name="profit" type="float" visibility="public"/>
+      <ownedAttribute xmi:id="Runner_loss" name="loss" type="float" visibility="public"/>
+      <ownedAttribute xmi:id="Runner_diversification" name="diversification" type="float" visibility="public"/>
+      <ownedAttribute xmi:id="Runner_volume" name="volume" type="float" visibility="public"/>
+      <ownedAttribute xmi:id="Runner_ranker" name="ranker" type="Type[Ranker]" visibility="public"/>
+      <ownedAttribute xmi:id="Runner_data" name="data" type="MemData" visibility="public"/>
+      <ownedAttribute xmi:id="Runner_trace" name="trace" type="bool" visibility="public"/>
+      <ownedAttribute xmi:id="Runner__portfolio_details" name="_Runner__portfolio_details" type="pd.DataFrame" visibility="private"/>
+      <ownedAttribute xmi:id="Runner_portfolio_summary" name="portfolio_summary" type="Dict[str, float]" visibility="public"/>
+      <ownedAttribute xmi:id="Runner_balance" name="balance" type="float" visibility="public"/>
+      <ownedAttribute xmi:id="Runner_total_portfolio_value" name="total_portfolio_value" type="float" visibility="public"/>
+      <ownedAttribute xmi:id="Runner__ranker_instance" name="_ranker_instance" type="Ranker" visibility="private"/>
+      <ownedAttribute xmi:id="Runner_mega_df" name="mega_df" type="pd.DataFrame" visibility="private"/>
+      <ownedAttribute xmi:id="Runner__all_sectors" name="_all_sectors" type="Dict[str, str]" visibility="private"/>
+      <ownedAttribute xmi:id="Runner__interval" name="_interval" type="List[str]" visibility="private"/>
+      <ownedAttribute xmi:id="Runner_trade_log" name="trade_log" type="List[dict]" visibility="private"/>
+      <ownedAttribute xmi:id="Runner_portfolio_log" name="portfolio_log" type="List[dict]" visibility="private"/>
+      <ownedOperation xmi:id="Runner___init__" name="__init__" visibility="public">
+        <ownedParameter xmi:id="Runner___init__profit" name="profit" type="float" direction="in"/>
+        <ownedParameter xmi:id="Runner___init__loss" name="loss" type="float" direction="in"/>
+        <ownedParameter xmi:id="Runner___init__diversification" name="diversification" type="float" direction="in"/>
+        <ownedParameter xmi:id="Runner___init__volume" name="volume" type="float" direction="in"/>
+        <ownedParameter xmi:id="Runner___init__ranker" name="ranker" type="Type[Ranker]" direction="in"/>
+        <ownedParameter xmi:id="Runner___init__data" name="data" type="MemData" direction="in"/>
+        <ownedParameter xmi:id="Runner___init__trace" name="trace" type="bool" direction="in" defaultValue="false"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Runner__update_portfolio_metrics" name="_update_portfolio_metrics" visibility="private"/>
+      <ownedOperation xmi:id="Runner_prepare_data" name="prepare_data" visibility="public">
+        <ownedParameter xmi:id="Runner_prepare_data_interval" name="interval" type="List[str]" direction="in"/>
+        <ownedParameter xmi:id="Runner_prepare_data_ranker_conf" name="ranker_conf" type="Dict[str, float]" direction="in"/>
+        <ownedParameter xmi:id="Runner_prepare_data_capital" name="capital" type="float" direction="in"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Runner__log_portfolio_state" name="_log_portfolio_state" visibility="private">
+        <ownedParameter xmi:id="Runner__log_portfolio_state_date" name="date" type="str" direction="in"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Runner__save_trace" name="_save_trace" visibility="private">
+        <ownedParameter xmi:id="Runner__save_trace_result_data" name="result_data" type="Dict" direction="in"/>
+        <ownedParameter xmi:id="Runner__save_trace_ranker_conf" name="ranker_conf" type="Dict" direction="in"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Runner_single_run" name="single_run" visibility="public">
+        <ownedParameter xmi:id="Runner_single_run_interval" name="interval" type="List[str]" direction="in"/>
+        <ownedParameter xmi:id="Runner_single_run_ranker_conf" name="ranker_conf" type="Dict[str, float]" direction="in"/>
+        <ownedParameter xmi:id="Runner_single_run_capital" name="capital" type="float" direction="in"/>
+        <ownedParameter xmi:id="Runner_single_run_return" name="return" type="Dict" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Runner__sell" name="_sell" visibility="private">
+        <ownedParameter xmi:id="Runner__sell_date" name="date" type="str" direction="in"/>
+        <ownedParameter xmi:id="Runner__sell_current_date_data" name="current_date_data" type="pd.DataFrame" direction="in"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Runner__buy" name="_buy" visibility="private">
+        <ownedParameter xmi:id="Runner__buy_date" name="date" type="str" direction="in"/>
+        <ownedParameter xmi:id="Runner__buy_ranker" name="ranker" type="Ranker" direction="in"/>
+        <ownedParameter xmi:id="Runner__buy_current_date_data" name="current_date_data" type="pd.DataFrame" direction="in"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:id="Backtesting" name="Backtesting" type="Class">
+      <ownedAttribute xmi:id="Backtesting_ranker_cls" name="ranker_cls" type="Type[Ranker]" visibility="public"/>
+      <ownedAttribute xmi:id="Backtesting_capital" name="capital" type="float" visibility="public"/>
+      <ownedAttribute xmi:id="Backtesting_interval" name="interval" type="List[str]" visibility="public"/>
+      <ownedAttribute xmi:id="Backtesting_data" name="data" type="MemData" visibility="public"/>
+      <ownedAttribute xmi:id="Backtesting_trace" name="trace" type="bool" visibility="public"/>
+      <ownedAttribute xmi:id="Backtesting_runner_cls" name="runner_cls" type="Type[Runner]" visibility="public"/>
+      <ownedOperation xmi:id="Backtesting___init__" name="__init__" visibility="public">
+        <ownedParameter xmi:id="Backtesting___init__config" name="config" type="dict" direction="in"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Backtesting_run" name="run" visibility="public">
+        <ownedParameter xmi:id="Backtesting_run_parameter_grid" name="parameter_grid" type="Dict[str, List[float]]" direction="in"/>
+        <ownedParameter xmi:id="Backtesting_run_ranker_grid" name="ranker_grid" type="Dict[str, List[float]]" direction="in"/>
+        <ownedParameter xmi:id="Backtesting_run_n_jobs" name="n_jobs" type="int" direction="in" defaultValue="1"/>
+        <ownedParameter xmi:id="Backtesting_run_return" name="return" type="pd.DataFrame" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:id="MarketData" name="MarketData" type="Class">
+      <ownedAttribute xmi:id="MarketData_file_path" name="file_path" type="str" visibility="public"/>
+      <ownedAttribute xmi:id="MarketData_market" name="market" type="str" visibility="public"/>
+      <ownedOperation xmi:id="MarketData___init__" name="__init__" visibility="public">
+        <ownedParameter xmi:id="MarketData___init__file_path" name="file_path" type="str" direction="in" defaultValue="None"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="MarketData_from_file_path" name="from_file_path" visibility="public" isStatic="true">
+        <ownedParameter xmi:id="MarketData_from_file_path_file_path" name="file_path" type="str" direction="in"/>
+        <ownedParameter xmi:id="MarketData_from_file_path_return" name="return" type="str" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="MarketData_list_recent_symbols" name="list_recent_symbols" visibility="public" isStatic="true">
+        <ownedParameter xmi:id="MarketData_list_recent_symbols_market" name="market" type="str" direction="in" defaultValue="None"/>
+        <ownedParameter xmi:id="MarketData_list_recent_symbols_force_update" name="force_update" type="bool" direction="in" defaultValue="false"/>
+        <ownedParameter xmi:id="MarketData_list_recent_symbols_return" name="return" type="List[str]" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="MarketData_get_sector_mapping" name="get_sector_mapping" visibility="public" isStatic="true">
+        <ownedParameter xmi:id="MarketData_get_sector_mapping_market" name="market" type="str" direction="in"/>
+        <ownedParameter xmi:id="MarketData_get_sector_mapping_return" name="return" type="Dict[str, Dict[str, str]]" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="MarketData_get_symbol_list" name="get_symbol_list" visibility="public" isStatic="true">
+        <ownedParameter xmi:id="MarketData_get_symbol_list_market" name="market" type="str" direction="in" defaultValue="MARKET_SP500"/>
+        <ownedParameter xmi:id="MarketData_get_symbol_list_return" name="return" type="List[str]" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="MarketData_update_symbols" name="update_symbols" visibility="public" isStatic="true">
+        <ownedParameter xmi:id="MarketData_update_symbols_market" name="market" type="str" direction="in"/>
+        <ownedParameter xmi:id="MarketData_update_symbols_update" name="update" type="bool" direction="in" defaultValue="false"/>
+        <ownedParameter xmi:id="MarketData_update_symbols_return" name="return" type="List[str]" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <!-- Relationships -->
+    <packagedElement xmi:id="MemData_Data" name="" type="Association">
+      <memberEnd xmi:id="MemData_Data_end1" type="MemData" multiplicity="1" aggregation="composite"/>
+      <memberEnd xmi:id="MemData_Data_end2" type="Data" multiplicity="1" aggregation="none"/>
+    </packagedElement>
+    <packagedElement xmi:id="Runner_MemData" name="" type="Association">
+      <memberEnd xmi:id="Runner_MemData_end1" type="Runner" multiplicity="1" aggregation="none"/>
+      <memberEnd xmi:id="Runner_MemData_end2" type="MemData" multiplicity="1" aggregation="none"/>
+    </packagedElement>
+    <packagedElement xmi:id="Runner_Ranker" name="" type="Association">
+      <memberEnd xmi:id="Runner_Ranker_end1" type="Runner" multiplicity="1" aggregation="none"/>
+      <memberEnd xmi:id="Runner_Ranker_end2" type="Ranker" multiplicity="1" aggregation="none"/>
+    </packagedElement>
+    <packagedElement xmi:id="Backtesting_Runner" name="" type="Association">
+      <memberEnd xmi:id="Backtesting_Runner_end1" type="Backtesting" multiplicity="1" aggregation="composite"/>
+      <memberEnd xmi:id="Backtesting_Runner_end2" type="Runner" multiplicity="*" aggregation="none"/>
+    </packagedElement>
+    <packagedElement xmi:id="Backtesting_Ranker" name="" type="Association">
+      <memberEnd xmi:id="Backtesting_Ranker_end1" type="Backtesting" multiplicity="1" aggregation="none"/>
+      <memberEnd xmi:id="Backtesting_Ranker_end2" type="Ranker" multiplicity="*" aggregation="none"/>
+    </packagedElement>
+    <packagedElement xmi:id="Backtesting_MemData" name="" type="Association">
+      <memberEnd xmi:id="Backtesting_MemData_end1" type="Backtesting" multiplicity="1" aggregation="none"/>
+      <memberEnd xmi:id="Backtesting_MemData_end2" type="MemData" multiplicity="1" aggregation="none"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

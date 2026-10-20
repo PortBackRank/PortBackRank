@@ -14,19 +14,19 @@
 
 ### Correções gerais
 
-- [ ] (João Bruno, César) Atualizar arquivo LICENSE com informações do projeto
+- [x] (João Bruno, César) Atualizar arquivo LICENSE com informações do projeto
 - [x] (João Bruno, César) Mover e adequar conteúdo do **index.md** para o **README.md**
 - [x] (João Bruno, César) Criar pasta **doc** para incluir toda a documentação do projeto
-- [ ] (João Bruno, César) Mover e atualizar **diagrama.drawio** para **doc/class_diagram.drawio**
-- [ ] (João Bruno, César) Padronizar strings no python com aspas simples
-- [ ] (João Bruno, César) Incluir opção de definir número de casas decimais (argumento no **main.py** ou configuração no arquivo JSON)
-- [ ] (João Bruno, César, Marcos) Repensar pasta para salvar cache de preços e arquivos de rastreamento (talvez em $HOME/PortBackRank)
-- [ ] (João Bruno, César) Revisar todas as classes para redefinir métodos e atributos como públicos ou privados (iniciados com _), analisar a possibilidade de criar **properties**
-- [ ] Juntar arquivos **files.py** e **utils.py**
+- [x] (João Bruno, César) Mover e atualizar **diagrama.drawio** para **doc/class_diagram.drawio**
+- [x] (João Bruno, César) Padronizar strings no python com aspas simples
+- [x] (João Bruno, César) Incluir opção de definir número de casas decimais (argumento no **main.py** ou configuração no arquivo JSON)
+- [x] (João Bruno, César, Marcos) Repensar pasta para salvar cache de preços e arquivos de rastreamento (talvez em $HOME/PortBackRank)
+- [x] (João Bruno, César) Revisar todas as classes para redefinir métodos e atributos como públicos ou privados (iniciados com _), analisar a possibilidade de criar **properties**
+- [x] Juntar arquivos **files.py** e **utils.py**
 ### Nomenclatura
-- [ ] (João Bruno, César) Revisar **names.py**
-    - [ ] Remover nomes não usados
-    - [ ] Incluir literais de outros módulos como constantes
+- [x] (João Bruno, César) Revisar **names.py**
+    - [x] Remover nomes não usados
+    - [x] Incluir literais de outros módulos como constantes
 
 ### Arquivo de configuração de simulação (config.json) -- PRIORIDADE
 
@@ -46,10 +46,10 @@
 
 ### Implementação de logging
 
-- [ ] (João Bruno, César) Implementar logging em todo o sistema
-    - [ ] Não usar **info()**, melhor usar **print()** em mensagens estritamente necessárias
-    - [ ] Incluir **debug()** em pontos estratégicos
-    - [ ] Incluir argumento em **main.py** para ativar o debug (**logger.setLevel(logging.DEBUG)**)
+- [x] (João Bruno, César) Implementar logging em todo o sistema
+    - [x] Não usar **info()**, melhor usar **print()** em mensagens estritamente necessárias
+    - [x] Incluir **debug()** em pontos estratégicos
+    - [x] Incluir argumento em **main.py** para ativar o debug (**logger.setLevel(logging.DEBUG)**)
 
 ### Arquivos de rastreamento -- PRIORIDADE
 
