@@ -8,6 +8,7 @@ from typing import List
 import random
 import pandas as pd
 from data import MemData
+from names import *
 
 logger = logging.getLogger(__name__)
 
@@ -50,7 +51,7 @@ class RandomRanker(Ranker):
 
     def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
         super().__init__(parameters, interval, data)
-        self._seed = self.parameters.get('SEED', 42)
+        self._seed = self.parameters.get(KEY_SEED, 42)
         logger.debug('RandomRanker initialized: seed=%s', self._seed)
 
     @property
@@ -72,13 +73,14 @@ class RandomRanker(Ranker):
 class MARanker(Ranker):
     """Ranker based on Mean Reversion strategy using moving averages."""
 
-    def __init__(self, parameters: dict = None, interval: List[str] = None, data: MemData = None):
+    def __init__(self, parameters: dict = None, interval: List[str] = None, data = None):
         super().__init__(parameters, interval, data)
-        windows = self.parameters.get('window')
+        windows = self.parameters.get(KEY_WINDOW)
         self._short = windows[0]
         self._long = windows[1]
         self._short_col = f'ma{self._short}'
         self._long_col = f'ma{self._long}'
+        self._strength_col = f'strength_{self._short}_{self._long}'
         logger.debug('MARanker initialized: short=%d, long=%d', self._short, self._long)
 
     @property
@@ -97,72 +99,74 @@ class MARanker(Ranker):
     def long_col(self) -> str:
         return self._long_col
 
+    @property
+    def strength_col(self) -> str:
+        return self._strength_col
+
     def prepare(self) -> None:
         """
-        Calculates moving averages vectorized across the MegaDataFrame.
+        Calculates moving averages and cross-strength vectorized across the MegaDataFrame.
         """
         df = self.data.get_mega_df()
         if df.empty:
             logger.debug('MARanker.prepare: empty dataframe')
             return
 
-        logger.debug('MARanker.prepare: calculating MAs for %d rows', len(df))
-        # Calculate moving averages for all symbols at once using groupby
-        # Since MegaDataFrame has MultiIndex (Date, Symbol), we groupby Symbol
-        # and calculate rolling mean on 'Close'
+        logger.debug('MARanker.prepare: calculating MAs and strength for %d rows', len(df))
+        # Ensure sorting by Symbol and Date for correct chronological rolling
+        df.sort_index(level=[IDX_SYMBOL, COL_DATE], inplace=True)
         
-        # Sort index to ensure chronological order before rolling
-        df.sort_index(level=['Symbol', 'Date'], inplace=True)
+        df[self.short_col] = df.groupby(level=IDX_SYMBOL)[COL_CLOSE].transform(lambda x: x.rolling(self._short).mean())
+        df[self.long_col] = df.groupby(level=IDX_SYMBOL)[COL_CLOSE].transform(lambda x: x.rolling(self._long).mean())
         
-        df[self.short_col] = df.groupby(level='Symbol')['Close'].transform(lambda x: x.rolling(self._short).mean())
-        df[self.long_col] = df.groupby(level='Symbol')['Close'].transform(lambda x: x.rolling(self._long).mean())
-        
-        # Restore original sorting if needed
-        df.sort_index(level=['Date', 'Symbol'], inplace=True)
-        logger.debug('MARanker.prepare: MAs calculated (%s, %s)', self.short_col, self.long_col)
+        # Precompute crossover and signal strength vectorized across all symbols
+        prev_short = df.groupby(level=IDX_SYMBOL)[self.short_col].shift(1)
+        prev_long = df.groupby(level=IDX_SYMBOL)[self.long_col].shift(1)
+
+        # Valid rows where both current and previous MAs are not NaN
+        valid = (
+            df[self.short_col].notna() & df[self.long_col].notna() &
+            prev_short.notna() & prev_long.notna()
+        )
+        cross_mask = valid & (prev_short <= prev_long) & (df[self.short_col] > df[self.long_col])
+        strength_vals = (df[self.short_col] / df[self.long_col] - 1.0) * 100.0
+
+        # Initialize strength with -inf for valid rows and update cross signals
+        df[self.strength_col] = float('-inf')
+        df[self.strength_col] = df[self.strength_col].where(~cross_mask, strength_vals)
+        # Keep NaN where MAs are not yet valid
+        df[self.strength_col] = df[self.strength_col].where(valid, float('nan'))
+
+        # Restore original index sorting
+        df.sort_index(level=[COL_DATE, IDX_SYMBOL], inplace=True)
+        logger.debug('MARanker.prepare: MAs and strength calculated (%s, %s)', self.short_col, self.long_col)
 
     def rank(self, date: str = None) -> List[str]:
         """
         Rank symbols based on mean reversion signals using pre-calculated indicators.
         """
         df = self.data.get_mega_df()
-        if df.empty or date not in df.index.get_level_values('Date'):
+        if df.empty or date not in df.index.get_level_values(COL_DATE):
             return []
 
-        # Get data for the current date
-        current_date_data = df.xs(date, level='Date')
-        
-        # Find previous date in the index
-        all_dates = df.index.get_level_values('Date').unique()
+        all_dates = df.index.get_level_values(COL_DATE).unique()
         date_loc = all_dates.get_loc(date)
-        
         if date_loc < 1:
             return []
-            
-        prev_date = all_dates[date_loc - 1]
-        prev_date_data = df.xs(prev_date, level='Date')
 
+        prev_date = all_dates[date_loc - 1]
+        prev_date_data = df.xs(prev_date, level=COL_DATE)
+        current_date_data = df.xs(date, level=COL_DATE)
+
+        # Retain exact legacy behavior: evaluate valid symbols present on both days
         ranked_symbols = []
-        
-        for symbol in current_date_data.index:
+        for symbol, row in current_date_data.iterrows():
             if symbol not in prev_date_data.index:
                 continue
-                
-            latest = current_date_data.loc[symbol]
-            prev = prev_date_data.loc[symbol]
-            
-            # Check if MAs are calculated
-            if pd.isna(latest[self.short_col]) or pd.isna(latest[self.long_col]) or \
-               pd.isna(prev[self.short_col]) or pd.isna(prev[self.long_col]):
+            val = row[self.strength_col]
+            if pd.isna(val):
                 continue
-
-            strength = float('-inf')
-            
-            # Detect mean reversion: short MA crosses above long MA
-            if prev[self.short_col] <= prev[self.long_col] and latest[self.short_col] > latest[self.long_col]:
-                strength = (latest[self.short_col] / latest[self.long_col] - 1) * 100
-                
-            ranked_symbols.append((strength, symbol))
+            ranked_symbols.append((val, symbol))
 
         ranked_symbols.sort(reverse=True)
         result = [x[1] for x in ranked_symbols]
@@ -177,7 +181,7 @@ class RSIRanker(Ranker):
         super().__init__(parameters, interval, data)
         self._period = int(self.parameters.get('period', 14))
         
-        win = self.parameters.get('window')
+        win = self.parameters.get(KEY_WINDOW)
         try:
             if isinstance(win, (list, tuple)) and len(win) >= 1:
                 self._period = int(win[0])
@@ -221,7 +225,7 @@ class RSIRanker(Ranker):
             return
 
         logger.debug('RSIRanker.prepare: calculating RSI for %d rows', len(df))
-        df.sort_index(level=['Symbol', 'Date'], inplace=True)
+        df.sort_index(level=[IDX_SYMBOL, COL_DATE], inplace=True)
         
         def compute_rsi(group):
             delta = group.diff()
@@ -233,9 +237,8 @@ class RSIRanker(Ranker):
             rsi = 100 - (100 / (1 + rs))
             return rsi.replace([float('inf'), float('-inf')], float('nan')).ffill()
 
-        df[self.rsi_col] = df.groupby(level='Symbol')['Close'].transform(compute_rsi)
-        df[self.rsi_col] = df.groupby(level='Symbol')['Close'].transform(compute_rsi)
-        df.sort_index(level=['Date', 'Symbol'], inplace=True)
+        df[self.rsi_col] = df.groupby(level=IDX_SYMBOL)[COL_CLOSE].transform(compute_rsi)
+        df.sort_index(level=[COL_DATE, IDX_SYMBOL], inplace=True)
         logger.debug('RSIRanker.prepare: RSI calculated (%s)', self.rsi_col)
 
     def rank(self, date: str = None) -> List[str]:
@@ -243,20 +246,20 @@ class RSIRanker(Ranker):
         Rank symbols based on RSI signal crossovers using pre-calculated indicators.
         """
         df = self.data.get_mega_df()
-        if df.empty or date not in df.index.get_level_values('Date'):
+        if df.empty or date not in df.index.get_level_values(COL_DATE):
             logger.debug('RSIRanker.rank(%s): no data', date)
             return []
 
-        current_date_data = df.xs(date, level='Date')
+        current_date_data = df.xs(date, level=COL_DATE)
         
-        all_dates = df.index.get_level_values('Date').unique()
+        all_dates = df.index.get_level_values(COL_DATE).unique()
         date_loc = all_dates.get_loc(date)
         
         if date_loc < 1:
             return []
             
         prev_date = all_dates[date_loc - 1]
-        prev_date_data = df.xs(prev_date, level='Date')
+        prev_date_data = df.xs(prev_date, level=COL_DATE)
 
         ranked_symbols = []
         
@@ -285,17 +288,3 @@ class RSIRanker(Ranker):
         result = [x[0] for x in ranked_symbols]
         logger.debug('RSIRanker.rank(%s): %d signals', date, len(result))
         return result
-
-
-if __name__ == '__main__':
-    print('Testing rankers with MegaDataFrame...')
-    from data import MemData
-    mem_data = MemData(['2024-01-01', '2024-06-30'])
-    
-    ma_ranker = MARanker(parameters={'window': [9, 21]}, data=mem_data)
-    ma_ranker.prepare()
-    print('MAs prepared.')
-    
-    rsi_ranker = RSIRanker(parameters={'period': 14}, data=mem_data)
-    rsi_ranker.prepare()
-    print('RSI prepared.')

@@ -9,11 +9,10 @@ read/write operations on JSON and CSV files.
 
 import os
 from os.path import isdir, isfile
-from os import mkdir, sep
-from pathlib import Path
+from os import mkdir
 from datetime import datetime
 from names import (
-    DIR_CACHE, DIR_TRACKING, DIR_HISTORICAL, get_base_dir,
+    DIR_CACHE, DIR_TRACKING, get_base_dir,
     COL_OPEN, COL_HIGH, COL_LOW, COL_CLOSE, ENCODING_UTF8
 )
 import json
@@ -198,7 +197,7 @@ def generate_filename(prefix, result, start_date, end_date):
     
     # Build the filename with parameters
     window = result.get('window', [0, 0]) 
-    filename = f"{file_prefix}_profit{...}_short{get_safe_int(window[0])}_long{get_safe_int(window[1])}.."
+    filename = f'{file_prefix}_profit{...}_short{get_safe_int(window[0])}_long{get_safe_int(window[1])}..'
 
     return os.path.join(project_root, 'results', *subdirs, filename)
 

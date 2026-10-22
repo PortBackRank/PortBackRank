@@ -1,18 +1,16 @@
 from backtesting import Backtesting
-from ranker import MARanker, RSIRanker
+from ranker import MARanker, RSIRanker, RandomRanker
 from data import Data, MemData, identify_market, read_symbols
-from utils import generate_filename
 from logger import configure_logging
 import argparse
 import pandas as pd
 import json
-import os
 from names import (
     MARKET_SP500, RANKER_MA, RANKER_RSI, MODE_ALL, MODE_MISSING, MODE_NONE,
     KEY_ID, KEY_INTERVAL, KEY_CAPITAL, KEY_RANKER, KEY_RANKER_PARAMS,
     KEY_PROFIT, KEY_LOSS, KEY_DIVERSIFICATION, KEY_VOLUME,
     DEFAULT_INTERVAL, DEFAULT_CAPITAL, set_base_dir_override,
-    DEFAULT_DECIMALS, KEY_DECIMALS
+    DEFAULT_DECIMALS, KEY_DECIMALS, KEY_WINDOW, RANKER_RANDOM
 )
 
 
@@ -182,6 +180,8 @@ def _get_ranker_class(name: str):
         return MARanker
     if name == RANKER_RSI:
         return RSIRanker
+    if name == RANKER_RANDOM:
+        return RandomRanker
     raise ValueError(f'Ranker "{name}" is not supported.')
 
 
@@ -195,7 +195,7 @@ def run_from_config(config_path: str, download_mode: str = MODE_MISSING, price_t
     data_dir_override = data_dir or config.get('data-dir')
     if data_dir_override:
         set_base_dir_override(data_dir_override)
-        print(f"Using custom data directory: {data_dir_override}")
+        print(f'Using custom data directory: {data_dir_override}')
 
     # Resolve decimals (CLI > JSON > default)
     if decimals is not None:
@@ -245,7 +245,7 @@ def run_from_config(config_path: str, download_mode: str = MODE_MISSING, price_t
     all_results = []
 
     for pt in price_types:
-        print(f"Running simulation for price type: {pt}")
+        print(f'Running simulation for price type: {pt}')
         mem_data = MemData(interval, market_identifier=market_identifier, price_type=pt)
         
         if trace:
@@ -338,7 +338,14 @@ def main(argv=None):
     configure_logging(debug=args.debug)
     
     start = time.time()
-    run_from_config(args.config, download_mode=args.download_data, price_type=args.price_type, trace=args.trace, data_dir=args.data_dir, decimals=args.decimals)
+    run_from_config(
+        args.config, 
+        download_mode=args.download_data,
+        price_type=args.price_type, 
+        trace=args.trace, 
+        data_dir=args.data_dir, 
+        decimals=args.decimals
+        )
     end = time.time()
     print('Time:', end - start)
 

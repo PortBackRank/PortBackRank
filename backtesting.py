@@ -8,61 +8,65 @@ results to disk.
 
 import logging
 from itertools import product
-from typing import List, Dict, Callable
+from typing import List, Dict
 from joblib import Parallel, delayed
 import pandas as pd
 from data import MemData
-from ranker import MARanker, RandomRanker, Ranker
-from runner import Runner
-from names import (
-    MARKET_SP500, KEY_PROFIT, KEY_LOSS, KEY_DIVERSIFICATION, KEY_VOLUME,
-    KEY_WINDOW, KEY_CAIXA_FINAL, KEY_PORTFOLIO_VALUE, KEY_RETORNO_TOTAL,
-    KEY_FINAL_TOTAL_VALUE, KEY_INTERVAL, KEY_BALANCE,
-    validate_positive_float, validate_diversification, validate_decimals
-)
+from runner import Runner, RunnerConfig
+from names import *
 
 logger = logging.getLogger(__name__)
 
 
-def _run_single_simulation(params, config_keys, runner_cls, ranker_cls, data, interval, capital, trace, decimals):
-    runner_values, ranker_values = params
-    parameter_names, ranker_names = config_keys
-    
-    runner_config = dict(zip(parameter_names, runner_values))
-    ranker_config = dict(zip(ranker_names, ranker_values))
-    
+def _run_single_simulation(runner_config: dict, ranker_config: dict, context: dict):
+    """Run one parameter combination and return its evaluation row.
+
+    Module-level function (not a method) so it can be pickled by joblib.
+    All arguments are plain dicts (classes and MemData are picklable).
+
+    Args:
+        runner_config: Runner parameters for this combination
+            (profit, loss, diversification, volume).
+        ranker_config: Ranker parameters for this combination (e.g. window).
+        context: simulation settings shared by every combination, using the
+            CFG_* keys (runner_cls, ranker_cls, data, interval, capital,
+            trace, decimals).
+
+    Returns:
+        Dictionary with the parameters and results, or None if the
+        simulation raised an exception.
+    """
+    capital = context[CFG_CAPITAL]
     logger.debug('Running simulation: runner=%s, ranker=%s', runner_config, ranker_config)
 
     runner_cfg = RunnerConfig(
         profit=runner_config[KEY_PROFIT],
         loss=runner_config[KEY_LOSS],
         diversification=runner_config[KEY_DIVERSIFICATION],
-        volume=runner_config.get(KEY_VOLUME, 1.0),
-        trace=trace,
-        decimals=decimals,
-        ranker_cls=ranker_cls
+        volume=runner_config[KEY_VOLUME],
+        ranker_cls=context[CFG_RANKER_CLS],
+        trace=context[CFG_TRACE],
+        decimals=context[CFG_DECIMALS]
     )
-    
-    runner = Runner(config=runner_cfg, data=data)
+    runner = context[CFG_RUNNER_CLS](config=runner_cfg, data=context[CFG_DATA])
 
     try:
-        result = runner.single_run(interval, ranker_config, capital)
+        result = runner.single_run(context[CFG_INTERVAL], ranker_config, capital)
         # Evaluate results internally
-        portfolio_value = result.get(KEY_FINAL_TOTAL_VALUE, 0)
+        portfolio_value = result[KEY_FINAL_TOTAL_VALUE]
         total_return = ((portfolio_value - capital) / capital) * 100
         
         eval_dict = {
-            'intervalo': result.get(KEY_INTERVAL),
+            KEY_INTERVALO: result[KEY_INTERVAL],
             KEY_PROFIT: runner_config[KEY_PROFIT],
             KEY_LOSS: runner_config[KEY_LOSS],
             KEY_DIVERSIFICATION: runner_config[KEY_DIVERSIFICATION],
-            KEY_VOLUME: runner_config.get(KEY_VOLUME, 1.0),
-            KEY_WINDOW: ranker_config.get(KEY_WINDOW),
-            KEY_CAIXA_FINAL: result.get(KEY_BALANCE),
+            KEY_VOLUME: runner_config[KEY_VOLUME],
+            **ranker_config,
+            KEY_CAIXA_FINAL: result[KEY_BALANCE],
             KEY_PORTFOLIO_VALUE: portfolio_value,
-            KEY_RETORNO_TOTAL: f"{total_return:.2f}%"
+            KEY_RETORNO_TOTAL: f'{total_return:.2f}%'
         }
-        eval_dict.update(ranker_config)
         logger.debug('Simulation result: return=%.2f%%, final_value=%s', total_return, portfolio_value)
         return eval_dict
     except Exception as e:
@@ -77,73 +81,87 @@ class Backtesting:
     parameters, allows parallel execution, and aggregates performance metrics.
     """
 
+    _REQUIRED_KEYS = [
+        CFG_RANKER_CLS, CFG_CAPITAL, CFG_INTERVAL, CFG_DATA,
+        CFG_TRACE, CFG_DECIMALS, CFG_N_JOBS
+    ]
+
     def __init__(self, config: dict):
         """
         Initializes the backtester with a configuration dictionary.
 
-        Expected keys in config dict:
+        Required keys in config dict:
         - ranker_cls: Ranker class used in simulations.
         - capital: initial capital for all simulations.
         - interval: list [start_date, end_date] for the simulation.
         - data: MemData object with the simulation data.
         - trace: whether to generate tracking files.
-        - runner_cls: (Optional) custom Runner class.
-        - decimals: (Optional) number of decimal places for output.
-        - n_jobs: (Optional) number of parallel jobs.
-        """
-        # Validate required keys
-        required_keys = ['ranker_cls', 'capital', 'interval', 'data']
-        for key in required_keys:
-            if key not in config:
-                raise ValueError(f"Missing required config key: {key}")
+        - decimals: number of decimal places for output.
+        - n_jobs: number of parallel jobs.
 
-        # Store config with defaults
+        Optional keys:
+        - runner_cls: custom Runner class (defaults to Runner).
+
+        Raises:
+            ValueError: if a required key is missing.
+        """
+        missing = [key for key in self._REQUIRED_KEYS if key not in config]
+        if missing:
+            raise ValueError(f'Missing required config key(s): {", ".join(missing)}')
+
         self._config = {
-            'ranker_cls': config['ranker_cls'],
-            'capital': config['capital'],
-            'interval': config['interval'],
-            'data': config['data'],
-            'trace': config.get('trace', False),
-            'runner_cls': config.get('runner_cls', Runner),
-            'decimals': validate_decimals(config.get('decimals')),
-            'n_jobs': config.get('n_jobs', 1)
+            CFG_RANKER_CLS: config[CFG_RANKER_CLS],
+            CFG_CAPITAL: config[CFG_CAPITAL],
+            CFG_INTERVAL: config[CFG_INTERVAL],
+            CFG_DATA: config[CFG_DATA],
+            CFG_TRACE: config[CFG_TRACE],
+            CFG_RUNNER_CLS: config.get(CFG_RUNNER_CLS, Runner),
+            CFG_DECIMALS: validate_decimals(config[CFG_DECIMALS]),
+            CFG_N_JOBS: config[CFG_N_JOBS]
         }
         
         logger.debug('Backtesting initialized: ranker=%s, capital=%d, interval=%s, decimals=%d', 
-                     self._config['ranker_cls'].__name__, self._config['capital'], 
-                     self._config['interval'], self._config['decimals'])
+                     self.ranker_cls.__name__, self.capital, self.interval, self.decimals)
 
     @property
     def ranker_cls(self):
-        return self._config['ranker_cls']
+        """Ranker class used in simulations (read-only)."""
+        return self._config[CFG_RANKER_CLS]
 
     @property
     def capital(self) -> int:
-        return self._config['capital']
+        """Initial capital (read-only)."""
+        return self._config[CFG_CAPITAL]
 
     @property
     def interval(self) -> List[str]:
-        return self._config['interval']
+        """Simulation interval [start_date, end_date] (read-only)."""
+        return self._config[CFG_INTERVAL]
 
     @property
     def data(self) -> MemData:
-        return self._config['data']
+        """MemData with the simulation data (read-only)."""
+        return self._config[CFG_DATA]
 
     @property
     def trace(self) -> bool:
-        return self._config['trace']
+        """Whether tracking files are written (read-only)."""
+        return self._config[CFG_TRACE]
 
     @property
     def runner_cls(self):
-        return self._config['runner_cls']
+        """Runner class used in simulations (read-only)."""
+        return self._config[CFG_RUNNER_CLS]
 
     @property
     def decimals(self) -> int:
-        return self._config['decimals']
+        """Decimal places applied to output values (read-only)."""
+        return self._config[CFG_DECIMALS]
 
     @property
     def n_jobs(self) -> int:
-        return self._config['n_jobs']
+        """Default number of parallel jobs (read-only)."""
+        return self._config[CFG_N_JOBS]
 
     def run(
         self,
@@ -163,7 +181,7 @@ class Backtesting:
         - DataFrame with aggregated results by parameter combination.
         """
         if n_jobs is None:
-            n_jobs = self._config['n_jobs']
+            n_jobs = self.n_jobs
             
         runner_params = list(product(*parameter_grid.values()))
         ranker_params = list(product(*ranker_grid.values()))
@@ -171,68 +189,18 @@ class Backtesting:
         ranker_names = list(ranker_grid.keys())
 
         combinations = list(product(runner_params, ranker_params))
-        config_keys = (parameter_names, ranker_names)
         
-        logger.info('Starting backtest: %d runner configs x %d ranker configs = %d total combinations (n_jobs=%d)',
-                    len(runner_params), len(ranker_params), len(combinations), n_jobs)
+        logger.debug('Starting backtest: %d runner configs x %d ranker configs = %d total combinations (n_jobs=%d)',
+                     len(runner_params), len(ranker_params), len(combinations), n_jobs)
 
         results = Parallel(n_jobs=n_jobs)(
             delayed(_run_single_simulation)(
-                c, config_keys, self._config['runner_cls'], self._config['ranker_cls'], 
-                self._config['data'], self._config['interval'], self._config['capital'], self._config['trace'], self._config['decimals']
-            ) for c in combinations
+                dict(zip(parameter_names, runner_values)),
+                dict(zip(ranker_names, ranker_values)),
+                self._config
+            ) for runner_values, ranker_values in combinations
         )
         
         valid_results = [r for r in results if r is not None]
-        logger.info('Backtest complete: %d/%d configurations succeeded', len(valid_results), len(combinations))
+        logger.debug('Backtest complete: %d/%d configurations succeeded', len(valid_results), len(combinations))
         return pd.DataFrame(results)
-
-
-def test_bt_with_random():
-    """Quick test using RandomRanker."""
-    interval = ['2024-01-01', '2024-12-31']
-    data = MemData(interval)
-    config = {
-        'ranker_cls': RandomRanker,
-        'capital': 10000,
-        'interval': interval,
-        'data': data
-    }
-    backtester = Backtesting(config)
-
-    parameter_grid = {
-        'profit': [0.06, 0.1],
-        'loss': [0.04],
-        'diversification': [0.2]
-    }
-    ranker_ranges = {'SEED': [0, 1, 42]}
-
-    results = backtester.run(parameter_grid, ranker_grid=ranker_ranges, n_jobs=1)
-    print(results)
-
-
-def test_bt_with_ma():
-    """Test using MARanker (moving averages)."""
-    interval = ['2024-01-01', '2024-06-30']
-    data = MemData(interval, market_identifier=MARKET_SP500)
-    config = {
-        'ranker_cls': MARanker,
-        'capital': 10000,
-        'interval': interval,
-        'data': data
-    }
-    backtester = Backtesting(config)
-
-    parameters = {'window': [[9, 21], [20, 50], [50, 200]]}
-    parameter_grid = {
-        'profit': [0.1, 0.15],
-        'loss': [0.05],
-        'diversification': [0.1, 0.2]
-    }
-
-    results = backtester.run(parameter_grid, ranker_grid=parameters, n_jobs=1)
-    print(results)
-
-
-if __name__ == '__main__':
-    test_bt_with_ma()

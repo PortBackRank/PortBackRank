@@ -5,35 +5,47 @@
 import logging
 import pandas as pd
 from pathlib import Path
-from typing import List, Dict, Type
-from ranker import MARanker, Ranker, RandomRanker
+from dataclasses import dataclass
+from typing import List, Dict, Type, Optional
+from ranker import Ranker
 from data import MemData
 from utils import dir_tracking
-from names import (
-    COL_SECTOR, COL_DATE, KEY_ASSET, KEY_QUANTITY, KEY_UNIT_VALUE,
-    KEY_TOTAL_ASSET_VALUE, KEY_TYPE, KEY_PRICE, KEY_COST, KEY_PROFIT_LOSS,
-    KEY_ORIGIN_DATE, KEY_BALANCE, KEY_PORTFOLIO_VALUE, KEY_INTERVAL,
-    KEY_PROFIT, KEY_LOSS, KEY_DIVERSIFICATION, KEY_FINAL_TOTAL_VALUE,
-    STR_UNKNOWN_FULL, STR_UNKNOWN_ID, TYPE_BUY, TYPE_SELL, MARKET_SP500,
-    COL_SYMBOL, COL_CLOSE, COL_VOLUME, KEY_WINDOW, SEP_PIPE,
-    DATE_FMT, KEY_BUY_PRICE, KEY_OPERATION, KEY_CURRENT_PRICE, KEY_DAILY_VOLUME,
-    KEY_PORTFOLIO_DETAILS, KEY_SEED, FILE_TRADES, FILE_PORTFOLIO, MIN_BALANCE,
-    validate_positive_float, validate_diversification, validate_decimals
-)
+from names import *
 
 logger = logging.getLogger(__name__)
+
+
+@dataclass
+class RunnerConfig:
+    """Configuration parameters for execution of a strategy runner."""
+    profit: float
+    loss: float
+    diversification: float
+    volume: float
+    ranker_cls: Type[Ranker]
+    trace: bool = False
+    decimals: int = 2
+
+    def __post_init__(self):
+        self.profit = validate_positive_float(self.profit, 'profit')
+        self.loss = validate_positive_float(self.loss, 'loss')
+        self.diversification = validate_diversification(self.diversification)
+        self.volume = validate_positive_float(self.volume, 'volume')
+        self.decimals = validate_decimals(self.decimals)
+
 
 class Runner:
     def __init__(
         self, 
-        profit: float, 
-        loss: float, 
-        diversification: float, 
-        volume: float, 
-        ranker: Type[Ranker], 
-        data: MemData, 
+        profit: float = None, 
+        loss: float = None, 
+        diversification: float = None, 
+        volume: float = None, 
+        ranker: Type[Ranker] = None, 
+        data: MemData = None, 
         trace: bool = False, 
-        decimals: int = 2
+        decimals: int = 2,
+        config: Optional[RunnerConfig] = None
     ):
         """
         Initialize Runner with provided parameters.
@@ -48,15 +60,28 @@ class Runner:
             trace: Enable trace logging to files
             decimals: Decimal places for output rounding
         """
+        if config is not None:
+            self._config = config
+        else:
+            self._config = RunnerConfig(
+                profit=profit,
+                loss=loss,
+                diversification=diversification,
+                volume=volume,
+                ranker_cls=ranker,
+                trace=trace,
+                decimals=decimals
+            )
+
         # Configuration (read-only after init)
-        self._profit = validate_positive_float(profit, "profit")
-        self._loss = validate_positive_float(loss, "loss")
-        self._diversification = validate_diversification(diversification)
-        self._volume = validate_positive_float(volume, "volume")
-        self._ranker_cls = ranker
+        self._profit = self._config.profit
+        self._loss = self._config.loss
+        self._diversification = self._config.diversification
+        self._volume = self._config.volume
+        self._ranker_cls = self._config.ranker_cls
         self._data = data
-        self._trace = trace
-        self._decimals = validate_decimals(decimals)
+        self._trace = self._config.trace
+        self._decimals = self._config.decimals
 
         # Internal state
         self.__portfolio_details = pd.DataFrame(columns=[
@@ -79,6 +104,10 @@ class Runner:
                      self._profit, self._loss, self._diversification, self._volume, self._decimals)
 
     # Configuration properties (read-only)
+    @property
+    def config(self) -> RunnerConfig:
+        return self._config
+
     @property
     def profit(self) -> float:
         return self._profit
@@ -256,7 +285,7 @@ class Runner:
         logger.debug('Simulation complete: %d trades executed', trade_count)
         # Dados consolidados para retorno
         result = {
-            KEY_INTERVAL: f"{interval[0]} - {interval[1]}",
+            KEY_INTERVAL: f'{interval[0]} - {interval[1]}',
             KEY_PROFIT: self._profit,
             KEY_LOSS: self._loss,
             KEY_DIVERSIFICATION: self._diversification,
@@ -407,64 +436,3 @@ class Runner:
                 KEY_BALANCE: round(self._balance, self._decimals),
                 KEY_PORTFOLIO_VALUE: round(self._total_portfolio_value, self._decimals)
             })
-
-def test_runner():
-    """Test basic runner functionality with RandomRanker."""
-    interval = ['2024-06-10', '2024-11-10']
-    capital = 10000
-
-    ranker_config = {KEY_SEED: 42}
-
-    runner = Runner(
-        profit=0.1,
-        loss=0.05,
-        diversification=0.2,
-        volume=1.0,
-        ranker=RandomRanker,
-        data=MemData(interval)
-    )
-
-    try:
-        result = runner.single_run(interval, ranker_config, capital)
-        print('Runner execution successful')
-        print(f'Final balance: {result[KEY_BALANCE]}')
-    except Exception as e:
-        print(f'Error during test: {e}')
-        import traceback
-        traceback.print_exc()
-
-def test_runner_ma():
-    """Test runner functionality with Moving Average ranker."""
-    interval = ['2024-04-10', '2024-08-10']
-    ranker_config = {'window': [9, 21]}
-    capital = 10000
-
-    runner = Runner(
-        profit=0.1,
-        loss=0.05,
-        diversification=0.2,
-        volume=0.1, 
-        ranker=MARanker,
-        data=MemData(interval, market_identifier=MARKET_SP500)
-    )
-
-    try:
-        result = runner.single_run(interval, ranker_config, capital)
-        print('Runner execution successful')
-        print(f"Final balance: {result[KEY_BALANCE]}")
-        
-        # Acessando o DataFrame de detalhes
-        df_portfolio = result[KEY_PORTFOLIO_DETAILS]
-        if not df_portfolio.empty:
-            total_portfolio = (df_portfolio[KEY_QUANTITY] * df_portfolio[KEY_UNIT_VALUE]).sum()
-            print(f'Portfolio value: {round(total_portfolio, 2)}')
-        else:
-            print('Portfolio is empty.')
-            
-    except Exception as e:
-        print(f'Error during test: {e}')
-        import traceback
-        traceback.print_exc()
-
-if __name__ == '__main__':
-    test_runner_ma()

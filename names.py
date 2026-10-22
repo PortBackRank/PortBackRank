@@ -185,6 +185,51 @@ DEFAULT_DECIMALS = 2
 # Config keys
 KEY_DECIMALS = 'decimals'
 
+# Result key used in the backtest summary table (column label)
+KEY_INTERVALO = 'intervalo'
+
+# Backtesting configuration keys (dictionary passed to Backtesting.__init__)
+CFG_RANKER_CLS = 'ranker_cls'
+"""Ranker class used to build one ranker per simulation."""
+CFG_RUNNER_CLS = 'runner_cls'
+"""Runner class used to execute each simulation (optional, defaults to Runner)."""
+CFG_CAPITAL = 'capital'
+"""Initial capital for every simulation."""
+CFG_INTERVAL = 'interval'
+"""Simulation interval as [start_date, end_date]."""
+CFG_DATA = 'data'
+"""MemData instance with the market data."""
+CFG_TRACE = 'trace'
+"""Whether tracking files (trades.csv / portfolio.csv) are written."""
+CFG_DECIMALS = 'decimals'
+"""Number of decimal places applied to output values."""
+CFG_N_JOBS = 'n_jobs'
+"""Number of parallel jobs (-1 uses all cores)."""
+
+# Price types accepted by the simulation (see Data.get_mega_dataframe)
+PRICE_OPEN = 'O'
+PRICE_HIGH = 'H'
+PRICE_LOW = 'L'
+PRICE_CLOSE = 'C'
+PRICE_CLOSE_NEXT = 'CN'
+PRICE_HL2 = 'HL2'
+PRICE_HLC3 = 'HLC3'
+PRICE_OHLC4 = 'OHLC4'
+
+# MegaDataFrame index level holding the asset symbol
+IDX_SYMBOL = 'Symbol'
+
+# File extension and dtype literals used by the data layer
+EXT_CSV = '.csv'
+FLOAT_DTYPES = ['float64', 'float32']
+
+# Extra calendar days loaded before the start date so indicators
+# (e.g. moving averages) are already warmed up on the first simulated day
+HISTORY_LOOKBACK_DAYS = 365
+
+# Ranker name for the random baseline ranker
+RANKER_RANDOM = 'RandomRanker'
+
 # Validation functions
 def validate_positive_float(value: float, name: str) -> float:
     """Validate that a float value is positive."""
@@ -196,7 +241,7 @@ def validate_positive_float(value: float, name: str) -> float:
 def validate_diversification(value: float) -> float:
     """Validate diversification is in (0, 1]."""
     if not 0 < value <= 1:
-        raise ValueError(f'diversification must be in (0, 1]')
+        raise ValueError('diversification must be in (0, 1]')
     return value
 
 

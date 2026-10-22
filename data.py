@@ -7,7 +7,6 @@ for optimized backtesting.
 """
 
 import logging
-from concurrent import futures
 import os
 import concurrent.futures
 from datetime import datetime
@@ -17,15 +16,7 @@ import pandas as pd
 import yfinance as yf
 from tqdm import tqdm
 from utils import open_dataframe, save_dataframe
-from names import (
-    DIR_HISTORICAL, MARKET_SP500, MARKET_IBOV, 
-    COL_DATE, COL_CLOSE, COL_VOLUME, COL_OPEN, COL_HIGH, COL_LOW,
-    YF_PERIOD_MAX, YF_AUTO_ADJUST, STR_UNKNOWN, STR_UNKNOWN_FULL,
-    MARKET_KEY_SOURCE_FILE, SYMBOL_SUFFIX_SA, COL_SECTOR, COL_INDUSTRY, 
-    COL_GICS_SECTOR, COL_GICS_SUBINDUSTRY, COL_CODIGO, COL_SETOR, 
-    COL_SUBSETOR, COL_SEGMENTO, COL_SYMBOL, COL_SYMBOL_ALT,
-    SEP_PIPE, SEP_COMMA, ENCODING_UTF8, ENCODING_ISO, DIR_ASSETS, MARKETS
-)
+from names import *
 
 logger = logging.getLogger(__name__) 
 
@@ -35,7 +26,11 @@ logger = logging.getLogger(__name__)
 # ==========================================
 
 def identify_market(market_identifier: str) -> str:
-    """Identifies the market key from either a file path or a ticker symbol."""
+    """Identifies the market key from either a file path or a ticker symbol.
+
+    Unknown identifiers are registered dynamically in MARKETS using the
+    file name (without extension) as key.
+    """
     if market_identifier is None:
         raise ValueError("It is necessary to provide a 'market_identifier'.")
     if market_identifier.upper() in MARKETS:
@@ -47,7 +42,7 @@ def identify_market(market_identifier: str) -> str:
             return key
             
     # Create dynamically
-    market = file_name.replace('.csv', '').upper()
+    market = file_name.replace(EXT_CSV, '').upper()
     MARKETS[market] = {MARKET_KEY_SOURCE_FILE: market_identifier}
     return market
 
@@ -56,7 +51,7 @@ def get_market_config(market: str) -> dict:
     """Retrieves the configuration dictionary for a given market."""
     market = identify_market(market)
     if market not in MARKETS:
-        raise ValueError(f"Invalid market: {market}")
+        raise ValueError(f'Invalid market: {market}')
     return MARKETS[market]
 
 
@@ -98,7 +93,12 @@ def read_symbols(market: str) -> List[str]:
 
 
 def get_sector_mapping(market: str) -> Dict[str, str]:
-    """Retrieves asset-to-sector mapping for diversification control."""
+    """Retrieves asset-to-sector mapping for diversification control.
+
+    Returns a dictionary ``symbol -> 'industry - sector'``. The CSV files
+    still use different layouts (English, GICS and Portuguese column names),
+    so missing columns fall back to STR_UNKNOWN.
+    """
     config = get_market_config(market)
     file_path = config[MARKET_KEY_SOURCE_FILE]
     if DIR_ASSETS not in file_path:
@@ -113,8 +113,8 @@ def get_sector_mapping(market: str) -> Dict[str, str]:
             
         df.columns = df.columns.str.strip()
         
-        if 'symbol' in df.columns or COL_SYMBOL_ALT in df.columns:
-            sym_col = 'symbol' if 'symbol' in df.columns else COL_SYMBOL_ALT
+        if COL_SYMBOL in df.columns or COL_SYMBOL_ALT in df.columns:
+            sym_col = COL_SYMBOL if COL_SYMBOL in df.columns else COL_SYMBOL_ALT
             for _, row in df.iterrows():
                 symbol = str(row[sym_col]).strip()
                 if market != MARKET_SP500:
@@ -158,9 +158,15 @@ class Data():
         """Cache subdirectory for historical data (read-only)."""
         return self._SUBDIR
 
-    def download_histories(self, assets: List[str], repair: bool = False) -> None:
-        """Download historical data for multiple assets concurrently (or single if len=1)."""
-            
+    def download_histories(self, assets: List[str], repair: bool = True) -> None:
+        """Download historical data for multiple assets concurrently.
+
+        Args:
+            assets: list of ticker symbols.
+            repair: ask yfinance to repair known price errors (100x unit
+                mix-ups, missing dividend/split adjustments, etc.).
+                Requires scipy.
+        """
         tickers = yf.Tickers(assets)
         assets_list = list(tickers.tickers.keys())
 
@@ -177,32 +183,40 @@ class Data():
                 executor.map(download_and_save, assets_list)
 
     def _save_asset_data(self, asset: str, asset_data: pd.DataFrame) -> None:
+        """Round float columns and save one asset history to the cache."""
         if asset_data.empty:
             return
         asset_data_reset = asset_data.reset_index()
         asset_data_reset[COL_DATE] = asset_data_reset[COL_DATE].astype(str)
-        numeric_columns = asset_data_reset.select_dtypes(include=['float64', 'float32']).columns
+        numeric_columns = asset_data_reset.select_dtypes(include=FLOAT_DTYPES).columns
         asset_data_reset[numeric_columns] = asset_data_reset[numeric_columns].round(self._precision)
-        save_dataframe(f'{asset}.csv', asset_data_reset, self.subdir)
+        save_dataframe(f'{asset}{EXT_CSV}', asset_data_reset, self.subdir)
 
     def get_asset_data_by_name(self, asset: str) -> Optional[pd.DataFrame]:
         """Retrieve cached historical data. Downloads if missing or empty."""
-        file_name = f'{asset}.csv'
+        file_name = f'{asset}{EXT_CSV}'
         df = open_dataframe(file_name, self.subdir)
         if df is None or df.empty:
             logger.debug('Cache miss for %s, downloading...', asset)
             print(f'Downloading data for {asset}...')
-            self.download_histories([asset], repair=False)
+            self.download_histories([asset], repair=True)
             df = open_dataframe(file_name, self.subdir)
         return df
 
-    def get_mega_dataframe(self, assets: List[str], start_date: str, end_date: str, price_type: str = 'C') -> pd.DataFrame:
+    def get_mega_dataframe(self, assets: List[str], start_date: str, end_date: str, price_type: str = PRICE_CLOSE) -> pd.DataFrame:
         """
         Loads requested assets, processes price_type, and concatenates them into 
         a single MegaDataFrame with MultiIndex (Date, Symbol) for fast vectorized access.
+
+        Each asset keeps its own dates; alignment between assets is given by
+        the (Date, Symbol) index, not by row position. Dates are stored as
+        'YYYY-MM-DD' strings so lexicographic order equals chronological order.
+
+        Raises:
+            ValueError: if the resulting index has duplicated (Date, Symbol) pairs.
         """
         start_date_dt = pd.to_datetime(start_date, utc=True).tz_localize(None)
-        fetch_start_date = start_date_dt - pd.Timedelta(days=365)
+        fetch_start_date = start_date_dt - pd.Timedelta(days=HISTORY_LOOKBACK_DAYS)
         end_date_dt = pd.to_datetime(end_date, utc=True).tz_localize(None)
 
         all_data = []
@@ -213,36 +227,52 @@ class Data():
             
             df[COL_DATE] = pd.to_datetime(df[COL_DATE], utc=True).dt.tz_localize(None)
             df = df[(df[COL_DATE] >= fetch_start_date) & (df[COL_DATE] <= end_date_dt)].copy()
-            df[COL_DATE] = df[COL_DATE].dt.strftime('%Y-%m-%d')
+            df[COL_DATE] = df[COL_DATE].dt.strftime(DATE_FMT)
             if df.empty:
                 continue
                 
             # Filter and create the simulated 'Close' based on price_type
-            if price_type == 'O':
+            if price_type == PRICE_OPEN:
                 df[COL_CLOSE] = df[COL_OPEN]
-            elif price_type == 'H':
+            elif price_type == PRICE_HIGH:
                 df[COL_CLOSE] = df[COL_HIGH]
-            elif price_type == 'L':
+            elif price_type == PRICE_LOW:
                 df[COL_CLOSE] = df[COL_LOW]
-            elif price_type == 'CN':
+            elif price_type == PRICE_CLOSE_NEXT:
                 df[COL_CLOSE] = df[COL_CLOSE].shift(-1)
-            elif price_type == 'HL2':
+            elif price_type == PRICE_HL2:
                 df[COL_CLOSE] = (df[COL_HIGH] + df[COL_LOW]) / 2.0
-            elif price_type == 'HLC3':
+            elif price_type == PRICE_HLC3:
                 df[COL_CLOSE] = (df[COL_HIGH] + df[COL_LOW] + df[COL_CLOSE]) / 3.0
-            elif price_type == 'OHLC4':
+            elif price_type == PRICE_OHLC4:
                 df[COL_CLOSE] = (df[COL_OPEN] + df[COL_HIGH] + df[COL_LOW] + df[COL_CLOSE]) / 4.0
 
-            df['Symbol'] = asset
-            all_data.append(df[[COL_DATE, 'Symbol', COL_VOLUME, COL_CLOSE]])
+            df[IDX_SYMBOL] = asset
+            # Missing volume would break int(volume * pct) in the Runner;
+            # treat it as "no liquidity" (0) so the asset is simply not traded that day.
+            missing_volume = df[COL_VOLUME].isna().sum()
+            if missing_volume:
+                logger.debug('%s: %d rows with missing Volume set to 0', asset, missing_volume)
+                df[COL_VOLUME] = df[COL_VOLUME].fillna(0)
+            all_data.append(df[[COL_DATE, IDX_SYMBOL, COL_VOLUME, COL_CLOSE]])
             
         if not all_data:
             return pd.DataFrame()
             
+        # ignore_index only discards each asset's positional RangeIndex;
+        # rows are aligned afterwards by the (Date, Symbol) MultiIndex.
         mega_df = pd.concat(all_data, ignore_index=True)
         # Create MultiIndex (Date, Symbol) to allow fast cross-section slice operations
-        mega_df.set_index([COL_DATE, 'Symbol'], inplace=True)
+        mega_df.set_index([COL_DATE, IDX_SYMBOL], inplace=True)
         mega_df.sort_index(inplace=True)
+
+        duplicated = mega_df.index.duplicated(keep=False)
+        if duplicated.any():
+            sample = list(mega_df.index[duplicated].unique()[:5])
+            raise ValueError(
+                f'MegaDataFrame has {duplicated.sum()} rows with duplicated (Date, Symbol) pairs, '
+                f'dates are not aligned per asset. Examples: {sample}'
+            )
         return mega_df
 
 
@@ -252,13 +282,13 @@ class MemData:
     and holding sector information for the current simulation context.
     """
 
-    def __init__(self, interval: List[str], market_identifier: str = MARKET_SP500, price_type: str = 'C'):
+    def __init__(self, interval: List[str], market_identifier: str = MARKET_SP500, price_type: str = PRICE_CLOSE):
         self._market_identifier = identify_market(market_identifier)
         self._price_type = price_type
         
         start_date, end_date = interval
         if end_date is None:
-            end_date = datetime.today().strftime('%Y-%m-%d')
+            end_date = datetime.today().strftime(DATE_FMT)
             
         self._assets = read_symbols(self._market_identifier)
         self._sector_info = get_sector_mapping(self._market_identifier)
@@ -273,7 +303,7 @@ class MemData:
         
         # Determine actual available assets and dates from the MegaDataFrame
         if not self._mega_df.empty:
-            self._assets = list(self._mega_df.index.get_level_values('Symbol').unique())
+            self._assets = list(self._mega_df.index.get_level_values(IDX_SYMBOL).unique())
             # Convert Timestamps to str for easier date logic, or just leave as DatetimeIndex
             # We'll expose a string list for compatibility
             self._dates_ts = self._mega_df.index.get_level_values(COL_DATE).unique()
@@ -326,35 +356,17 @@ class MemData:
         return self._dates_ts
 
     def get_assets(self) -> List[str]:
+        """Return the list of available asset symbols."""
         return self.assets
 
     def get_sector(self, symbol: str) -> str:
+        """Return 'industry - sector' for a symbol, or STR_UNKNOWN_FULL if unmapped."""
         return self._sector_info.get(symbol, STR_UNKNOWN_FULL)
     
     def get_all_sectors(self) -> Dict[str, str]:
+        """Return a copy of the full sector mapping."""
         return self._sector_info.copy()
 
     def get_mega_df(self) -> pd.DataFrame:
         """Returns the multi-indexed DataFrame containing all simulation data."""
         return self._mega_df
-
-
-def test():
-    """Diagnostic test for MegaDataFrame loading and data reading."""
-    print('Testing data loading with MemData...')
-    interval = ['2024-01-10', '2024-11-10']
-    mem_data = MemData(interval, market_identifier=MARKET_SP500)
-    
-    print(f"Total Assets: {len(mem_data.get_assets())}")
-    
-    df = mem_data.get_mega_df()
-    if not df.empty:
-        print(f"MegaDataFrame shape: {df.shape}")
-        print('Head:')
-        print(df.head())
-    else:
-        print('MegaDataFrame is empty!')
-
-
-if __name__ == '__main__':
-    test()

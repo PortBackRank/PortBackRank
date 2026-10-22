@@ -1,0 +1,16 @@
+{
+    "id": "sp500",
+    "interval": ["2024-01-01", "2024-12-31"],
+    "capital": 10000,
+    "price-type": "C",
+    "ranker": "RandomRanker",
+    "n_jobs": 1,
+    "decimals": 2,
+    "ranker-params": {
+        "SEED": [0, 1, 42],
+        "profit": [0.06, 0.1],
+        "loss": [0.05],
+        "diversification": [0.2],
+        "volume": [1.0]
+    }
+}
