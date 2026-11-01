@@ -1,6 +1,6 @@
 {
     "id": "sp500",
-    "assets": "sp500.csv",
+    "assets": "assets/SP500.csv",
     "interval": [
         "2024-01-01",
         "2024-12-31"
@@ -10,21 +10,7 @@
     "decimals": 2,
     "price-type": "C",
     "ranker": "MARanker",
-    "ranker-params": {
-        "window": [
-            [
-                9,
-                21
-            ],
-            [
-                20,
-                50
-            ],
-            [
-                50,
-                200
-            ]
-        ],
+    "runner-params": {
         "profit": [
             0.1,
             0.15
@@ -39,6 +25,22 @@
         "volume": [
             0.1,
             1.0
+        ]
+    },
+    "ranker-params": {
+        "window": [
+            [
+                9,
+                21
+            ],
+            [
+                20,
+                50
+            ],
+            [
+                50,
+                200
+            ]
         ]
     }
 }

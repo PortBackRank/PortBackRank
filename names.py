@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-"""
+'''
 Global constants and configuration names for PortBackRank application.
 
 This module defines shared constants used across the application for market data
 fetching, file management, and backtesting configuration.
-"""
+'''
 
-from typing import Dict, Any
+from typing import Any
 
 # Application info
 APP_NAME = 'PortBackRank'
@@ -22,21 +22,21 @@ _BASE_DIR_OVERRIDE: str = None
 
 
 def set_base_dir_override(path: str) -> None:
-    """Set an override for the base directory.
+    '''Set an override for the base directory.
     
     Args:
         path: Custom base directory path.
-    """
+    '''
     global _BASE_DIR_OVERRIDE
     _BASE_DIR_OVERRIDE = path
 
 
 def get_base_dir() -> str:
-    """Get the base directory for PortBackRank user data.
+    '''Get the base directory for PortBackRank user data.
     
     Returns:
         Path to the base directory (default: $HOME/PortBackRank)
-    """
+    '''
     import os
     from pathlib import Path
     
@@ -64,24 +64,9 @@ LEGACY_DIR_TRACKING = 'tracking'
 # Market identifiers
 MARKET_SP500 = 'SP500'
 MARKET_IBOV = 'IBOV'
-MARKET_IFIX = 'IFIX'
-MARKET_IBRA = 'IBRA'
-MARKET_SMLL = 'SMLL'
-MARKET_IBXX = 'IBXX'
 
 # Market configuration
-MARKET_KEY_SOURCE_FILE = 'source_file'
 SYMBOL_SUFFIX_SA = '.SA'
-
-# Dictionary mapping market index names to their respective CSV source files
-MARKETS: Dict[str, Dict[str, str]] = {
-    MARKET_IBOV: {MARKET_KEY_SOURCE_FILE: f'{DIR_ASSETS}/IBOV.csv'},
-    MARKET_IFIX: {MARKET_KEY_SOURCE_FILE: f'{DIR_ASSETS}/IFIX.csv'},
-    MARKET_IBRA: {MARKET_KEY_SOURCE_FILE: f'{DIR_ASSETS}/IBRA.csv'},
-    MARKET_SMLL: {MARKET_KEY_SOURCE_FILE: f'{DIR_ASSETS}/SMLL.csv'},
-    MARKET_IBXX: {MARKET_KEY_SOURCE_FILE: f'{DIR_ASSETS}/IBXX.csv'},
-    MARKET_SP500: {MARKET_KEY_SOURCE_FILE: f'{DIR_ASSETS}/SP500.csv'},
-}
 
 # Default settings
 DEFAULT_MARKET = MARKET_SP500
@@ -124,10 +109,12 @@ COL_SEGMENTO = 'Segmento'
 
 # Config and Result keys (JSON/Dict keys)
 KEY_ID = 'id'
+KEY_ASSETS = 'assets'
 KEY_INTERVAL = 'interval'
 KEY_CAPITAL = 'capital'
 KEY_RANKER = 'ranker'
 KEY_RANKER_PARAMS = 'ranker-params'
+KEY_RUNNER_PARAMS = 'runner-params'
 KEY_PROFIT = 'profit'
 KEY_LOSS = 'loss'
 KEY_DIVERSIFICATION = 'diversification'
@@ -155,7 +142,6 @@ MODE_NONE = 'none'
 
 # Ranker names
 RANKER_MA = 'MARanker'
-RANKER_RSI = 'RSIRanker'
 
 # yfinance parameters
 YF_PERIOD_MAX = 'max'
@@ -189,22 +175,32 @@ KEY_DECIMALS = 'decimals'
 KEY_INTERVALO = 'intervalo'
 
 # Backtesting configuration keys (dictionary passed to Backtesting.__init__)
-CFG_RANKER_CLS = 'ranker_cls'
-"""Ranker class used to build one ranker per simulation."""
-CFG_RUNNER_CLS = 'runner_cls'
-"""Runner class used to execute each simulation (optional, defaults to Runner)."""
-CFG_CAPITAL = 'capital'
-"""Initial capital for every simulation."""
-CFG_INTERVAL = 'interval'
-"""Simulation interval as [start_date, end_date]."""
-CFG_DATA = 'data'
-"""MemData instance with the market data."""
-CFG_TRACE = 'trace'
-"""Whether tracking files (trades.csv / portfolio.csv) are written."""
-CFG_DECIMALS = 'decimals'
-"""Number of decimal places applied to output values."""
-CFG_N_JOBS = 'n_jobs'
-"""Number of parallel jobs (-1 uses all cores)."""
+CONF_RANKER_CLS = 'ranker_cls'
+'''Ranker class used to build one ranker per simulation.'''
+CONF_RUNNER_CLS = 'runner_cls'
+'''Runner class used to execute each simulation (optional, defaults to Runner).'''
+CONF_CAPITAL = 'capital'
+'''Initial capital for every simulation.'''
+CONF_INTERVAL = 'interval'
+'''Simulation interval as [start_date, end_date].'''
+CONF_DATA = 'data'
+'''MemData instance with the market data.'''
+CONF_TRACE = 'trace'
+'''Whether tracking files (trades.csv / portfolio.csv) are written.'''
+CONF_DECIMALS = 'decimals'
+'''Number of decimal places applied to output values.'''
+CONF_N_JOBS = 'n_jobs'
+'''Number of parallel jobs (-1 uses all cores).'''
+
+# Backward compatibility aliases
+CFG_RANKER_CLS = CONF_RANKER_CLS
+CFG_RUNNER_CLS = CONF_RUNNER_CLS
+CFG_CAPITAL = CONF_CAPITAL
+CFG_INTERVAL = CONF_INTERVAL
+CFG_DATA = CONF_DATA
+CFG_TRACE = CONF_TRACE
+CFG_DECIMALS = CONF_DECIMALS
+CFG_N_JOBS = CONF_N_JOBS
 
 # Price types accepted by the simulation (see Data.get_mega_dataframe)
 PRICE_OPEN = 'O'
@@ -232,26 +228,23 @@ RANKER_RANDOM = 'RandomRanker'
 
 # Validation functions
 def validate_positive_float(value: float, name: str) -> float:
-    """Validate that a float value is positive."""
+    '''Validate that a float value is positive.'''
     if value <= 0:
         raise ValueError(f'{name} must be > 0')
     return value
 
 
 def validate_diversification(value: float) -> float:
-    """Validate diversification is in (0, 1]."""
+    '''Validate diversification is in (0, 1].'''
     if not 0 < value <= 1:
         raise ValueError('diversification must be in (0, 1]')
     return value
 
 
 def validate_decimals(value: Any, default: int = 2) -> int:
-    """Validate decimals is a non-negative integer."""
+    '''Validate decimals is a non-negative integer.'''
     if value is None:
         return default
     if not isinstance(value, int) or value < 0:
         raise ValueError(f'decimals must be a non-negative integer, got {value}')
     return value
-
-
-# (End of module)

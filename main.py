@@ -1,26 +1,19 @@
-from backtesting import Backtesting
-from ranker import MARanker, RSIRanker, RandomRanker
-from data import Data, MemData, identify_market, read_symbols
-from logger import configure_logging
+'''
+Main application entry point for PortBackRank.
+'''
+
 import argparse
-import pandas as pd
 import json
-from names import (
-    MARKET_SP500, RANKER_MA, RANKER_RSI, MODE_ALL, MODE_MISSING, MODE_NONE,
-    KEY_ID, KEY_INTERVAL, KEY_CAPITAL, KEY_RANKER, KEY_RANKER_PARAMS,
-    KEY_PROFIT, KEY_LOSS, KEY_DIVERSIFICATION, KEY_VOLUME,
-    DEFAULT_INTERVAL, DEFAULT_CAPITAL, set_base_dir_override,
-    DEFAULT_DECIMALS, KEY_DECIMALS, KEY_WINDOW, RANKER_RANDOM
-)
-
-
-def _calc_allocation(entry):
-    """Calculate total portfolio allocation (cash + invested value)."""
-    return entry.get('final_total_value', 0.0)
+import time
+import pandas as pd
+from backtesting import run_backtests_for_price_types
+from data import Data, read_symbols
+from logger import configure_logging
+from names import *
 
 
 def _print_df_full(df: pd.DataFrame):
-    """Display entire DataFrame without truncation."""
+    '''Display entire DataFrame without truncation.'''
     try:
         old_max_cols = pd.get_option('display.max_columns')
         old_width = pd.get_option('display.width')
@@ -51,144 +44,17 @@ def _print_df_full(df: pd.DataFrame):
         except Exception:
             pass
 
-def _ensure_market_assets(market_code: str = MARKET_SP500):
-    """
-    Ensure all market assets have downloaded historical data.
-    """
-    market_code = identify_market(market_code)
-    assets = read_symbols(market_code)
-
-    data_handler = Data()
-    max_retries = 3
-    missing = []
-
-    for attempt in range(1, max_retries + 1):
-        missing = []
-        for asset in assets:
-            df = data_handler.get_asset_data_by_name(asset)
-
-            if not isinstance(df, pd.DataFrame) or df.empty:
-                missing.append(asset)
-
-        if not missing:
-            print('All assets have local data.')
-            break
-
-        print(
-            f'Attempt {attempt}/{max_retries}: '
-            f'downloading {len(missing)} assets without local data.'
-        )
-        print('Missing assets:', ', '.join(missing))
-        data_handler.download_histories(missing)
-    
-    if missing:
-        print('After download attempts, historical data is still missing for:')
-        for asset in missing:
-            print(f'  - {asset}')
-
-
-def run_backtest_ma():
-    """Run backtest with Moving Average ranker."""
-    interval = DEFAULT_INTERVAL
-    _ensure_market_assets(MARKET_SP500)
-
-    mem_data = MemData(interval, market_identifier=MARKET_SP500)
-    config = {
-        'ranker_cls': _get_ranker_class(RANKER_MA),
-        'capital': DEFAULT_CAPITAL,
-        'interval': interval,
-        'data': mem_data,
-        'trace': False
-    }
-
-    backtester = Backtesting(config)
-
-    ranker_grid = {KEY_WINDOW: [9, 21]}
-    runner_grid = {
-        KEY_PROFIT: [0.1, 0.15],
-        KEY_LOSS: [0.05],
-        KEY_DIVERSIFICATION: [0.1, 0.2],
-        KEY_VOLUME: [0.1]
-    }
-
-    results = backtester.run(runner_grid, ranker_grid=ranker_grid, n_jobs=1)
-    _print_df_full(results)
-
-
-def run_backtest_rsi():
-    """Run backtest with RSI (Relative Strength Index) ranker."""
-    interval = DEFAULT_INTERVAL
-    _ensure_market_assets(MARKET_SP500)
-
-    mem_data = MemData(interval, market_identifier=MARKET_SP500)
-    config = {
-        'ranker_cls': _get_ranker_class(RANKER_RSI),
-        'capital': DEFAULT_CAPITAL,
-        'interval': interval,
-        'data': mem_data,
-        'trace': False
-    }
-
-    backtester = Backtesting(config)
-
-    ranker_grid = {
-        KEY_WINDOW: [[9, 9], [14, 14], [21, 21]],
-        'oversold': [30],
-        'overbought': [70],
-        'mode': ['mean_reversion'],
-    }
-    runner_grid = {
-        KEY_PROFIT: [0.1, 0.15],
-        KEY_LOSS: [0.05],
-        KEY_DIVERSIFICATION: [0.1, 0.2],
-    }
-
-    results = backtester.run(runner_grid, ranker_grid=ranker_grid, n_jobs=-1)
-    _print_df_full(results)
-
 
 def _load_config(path: str) -> dict:
-    """Load configuration from JSON file."""
-    with open(path, 'r', encoding='utf-8') as f:
+    '''Load configuration from JSON file.'''
+    with open(path, 'r', encoding=ENCODING_UTF8) as f:
         return json.load(f)
 
 
-def _build_grids(config: dict):
-    """
-    Build parameter grids for backtesting from configuration.
-    """
-    params = config.get(KEY_RANKER_PARAMS) or {}
-
-    runner_grid = {
-        KEY_PROFIT: params.get(KEY_PROFIT, []),
-        KEY_LOSS: params.get(KEY_LOSS, []),
-        KEY_DIVERSIFICATION: params.get(KEY_DIVERSIFICATION, []),
-        KEY_VOLUME: params.get(KEY_VOLUME, [1.0]),
-    }
-
-    ranker_grid = {}
-    for key, value in params.items():
-        if key not in runner_grid:
-            ranker_grid[key] = value
-
-    return runner_grid, ranker_grid
-
-
-def _get_ranker_class(name: str):
-    """Get ranker class by name."""
-    if name == RANKER_MA:
-        return MARanker
-    if name == RANKER_RSI:
-        return RSIRanker
-    if name == RANKER_RANDOM:
-        return RandomRanker
-    raise ValueError(f'Ranker "{name}" is not supported.')
-
-
-def run_from_config(config_path: str, download_mode: str = MODE_MISSING, price_type = None, trace: bool = False, data_dir: str = None, decimals: int = None):
-    """
+def run_from_config(config_path: str, download_mode: str = MODE_MISSING, trace: bool = False, data_dir: str = None):
+    '''
     Run backtest from configuration file. Supports single or multiple price types.
-    """
+    '''
     config = _load_config(config_path)
 
     # Apply data directory override (CLI > JSON > default)
@@ -197,91 +63,27 @@ def run_from_config(config_path: str, download_mode: str = MODE_MISSING, price_t
         set_base_dir_override(data_dir_override)
         print(f'Using custom data directory: {data_dir_override}')
 
-    # Resolve decimals (CLI > JSON > default)
-    if decimals is not None:
-        if decimals < 0:
-            raise ValueError(f'Decimals must be a non-negative integer, got {decimals}')
-        resolved_decimals = decimals
-    else:
-        config_decimals = config.get(KEY_DECIMALS)
-        if config_decimals is not None:
-            if not isinstance(config_decimals, int) or config_decimals < 0:
-                raise ValueError(f'Config "decimals" must be a non-negative integer, got {config_decimals}')
-            resolved_decimals = config_decimals
-        else:
-            resolved_decimals = DEFAULT_DECIMALS
-
-    market_identifier = config.get(KEY_ID, MARKET_SP500)
-    interval = config.get(KEY_INTERVAL, ['2024-01-01', '2024-06-30'])
-    capital = config.get(KEY_CAPITAL, DEFAULT_CAPITAL)
-
-    ranker_name = config.get(KEY_RANKER, RANKER_MA)
-    ranker_cls = _get_ranker_class(ranker_name)
-
-    # Normalize price_type to a list of price types
-    if price_type is None:
-        raw_price_type = config.get('price-type', 'C')
-        if isinstance(raw_price_type, list):
-            price_types = raw_price_type
-        else:
-            price_types = [raw_price_type]
-    elif isinstance(price_type, list):
-        price_types = price_type
-    else:
-        price_types = [price_type]
-
-    runner_grid, ranker_grid = _build_grids(config)
+    assets_source = config.get(KEY_ASSETS, config.get(KEY_ID, MARKET_SP500))
     data_handler = Data()
     
     mode = (download_mode or MODE_MISSING).lower()
     if mode == MODE_ALL:
-        assets = read_symbols(identify_market(market_identifier))
+        assets = read_symbols(assets_source)
         data_handler.download_histories(assets)
     elif mode == MODE_MISSING:
-        _ensure_market_assets(market_identifier)
+        data_handler.ensure_assets(assets_source)
 
-    n_jobs = config.get('n_jobs', 1)
-
-    all_results = []
-
-    for pt in price_types:
-        print(f'Running simulation for price type: {pt}')
-        mem_data = MemData(interval, market_identifier=market_identifier, price_type=pt)
-        
-        if trace:
-            print(f"Salvando MegaDataFrame em 'megadataframe_{pt}.csv' para demonstração...")
-            mem_data.mega_df.to_csv(f'megadataframe_{pt}.csv')
-
-        backtest_config = {
-            'ranker_cls': ranker_cls,
-            'capital': capital,
-            'interval': interval,
-            'data': mem_data,
-            'decimals': resolved_decimals,
-            'trace': trace,
-            'n_jobs': n_jobs
-        }
-
-        backtester = Backtesting(backtest_config)
-
-        results = backtester.run(
-            runner_grid,
-            ranker_grid=ranker_grid,
-        )
-        if results is not None and not results.empty:
-            results['price_type'] = pt
-            all_results.append(results)
-
-    if all_results:
-        final_results = pd.concat(all_results, ignore_index=True)
-    else:
-        final_results = pd.DataFrame()
+    final_results = run_backtests_for_price_types(
+        config=config,
+        trace=trace,
+        assets_path=assets_source
+    )
 
     _print_df_full(final_results)
 
 
 def _parse_args(argv=None):
-    """Parse command-line arguments."""
+    '''Parse command-line arguments.'''
     parser = argparse.ArgumentParser(
         description='PortBackRank - Portfolio backtesting with technical indicators'
     )
@@ -294,26 +96,12 @@ def _parse_args(argv=None):
         '-d', '--download-data',
         choices=[MODE_ALL, MODE_MISSING, MODE_NONE],
         default=MODE_MISSING,
-        help='Download strategy: all (rebuild universe), missing (download only missing), '
-             'or none (skip downloads)'
-    )
-    parser.add_argument(
-        '-p', '--price-type',
-        nargs='+',
-        choices=['O', 'H', 'L', 'C', 'CN', 'HL2', 'HLC3', 'OHLC4'],
-        default=None,
-        help='Price type(s) to use for backtesting (default: from config)'
+        help='Download strategy: all (rebuild universe), missing (download only missing), or none (skip downloads)'
     )
     parser.add_argument(
         '--data-dir',
         default=None,
-        help='Base directory for cache and tracking files (default: $HOME/PortBackRank)'
-    )
-    parser.add_argument(
-        '--decimals',
-        type=int,
-        default=None,
-        help=f'Number of decimal places for output (default: {DEFAULT_DECIMALS}, from config, or CLI)'
+        help='Base directory for cache and tracking files (default: $HOME/.cache/PortBackRank)'
     )
     parser.add_argument(
         '-t', '--trace',
@@ -329,9 +117,7 @@ def _parse_args(argv=None):
 
 
 def main(argv=None):
-    """Entry point for the application."""
-    import time 
-    
+    '''Entry point for the application.'''
     args = _parse_args(argv)
     
     # Configure logging based on debug flag
@@ -341,11 +127,9 @@ def main(argv=None):
     run_from_config(
         args.config, 
         download_mode=args.download_data,
-        price_type=args.price_type, 
         trace=args.trace, 
-        data_dir=args.data_dir, 
-        decimals=args.decimals
-        )
+        data_dir=args.data_dir
+    )
     end = time.time()
     print('Time:', end - start)
 

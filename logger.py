@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-"""
+'''
 Logging configuration module for PortBackRank.
 
 This module provides functions to configure application-wide logging.
 Individual modules should use `logging.getLogger(__name__)` to get their logger.
-"""
+'''
 
 import logging
 from pathlib import Path
@@ -12,19 +12,19 @@ from names import APP_NAME
 
 
 def get_log_file_path() -> str:
-    """Get the default log file path in user's home directory."""
+    '''Get the default log file path in user's home directory.'''
     return str(Path.home() / f'{APP_NAME}.log')
 
 
 def configure_logging(debug: bool = False, log_file: str = None) -> None:
-    """Configure application-wide logging.
+    '''Configure application-wide logging.
     
     This should be called once at application startup (in main.py).
     
     Args:
         debug: If True, set log level to DEBUG. Otherwise WARNING (to avoid info spam).
         log_file: Optional custom log file path. Defaults to $HOME/PortBackRank.log
-    """
+    '''
     # Set root logger level
     level = logging.DEBUG if debug else logging.WARNING
     root_logger = logging.getLogger()
@@ -62,7 +62,7 @@ def configure_logging(debug: bool = False, log_file: str = None) -> None:
 
 
 def get_logger(name: str = None) -> logging.Logger:
-    """Get a logger instance for a module.
+    '''Get a logger instance for a module.
     
     Args:
         name: Logger name. If None, uses the caller's module name.
@@ -70,5 +70,5 @@ def get_logger(name: str = None) -> logging.Logger:
     
     Returns:
         Configured logger instance.
-    """
+    '''
     return logging.getLogger(name)

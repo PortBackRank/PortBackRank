@@ -1,4 +1,6 @@
 title: PortBackRank
-description: PortBackRank is an investment strategy evaluator that uses backtesting 
+description: Avaliador de estratégias de investimento e alocação de carteiras com backtesting quantitativo
 show_downloads: false
 theme: jekyll-theme-minimal
+markdown: kramdown
+repository: PortBackRank

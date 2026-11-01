@@ -1,95 +1,78 @@
 # Projeto PortBackRank - Planejamento de Atividades
 
-## Artigo -- PRIORIDADE
+## Artigo
 
-- [ ] Buscar mais possibilidades e atualizar as inforções das revistas para publicação
+- [ ] Escrita seguindo estrutura planejada
 
-### Experimentos -- PRIORIDADE
+## Experimentos
 
-- [ ] (César, João Bruno) Pesquisar e documentar trabalhos correlatos (planilha e BIB), anotar expressão de busca usada no Google Scholar:
-    - [X] Tamanhos de janelas usadas para médias móveis considerando dados diários (verificar cruzamento com uma ou duas médias)
-    - [X] Porcentagem de volume a ser considerada nas negociações: 5%, 10%, 15%, 20%
-    - [X] Tipo de preço usado na simulação: O (Open), H (High), L (Low), C (Close), HL2 = (H + L) / 2, HLC3 = (H + L + C) / 3, OC2 = (O + C) / 2, OHLC4 = (O + H + L + C) / 4
-    - [ ] Atualizar e incluir outros benchmarks na pasta **assets**
+- [X] Tamanhos de janelas usadas para médias móveis considerando dados diários (verificar cruzamento com uma ou duas médias)
+- [X] Porcentagem de volume a ser considerada nas negociações: 5%, 10%, 15%, 20%
+- [X] Tipo de preço usado na simulação: O (Open), H (High), L (Low), C (Close), HL2 = (H + L) / 2, HLC3 = (H + L + C) / 3, OC2 = (O + C) / 2, OHLC4 = (O + H + L + C) / 4
 
-## Código -- PRIORIDADE
 
-### Correções gerais
+## Correções gerais
 
-- [x] (João Bruno, César) Padronizar paralelismo em todos os módulos
-- [x] Padronizar passagem de parâmetros (ou incluir parâmetros individuais ou concentrar em um dicionário)
-- [x] (João Bruno, César) Remover pasta **tracking** do repositório (melhor que o código gere esses arquivos no home do usuário)
-- [x] (João Bruno, César) Remover **assets/custom_teste.csv**
-- [x] (João Bruno, César) Converter **doc/class_diagram.drawio** para diagrama do umbrelo
-- [x] (João Bruno, César) Atualizar arquivo **LICENSE** com informações do projeto
-- [x] (João Bruno, César) Padronizar strings no python com aspas simples
-- [x] (João Bruno, César) Incluir opção de definir número de casas decimais (argumento no **main.py** ou configuração no arquivo JSON)
-- [x] (João Bruno, César, Marcos) Repensar pasta para salvar cache de preços e arquivos de rastreamento (talvez em $HOME/PortBackRank)
-- [x] (João Bruno, César) Revisar todas as classes para redefinir métodos e atributos como públicos ou privados (iniciados com _), analisar a possibilidade de criar **properties**
-- [x] Juntar arquivos **files.py** e **utils.py**
+- [x] Melhorar arquivo **_config.yml**
+- [ ] Padronizar paralelismo em todos os módulos
+- [ ] Padronizar passagem de parâmetros (ou incluir parâmetros individuais ou concentrar em um dicionário)
+- [ ] Atualizar arquivo **LICENSE** campos entre colchetes
+- [x] Padronizar strings no python com aspas simples (inclusive aspas triplas, trocar **"""** por **'''**)
+- [x] Migrar os argumentos possíveis do **main.py** para o arquivo JSON (manter **--config**, **--download-data**, **--data-dir** **--debug --trace**)
+- [x] Não usar configuração **CFG_RUNNER_CLS**, será sempre a classe Runner
+- [x] Trocar nomenclatura **CFG** por **CONF**
+- [x] Revisar documentações (algumas funções foram alteradas e documentação precisa ser atualizada)
+- [ ] (**Futuro**) Processamento usando laço para percorrer DataFrame pode ser lento, buscar melhoria
 
-### Implementação de logging
+## assets
 
-- [x] (João Bruno, César) Implementar logging em todo o sistema
-    - [x] Não usar **info()**, melhor usar **print()** em mensagens estritamente necessárias
-    - [x] Incluir **debug()** em pontos estratégicos
-    - [x] Incluir argumento em **main.py** para ativar o debug (**logger.setLevel(logging.DEBUG)**)
+- [x] Atualizar benchmarks na pasta **assets** (manter apenas IBOV e SP500)
 
-### backtesting.py
+## docs
 
-- [x] Remover imports não usados
-- [x] Usar **from names import \***
-- [x] Criar constantes para para literais
-- [x] Documentar melhor
-- [x] Na função **_run_single_simulation)_**, tentar incluir todos os parâmetros em um único dicionário (ou alguns dicionários categorizados por ranker, runner, etc)
-- [x] Não usar *fallbacks*, **get(CHAVE, fallback)**
-- [x] Analisar viabilidade usar objetos e não classes (**runner_cls** e **ranker_cls**)
-- [x] Não usar parâmetro **market_identifier** (pode receber objeto **MemData** ou criar tal objeto na inicialização)
-- [x] Remover funções **test_bt_with_random()** e **test_bt_with_ma()**, criar arquivos JSON com as configurações usadas para essas funções, por exemplo, **random_test.json** e **ma_test.json**
-- [x] Remover **if __name__ = ...**
+- [ ] Verificar diagram **class_diagram.drawio** (não consegui abrir no umbrello)
+- [ ] Remover **diagrama.drawio** (depois que a versão do umbrello estiver funcionando)
+
+## backtesting.py
+
+- [x] Não sei se vale a pena manter o **_REQUIRED_KEYS** porque, dependendo do Ranker, podem ter configurações necessárias diferentes
+- [ ] (**Futuro**) Verificar melhor questão do paralelismo (atualmente com joblib), o ideal é que os dados (depois da preparação) sejam compartilhados e acessados por todos os processos paralelos. Pelo que pesquisei, da forma que está hoje não é o adequado. Será preciso reestruturar isso. Acredito que o ideal seja remover o paralelismo e tratarmos isso no futuro
+
+## config.json
+
+- [x] Somente **window** é parâmetro no Ranker, os demais são parâmetros do Runner
+- [x] **assets** deve conter o caminho relativo ou absoluto para o CSV
 
 ### data.py
 
-- [x] Remover imports não usados
-- [x] Usar **from names import \***
-- [x] Criar constantes para para literais
-- [x] Trocar **market** e **market_identifier** pelo arquivo JSON com os dados dos ativos
-    - [x] Remover e simplificar as funções relacionadas
-- [ ] **PRIORIDADE** Incluir parâmetro **repair** como **True** no download dos dados
-    - [ ] Mesmo com **repair**, ainda pode ter problema no **Volume** e **Adj. Close***
-    - [ ] Possível correção:  yf.Ticker(simbolo.upper() + '.SA').history(period='max', actions=True, repair=True, auto_adjust=False)
-- [ ] Verificar linha **mega_df = pd.concat(..., ignore_index=True)**, as datas precisa ficar alinhadas
-- [ ] Remover **test()**
+- [x] Simplificar lógica (não usar identificador de mercado, usar padrão atual do CSVs), considerar apenas o caminho para o CSV
+- [x] Remover **_SUBDIR** de **Data**, usar **DIR_HISTORICAL** diretamente
+- [ ] (**Futuro**) Identificar registros com **Repair=True** e fazer correção de volume (já tenho código pronto)
+- [ ] (**Futuro**) **yfinance** considera histórico máximo de 10 anos, acima disso é preciso buscar dados por etapas
 
-### main.py
+## LICENSE
 
-- [x] Incluir opção de habilitar / desabilitar arquivos de rastreamento (tracking)
-- [x] Simplificar e manter apenas a execução via arquivo de configuração
+- [ ] Ainda restam campos a serem preenchidos (procurar por colchetes)
 
-### markets.py
+## main.py
 
-- [x] Remover este arquivo e incorporar o que for necessário nos demais
+- [x] Remover funções? **run_backtest_ma()**, **run_backtest_rsi()**, **_get_ranker_class()**, **_calc_allocation**
+- [x] Usar **from names import \*** (ainda existem algums strings literais)
+- [x] Mover lógica de **_ensure_market_assets()** para **data.py**
+- [x] Mover lógica de **_build_grids()** para **backtesting.py**
+- [x] Mover lógica de **for pt in price_types** para **backtesting.py**
 
 ### names.py
 
 - [x] Remover **MARKETS** e outros nomes não usados
-- [x] Incluir literais de outros módulos como constantes
 
 ### ranker.py
 
-- [x] Remover imports não usados
-- [x] Usar **from names import \***
-- [x] Criar constantes para para literais
-- [x] No método **MARanker.prepare()** já calcular uma coluna com a força de cruzamento das médias
-    - [x] A força deve ficar entre -1 e 1
-    - [x] Valores maiores que zero indicam força de compra alta
-    - [x] A força de compra deve cair a medida que se distancia do dia de cruzamento
-    - [x] Exemplo de ideia (pode melhorar): https://share.google/aimode/nfnlF0qUEZ1VKiBGx
-    - [x] O método **rank()** pode ficar bem mais simples, basta ordenar os ativos pela força
-- [x] Remover **if __name__ = ...**
+- [x] Remover **RSIRanker** (será um trabalho futuro)
+- [x] Adaptar **MARanker** usando exemplo **teste_forca_mm** (pasta compartilhada), o mega-dataframe terá apenas o atributo de força, na compra considerar apenas ativos com força maior que 0 (zero)
+- [ ] (**Futuro**) Incluir parâmetros de períodos para cálculo de inclinação e decaimento no **MARanker**
 
 ## runner.py
 
-- [x] Remover imports não usados
-- [x] Usar **from names import \***
-- [x] Criar constantes para para literais
+- [x] Remover classe **RunnerConfig**, melhor manter tudo em dicionário mesmo
+- [x] Acredito que as validações podem ser removidas. Se for manter, melhor deixar no próprio **runner.py**

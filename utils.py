@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-"""
+'''
 File management utilities for handling JSON and CSV operations.
 
 This module provides functions to manage cache directories and perform
 read/write operations on JSON and CSV files.
-"""
+'''
 
 import os
 from os.path import isdir, isfile
@@ -23,7 +23,7 @@ import numpy as np
 
 
 def _get_base_dir() -> str:
-    """Get the base directory, creating it if necessary."""
+    '''Get the base directory, creating it if necessary.'''
     base_dir = get_base_dir()
     if not isdir(base_dir):
         mkdir(base_dir)
@@ -31,7 +31,7 @@ def _get_base_dir() -> str:
 
 
 def _get_subdir(subdir: str) -> str:
-    """Get a subdirectory under the base dir, creating it if necessary."""
+    '''Get a subdirectory under the base dir, creating it if necessary.'''
     base_dir = _get_base_dir()
     full_path = os.path.join(base_dir, subdir)
     if not isdir(full_path):
@@ -40,27 +40,27 @@ def _get_subdir(subdir: str) -> str:
 
 
 def dir_cache() -> str:
-    """
+    '''
     Get or create the cache directory.
     
     Returns:
         str: Path to the cache directory ($HOME/PortBackRank/cache).
-    """
+    '''
     return _get_subdir(DIR_CACHE)
 
 
 def dir_tracking() -> str:
-    """
+    '''
     Get or create the tracking directory.
     
     Returns:
         str: Path to the tracking directory ($HOME/PortBackRank/tracking).
-    """
+    '''
     return _get_subdir(DIR_TRACKING)
 
 
 def file_path(file_name: str, subdir: str = None, use_tracking: bool = False) -> str:
-    """
+    '''
     Get the full file path, creating subdirectories if necessary.
     
     Args:
@@ -70,7 +70,7 @@ def file_path(file_name: str, subdir: str = None, use_tracking: bool = False) ->
     
     Returns:
         str: Full path to the file.
-    """
+    '''
     if use_tracking:
         directory = dir_tracking()
     else:
@@ -84,7 +84,7 @@ def file_path(file_name: str, subdir: str = None, use_tracking: bool = False) ->
 
 
 def open_json(file, subdir=None):
-    """
+    '''
     Load and parse a JSON file.
     
     Args:
@@ -93,7 +93,7 @@ def open_json(file, subdir=None):
     
     Returns:
         dict or None: Parsed JSON content, or None if file doesn't exist.
-    """
+    '''
     file_name = file_path(file, subdir)
     if isfile(file_name):
         with open(file_name, 'r', encoding=ENCODING_UTF8) as file:
@@ -102,21 +102,21 @@ def open_json(file, subdir=None):
 
 
 def save_json(file, content, subdir=None):
-    """
+    '''
     Write data to a JSON file with formatted indentation.
     
     Args:
         file (str): Filename to write.
         content (dict): Data to serialize.
         subdir (str, optional): Subdirectory name. Defaults to None.
-    """
+    '''
     file_name = file_path(file, subdir)
     with open(file_name, 'w', encoding=ENCODING_UTF8) as f:
         json.dump(content, f, indent=2, ensure_ascii=False)
 
 
 def open_dataframe(file, subdir=None):
-    """
+    '''
     Load a CSV file as a DataFrame with price columns rounded to 2 decimals.
     
     Args:
@@ -125,7 +125,7 @@ def open_dataframe(file, subdir=None):
     
     Returns:
         DataFrame or None: Pandas DataFrame with rounded prices, or None if file doesn't exist.
-    """
+    '''
     file_name = file_path(file, subdir)
     if isfile(file_name):
         df = pd.read_csv(file_name, index_col=False)
@@ -142,21 +142,20 @@ def open_dataframe(file, subdir=None):
 
 
 def save_dataframe(file, dataframe, subdir=None):
-    """
+    '''
     Write a DataFrame to a CSV file.
     
     Args:
         file (str): Filename to write.
         dataframe (DataFrame): Pandas DataFrame to save.
         subdir (str, optional): Subdirectory name. Defaults to None.
-    """
+    '''
     file_name = file_path(file, subdir)
     dataframe.to_csv(file_name, index=False)
 
 
-
 def convert_numpy(obj):
-    """Convert numpy objects to JSON-serializable Python types."""
+    '''Convert numpy objects to JSON-serializable Python types.'''
     if isinstance(obj, np.integer):
         return int(obj)
     elif isinstance(obj, np.floating):
@@ -167,12 +166,12 @@ def convert_numpy(obj):
 
 
 def get_safe_int(value):
-    """Ensure the value is an integer if applicable."""
+    '''Ensure the value is an integer if applicable.'''
     return int(value) if isinstance(value, (int, np.integer)) else value
 
 
 def generate_filename(prefix, result, start_date, end_date):
-    """
+    '''
     Generate filenames in a centralized manner.
     
     Args:
@@ -183,7 +182,7 @@ def generate_filename(prefix, result, start_date, end_date):
     
     Returns:
         Full path to the generated filename.
-    """
+    '''
     project_root = os.path.dirname(os.path.abspath(__file__))
     
     # Split the prefix into parts
@@ -203,20 +202,20 @@ def generate_filename(prefix, result, start_date, end_date):
 
 
 def save_json_file(filename, data):
-    """
+    '''
     Save a dictionary as JSON to a specific file path.
     
     Args:
         filename: Output file path.
         data: Dictionary to serialize.
-    """
+    '''
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     with open(filename, 'w', encoding=ENCODING_UTF8) as file:
         json.dump(data, file, indent=4, default=convert_numpy)
 
 
 def generate_performance_plot(directory: str = 'results', output_prefix: str = 'performance_comparison', market_symbol: str = 'IBrA'):
-    """
+    '''
     Generate a plot showing all simulation lines from JSON files in a directory.
     
     This function reads simulation timeline data from JSON files and plots the performance
@@ -229,9 +228,7 @@ def generate_performance_plot(directory: str = 'results', output_prefix: str = '
         directory: Folder where the JSON files are located. Defaults to 'results'.
         output_prefix: Prefix for the output plot filename. Defaults to 'performance_comparison'.
         market_symbol: Market index symbol to compare against (e.g., 'IBrA', 'IBOV', 'S&P500'). Defaults to 'IBrA'.
-        
-
-    """
+    '''
     INITIAL_VALUE = 10_000
     all_percentages = []
     dates = []
@@ -339,13 +336,10 @@ def generate_performance_plot(directory: str = 'results', output_prefix: str = '
     plt.close()
 
 
-
-
 def main():
-    """Entry point for testing file path generation."""
+    '''Entry point for testing file path generation.'''
     print(file_path('test.txt'))
 
 
 if __name__ == '__main__':
     main()
-

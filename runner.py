@@ -1,11 +1,10 @@
-"""
+'''
     class Runner
-"""
+'''
 
 import logging
 import pandas as pd
 from pathlib import Path
-from dataclasses import dataclass
 from typing import List, Dict, Type, Optional
 from ranker import Ranker
 from data import MemData
@@ -13,25 +12,6 @@ from utils import dir_tracking
 from names import *
 
 logger = logging.getLogger(__name__)
-
-
-@dataclass
-class RunnerConfig:
-    """Configuration parameters for execution of a strategy runner."""
-    profit: float
-    loss: float
-    diversification: float
-    volume: float
-    ranker_cls: Type[Ranker]
-    trace: bool = False
-    decimals: int = 2
-
-    def __post_init__(self):
-        self.profit = validate_positive_float(self.profit, 'profit')
-        self.loss = validate_positive_float(self.loss, 'loss')
-        self.diversification = validate_diversification(self.diversification)
-        self.volume = validate_positive_float(self.volume, 'volume')
-        self.decimals = validate_decimals(self.decimals)
 
 
 class Runner:
@@ -45,9 +25,9 @@ class Runner:
         data: MemData = None, 
         trace: bool = False, 
         decimals: int = 2,
-        config: Optional[RunnerConfig] = None
+        config: Optional[dict] = None
     ):
-        """
+        '''
         Initialize Runner with provided parameters.
         
         Args:
@@ -59,29 +39,39 @@ class Runner:
             data: MemData instance with market data
             trace: Enable trace logging to files
             decimals: Decimal places for output rounding
-        """
-        if config is not None:
-            self._config = config
-        else:
-            self._config = RunnerConfig(
-                profit=profit,
-                loss=loss,
-                diversification=diversification,
-                volume=volume,
-                ranker_cls=ranker,
-                trace=trace,
-                decimals=decimals
-            )
+            config: Optional configuration dictionary overriding individual arguments
+        '''
+        cfg = config.copy() if config else {}
+        self._profit = cfg.get(KEY_PROFIT, profit)
+        self._loss = cfg.get(KEY_LOSS, loss)
+        self._diversification = cfg.get(KEY_DIVERSIFICATION, diversification)
+        self._volume = cfg.get(KEY_VOLUME, volume)
+        self._ranker_cls = cfg.get(CONF_RANKER_CLS, cfg.get('ranker_cls', ranker))
+        self._data = data if data is not None else cfg.get(CONF_DATA, cfg.get('data'))
+        self._trace = cfg.get(CONF_TRACE, cfg.get('trace', trace))
+        self._decimals = cfg.get(CONF_DECIMALS, cfg.get('decimals', decimals))
 
-        # Configuration (read-only after init)
-        self._profit = self._config.profit
-        self._loss = self._config.loss
-        self._diversification = self._config.diversification
-        self._volume = self._config.volume
-        self._ranker_cls = self._config.ranker_cls
-        self._data = data
-        self._trace = self._config.trace
-        self._decimals = self._config.decimals
+        # Validations in runner.py
+        if self._profit is not None and self._profit <= 0:
+            raise ValueError('profit must be > 0')
+        if self._loss is not None and self._loss <= 0:
+            raise ValueError('loss must be > 0')
+        if self._diversification is not None and not (0 < self._diversification <= 1):
+            raise ValueError('diversification must be in (0, 1]')
+        if self._volume is not None and self._volume <= 0:
+            raise ValueError('volume must be > 0')
+        if self._decimals is not None and (not isinstance(self._decimals, int) or self._decimals < 0):
+            raise ValueError('decimals must be a non-negative integer')
+
+        self._config = {
+            KEY_PROFIT: self._profit,
+            KEY_LOSS: self._loss,
+            KEY_DIVERSIFICATION: self._diversification,
+            KEY_VOLUME: self._volume,
+            CONF_RANKER_CLS: self._ranker_cls,
+            CONF_TRACE: self._trace,
+            CONF_DECIMALS: self._decimals
+        }
 
         # Internal state
         self.__portfolio_details = pd.DataFrame(columns=[
@@ -105,8 +95,8 @@ class Runner:
 
     # Configuration properties (read-only)
     @property
-    def config(self) -> RunnerConfig:
-        return self._config
+    def config(self) -> dict:
+        return self._config.copy()
 
     @property
     def profit(self) -> float:
@@ -158,7 +148,7 @@ class Runner:
         return self.__portfolio_details.copy() 
 
     def _update_portfolio_metrics(self):
-        """Updates sector summary and total portfolio value in memory."""
+        '''Updates sector summary and total portfolio value in memory.'''
         if self.__portfolio_details.empty:
             self._portfolio_summary = {}
             self._total_portfolio_value = self._balance
@@ -175,7 +165,7 @@ class Runner:
         self._total_portfolio_value = self._balance + temp_df[KEY_TOTAL_ASSET_VALUE].sum()
 
     def prepare_data(self, interval: List[str], ranker_conf: Dict[str, float], capital: float):
-        """Resets environment for a new simulation run."""
+        '''Resets environment for a new simulation run.'''
         logger.debug('Preparing runner for interval=%s, capital=%s, ranker_conf=%s', interval, capital, ranker_conf)
         self._ranker_instance = self.ranker(parameters=ranker_conf, data=self.data)
 
@@ -237,7 +227,7 @@ class Runner:
         windows = '-'.join(map(str, ranker_conf.get(KEY_WINDOW, [])))
         
         # Ex: sp500-MARanker-9-21-P01-L005-D01
-        folder_name = f"{market_id}-{ranker_name}-{windows}-P{str(self._profit).replace('.', '')}-L{str(self._loss).replace('.', '')}-D{str(self._diversification).replace('.', '')}"
+        folder_name = f'{market_id}-{ranker_name}-{windows}-P{str(self._profit).replace(".", "")}-L{str(self._loss).replace(".", "")}-D{str(self._diversification).replace(".", "")}'
         
         tracking_base = Path(dir_tracking())
         trades_path = tracking_base / folder_name / FILE_TRADES
@@ -297,7 +287,6 @@ class Runner:
         self._save_trace(result, ranker_conf)
 
         return result
-
 
     def _sell(self, date: str, current_date_data: pd.DataFrame):
         if self.__portfolio_details.empty:
