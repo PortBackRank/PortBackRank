@@ -25,8 +25,7 @@ import numpy as np
 def _get_base_dir() -> str:
     '''Get the base directory, creating it if necessary.'''
     base_dir = get_base_dir()
-    if not isdir(base_dir):
-        mkdir(base_dir)
+    os.makedirs(base_dir, exist_ok=True)
     return base_dir
 
 
@@ -34,8 +33,7 @@ def _get_subdir(subdir: str) -> str:
     '''Get a subdirectory under the base dir, creating it if necessary.'''
     base_dir = _get_base_dir()
     full_path = os.path.join(base_dir, subdir)
-    if not isdir(full_path):
-        mkdir(full_path)
+    os.makedirs(full_path, exist_ok=True)
     return full_path
 
 
@@ -78,8 +76,7 @@ def file_path(file_name: str, subdir: str = None, use_tracking: bool = False) ->
     
     if subdir:
         directory = os.path.join(directory, subdir)
-    if not isdir(directory):
-        mkdir(directory)
+    os.makedirs(directory, exist_ok=True)
     return os.path.join(directory, file_name)
 
 

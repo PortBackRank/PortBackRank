@@ -164,8 +164,18 @@ class Data:
                     df = tickers.tickers[asset].history(period=YF_PERIOD_MAX, auto_adjust=YF_AUTO_ADJUST, repair=repair)
                     self._save_asset_data(asset, df)
                 except Exception as e:
-                    logger.error('Error downloading %s: %s', asset, e)
-                pbar.update(1)
+                    try:
+                        logger.warning('Downloading %s with period=%s failed (%s), retrying with period="10y"...', asset, YF_PERIOD_MAX, e)
+                        df = tickers.tickers[asset].history(period='10y', auto_adjust=YF_AUTO_ADJUST, repair=repair)
+                        self._save_asset_data(asset, df)
+                    except Exception as e2:
+                        try:
+                            df = tickers.tickers[asset].history(period='10y', auto_adjust=YF_AUTO_ADJUST, repair=False)
+                            self._save_asset_data(asset, df)
+                        except Exception as e3:
+                            logger.error('Error downloading %s: %s', asset, e3)
+                finally:
+                    pbar.update(1)
 
             with concurrent.futures.ThreadPoolExecutor() as executor:
                 executor.map(download_and_save, assets_list)
@@ -250,21 +260,23 @@ class Data:
             if df.empty:
                 continue
                 
-            # Filter and create the simulated 'Close' based on price_type
+            # Create the simulated 'Buy' price based on price_type (Close is preserved)
             if price_type == PRICE_OPEN:
-                df[COL_CLOSE] = df[COL_OPEN]
+                df[COL_BUY] = df[COL_OPEN]
             elif price_type == PRICE_HIGH:
-                df[COL_CLOSE] = df[COL_HIGH]
+                df[COL_BUY] = df[COL_HIGH]
             elif price_type == PRICE_LOW:
-                df[COL_CLOSE] = df[COL_LOW]
+                df[COL_BUY] = df[COL_LOW]
             elif price_type == PRICE_CLOSE_NEXT:
-                df[COL_CLOSE] = df[COL_CLOSE].shift(-1)
+                df[COL_BUY] = df[COL_CLOSE].shift(-1)
             elif price_type == PRICE_HL2:
-                df[COL_CLOSE] = (df[COL_HIGH] + df[COL_LOW]) / 2.0
+                df[COL_BUY] = (df[COL_HIGH] + df[COL_LOW]) / 2.0
             elif price_type == PRICE_HLC3:
-                df[COL_CLOSE] = (df[COL_HIGH] + df[COL_LOW] + df[COL_CLOSE]) / 3.0
+                df[COL_BUY] = (df[COL_HIGH] + df[COL_LOW] + df[COL_CLOSE]) / 3.0
             elif price_type == PRICE_OHLC4:
-                df[COL_CLOSE] = (df[COL_OPEN] + df[COL_HIGH] + df[COL_LOW] + df[COL_CLOSE]) / 4.0
+                df[COL_BUY] = (df[COL_OPEN] + df[COL_HIGH] + df[COL_LOW] + df[COL_CLOSE]) / 4.0
+            else:
+                df[COL_BUY] = df[COL_CLOSE]
 
             df[IDX_SYMBOL] = asset
             # Missing volume would break int(volume * pct) in the Runner;
@@ -273,7 +285,7 @@ class Data:
             if missing_volume:
                 logger.debug('%s: %d rows with missing Volume set to 0', asset, missing_volume)
                 df[COL_VOLUME] = df[COL_VOLUME].fillna(0)
-            all_data.append(df[[COL_DATE, IDX_SYMBOL, COL_VOLUME, COL_CLOSE]])
+            all_data.append(df[[COL_DATE, IDX_SYMBOL, COL_VOLUME, COL_CLOSE, COL_BUY]])
             
         if not all_data:
             return pd.DataFrame()

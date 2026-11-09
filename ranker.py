@@ -161,7 +161,7 @@ class MARanker(Ranker):
         force = force.where(has_crossover, 0.0)
 
         # Retain only force attribute on the mega-dataframe
-        keep_cols = [COL_CLOSE, COL_VOLUME, self._force_col]
+        keep_cols = [COL_CLOSE, COL_BUY, COL_VOLUME, self._force_col]
         cols_to_drop = [c for c in df.columns if c not in keep_cols]
         if cols_to_drop:
             df.drop(columns=cols_to_drop, inplace=True)

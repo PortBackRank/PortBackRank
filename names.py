@@ -28,6 +28,9 @@ def set_base_dir_override(path: str) -> None:
         path: Custom base directory path.
     '''
     global _BASE_DIR_OVERRIDE
+    import os
+    if path:
+        path = os.path.expanduser(os.path.expandvars(path))
     _BASE_DIR_OVERRIDE = path
 
 
@@ -35,7 +38,7 @@ def get_base_dir() -> str:
     '''Get the base directory for PortBackRank user data.
     
     Returns:
-        Path to the base directory (default: $HOME/PortBackRank)
+        Path to the base directory (default: $HOME/.cache/PortBackRank)
     '''
     import os
     from pathlib import Path
@@ -47,10 +50,14 @@ def get_base_dir() -> str:
     # Check for environment variable override
     env_dir = os.environ.get('PORTBACKRANK_DIR')
     if env_dir:
-        return env_dir
+        return os.path.expanduser(os.path.expandvars(env_dir))
     
-    # Default to $HOME/PortBackRank
-    return str(Path.home() / 'PortBackRank')
+    # Check if local cache exists in current working directory
+    if (Path.cwd() / 'cache').is_dir():
+        return str(Path.cwd())
+    
+    # Default to $HOME/.cache/PortBackRank
+    return str(Path.home() / '.cache' / 'PortBackRank')
 
 # Subdirectories under base dir
 DIR_CACHE = 'cache'
@@ -86,6 +93,7 @@ COL_HIGH = 'High'
 COL_LOW = 'Low'
 COL_CLOSE = 'Close'
 COL_VOLUME = 'Volume'
+COL_BUY = 'Buy'
 
 # Symbol / code column names
 COL_SYMBOL = 'symbol'

@@ -73,9 +73,10 @@ def run_from_config(config_path: str, download_mode: str = MODE_MISSING, trace: 
     elif mode == MODE_MISSING:
         data_handler.ensure_assets(assets_source)
 
+    effective_trace = trace or config.get('trace', False)
     final_results = run_backtests_for_price_types(
         config=config,
-        trace=trace,
+        trace=effective_trace,
         assets_path=assets_source
     )
 

@@ -201,7 +201,7 @@ class Runner:
             current_price = row[KEY_UNIT_VALUE]
             
             if current_date_data is not None and symbol in current_date_data.index:
-                price_val = current_date_data.loc[symbol, COL_CLOSE]
+                price_val = current_date_data.loc[symbol, COL_BUY]
                 if not pd.isna(price_val):
                     current_price = price_val
             
@@ -227,7 +227,8 @@ class Runner:
         windows = '-'.join(map(str, ranker_conf.get(KEY_WINDOW, [])))
         
         # Ex: sp500-MARanker-9-21-P01-L005-D01
-        folder_name = f'{market_id}-{ranker_name}-{windows}-P{str(self._profit).replace(".", "")}-L{str(self._loss).replace(".", "")}-D{str(self._diversification).replace(".", "")}'
+        vol_str = f'-V{str(self._volume).replace(".", "")}' if self._volume is not None else ''
+        folder_name = f'{market_id}-{ranker_name}-{windows}-P{str(self._profit).replace(".", "")}-L{str(self._loss).replace(".", "")}-D{str(self._diversification).replace(".", "")}{vol_str}'
         
         tracking_base = Path(dir_tracking())
         trades_path = tracking_base / folder_name / FILE_TRADES
@@ -298,7 +299,7 @@ class Runner:
             if symbol in current_date_data.index:
                 row = current_date_data.loc[symbol]
                 asset_histories[symbol] = {
-                    KEY_CURRENT_PRICE: row[COL_CLOSE],
+                    KEY_CURRENT_PRICE: row[COL_BUY],
                     KEY_DAILY_VOLUME: row[COL_VOLUME]
                 }
 
@@ -380,11 +381,11 @@ class Runner:
                 continue
                 
             day_row = current_date_data.loc[symbol]
-            if pd.isna(day_row[COL_CLOSE]):
+            if pd.isna(day_row[COL_BUY]):
                 logger.debug('Skipping %s: NaN price', symbol)
                 continue
 
-            current_price = day_row[COL_CLOSE]
+            current_price = day_row[COL_BUY]
             daily_volume = day_row[COL_VOLUME]
 
             max_qty = int(available_balance // current_price)

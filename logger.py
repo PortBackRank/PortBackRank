@@ -12,8 +12,13 @@ from names import APP_NAME
 
 
 def get_log_file_path() -> str:
-    '''Get the default log file path in user's home directory.'''
-    return str(Path.home() / f'{APP_NAME}.log')
+    '''Get the default log file path.'''
+    try:
+        from names import get_base_dir
+        base = Path(get_base_dir())
+        return str(base / f'{APP_NAME}.log')
+    except Exception:
+        return str(Path.home() / f'{APP_NAME}.log')
 
 
 def configure_logging(debug: bool = False, log_file: str = None) -> None:
@@ -23,7 +28,7 @@ def configure_logging(debug: bool = False, log_file: str = None) -> None:
     
     Args:
         debug: If True, set log level to DEBUG. Otherwise WARNING (to avoid info spam).
-        log_file: Optional custom log file path. Defaults to $HOME/PortBackRank.log
+        log_file: Optional custom log file path. Defaults to $BASE_DIR/PortBackRank.log
     '''
     # Set root logger level
     level = logging.DEBUG if debug else logging.WARNING
@@ -42,10 +47,20 @@ def configure_logging(debug: bool = False, log_file: str = None) -> None:
     # File handler for persistent logging
     if log_file is None:
         log_file = get_log_file_path()
-    file_handler = logging.FileHandler(log_file, encoding='utf-8')
-    file_handler.setFormatter(log_format)
-    file_handler.setLevel(level)
-    root_logger.addHandler(file_handler)
+    try:
+        file_handler = logging.FileHandler(log_file, encoding='utf-8')
+        file_handler.setFormatter(log_format)
+        file_handler.setLevel(level)
+        root_logger.addHandler(file_handler)
+    except (PermissionError, OSError):
+        try:
+            fallback_file = Path.cwd() / f'{APP_NAME}.log'
+            file_handler = logging.FileHandler(str(fallback_file), encoding='utf-8')
+            file_handler.setFormatter(log_format)
+            file_handler.setLevel(level)
+            root_logger.addHandler(file_handler)
+        except (PermissionError, OSError):
+            pass
     
     # Console handler - only show WARNING and above unless debug
     console_handler = logging.StreamHandler()
