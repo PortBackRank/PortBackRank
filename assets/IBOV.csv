@@ -23,7 +23,7 @@ CPLE3|COPEL|Utilities - Regulated Electric|Utilities
 CSAN3|COSAN|Oil & Gas Refining & Marketing|Energy
 CSMG3|COPASA|Utilities - Regulated Water|Utilities
 CSNA3|SID NACIONAL|Steel|Basic Materials
-CURY3|CURY|Real Estate - Development|Real Estate
+CURY3|CURY S/A|Real Estate - Development|Real Estate
 CXSE3|CAIXA SEGURI|Insurance - Diversified|Financial Services
 CYRE3|CYRELA REALT|Residential Construction|Consumer Cyclical
 DIRR3|DIRECIONAL|Real Estate - Development|Real Estate
@@ -43,11 +43,12 @@ ITSA4|ITAUSA|Conglomerates|Industrials
 ITUB4|ITAUUNIBANCO|Banks - Regional|Financial Services
 KLBN11|KLABIN S/A|Paper & Paper Products|Basic Materials
 LREN3|LOJAS RENNER|Department Stores|Consumer Cyclical
-MBRF3|MARFRIG BRF|Packaged Foods|Consumer Defensive
+MBRF3|MARFRIG|Packaged Foods|Consumer Defensive
 MGLU3|MAGAZ LUIZA|Specialty Retail|Consumer Cyclical
-MOTV3|MOTIVA|Infrastructure Operations|Industrials
+MOTV3|MOTIVA SA|Infrastructure Operations|Industrials
 MRVE3|MRV|Real Estate - Development|Real Estate
 MULT3|MULTIPLAN|Real Estate Services|Real Estate
+NATU3|NATURA|Household & Personal Products|Consumer Defensive
 PETR3|PETROBRAS|Oil & Gas Integrated|Energy
 PETR4|PETROBRAS|Oil & Gas Integrated|Energy
 POMO4|MARCOPOLO|Farm & Heavy Construction Machinery|Industrials
